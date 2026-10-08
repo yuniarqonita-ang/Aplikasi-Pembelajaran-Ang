@@ -14,9 +14,14 @@ const appState = {
   hardwareSlotState: {},
   codeBlockOrder: [],
   currentSqlIndex: 0,
+  sqlCategoryFilter: "all",
   currentOutputIndex: 0,
+  outputCategoryFilter: "all",
   currentEnglishDrillIndex: 0,
+  currentPuzzleIndex: 0,
+  puzzleCategoryFilter: "all",
   currentIeltsIndex: 0,
+  ieltsCategoryFilter: "all",
   currentIbtIndex: 0,
   currentIbtFilter: "all",
   ibtTimerInterval: null,
@@ -1185,6 +1190,38 @@ function renderSqlTrainer() {
   const container = document.getElementById("sql-content-area");
   if (!container) return;
 
+  appState.sqlCategoryFilter = appState.sqlCategoryFilter || "all";
+
+  const allCategories = [
+    "all",
+    "1. SELECT Dasar",
+    "2. Filter WHERE",
+    "3. Operator Logika AND & OR",
+    "4. Pencarian String LIKE",
+    "5. Rentang BETWEEN & Himpunan IN",
+    "6. Pengurutan ORDER BY & LIMIT",
+    "7. Fungsi Agregasi",
+    "8. Pengelompokan GROUP BY & HAVING",
+    "9. Relasi Antar Tabel INNER JOIN",
+    "10. Logika CASE WHEN & Transformasi"
+  ];
+
+  const filteredList = (appState.sqlCategoryFilter === "all")
+    ? sqlChallenges.map((c, i) => ({ item: c, originalIndex: i }))
+    : sqlChallenges
+        .map((c, i) => ({ item: c, originalIndex: i }))
+        .filter(x => x.item.category === appState.sqlCategoryFilter);
+
+  if (appState.currentSqlIndex < 0 || appState.currentSqlIndex >= sqlChallenges.length) {
+    appState.currentSqlIndex = 0;
+  }
+
+  let currentPos = filteredList.findIndex(x => x.originalIndex === appState.currentSqlIndex);
+  if (currentPos === -1 && filteredList.length > 0) {
+    appState.currentSqlIndex = filteredList[0].originalIndex;
+    currentPos = 0;
+  }
+
   const currentChal = sqlChallenges[appState.currentSqlIndex] || sqlChallenges[0];
   const tableData = mockDB[currentChal.tableName] || mockDB.Employees;
 
@@ -1192,20 +1229,51 @@ function renderSqlTrainer() {
     <!-- Switcher Tab Soal SQL vs Output -->
     <div class="sql-submode-switcher">
       <button class="choice-card-btn active-sql-mode" id="btn-mode-sql" onclick="switchSqlSubMode('queries')">
-        🗄️ Soal Kueri SQL Tabel
+        🗄️ Soal Kueri SQL Tabel (100 Tantangan)
       </button>
       <button class="choice-card-btn" id="btn-mode-output" onclick="switchSqlSubMode('output')">
-        🧪 Tebak Output Koding
+        🧪 Tebak Output Koding (100 Tantangan)
       </button>
     </div>
 
     <!-- SUBMODE 1: SQL TABLE QUERIES -->
     <div id="submode-queries">
-      <!-- Pilihan Soal SQL -->
-      <div style="display: flex; gap: 8px; margin-bottom: 16px; overflow-x: auto; padding-bottom: 6px;">
-        ${sqlChallenges.map((c, idx) => `
-          <button class="quick-cmd-btn ${idx === appState.currentSqlIndex ? 'active' : ''}" style="padding: 8px 14px; font-weight: 700;" onclick="setSqlChallenge(${idx})">
-            Soal ${idx + 1}: ${c.title.split(':')[1] || c.title}
+      <!-- Navigasi & Filter Soal SQL 1 - 100 -->
+      <div class="challenge-nav-bar">
+        <div class="challenge-nav-controls">
+          <label style="font-size: 0.8rem; font-weight: 700; color: var(--accent-cyan);">Kategori:</label>
+          <select class="challenge-page-select" onchange="filterSqlCategory(this.value)">
+            <option value="all" ${appState.sqlCategoryFilter === 'all' ? 'selected' : ''}>📂 Semua Kategori (${sqlChallenges.length} Soal)</option>
+            ${allCategories.filter(cat => cat !== 'all').map(cat => `
+              <option value="${cat}" ${appState.sqlCategoryFilter === cat ? 'selected' : ''}>${cat} (10 Soal)</option>
+            `).join('')}
+          </select>
+        </div>
+
+        <div class="challenge-nav-controls">
+          <button class="btn-secondary" style="padding: 6px 12px; font-size: 0.82rem;" onclick="navSqlChallenge(-1)" ${currentPos <= 0 ? 'disabled' : ''}>
+            ⬅️ Prev
+          </button>
+          <select class="challenge-page-select" onchange="setSqlChallenge(Number(this.value))">
+            ${filteredList.map((x) => `
+              <option value="${x.originalIndex}" ${x.originalIndex === appState.currentSqlIndex ? 'selected' : ''}>
+                Soal #${x.originalIndex + 1}: ${x.item.title.split(':')[1] || x.item.title}
+              </option>
+            `).join('')}
+          </select>
+          <button class="btn-secondary" style="padding: 6px 12px; font-size: 0.82rem;" onclick="navSqlChallenge(1)" ${currentPos >= filteredList.length - 1 ? 'disabled' : ''}>
+            Next ➡️
+          </button>
+        </div>
+      </div>
+
+      <!-- Quick Pills Selector -->
+      <div class="challenge-pills-row" style="margin-bottom: 16px;">
+        ${filteredList.map((x) => `
+          <button class="quick-cmd-btn ${x.originalIndex === appState.currentSqlIndex ? 'active' : ''}" 
+                  style="padding: 6px 12px; font-size: 0.8rem; font-weight: 700; white-space: nowrap;" 
+                  onclick="setSqlChallenge(${x.originalIndex})">
+            #${x.originalIndex + 1}
           </button>
         `).join('')}
       </div>
@@ -1288,6 +1356,21 @@ function renderSqlTrainer() {
     <!-- SUBMODE 2: OUTPUT PREDICTION DRILL -->
     <div id="submode-output" style="display: none;"></div>
   `;
+
+  window.filterSqlCategory = function(cat) {
+    sfx.playClick();
+    appState.sqlCategoryFilter = cat;
+    renderSqlTrainer();
+  };
+
+  window.navSqlChallenge = function(delta) {
+    sfx.playClick();
+    const newPos = currentPos + delta;
+    if (newPos >= 0 && newPos < filteredList.length) {
+      appState.currentSqlIndex = filteredList[newPos].originalIndex;
+      renderSqlTrainer();
+    }
+  };
 
   window.setSqlChallenge = function(idx) {
     sfx.playClick();
@@ -1374,13 +1457,71 @@ function renderOutputDrill() {
   const container = document.getElementById("submode-output");
   if (!container) return;
 
+  appState.outputCategoryFilter = appState.outputCategoryFilter || "all";
+
+  const outputLangs = [
+    { key: "all", label: `📂 Semua Bahasa & Topik (${outputPredictionQuestions.length} Soal)` },
+    { key: "JavaScript", label: "🟡 JavaScript (60 Soal)" },
+    { key: "Python", label: "🐍 Python (10 Soal)" },
+    { key: "C#", label: "🟣 C# .NET (10 Soal)" },
+    { key: "Data Structure", label: "🌳 Struktur Data (10 Soal)" },
+    { key: "SQL Logic", label: "🗄️ SQL Logic (10 Soal)" }
+  ];
+
+  const filteredList = (appState.outputCategoryFilter === "all")
+    ? outputPredictionQuestions.map((q, i) => ({ item: q, originalIndex: i }))
+    : outputPredictionQuestions
+        .map((q, i) => ({ item: q, originalIndex: i }))
+        .filter(x => x.item.lang === appState.outputCategoryFilter);
+
+  if (appState.currentOutputIndex < 0 || appState.currentOutputIndex >= outputPredictionQuestions.length) {
+    appState.currentOutputIndex = 0;
+  }
+
+  let currentPos = filteredList.findIndex(x => x.originalIndex === appState.currentOutputIndex);
+  if (currentPos === -1 && filteredList.length > 0) {
+    appState.currentOutputIndex = filteredList[0].originalIndex;
+    currentPos = 0;
+  }
+
   const q = outputPredictionQuestions[appState.currentOutputIndex] || outputPredictionQuestions[0];
 
   container.innerHTML = `
-    <div style="display: flex; gap: 8px; margin-bottom: 16px; overflow-x: auto; padding-bottom: 6px;">
-      ${outputPredictionQuestions.map((item, idx) => `
-        <button class="quick-cmd-btn ${idx === appState.currentOutputIndex ? 'active' : ''}" style="padding: 8px 14px; font-weight: 700;" onclick="setOutputIndex(${idx})">
-          Soal ${idx + 1} (${item.lang})
+    <!-- Navigasi & Filter Soal Output 1 - 100 -->
+    <div class="challenge-nav-bar">
+      <div class="challenge-nav-controls">
+        <label style="font-size: 0.8rem; font-weight: 700; color: var(--accent-cyan);">Bahasa:</label>
+        <select class="challenge-page-select" onchange="filterOutputCategory(this.value)">
+          ${outputLangs.map(l => `
+            <option value="${l.key}" ${appState.outputCategoryFilter === l.key ? 'selected' : ''}>${l.label}</option>
+          `).join('')}
+        </select>
+      </div>
+
+      <div class="challenge-nav-controls">
+        <button class="btn-secondary" style="padding: 6px 12px; font-size: 0.82rem;" onclick="navOutputChallenge(-1)" ${currentPos <= 0 ? 'disabled' : ''}>
+          ⬅️ Prev
+        </button>
+        <select class="challenge-page-select" onchange="setOutputIndex(Number(this.value))">
+          ${filteredList.map((x) => `
+            <option value="${x.originalIndex}" ${x.originalIndex === appState.currentOutputIndex ? 'selected' : ''}>
+              Soal #${x.originalIndex + 1} (${x.item.lang}): ${x.item.badge}
+            </option>
+          `).join('')}
+        </select>
+        <button class="btn-secondary" style="padding: 6px 12px; font-size: 0.82rem;" onclick="navOutputChallenge(1)" ${currentPos >= filteredList.length - 1 ? 'disabled' : ''}>
+          Next ➡️
+        </button>
+      </div>
+    </div>
+
+    <!-- Quick Pills Selector -->
+    <div class="challenge-pills-row" style="margin-bottom: 16px;">
+      ${filteredList.map((x) => `
+        <button class="quick-cmd-btn ${x.originalIndex === appState.currentOutputIndex ? 'active' : ''}" 
+                style="padding: 6px 12px; font-size: 0.8rem; font-weight: 700; white-space: nowrap;" 
+                onclick="setOutputIndex(${x.originalIndex})">
+          #${x.originalIndex + 1} ${x.item.badge}
         </button>
       `).join('')}
     </div>
@@ -1432,6 +1573,21 @@ function renderOutputDrill() {
       <div id="output-feedback-box" style="display: none;"></div>
     </div>
   `;
+
+  window.filterOutputCategory = function(cat) {
+    sfx.playClick();
+    appState.outputCategoryFilter = cat;
+    renderOutputDrill();
+  };
+
+  window.navOutputChallenge = function(delta) {
+    sfx.playClick();
+    const newPos = currentPos + delta;
+    if (newPos >= 0 && newPos < filteredList.length) {
+      appState.currentOutputIndex = filteredList[newPos].originalIndex;
+      renderOutputDrill();
+    }
+  };
 
   window.setOutputIndex = function(idx) {
     sfx.playClick();
@@ -1762,6 +1918,38 @@ function renderMissingLettersGame() {
   const container = document.getElementById("submode-puzzle");
   if (!container) return;
 
+  appState.puzzleCategoryFilter = appState.puzzleCategoryFilter || "all";
+
+  const puzzleCats = [
+    "all",
+    "Networking",
+    "Database",
+    "Programming",
+    "Web & Cloud",
+    "Hardware & OS",
+    "Security",
+    "Software Eng",
+    "Academic English",
+    "Academic Verbs",
+    "Academic Vocabulary"
+  ];
+
+  const filteredList = (appState.puzzleCategoryFilter === "all")
+    ? missingLetterPuzzles.map((p, i) => ({ item: p, originalIndex: i }))
+    : missingLetterPuzzles
+        .map((p, i) => ({ item: p, originalIndex: i }))
+        .filter(x => x.item.category === appState.puzzleCategoryFilter);
+
+  if (appState.currentPuzzleIndex < 0 || appState.currentPuzzleIndex >= missingLetterPuzzles.length) {
+    appState.currentPuzzleIndex = 0;
+  }
+
+  let currentPos = filteredList.findIndex(x => x.originalIndex === appState.currentPuzzleIndex);
+  if (currentPos === -1 && filteredList.length > 0) {
+    appState.currentPuzzleIndex = filteredList[0].originalIndex;
+    currentPos = 0;
+  }
+
   const puzzle = missingLetterPuzzles[appState.currentPuzzleIndex] || missingLetterPuzzles[0];
 
   // Inisialisasi state per kata agar pengisian bertahap tersimpan
@@ -1814,15 +2002,47 @@ function renderMissingLettersGame() {
   }
 
   container.innerHTML = `
-    <!-- Navigasi Soal Kosakata 1 - 25 -->
-    <div style="display: flex; gap: 8px; margin-bottom: 16px; overflow-x: auto; padding-bottom: 6px;">
-      ${missingLetterPuzzles.map((p, idx) => {
-        const isDone = appState.puzzleStates && appState.puzzleStates[idx]?.completed;
+    <!-- Navigasi & Filter Soal Kosakata 1 - 100 -->
+    <div class="challenge-nav-bar">
+      <div class="challenge-nav-controls">
+        <label style="font-size: 0.8rem; font-weight: 700; color: var(--accent-pink);">Kategori:</label>
+        <select class="challenge-page-select" onchange="filterPuzzleCategory(this.value)">
+          <option value="all" ${appState.puzzleCategoryFilter === 'all' ? 'selected' : ''}>📂 Semua Topik (${missingLetterPuzzles.length} Kosakata)</option>
+          ${puzzleCats.filter(c => c !== 'all').map(c => `
+            <option value="${c}" ${appState.puzzleCategoryFilter === c ? 'selected' : ''}>${c} (10 Kata)</option>
+          `).join('')}
+        </select>
+      </div>
+
+      <div class="challenge-nav-controls">
+        <button class="btn-secondary" style="padding: 6px 12px; font-size: 0.82rem;" onclick="navPuzzle(-1)" ${currentPos <= 0 ? 'disabled' : ''}>
+          ⬅️ Prev
+        </button>
+        <select class="challenge-page-select" onchange="setPuzzleIndex(Number(this.value))">
+          ${filteredList.map((x) => {
+            const isDone = appState.puzzleStates && appState.puzzleStates[x.originalIndex]?.completed;
+            return `
+              <option value="${x.originalIndex}" ${x.originalIndex === appState.currentPuzzleIndex ? 'selected' : ''}>
+                ${isDone ? '✓ ' : ''}Kata #${x.originalIndex + 1}: ${x.item.word} (${x.item.category})
+              </option>
+            `;
+          }).join('')}
+        </select>
+        <button class="btn-secondary" style="padding: 6px 12px; font-size: 0.82rem;" onclick="navPuzzle(1)" ${currentPos >= filteredList.length - 1 ? 'disabled' : ''}>
+          Next ➡️
+        </button>
+      </div>
+    </div>
+
+    <!-- Quick Pills Selector -->
+    <div class="challenge-pills-row" style="margin-bottom: 16px;">
+      ${filteredList.map((x) => {
+        const isDone = appState.puzzleStates && appState.puzzleStates[x.originalIndex]?.completed;
         return `
-          <button class="quick-cmd-btn ${idx === appState.currentPuzzleIndex ? 'active' : ''}" 
-                  style="padding: 8px 14px; font-weight: 700; ${isDone ? 'border-color: var(--accent-green); color: #86efac;' : ''}" 
-                  onclick="setPuzzleIndex(${idx})">
-            ${isDone ? '✓ ' : ''}Kata #${idx + 1}
+          <button class="quick-cmd-btn ${x.originalIndex === appState.currentPuzzleIndex ? 'active' : ''}" 
+                  style="padding: 6px 12px; font-size: 0.8rem; font-weight: 700; white-space: nowrap; ${isDone ? 'border-color: var(--accent-green); color: #86efac;' : ''}" 
+                  onclick="setPuzzleIndex(${x.originalIndex})">
+            ${isDone ? '✓ ' : ''}#${x.originalIndex + 1} ${x.item.word}
           </button>
         `;
       }).join('')}
@@ -1925,6 +2145,21 @@ function renderMissingLettersGame() {
     });
   }
 
+  window.filterPuzzleCategory = function(cat) {
+    sfx.playClick();
+    appState.puzzleCategoryFilter = cat;
+    renderMissingLettersGame();
+  };
+
+  window.navPuzzle = function(delta) {
+    sfx.playClick();
+    const newPos = currentPos + delta;
+    if (newPos >= 0 && newPos < filteredList.length) {
+      appState.currentPuzzleIndex = filteredList[newPos].originalIndex;
+      renderMissingLettersGame();
+    }
+  };
+
   window.setPuzzleIndex = function(idx) {
     sfx.playClick();
     appState.currentPuzzleIndex = idx;
@@ -2001,6 +2236,38 @@ function renderIeltsAcademicStudio() {
   const container = document.getElementById("submode-ielts");
   if (!container) return;
 
+  appState.ieltsCategoryFilter = appState.ieltsCategoryFilter || "all";
+
+  const ieltsClusters = [
+    { key: "all", label: `📂 Semua Unit Cambridge (${ieltsAcademicBank.length} Soal)`, min: 0, max: 99 },
+    { key: "unit1-3", label: "Unit 1-3: Present Tenses & Trends (10 Soal)", min: 0, max: 9 },
+    { key: "unit4-6", label: "Unit 4-6: Past Tenses & History (10 Soal)", min: 10, max: 19 },
+    { key: "unit7-9", label: "Unit 7-9: Present Perfect & Research (10 Soal)", min: 20, max: 29 },
+    { key: "unit10-12", label: "Unit 10-12: Passive Voice & Process (10 Soal)", min: 30, max: 39 },
+    { key: "unit13-15", label: "Unit 13-15: Conditionals & Hypotheses (10 Soal)", min: 40, max: 49 },
+    { key: "unit16-18", label: "Unit 16-18: Modals & Scientific Hedging (10 Soal)", min: 50, max: 59 },
+    { key: "unit19-21", label: "Unit 19-21: Relative & Participle Clauses (10 Soal)", min: 60, max: 69 },
+    { key: "unit22-23", label: "Unit 22-23: Comparatives & Multipliers (10 Soal)", min: 70, max: 79 },
+    { key: "unit24-25", label: "Unit 24-25: Linking Words & Cohesion (10 Soal)", min: 80, max: 89 },
+    { key: "style", label: "Academic Style: Inversion & Collocations (10 Soal)", min: 90, max: 99 }
+  ];
+
+  const currentCluster = ieltsClusters.find(c => c.key === appState.ieltsCategoryFilter) || ieltsClusters[0];
+
+  const filteredList = ieltsAcademicBank
+    .map((item, idx) => ({ item, originalIndex: idx }))
+    .filter(x => x.originalIndex >= currentCluster.min && x.originalIndex <= currentCluster.max);
+
+  if (appState.currentIeltsIndex < 0 || appState.currentIeltsIndex >= ieltsAcademicBank.length) {
+    appState.currentIeltsIndex = 0;
+  }
+
+  let currentPos = filteredList.findIndex(x => x.originalIndex === appState.currentIeltsIndex);
+  if (currentPos === -1 && filteredList.length > 0) {
+    appState.currentIeltsIndex = filteredList[0].originalIndex;
+    currentPos = 0;
+  }
+
   const q = ieltsAcademicBank[appState.currentIeltsIndex] || ieltsAcademicBank[0];
 
   container.innerHTML = `
@@ -2013,16 +2280,46 @@ function renderIeltsAcademicStudio() {
         </div>
         <h4 style="color: #fff; margin: 2px 0;">Cambridge Grammar for IELTS (Hopkins & Cullen)</h4>
         <p style="font-size: 0.8rem; color: #cbd5e1; margin: 0;">
-          Latihan 28 Unit: Tren Grafik Task 1, Passive Voice Proses Pabrik, Hedging Esai Task 2, Inversi Akademik & Collocations!
+          Latihan 100 Soal Cambridge: Tren Grafik Task 1, Passive Voice Proses Pabrik, Hedging Esai Task 2, Inversi Akademik & Collocations!
         </p>
       </div>
     </div>
 
-    <!-- Pilihan Cepat Soal 1 - 28 -->
-    <div style="display: flex; gap: 8px; margin-bottom: 16px; overflow-x: auto; padding-bottom: 6px;">
-      ${ieltsAcademicBank.map((item, idx) => `
-        <button class="quick-cmd-btn ${idx === appState.currentIeltsIndex ? 'active' : ''}" style="padding: 8px 12px; font-weight: 700; white-space: nowrap;" onclick="setIeltsIndex(${idx})">
-          Unit ${idx + 1}
+    <!-- Navigasi & Filter Soal IELTS 1 - 100 -->
+    <div class="challenge-nav-bar">
+      <div class="challenge-nav-controls">
+        <label style="font-size: 0.8rem; font-weight: 700; color: var(--accent-green);">Unit Cambridge:</label>
+        <select class="challenge-page-select" onchange="filterIeltsCategory(this.value)">
+          ${ieltsClusters.map(c => `
+            <option value="${c.key}" ${appState.ieltsCategoryFilter === c.key ? 'selected' : ''}>${c.label}</option>
+          `).join('')}
+        </select>
+      </div>
+
+      <div class="challenge-nav-controls">
+        <button class="btn-secondary" style="padding: 6px 12px; font-size: 0.82rem;" onclick="navIeltsChallenge(-1)" ${currentPos <= 0 ? 'disabled' : ''}>
+          ⬅️ Prev
+        </button>
+        <select class="challenge-page-select" onchange="setIeltsIndex(Number(this.value))">
+          ${filteredList.map((x) => `
+            <option value="${x.originalIndex}" ${x.originalIndex === appState.currentIeltsIndex ? 'selected' : ''}>
+              #${x.originalIndex + 1}: ${x.item.cambridgeUnit.split(':')[0]} (${x.item.ieltsFocus})
+            </option>
+          `).join('')}
+        </select>
+        <button class="btn-secondary" style="padding: 6px 12px; font-size: 0.82rem;" onclick="navIeltsChallenge(1)" ${currentPos >= filteredList.length - 1 ? 'disabled' : ''}>
+          Next ➡️
+        </button>
+      </div>
+    </div>
+
+    <!-- Quick Pills Selector -->
+    <div class="challenge-pills-row" style="margin-bottom: 16px;">
+      ${filteredList.map((x) => `
+        <button class="quick-cmd-btn ${x.originalIndex === appState.currentIeltsIndex ? 'active' : ''}" 
+                style="padding: 6px 12px; font-size: 0.8rem; font-weight: 700; white-space: nowrap;" 
+                onclick="setIeltsIndex(${x.originalIndex})">
+          #${x.originalIndex + 1} ${x.item.cambridgeUnit.split(':')[0]}
         </button>
       `).join('')}
     </div>
@@ -2083,6 +2380,21 @@ function renderIeltsAcademicStudio() {
       <div id="ielts-feedback-box" style="display: none;"></div>
     </div>
   `;
+
+  window.filterIeltsCategory = function(cat) {
+    sfx.playClick();
+    appState.ieltsCategoryFilter = cat;
+    renderIeltsAcademicStudio();
+  };
+
+  window.navIeltsChallenge = function(delta) {
+    sfx.playClick();
+    const newPos = currentPos + delta;
+    if (newPos >= 0 && newPos < filteredList.length) {
+      appState.currentIeltsIndex = filteredList[newPos].originalIndex;
+      renderIeltsAcademicStudio();
+    }
+  };
 
   window.setIeltsIndex = function(idx) {
     sfx.playClick();
@@ -2146,12 +2458,12 @@ function renderToeflIbtBuildingSkills() {
 
   const categories = [
     { key: "all", label: `Semua Soal iBT (${toeflIbtBuildingSkills.length})` },
-    { key: "Vocabulary in Context", label: "1. Vocab in Context (6)" },
-    { key: "Sentence Simplification", label: "2. Sentence Simplification (5)" },
-    { key: "Fact & Negative Fact", label: "3. Fact & Negative Fact (5)" },
-    { key: "Inference", label: "4. Inference Questions (5)" },
-    { key: "Insert Text", label: "5. Text Insertion [■] (4)" },
-    { key: "Speaking iBT Simulator", label: "6. Speaking iBT Simulator (5)" }
+    { key: "Vocabulary in Context", label: "1. Vocab in Context (18 Soal)" },
+    { key: "Sentence Simplification", label: "2. Sentence Simplification (17 Soal)" },
+    { key: "Fact & Negative Fact", label: "3. Fact & Negative Fact (17 Soal)" },
+    { key: "Inference", label: "4. Inference Questions (16 Soal)" },
+    { key: "Insert Text", label: "5. Text Insertion [■] (16 Soal)" },
+    { key: "Speaking iBT Simulator", label: "6. Speaking iBT Simulator (16 Soal)" }
   ];
 
   let passageHtml = "";
@@ -2353,7 +2665,7 @@ function renderToeflIbtBuildingSkills() {
     </div>
 
     <!-- Category Filter Chips -->
-    <div style="display: flex; gap: 8px; margin-bottom: 16px; overflow-x: auto; padding-bottom: 6px;">
+    <div style="display: flex; gap: 8px; margin-bottom: 14px; overflow-x: auto; padding-bottom: 6px;">
       ${categories.map(cat => `
         <button class="ibt-filter-pill ${currentFilter === cat.key ? 'active' : ''}" onclick="setIbtCategoryFilter('${cat.key}')">
           ${cat.label}
@@ -2361,11 +2673,32 @@ function renderToeflIbtBuildingSkills() {
       `).join('')}
     </div>
 
-    <!-- Soal Navigation Chips -->
-    <div style="display: flex; gap: 8px; margin-bottom: 16px; overflow-x: auto; padding-bottom: 6px;">
+    <!-- Navigasi Soal iBT Prev / Jump / Next -->
+    <div class="challenge-nav-bar">
+      <div class="challenge-nav-controls">
+        <button class="btn-secondary" style="padding: 6px 12px; font-size: 0.82rem;" onclick="navIbtQuestion(-1)" ${appState.currentIbtIndex <= 0 ? 'disabled' : ''}>
+          ⬅️ Prev
+        </button>
+        <select class="challenge-page-select" onchange="setIbtQuestionIndex(Number(this.value))">
+          ${filteredList.map((item, idx) => `
+            <option value="${idx}" ${idx === appState.currentIbtIndex ? 'selected' : ''}>
+              #${idx + 1} (${item.skillCategory}): ${item.type === 'speaking' ? 'Speaking Prep' : (item.targetWord || item.bookChapter)}
+            </option>
+          `).join('')}
+        </select>
+        <button class="btn-secondary" style="padding: 6px 12px; font-size: 0.82rem;" onclick="navIbtQuestion(1)" ${appState.currentIbtIndex >= filteredList.length - 1 ? 'disabled' : ''}>
+          Next ➡️
+        </button>
+      </div>
+    </div>
+
+    <!-- Quick Pills Selector -->
+    <div class="challenge-pills-row" style="margin-bottom: 16px;">
       ${filteredList.map((item, idx) => `
-        <button class="quick-cmd-btn ${idx === appState.currentIbtIndex ? 'active' : ''}" style="padding: 8px 12px; font-weight: 700;" onclick="setIbtQuestionIndex(${idx})">
-          ${item.type === 'speaking' ? '🎙️ Speaking' : '📖 Soal'} #${idx + 1}
+        <button class="quick-cmd-btn ${idx === appState.currentIbtIndex ? 'active' : ''}" 
+                style="padding: 6px 12px; font-size: 0.8rem; font-weight: 700; white-space: nowrap;" 
+                onclick="setIbtQuestionIndex(${idx})">
+          ${item.type === 'speaking' ? '🎙️' : '📖'} #${idx + 1}
         </button>
       `).join('')}
     </div>
@@ -2386,6 +2719,16 @@ function renderToeflIbtBuildingSkills() {
   `;
 
   // Window methods for iBT Interaction
+  window.navIbtQuestion = function(delta) {
+    sfx.playClick();
+    const newIdx = appState.currentIbtIndex + delta;
+    if (newIdx >= 0 && newIdx < filteredList.length) {
+      appState.currentIbtIndex = newIdx;
+      resetIbtTimers();
+      renderToeflIbtBuildingSkills();
+    }
+  };
+
   window.setIbtCategoryFilter = function(catKey) {
     sfx.playClick();
     appState.currentIbtFilter = catKey;
@@ -3214,8 +3557,40 @@ window.setAccentPreference = function(accent) {
   renderEnglishTrainer();
 };
 
+// ================= LIGHT / DARK THEME MANAGEMENT =================
+function initTheme() {
+  const saved = localStorage.getItem("kodi_theme") || "dark";
+  applyTheme(saved);
+}
+
+function applyTheme(theme) {
+  const btn = document.getElementById("theme-toggle-btn");
+  if (theme === "light") {
+    document.body.classList.add("light-theme");
+    if (btn) btn.innerHTML = "🌙 Gelap";
+  } else {
+    document.body.classList.remove("light-theme");
+    if (btn) btn.innerHTML = "☀️ Terang";
+  }
+}
+
+window.toggleTheme = function() {
+  if (window.sfx && typeof sfx.playClick === "function") sfx.playClick();
+  const isLight = document.body.classList.contains("light-theme");
+  const next = isLight ? "dark" : "light";
+  localStorage.setItem("kodi_theme", next);
+  applyTheme(next);
+  setKodiSpeech(
+    next === "light" 
+      ? "Mode Terang aktif! Tampilan putih bersih dan nyaman dibaca!" 
+      : "Mode Gelap aktif! Tampilan ramah mata buat sesi koding!",
+    "Kamu bisa ganti mode kapan saja lewat tombol di pojok kanan atas."
+  );
+};
+
 // ================= APP INITIALIZATION =================
 window.addEventListener("DOMContentLoaded", () => {
+  initTheme();
   loadProgress();
   renderQuestGrid();
   initDictionarySearch();
