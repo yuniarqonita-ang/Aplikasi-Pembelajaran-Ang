@@ -6082,6 +6082,12 @@ const evcDictationChallenges = [
     chapterRef: "Chapter 1: Greetings & Spelling Names",
     meaning: "Nama belakang Luis Carmona di dialog kelas EVC: C-A-R-M-O-N-A",
     babyClue: "🍼 Kodi mengeja nama keluarga 'CARMONA'. Dengarkan ketukan hurufnya dan ketik satu demi satu!"
+  ,
+    workedExample: {
+      sampleAudio: "Dengarkan suara ejaan huruf: 'B, O, T, I'",
+      sampleTarget: 'BOTI',
+      sampleExplanation: "Tingkat 1 menguji pendengaran ejaan huruf alfabet. Saat audio mengeja 'C, A, R, M, O, N, A', ketik setiap huruf secara berurutan: 'CARMONA'."
+    }
   },
   {
     id: "dic-l1-2",
@@ -6092,6 +6098,12 @@ const evcDictationChallenges = [
     chapterRef: "Chapter 1: Assistant's Name",
     meaning: "Nama asisten kelas di dialog EVC: P-E-R-E-Z",
     babyClue: "🍼 Eja 5 huruf pendek: P - E - R - E - Z. Ketik hurufnya sampai 100% tepat!"
+  ,
+    workedExample: {
+      sampleAudio: "Dengarkan suara ejaan huruf: 'B, O, T, I'",
+      sampleTarget: 'BOTI',
+      sampleExplanation: "Tingkat 1 menguji pendengaran ejaan huruf alfabet. Saat audio mengeja 'P, E, R, E, Z', ketik setiap huruf secara berurutan: 'PEREZ'."
+    }
   },
   {
     id: "dic-l1-3",
@@ -6102,6 +6114,12 @@ const evcDictationChallenges = [
     chapterRef: "Chapter 1: Classroom Equipment",
     meaning: "Proyektor sorot layar di ruang kelas: P-R-O-J-E-C-T-O-R",
     babyClue: "🍼 Alat proyektor di langit-langit kelas. Ada 9 huruf: P-R-O-J-E-C-T-O-R!"
+  ,
+    workedExample: {
+      sampleAudio: "Dengarkan suara ejaan huruf: 'B, O, T, I'",
+      sampleTarget: 'BOTI',
+      sampleExplanation: "Tingkat 1 menguji pendengaran ejaan huruf alfabet. Saat audio mengeja 'P, R, O, J, E, C, T, O, R', ketik setiap huruf secara berurutan: 'PROJECTOR'."
+    }
   },
   {
     id: "dic-l1-4",
@@ -6112,6 +6130,12 @@ const evcDictationChallenges = [
     chapterRef: "Chapter 1: Classroom Supplies",
     meaning: "Alat penjepit kertas hekter: S-T-A-P-L-E-R",
     babyClue: "🍼 Penjepit kertas di meja guru. 7 huruf: S - T - A - P - L - E - R!"
+  ,
+    workedExample: {
+      sampleAudio: "Dengarkan suara ejaan huruf: 'B, O, T, I'",
+      sampleTarget: 'BOTI',
+      sampleExplanation: "Tingkat 1 menguji pendengaran ejaan huruf alfabet. Saat audio mengeja 'S, T, A, P, L, E, R', ketik setiap huruf secara berurutan: 'STAPLER'."
+    }
   },
   {
     id: "dic-l1-5",
@@ -6122,6 +6146,12 @@ const evcDictationChallenges = [
     chapterRef: "Chapter 1: Classroom Objects",
     meaning: "Kalkulator hitung di laci guru: C-A-L-C-U-L-A-T-O-R",
     babyClue: "🍼 Alat hitung angka di laci meja guru. Dengarkan ketukan hurufnya!"
+  ,
+    workedExample: {
+      sampleAudio: "Dengarkan suara ejaan huruf: 'B, O, T, I'",
+      sampleTarget: 'BOTI',
+      sampleExplanation: "Tingkat 1 menguji pendengaran ejaan huruf alfabet. Saat audio mengeja 'C, A, L, C, U, L, A, T, O, R', ketik setiap huruf secara berurutan: 'CALCULATOR'."
+    }
   },
   {
     id: "dic-l1-6",
@@ -6132,6 +6162,12 @@ const evcDictationChallenges = [
     chapterRef: "Chapter 1: Classroom Objects",
     meaning: "Papan tulis putih spidol: W-H-I-T-E-B-O-A-R-D",
     babyClue: "🍼 Papan tulis putih di depan kelas: White + Board!"
+  ,
+    workedExample: {
+      sampleAudio: "Dengarkan suara ejaan huruf: 'B, O, T, I'",
+      sampleTarget: 'BOTI',
+      sampleExplanation: "Tingkat 1 menguji pendengaran ejaan huruf alfabet. Saat audio mengeja 'W, H, I, T, E, B, O, A, R, D', ketik setiap huruf secara berurutan: 'WHITEBOARD'."
+    }
   },
   {
     id: "dic-l1-7",
@@ -6142,6 +6178,12 @@ const evcDictationChallenges = [
     chapterRef: "Chapter 2: Places & Nationalities",
     meaning: "Negara asal siswa Binh dan Duc di dialog EVC: V-I-E-T-N-A-M",
     babyClue: "🍼 Nama negara tetangga di Asia Tenggara tempat asal Binh!"
+  ,
+    workedExample: {
+      sampleAudio: "Dengarkan suara ejaan huruf: 'B, O, T, I'",
+      sampleTarget: 'BOTI',
+      sampleExplanation: "Tingkat 1 menguji pendengaran ejaan huruf alfabet. Saat audio mengeja 'V, I, E, T, N, A, M', ketik setiap huruf secara berurutan: 'VIETNAM'."
+    }
   },
   {
     id: "dic-l1-8",
@@ -6152,6 +6194,12 @@ const evcDictationChallenges = [
     chapterRef: "Chapter 2: Places & Nationalities",
     meaning: "Negara Brasil asal Cristiano dan Joao: B-R-A-Z-I-L",
     babyClue: "🍼 Negara sepak bola terkenal asal Cristiano dan Joao di dialog EVC!"
+  ,
+    workedExample: {
+      sampleAudio: "Dengarkan suara ejaan huruf: 'B, O, T, I'",
+      sampleTarget: 'BOTI',
+      sampleExplanation: "Tingkat 1 menguji pendengaran ejaan huruf alfabet. Saat audio mengeja 'B, R, A, Z, I, L', ketik setiap huruf secara berurutan: 'BRAZIL'."
+    }
   },
   {
     id: "dic-l1-9",
@@ -6162,6 +6210,12 @@ const evcDictationChallenges = [
     chapterRef: "Chapter 4: Workplaces & Tech",
     meaning: "Halaman web digital: W-E-B-S-I-T-E",
     babyClue: "🍼 Portal online yang dirancang oleh profesi web designer!"
+  ,
+    workedExample: {
+      sampleAudio: "Dengarkan suara ejaan huruf: 'B, O, T, I'",
+      sampleTarget: 'BOTI',
+      sampleExplanation: "Tingkat 1 menguji pendengaran ejaan huruf alfabet. Saat audio mengeja 'W, E, B, S, I, T, E', ketik setiap huruf secara berurutan: 'WEBSITE'."
+    }
   },
   {
     id: "dic-l1-10",
@@ -6172,6 +6226,12 @@ const evcDictationChallenges = [
     chapterRef: "Chapter 3: Routines & Calendar",
     meaning: "Jadwal kegiatan mingguan: S-C-H-E-D-U-L-E",
     babyClue: "🍼 Agenda waktu belajar dan kerja. Awas ada huruf 'ch'-nya ya!"
+  ,
+    workedExample: {
+      sampleAudio: "Dengarkan suara ejaan huruf: 'B, O, T, I'",
+      sampleTarget: 'BOTI',
+      sampleExplanation: "Tingkat 1 menguji pendengaran ejaan huruf alfabet. Saat audio mengeja 'S, C, H, E, D, U, L, E', ketik setiap huruf secara berurutan: 'SCHEDULE'."
+    }
   },
 
   // ==========================================
@@ -6187,6 +6247,12 @@ const evcDictationChallenges = [
     chapterRef: "Chapter 4: Workplaces",
     meaning: "Rumah sakit tempat kerja dokter dan perawat",
     babyClue: "🍼 Tempat kerja Roberto di buku EVC. 8 huruf: h - o - s - p - i - t - a - l."
+  ,
+    workedExample: {
+      sampleAudio: "Dengarkan suara kata: 'doctor'",
+      sampleTarget: 'doctor',
+      sampleExplanation: "Tingkat 2 menguji kosakata harian. Dengarkan pelafalan kata 'hospital' (Rumah sakit tempat kerja dokter dan perawat), lalu ketik ejaannya dengan tepat tanpa salah huruf."
+    }
   },
   {
     id: "dic-l2-2",
@@ -6197,6 +6263,12 @@ const evcDictationChallenges = [
     chapterRef: "Chapter 2: Weather & Seasons",
     meaning: "Cuaca (panas, hujan, berangin)",
     babyClue: "🍼 Ingat ejaannya ada huruf 'ea': w - e - a - t - h - e - r."
+  ,
+    workedExample: {
+      sampleAudio: "Dengarkan suara kata: 'doctor'",
+      sampleTarget: 'doctor',
+      sampleExplanation: "Tingkat 2 menguji kosakata harian. Dengarkan pelafalan kata 'weather' (Cuaca (panas, hujan, berangin)), lalu ketik ejaannya dengan tepat tanpa salah huruf."
+    }
   },
   {
     id: "dic-l2-3",
@@ -6207,6 +6279,12 @@ const evcDictationChallenges = [
     chapterRef: "Chapter 3: Daily Routines",
     meaning: "Sarapan pagi sebelum berangkat kerja/sekolah",
     babyClue: "🍼 Makanan pertama di pagi hari Lisa dan anak-anaknya: b - r - e - a - k - f - a - s - t."
+  ,
+    workedExample: {
+      sampleAudio: "Dengarkan suara kata: 'doctor'",
+      sampleTarget: 'doctor',
+      sampleExplanation: "Tingkat 2 menguji kosakata harian. Dengarkan pelafalan kata 'breakfast' (Sarapan pagi sebelum berangkat kerja/sekolah), lalu ketik ejaannya dengan tepat tanpa salah huruf."
+    }
   },
   {
     id: "dic-l2-4",
@@ -6217,6 +6295,12 @@ const evcDictationChallenges = [
     chapterRef: "Chapter 6: Personal Hobbies",
     meaning: "Berkebun / menanam bunga dan sayuran",
     babyClue: "🍼 Hobi menanam tanaman di pekarangan rumah: g - a - r - d - e - n - i - n - g."
+  ,
+    workedExample: {
+      sampleAudio: "Dengarkan suara kata: 'doctor'",
+      sampleTarget: 'doctor',
+      sampleExplanation: "Tingkat 2 menguji kosakata harian. Dengarkan pelafalan kata 'gardening' (Berkebun / menanam bunga dan sayuran), lalu ketik ejaannya dengan tepat tanpa salah huruf."
+    }
   },
   {
     id: "dic-l2-5",
@@ -6227,6 +6311,12 @@ const evcDictationChallenges = [
     chapterRef: "Chapter 4: Workplaces & Jobs",
     meaning: "Teknisi ahli kelistrikan",
     babyClue: "🍼 Profesi Kevin di buku EVC yang jago instalasi kabel listrik!"
+  ,
+    workedExample: {
+      sampleAudio: "Dengarkan suara kata: 'doctor'",
+      sampleTarget: 'doctor',
+      sampleExplanation: "Tingkat 2 menguji kosakata harian. Dengarkan pelafalan kata 'electrician' (Teknisi ahli kelistrikan), lalu ketik ejaannya dengan tepat tanpa salah huruf."
+    }
   },
   {
     id: "dic-l2-6",
@@ -6237,6 +6327,12 @@ const evcDictationChallenges = [
     chapterRef: "Chapter 5: Food & Health",
     meaning: "Cairan pembersih kuman tangan (Hand sanitizer)",
     babyClue: "🍼 Pembersih tangan dari kuman sebelum makan: s - a - n - i - t - i - z - e - r."
+  ,
+    workedExample: {
+      sampleAudio: "Dengarkan suara kata: 'doctor'",
+      sampleTarget: 'doctor',
+      sampleExplanation: "Tingkat 2 menguji kosakata harian. Dengarkan pelafalan kata 'sanitizer' (Cairan pembersih kuman tangan (Hand sanitizer)), lalu ketik ejaannya dengan tepat tanpa salah huruf."
+    }
   },
   {
     id: "dic-l2-7",
@@ -6247,6 +6343,12 @@ const evcDictationChallenges = [
     chapterRef: "Chapter 7: Past Activities & Travel",
     meaning: "Liburan / tamasya santai",
     babyClue: "🍼 Waktu istirahat santai jalan-jalan bersama keluarga: v - a - c - a - t - i - o - n."
+  ,
+    workedExample: {
+      sampleAudio: "Dengarkan suara kata: 'doctor'",
+      sampleTarget: 'doctor',
+      sampleExplanation: "Tingkat 2 menguji kosakata harian. Dengarkan pelafalan kata 'vacation' (Liburan / tamasya santai), lalu ketik ejaannya dengan tepat tanpa salah huruf."
+    }
   },
   {
     id: "dic-l2-8",
@@ -6257,6 +6359,12 @@ const evcDictationChallenges = [
     chapterRef: "Chapter 8: Invitations & Events",
     meaning: "Upacara sakral pernikahan atau wisuda",
     babyClue: "🍼 Upacara resmi pernikahan jam 2 siang: c - e - r - e - m - o - n - y."
+  ,
+    workedExample: {
+      sampleAudio: "Dengarkan suara kata: 'doctor'",
+      sampleTarget: 'doctor',
+      sampleExplanation: "Tingkat 2 menguji kosakata harian. Dengarkan pelafalan kata 'ceremony' (Upacara sakral pernikahan atau wisuda), lalu ketik ejaannya dengan tepat tanpa salah huruf."
+    }
   },
   {
     id: "dic-l2-9",
@@ -6267,6 +6375,12 @@ const evcDictationChallenges = [
     chapterRef: "Chapter 5: Healthy Eating",
     meaning: "Sayuran brokoli hijau sehat bergizi",
     babyClue: "🍼 Sayuran hijau sehat kaya vitamin: b - r - o - c - c - o - l - i (ada huruf c ganda)!"
+  ,
+    workedExample: {
+      sampleAudio: "Dengarkan suara kata: 'doctor'",
+      sampleTarget: 'doctor',
+      sampleExplanation: "Tingkat 2 menguji kosakata harian. Dengarkan pelafalan kata 'broccoli' (Sayuran brokoli hijau sehat bergizi), lalu ketik ejaannya dengan tepat tanpa salah huruf."
+    }
   },
   {
     id: "dic-l2-10",
@@ -6277,6 +6391,12 @@ const evcDictationChallenges = [
     chapterRef: "Chapter 4: Home & Furniture",
     meaning: "Nyaman / enak diduduki",
     babyClue: "🍼 Kursi atau sofa yang empuk dan bikin betah duduk: c - o - m - f - o - r - t - a - b - l - e."
+  ,
+    workedExample: {
+      sampleAudio: "Dengarkan suara kata: 'doctor'",
+      sampleTarget: 'doctor',
+      sampleExplanation: "Tingkat 2 menguji kosakata harian. Dengarkan pelafalan kata 'comfortable' (Nyaman / enak diduduki), lalu ketik ejaannya dengan tepat tanpa salah huruf."
+    }
   },
   {
     id: "dic-l2-11",
@@ -6287,6 +6407,12 @@ const evcDictationChallenges = [
     chapterRef: "Chapter 7: Shopping & Travel",
     meaning: "Jalan-jalan melihat pemandangan kota/wisata",
     babyClue: "🍼 Keliling kota naik bus wisata melihat tempat bersejarah: s - i - g - h - t - s - e - e - i - n - g."
+  ,
+    workedExample: {
+      sampleAudio: "Dengarkan suara kata: 'doctor'",
+      sampleTarget: 'doctor',
+      sampleExplanation: "Tingkat 2 menguji kosakata harian. Dengarkan pelafalan kata 'sightseeing' (Jalan-jalan melihat pemandangan kota/wisata), lalu ketik ejaannya dengan tepat tanpa salah huruf."
+    }
   },
   {
     id: "dic-l2-12",
@@ -6297,6 +6423,12 @@ const evcDictationChallenges = [
     chapterRef: "Chapter 5: Adverbs of Frequency",
     meaning: "Tingkat keseringan rutinitas (always, sometimes)",
     babyClue: "🍼 Istilah seberapa sering kita melakukan kegiatan: f - r - e - q - u - e - n - c - y."
+  ,
+    workedExample: {
+      sampleAudio: "Dengarkan suara kata: 'doctor'",
+      sampleTarget: 'doctor',
+      sampleExplanation: "Tingkat 2 menguji kosakata harian. Dengarkan pelafalan kata 'frequency' (Tingkat keseringan rutinitas (always, sometimes)), lalu ketik ejaannya dengan tepat tanpa salah huruf."
+    }
   },
 
   // ==========================================
@@ -6312,6 +6444,12 @@ const evcDictationChallenges = [
     chapterRef: "Chapter 1: Greetings & Introductions",
     meaning: "Dari mana asalmu?",
     babyClue: "🍼 Pertanyaan paling dasar dan sopan saat berkenalan dengan teman baru di kelas!"
+  ,
+    workedExample: {
+      sampleAudio: "Dengarkan kalimat: 'Nice to meet you.'",
+      sampleTarget: 'Nice to meet you.',
+      sampleExplanation: "Tingkat 3 menguji kalimat dialog utuh. Dengarkan intonasi kalimat 'Where are you from?', beri spasi pemisah antar kata yang rapi, dan ketik hingga 100% tepat."
+    }
   },
   {
     id: "dic-l3-2",
@@ -6322,6 +6460,12 @@ const evcDictationChallenges = [
     chapterRef: "Chapter 4: Workplaces & Jobs",
     meaning: "Dia adalah seorang desainer web.",
     babyClue: "🍼 Menjelaskan profesi Mila yang merancang tampilan website kreatif di kantor teknologi!"
+  ,
+    workedExample: {
+      sampleAudio: "Dengarkan kalimat: 'Nice to meet you.'",
+      sampleTarget: 'Nice to meet you.',
+      sampleExplanation: "Tingkat 3 menguji kalimat dialog utuh. Dengarkan intonasi kalimat 'She is a web designer.', beri spasi pemisah antar kata yang rapi, dan ketik hingga 100% tepat."
+    }
   },
   {
     id: "dic-l3-3",
@@ -6332,6 +6476,12 @@ const evcDictationChallenges = [
     chapterRef: "Chapter 2: Weather & Places",
     meaning: "Cuacanya hangat dan cerah.",
     babyClue: "🍼 Menggambarkan suasana cuaca cerah di California saat matahari bersinar hangat!"
+  ,
+    workedExample: {
+      sampleAudio: "Dengarkan kalimat: 'Nice to meet you.'",
+      sampleTarget: 'Nice to meet you.',
+      sampleExplanation: "Tingkat 3 menguji kalimat dialog utuh. Dengarkan intonasi kalimat 'The weather is warm and sunny.', beri spasi pemisah antar kata yang rapi, dan ketik hingga 100% tepat."
+    }
   },
   {
     id: "dic-l3-4",
@@ -6342,6 +6492,12 @@ const evcDictationChallenges = [
     chapterRef: "Chapter 1 & 4: There is / There are",
     meaning: "Ada sebuah jam dinding di tembok.",
     babyClue: "🍼 Rumus keberadaan benda tunggal: 'There is' + sebuah jam + di atas dinding."
+  ,
+    workedExample: {
+      sampleAudio: "Dengarkan kalimat: 'Nice to meet you.'",
+      sampleTarget: 'Nice to meet you.',
+      sampleExplanation: "Tingkat 3 menguji kalimat dialog utuh. Dengarkan intonasi kalimat 'There is a clock on the wall.', beri spasi pemisah antar kata yang rapi, dan ketik hingga 100% tepat."
+    }
   },
   {
     id: "dic-l3-5",
@@ -6352,6 +6508,12 @@ const evcDictationChallenges = [
     chapterRef: "Chapter 2: Simple Present Routines",
     meaning: "Saya berjalan kaki ke sekolah setiap hari.",
     babyClue: "🍼 Rutinitas pagi hari yang dilakukan setiap hari secara rajin (every day)."
+  ,
+    workedExample: {
+      sampleAudio: "Dengarkan kalimat: 'Nice to meet you.'",
+      sampleTarget: 'Nice to meet you.',
+      sampleExplanation: "Tingkat 3 menguji kalimat dialog utuh. Dengarkan intonasi kalimat 'I walk to school every day.', beri spasi pemisah antar kata yang rapi, dan ketik hingga 100% tepat."
+    }
   },
   {
     id: "dic-l3-6",
@@ -6362,6 +6524,12 @@ const evcDictationChallenges = [
     chapterRef: "Chapter 5: Food & Adverbs of Frequency",
     meaning: "Sayur-mayur selalu sehat untuk tubuh.",
     babyClue: "🍼 Fakta kesehatan: kata 'always' diletakkan tepat setelah to be 'are'!"
+  ,
+    workedExample: {
+      sampleAudio: "Dengarkan kalimat: 'Nice to meet you.'",
+      sampleTarget: 'Nice to meet you.',
+      sampleExplanation: "Tingkat 3 menguji kalimat dialog utuh. Dengarkan intonasi kalimat 'Vegetables are always healthy.', beri spasi pemisah antar kata yang rapi, dan ketik hingga 100% tepat."
+    }
   },
   {
     id: "dic-l3-7",
@@ -6372,6 +6540,12 @@ const evcDictationChallenges = [
     chapterRef: "Chapter 6: Modal Verb Can for Ability",
     meaning: "Dia bisa berenang di lautan.",
     babyClue: "🍼 Menunjukkan kemampuan fisik (ability): kata kerja setelah modal 'can' wajib polos (swim)!"
+  ,
+    workedExample: {
+      sampleAudio: "Dengarkan kalimat: 'Nice to meet you.'",
+      sampleTarget: 'Nice to meet you.',
+      sampleExplanation: "Tingkat 3 menguji kalimat dialog utuh. Dengarkan intonasi kalimat 'He can swim in the ocean.', beri spasi pemisah antar kata yang rapi, dan ketik hingga 100% tepat."
+    }
   },
   {
     id: "dic-l3-8",
@@ -6382,6 +6556,12 @@ const evcDictationChallenges = [
     chapterRef: "Chapter 7: Simple Past Tense",
     meaning: "Saya sangat menikmati liburan saya minggu lalu.",
     babyClue: "🍼 Kalimat masa lampau: kata 'enjoy' diberi akhiran '-ed' karena ada keterangan 'last week'!"
+  ,
+    workedExample: {
+      sampleAudio: "Dengarkan kalimat: 'Nice to meet you.'",
+      sampleTarget: 'Nice to meet you.',
+      sampleExplanation: "Tingkat 3 menguji kalimat dialog utuh. Dengarkan intonasi kalimat 'I enjoyed my vacation last week.', beri spasi pemisah antar kata yang rapi, dan ketik hingga 100% tepat."
+    }
   },
   {
     id: "dic-l3-9",
@@ -6392,6 +6572,12 @@ const evcDictationChallenges = [
     chapterRef: "Chapter 8: Future Plans with Be Going To",
     meaning: "Kami akan mengunjungi museum itu.",
     babyClue: "🍼 Rencana masa depan: rumus 'are going to' + kata kerja dasar 'visit'!"
+  ,
+    workedExample: {
+      sampleAudio: "Dengarkan kalimat: 'Nice to meet you.'",
+      sampleTarget: 'Nice to meet you.',
+      sampleExplanation: "Tingkat 3 menguji kalimat dialog utuh. Dengarkan intonasi kalimat 'We are going to visit the museum.', beri spasi pemisah antar kata yang rapi, dan ketik hingga 100% tepat."
+    }
   },
   {
     id: "dic-l3-10",
@@ -6402,5 +6588,11 @@ const evcDictationChallenges = [
     chapterRef: "Chapter 8: Invitations & Etiquette",
     meaning: "Maukah kamu minum kopi bersama?",
     babyClue: "🍼 Kalimat ajakan sopan elegan dalam bahasa Inggris: 'Would you like to...'!"
+  ,
+    workedExample: {
+      sampleAudio: "Dengarkan kalimat: 'Nice to meet you.'",
+      sampleTarget: 'Nice to meet you.',
+      sampleExplanation: "Tingkat 3 menguji kalimat dialog utuh. Dengarkan intonasi kalimat 'Would you like to have some coffee?', beri spasi pemisah antar kata yang rapi, dan ketik hingga 100% tepat."
+    }
   }
 ];

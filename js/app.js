@@ -209,6 +209,32 @@ function renderModalStep() {
   bodyContainer.innerHTML = `
     <h3 style="margin-bottom: 14px; color: var(--accent-cyan);">${step.stepTitle}</h3>
     ${step.concept}
+
+    <!-- KOTAK CONTOH SOAL & JAWABAN BENAR DULU -->
+    ${step.workedExample ? `
+      <div class="worked-example-card" style="margin: 18px 0;">
+        <div class="worked-example-header">
+          <span class="we-badge">💡 CONTOH SOAL & JAWABAN BENAR DULU</span>
+          <span class="we-sub">Pahami pola penyelesaian kasus serupa ini sebelum memulai tantangan!</span>
+        </div>
+        <div class="we-body">
+          <div class="we-row">
+            <span class="we-label">📝 Contoh Kasus / Soal Serupa:</span>
+            <span class="we-text">${step.workedExample.sampleProblem}</span>
+          </div>
+          <div class="we-row">
+            <span class="we-label">✅ Contoh Jawaban yang 100% Benar:</span>
+            <code class="we-code">${step.workedExample.sampleAnswer}</code>
+          </div>
+          <div class="we-row">
+            <span class="we-label">🍼 Analogi & Nalar Bahasa Bayi Kodi:</span>
+            <span class="we-text">${step.workedExample.babyLogic}</span>
+          </div>
+        </div>
+        <div class="we-divider">🎯 SEKARANG GILIRAN TANTANGAN ASLI UNTUK KAMU:</div>
+      </div>
+    ` : ''}
+
     <div id="interactive-workspace" class="interactive-game-area"></div>
     <div id="step-feedback-box" style="margin-top: 14px;"></div>
   `;
@@ -1697,20 +1723,28 @@ function renderEnglishTrainer() {
           Interviewer: "${drill.questionEn}"
         </h3>
 
-        <!-- KOTAK CONTOH STRUKTUR JAWABAN INTERVIEW DULU -->
+        <!-- KOTAK CONTOH SOAL & JAWABAN BENAR DULU -->
         ${drill.workedExample ? `
           <div class="worked-example-card" style="margin-bottom: 16px;">
             <div class="worked-example-header">
-              <span class="we-badge">💡 CONTOH POLA STRUKTUR JAWABAN DULU</span>
-              <span class="we-sub">Pola jawaban berbobot sebelum kamu menirukan atau berbicara:</span>
+              <span class="we-badge">💡 CONTOH SOAL & JAWABAN BENAR DULU</span>
+              <span class="we-sub">Pahami contoh pola jawaban profesional ini sebelum berbicara:</span>
             </div>
             <div class="we-body">
               <div class="we-row">
-                <span class="we-label">📐 Kerangka Alur:</span>
+                <span class="we-label">📝 Contoh Pertanyaan Serupa:</span>
+                <span class="we-text">"${drill.questionEn}"</span>
+              </div>
+              <div class="we-row">
+                <span class="we-label">✅ Contoh Jawaban yang 100% Benar & Lancar:</span>
+                <code class="we-code">${drill.workedExample.sampleSentence || drill.targetSentence}</code>
+              </div>
+              <div class="we-row">
+                <span class="we-label">📐 Kerangka Alur Berbobot:</span>
                 <span class="we-text">${drill.workedExample.modelStructure}</span>
               </div>
               <div class="we-row">
-                <span class="we-label">✨ Kunci Sukses & Frasa Berbobot:</span>
+                <span class="we-label">🍼 Nalar & Trik Bicara Kodi:</span>
                 <span class="we-text">${drill.workedExample.keyPhraseTip}</span>
               </div>
             </div>
@@ -2057,6 +2091,31 @@ function renderMissingLettersGame() {
           Kosakata #${appState.currentPuzzleIndex + 1} dari ${missingLetterPuzzles.length}
         </span>
       </div>
+
+      <!-- KOTAK CONTOH KATA & HURUF PENGISI BENAR DULU -->
+      ${puzzle.workedExample ? `
+        <div class="worked-example-card" style="margin: 0 auto 18px; max-width: 650px; text-align: left;">
+          <div class="worked-example-header">
+            <span class="we-badge">💡 CONTOH SOAL & JAWABAN BENAR DULU</span>
+            <span class="we-sub">Pahami pola teka-teki huruf ini sebelum mengisi:</span>
+          </div>
+          <div class="we-body">
+            <div class="we-row">
+              <span class="we-label">📝 Contoh Kata Serupa:</span>
+              <span class="we-text"><strong>${puzzle.workedExample.sampleWord}</strong> (bagian kosong: <code>${puzzle.workedExample.sampleMasked}</code>)</span>
+            </div>
+            <div class="we-row">
+              <span class="we-label">✅ Kunci Huruf Pengisi yang 100% Benar:</span>
+              <code class="we-code">${puzzle.workedExample.sampleMissing}</code>
+            </div>
+            <div class="we-row">
+              <span class="we-label">🍼 Nalar & Penjelasan Ejaan:</span>
+              <span class="we-text">${puzzle.workedExample.sampleExplanation}</span>
+            </div>
+          </div>
+          <div class="we-divider">🎯 SEKARANG LENGKAPI HURUF KATA TANTANGAN INI:</div>
+        </div>
+      ` : ''}
 
       <!-- Petunjuk Bahasa Bayi & Arti Kata -->
       <div style="background: rgba(250, 204, 21, 0.1); border-left: 3px solid var(--accent-yellow); padding: 12px 16px; border-radius: 8px; font-size: 0.95rem; color: #fef08a; margin: 14px auto; max-width: 600px; text-align: left;">
@@ -2989,6 +3048,31 @@ function renderEvcDictationStudio() {
           Tantangan #${appState.currentDictationIndex + 1} dari ${filteredList.length}
         </span>
       </div>
+
+      <!-- KOTAK CONTOH SOAL & JAWABAN BENAR DULU -->
+      ${currentItem.workedExample ? `
+        <div class="worked-example-card" style="margin-bottom: 18px;">
+          <div class="worked-example-header">
+            <span class="we-badge">💡 CONTOH SOAL & JAWABAN BENAR DULU</span>
+            <span class="we-sub">Pahami contoh pola audio dan ketikan benar ini sebelum mulai:</span>
+          </div>
+          <div class="we-body">
+            <div class="we-row">
+              <span class="we-label">📝 Contoh Suara Audio Serupa:</span>
+              <span class="we-text">${currentItem.workedExample.sampleAudio}</span>
+            </div>
+            <div class="we-row">
+              <span class="we-label">✅ Contoh Hasil Ketikan yang 100% Benar:</span>
+              <code class="we-code">${currentItem.workedExample.sampleTarget}</code>
+            </div>
+            <div class="we-row">
+              <span class="we-label">🍼 Analogi & Tips Ketik Kodi:</span>
+              <span class="we-text">${currentItem.workedExample.sampleExplanation}</span>
+            </div>
+          </div>
+          <div class="we-divider">🎯 SEKARANG DENGARKAN AUDIO TANTANGAN ASLI DI BAWAH:</div>
+        </div>
+      ` : ''}
 
       <!-- Panduan Bahasa Bayi Singkat -->
       <div style="text-align: center; margin-bottom: 20px;">

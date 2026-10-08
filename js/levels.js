@@ -19,6 +19,11 @@ const levelsData = [
     steps: [
       {
         stepTitle: "Langkah 1: Mengenal 4 Sahabat Komputer",
+        workedExample: {
+          sampleProblem: 'Seorang editor video sedang mengekspor render animasi 3D, tapi proses penghitungan grafis sangat lambat. Komponen manakah yang bertindak sebagai juru hitung utama yang perlu ditingkatkan kecepatannya?',
+          sampleAnswer: 'CPU (Central Processing Unit) - Karena CPU adalah koki otak pemroses utama yang mengeksekusi instruksi komputasi matematika dan render.',
+          babyLogic: 'Analogi Restoran: CPU itu koki masaknya. Kalau pesanan rumit dan butuh cepat selesai, kokinya harus yang lincah dan berotak cerdas!'
+        },
         concept: `
           <div class="concept-box">
             <span class="concept-analogy-pill">Analogi Restoran Kodi</span>
@@ -51,6 +56,11 @@ const levelsData = [
       },
       {
         stepTitle: "Langkah 2: Praktek Dokter Komputer (Pasang Organ ke Pasien)",
+        workedExample: {
+          sampleProblem: 'Komputer kantor membutuhkan komponen yang bertugas mengubah arus listrik bolak-balik (AC) dari colokan tembok menjadi arus searah (DC) stabil bertegangan rendah ke seluruh komponen.',
+          sampleAnswer: 'Pasang PSU (Power Supply Unit) di bagian bawah casing dan tancapkan konektor 24-pin ke motherboard.',
+          babyLogic: 'PSU itu jantung pemompa darah (listrik). Tanpa PSU terpasang, komponen lain seperti CPU dan RAM tidak akan menerima daya listrik untuk hidup.'
+        },
         concept: `
           <div class="concept-box">
             <span class="concept-analogy-pill">Kasus Pasien IT Support</span>
@@ -93,6 +103,11 @@ const levelsData = [
     steps: [
       {
         stepTitle: "Langkah 1: Menyortir 4 Stasiun Pabrik IPOS",
+        workedExample: {
+          sampleProblem: "Di kasir supermarket, kasir menembak barcode kemasan susu, komputer mencocokkan harga, lalu printer mencetak struk belanja. Klasifikasikan 'Barcode Scanner' dan 'Printer Struk' ke siklus IPOS!",
+          sampleAnswer: 'Barcode Scanner = Stasiun Input (memasukkan data barcode ke sistem); Printer Struk = Stasiun Output (mengeluarkan hasil fisik cetakan harga).',
+          babyLogic: 'Rumus Pabrik IPOS: Input (masuk data) ➔ Process (diolah CPU) ➔ Output (hasilnya tampil/cetak) ➔ Storage (disimpan ke database harddisk)!'
+        },
         concept: `
           <div class="concept-box">
             <span class="concept-analogy-pill">Siklus IPOS Richard Fox</span>
@@ -111,6 +126,11 @@ const levelsData = [
       },
       {
         stepTitle: "Langkah 2: Detektif Komputer: 'Apakah HP & Mesin Kasir itu Komputer?'",
+        workedExample: {
+          sampleProblem: 'Apakah mesin kasir layar sentuh modern di minimarket termasuk sebuah komputer?',
+          sampleAnswer: 'Ya, mesin kasir adalah komputer utuh karena memiliki CPU pemroses, memori RAM, sistem operasi (Windows/Linux POS), menerima input sentuhan, dan memproses transaksi.',
+          babyLogic: 'Komputer bukan cuma PC tabung di warnet! Setiap perangkat yang punya siklus Input-Proses-Output-Storage adalah keluarga besar komputer!'
+        },
         concept: `
           <div class="concept-box">
             <span class="concept-analogy-pill">Diskusi Bab 1 Richard Fox</span>
@@ -154,6 +174,11 @@ const levelsData = [
     steps: [
       {
         stepTitle: "Langkah 1: Simulator Tangga Kapasitas Digital",
+        workedExample: {
+          sampleProblem: 'Sebuah lagu MP3 memiliki ukuran file 4 Megabyte (MB). Berapakah ukuran file tersebut jika dikonversikan ke dalam satuan Kilobyte (KB)?',
+          sampleAnswer: '4 MB = 4.096 KB (karena 1 Megabyte setara dengan 1.024 Kilobyte).',
+          babyLogic: 'Ingat tangga ukuran file: 1 Byte = 8 Bit (1 huruf). KB = ribuan huruf. MB = jutaan huruf (lagu/foto). GB = miliaran huruf (film HD/game). TB = triliunan huruf!'
+        },
         concept: `
           <div class="concept-box">
             <span class="concept-analogy-pill">Tabel 1.4 Richard Fox</span>
@@ -173,6 +198,11 @@ const levelsData = [
       },
       {
         stepTitle: "Langkah 2: Duel Memori: RAM Cepat vs SSD Awet",
+        workedExample: {
+          sampleProblem: 'Mengapa saat kamu mengetik artikel di Microsoft Word tanpa menekan tombol Save lalu listrik tiba-tiba padam, ketikan kamu bisa hilang?',
+          sampleAnswer: "Karena data yang belum disimpan masih berada di RAM yang bersifat 'Volatile' (hilang seketika saat listrik mati). Supaya abadi, data harus disimpan ke SSD/Storage (Non-Volatile).",
+          babyLogic: 'RAM itu meja tulis kapur (mudah dihapus kalau diseka). SSD/HDD itu buku diary bertinta emas (tetap ada selamanya walaupun listrik padam)!'
+        },
         concept: `
           <div class="concept-box">
             <span class="concept-analogy-pill">Short-term vs Long-term Storage</span>
@@ -216,6 +246,11 @@ const levelsData = [
     steps: [
       {
         stepTitle: "Langkah 1: Memilah System Software vs Application Software",
+        workedExample: {
+          sampleProblem: "Kelompokkan 'Microsoft Windows 11' dan 'Google Chrome' ke dalam jenis perangkat lunak yang tepat!",
+          sampleAnswer: 'Windows 11 = System Software (Sistem Operasi / Rumah Fondasi); Google Chrome = Application Software (Aplikasi Pengguna / Perkakas Kerja).',
+          babyLogic: 'Sistem Operasi (OS) itu ibarat fondasi dan dinding rumah. Aplikasi itu perabotan seperti kompor atau kulkas yang dipasang di dalam rumah untuk kebutuhan tertentu!'
+        },
         concept: `
           <div class="concept-box">
             <span class="concept-analogy-pill">Klasifikasi Software Richard Fox</span>
@@ -229,6 +264,11 @@ const levelsData = [
       },
       {
         stepTitle: "Langkah 2: Rahasia Kompilasi: Bahasa Manusia ➔ Bahasa Mesin",
+        workedExample: {
+          sampleProblem: "Programmer menulis kode `console.log('Halo Dunia');`. Bagaimana sirkuit elektronik CPU komputer yang hanya mengerti tegangan listrik biner 0 dan 1 bisa menjalankannya?",
+          sampleAnswer: 'Kode program diterjemahkan oleh Compiler atau Interpreter menjadi Machine Code (Bahasa Mesin berupa susunan angka biner 0 dan 1) yang langsung dieksekusi CPU.',
+          babyLogic: 'Compiler itu penerjemah bahasa manusia ke bahasa alien mesin (angka biner 010101). Tanpa penerjemah, mesin ga bakal ngerti perintah kita!'
+        },
         concept: `
           <div class="concept-box">
             <span class="concept-analogy-pill">Proses Kompilasi (Compilation)</span>
@@ -272,6 +312,11 @@ const levelsData = [
     steps: [
       {
         stepTitle: "Mantra Sakti 1: Cek KTP Komputer (ipconfig)",
+        workedExample: {
+          sampleProblem: 'Seorang teknisi ingin memeriksa kartu identitas jaringan laptop Windows di kantor untuk mengetahui IPv4 Address dan Default Gateway. Perintah apa yang harus diketik di Command Prompt?',
+          sampleAnswer: 'Ketik perintah: `ipconfig` lalu tekan Enter.',
+          babyLogic: "Mantra `ipconfig` itu seperti menyuruh komputer: 'Buka dompetmu dan tunjukkan KTP alamat IP serta alamat pos gerbang (Gateway) router kamu!'"
+        },
         concept: `
           <div class="concept-box">
             <span class="concept-analogy-pill">Mantra KTP Rumah</span>
@@ -296,6 +341,11 @@ const levelsData = [
       },
       {
         stepTitle: "Mantra Sakti 2: Lempar Bola Bekel Tes Koneksi (ping)",
+        workedExample: {
+          sampleProblem: 'Kamu ingin menguji apakah kabel jaringan komputer tersambung dengan lancar ke server kantor di alamat IP 192.168.1.1. Perintah apa yang digunakan?',
+          sampleAnswer: 'Ketik perintah: `ping 192.168.1.1` dan perhatikan balasan `Reply from 192.168.1.1: bytes=32 time<1ms TTL=64`.',
+          babyLogic: 'Ping itu ibarat melempar bola bekel ke dinding server. Kalau bolanya memantul balik (Reply), jalanan kabel lancar! Kalau bolanya hilang (Request Timed Out), berarti kabel putus!'
+        },
         concept: `
           <div class="concept-box">
             <span class="concept-analogy-pill">Mantra Bola Bekel</span>
@@ -319,6 +369,11 @@ const levelsData = [
       },
       {
         stepTitle: "Mantra Sakti 3: Bikin Map Folder Kilat (mkdir)",
+        workedExample: {
+          sampleProblem: "Bagaimana cara membuat sebuah direktori/folder baru bernama 'BerkasLaporan' langsung dari terminal Command Prompt tanpa menggunakan mouse?",
+          sampleAnswer: 'Ketik perintah: `mkdir BerkasLaporan` lalu tekan Enter.',
+          babyLogic: "`mkdir` adalah singkatan dari 'Make Directory' (Bikin Folder Baru). Sekali ketik, foldernya langsung jadi dalam sekejap mata!"
+        },
         concept: `
           <div class="concept-box">
             <span class="concept-analogy-pill">Mantra Bikin Folder</span>
@@ -356,6 +411,11 @@ const levelsData = [
     steps: [
       {
         stepTitle: "Langkah 1: Siapa Saja Petugas Kantor Pos?",
+        workedExample: {
+          sampleProblem: 'Di laboratorium komputer sekolah, terdapat 20 unit PC yang ingin dihubungkan satu sama lain dalam satu ruangan menggunakan kabel LAN. Perangkat penghubung utama apa yang diperlukan?',
+          sampleAnswer: 'Switch LAN - berfungsi menghubungkan banyak komputer lokal dalam satu jaringan LAN menggunakan kabel UTP (konektor RJ-45).',
+          babyLogic: 'Switch itu terminal colokan bersama di dalam satu kamar. Kalau Router itu gerbang pintu keluar rumah menuju jalan raya internet dunia!'
+        },
         concept: `
           <div class="concept-box">
             <span class="concept-analogy-pill">Analogi Buku Telepon HP</span>
@@ -379,6 +439,11 @@ const levelsData = [
       },
       {
         stepTitle: "Langkah 2: Kasus Darurat: 'Web Ga Bisa Dibuka tapi Ping Berhasil!'",
+        workedExample: {
+          sampleProblem: "Laptop kantor bisa melakukan ping ke IP `8.8.8.8` dengan lancar, tetapi saat membuka browser dan mengetik `google.com` muncul pesan error 'Server IP Address Could Not Be Found'. Komponen manakah yang macet?",
+          sampleAnswer: 'DNS (Domain Name System) - karena koneksi internet fisik normal, namun server penerjemah nama domain huruf (`google.com`) ke angka IP sedang tidak merespons.',
+          babyLogic: "DNS itu buku kontak HP! Kamu bisa telepon kalau ketik nomor langsung, tapi kalau cari nama 'Google' di buku telepon ga ketemu karena buku kontak kamu lagi hilang!"
+        },
         concept: `
           <div class="concept-box">
             <span class="concept-analogy-pill">Troubleshooting Nyata</span>
@@ -410,6 +475,11 @@ const levelsData = [
     steps: [
       {
         stepTitle: "Langkah 1: Hotline Masalah: Hubungi Spesialis yang Tepat!",
+        workedExample: {
+          sampleProblem: 'Aplikasi e-commerce perusahaan sering mengalami crash dan lambat saat memproses query pencarian di antara 5 juta data barang di tabel. Siapa profesional IT yang harus menangani?',
+          sampleAnswer: 'Database Administrator (DBA) - spesialis yang bertanggung jawab mendesain, mengoptimalkan query, indeks, dan performa basis data relasional.',
+          babyLogic: 'Kabel/WiFi putus = Network Engineer. Komputer lambat/printer ngadat = IT Support. Bikin fitur web = Web Developer. Tabel database jutaan baris = Database Administrator (DBA)!'
+        },
         concept: `
           <div class="concept-box">
             <span class="concept-analogy-pill">Tabel 1.1 Administrator Roles Richard Fox</span>
@@ -429,6 +499,11 @@ const levelsData = [
       },
       {
         stepTitle: "Langkah 2: Kebijakan Keamanan Password & Etika IT",
+        workedExample: {
+          sampleProblem: "Seorang karyawan membuat kata sandi email kantor: 'jakarta123'. Mengapa kata sandi ini dianggap sangat lemah menurut standar keamanan IT?",
+          sampleAnswer: 'Karena menggunakan kata kamus umum dan urutan angka sederhana yang mudah ditebak oleh software penyerang (Brute-Force Attack). Sandi yang aman harus berupa kombinasi panjang minimal 12 karakter dengan huruf besar, kecil, angka, dan simbol.',
+          babyLogic: 'Jangan pernah pakai nama kota atau tanggal lahir! Kata sandi yang kuat itu ibarat gembok baja dengan banyak gerigi kombinasi unik!'
+        },
         concept: `
           <div class="concept-box">
             <span class="concept-analogy-pill">Etika & Security Policy Richard Fox</span>
@@ -472,6 +547,11 @@ const levelsData = [
     steps: [
       {
         stepTitle: "Tiket #1: Printer Ngambek di Ruang Keuangan",
+        workedExample: {
+          sampleProblem: "Pengguna menelepon IT: 'Monitor saya mati total, tidak ada gambar sama sekali padahal tombol power PC menyala'. Bagaimana langkah investigasi pertama yang tepat?",
+          sampleAnswer: 'Langkah pertama: Periksa lapisan fisik terlebih dahulu—pastikan kabel power monitor tercolok ke stopkontak, saklar monitor menyala, dan kabel display (HDMI/VGA) menancap kencang di port PC.',
+          babyLogic: 'Prinsip dasar IT Support: Selalu periksa kabel dan colokan listrik dulu sebelum buru-buru menyimpulkan hardware rusak atau instal ulang sistem operasi!'
+        },
         concept: `
           <div class="concept-box">
             <span class="concept-analogy-pill">Tiket Keluhan Masuk</span>
@@ -504,6 +584,11 @@ const levelsData = [
       },
       {
         stepTitle: "Tiket #2: WiFi Berlogo Tanda Seru Kuning ⚠️",
+        workedExample: {
+          sampleProblem: "Laptop staf kantor tersambung ke sinyal WiFi kantor, namun ikon WiFi bertanda seru kuning 'No Internet Access' dan saat dicek IP-nya adalah `169.254.12.88`. Mengapa hal ini terjadi?",
+          sampleAnswer: 'IP berawalan `169.254.x.x` adalah alamat APIPA (Automatic Private IP Addressing), artinya laptop gagal menerima alokasi alamat IP dari server DHCP router. Solusinya: restart layanan DHCP atau jalankan `ipconfig /renew`.',
+          babyLogic: 'Kepala IP 169.254 itu kode darurat bahwa komputer ga kebagian nomor antrian dari satpam router! Harus minta ulang jatah nomor antriannya!'
+        },
         concept: `
           <div class="concept-box">
             <span class="concept-analogy-pill">Tiket Keluhan Masuk</span>
@@ -536,6 +621,11 @@ const levelsData = [
       },
       {
         stepTitle: "Tiket #3: Permintaan Bos: Otomatisasi Backup Shell Script 1-Klik",
+        workedExample: {
+          sampleProblem: 'Bagaimana cara membuat skrip batch di Windows untuk menduplikasi seluruh file dari folder kerja `C:\\ProjekKantor` ke media penyimpanan backup `D:\\ArsipBackup`?',
+          sampleAnswer: 'Gunakan perintah: `robocopy C:\\ProjekKantor D:\\ArsipBackup /E /COPYALL` (opsi `/E` menyalin seluruh subfolder termasuk folder kosong).',
+          babyLogic: 'Dengan skrip otomatis, kita ga perlu copy-paste manual tiap sore jam 5. Cukup klik sekali atau jadwalkan otomatis, semua data langsung tercadangkan aman!'
+        },
         concept: `
           <div class="concept-box">
             <span class="concept-analogy-pill">Proyek Shell Script IT Support (Richard Fox Ch 1)</span>
