@@ -16,7 +16,7 @@ const appState = {
   currentSqlIndex: 0,
   currentOutputIndex: 0,
   currentEnglishDrillIndex: 0,
-  currentToeflIndex: 0,
+  currentIeltsIndex: 0,
   currentIbtIndex: 0,
   currentIbtFilter: "all",
   ibtTimerInterval: null,
@@ -136,7 +136,7 @@ function switchTab(tabName) {
   } else if (tabName === 'english-trainer') {
     renderEnglishTrainer();
     setKodiSpeech(
-      "Welcome to English Studio! Di sini kita latihan Speaking, Listening, TOEFL ITP/IELTS, dan Bedah Buku TOEFL iBT Beasiswa S2 Luar Negeri!",
+      "Welcome to English Studio! Di sini kita latihan Speaking Wawancara Kerja, Kosakata & Ejaan, IELTS Academic Studio (Cambridge), dan Bedah Buku TOEFL iBT Beasiswa S2 Luar Negeri!",
       "Tekan 🔊 untuk mendengar suara asli, coba timer speaking, lalu tekan 🎙️ untuk berbicara dan dapatkan skor pelafalanmu!"
     );
   } else if (tabName === 'dictionary') {
@@ -1229,6 +1229,31 @@ function renderSqlTrainer() {
         </div>
       </div>
 
+      <!-- KOTAK CONTOH SOAL & JAWABAN BENAR DULU -->
+      ${currentChal.workedExample ? `
+        <div class="worked-example-card">
+          <div class="worked-example-header">
+            <span class="we-badge">💡 CONTOH SOAL & JAWABAN BENAR DULU</span>
+            <span class="we-sub">Pahami polanya dulu sebelum mengisi kueri di bawah!</span>
+          </div>
+          <div class="we-body">
+            <div class="we-row">
+              <span class="we-label">📝 Contoh Kasus Serupa:</span>
+              <span class="we-text">${currentChal.workedExample.problemEn}</span>
+            </div>
+            <div class="we-row">
+              <span class="we-label">✅ Kueri Contoh yang 100% Benar:</span>
+              <code class="we-code">${currentChal.workedExample.correctQuery}</code>
+            </div>
+            <div class="we-row">
+              <span class="we-label">🍼 Analogi & Nalar Bahasa Bayi:</span>
+              <span class="we-text">${currentChal.workedExample.babyLogic.replace(/\\n/g, '<br>')}</span>
+            </div>
+          </div>
+          <div class="we-divider">🎯 SEKARANG GILIRAN TANTANGAN ASLI UNTUK KAMU:</div>
+        </div>
+      ` : ''}
+
       <!-- SQL Console & Builder -->
       <div style="background: #060911; border: 1.5px solid #1e293b; border-radius: var(--radius-md); padding: 16px; margin-bottom: 20px;">
         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
@@ -1280,14 +1305,19 @@ function renderSqlTrainer() {
 
   window.runSqlTestQuery = function() {
     const area = document.getElementById("sql-input-area");
-    const inputVal = area.value.trim().toLowerCase().replace(/\s+/g, " ");
-    const correctVal = currentChal.correctQuery.toLowerCase().replace(/\s+/g, " ");
+    const rawVal = area.value.trim();
+    const clean = (s) => s.toLowerCase().replace(/;/g, '').replace(/["']/g, "'").replace(/\s*,\s*/g, ', ').replace(/\s+/g, ' ').trim();
+    
+    const inputVal = clean(rawVal);
+    const correctVal = clean(currentChal.correctQuery);
 
     const resultWrap = document.getElementById("sql-result-wrap");
     const tableBox = document.getElementById("sql-result-table-box");
     resultWrap.style.display = "block";
 
-    const isMatch = inputVal.includes("select") && (inputVal === correctVal || inputVal.includes("where"));
+    const isExact = (inputVal === correctVal);
+    const isTokensMatch = currentChal.suggestedTokens.every(tok => inputVal.includes(tok.toLowerCase().replace(/["']/g, "'")));
+    const isMatch = isExact || (inputVal.includes("select") && isTokensMatch);
 
     if (isMatch) {
       sfx.playSuccess();
@@ -1308,7 +1338,7 @@ function renderSqlTrainer() {
       userAnswer: area.value || "(Kueri kosong)",
       correctAnswer: currentChal.correctQuery,
       explanation: isMatch
-        ? `Kueri SQL kamu 100% tepat! Filter WHERE dan kolom yang dipilih berhasil mengekstrak data dari tabel '${currentChal.tableName}' persis sesuai instruksi tes perusahaan!`
+        ? `Kueri SQL kamu 100% tepat! Filter dan pemilihan kolom berhasil mengekstrak data dari tabel '${currentChal.tableName}' persis sesuai instruksi tes perusahaan!`
         : `Kueri yang kamu tulis belum menghasilkan data yang pas. Sintaks yang benar adalah: '${currentChal.correctQuery}'. Pastikan nama kolom, tabel, dan tanda kutip pada teks sudah sesuai ya!`,
       concept: `MSSQL Database (${currentChal.tableName})`,
       babyClue: currentChal.babyHint
@@ -1360,6 +1390,31 @@ function renderOutputDrill() {
         <span style="font-size: 0.78rem; font-weight: 700; color: var(--accent-cyan);">${q.lang} • ${q.badge}</span>
         <span style="font-size: 0.75rem; color: var(--accent-yellow); font-weight: 700;">Soal ${appState.currentOutputIndex + 1} dari ${outputPredictionQuestions.length}</span>
       </div>
+
+      <!-- KOTAK CONTOH TEBAK OUTPUT DULU -->
+      ${q.workedExample ? `
+        <div class="worked-example-card" style="margin-bottom: 16px;">
+          <div class="worked-example-header">
+            <span class="we-badge">💡 CONTOH SOAL & CARA NALAR DULU</span>
+            <span class="we-sub">Pahami pola eksekusi kode serupa di bawah ini:</span>
+          </div>
+          <div class="we-body">
+            <div class="we-row">
+              <span class="we-label">📝 Kode Contoh Serupa:</span>
+              <pre class="we-code-pre"><code>${q.workedExample.sampleCode.replace(/\\n/g, '\n')}</code></pre>
+            </div>
+            <div class="we-row">
+              <span class="we-label">✅ Output yang Benar:</span>
+              <code class="we-code">${q.workedExample.sampleAnswer}</code>
+            </div>
+            <div class="we-row">
+              <span class="we-label">🍼 Langkah Nalar Eksekusi:</span>
+              <span class="we-text">${q.workedExample.sampleLogic}</span>
+            </div>
+          </div>
+          <div class="we-divider">🎯 SEKARANG TEBAK OUTPUT KODE TANTANGAN INI:</div>
+        </div>
+      ` : ''}
 
       <!-- Kode Snippet -->
       <pre style="background: #060911; border: 1px solid #1e293b; border-radius: 8px; padding: 14px; color: #38bdf8; font-family: var(--font-code); font-size: 0.92rem; overflow-x: auto; margin-bottom: 16px;"><code>${q.code}</code></pre>
@@ -1444,8 +1499,8 @@ function renderEnglishTrainer() {
       <button class="choice-card-btn" id="btn-mode-puzzle" onclick="switchEnglishSubMode('puzzle')">
         🔤 Kosakata & Huruf
       </button>
-      <button class="choice-card-btn" id="btn-mode-toefl" onclick="switchEnglishSubMode('toefl')">
-        📖 TOEFL ITP & IELTS
+      <button class="choice-card-btn" id="btn-mode-ielts" style="background: linear-gradient(135deg, rgba(16, 185, 129, 0.15), rgba(56, 189, 248, 0.2));" onclick="switchEnglishSubMode('ielts')">
+        🇬🇧 IELTS Academic
       </button>
       <button class="choice-card-btn" id="btn-mode-ibt" style="background: linear-gradient(135deg, rgba(56, 189, 248, 0.15), rgba(168, 85, 247, 0.2));" onclick="switchEnglishSubMode('ibt')">
         🎓 TOEFL iBT S2
@@ -1486,6 +1541,27 @@ function renderEnglishTrainer() {
           Interviewer: "${drill.questionEn}"
         </h3>
 
+        <!-- KOTAK CONTOH STRUKTUR JAWABAN INTERVIEW DULU -->
+        ${drill.workedExample ? `
+          <div class="worked-example-card" style="margin-bottom: 16px;">
+            <div class="worked-example-header">
+              <span class="we-badge">💡 CONTOH POLA STRUKTUR JAWABAN DULU</span>
+              <span class="we-sub">Pola jawaban berbobot sebelum kamu menirukan atau berbicara:</span>
+            </div>
+            <div class="we-body">
+              <div class="we-row">
+                <span class="we-label">📐 Kerangka Alur:</span>
+                <span class="we-text">${drill.workedExample.modelStructure}</span>
+              </div>
+              <div class="we-row">
+                <span class="we-label">✨ Kunci Sukses & Frasa Berbobot:</span>
+                <span class="we-text">${drill.workedExample.keyPhraseTip}</span>
+              </div>
+            </div>
+            <div class="we-divider">🎯 SEKARANG TARGET JAWABAN ANDA (DENGARKAN & TIRUKAN):</div>
+          </div>
+        ` : ''}
+
         <!-- Kalimat Sasaran untuk Ditirukan -->
         <div style="background: rgba(15, 23, 42, 0.9); border: 1.5px solid rgba(56, 189, 248, 0.3); border-radius: 12px; padding: 18px; margin-bottom: 16px;">
           <div style="font-size: 0.75rem; color: var(--accent-yellow); font-weight: 800; margin-bottom: 6px;">
@@ -1525,8 +1601,8 @@ function renderEnglishTrainer() {
     <!-- SUBMODE 2: GAME HURUF HILANG & KOSAKATA -->
     <div id="submode-puzzle" style="display: none;"></div>
 
-    <!-- SUBMODE 3: MARATHON TOEFL ITP & IELTS -->
-    <div id="submode-toefl" style="display: none;"></div>
+    <!-- SUBMODE 3: IELTS ACADEMIC STUDIO (CAMBRIDGE EDITION) -->
+    <div id="submode-ielts" style="display: none;"></div>
 
     <!-- SUBMODE 4: MASTER TOEFL iBT BEASISWA S2 -->
     <div id="submode-ibt" style="display: none;"></div>
@@ -1627,44 +1703,44 @@ function renderEnglishTrainer() {
     sfx.playClick();
     const spkSec = document.getElementById("submode-speaking");
     const puzSec = document.getElementById("submode-puzzle");
-    const toeflSec = document.getElementById("submode-toefl");
+    const ieltsSec = document.getElementById("submode-ielts");
     const ibtSec = document.getElementById("submode-ibt");
     const dicSec = document.getElementById("submode-dictation");
     const bS = document.getElementById("btn-mode-spk");
     const bP = document.getElementById("btn-mode-puzzle");
-    const bT = document.getElementById("btn-mode-toefl");
+    const bIelts = document.getElementById("btn-mode-ielts");
     const bI = document.getElementById("btn-mode-ibt");
     const bD = document.getElementById("btn-mode-dictation");
 
-    [bS, bP, bT, bI, bD].forEach(b => { if (b) b.style.borderColor = "rgba(255,255,255,0.1)"; });
+    [bS, bP, bIelts, bI, bD].forEach(b => { if (b) b.style.borderColor = "rgba(255,255,255,0.1)"; });
 
     if (mode === 'speaking') {
       spkSec.style.display = "block";
       puzSec.style.display = "none";
-      toeflSec.style.display = "none";
+      if (ieltsSec) ieltsSec.style.display = "none";
       if (ibtSec) ibtSec.style.display = "none";
       if (dicSec) dicSec.style.display = "none";
       bS.style.borderColor = "var(--accent-cyan)";
     } else if (mode === 'puzzle') {
       spkSec.style.display = "none";
       puzSec.style.display = "block";
-      toeflSec.style.display = "none";
+      if (ieltsSec) ieltsSec.style.display = "none";
       if (ibtSec) ibtSec.style.display = "none";
       if (dicSec) dicSec.style.display = "none";
       bP.style.borderColor = "var(--accent-cyan)";
       renderMissingLettersGame();
-    } else if (mode === 'toefl') {
+    } else if (mode === 'ielts') {
       spkSec.style.display = "none";
       puzSec.style.display = "none";
-      toeflSec.style.display = "block";
+      if (ieltsSec) ieltsSec.style.display = "block";
       if (ibtSec) ibtSec.style.display = "none";
       if (dicSec) dicSec.style.display = "none";
-      bT.style.borderColor = "var(--accent-cyan)";
-      renderComprehensiveToeflBank();
+      if (bIelts) bIelts.style.borderColor = "var(--accent-green)";
+      renderIeltsAcademicStudio();
     } else if (mode === 'ibt') {
       spkSec.style.display = "none";
       puzSec.style.display = "none";
-      toeflSec.style.display = "none";
+      if (ieltsSec) ieltsSec.style.display = "none";
       if (ibtSec) ibtSec.style.display = "block";
       if (dicSec) dicSec.style.display = "none";
       bI.style.borderColor = "var(--accent-cyan)";
@@ -1672,7 +1748,7 @@ function renderEnglishTrainer() {
     } else if (mode === 'dictation') {
       spkSec.style.display = "none";
       puzSec.style.display = "none";
-      toeflSec.style.display = "none";
+      if (ieltsSec) ieltsSec.style.display = "none";
       if (ibtSec) ibtSec.style.display = "none";
       if (dicSec) dicSec.style.display = "block";
       if (bD) bD.style.borderColor = "var(--accent-pink)";
@@ -1918,69 +1994,107 @@ function renderMissingLettersGame() {
   };
 }
 
-// ================= MARATHON BANK SOAL TOEFL ITP & IELTS =================
-function renderComprehensiveToeflBank() {
-  const container = document.getElementById("submode-toefl");
+// ================= IELTS ACADEMIC STUDIO (CAMBRIDGE GRAMMAR EDITION) =================
+appState.currentIeltsIndex = 0;
+
+function renderIeltsAcademicStudio() {
+  const container = document.getElementById("submode-ielts");
   if (!container) return;
 
-  const q = comprehensiveToeflBank[appState.currentToeflIndex] || comprehensiveToeflBank[0];
+  const q = ieltsAcademicBank[appState.currentIeltsIndex] || ieltsAcademicBank[0];
 
   container.innerHTML = `
-    <!-- Pilihan Cepat Soal 1-18 -->
+    <!-- Banner Acuan Buku Cambridge Grammar for IELTS -->
+    <div style="background: linear-gradient(135deg, rgba(15, 23, 42, 0.95), rgba(6, 78, 59, 0.45)); border: 1.5px solid var(--accent-green); border-radius: 12px; padding: 14px 18px; margin-bottom: 16px; display: flex; align-items: center; gap: 14px;">
+      <div style="font-size: 2.2rem;">🇬🇧</div>
+      <div>
+        <div style="font-size: 0.75rem; color: var(--accent-green); font-weight: 800; text-transform: uppercase;">
+          Kurikulum Standar Beasiswa Cambridge:
+        </div>
+        <h4 style="color: #fff; margin: 2px 0;">Cambridge Grammar for IELTS (Hopkins & Cullen)</h4>
+        <p style="font-size: 0.8rem; color: #cbd5e1; margin: 0;">
+          Latihan 28 Unit: Tren Grafik Task 1, Passive Voice Proses Pabrik, Hedging Esai Task 2, Inversi Akademik & Collocations!
+        </p>
+      </div>
+    </div>
+
+    <!-- Pilihan Cepat Soal 1 - 28 -->
     <div style="display: flex; gap: 8px; margin-bottom: 16px; overflow-x: auto; padding-bottom: 6px;">
-      ${comprehensiveToeflBank.map((item, idx) => `
-        <button class="quick-cmd-btn ${idx === appState.currentToeflIndex ? 'active' : ''}" style="padding: 8px 12px; font-weight: 700;" onclick="setToeflIndex(${idx})">
-          Soal #${idx + 1}
+      ${ieltsAcademicBank.map((item, idx) => `
+        <button class="quick-cmd-btn ${idx === appState.currentIeltsIndex ? 'active' : ''}" style="padding: 8px 12px; font-weight: 700; white-space: nowrap;" onclick="setIeltsIndex(${idx})">
+          Unit ${idx + 1}
         </button>
       `).join('')}
     </div>
 
     <div style="background: var(--bg-card); padding: 24px; border-radius: var(--radius-md); border: 1px solid var(--border-glow); margin-bottom: 20px;">
-      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; flex-wrap: wrap; gap: 6px;">
-        <span style="font-size: 0.78rem; font-weight: 800; color: var(--accent-pink); background: rgba(244, 114, 182, 0.15); padding: 4px 10px; border-radius: 12px;">
-          📌 Kisi-kisi: ${q.topic}
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; flex-wrap: wrap; gap: 6px;">
+        <span style="font-size: 0.78rem; font-weight: 800; color: var(--accent-green); background: rgba(74, 222, 128, 0.15); padding: 4px 10px; border-radius: 12px;">
+          📌 ${q.cambridgeUnit}
         </span>
         <span style="font-size: 0.75rem; color: var(--accent-yellow); font-weight: 700;">
-          Soal ${appState.currentToeflIndex + 1} dari ${comprehensiveToeflBank.length}
+          Soal ${appState.currentIeltsIndex + 1} dari ${ieltsAcademicBank.length} (${q.ieltsFocus})
         </span>
       </div>
 
+      <!-- KOTAK CONTOH SOAL & JAWABAN CAMBRIDGE DULU -->
+      <div class="worked-example-card">
+        <div class="worked-example-header">
+          <span class="we-badge">💡 CONTOH SOAL & JAWABAN CAMBRIDGE DULU</span>
+          <span class="we-sub">Pahami pola tata bahasa ini sebelum menjawab soal tantangan!</span>
+        </div>
+        <div class="we-body">
+          <div class="we-row">
+            <span class="we-label">📝 Contoh Kasus Serupa:</span>
+            <span class="we-text">"${q.workedExample.sampleQuestion}"</span>
+          </div>
+          <div class="we-row">
+            <span class="we-label">✅ Kunci Jawaban Benar:</span>
+            <code class="we-code">${q.workedExample.sampleAnswer}</code>
+          </div>
+          <div class="we-row">
+            <span class="we-label">🍼 Analogi & Nalar Bahasa Bayi:</span>
+            <span class="we-text">${q.workedExample.sampleLogic}</span>
+          </div>
+        </div>
+        <div class="we-divider">🎯 SEKARANG GILIRAN TANTANGAN SOAL CAMBRIDGE INI:</div>
+      </div>
+
       <!-- Teks Kalimat Soal (Bisa Diisi Dinamis Saat Dijawab) -->
-      <h3 id="toefl-question-sentence" style="color: #fff; margin-bottom: 16px; font-size: 1.15rem; line-height: 1.6;">
+      <h3 id="ielts-question-sentence" style="color: #fff; margin-bottom: 16px; font-size: 1.15rem; line-height: 1.6;">
         "${q.question}"
       </h3>
 
       <!-- Tombol Audio untuk Mendengar Soal -->
-      <div style="margin-bottom: 14px;">
+      <div style="margin-bottom: 14px; display: flex; gap: 8px; flex-wrap: wrap;">
         <button class="btn-secondary" style="font-size: 0.8rem; padding: 6px 12px;" onclick="speechEngine.speakText('${q.question.replace(/'/g, "\\'").replace('_____', 'blank')}', 0.8, this, speechEngine.englishAccent)">
-          🔊 Dengarkan Kalimat Soal (${speechEngine.englishAccent === 'en-GB' ? 'UK' : 'US'})
+          🔊 Dengarkan Kalimat Soal (${speechEngine.englishAccent === 'en-GB' ? 'Aksen UK' : 'Aksen US'})
         </button>
       </div>
 
       <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 10px; margin-bottom: 16px;">
         ${q.options.map((opt, idx) => `
-          <button class="choice-card-btn" style="justify-content: center; font-weight: 700;" onclick="checkComprehensiveToefl(${idx})">
+          <button class="choice-card-btn" style="justify-content: center; font-weight: 700;" onclick="checkIeltsAnswer(${idx})">
             ${opt}
           </button>
         `).join('')}
       </div>
 
-      <div id="toefl-feedback-box" style="display: none;"></div>
+      <div id="ielts-feedback-box" style="display: none;"></div>
     </div>
   `;
 
-  window.setToeflIndex = function(idx) {
+  window.setIeltsIndex = function(idx) {
     sfx.playClick();
-    appState.currentToeflIndex = idx;
-    renderComprehensiveToeflBank();
+    appState.currentIeltsIndex = idx;
+    renderIeltsAcademicStudio();
   };
 
-  window.checkComprehensiveToefl = function(idx) {
+  window.checkIeltsAnswer = function(idx) {
     const isCorrect = idx === q.correctIndex;
     const chosenOpt = q.options[idx];
-    const sentenceEl = document.getElementById("toefl-question-sentence");
+    const sentenceEl = document.getElementById("ielts-question-sentence");
 
-    // Tampilkan kalimat lengkap yang sudah terisi dengan rapi
     if (sentenceEl) {
       if (isCorrect) {
         const completedHtml = q.question.replace('_____', `<span class="sentence-fill-correct">${chosenOpt}</span>`);
@@ -2001,14 +2115,14 @@ function renderComprehensiveToeflBank() {
     }
 
     kodiAI.renderFeedback({
-      containerId: "toefl-feedback-box",
+      containerId: "ielts-feedback-box",
       isCorrect,
       question: q.question,
       userAnswer: q.options[idx],
       correctAnswer: q.options[q.correctIndex],
-      explanation: q.explanation,
-      concept: `TOEFL / IELTS (${q.type})`,
-      babyClue: q.hint,
+      explanation: `${q.babyExplanation} Kaidah Akademis: ${q.academicRule}`,
+      concept: `IELTS Academic (${q.cambridgeUnit})`,
+      babyClue: q.babyExplanation,
       choices: q.options
     });
   };
@@ -2032,12 +2146,12 @@ function renderToeflIbtBuildingSkills() {
 
   const categories = [
     { key: "all", label: `Semua Soal iBT (${toeflIbtBuildingSkills.length})` },
-    { key: "Vocabulary in Context", label: "1. Vocab in Context" },
-    { key: "Sentence Simplification", label: "2. Sentence Simplification" },
-    { key: "Fact & Negative Fact", label: "3. Fact & Negative Fact" },
-    { key: "Inference", label: "4. Inference Questions" },
-    { key: "Insert Text", label: "5. Text Insertion [■]" },
-    { key: "Speaking iBT Simulator", label: "6. Speaking iBT Simulator" }
+    { key: "Vocabulary in Context", label: "1. Vocab in Context (6)" },
+    { key: "Sentence Simplification", label: "2. Sentence Simplification (5)" },
+    { key: "Fact & Negative Fact", label: "3. Fact & Negative Fact (5)" },
+    { key: "Inference", label: "4. Inference Questions (5)" },
+    { key: "Insert Text", label: "5. Text Insertion [■] (4)" },
+    { key: "Speaking iBT Simulator", label: "6. Speaking iBT Simulator (5)" }
   ];
 
   let passageHtml = "";
@@ -2069,6 +2183,31 @@ function renderToeflIbtBuildingSkills() {
     const audioSentence = (currentItem.targetSentenceForAudio || currentItem.passageSnippet).replace(/'/g, "\\'");
 
     passageHtml = `
+      <!-- KOTAK CONTOH STRATEGI & JAWABAN BENAR DULU -->
+      ${currentItem.workedExample ? `
+        <div class="worked-example-card" style="margin-bottom: 16px;">
+          <div class="worked-example-header">
+            <span class="we-badge">💡 STRATEGI & CONTOH JAWABAN BENAR DULU</span>
+            <span class="we-sub">${currentItem.bookChapter} • ${currentItem.academicTopic || ''}</span>
+          </div>
+          <div class="we-body">
+            <div class="we-row">
+              <span class="we-label">📝 Model Soal:</span>
+              <span class="we-text">${currentItem.workedExample.modelPrompt}</span>
+            </div>
+            <div class="we-row">
+              <span class="we-label">✅ Kunci Jawaban Benar:</span>
+              <code class="we-code">${currentItem.workedExample.correctAnswer}</code>
+            </div>
+            <div class="we-row">
+              <span class="we-label">🍼 Trik & Cara Nalar Detektif:</span>
+              <span class="we-text">${currentItem.workedExample.strategyLogic.replace(/\\n/g, '<br>')}</span>
+            </div>
+          </div>
+          <div class="we-divider">🎯 SEKARANG BACA TEKS & SELESAIKAN TANTANGAN DI BAWAH:</div>
+        </div>
+      ` : ''}
+
       <div class="ibt-passage-card">
         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; flex-wrap: wrap; gap: 6px;">
           <span style="font-size: 0.75rem; color: var(--accent-cyan); font-weight: 800; text-transform: uppercase;">
@@ -2104,6 +2243,31 @@ function renderToeflIbtBuildingSkills() {
     const modelAudio = currentItem.modelAnswer.replace(/'/g, "\\'");
 
     passageHtml = `
+      <!-- KOTAK CONTOH STRATEGI SPEAKING SKOR 26-30 DULU -->
+      ${currentItem.workedExample ? `
+        <div class="worked-example-card" style="margin-bottom: 16px;">
+          <div class="worked-example-header">
+            <span class="we-badge">💡 STRATEGI SPEAKING SKOR 26-30 DULU</span>
+            <span class="we-sub">${currentItem.bookChapter}</span>
+          </div>
+          <div class="we-body">
+            <div class="we-row">
+              <span class="we-label">📝 Inti Pertanyaan:</span>
+              <span class="we-text">${currentItem.workedExample.modelPrompt}</span>
+            </div>
+            <div class="we-row">
+              <span class="we-label">✅ Kunci Sikap & Posisi Jawaban:</span>
+              <code class="we-code">${currentItem.workedExample.correctAnswer}</code>
+            </div>
+            <div class="we-row">
+              <span class="we-label">🍼 Trik Manajemen Waktu 45 Detik:</span>
+              <span class="we-text">${currentItem.workedExample.strategyLogic.replace(/\\n/g, '<br>')}</span>
+            </div>
+          </div>
+          <div class="we-divider">🎯 SEKARANG COBA LATIHAN BICARA SESUAI FORMULA:</div>
+        </div>
+      ` : ''}
+
       <div style="background: rgba(15, 23, 42, 0.9); border: 1.5px solid var(--accent-pink); border-radius: 12px; padding: 20px; margin-bottom: 18px;">
         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; flex-wrap: wrap; gap: 6px;">
           <span style="font-size: 0.75rem; color: var(--accent-pink); font-weight: 800; text-transform: uppercase;">
