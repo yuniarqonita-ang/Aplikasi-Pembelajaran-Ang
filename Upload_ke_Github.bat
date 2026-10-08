@@ -10,7 +10,7 @@ cd /d "%~dp0"
 
 echo [1/3] Menyiapkan berkas terbaru...
 git add .
-git commit -m "feat: Progressive Dictation Studio (EVC ESL LibreTexts 2023) & Computer Architecture Fox Ch 1"
+git commit -m "update: Sinkronisasi pembaruan aplikasi pembelajaran Kodi IT Academy"
 
 echo.
 echo [2/3] Memastikan cabang utama adalah 'main'...
