@@ -1482,10 +1482,10 @@ function renderEnglishTrainer() {
 
         <!-- Tombol Audio & Rekam Suara -->
         <div style="display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 18px;">
-          <button class="btn-secondary" style="display: flex; align-items: center; gap: 8px;" onclick="listenTargetSentence(false)">
+          <button class="btn-secondary" style="display: flex; align-items: center; gap: 8px;" onclick="listenTargetSentence(false, this)">
             🔊 Dengarkan (Normal)
           </button>
-          <button class="btn-secondary" style="display: flex; align-items: center; gap: 8px;" onclick="listenTargetSentence(true)">
+          <button class="btn-secondary" style="display: flex; align-items: center; gap: 8px;" onclick="listenTargetSentence(true, this)">
             🐢 Dengarkan (Lambat / Slow)
           </button>
           <button id="btn-start-mic" class="btn-primary" style="display: flex; align-items: center; gap: 8px; background: linear-gradient(135deg, #f43f5e, #e11d48);" onclick="startSpeakingPractice()">
@@ -1522,10 +1522,10 @@ function renderEnglishTrainer() {
     renderEnglishTrainer();
   };
 
-  window.listenTargetSentence = function(isSlow) {
+  window.listenTargetSentence = function(isSlow, btn = null) {
     sfx.playClick();
     const rate = isSlow ? 0.65 : 0.85;
-    speechEngine.speakText(drill.targetSentence, rate);
+    speechEngine.speakText(drill.targetSentence, rate, btn, "en-US");
   };
 
   window.startSpeakingPractice = function() {
@@ -1708,7 +1708,7 @@ function renderMissingLettersGame() {
 
       <!-- Tombol Audio Pelafalan Kata -->
       <div style="margin-bottom: 20px;">
-        <button class="btn-secondary" style="font-size: 0.85rem;" onclick="speechEngine.speakText('${puzzle.word}', 0.75)">
+        <button class="btn-secondary" style="font-size: 0.85rem;" onclick="speechEngine.speakText('${puzzle.word}', 0.75, this, 'en-US')">
           🔊 Dengarkan Cara Baca Kata Ini
         </button>
       </div>
@@ -1795,7 +1795,7 @@ function renderComprehensiveToeflBank() {
 
       <!-- Tombol Audio untuk Mendengar Soal -->
       <div style="margin-bottom: 14px;">
-        <button class="btn-secondary" style="font-size: 0.8rem; padding: 6px 12px;" onclick="speechEngine.speakText('${q.question.replace('_____', 'blank')}', 0.8)">
+        <button class="btn-secondary" style="font-size: 0.8rem; padding: 6px 12px;" onclick="speechEngine.speakText('${q.question.replace(/'/g, "\\'").replace('_____', 'blank')}', 0.8, this, 'en-US')">
           🔊 Dengarkan Kalimat Soal
         </button>
       </div>
@@ -1900,7 +1900,7 @@ function renderToeflIbtBuildingSkills() {
           <span style="font-size: 0.75rem; color: var(--accent-cyan); font-weight: 800; text-transform: uppercase;">
             📖 Bacaan Ilmiah (Academic Reading Excerpt)
           </span>
-          <button class="btn-secondary" style="font-size: 0.78rem; padding: 4px 10px;" onclick="speechEngine.speakText('${audioSentence}', 0.8)">
+          <button class="btn-secondary" style="font-size: 0.78rem; padding: 4px 10px;" onclick="speechEngine.speakText('${audioSentence}', 0.8, this, 'en-US')">
             🔊 Dengarkan Audio Teks
           </button>
         </div>
@@ -1935,7 +1935,7 @@ function renderToeflIbtBuildingSkills() {
           <span style="font-size: 0.75rem; color: var(--accent-pink); font-weight: 800; text-transform: uppercase;">
             🎙️ Pertanyaan Ujian Speaking iBT (Task 1 & Integrated)
           </span>
-          <button class="btn-secondary" style="font-size: 0.78rem; padding: 4px 10px;" onclick="speechEngine.speakText('${promptAudio}', 0.8)">
+          <button class="btn-secondary" style="font-size: 0.78rem; padding: 4px 10px;" onclick="speechEngine.speakText('${promptAudio}', 0.8, this, 'en-US')">
             🔊 Dengarkan Soal
           </button>
         </div>
@@ -1984,10 +1984,10 @@ function renderToeflIbtBuildingSkills() {
               ⭐ Contoh Naskah Jawaban Terbaik (Model Band 26-30):
             </span>
             <div style="display: flex; gap: 6px;">
-              <button class="btn-secondary" style="font-size: 0.75rem; padding: 4px 8px;" onclick="speechEngine.speakText('${modelAudio}', 0.85)">
+              <button class="btn-secondary" style="font-size: 0.75rem; padding: 4px 8px;" onclick="speechEngine.speakText('${modelAudio}', 0.85, this, 'en-US')">
                 🔊 Dengarkan (Normal)
               </button>
-              <button class="btn-secondary" style="font-size: 0.75rem; padding: 4px 8px;" onclick="speechEngine.speakText('${modelAudio}', 0.65)">
+              <button class="btn-secondary" style="font-size: 0.75rem; padding: 4px 8px;" onclick="speechEngine.speakText('${modelAudio}', 0.65, this, 'en-US')">
                 🐢 Slow
               </button>
             </div>
@@ -2323,14 +2323,14 @@ function renderEvcDictationStudio() {
 
       <!-- Kontrol Pemutar Audio Kodi -->
       <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-bottom: 22px;">
-        <button class="btn-primary" style="font-size: 0.92rem; padding: 10px 18px; display: flex; align-items: center; gap: 8px; background: linear-gradient(135deg, #0ea5e9, #0284c7);" onclick="playCurrentDictationAudio(false)">
+        <button class="btn-primary" style="font-size: 0.92rem; padding: 10px 18px; display: flex; align-items: center; gap: 8px; background: linear-gradient(135deg, #0ea5e9, #0284c7);" onclick="playCurrentDictationAudio(false, this)">
           🔊 Dengarkan Suara (Normal)
         </button>
-        <button class="btn-secondary" style="font-size: 0.92rem; padding: 10px 18px; display: flex; align-items: center; gap: 8px;" onclick="playCurrentDictationAudio(true)">
+        <button class="btn-secondary" style="font-size: 0.92rem; padding: 10px 18px; display: flex; align-items: center; gap: 8px;" onclick="playCurrentDictationAudio(true, this)">
           🐢 Dengarkan Lebih Lambat (Slow)
         </button>
         ${currentLevel > 1 ? `
-          <button class="btn-secondary" style="font-size: 0.85rem; padding: 10px 14px; display: flex; align-items: center; gap: 6px;" onclick="spellOutTargetAudio()">
+          <button class="btn-secondary" style="font-size: 0.85rem; padding: 10px 14px; display: flex; align-items: center; gap: 6px;" onclick="spellOutTargetAudio(this)">
             🔤 Bantuan Eja Huruf demi Huruf
           </button>
         ` : ''}
@@ -2418,7 +2418,7 @@ window.toggleDictationHint = function() {
   }
 };
 
-window.playCurrentDictationAudio = function(isSlow) {
+window.playCurrentDictationAudio = function(isSlow, btn = null) {
   sfx.playClick();
   const currentLevel = appState.currentDictationLevelFilter || 1;
   const filteredList = evcDictationChallenges.filter(c => c.level === currentLevel);
@@ -2426,10 +2426,10 @@ window.playCurrentDictationAudio = function(isSlow) {
   if (!currentItem) return;
 
   const rate = isSlow ? 0.6 : (currentLevel === 1 ? 0.75 : 0.85);
-  speechEngine.speakText(currentItem.audioText, rate);
+  speechEngine.speakText(currentItem.audioText, rate, btn, "en-US");
 };
 
-window.spellOutTargetAudio = function() {
+window.spellOutTargetAudio = function(btn = null) {
   sfx.playClick();
   const currentLevel = appState.currentDictationLevelFilter || 1;
   const filteredList = evcDictationChallenges.filter(c => c.level === currentLevel);
@@ -2443,7 +2443,7 @@ window.spellOutTargetAudio = function() {
     .filter(c => /[A-Z]/.test(c))
     .join(', ');
 
-  speechEngine.speakText(spelled, 0.65);
+  speechEngine.speakText(spelled, 0.65, btn, "en-US");
 };
 
 window.onDictationInputChange = function(e) {
@@ -2863,6 +2863,9 @@ window.addEventListener("DOMContentLoaded", () => {
     soundBtn.addEventListener("click", () => {
       const isSoundOn = sfx.toggle();
       soundBtn.innerHTML = isSoundOn ? "🔊" : "🔇";
+      if (!isSoundOn) {
+        speechEngine.stopSpeaking();
+      }
     });
   }
 

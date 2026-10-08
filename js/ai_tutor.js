@@ -63,7 +63,7 @@ class KodiAIEngine {
               <span class="ai-concept-tag">Topik: ${concept}</span>
             </div>
           </div>
-          <button class="ai-speech-top-btn" onclick="kodiAI.speakExplanation('${containerId}')" title="Dengarkan Suara AI">
+          <button class="ai-speech-top-btn" onclick="kodiAI.speakExplanation('${containerId}', this)" title="Dengarkan Suara AI">
             🔊 Baca Penjelasan AI
           </button>
         </div>
@@ -326,17 +326,21 @@ class KodiAIEngine {
   /**
    * Membacakan penjelasan utama AI dengan Speech Synthesis
    */
-  speakExplanation(containerId) {
+  speakExplanation(containerId, btn = null) {
     sfx.playClick();
     const ctx = this.contexts[containerId];
     if (!ctx) return;
+
+    if (!btn) {
+      btn = document.querySelector(`#${containerId} .ai-speech-top-btn`);
+    }
 
     const textToSpeak = ctx.isCorrect
       ? `Hebat! Jawabanmu ${ctx.userAnswer} benar! ${ctx.explanation || ''}`
       : `Pilihanmu ${ctx.userAnswer} belum pas. Jawaban yang benar adalah ${ctx.correctAnswer}. ${ctx.explanation || ''}`;
 
     const clean = textToSpeak.replace(/<[^>]+>/g, '').trim();
-    speechEngine.speakText(clean, this.speechRate);
+    speechEngine.speakText(clean, this.speechRate, btn, "id-ID");
   }
 
   /**
@@ -344,10 +348,10 @@ class KodiAIEngine {
    */
   speakCustomText(btnElement) {
     sfx.playClick();
-    const text = btnElement.getAttribute("data-text");
+    const text = btnElement ? btnElement.getAttribute("data-text") : null;
     if (!text) return;
     const clean = text.replace(/<[^>]+>/g, '').trim();
-    speechEngine.speakText(clean, this.speechRate);
+    speechEngine.speakText(clean, this.speechRate, btnElement, "id-ID");
   }
 
   escapeHtml(str) {
