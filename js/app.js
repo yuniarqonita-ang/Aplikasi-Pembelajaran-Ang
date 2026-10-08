@@ -1688,63 +1688,166 @@ function renderMissingLettersGame() {
 
   const puzzle = missingLetterPuzzles[appState.currentPuzzleIndex] || missingLetterPuzzles[0];
 
-  // Buat opsi huruf acak (termasuk huruf jawaban yang benar + beberapa huruf pengecoh)
-  const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
-  const allNeeded = [...puzzle.missingLetters];
-  while (allNeeded.length < 8) {
-    const randomLetter = alphabet[Math.floor(Math.random() * alphabet.length)];
-    if (!allNeeded.includes(randomLetter)) allNeeded.push(randomLetter);
+  // Inisialisasi state per kata agar pengisian bertahap tersimpan
+  if (!appState.puzzleStates) {
+    appState.puzzleStates = {};
   }
-  allNeeded.sort(() => Math.random() - 0.5);
+  if (!appState.puzzleStates[appState.currentPuzzleIndex]) {
+    appState.puzzleStates[appState.currentPuzzleIndex] = {
+      filled: {}, // mapping: slotIndex => char
+      completed: false
+    };
+  }
+  const curState = appState.puzzleStates[appState.currentPuzzleIndex];
+
+  // Analisis setiap posisi huruf dan posisi bagian kosong
+  const cleanMask = puzzle.masked.replace(/\s+/g, '');
+  const slots = [];
+  const missingIndices = [];
+
+  for (let i = 0; i < puzzle.word.length; i++) {
+    const isBlank = (cleanMask[i] === '_');
+    if (isBlank) missingIndices.push(i);
+    slots.push({
+      index: i,
+      expected: puzzle.word[i],
+      isBlank: isBlank,
+      filled: isBlank ? (curState.filled[i] || null) : puzzle.word[i]
+    });
+  }
+
+  const totalBlanks = missingIndices.length;
+  const filledIndices = missingIndices.filter(idx => curState.filled[idx]);
+  const filledCount = filledIndices.length;
+  const isAllDone = (filledCount === totalBlanks);
+  curState.completed = isAllDone;
+
+  // Cari slot kosong berikutnya untuk animasi highlight sasaran
+  const nextEmptySlot = missingIndices.find(idx => !curState.filled[idx]);
+
+  // Siapkan keyboard tombol huruf (stabil dan konsisten)
+  if (!curState.pool) {
+    const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
+    const pool = [...puzzle.missingLetters];
+    while (pool.length < Math.max(puzzle.missingLetters.length + 4, 8)) {
+      const rand = alphabet[Math.floor(Math.random() * alphabet.length)];
+      if (!pool.includes(rand)) pool.push(rand);
+    }
+    pool.sort(() => Math.random() - 0.5);
+    curState.pool = pool;
+  }
 
   container.innerHTML = `
-    <!-- Navigasi Soal Puzzle -->
+    <!-- Navigasi Soal Kosakata 1 - 25 -->
     <div style="display: flex; gap: 8px; margin-bottom: 16px; overflow-x: auto; padding-bottom: 6px;">
-      ${missingLetterPuzzles.map((p, idx) => `
-        <button class="quick-cmd-btn ${idx === appState.currentPuzzleIndex ? 'active' : ''}" style="padding: 8px 14px; font-weight: 700;" onclick="setPuzzleIndex(${idx})">
-          Kata #${idx + 1}
-        </button>
-      `).join('')}
+      ${missingLetterPuzzles.map((p, idx) => {
+        const isDone = appState.puzzleStates && appState.puzzleStates[idx]?.completed;
+        return `
+          <button class="quick-cmd-btn ${idx === appState.currentPuzzleIndex ? 'active' : ''}" 
+                  style="padding: 8px 14px; font-weight: 700; ${isDone ? 'border-color: var(--accent-green); color: #86efac;' : ''}" 
+                  onclick="setPuzzleIndex(${idx})">
+            ${isDone ? '✓ ' : ''}Kata #${idx + 1}
+          </button>
+        `;
+      }).join('')}
     </div>
 
-    <div style="background: var(--bg-card); padding: 24px; border-radius: var(--radius-md); border: 1px solid var(--border-glow); margin-bottom: 20px; text-align: center;">
-      <span style="font-size: 0.78rem; font-weight: 700; color: var(--accent-pink);">${puzzle.category} • Kosakata #${appState.currentPuzzleIndex + 1} dari ${missingLetterPuzzles.length}</span>
-
-      <!-- Petunjuk Bahasa Bayi -->
-      <div style="background: rgba(250, 204, 21, 0.1); border-left: 3px solid var(--accent-yellow); padding: 12px 16px; border-radius: 8px; font-size: 0.95rem; color: #fef08a; margin: 14px auto; max-width: 600px; text-align: left;">
-        ${puzzle.babyClue}
-        <div style="font-size: 0.8rem; color: #cbd5e1; margin-top: 4px; font-style: italic;">
-          Arti resmi: ${puzzle.meaning}
-        </div>
-      </div>
-
-      <!-- Tampilan Papan Huruf Bertanda Garis Bawah -->
-      <div style="margin: 24px 0;">
-        <span style="font-family: var(--font-code); font-size: 2.2rem; font-weight: 900; letter-spacing: 8px; color: var(--accent-cyan); text-shadow: 0 0 16px rgba(56, 189, 248, 0.5);" id="puzzle-masked-display">
-          ${puzzle.masked}
+    <div style="background: var(--bg-card); padding: 24px 18px; border-radius: var(--radius-md); border: 1px solid var(--border-glow); margin-bottom: 20px; text-align: center;">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; flex-wrap: wrap; gap: 6px;">
+        <span style="font-size: 0.78rem; font-weight: 700; color: var(--accent-pink); background: rgba(244, 114, 182, 0.15); padding: 4px 10px; border-radius: 12px;">
+          🏷️ ${puzzle.category}
+        </span>
+        <span style="font-size: 0.78rem; color: var(--accent-yellow); font-weight: 700;">
+          Kosakata #${appState.currentPuzzleIndex + 1} dari ${missingLetterPuzzles.length}
         </span>
       </div>
 
-      <!-- Tombol Audio Pelafalan Kata -->
-      <div style="margin-bottom: 20px;">
-        <button class="btn-secondary" style="font-size: 0.85rem;" onclick="speechEngine.speakText('${puzzle.word}', 0.75, this, 'en-US')">
-          🔊 Dengarkan Cara Baca Kata Ini
+      <!-- Petunjuk Bahasa Bayi & Arti Kata -->
+      <div style="background: rgba(250, 204, 21, 0.1); border-left: 3px solid var(--accent-yellow); padding: 12px 16px; border-radius: 8px; font-size: 0.95rem; color: #fef08a; margin: 14px auto; max-width: 600px; text-align: left;">
+        <strong>🍼 Petunjuk Bahasa Bayi Kodi:</strong>
+        <p style="margin: 4px 0 6px;">${puzzle.babyClue}</p>
+        <div style="font-size: 0.82rem; color: #cbd5e1; font-style: italic;">
+          Arti resmi: "${puzzle.meaning}"
+        </div>
+      </div>
+
+      <!-- TAMPILAN INTERAKTIF KOTAK HURUF KATA (TILES BERTINGKAT) -->
+      <div class="vocab-tiles-container ${isAllDone ? 'is-all-completed' : ''}" id="puzzle-tiles-row">
+        ${slots.map((s) => {
+          const isBlank = s.isBlank;
+          const val = s.filled;
+          const isActiveTarget = isBlank && !val && (s.index === nextEmptySlot);
+          return `
+            <div class="vocab-letter-tile ${isBlank ? 'is-blank' : 'is-fixed'} ${val ? 'is-filled' : 'is-empty'} ${isActiveTarget ? 'is-active-target' : ''}">
+              ${val ? val : '_'}
+            </div>
+          `;
+        }).join('')}
+      </div>
+
+      <!-- Status Bar Pengisian Huruf -->
+      <div class="puzzle-progress-bar">
+        <span>Huruf terisi: <strong>${filledCount} / ${totalBlanks}</strong></span>
+        <span id="puzzle-live-hint" style="color: ${isAllDone ? 'var(--accent-green)' : 'var(--accent-cyan)'}; font-weight: 700;">
+          ${isAllDone 
+            ? '🎉 Hebat! Semua huruf sudah lengkap terisi!' 
+            : `Pilih huruf di bawah untuk mengisi bagian kosong (${totalBlanks - filledCount} huruf tersisa):`}
+        </span>
+      </div>
+
+      <!-- Tombol Keyboard Pilihan Huruf Lengkap -->
+      <div class="puzzle-keyboard-pool" id="puzzle-keyboard-box">
+        ${curState.pool.map((letter, btnIdx) => {
+          const neededCount = missingIndices.filter(idx => puzzle.word[idx] === letter).length;
+          const usedCount = missingIndices.filter(idx => curState.filled[idx] === letter).length;
+          const isExhausted = (neededCount > 0 && usedCount >= neededCount) || (neededCount === 0 && isAllDone);
+          return `
+            <button class="puzzle-letter-btn" 
+                    id="puzzle-key-${btnIdx}" 
+                    ${isExhausted || isAllDone ? 'disabled' : ''} 
+                    onclick="guessLetter('${letter}', this, ${btnIdx})">
+              ${letter}
+            </button>
+          `;
+        }).join('')}
+      </div>
+
+      <!-- Kontrol Audio & Bantuan -->
+      <div style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-bottom: 18px;">
+        <button class="btn-secondary" style="font-size: 0.82rem; padding: 6px 14px; display: flex; align-items: center; gap: 6px;" onclick="speechEngine.speakText('${puzzle.word}', 0.75, this, speechEngine.englishAccent)">
+          🔊 Dengarkan Pelafalan (${speechEngine.englishAccent === 'en-GB' ? 'Aksen UK' : 'Aksen US'})
         </button>
-      </div>
-
-      <!-- Tombol Pilihan Huruf Lengkap -->
-      <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 10px;">Pilih huruf yang hilang di bawah ini:</p>
-      <div style="display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; max-width: 500px; margin: 0 auto 16px;">
-        ${allNeeded.map(letter => `
-          <button class="choice-card-btn" style="width: 48px; height: 48px; justify-content: center; font-size: 1.2rem; font-weight: 800; font-family: var(--font-code); padding: 0;" onclick="guessLetter('${letter}')">
-            ${letter}
+        <button class="btn-secondary" style="font-size: 0.82rem; padding: 6px 14px;" onclick="undoLastLetter()">
+          ⌫ Hapus Huruf Terakhir
+        </button>
+        <button class="btn-secondary" style="font-size: 0.82rem; padding: 6px 14px;" onclick="resetCurrentPuzzle()">
+          🔄 Ulangi Kata Ini
+        </button>
+        ${isAllDone && appState.currentPuzzleIndex < missingLetterPuzzles.length - 1 ? `
+          <button class="btn-primary" style="font-size: 0.85rem; padding: 6px 16px; background: linear-gradient(135deg, #10b981, #059669);" onclick="setPuzzleIndex(${appState.currentPuzzleIndex + 1})">
+            🚀 Lanjut ke Kata #${appState.currentPuzzleIndex + 2} ➡️
           </button>
-        `).join('')}
+        ` : ''}
       </div>
 
-      <div id="puzzle-feedback" style="display: none; max-width: 500px; margin: 0 auto;"></div>
+      <!-- Feedback Penjelasan Mendalam AI (Hanya Muncul Saat Semua Huruf Berhasil Diisi) -->
+      <div id="puzzle-feedback" style="display: ${isAllDone ? 'block' : 'none'}; max-width: 650px; margin: 0 auto;"></div>
     </div>
   `;
+
+  // Render AI feedback jika sudah selesai 100%
+  if (isAllDone) {
+    kodiAI.renderFeedback({
+      containerId: "puzzle-feedback",
+      isCorrect: true,
+      question: `Kata: "${puzzle.word}" (${puzzle.meaning})`,
+      userAnswer: puzzle.word,
+      correctAnswer: puzzle.word,
+      explanation: `Luar biasa! Kamu berhasil melengkapi seluruh huruf pada kata '${puzzle.word}' dengan 100% sempurna! Kata ini sangat penting dalam tes IT dan wawancara kerja. Arti resminya: "${puzzle.meaning}".`,
+      concept: `Kosakata & Ejaan (${puzzle.category})`,
+      babyClue: puzzle.babyClue
+    });
+  }
 
   window.setPuzzleIndex = function(idx) {
     sfx.playClick();
@@ -1752,32 +1855,66 @@ function renderMissingLettersGame() {
     renderMissingLettersGame();
   };
 
-  window.guessLetter = function(letter) {
+  window.guessLetter = function(letter, btnEl, btnIdx) {
     sfx.playClick();
-    const display = document.getElementById("puzzle-masked-display");
-    const isCorrect = puzzle.missingLetters.includes(letter);
+    const curState = appState.puzzleStates[appState.currentPuzzleIndex];
+    if (curState.completed) return;
 
-    if (isCorrect) {
-      sfx.playSuccess();
-      display.innerHTML = puzzle.word.split("").join(" ");
-      display.style.color = "var(--accent-green)";
-      triggerConfetti();
+    // Cari slot kosong pertama yang memang membutuhkan huruf ini
+    const targetSlot = missingIndices.find(idx => !curState.filled[idx] && puzzle.word[idx] === letter);
+
+    if (targetSlot !== undefined) {
+      // HURUF BENAR! Masukkan ke slot ini saja!
+      curState.filled[targetSlot] = letter;
+      const newFilledCount = missingIndices.filter(idx => curState.filled[idx]).length;
+
+      if (newFilledCount === totalBlanks) {
+        // SEMUA HURUF KOSONG SEKARANG LENGKAP 100%!
+        curState.completed = true;
+        sfx.playSuccess();
+        triggerConfetti();
+        renderMissingLettersGame();
+        speechEngine.speakText(puzzle.word, 0.8, null, speechEngine.englishAccent);
+      } else {
+        // MASIH ADA HURUF LAIN YG HARUS DIISI
+        sfx.playClick();
+        renderMissingLettersGame();
+      }
     } else {
+      // HURUF SALAH ATAU SUDAH TIDAK DIBUTUHKAN LAGI!
       sfx.playError();
+      if (btnEl) {
+        btnEl.classList.add("btn-shake-error");
+        setTimeout(() => btnEl.classList.remove("btn-shake-error"), 500);
+      }
+      const hintEl = document.getElementById("puzzle-live-hint");
+      if (hintEl) {
+        hintEl.innerHTML = `<span style="color: var(--accent-red);">❌ Huruf '${letter}' tidak cocok untuk bagian kosong yang tersisa. Coba huruf lain ya!</span>`;
+      }
     }
+  };
 
-    kodiAI.renderFeedback({
-      containerId: "puzzle-feedback",
-      isCorrect,
-      question: `Kata: ${puzzle.masked} (${puzzle.meaning})`,
-      userAnswer: `Huruf '${letter}'`,
-      correctAnswer: `Huruf '${puzzle.missingLetters.join("', '")}' (Kata: ${puzzle.word})`,
-      explanation: isCorrect 
-        ? `Tepat sekali! Huruf '${letter}' adalah bagian dari kata '${puzzle.word}'. Arti: "${puzzle.meaning}".`
-        : `Huruf '${letter}' tidak ada pada kata '${puzzle.word}'. Kata yang tepat dieja: ${puzzle.word.split('').join('-')}.`,
-      concept: `Kosakata & Ejaan (${puzzle.category})`,
-      babyClue: puzzle.babyClue
-    });
+  window.undoLastLetter = function() {
+    sfx.playClick();
+    const curState = appState.puzzleStates[appState.currentPuzzleIndex];
+    if (!curState || curState.completed) return;
+
+    const filledKeys = missingIndices.filter(idx => curState.filled[idx]);
+    if (filledKeys.length > 0) {
+      const lastKey = filledKeys[filledKeys.length - 1];
+      delete curState.filled[lastKey];
+      renderMissingLettersGame();
+    }
+  };
+
+  window.resetCurrentPuzzle = function() {
+    sfx.playClick();
+    const curState = appState.puzzleStates[appState.currentPuzzleIndex];
+    if (curState) {
+      curState.filled = {};
+      curState.completed = false;
+      renderMissingLettersGame();
+    }
   };
 }
 
@@ -1808,14 +1945,15 @@ function renderComprehensiveToeflBank() {
         </span>
       </div>
 
-      <h3 style="color: #fff; margin-bottom: 16px; font-size: 1.15rem; line-height: 1.6;">
+      <!-- Teks Kalimat Soal (Bisa Diisi Dinamis Saat Dijawab) -->
+      <h3 id="toefl-question-sentence" style="color: #fff; margin-bottom: 16px; font-size: 1.15rem; line-height: 1.6;">
         "${q.question}"
       </h3>
 
       <!-- Tombol Audio untuk Mendengar Soal -->
       <div style="margin-bottom: 14px;">
-        <button class="btn-secondary" style="font-size: 0.8rem; padding: 6px 12px;" onclick="speechEngine.speakText('${q.question.replace(/'/g, "\\'").replace('_____', 'blank')}', 0.8, this, 'en-US')">
-          🔊 Dengarkan Kalimat Soal
+        <button class="btn-secondary" style="font-size: 0.8rem; padding: 6px 12px;" onclick="speechEngine.speakText('${q.question.replace(/'/g, "\\'").replace('_____', 'blank')}', 0.8, this, speechEngine.englishAccent)">
+          🔊 Dengarkan Kalimat Soal (${speechEngine.englishAccent === 'en-GB' ? 'UK' : 'US'})
         </button>
       </div>
 
@@ -1839,12 +1977,29 @@ function renderComprehensiveToeflBank() {
 
   window.checkComprehensiveToefl = function(idx) {
     const isCorrect = idx === q.correctIndex;
+    const chosenOpt = q.options[idx];
+    const sentenceEl = document.getElementById("toefl-question-sentence");
+
+    // Tampilkan kalimat lengkap yang sudah terisi dengan rapi
+    if (sentenceEl) {
+      if (isCorrect) {
+        const completedHtml = q.question.replace('_____', `<span class="sentence-fill-correct">${chosenOpt}</span>`);
+        sentenceEl.innerHTML = `"${completedHtml}"`;
+      } else {
+        const errorHtml = q.question.replace('_____', `<span class="sentence-fill-wrong">${chosenOpt}</span> (Jawaban benar: <span class="sentence-fill-correct">${q.options[q.correctIndex]}</span>)`);
+        sentenceEl.innerHTML = `"${errorHtml}"`;
+      }
+    }
+
     if (isCorrect) {
       sfx.playSuccess();
       triggerConfetti();
+      const cleanSentence = q.question.replace('_____', chosenOpt);
+      speechEngine.speakText(cleanSentence, 0.85, null, speechEngine.englishAccent);
     } else {
       sfx.playError();
     }
+
     kodiAI.renderFeedback({
       containerId: "toefl-feedback-box",
       isCorrect,
