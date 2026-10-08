@@ -1544,6 +1544,311 @@ body {
   background: transparent;
 }
 
+/* ================= KODI AI TUTOR & PROMPT AREA STYLES ================= */
+.kodi-ai-panel {
+  margin-top: 18px;
+  background: linear-gradient(135deg, rgba(15, 23, 42, 0.98), rgba(2, 6, 23, 0.98));
+  border-radius: 14px;
+  padding: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  animation: fadeIn 0.3s ease;
+  transition: all 0.3s ease;
+}
+
+.kodi-ai-panel.ai-box-success {
+  border: 1.5px solid var(--accent-green);
+  box-shadow: 0 0 25px rgba(74, 222, 128, 0.15);
+}
+
+.kodi-ai-panel.ai-box-error {
+  border: 1.5px solid var(--accent-pink);
+  box-shadow: 0 0 25px rgba(244, 63, 94, 0.15);
+}
+
+.ai-panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: 12px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.ai-header-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.ai-badge-robot {
+  font-size: 1.8rem;
+  background: linear-gradient(135deg, #0284c7, #38bdf8);
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(56, 189, 248, 0.4);
+}
+
+.ai-title-text {
+  margin: 0;
+  font-size: 1.1rem;
+  color: #fff;
+  font-weight: 800;
+}
+
+.ai-concept-tag {
+  font-size: 0.75rem;
+  color: var(--accent-cyan);
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.ai-speech-top-btn {
+  background: rgba(56, 189, 248, 0.12);
+  border: 1px solid var(--accent-cyan);
+  color: var(--accent-cyan);
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.ai-speech-top-btn:hover {
+  background: var(--accent-cyan);
+  color: #020617;
+}
+
+.ai-verdict-banner {
+  padding: 10px 14px;
+  border-radius: 8px;
+  font-size: 0.92rem;
+  margin-bottom: 14px;
+  line-height: 1.5;
+}
+
+.ai-verdict-banner.verdict-green {
+  background: rgba(74, 222, 128, 0.15);
+  border-left: 4px solid var(--accent-green);
+  color: #86efac;
+}
+
+.ai-verdict-banner.verdict-rose {
+  background: rgba(244, 63, 94, 0.15);
+  border-left: 4px solid var(--accent-pink);
+  color: #fda4af;
+}
+
+.ai-section-subtitle {
+  color: var(--accent-yellow);
+  font-size: 0.95rem;
+  margin: 0 0 6px 0;
+  font-weight: 800;
+}
+
+.ai-main-paragraph {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: #f1f5f9;
+  margin-bottom: 14px;
+}
+
+.ai-baby-analogy-box {
+  display: flex;
+  gap: 12px;
+  background: rgba(250, 204, 21, 0.08);
+  border: 1px dashed var(--accent-yellow);
+  padding: 12px 16px;
+  border-radius: 10px;
+  margin-bottom: 18px;
+  align-items: flex-start;
+}
+
+.ai-baby-icon {
+  font-size: 1.6rem;
+  line-height: 1;
+}
+
+.ai-baby-text {
+  font-size: 0.88rem;
+  color: #fef08a;
+}
+
+.ai-baby-text strong {
+  display: block;
+  margin-bottom: 4px;
+  color: #fef08a;
+}
+
+.ai-baby-text p {
+  margin: 0;
+  color: #fef9c3;
+  line-height: 1.5;
+}
+
+/* Chat thread */
+.ai-chat-thread {
+  max-height: 320px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.ai-chat-bubble {
+  border-radius: 10px;
+  padding: 12px 16px;
+  font-size: 0.88rem;
+  line-height: 1.5;
+  animation: fadeIn 0.2s ease;
+}
+
+.ai-chat-bubble.user-bubble {
+  background: rgba(56, 189, 248, 0.15);
+  border: 1px solid rgba(56, 189, 248, 0.4);
+  align-self: flex-end;
+  max-width: 85%;
+}
+
+.ai-chat-bubble.user-bubble .bubble-header {
+  font-size: 0.75rem;
+  color: var(--accent-cyan);
+  font-weight: 800;
+  margin-bottom: 4px;
+}
+
+.ai-chat-bubble.user-bubble .bubble-body {
+  color: #f8fafc;
+}
+
+.ai-chat-bubble.kodi-bubble {
+  background: rgba(30, 41, 59, 0.95);
+  border: 1px solid rgba(168, 85, 247, 0.4);
+  align-self: flex-start;
+  max-width: 90%;
+}
+
+.ai-chat-bubble.kodi-bubble .bubble-header {
+  font-size: 0.75rem;
+  color: var(--accent-purple);
+  font-weight: 800;
+  margin-bottom: 6px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.ai-bubble-audio-btn {
+  background: transparent;
+  border: 1px solid var(--accent-cyan);
+  color: var(--accent-cyan);
+  font-size: 0.72rem;
+  padding: 2px 8px;
+  border-radius: 12px;
+  cursor: pointer;
+}
+
+.ai-bubble-audio-btn:hover {
+  background: var(--accent-cyan);
+  color: #000;
+}
+
+.ai-chat-bubble.kodi-bubble .bubble-body {
+  color: #e2e8f0;
+}
+
+.ai-dots-typing {
+  color: var(--accent-yellow);
+  font-style: italic;
+  font-size: 0.82rem;
+}
+
+/* Quick prompt pills */
+.ai-quick-pills-wrap {
+  margin-bottom: 14px;
+}
+
+.ai-pills-label {
+  display: block;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.ai-pills-container {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.ai-prompt-pill {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #cbd5e1;
+  padding: 6px 12px;
+  border-radius: 16px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.ai-prompt-pill:hover {
+  background: rgba(56, 189, 248, 0.2);
+  border-color: var(--accent-cyan);
+  color: #fff;
+  transform: translateY(-1px);
+}
+
+/* Prompt input field */
+.ai-prompt-input-area {
+  margin-top: 10px;
+}
+
+.ai-prompt-input-row {
+  display: flex;
+  gap: 8px;
+}
+
+.ai-user-prompt-field {
+  flex: 1;
+  background: #020617;
+  border: 1.5px solid var(--accent-cyan);
+  border-radius: 10px;
+  padding: 12px 16px;
+  color: #fff;
+  font-size: 0.92rem;
+  outline: none;
+  transition: all 0.2s;
+}
+
+.ai-user-prompt-field:focus {
+  border-color: var(--accent-pink);
+  box-shadow: 0 0 15px rgba(244, 63, 94, 0.35);
+}
+
+.ai-send-btn {
+  padding: 10px 18px;
+  font-weight: 800;
+  font-size: 0.9rem;
+  white-space: nowrap;
+  background: linear-gradient(135deg, #0ea5e9, #0284c7);
+}
+
+.ai-prompt-hint {
+  font-size: 0.75rem;
+  color: #94a3b8;
+  margin-top: 6px;
+}
+
 /* ================= PRINT STYLES ================= */
 @media print {
   body {

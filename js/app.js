@@ -307,19 +307,28 @@ function renderQuizStep(step, container) {
 
   window.checkQuizAnswer = function(idx) {
     const choice = step.options[idx];
-    if (choice.correct) {
-      showStepSuccess(choice.feedback);
+    const isCorrect = !!choice.correct;
+    if (isCorrect) {
+      sfx.playSuccess();
+      const nextBtn = document.getElementById("btn-next-step");
+      if (nextBtn) {
+        nextBtn.style.display = "inline-block";
+        nextBtn.scrollIntoView({ behavior: 'smooth' });
+      }
     } else {
       sfx.playError();
-      const feedbackBox = document.getElementById("step-feedback-box");
-      if (feedbackBox) {
-        feedbackBox.innerHTML = `
-          <div style="background: rgba(248, 113, 113, 0.15); border: 1.5px solid var(--accent-red); padding: 12px 18px; border-radius: 8px; color: #fca5a5;">
-            😅 ${choice.feedback}
-          </div>
-        `;
-      }
     }
+    kodiAI.renderFeedback({
+      containerId: "step-feedback-box",
+      isCorrect,
+      question: step.question,
+      userAnswer: choice.text,
+      correctAnswer: (step.options.find(o => o.correct) || {}).text,
+      explanation: choice.feedback,
+      concept: step.stepTitle || "Kuis Konsep IT",
+      babyClue: step.concept ? step.concept.replace(/<[^>]+>/g, '').slice(0, 150) + "..." : "",
+      choices: step.options.map(o => o.text)
+    });
   };
 }
 
@@ -347,7 +356,8 @@ function renderMatchHardwareStep(step, container) {
 
   window.choosePart = function(part) {
     const currentCase = step.cases[activeIndex];
-    if (part === currentCase.correctPart) {
+    const isCorrect = part === currentCase.correctPart;
+    if (isCorrect) {
       sfx.playSuccess();
       activeIndex++;
       if (activeIndex < step.cases.length) {
@@ -360,12 +370,27 @@ function renderMatchHardwareStep(step, container) {
             <p style="color: var(--text-muted); font-size: 0.9rem;">Kamu punya insting dokter IT Support yang sangat tajam!</p>
           </div>
         `;
-        showStepSuccess("Luar biasa! Kamu paham betul kapan butuh RAM, SSD, atau PSU!");
+        const nextBtn = document.getElementById("btn-next-step");
+        if (nextBtn) {
+          nextBtn.style.display = "inline-block";
+          nextBtn.scrollIntoView({ behavior: 'smooth' });
+        }
       }
     } else {
       sfx.playError();
-      alert(`Ups, bukan ${part}! Ingat: ${currentCase.hint}`);
     }
+    kodiAI.renderFeedback({
+      containerId: "step-feedback-box",
+      isCorrect,
+      question: `Pasien: ${currentCase.patient}`,
+      userAnswer: part,
+      correctAnswer: currentCase.correctPart,
+      explanation: isCorrect 
+        ? `Tepat sekali! Organ ${part} adalah komponen yang tepat untuk menyembuhkan ${currentCase.patient}.` 
+        : `Komponen ${part} belum pas untuk keluhan ini. ${currentCase.hint}`,
+      concept: "Hardware Klinik IT (RAM, SSD, PSU)",
+      babyClue: currentCase.hint
+    });
   };
 
   renderCurrentCase();
@@ -437,6 +462,16 @@ function renderTerminalMissionStep(step, container) {
       });
       bodyEl.scrollTop = bodyEl.scrollHeight;
       showStepSuccess(`Mantra '${step.targetCommand}' berhasil dieksekusi dengan sempurna!`);
+      kodiAI.renderFeedback({
+        containerId: "step-feedback-box",
+        isCorrect: true,
+        question: `Misi Terminal: ${step.goalDescription}`,
+        userAnswer: cmd,
+        correctAnswer: step.targetCommand,
+        explanation: `Perintah '${step.targetCommand}' adalah mantra standar IT Support untuk ${step.goalDescription.toLowerCase()}.`,
+        concept: "PowerShell & Terminal IT Support",
+        babyClue: step.hint
+      });
     } else if (cmd.toLowerCase() === 'cls' || cmd.toLowerCase() === 'clear') {
       bodyEl.innerHTML = `<div class="term-line info">Layar terminal dibersihkan.</div>`;
     } else if (cmd.toLowerCase() === 'help') {
@@ -449,6 +484,16 @@ function renderTerminalMissionStep(step, container) {
         <div class="term-line error">'${cmd}' bukan mantra yang diminta untuk misi ini.</div>
         <div class="term-line warning">Petunjuk: Ketik '${step.targetCommand}'</div>
       `;
+      kodiAI.renderFeedback({
+        containerId: "step-feedback-box",
+        isCorrect: false,
+        question: `Misi Terminal: ${step.goalDescription}`,
+        userAnswer: cmd,
+        correctAnswer: step.targetCommand,
+        explanation: `'${cmd}' bukan perintah yang sesuai untuk misi ini. Perintah yang tepat adalah '${step.targetCommand}'. ${step.hint}`,
+        concept: "PowerShell & Terminal IT Support",
+        babyClue: step.hint
+      });
     }
     bodyEl.scrollTop = bodyEl.scrollHeight;
   }
@@ -509,6 +554,16 @@ function renderNetworkBuilderStep(step, container) {
   window.sendDataPacket = function() {
     sfx.playRobotChirp();
     showStepSuccess("Paket data sukses meluncur dari Laptop Kasir sampai ke Server Internet tanpa halangan!");
+    kodiAI.renderFeedback({
+      containerId: "step-feedback-box",
+      isCorrect: true,
+      question: step.missionText,
+      userAnswer: "Koneksi LAN & DNS Tersambung",
+      correctAnswer: "Kabel UTP + Switch + Router Gateway + DNS 8.8.8.8",
+      explanation: "Semua perangkat jaringan terhubung dengan benar mulai dari Layer 1 (kabel fisik) sampai Layer 3 (IP Gateway & DNS Server). Paket data bisa mengalir lancar tanpa tersesat!",
+      concept: "Jaringan Komputer & Topologi LAN",
+      babyClue: "Jaringan komputer itu mirip pipa air: pipa harus nyambung dari kran kasir, pompa switch, meteran router, sampai tandon internet!"
+    });
   };
 }
 
@@ -539,6 +594,16 @@ function renderVariablePlaygroundStep(step, container) {
     const cat = document.getElementById("var-cat-input").value;
     const paper = document.getElementById("var-paper-input").value;
     showStepSuccess(`Toples 'nama_kucing' berisi "${cat}", dan toples 'stok_kertas' berisi ${paper} rim! Selamat, kamu sudah paham konsep variabel!`);
+    kodiAI.renderFeedback({
+      containerId: "step-feedback-box",
+      isCorrect: true,
+      question: "Konsep Variabel sebagai Wadah Toples Penyimpanan Nilai",
+      userAnswer: `nama_kucing = "${cat}" (Teks), stok_kertas = ${paper} (Angka)`,
+      correctAnswer: "Variabel menyimpan data sesuai tipe (String vs Number)",
+      explanation: "Variabel bekerja persis seperti toples bertuliskan label stiker di dapur. Kamu bisa memasukkan dan mengganti isinya kapan pun selama program berjalan!",
+      concept: "Dasar Pemrograman (Variabel & Tipe Data)",
+      babyClue: "Toples teks menyimpan huruf di dalam tanda kutip; toples angka menyimpan bilangan murni untuk dihitung!"
+    });
   };
 }
 
@@ -607,11 +672,27 @@ function renderCodeBlockStep(step, container) {
   window.verifyBlocks = function() {
     const isExact = JSON.stringify(placedBlocks) === JSON.stringify(step.targetOrder);
     if (isExact) {
-      showStepSuccess("KODE BERHASIL DIJALANKAN! Kipas turbo server langsung menyala dan notifikasi HP terkirim!");
+      sfx.playSuccess();
+      const nextBtn = document.getElementById("btn-next-step");
+      if (nextBtn) {
+        nextBtn.style.display = "inline-block";
+        nextBtn.scrollIntoView({ behavior: 'smooth' });
+      }
     } else {
       sfx.playError();
-      alert("Urutan balok resepnya masih tertukar nih. Pastikan urutannya: JIKA suhu > 30 -> nyalakan kipas -> kirim peringatan -> SELAIN ITU -> kipas normal!");
     }
+    kodiAI.renderFeedback({
+      containerId: "step-feedback-box",
+      isCorrect: isExact,
+      question: step.missionText,
+      userAnswer: placedBlocks.join(" ➔ ") || "(Belum ada balok)",
+      correctAnswer: step.targetOrder.join(" ➔ "),
+      explanation: isExact 
+        ? "KODE BERHASIL DIJALANKAN! Kipas turbo server langsung menyala dan notifikasi HP terkirim!" 
+        : "Urutan balok resepnya masih tertukar nih. Pastikan urutannya: JIKA suhu > 30 -> nyalakan kipas -> kirim peringatan -> SELAIN ITU -> kipas normal!",
+      concept: "Urutan Algoritma & Logika Pemrograman",
+      babyClue: "Komputer membaca instruksi langkah demi langkah dari atas ke bawah seperti resep membuat kue!"
+    });
   };
 
   renderBlocks();
@@ -647,12 +728,28 @@ function renderTicketStep(step, container) {
 
   window.handleTicketChoice = function(idx) {
     const chosen = step.choices[idx];
-    if (chosen.correct) {
-      showStepSuccess(chosen.feedback);
+    const isCorrect = !!chosen.correct;
+    if (isCorrect) {
+      sfx.playSuccess();
+      const nextBtn = document.getElementById("btn-next-step");
+      if (nextBtn) {
+        nextBtn.style.display = "inline-block";
+        nextBtn.scrollIntoView({ behavior: 'smooth' });
+      }
     } else {
       sfx.playError();
-      alert(chosen.feedback);
     }
+    kodiAI.renderFeedback({
+      containerId: "step-feedback-box",
+      isCorrect,
+      question: `Tiket ${step.ticketId}: ${step.problemDetails}`,
+      userAnswer: chosen.label,
+      correctAnswer: (step.choices.find(c => c.correct) || {}).label,
+      explanation: chosen.feedback,
+      concept: "IT Helpdesk & Troubleshooting Triage",
+      babyClue: "Selalu mulai dari hal paling fisik dan dasar (kabel lepas atau saklar mati) sebelum menyalahkan software!",
+      choices: step.choices.map(c => c.label)
+    });
   };
 }
 
@@ -709,6 +806,16 @@ function renderBackupMissionStep(step, container) {
       if (p >= 100) {
         clearInterval(interval);
         showStepSuccess("PROYEK BERHASIL 100%! Semua data kantor Pak Bos tersimpan rapi dan aman di Flashdisk cadangan!");
+        kodiAI.renderFeedback({
+          containerId: "step-feedback-box",
+          isCorrect: true,
+          question: "Misi Skrip Otomasi Backup IT Support",
+          userAnswer: "Skrip Backup Otomatis Berhasil Dijalankan",
+          correctAnswer: "Pencadangan Berkas ke Media Eksternal",
+          explanation: "Skrip backup menduplikasi data penting dari media penyimpanan utama ke flashdisk/drive cadangan secara terstruktur sehingga kantor terlindung dari risiko kehilangan data!",
+          concept: "Manajemen Backup & Pemulihan Bencana IT",
+          babyClue: "Backup itu seperti memfotokopi dokumen penting sebelum disimpan di brankas!"
+        });
       }
     }, 400);
   };
@@ -751,7 +858,8 @@ function renderIposPipelineStep(step, container) {
 
   window.chooseIpos = function(chosen) {
     const item = iposItems[currentIndex];
-    if (chosen === item.correct) {
+    const isCorrect = chosen === item.correct;
+    if (isCorrect) {
       sfx.playSuccess();
       currentIndex++;
       if (currentIndex < iposItems.length) {
@@ -764,12 +872,27 @@ function renderIposPipelineStep(step, container) {
             <p style="color: var(--text-muted); font-size: 0.9rem;">Kamu sudah menguasai 4 pilar mutlak yang menyusun seluruh komputer di dunia!</p>
           </div>
         `;
-        showStepSuccess("HEBAT! Kamu berhasil membedah seluruh stasiun Siklus IPOS (Input, Processing, Output, Storage)!");
+        const nextBtn = document.getElementById("btn-next-step");
+        if (nextBtn) {
+          nextBtn.style.display = "inline-block";
+          nextBtn.scrollIntoView({ behavior: 'smooth' });
+        }
       }
     } else {
       sfx.playError();
-      alert(`Belum tepat! Perhatikan: ${item.hint}`);
     }
+    kodiAI.renderFeedback({
+      containerId: "step-feedback-box",
+      isCorrect,
+      question: `Perangkat: ${item.name}`,
+      userAnswer: chosen.toUpperCase(),
+      correctAnswer: item.correct.toUpperCase(),
+      explanation: isCorrect 
+        ? `Tepat sekali! ${item.name} bertindak pada stasiun ${item.correct.toUpperCase()} karena fungsinya ${item.hint}.`
+        : `Pilihan ${chosen.toUpperCase()} belum pas untuk ${item.name}. ${item.hint}`,
+      concept: "Siklus IPOS (Input, Processing, Output, Storage) Fox Ch 1",
+      babyClue: "Input = panca indera komputer; Processing = otak CPU berpikir; Output = layar & suara; Storage = ingatan & buku catatan!"
+    });
   };
 
   renderCurrentItem();
@@ -837,7 +960,8 @@ function renderStorageLadderStep(step, container) {
 
   window.chooseStorageUnit = function(unit) {
     const c = ladderCases[currentCaseIndex];
-    if (unit === c.correct) {
+    const isCorrect = unit === c.correct;
+    if (isCorrect) {
       sfx.playSuccess();
       currentCaseIndex++;
       if (currentCaseIndex < ladderCases.length) {
@@ -850,12 +974,27 @@ function renderStorageLadderStep(step, container) {
             <p style="color: var(--text-muted); font-size: 0.9rem;">Kamu sekarang paham bedanya Bit, Byte, KB, MB, GB, sampai TB!</p>
           </div>
         `;
-        showStepSuccess("LUAR BIASA! Kamu menguasai Tangga Satuan Kapasitas Data Tabel 1.4 Richard Fox!");
+        const nextBtn = document.getElementById("btn-next-step");
+        if (nextBtn) {
+          nextBtn.style.display = "inline-block";
+          nextBtn.scrollIntoView({ behavior: 'smooth' });
+        }
       }
     } else {
       sfx.playError();
-      alert(`Belum pas! Coba ingat: ${c.hint}`);
     }
+    kodiAI.renderFeedback({
+      containerId: "step-feedback-box",
+      isCorrect,
+      question: c.challenge,
+      userAnswer: unit,
+      correctAnswer: c.correct,
+      explanation: isCorrect 
+        ? `Benar sekali! Satuan ${unit} adalah wadah yang pas untuk ${c.challenge.toLowerCase()}.` 
+        : `Satuan ${unit} belum pas untuk kapasitas ini. ${c.hint}`,
+      concept: "Tangga Satuan Kapasitas Data Komputer (Tabel 1.4 Fox)",
+      babyClue: "Bit = 1 butir saklar (0/1); Byte = 8 butir (1 huruf); KB = 1.000 byte; MB = 1 juta byte; GB = 1 miliar byte; TB = 1 triliun byte!"
+    });
   };
 
   renderLadder();
@@ -900,7 +1039,8 @@ function renderSoftwareSorterStep(step, container) {
 
   window.chooseSoftType = function(chosen) {
     const s = softItems[currentSoftIndex];
-    if (chosen === s.type) {
+    const isCorrect = chosen === s.type;
+    if (isCorrect) {
       sfx.playSuccess();
       currentSoftIndex++;
       if (currentSoftIndex < softItems.length) {
@@ -913,12 +1053,27 @@ function renderSoftwareSorterStep(step, container) {
             <p style="color: var(--text-muted); font-size: 0.9rem;">Kamu paham betul mana Sistem Operasi (Rumah) dan mana Aplikasi (Perkakas)!</p>
           </div>
         `;
-        showStepSuccess("MANTAP! Kamu berhasil memilah System Software dan Application Software dengan sempurna!");
+        const nextBtn = document.getElementById("btn-next-step");
+        if (nextBtn) {
+          nextBtn.style.display = "inline-block";
+          nextBtn.scrollIntoView({ behavior: 'smooth' });
+        }
       }
     } else {
       sfx.playError();
-      alert(`Ups! Ingat: ${s.hint}`);
     }
+    kodiAI.renderFeedback({
+      containerId: "step-feedback-box",
+      isCorrect,
+      question: `Perangkat Lunak: ${s.name}`,
+      userAnswer: chosen === 'system' ? 'System Software (OS)' : 'Application Software (Aplikasi)',
+      correctAnswer: s.type === 'system' ? 'System Software (OS)' : 'Application Software (Aplikasi)',
+      explanation: isCorrect 
+        ? `Tepat sekali! ${s.name} adalah ${s.type === 'system' ? 'System Software karena mengontrol hardware' : 'Application Software yang membantu tugas manusia'}.` 
+        : `Pilihanmu belum tepat untuk ${s.name}. ${s.hint}`,
+      concept: "System Software vs Application Software (Fox Ch 1)",
+      babyClue: "System Software itu pondasi rumah dan aliran listriknya; Application Software itu perabotan dan alat masak di dalamnya!"
+    });
   };
 
   renderSoftItem();
@@ -985,7 +1140,8 @@ function renderItRolesMatchStep(step, container) {
 
   window.chooseRole = function(roleKey) {
     const rc = roleCases[currentRoleIndex];
-    if (roleKey === rc.role) {
+    const isCorrect = roleKey === rc.role;
+    if (isCorrect) {
       sfx.playSuccess();
       currentRoleIndex++;
       if (currentRoleIndex < roleCases.length) {
@@ -998,12 +1154,27 @@ function renderItRolesMatchStep(step, container) {
             <p style="color: var(--text-muted); font-size: 0.9rem;">Kamu memahami pembagian tugas resmi spesialis IT Tabel 1.1 Richard Fox dengan sempurna!</p>
           </div>
         `;
-        showStepSuccess("HEBAT! Kamu paham betul peran spesialis IT (SysAdmin, NetAdmin, DBA, SecAdmin, HelpDesk)!");
+        const nextBtn = document.getElementById("btn-next-step");
+        if (nextBtn) {
+          nextBtn.style.display = "inline-block";
+          nextBtn.scrollIntoView({ behavior: 'smooth' });
+        }
       }
     } else {
       sfx.playError();
-      alert(`Bukan tugas itu! Ingat: ${rc.hint}`);
     }
+    kodiAI.renderFeedback({
+      containerId: "step-feedback-box",
+      isCorrect,
+      question: rc.incident,
+      userAnswer: roleKey.toUpperCase(),
+      correctAnswer: rc.roleTitle,
+      explanation: isCorrect 
+        ? `Benar! Masalah ini adalah tanggung jawab utama ${rc.roleTitle} karena ${rc.hint}.` 
+        : `Peran ${roleKey.toUpperCase()} bukan tugas yang menangani insiden ini. ${rc.hint}`,
+      concept: "Spesialisasi Profesi IT Perusahaan (Tabel 1.1 Fox)",
+      babyClue: "SysAdmin = pengelola server; NetAdmin = tukang kabel & internet; DBA = penjaga brankas data; HelpDesk = frontliner penolong staf!"
+    });
   };
 
   renderRoleCase();
@@ -1085,6 +1256,7 @@ function renderSqlTrainer() {
       <div id="sql-result-wrap" style="display: none; background: var(--bg-card); padding: 18px; border-radius: var(--radius-md); border: 1px solid var(--accent-green);">
         <h4 style="color: var(--accent-green); margin-bottom: 10px;">✓ Output Tabel Hasil Kueri:</h4>
         <div id="sql-result-table-box"></div>
+        <div id="sql-ai-feedback-box" style="margin-top: 14px;"></div>
       </div>
     </div>
 
@@ -1115,22 +1287,33 @@ function renderSqlTrainer() {
     const tableBox = document.getElementById("sql-result-table-box");
     resultWrap.style.display = "block";
 
-    if (inputVal.includes("select") && (inputVal === correctVal || inputVal.includes("where"))) {
+    const isMatch = inputVal.includes("select") && (inputVal === correctVal || inputVal.includes("where"));
+
+    if (isMatch) {
       sfx.playSuccess();
       tableBox.innerHTML = renderHTMLTable(currentChal.expectedRows, 'sql-output-preview');
-      tableBox.innerHTML += `
-        <div style="margin-top: 12px; color: var(--accent-green); font-weight: 700;">
-          🎉 BINTANG 5! Kueri SQL kamu 100% tepat dan menghasilkan baris data yang diminta perusahaan!
-        </div>
-      `;
     } else {
       sfx.playError();
       tableBox.innerHTML = `
         <div style="color: var(--accent-red); padding: 12px; font-weight: 700;">
-          ⚠️ Kueri belum menghasilkan data yang pas. Coba cek petunjuk bahasa bayi di atas!
+          ⚠️ Kueri belum menghasilkan baris data yang pas. Coba cek analisis AI Kodi di bawah!
         </div>
       `;
     }
+
+    kodiAI.renderFeedback({
+      containerId: "sql-ai-feedback-box",
+      isCorrect: isMatch,
+      question: currentChal.questionEn,
+      userAnswer: area.value || "(Kueri kosong)",
+      correctAnswer: currentChal.correctQuery,
+      explanation: isMatch
+        ? `Kueri SQL kamu 100% tepat! Filter WHERE dan kolom yang dipilih berhasil mengekstrak data dari tabel '${currentChal.tableName}' persis sesuai instruksi tes perusahaan!`
+        : `Kueri yang kamu tulis belum menghasilkan data yang pas. Sintaks yang benar adalah: '${currentChal.correctQuery}'. Pastikan nama kolom, tabel, dan tanda kutip pada teks sudah sesuai ya!`,
+      concept: `MSSQL Database (${currentChal.tableName})`,
+      babyClue: currentChal.babyHint
+    });
+
     resultWrap.scrollIntoView({ behavior: 'smooth' });
   };
 
@@ -1203,26 +1386,23 @@ function renderOutputDrill() {
 
   window.checkOutputAnswer = function(idx) {
     const opt = q.options[idx];
-    const box = document.getElementById("output-feedback-box");
-    box.style.display = "block";
-
-    if (opt.correct) {
+    const isCorrect = !!opt.correct;
+    if (isCorrect) {
       sfx.playSuccess();
-      box.innerHTML = `
-        <div style="background: rgba(74, 222, 128, 0.15); border: 1.5px solid var(--accent-green); padding: 14px; border-radius: 8px; color: #86efac;">
-          <h4 style="margin-bottom: 4px;">🎉 JAWABAN BENAR!</h4>
-          <p style="font-size: 0.88rem; color: #f8fafc;"><strong>🍼 Penjelasan Bahasa Bayi:</strong> ${q.babyExplanation}</p>
-        </div>
-      `;
     } else {
       sfx.playError();
-      box.innerHTML = `
-        <div style="background: rgba(248, 113, 113, 0.15); border: 1.5px solid var(--accent-red); padding: 14px; border-radius: 8px; color: #fca5a5;">
-          <h4 style="margin-bottom: 4px;">😅 Kurang Tepat, yuk bedah bareng:</h4>
-          <p style="font-size: 0.88rem; color: #f8fafc;"><strong>🍼 Penjelasan Bahasa Bayi:</strong> ${q.babyExplanation}</p>
-        </div>
-      `;
     }
+    kodiAI.renderFeedback({
+      containerId: "output-feedback-box",
+      isCorrect,
+      question: `${q.questionEn} (Kode: ${q.code.replace(/\n/g, ' ')})`,
+      userAnswer: opt.text,
+      correctAnswer: (q.options.find(o => o.correct) || {}).text,
+      explanation: q.babyExplanation,
+      concept: `Tebak Output Kode (${q.lang})`,
+      babyClue: q.babyExplanation,
+      choices: q.options.map(o => o.text)
+    });
   };
 }
 
@@ -1398,7 +1578,19 @@ function renderEnglishTrainer() {
           </div>
 
           <p style="font-size: 0.88rem; color: #cbd5e1;">💡 ${evalResult.comment}</p>
+          <div id="speech-ai-feedback-box" style="margin-top: 14px;"></div>
         `;
+
+        kodiAI.renderFeedback({
+          containerId: "speech-ai-feedback-box",
+          isCorrect: evalResult.accuracy >= 65,
+          question: `Target Kalimat: "${drill.targetSentence}"`,
+          userAnswer: evalResult.spoken || "(Suara tidak jelas)",
+          correctAnswer: drill.targetSentence,
+          explanation: `Akurasi pengucapanmu ${evalResult.accuracy}% (${evalResult.grade}). ${evalResult.comment}. Arti bahasa Indonesia: "${drill.translationId}".`,
+          concept: `Speaking & Wawancara Kerja (${drill.category})`,
+          babyClue: drill.babyTips
+        });
       },
       (error) => {
         micBtn.innerHTML = "🎙️ Mulai Bicara (Ucapkan Kalimat Ini)";
@@ -1543,28 +1735,30 @@ function renderMissingLettersGame() {
 
   window.guessLetter = function(letter) {
     sfx.playClick();
-    const box = document.getElementById("puzzle-feedback");
     const display = document.getElementById("puzzle-masked-display");
-    box.style.display = "block";
+    const isCorrect = puzzle.missingLetters.includes(letter);
 
-    if (puzzle.missingLetters.includes(letter)) {
+    if (isCorrect) {
       sfx.playSuccess();
       display.innerHTML = puzzle.word.split("").join(" ");
       display.style.color = "var(--accent-green)";
-      box.innerHTML = `
-        <div style="background: rgba(74, 222, 128, 0.15); border: 1.5px solid var(--accent-green); padding: 12px; border-radius: 8px; color: #86efac; font-weight: 700;">
-          🎉 HOREE BENAR! Kata lengkapnya adalah: ${puzzle.word}!
-        </div>
-      `;
       triggerConfetti();
     } else {
       sfx.playError();
-      box.innerHTML = `
-        <div style="background: rgba(248, 113, 113, 0.15); border: 1.5px solid var(--accent-red); padding: 12px; border-radius: 8px; color: #fca5a5;">
-          😅 Huruf '${letter}' tidak ada di kata ini. Coba dengarkan suaranya lewat tombol 🔊 ya!
-        </div>
-      `;
     }
+
+    kodiAI.renderFeedback({
+      containerId: "puzzle-feedback",
+      isCorrect,
+      question: `Kata: ${puzzle.masked} (${puzzle.meaning})`,
+      userAnswer: `Huruf '${letter}'`,
+      correctAnswer: `Huruf '${puzzle.missingLetters.join("', '")}' (Kata: ${puzzle.word})`,
+      explanation: isCorrect 
+        ? `Tepat sekali! Huruf '${letter}' adalah bagian dari kata '${puzzle.word}'. Arti: "${puzzle.meaning}".`
+        : `Huruf '${letter}' tidak ada pada kata '${puzzle.word}'. Kata yang tepat dieja: ${puzzle.word.split('').join('-')}.`,
+      concept: `Kosakata & Ejaan (${puzzle.category})`,
+      babyClue: puzzle.babyClue
+    });
   };
 }
 
@@ -1625,26 +1819,24 @@ function renderComprehensiveToeflBank() {
   };
 
   window.checkComprehensiveToefl = function(idx) {
-    const box = document.getElementById("toefl-feedback-box");
-    box.style.display = "block";
-
-    if (idx === q.correctIndex) {
+    const isCorrect = idx === q.correctIndex;
+    if (isCorrect) {
       sfx.playSuccess();
-      box.innerHTML = `
-        <div style="background: rgba(74, 222, 128, 0.15); border: 1.5px solid var(--accent-green); padding: 14px; border-radius: 8px; color: #86efac;">
-          <h4 style="margin-bottom: 4px;">🎉 BINTANG 5! JAWABAN TEPAT!</h4>
-          <p style="font-size: 0.88rem; color: #f8fafc;">${q.explanation}</p>
-        </div>
-      `;
+      triggerConfetti();
     } else {
       sfx.playError();
-      box.innerHTML = `
-        <div style="background: rgba(248, 113, 113, 0.15); border: 1.5px solid var(--accent-red); padding: 14px; border-radius: 8px; color: #fca5a5;">
-          <h4 style="margin-bottom: 4px;">😅 Belum Tepat, yuk bedah triknya:</h4>
-          <p style="font-size: 0.88rem; color: #f8fafc;">${q.explanation}</p>
-        </div>
-      `;
     }
+    kodiAI.renderFeedback({
+      containerId: "toefl-feedback-box",
+      isCorrect,
+      question: q.question,
+      userAnswer: q.options[idx],
+      correctAnswer: q.options[q.correctIndex],
+      explanation: q.explanation,
+      concept: `TOEFL / IELTS (${q.type})`,
+      babyClue: q.hint,
+      choices: q.options
+    });
   };
 }
 
@@ -1872,28 +2064,25 @@ function renderToeflIbtBuildingSkills() {
   };
 
   window.checkIbtReadingAnswer = function(chosenIdx) {
-    const feedbackBox = document.getElementById("ibt-reading-feedback");
-    if (!feedbackBox) return;
-    feedbackBox.style.display = "block";
-
-    if (chosenIdx === currentItem.correctIndex) {
+    const isCorrect = chosenIdx === currentItem.correctIndex;
+    if (isCorrect) {
       sfx.playSuccess();
       triggerConfetti();
-      feedbackBox.innerHTML = `
-        <div style="background: rgba(74, 222, 128, 0.15); border: 1.5px solid var(--accent-green); padding: 16px; border-radius: 10px; color: #86efac;">
-          <h4 style="margin: 0 0 6px 0; color: #4ade80;">🎉 JAWABAN TEPAT! SKOR 100% UNTUK SKILL INI!</h4>
-          <p style="font-size: 0.9rem; color: #f8fafc; margin: 0; line-height: 1.5;">${currentItem.babyExplanation}</p>
-        </div>
-      `;
     } else {
       sfx.playError();
-      feedbackBox.innerHTML = `
-        <div style="background: rgba(248, 113, 113, 0.15); border: 1.5px solid var(--accent-red); padding: 16px; border-radius: 10px; color: #fca5a5;">
-          <h4 style="margin: 0 0 6px 0; color: #f87171;">😅 Jawaban Belum Pas! Yuk Bedah Triknya:</h4>
-          <p style="font-size: 0.9rem; color: #f8fafc; margin: 0; line-height: 1.5;">${currentItem.babyExplanation}</p>
-        </div>
-      `;
     }
+
+    kodiAI.renderFeedback({
+      containerId: "ibt-reading-feedback",
+      isCorrect,
+      question: currentItem.passageQuestion || currentItem.promptQuestion,
+      userAnswer: currentItem.options[chosenIdx],
+      correctAnswer: currentItem.options[currentItem.correctIndex],
+      explanation: currentItem.babyExplanation,
+      concept: `TOEFL iBT (${currentItem.skillCategory})`,
+      babyClue: currentItem.babyStrategy || currentItem.babyExplanation,
+      choices: currentItem.options
+    });
   };
 
   window.resetIbtTimers = function() {
@@ -1993,7 +2182,19 @@ function renderToeflIbtBuildingSkills() {
               `).join('')}
             </div>
             <p style="font-size: 0.85rem; color: #fef08a; margin: 4px 0 0 0;">💡 ${evalResult.comment}</p>
+            <div id="ibt-speech-ai-feedback-box" style="margin-top: 14px;"></div>
           `;
+
+          kodiAI.renderFeedback({
+            containerId: "ibt-speech-ai-feedback-box",
+            isCorrect: evalResult.accuracy >= 65,
+            question: `Soal Speaking iBT: "${currentItem.promptQuestion}"`,
+            userAnswer: evalResult.spoken || "(Suara tidak tertangkap)",
+            correctAnswer: currentItem.modelAnswer,
+            explanation: `Akurasi pengucapanmu ${evalResult.accuracy}% (${evalResult.grade}). ${evalResult.comment}. Contoh jawaban model: "${currentItem.modelAnswer}".`,
+            concept: `TOEFL iBT Speaking (${currentItem.skillCategory})`,
+            babyClue: currentItem.babyStrategy || currentItem.modelTranslation
+          });
         }
       },
       (error) => {
@@ -2362,11 +2563,23 @@ function updateDictationTiles(inputVal, targetStr, currentItem = null) {
           <div style="font-size: 0.88rem; color: #a7f3d0; margin-bottom: 14px; font-style: italic;">
             Arti: ${currentItem.meaning}
           </div>
-          <button class="btn-primary" style="font-size: 0.95rem; padding: 10px 24px; font-weight: 800; background: linear-gradient(135deg, #10b981, #059669);" onclick="nextDictationChallenge()">
+          <button class="btn-primary" style="font-size: 0.95rem; padding: 10px 24px; font-weight: 800; background: linear-gradient(135deg, #10b981, #059669); margin-bottom: 14px;" onclick="nextDictationChallenge()">
             ➡️ Lanjut ke Soal Berikutnya
           </button>
+          <div id="dictation-ai-feedback-box"></div>
         </div>
       `;
+
+      kodiAI.renderFeedback({
+        containerId: "dictation-ai-feedback-box",
+        isCorrect: true,
+        question: `Dikte Kalimat/Kata: "${currentItem.audioText}"`,
+        userAnswer: inputVal,
+        correctAnswer: currentItem.targetText,
+        explanation: `Ejaan dan penulisanmu 100% tepat! Arti bahasa Indonesia: "${currentItem.meaning}". ${currentItem.babyClue}`,
+        concept: `${currentItem.chapterRef} (${currentItem.levelName})`,
+        babyClue: currentItem.babyClue
+      });
     }
   } else {
     if (successBanner) successBanner.style.display = "none";
