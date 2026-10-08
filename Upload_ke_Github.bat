@@ -2,7 +2,7 @@
 title Upload ke GitHub - Aplikasi Pembelajaran Ang
 echo ======================================================================
 echo   MENGUNGGAH APLIKASI PEMBELAJARAN KE REPOSITORI GITHUB
-echo   Target Repo: https://github.com/yuniarqonita-ang/Aplikasi-Pembelajaran-Ang
+echo   Target Repo: origin main (GitHub)
 echo ======================================================================
 echo.
 
@@ -10,7 +10,7 @@ cd /d "%~dp0"
 
 echo [1/3] Menyiapkan berkas terbaru...
 git add .
-git commit -m "Update: Kodi IT Academy - TOEFL iBT Building Skills Edition, SQL Trainer, English Studio, & Mobile PWA"
+git commit -m "feat: Progressive Dictation Studio (EVC ESL LibreTexts 2023) & Computer Architecture Fox Ch 1"
 
 echo.
 echo [2/3] Memastikan cabang utama adalah 'main'...
@@ -28,7 +28,6 @@ echo.
 if %ERRORLEVEL% EQU 0 (
     echo ======================================================================
     echo   BERHASIL! Seluruh aplikasi telah terunggah ke akun GitHub kamu!
-    echo   Buka: https://github.com/yuniarqonita-ang/Aplikasi-Pembelajaran-Ang
     echo ======================================================================
 ) else (
     echo ======================================================================

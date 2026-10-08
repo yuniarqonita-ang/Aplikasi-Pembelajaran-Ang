@@ -21,6 +21,9 @@ const appState = {
   currentIbtFilter: "all",
   ibtTimerInterval: null,
   ibtPrepInterval: null,
+  currentDictationIndex: 0,
+  currentDictationLevelFilter: 1,
+  dictationHintRevealed: false,
   deferredInstallPrompt: null
 };
 
@@ -1234,19 +1237,22 @@ function renderEnglishTrainer() {
   const drill = cvInterviewSpeakingDrills[appState.currentEnglishDrillIndex] || cvInterviewSpeakingDrills[0];
 
   container.innerHTML = `
-    <!-- Switcher 4 Mode English Studio -->
+    <!-- Switcher 5 Mode English Studio -->
     <div style="display: flex; gap: 10px; margin-bottom: 20px; flex-wrap: wrap;">
-      <button class="choice-card-btn active-eng-mode" id="btn-mode-spk" style="flex: 1; min-width: 200px; justify-content: center; font-weight: 800; border-color: var(--accent-cyan);" onclick="switchEnglishSubMode('speaking')">
+      <button class="choice-card-btn active-eng-mode" id="btn-mode-spk" style="flex: 1; min-width: 180px; justify-content: center; font-weight: 800; border-color: var(--accent-cyan);" onclick="switchEnglishSubMode('speaking')">
         🎙️ Wawancara Kerja Profesional
       </button>
-      <button class="choice-card-btn" id="btn-mode-puzzle" style="flex: 1; min-width: 200px; justify-content: center; font-weight: 800;" onclick="switchEnglishSubMode('puzzle')">
+      <button class="choice-card-btn" id="btn-mode-puzzle" style="flex: 1; min-width: 180px; justify-content: center; font-weight: 800;" onclick="switchEnglishSubMode('puzzle')">
         🔤 Game Huruf Hilang & Kosakata
       </button>
-      <button class="choice-card-btn" id="btn-mode-toefl" style="flex: 1; min-width: 200px; justify-content: center; font-weight: 800;" onclick="switchEnglishSubMode('toefl')">
+      <button class="choice-card-btn" id="btn-mode-toefl" style="flex: 1; min-width: 180px; justify-content: center; font-weight: 800;" onclick="switchEnglishSubMode('toefl')">
         📖 Marathon TOEFL ITP & IELTS
       </button>
-      <button class="choice-card-btn" id="btn-mode-ibt" style="flex: 1; min-width: 200px; justify-content: center; font-weight: 800; background: linear-gradient(135deg, rgba(56, 189, 248, 0.15), rgba(168, 85, 247, 0.2));" onclick="switchEnglishSubMode('ibt')">
+      <button class="choice-card-btn" id="btn-mode-ibt" style="flex: 1; min-width: 180px; justify-content: center; font-weight: 800; background: linear-gradient(135deg, rgba(56, 189, 248, 0.15), rgba(168, 85, 247, 0.2));" onclick="switchEnglishSubMode('ibt')">
         🎓 Master TOEFL iBT Beasiswa S2
+      </button>
+      <button class="choice-card-btn" id="btn-mode-dictation" style="flex: 1; min-width: 180px; justify-content: center; font-weight: 800; background: linear-gradient(135deg, rgba(244, 63, 94, 0.15), rgba(251, 146, 60, 0.2));" onclick="switchEnglishSubMode('dictation')">
+        ✍️ Dikte & Ketik Suara (EVC ESL)
       </button>
     </div>
 
@@ -1325,6 +1331,9 @@ function renderEnglishTrainer() {
 
     <!-- SUBMODE 4: MASTER TOEFL iBT BEASISWA S2 -->
     <div id="submode-ibt" style="display: none;"></div>
+
+    <!-- SUBMODE 5: PROGRESSIVE DICTATION STUDIO (EVC ESL LIBRETEXTS) -->
+    <div id="submode-dictation" style="display: none;"></div>
   `;
 
   window.setEnglishDrillIndex = function(idx) {
@@ -1409,24 +1418,28 @@ function renderEnglishTrainer() {
     const puzSec = document.getElementById("submode-puzzle");
     const toeflSec = document.getElementById("submode-toefl");
     const ibtSec = document.getElementById("submode-ibt");
+    const dicSec = document.getElementById("submode-dictation");
     const bS = document.getElementById("btn-mode-spk");
     const bP = document.getElementById("btn-mode-puzzle");
     const bT = document.getElementById("btn-mode-toefl");
     const bI = document.getElementById("btn-mode-ibt");
+    const bD = document.getElementById("btn-mode-dictation");
 
-    [bS, bP, bT, bI].forEach(b => { if (b) b.style.borderColor = "rgba(255,255,255,0.1)"; });
+    [bS, bP, bT, bI, bD].forEach(b => { if (b) b.style.borderColor = "rgba(255,255,255,0.1)"; });
 
     if (mode === 'speaking') {
       spkSec.style.display = "block";
       puzSec.style.display = "none";
       toeflSec.style.display = "none";
       if (ibtSec) ibtSec.style.display = "none";
+      if (dicSec) dicSec.style.display = "none";
       bS.style.borderColor = "var(--accent-cyan)";
     } else if (mode === 'puzzle') {
       spkSec.style.display = "none";
       puzSec.style.display = "block";
       toeflSec.style.display = "none";
       if (ibtSec) ibtSec.style.display = "none";
+      if (dicSec) dicSec.style.display = "none";
       bP.style.borderColor = "var(--accent-cyan)";
       renderMissingLettersGame();
     } else if (mode === 'toefl') {
@@ -1434,6 +1447,7 @@ function renderEnglishTrainer() {
       puzSec.style.display = "none";
       toeflSec.style.display = "block";
       if (ibtSec) ibtSec.style.display = "none";
+      if (dicSec) dicSec.style.display = "none";
       bT.style.borderColor = "var(--accent-cyan)";
       renderComprehensiveToeflBank();
     } else if (mode === 'ibt') {
@@ -1441,8 +1455,17 @@ function renderEnglishTrainer() {
       puzSec.style.display = "none";
       toeflSec.style.display = "none";
       if (ibtSec) ibtSec.style.display = "block";
+      if (dicSec) dicSec.style.display = "none";
       bI.style.borderColor = "var(--accent-cyan)";
       renderToeflIbtBuildingSkills();
+    } else if (mode === 'dictation') {
+      spkSec.style.display = "none";
+      puzSec.style.display = "none";
+      toeflSec.style.display = "none";
+      if (ibtSec) ibtSec.style.display = "none";
+      if (dicSec) dicSec.style.display = "block";
+      if (bD) bD.style.borderColor = "var(--accent-pink)";
+      renderEvcDictationStudio();
     }
   };
 }
@@ -2007,6 +2030,380 @@ function renderToeflIbtBuildingSkills() {
     }, 1000);
   };
 }
+
+// ================= PROGRESSIVE LISTENING-TO-WRITING DICTATION STUDIO =================
+// Kurikulum Diktasi Berjenjang: Huruf -> Kata -> Kalimat (EVC ESL LibreTexts 2023)
+function updateHeaderStars() {
+  const starCountEl = document.getElementById("header-stars");
+  if (starCountEl) starCountEl.textContent = `${appState.stars} Bintang`;
+  const certStars = document.getElementById("cert-stars-total");
+  if (certStars) certStars.textContent = `${appState.stars} Bintang`;
+}
+
+function renderEvcDictationStudio() {
+  const container = document.getElementById("submode-dictation");
+  if (!container) return;
+
+  const currentLevel = appState.currentDictationLevelFilter || 1;
+  const filteredList = evcDictationChallenges.filter(c => c.level === currentLevel);
+
+  if (appState.currentDictationIndex >= filteredList.length) {
+    appState.currentDictationIndex = 0;
+  }
+
+  const currentItem = filteredList[appState.currentDictationIndex] || filteredList[0];
+  if (!currentItem) return;
+
+  const levelTabs = [
+    { level: 1, label: "🔤 Tingkat 1: Eja Huruf", desc: "Spelling Names & Acronyms (10 Soal)" },
+    { level: 2, label: "📝 Tingkat 2: Dikte Kata", desc: "Vocabulary Chapters 1-8 (12 Soal)" },
+    { level: 3, label: "💬 Tingkat 3: Dikte Kalimat", desc: "Natural Everyday Dialogues (10 Soal)" }
+  ];
+
+  container.innerHTML = `
+    <!-- Header Hero Card EVC ESL -->
+    <div class="dictation-hero-card">
+      <div style="font-size: 2.4rem;">🎧</div>
+      <div>
+        <div style="font-size: 0.75rem; color: var(--accent-pink); font-weight: 800; text-transform: uppercase;">
+          Kurikulum Listening & Speaking EVC ESL LibreTexts (2023):
+        </div>
+        <h4 style="color: #fff; margin: 2px 0 4px;">Progressive Listening-to-Writing Dictation Studio</h4>
+        <p style="font-size: 0.82rem; color: #cbd5e1; margin: 0;">
+          Dengarkan audio Kodi dengan seksama, lalu ketik huruf demi huruf hingga 100% tepat! Asah ketajaman telinga (listening) dan keakuratan penulisan ejaan kata (writing) bahasa Inggris.
+        </p>
+      </div>
+    </div>
+
+    <!-- Level Filter Selector -->
+    <div style="display: flex; gap: 8px; margin-bottom: 16px; overflow-x: auto; padding-bottom: 6px;">
+      ${levelTabs.map(t => `
+        <button class="choice-card-btn ${currentLevel === t.level ? 'active-eng-mode' : ''}" 
+                style="flex: 1; min-width: 190px; justify-content: center; font-weight: 800; ${currentLevel === t.level ? 'border-color: var(--accent-pink); background: rgba(244, 63, 94, 0.15);' : ''}" 
+                onclick="setDictationLevelFilter(${t.level})">
+          ${t.label}
+        </button>
+      `).join('')}
+    </div>
+
+    <!-- Navigation List Soal -->
+    <div style="display: flex; gap: 8px; margin-bottom: 18px; overflow-x: auto; padding-bottom: 6px;">
+      ${filteredList.map((item, idx) => `
+        <button class="quick-cmd-btn ${idx === appState.currentDictationIndex ? 'active' : ''}" 
+                style="padding: 8px 14px; font-weight: 700;" 
+                onclick="setDictationIndex(${idx})">
+          #${idx + 1}
+        </button>
+      `).join('')}
+    </div>
+
+    <!-- Main Dictation Practice Arena -->
+    <div style="background: var(--bg-card); padding: 24px; border-radius: var(--radius-md); border: 1px solid var(--border-glow); margin-bottom: 20px;">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; flex-wrap: wrap; gap: 8px;">
+        <span style="font-size: 0.78rem; font-weight: 800; color: var(--accent-pink); background: rgba(244, 63, 94, 0.15); padding: 4px 12px; border-radius: 12px; border: 1px solid rgba(244, 63, 94, 0.3);">
+          📌 ${currentItem.chapterRef} • ${currentItem.levelName}
+        </span>
+        <span style="font-size: 0.78rem; color: var(--accent-yellow); font-weight: 700;">
+          Tantangan #${appState.currentDictationIndex + 1} dari ${filteredList.length}
+        </span>
+      </div>
+
+      <!-- Panduan Bahasa Bayi Singkat -->
+      <div style="text-align: center; margin-bottom: 20px;">
+        <h3 style="color: #fff; font-size: 1.15rem; margin-bottom: 6px;">
+          ${currentLevel === 1 ? '🔤 Dengarkan Ejaan Huruf Lalu Ketik Hurufnya!' : 
+            currentLevel === 2 ? '📝 Dengarkan Kata Lalu Ketik Kosakata Tersebut!' : 
+            '💬 Dengarkan Kalimat Percakapan Lalu Ketik Kalimat Utuhnya!'}
+        </h3>
+        <p style="font-size: 0.85rem; color: var(--text-muted); margin: 0;">
+          Syarat lulus: Akurasi ketik harus <strong>100% tepat</strong> tanpa ada huruf yang salah ya!
+        </p>
+      </div>
+
+      <!-- Kontrol Pemutar Audio Kodi -->
+      <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-bottom: 22px;">
+        <button class="btn-primary" style="font-size: 0.92rem; padding: 10px 18px; display: flex; align-items: center; gap: 8px; background: linear-gradient(135deg, #0ea5e9, #0284c7);" onclick="playCurrentDictationAudio(false)">
+          🔊 Dengarkan Suara (Normal)
+        </button>
+        <button class="btn-secondary" style="font-size: 0.92rem; padding: 10px 18px; display: flex; align-items: center; gap: 8px;" onclick="playCurrentDictationAudio(true)">
+          🐢 Dengarkan Lebih Lambat (Slow)
+        </button>
+        ${currentLevel > 1 ? `
+          <button class="btn-secondary" style="font-size: 0.85rem; padding: 10px 14px; display: flex; align-items: center; gap: 6px;" onclick="spellOutTargetAudio()">
+            🔤 Bantuan Eja Huruf demi Huruf
+          </button>
+        ` : ''}
+      </div>
+
+      <!-- Real-time Character Tiles Stream -->
+      <div id="dictation-char-stream" class="dictation-char-stream"></div>
+
+      <!-- Input Field Mengetik -->
+      <div style="max-width: 650px; margin: 0 auto 14px;">
+        <input type="text" 
+               id="dictation-user-input" 
+               class="dictation-input-field" 
+               placeholder="👉 Ketik di sini sesuai suara yang kamu dengar..." 
+               autocomplete="off" 
+               autocorrect="off" 
+               autocapitalize="off" 
+               spellcheck="false" 
+               oninput="onDictationInputChange(event)">
+      </div>
+
+      <!-- Status Bar Akurasi Live -->
+      <div style="max-width: 650px; margin: 0 auto 18px; display: flex; justify-content: space-between; align-items: center; font-size: 0.82rem; color: var(--text-muted);">
+        <span id="dictation-match-count">Karakter cocok: 0 / ${currentItem.targetText.length}</span>
+        <span id="dictation-accuracy-pct" style="font-weight: 800; color: var(--accent-cyan);">Akurasi: 0%</span>
+      </div>
+
+      <!-- Tombol Peek Clue (Intip Petunjuk Bahasa Bayi) -->
+      <div style="text-align: center; margin-bottom: 16px;">
+        <button class="btn-secondary" style="font-size: 0.82rem; padding: 6px 14px;" onclick="toggleDictationHint()">
+          ${appState.dictationHintRevealed ? '🙈 Sembunyikan Petunjuk' : '💡 Intip Petunjuk / Arti Bahasa Bayi'}
+        </button>
+      </div>
+
+      <!-- Box Petunjuk Bahasa Bayi (Toggleable) -->
+      <div id="dictation-hint-box" style="display: ${appState.dictationHintRevealed ? 'block' : 'none'}; max-width: 650px; margin: 0 auto 20px; background: rgba(250, 204, 21, 0.1); border-left: 3px solid var(--accent-yellow); padding: 14px 18px; border-radius: 8px; font-size: 0.88rem; color: #fef08a;">
+        <strong>🍼 Petunjuk Bahasa Bayi Kodi:</strong>
+        <p style="margin: 6px 0 4px 0; color: #fef08a;">${currentItem.babyClue}</p>
+        <div style="font-size: 0.82rem; color: #cbd5e1; font-style: italic; margin-top: 4px;">
+          Arti Terjemahan: "${currentItem.meaning}"
+        </div>
+      </div>
+
+      <!-- Banner Sukses (Muncul saat 100% Tepat) -->
+      <div id="dictation-success-banner" style="display: none; max-width: 650px; margin: 0 auto;"></div>
+    </div>
+  `;
+
+  // Render initial character tiles
+  updateDictationTiles("", currentItem.targetText);
+
+  // Fokuskan kursor otomatis ke kolom input
+  setTimeout(() => {
+    const inputEl = document.getElementById("dictation-user-input");
+    if (inputEl) inputEl.focus();
+  }, 100);
+}
+
+// Window Controller Functions for Dictation Studio
+window.setDictationLevelFilter = function(lvl) {
+  sfx.playClick();
+  appState.currentDictationLevelFilter = lvl;
+  appState.currentDictationIndex = 0;
+  appState.dictationHintRevealed = false;
+  renderEvcDictationStudio();
+};
+
+window.setDictationIndex = function(idx) {
+  sfx.playClick();
+  appState.currentDictationIndex = idx;
+  appState.dictationHintRevealed = false;
+  renderEvcDictationStudio();
+};
+
+window.toggleDictationHint = function() {
+  sfx.playClick();
+  appState.dictationHintRevealed = !appState.dictationHintRevealed;
+  const hintBox = document.getElementById("dictation-hint-box");
+  if (hintBox) {
+    hintBox.style.display = appState.dictationHintRevealed ? "block" : "none";
+  }
+  const btn = event?.currentTarget;
+  if (btn) {
+    btn.innerText = appState.dictationHintRevealed ? "🙈 Sembunyikan Petunjuk" : "💡 Intip Petunjuk / Arti Bahasa Bayi";
+  }
+};
+
+window.playCurrentDictationAudio = function(isSlow) {
+  sfx.playClick();
+  const currentLevel = appState.currentDictationLevelFilter || 1;
+  const filteredList = evcDictationChallenges.filter(c => c.level === currentLevel);
+  const currentItem = filteredList[appState.currentDictationIndex] || filteredList[0];
+  if (!currentItem) return;
+
+  const rate = isSlow ? 0.6 : (currentLevel === 1 ? 0.75 : 0.85);
+  speechEngine.speakText(currentItem.audioText, rate);
+};
+
+window.spellOutTargetAudio = function() {
+  sfx.playClick();
+  const currentLevel = appState.currentDictationLevelFilter || 1;
+  const filteredList = evcDictationChallenges.filter(c => c.level === currentLevel);
+  const currentItem = filteredList[appState.currentDictationIndex] || filteredList[0];
+  if (!currentItem) return;
+
+  // Eja huruf per huruf dipisahkan koma agar TTS melafalkan satu per satu
+  const spelled = currentItem.targetText
+    .toUpperCase()
+    .split('')
+    .filter(c => /[A-Z]/.test(c))
+    .join(', ');
+
+  speechEngine.speakText(spelled, 0.65);
+};
+
+window.onDictationInputChange = function(e) {
+  const currentLevel = appState.currentDictationLevelFilter || 1;
+  const filteredList = evcDictationChallenges.filter(c => c.level === currentLevel);
+  const currentItem = filteredList[appState.currentDictationIndex] || filteredList[0];
+  if (!currentItem) return;
+
+  const inputVal = e.target.value;
+  updateDictationTiles(inputVal, currentItem.targetText, currentItem);
+};
+
+function updateDictationTiles(inputVal, targetStr, currentItem = null) {
+  const streamEl = document.getElementById("dictation-char-stream");
+  const matchCountEl = document.getElementById("dictation-match-count");
+  const accPctEl = document.getElementById("dictation-accuracy-pct");
+  const successBanner = document.getElementById("dictation-success-banner");
+  const inputEl = document.getElementById("dictation-user-input");
+  if (!streamEl) return;
+
+  let tilesHtml = "";
+  let matchedCount = 0;
+
+  for (let i = 0; i < targetStr.length; i++) {
+    const targetChar = targetStr[i];
+    const isTargetSpace = targetChar === ' ';
+
+    if (i < inputVal.length) {
+      const userChar = inputVal[i];
+      if (isTargetSpace) {
+        if (userChar === ' ') {
+          tilesHtml += `<span class="dictation-char-tile space matched">␣</span>`;
+          matchedCount++;
+        } else {
+          tilesHtml += `<span class="dictation-char-tile space error">${userChar}</span>`;
+        }
+      } else {
+        if (userChar.toLowerCase() === targetChar.toLowerCase()) {
+          tilesHtml += `<span class="dictation-char-tile matched">${targetChar}</span>`;
+          matchedCount++;
+        } else {
+          tilesHtml += `<span class="dictation-char-tile error">${userChar}</span>`;
+        }
+      }
+    } else {
+      if (isTargetSpace) {
+        tilesHtml += `<span class="dictation-char-tile space">␣</span>`;
+      } else {
+        tilesHtml += `<span class="dictation-char-tile">_</span>`;
+      }
+    }
+  }
+
+  streamEl.innerHTML = tilesHtml;
+
+  // Hitung persentase akurasi
+  const totalChars = targetStr.length;
+  let accuracyPct = Math.round((matchedCount / totalChars) * 100);
+  if (accuracyPct > 100) accuracyPct = 100;
+
+  if (matchCountEl) matchCountEl.innerText = `Karakter cocok: ${matchedCount} / ${totalChars}`;
+  if (accPctEl) {
+    accPctEl.innerText = `Akurasi: ${accuracyPct}%`;
+    accPctEl.style.color = accuracyPct === 100 ? "var(--accent-green)" : (accuracyPct > 50 ? "var(--accent-yellow)" : "var(--accent-cyan)");
+  }
+
+  // Evaluasi 100% tepat
+  const isExactMatch = inputVal.trim().toLowerCase() === targetStr.trim().toLowerCase();
+  const normalizedUser = inputVal.trim().toLowerCase().replace(/[.,!?;:'"]/g, '');
+  const normalizedTarget = targetStr.trim().toLowerCase().replace(/[.,!?;:'"]/g, '');
+  const isNormalizedMatch = normalizedUser === normalizedTarget && normalizedUser.length > 0;
+
+  const isComplete = isExactMatch || isNormalizedMatch;
+
+  if (isComplete && currentItem) {
+    if (successBanner && successBanner.style.display !== "block") {
+      sfx.playSuccess();
+      triggerConfetti();
+
+      // Tambahkan bintang jika belum diselesaikan di sesi ini
+      if (!appState.completedDictations) appState.completedDictations = {};
+      if (!appState.completedDictations[currentItem.id]) {
+        appState.completedDictations[currentItem.id] = true;
+        appState.stars += 1;
+        saveProgress();
+        updateHeaderStars();
+      }
+
+      if (inputEl) {
+        inputEl.style.borderColor = "var(--accent-green)";
+        inputEl.style.boxShadow = "0 0 20px rgba(74, 222, 128, 0.4)";
+      }
+
+      // Pastikan semua ubin berwarna hijau berkilau
+      let allMatchedTiles = "";
+      for (let i = 0; i < targetStr.length; i++) {
+        const c = targetStr[i];
+        if (c === ' ') {
+          allMatchedTiles += `<span class="dictation-char-tile space matched">␣</span>`;
+        } else {
+          allMatchedTiles += `<span class="dictation-char-tile matched">${c}</span>`;
+        }
+      }
+      streamEl.innerHTML = allMatchedTiles;
+      if (accPctEl) accPctEl.innerText = "Akurasi: 100% (Sempurna!)";
+
+      successBanner.style.display = "block";
+      successBanner.innerHTML = `
+        <div style="background: rgba(74, 222, 128, 0.15); border: 2px solid var(--accent-green); padding: 18px 20px; border-radius: 12px; margin-top: 16px; text-align: center; animation: fadeIn 0.3s ease;">
+          <div style="font-size: 2.2rem; margin-bottom: 6px;">🎉 ⭐ 💯</div>
+          <h3 style="color: #4ade80; margin: 0 0 6px 0; font-size: 1.25rem;">
+            LUAR BIASA! 100% AKURAT & BENAR! (+1 Bintang ⭐)
+          </h3>
+          <p style="color: #f1f5f9; font-size: 1.05rem; font-weight: 700; margin: 6px 0;">
+            "${currentItem.targetText}"
+          </p>
+          <div style="font-size: 0.88rem; color: #a7f3d0; margin-bottom: 14px; font-style: italic;">
+            Arti: ${currentItem.meaning}
+          </div>
+          <button class="btn-primary" style="font-size: 0.95rem; padding: 10px 24px; font-weight: 800; background: linear-gradient(135deg, #10b981, #059669);" onclick="nextDictationChallenge()">
+            ➡️ Lanjut ke Soal Berikutnya
+          </button>
+        </div>
+      `;
+    }
+  } else {
+    if (successBanner) successBanner.style.display = "none";
+    if (inputEl) {
+      inputEl.style.borderColor = "var(--accent-cyan)";
+      inputEl.style.boxShadow = "0 0 15px rgba(56, 189, 248, 0.25)";
+    }
+  }
+}
+
+window.nextDictationChallenge = function() {
+  sfx.playClick();
+  const currentLevel = appState.currentDictationLevelFilter || 1;
+  const filteredList = evcDictationChallenges.filter(c => c.level === currentLevel);
+
+  if (appState.currentDictationIndex + 1 < filteredList.length) {
+    appState.currentDictationIndex += 1;
+  } else {
+    if (currentLevel < 3) {
+      appState.currentDictationLevelFilter += 1;
+      appState.currentDictationIndex = 0;
+      setKodiSpeech(
+        `Selamat! Kamu telah menaklukkan semua soal di Tingkat ${currentLevel}! Sekarang mari naik level ke Tingkat ${currentLevel + 1}!`,
+        "Telingamu semakin peka dan ketikanmu semakin gesit!"
+      );
+    } else {
+      appState.currentDictationIndex = 0;
+      setKodiSpeech(
+        "🏆 WOW FANTASTIS! Kamu telah menuntaskan seluruh 32 tantangan Dikte & Mengetik EVC ESL!",
+        "Kamu siap berbicara, mendengar, dan menulis bahasa Inggris profesional dengan percaya diri!"
+      );
+    }
+  }
+
+  appState.dictationHintRevealed = false;
+  renderEvcDictationStudio();
+};
 
 // ================= DICTIONARY TAB LOGIC =================
 function renderDictionary(filter = "") {

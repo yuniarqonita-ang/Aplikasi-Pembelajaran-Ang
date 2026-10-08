@@ -1465,6 +1465,85 @@ body {
   box-shadow: 0 0 10px rgba(56, 189, 248, 0.4);
 }
 
+/* ================= DICTATION & TYPING STUDIO STYLES ================= */
+.dictation-hero-card {
+  background: linear-gradient(135deg, rgba(30, 41, 59, 0.95), rgba(15, 23, 42, 0.95));
+  border: 1.5px solid var(--accent-pink);
+  border-radius: 12px;
+  padding: 16px 20px;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.dictation-input-field {
+  width: 100%;
+  background: #020617;
+  border: 2px solid var(--accent-cyan);
+  border-radius: 10px;
+  padding: 14px 18px;
+  font-family: var(--font-code);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #38bdf8;
+  letter-spacing: 1.5px;
+  outline: none;
+  box-shadow: 0 0 15px rgba(56, 189, 248, 0.25);
+  transition: all 0.2s;
+  box-sizing: border-box;
+}
+
+.dictation-input-field:focus {
+  border-color: var(--accent-pink);
+  box-shadow: 0 0 20px rgba(244, 63, 94, 0.4);
+}
+
+.dictation-char-stream {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  justify-content: center;
+  margin: 18px 0;
+  min-height: 48px;
+}
+
+.dictation-char-tile {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 36px;
+  height: 44px;
+  padding: 0 6px;
+  background: rgba(15, 23, 42, 0.9);
+  border: 1.5px solid rgba(255, 255, 255, 0.15);
+  border-radius: 6px;
+  font-family: var(--font-code);
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: #64748b;
+  transition: all 0.2s;
+}
+
+.dictation-char-tile.matched {
+  background: rgba(74, 222, 128, 0.2);
+  border-color: #4ade80;
+  color: #4ade80;
+  box-shadow: 0 0 10px rgba(74, 222, 128, 0.4);
+}
+
+.dictation-char-tile.error {
+  background: rgba(248, 113, 113, 0.2);
+  border-color: #f87171;
+  color: #f87171;
+}
+
+.dictation-char-tile.space {
+  min-width: 20px;
+  border-style: dashed;
+  background: transparent;
+}
+
 /* ================= PRINT STYLES ================= */
 @media print {
   body {

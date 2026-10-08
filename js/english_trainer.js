@@ -889,3 +889,349 @@ const toeflIbtBuildingSkills = [
     audioSnippet: "A memorable technical challenge I faced was diagnosing an unexpected database slowdown during peak hours."
   }
 ];
+
+// ===================================================================
+// 5. TANTANGAN DIKTE SUARA & MENGETIK BERJENJANG (EVC LIBRETEXTS EDITION)
+// Sesuai Buku: "Listening & Speaking for Beginning English Language Learners"
+// (Maria Antonini de Pino et al. - Evergreen Valley College)
+// Tingkat 1: Eja Huruf demi Huruf (100% Akurasi Ejaan Nama & Kata)
+// Tingkat 2: Dikte Kosakata per Kata (Vocabulary Mastery Bab 1-8)
+// Tingkat 3: Dikte Kalimat Percakapan Utuh (Natural Sentences & Dialogues)
+// ===================================================================
+const evcDictationChallenges = [
+  // ==========================================
+  // LEVEL 1: EJA HURUF (SPELLING & ALPHABET)
+  // Khas EVC Chapter 1 & 2 (Spelling Names & Objects)
+  // ==========================================
+  {
+    id: "dic-l1-1",
+    level: 1,
+    levelName: "Level 1: Eja Huruf",
+    targetText: "CARMONA",
+    audioText: "C, A, R, M, O, N, A",
+    chapterRef: "Chapter 1: Greetings & Spelling Names",
+    meaning: "Nama belakang Luis Carmona di dialog kelas EVC: C-A-R-M-O-N-A",
+    babyClue: "🍼 Kodi mengeja nama keluarga 'CARMONA'. Dengarkan ketukan hurufnya dan ketik satu demi satu!"
+  },
+  {
+    id: "dic-l1-2",
+    level: 1,
+    levelName: "Level 1: Eja Huruf",
+    targetText: "PEREZ",
+    audioText: "P, E, R, E, Z",
+    chapterRef: "Chapter 1: Assistant's Name",
+    meaning: "Nama asisten kelas di dialog EVC: P-E-R-E-Z",
+    babyClue: "🍼 Eja 5 huruf pendek: P - E - R - E - Z. Ketik hurufnya sampai 100% tepat!"
+  },
+  {
+    id: "dic-l1-3",
+    level: 1,
+    levelName: "Level 1: Eja Huruf",
+    targetText: "PROJECTOR",
+    audioText: "P, R, O, J, E, C, T, O, R",
+    chapterRef: "Chapter 1: Classroom Equipment",
+    meaning: "Proyektor sorot layar di ruang kelas: P-R-O-J-E-C-T-O-R",
+    babyClue: "🍼 Alat proyektor di langit-langit kelas. Ada 9 huruf: P-R-O-J-E-C-T-O-R!"
+  },
+  {
+    id: "dic-l1-4",
+    level: 1,
+    levelName: "Level 1: Eja Huruf",
+    targetText: "STAPLER",
+    audioText: "S, T, A, P, L, E, R",
+    chapterRef: "Chapter 1: Classroom Supplies",
+    meaning: "Alat penjepit kertas hekter: S-T-A-P-L-E-R",
+    babyClue: "🍼 Penjepit kertas di meja guru. 7 huruf: S - T - A - P - L - E - R!"
+  },
+  {
+    id: "dic-l1-5",
+    level: 1,
+    levelName: "Level 1: Eja Huruf",
+    targetText: "CALCULATOR",
+    audioText: "C, A, L, C, U, L, A, T, O, R",
+    chapterRef: "Chapter 1: Classroom Objects",
+    meaning: "Kalkulator hitung di laci guru: C-A-L-C-U-L-A-T-O-R",
+    babyClue: "🍼 Alat hitung angka di laci meja guru. Dengarkan ketukan hurufnya!"
+  },
+  {
+    id: "dic-l1-6",
+    level: 1,
+    levelName: "Level 1: Eja Huruf",
+    targetText: "WHITEBOARD",
+    audioText: "W, H, I, T, E, B, O, A, R, D",
+    chapterRef: "Chapter 1: Classroom Objects",
+    meaning: "Papan tulis putih spidol: W-H-I-T-E-B-O-A-R-D",
+    babyClue: "🍼 Papan tulis putih di depan kelas: White + Board!"
+  },
+  {
+    id: "dic-l1-7",
+    level: 1,
+    levelName: "Level 1: Eja Huruf",
+    targetText: "VIETNAM",
+    audioText: "V, I, E, T, N, A, M",
+    chapterRef: "Chapter 2: Places & Nationalities",
+    meaning: "Negara asal siswa Binh dan Duc di dialog EVC: V-I-E-T-N-A-M",
+    babyClue: "🍼 Nama negara tetangga di Asia Tenggara tempat asal Binh!"
+  },
+  {
+    id: "dic-l1-8",
+    level: 1,
+    levelName: "Level 1: Eja Huruf",
+    targetText: "BRAZIL",
+    audioText: "B, R, A, Z, I, L",
+    chapterRef: "Chapter 2: Places & Nationalities",
+    meaning: "Negara Brasil asal Cristiano dan Joao: B-R-A-Z-I-L",
+    babyClue: "🍼 Negara sepak bola terkenal asal Cristiano dan Joao di dialog EVC!"
+  },
+  {
+    id: "dic-l1-9",
+    level: 1,
+    levelName: "Level 1: Eja Huruf",
+    targetText: "WEBSITE",
+    audioText: "W, E, B, S, I, T, E",
+    chapterRef: "Chapter 4: Workplaces & Tech",
+    meaning: "Halaman web digital: W-E-B-S-I-T-E",
+    babyClue: "🍼 Portal online yang dirancang oleh profesi web designer!"
+  },
+  {
+    id: "dic-l1-10",
+    level: 1,
+    levelName: "Level 1: Eja Huruf",
+    targetText: "SCHEDULE",
+    audioText: "S, C, H, E, D, U, L, E",
+    chapterRef: "Chapter 3: Routines & Calendar",
+    meaning: "Jadwal kegiatan mingguan: S-C-H-E-D-U-L-E",
+    babyClue: "🍼 Agenda waktu belajar dan kerja. Awas ada huruf 'ch'-nya ya!"
+  },
+
+  // ==========================================
+  // LEVEL 2: DIKTE KATA (WORD DICTATION)
+  // Khas EVC Chapter 1 - 8 (Vocabulary Mastery)
+  // ==========================================
+  {
+    id: "dic-l2-1",
+    level: 2,
+    levelName: "Level 2: Dikte Kata",
+    targetText: "hospital",
+    audioText: "hospital",
+    chapterRef: "Chapter 4: Workplaces",
+    meaning: "Rumah sakit tempat kerja dokter dan perawat",
+    babyClue: "🍼 Tempat kerja Roberto di buku EVC. 8 huruf: h - o - s - p - i - t - a - l."
+  },
+  {
+    id: "dic-l2-2",
+    level: 2,
+    levelName: "Level 2: Dikte Kata",
+    targetText: "weather",
+    audioText: "weather",
+    chapterRef: "Chapter 2: Weather & Seasons",
+    meaning: "Cuaca (panas, hujan, berangin)",
+    babyClue: "🍼 Ingat ejaannya ada huruf 'ea': w - e - a - t - h - e - r."
+  },
+  {
+    id: "dic-l2-3",
+    level: 2,
+    levelName: "Level 2: Dikte Kata",
+    targetText: "breakfast",
+    audioText: "breakfast",
+    chapterRef: "Chapter 3: Daily Routines",
+    meaning: "Sarapan pagi sebelum berangkat kerja/sekolah",
+    babyClue: "🍼 Makanan pertama di pagi hari Lisa dan anak-anaknya: b - r - e - a - k - f - a - s - t."
+  },
+  {
+    id: "dic-l2-4",
+    level: 2,
+    levelName: "Level 2: Dikte Kata",
+    targetText: "gardening",
+    audioText: "gardening",
+    chapterRef: "Chapter 6: Personal Hobbies",
+    meaning: "Berkebun / menanam bunga dan sayuran",
+    babyClue: "🍼 Hobi menanam tanaman di pekarangan rumah: g - a - r - d - e - n - i - n - g."
+  },
+  {
+    id: "dic-l2-5",
+    level: 2,
+    levelName: "Level 2: Dikte Kata",
+    targetText: "electrician",
+    audioText: "electrician",
+    chapterRef: "Chapter 4: Workplaces & Jobs",
+    meaning: "Teknisi ahli kelistrikan",
+    babyClue: "🍼 Profesi Kevin di buku EVC yang jago instalasi kabel listrik!"
+  },
+  {
+    id: "dic-l2-6",
+    level: 2,
+    levelName: "Level 2: Dikte Kata",
+    targetText: "sanitizer",
+    audioText: "sanitizer",
+    chapterRef: "Chapter 5: Food & Health",
+    meaning: "Cairan pembersih kuman tangan (Hand sanitizer)",
+    babyClue: "🍼 Pembersih tangan dari kuman sebelum makan: s - a - n - i - t - i - z - e - r."
+  },
+  {
+    id: "dic-l2-7",
+    level: 2,
+    levelName: "Level 2: Dikte Kata",
+    targetText: "vacation",
+    audioText: "vacation",
+    chapterRef: "Chapter 7: Past Activities & Travel",
+    meaning: "Liburan / tamasya santai",
+    babyClue: "🍼 Waktu istirahat santai jalan-jalan bersama keluarga: v - a - c - a - t - i - o - n."
+  },
+  {
+    id: "dic-l2-8",
+    level: 2,
+    levelName: "Level 2: Dikte Kata",
+    targetText: "ceremony",
+    audioText: "ceremony",
+    chapterRef: "Chapter 8: Invitations & Events",
+    meaning: "Upacara sakral pernikahan atau wisuda",
+    babyClue: "🍼 Upacara resmi pernikahan jam 2 siang: c - e - r - e - m - o - n - y."
+  },
+  {
+    id: "dic-l2-9",
+    level: 2,
+    levelName: "Level 2: Dikte Kata",
+    targetText: "broccoli",
+    audioText: "broccoli",
+    chapterRef: "Chapter 5: Healthy Eating",
+    meaning: "Sayuran brokoli hijau sehat bergizi",
+    babyClue: "🍼 Sayuran hijau sehat kaya vitamin: b - r - o - c - c - o - l - i (ada huruf c ganda)!"
+  },
+  {
+    id: "dic-l2-10",
+    level: 2,
+    levelName: "Level 2: Dikte Kata",
+    targetText: "comfortable",
+    audioText: "comfortable",
+    chapterRef: "Chapter 4: Home & Furniture",
+    meaning: "Nyaman / enak diduduki",
+    babyClue: "🍼 Kursi atau sofa yang empuk dan bikin betah duduk: c - o - m - f - o - r - t - a - b - l - e."
+  },
+  {
+    id: "dic-l2-11",
+    level: 2,
+    levelName: "Level 2: Dikte Kata",
+    targetText: "sightseeing",
+    audioText: "sightseeing",
+    chapterRef: "Chapter 7: Shopping & Travel",
+    meaning: "Jalan-jalan melihat pemandangan kota/wisata",
+    babyClue: "🍼 Keliling kota naik bus wisata melihat tempat bersejarah: s - i - g - h - t - s - e - e - i - n - g."
+  },
+  {
+    id: "dic-l2-12",
+    level: 2,
+    levelName: "Level 2: Dikte Kata",
+    targetText: "frequency",
+    audioText: "frequency",
+    chapterRef: "Chapter 5: Adverbs of Frequency",
+    meaning: "Tingkat keseringan rutinitas (always, sometimes)",
+    babyClue: "🍼 Istilah seberapa sering kita melakukan kegiatan: f - r - e - q - u - e - n - c - y."
+  },
+
+  // ==========================================
+  // LEVEL 3: DIKTE KALIMAT UTUH (SENTENCE DICTATION)
+  // Khas EVC Chapter 1 - 8 (Natural Dialogues)
+  // ==========================================
+  {
+    id: "dic-l3-1",
+    level: 3,
+    levelName: "Level 3: Dikte Kalimat",
+    targetText: "Where are you from?",
+    audioText: "Where are you from?",
+    chapterRef: "Chapter 1: Greetings & Introductions",
+    meaning: "Dari mana asalmu?",
+    babyClue: "🍼 Pertanyaan paling dasar dan sopan saat berkenalan dengan teman baru di kelas!"
+  },
+  {
+    id: "dic-l3-2",
+    level: 3,
+    levelName: "Level 3: Dikte Kalimat",
+    targetText: "She is a web designer.",
+    audioText: "She is a web designer.",
+    chapterRef: "Chapter 4: Workplaces & Jobs",
+    meaning: "Dia adalah seorang desainer web.",
+    babyClue: "🍼 Menjelaskan profesi Mila yang merancang tampilan website kreatif di kantor teknologi!"
+  },
+  {
+    id: "dic-l3-3",
+    level: 3,
+    levelName: "Level 3: Dikte Kalimat",
+    targetText: "The weather is warm and sunny.",
+    audioText: "The weather is warm and sunny.",
+    chapterRef: "Chapter 2: Weather & Places",
+    meaning: "Cuacanya hangat dan cerah.",
+    babyClue: "🍼 Menggambarkan suasana cuaca cerah di California saat matahari bersinar hangat!"
+  },
+  {
+    id: "dic-l3-4",
+    level: 3,
+    levelName: "Level 3: Dikte Kalimat",
+    targetText: "There is a clock on the wall.",
+    audioText: "There is a clock on the wall.",
+    chapterRef: "Chapter 1 & 4: There is / There are",
+    meaning: "Ada sebuah jam dinding di tembok.",
+    babyClue: "🍼 Rumus keberadaan benda tunggal: 'There is' + sebuah jam + di atas dinding."
+  },
+  {
+    id: "dic-l3-5",
+    level: 3,
+    levelName: "Level 3: Dikte Kalimat",
+    targetText: "I walk to school every day.",
+    audioText: "I walk to school every day.",
+    chapterRef: "Chapter 2: Simple Present Routines",
+    meaning: "Saya berjalan kaki ke sekolah setiap hari.",
+    babyClue: "🍼 Rutinitas pagi hari yang dilakukan setiap hari secara rajin (every day)."
+  },
+  {
+    id: "dic-l3-6",
+    level: 3,
+    levelName: "Level 3: Dikte Kalimat",
+    targetText: "Vegetables are always healthy.",
+    audioText: "Vegetables are always healthy.",
+    chapterRef: "Chapter 5: Food & Adverbs of Frequency",
+    meaning: "Sayur-mayur selalu sehat untuk tubuh.",
+    babyClue: "🍼 Fakta kesehatan: kata 'always' diletakkan tepat setelah to be 'are'!"
+  },
+  {
+    id: "dic-l3-7",
+    level: 3,
+    levelName: "Level 3: Dikte Kalimat",
+    targetText: "He can swim in the ocean.",
+    audioText: "He can swim in the ocean.",
+    chapterRef: "Chapter 6: Modal Verb Can for Ability",
+    meaning: "Dia bisa berenang di lautan.",
+    babyClue: "🍼 Menunjukkan kemampuan fisik (ability): kata kerja setelah modal 'can' wajib polos (swim)!"
+  },
+  {
+    id: "dic-l3-8",
+    level: 3,
+    levelName: "Level 3: Dikte Kalimat",
+    targetText: "I enjoyed my vacation last week.",
+    audioText: "I enjoyed my vacation last week.",
+    chapterRef: "Chapter 7: Simple Past Tense",
+    meaning: "Saya sangat menikmati liburan saya minggu lalu.",
+    babyClue: "🍼 Kalimat masa lampau: kata 'enjoy' diberi akhiran '-ed' karena ada keterangan 'last week'!"
+  },
+  {
+    id: "dic-l3-9",
+    level: 3,
+    levelName: "Level 3: Dikte Kalimat",
+    targetText: "We are going to visit the museum.",
+    audioText: "We are going to visit the museum.",
+    chapterRef: "Chapter 8: Future Plans with Be Going To",
+    meaning: "Kami akan mengunjungi museum itu.",
+    babyClue: "🍼 Rencana masa depan: rumus 'are going to' + kata kerja dasar 'visit'!"
+  },
+  {
+    id: "dic-l3-10",
+    level: 3,
+    levelName: "Level 3: Dikte Kalimat",
+    targetText: "Would you like to have some coffee?",
+    audioText: "Would you like to have some coffee?",
+    chapterRef: "Chapter 8: Invitations & Etiquette",
+    meaning: "Maukah kamu minum kopi bersama?",
+    babyClue: "🍼 Kalimat ajakan sopan elegan dalam bahasa Inggris: 'Would you like to...'!"
+  }
+];
+
