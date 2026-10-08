@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Akademi IT & Koding Kodi - Persiapan Tes IT, SQL, & English Speaking</title>
+  
+  <!-- PWA & Mobile Meta Tags -->
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#38bdf8">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <link rel="apple-touch-icon" href="assets/icon-192.png">
+
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🤖</text></svg>">
+</head>
+<body>
+
+  <!-- Tech Grid Background -->
+  <div class="tech-bg"></div>
+
+  <!-- Confetti Canvas -->
+  <canvas id="confetti-canvas"></canvas>
+
+  <div class="app-wrapper">
+    <!-- Header -->
+    <header class="app-header">
+      <div class="logo-area">
+        <div class="mascot-avatar-small">
+          <svg width="32" height="32" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="20" y="25" width="60" height="50" rx="15" fill="#38bdf8"/>
+            <circle cx="38" cy="48" r="8" fill="#0f172a"/>
+            <circle cx="62" cy="48" r="8" fill="#0f172a"/>
+            <circle cx="41" cy="45" r="3" fill="#fff"/>
+            <circle cx="65" cy="45" r="3" fill="#fff"/>
+            <rect x="38" y="62" width="24" height="4" rx="2" fill="#0f172a"/>
+            <rect x="47" y="10" width="6" height="15" fill="#facc15"/>
+            <circle cx="50" cy="8" r="6" fill="#f472b6"/>
+          </svg>
+        </div>
+        <div class="logo-text">
+          <h1>Akademi IT & Koding Kodi</h1>
+          <p>Belajar IT Support, SQL Tabel, Pemrograman, & English Wawancara</p>
+        </div>
+      </div>
+
+      <div class="header-stats">
+        <button id="btn-pwa-install" class="pwa-install-btn" onclick="triggerPwaInstall()">
+          📲 Pasang di HP
+        </button>
+        <div class="stat-badge star-count">
+          <span>⭐</span>
+          <span id="header-stars">0 Bintang</span>
+        </div>
+        <div class="stat-badge level-tag">
+          <span>🏆</span>
+          <span id="header-completed">0/5 Selesai</span>
+        </div>
+        <button id="sound-toggle" class="sound-toggle-btn" title="Nyalakan/Matikan Suara">🔊</button>
+      </div>
+    </header>
+
+    <!-- Main Navigation Bar -->
+    <nav class="main-nav">
+      <button class="nav-tab active" data-tab="adventure" onclick="switchTab('adventure')">
+        🗺️ Peta Petualangan
+      </button>
+      <button class="nav-tab" data-tab="sql-trainer" onclick="switchTab('sql-trainer')">
+        🗄️ Tes SQL & Output Koding
+      </button>
+      <button class="nav-tab" data-tab="english-trainer" onclick="switchTab('english-trainer')">
+        🗣️ Studio English & Speaking
+      </button>
+      <button class="nav-tab" data-tab="dictionary" onclick="switchTab('dictionary')">
+        📖 Kamus Bayi IT
+      </button>
+      <button class="nav-tab" data-tab="sandbox" onclick="switchTab('sandbox')">
+        📟 Terminal Sandbox
+      </button>
+      <button class="nav-tab" data-tab="certificate" onclick="switchTab('certificate')">
+        🎓 Sertifikat Kelulusan
+      </button>
+    </nav>
+
+    <!-- Kodi Mascot Hero Banner -->
+    <section class="kodi-hero-card">
+      <div class="kodi-character-wrap" title="Klik Kodi buat dengerin lelucon IT!">
+        <svg class="kodi-character-svg" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Antena -->
+          <rect x="47" y="6" width="6" height="18" rx="3" fill="#facc15"/>
+          <circle cx="50" cy="6" r="7" fill="#f472b6"/>
+          <!-- Telinga headphone -->
+          <rect x="12" y="38" width="8" height="24" rx="4" fill="#818cf8"/>
+          <rect x="80" y="38" width="8" height="24" rx="4" fill="#818cf8"/>
+          <!-- Kepala -->
+          <rect x="18" y="24" width="64" height="52" rx="16" fill="url(#kodiGrad)"/>
+          <!-- Pipi Merona Kawaii -->
+          <circle cx="30" cy="58" r="4" fill="#fb7185" opacity="0.6"/>
+          <circle cx="70" cy="58" r="4" fill="#fb7185" opacity="0.6"/>
+          <!-- Layar Mata -->
+          <rect x="26" y="34" width="48" height="26" rx="8" fill="#0f172a"/>
+          <!-- Mata Binar -->
+          <circle cx="38" cy="46" r="6" fill="#38bdf8"/>
+          <circle cx="40" cy="44" r="2.5" fill="#fff"/>
+          <circle cx="62" cy="46" r="6" fill="#38bdf8"/>
+          <circle cx="64" cy="44" r="2.5" fill="#fff"/>
+          <!-- Senyum Lucu -->
+          <path d="M 44 54 Q 50 59 56 54" stroke="#4ade80" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+          <!-- Badan Mini -->
+          <rect x="30" y="76" width="40" height="20" rx="8" fill="#38bdf8"/>
+          <circle cx="50" cy="85" r="4" fill="#facc15"/>
+
+          <defs>
+            <linearGradient id="kodiGrad" x1="18" y1="24" x2="82" y2="76" gradientUnits="userSpaceOnUse">
+              <stop stop-color="#38bdf8"/>
+              <stop offset="1" stop-color="#6366f1"/>
+            </linearGradient>
+          </defs>
+        </svg>
+      </div>
+
+      <div class="kodi-speech-bubble">
+        <div class="kodi-speaker-name">🤖 Kodi - Sahabat Koding & IT Kamu</div>
+        <div id="kodi-msg" class="kodi-message-text">
+          Halo temanku! Kenalin, namaku Kodi! Tenang, jangan panik ya! Di sini ga ada rumus rumit. Bersama aku, kita pelajari Koding, IT Support, kueri SQL tabel, dan English Speaking buat persiapan tes kerja!
+        </div>
+        <div id="kodi-subtip" class="kodi-subtip">
+          💡 <span>Klik pada badan Kodi untuk mendengarkan lelucon & tips seru!</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= TAB 1: PETA PETUALANGAN ================= -->
+    <main id="tab-adventure" class="tab-content active">
+      <div class="section-title-wrap">
+        <h2 class="section-title">Misi Pembelajaran Berbasis Proyek (PBL)</h2>
+        <p class="section-subtitle">
+          Selesaikan setiap level untuk membuka lencana keahlian dan mengumpulkan bintang pahlawan IT!
+        </p>
+      </div>
+
+      <!-- Quest Cards Container -->
+      <div id="quest-grid-container" class="quest-grid"></div>
+    </main>
+
+    <!-- ================= TAB 2: TES SQL & OUTPUT KODING ================= -->
+    <section id="tab-sql-trainer" class="tab-content">
+      <div class="section-title-wrap">
+        <h2 class="section-title">Studio Tes Tertulis SQL & Output Koding</h2>
+        <p class="section-subtitle">
+          Latihan kueri tabel database (MSSQL) dan tebak hasil koding (C#, JS) yang sering keluar di tes masuk kerja IT!
+        </p>
+      </div>
+
+      <div id="sql-content-area"></div>
+    </section>
+
+    <!-- ================= TAB 3: STUDIO ENGLISH & SPEAKING ================= -->
+    <section id="tab-english-trainer" class="tab-content">
+      <div class="section-title-wrap">
+        <h2 class="section-title">Studio Bahasa Inggris & Speaking Interaktif</h2>
+        <p class="section-subtitle">
+          Latihan Wawancara Kerja Profesional, Game Huruf Hilang (Spelling & Vocab), dan Bank Soal Marathon TOEFL ITP / IELTS!
+        </p>
+      </div>
+
+      <div id="english-content-area"></div>
+    </section>
+
+    <!-- ================= TAB 4: KAMUS BAYI IT ================= -->
+    <section id="tab-dictionary" class="tab-content">
+      <div class="section-title-wrap">
+        <h2 class="section-title">Kamus Bayi IT: Dari Nol Jadi Paham</h2>
+        <p class="section-subtitle">
+          Semua istilah 'angker' IT diterjemahkan ke perumpamaan dapur, kantor pos, dan kehidupan sehari-hari!
+        </p>
+      </div>
+
+      <div class="dictionary-controls">
+        <input type="text" id="dict-search-input" class="search-input" placeholder="🔍 Cari istilah... (contoh: RAM, DNS, Bug, Variabel, dsb)" />
+      </div>
+
+      <div id="dictionary-list" class="dict-grid"></div>
+    </section>
+
+    <!-- ================= TAB 5: TERMINAL SANDBOX ================= -->
+    <section id="tab-sandbox" class="tab-content">
+      <div class="section-title-wrap">
+        <h2 class="section-title">Terminal Sandbox Bebas</h2>
+        <p class="section-subtitle">
+          Tempat kamu mencoba mantra sakti PowerShell IT tanpa takut salah atau merusak apapun!
+        </p>
+      </div>
+
+      <div class="terminal-window" style="max-width: 900px; margin: 0 auto;">
+        <div class="terminal-header">
+          <div class="terminal-dots">
+            <div class="terminal-dot dot-red"></div>
+            <div class="terminal-dot dot-yellow"></div>
+            <div class="terminal-dot dot-green"></div>
+          </div>
+          <div class="terminal-title">Kodi Sandbox Environment - Windows PowerShell</div>
+        </div>
+        <div class="terminal-body" id="sandbox-term-body" style="min-height: 280px; max-height: 380px;">
+          <div class="term-line info">Selamat datang di Sandbox Terminal! Ketik 'help' untuk panduan mantra.</div>
+          <div class="term-line" style="color: #64748b;">(Coba: ipconfig, ping google.com, systeminfo, mkdir ProyekBaru, cls)</div>
+        </div>
+        <div class="term-input-row" style="padding: 12px 18px; background: #060911;">
+          <span class="term-prompt">C:\Users\Playground&gt;</span>
+          <input type="text" id="sandbox-cmd-input" class="term-input" placeholder="Ketik perintah di sini lalu tekan Enter..." />
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= TAB 6: SERTIFIKAT KELULUSAN ================= -->
+    <section id="tab-certificate" class="tab-content">
+      <div class="section-title-wrap">
+        <h2 class="section-title">Sertifikat Kelulusan Resmi</h2>
+        <p class="section-subtitle">
+          Bukti nyata dedikasi belajarmu dari non-IT menjadi Pahlawan Pemecah Masalah Komputer & Software!
+        </p>
+      </div>
+
+      <div class="cert-card-preview" id="printable-certificate">
+        <div class="cert-badge-ribbon">🏆</div>
+        <h3 class="cert-title">SERTIFIKAT KELULUSAN</h3>
+        <p class="cert-subtitle">Akademi IT Support, Koding, & English bersama Kodi</p>
+
+        <p style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 8px;">Diberikan dengan bangga kepada:</p>
+        <input type="text" id="cert-student-name" class="cert-name-input" value="Siswa Hebat" title="Klik untuk mengubah namamu" />
+
+        <p class="cert-quote">
+          "Atas keberhasilan menaklukkan 5 Misi Berbasis Proyek: Anatomi Komputer, Perintah Sakti Terminal, Kantor Pos Jaringan, Logika Koding Robot, Meja Bantuan IT Helpdesk, serta Latihan Tes Kueri SQL & English Wawancara."
+        </p>
+
+        <div style="display: flex; justify-content: space-around; border-top: 1px dashed rgba(250, 204, 21, 0.4); padding-top: 14px; font-size: 0.82rem; color: #cbd5e1;">
+          <div>
+            <strong>Predikat:</strong><br>
+            <span style="color: var(--accent-green);">Junior Problem Solver ⭐</span>
+          </div>
+          <div>
+            <strong>Pencapaian:</strong><br>
+            <span id="cert-stars-total" style="color: var(--accent-yellow);">0 Bintang</span>
+          </div>
+          <div>
+            <strong>Tanggal:</strong><br>
+            <span id="cert-issue-date">8 Oktober 2026</span>
+          </div>
+        </div>
+      </div>
+
+      <div style="text-align: center;">
+        <button class="btn-primary" onclick="printCertificate()">
+          🖨️ Cetak / Simpan sebagai PDF
+        </button>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- ================= MODAL LEVEL DETAIL ================= -->
+  <div id="level-modal" class="modal-overlay">
+    <div class="modal-box">
+      <div class="modal-header">
+        <h2 id="modal-level-title">Misi Pembelajaran</h2>
+        <button class="btn-close-modal" onclick="closeLevelModal()">✕</button>
+      </div>
+      <div class="modal-body">
+        <div id="modal-step-progress" class="mission-progress-bar"></div>
+        <div id="modal-step-body"></div>
+      </div>
+      <div class="modal-footer" id="modal-footer-actions"></div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/sfx.js"></script>
+  <script src="js/speech.js"></script>
+  <script src="js/dictionary.js"></script>
+  <script src="js/levels.js"></script>
+  <script src="js/sql_trainer.js"></script>
+  <script src="js/english_trainer.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
