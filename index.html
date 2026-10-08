@@ -49,6 +49,9 @@
         <button id="btn-pwa-install" class="pwa-install-btn" onclick="triggerPwaInstall()">
           📲 Pasang di HP
         </button>
+        <button id="accent-toggle-btn" class="accent-toggle-btn" onclick="toggleAccent()" title="Ganti Aksen Bahasa Inggris (Amerika / British)">
+          🇺🇸 US
+        </button>
         <div class="stat-badge star-count">
           <span>⭐</span>
           <span id="header-stars">0 Bintang</span>
@@ -63,23 +66,29 @@
 
     <!-- Main Navigation Bar -->
     <nav class="main-nav">
-      <button class="nav-tab active" data-tab="adventure" onclick="switchTab('adventure')">
-        🗺️ Peta Petualangan
+      <button class="nav-tab active" data-tab="adventure" onclick="switchTab('adventure')" title="Peta Petualangan Belajar">
+        <span class="nav-icon">🗺️</span>
+        <span class="nav-label">Petualangan</span>
       </button>
-      <button class="nav-tab" data-tab="sql-trainer" onclick="switchTab('sql-trainer')">
-        🗄️ Tes SQL & Output Koding
+      <button class="nav-tab" data-tab="sql-trainer" onclick="switchTab('sql-trainer')" title="Tes Kueri SQL & Output Koding">
+        <span class="nav-icon">🗄️</span>
+        <span class="nav-label">Tes SQL & Koding</span>
       </button>
-      <button class="nav-tab" data-tab="english-trainer" onclick="switchTab('english-trainer')">
-        🗣️ Studio English & Speaking
+      <button class="nav-tab" data-tab="english-trainer" onclick="switchTab('english-trainer')" title="Studio English Speaking & Wawancara">
+        <span class="nav-icon">🗣️</span>
+        <span class="nav-label">English Studio</span>
       </button>
-      <button class="nav-tab" data-tab="dictionary" onclick="switchTab('dictionary')">
-        📖 Kamus Bayi IT
+      <button class="nav-tab" data-tab="dictionary" onclick="switchTab('dictionary')" title="Kamus Bayi IT: Istilah Mudah Dipahami">
+        <span class="nav-icon">📖</span>
+        <span class="nav-label">Kamus Bayi IT</span>
       </button>
-      <button class="nav-tab" data-tab="sandbox" onclick="switchTab('sandbox')">
-        📟 Terminal Sandbox
+      <button class="nav-tab" data-tab="sandbox" onclick="switchTab('sandbox')" title="Terminal Praktik Perintah Komputer">
+        <span class="nav-icon">📟</span>
+        <span class="nav-label">Terminal Sandbox</span>
       </button>
-      <button class="nav-tab" data-tab="certificate" onclick="switchTab('certificate')">
-        🎓 Sertifikat Kelulusan
+      <button class="nav-tab" data-tab="certificate" onclick="switchTab('certificate')" title="Lihat Sertifikat Kelulusan">
+        <span class="nav-icon">🎓</span>
+        <span class="nav-label">Sertifikat</span>
       </button>
     </nav>
 

@@ -1190,12 +1190,12 @@ function renderSqlTrainer() {
 
   container.innerHTML = `
     <!-- Switcher Tab Soal SQL vs Output -->
-    <div style="display: flex; gap: 10px; margin-bottom: 20px;">
-      <button class="choice-card-btn active-sql-mode" id="btn-mode-sql" style="flex: 1; justify-content: center; font-weight: 800;" onclick="switchSqlSubMode('queries')">
-        🗄️ Soal Kueri SQL Berbasis Tabel
+    <div class="sql-submode-switcher">
+      <button class="choice-card-btn active-sql-mode" id="btn-mode-sql" onclick="switchSqlSubMode('queries')">
+        🗄️ Soal Kueri SQL Tabel
       </button>
-      <button class="choice-card-btn" id="btn-mode-output" style="flex: 1; justify-content: center; font-weight: 800;" onclick="switchSqlSubMode('output')">
-        🧪 Soal Tebak Output Koding (C#, JS, SQL)
+      <button class="choice-card-btn" id="btn-mode-output" onclick="switchSqlSubMode('output')">
+        🧪 Tebak Output Koding
       </button>
     </div>
 
@@ -1417,22 +1417,41 @@ function renderEnglishTrainer() {
   const drill = cvInterviewSpeakingDrills[appState.currentEnglishDrillIndex] || cvInterviewSpeakingDrills[0];
 
   container.innerHTML = `
+    <!-- Pilihan Aksen Bahasa Inggris (American vs British) -->
+    <div class="accent-selector-card">
+      <div class="accent-selector-info">
+        <span class="accent-flag-icon">${speechEngine.englishAccent === 'en-GB' ? '🇬🇧' : '🇺🇸'}</span>
+        <div>
+          <div class="accent-card-title">Aksen Audio Pembaca: <span class="accent-card-val">${speechEngine.englishAccent === 'en-GB' ? 'British English (UK) 🇬🇧' : 'American English (US) 🇺🇸'}</span></div>
+          <p class="accent-card-desc">Pilih logat yang kamu mau untuk listening, speaking, TOEFL & IELTS:</p>
+        </div>
+      </div>
+      <div class="accent-pills-row">
+        <button id="pill-accent-us" class="accent-pill-btn ${speechEngine.englishAccent === 'en-US' ? 'active' : ''}" onclick="setAccentPreference('en-US')">
+          🇺🇸 Amerika (US)
+        </button>
+        <button id="pill-accent-gb" class="accent-pill-btn ${speechEngine.englishAccent === 'en-GB' ? 'active' : ''}" onclick="setAccentPreference('en-GB')">
+          🇬🇧 British (UK)
+        </button>
+      </div>
+    </div>
+
     <!-- Switcher 5 Mode English Studio -->
-    <div style="display: flex; gap: 10px; margin-bottom: 20px; flex-wrap: wrap;">
-      <button class="choice-card-btn active-eng-mode" id="btn-mode-spk" style="flex: 1; min-width: 180px; justify-content: center; font-weight: 800; border-color: var(--accent-cyan);" onclick="switchEnglishSubMode('speaking')">
-        🎙️ Wawancara Kerja Profesional
+    <div class="eng-submode-grid">
+      <button class="choice-card-btn active-eng-mode" id="btn-mode-spk" onclick="switchEnglishSubMode('speaking')">
+        🎙️ Wawancara Kerja
       </button>
-      <button class="choice-card-btn" id="btn-mode-puzzle" style="flex: 1; min-width: 180px; justify-content: center; font-weight: 800;" onclick="switchEnglishSubMode('puzzle')">
-        🔤 Game Huruf Hilang & Kosakata
+      <button class="choice-card-btn" id="btn-mode-puzzle" onclick="switchEnglishSubMode('puzzle')">
+        🔤 Kosakata & Huruf
       </button>
-      <button class="choice-card-btn" id="btn-mode-toefl" style="flex: 1; min-width: 180px; justify-content: center; font-weight: 800;" onclick="switchEnglishSubMode('toefl')">
-        📖 Marathon TOEFL ITP & IELTS
+      <button class="choice-card-btn" id="btn-mode-toefl" onclick="switchEnglishSubMode('toefl')">
+        📖 TOEFL ITP & IELTS
       </button>
-      <button class="choice-card-btn" id="btn-mode-ibt" style="flex: 1; min-width: 180px; justify-content: center; font-weight: 800; background: linear-gradient(135deg, rgba(56, 189, 248, 0.15), rgba(168, 85, 247, 0.2));" onclick="switchEnglishSubMode('ibt')">
-        🎓 Master TOEFL iBT Beasiswa S2
+      <button class="choice-card-btn" id="btn-mode-ibt" style="background: linear-gradient(135deg, rgba(56, 189, 248, 0.15), rgba(168, 85, 247, 0.2));" onclick="switchEnglishSubMode('ibt')">
+        🎓 TOEFL iBT S2
       </button>
-      <button class="choice-card-btn" id="btn-mode-dictation" style="flex: 1; min-width: 180px; justify-content: center; font-weight: 800; background: linear-gradient(135deg, rgba(244, 63, 94, 0.15), rgba(251, 146, 60, 0.2));" onclick="switchEnglishSubMode('dictation')">
-        ✍️ Dikte & Ketik Suara (EVC ESL)
+      <button class="choice-card-btn" id="btn-mode-dictation" style="background: linear-gradient(135deg, rgba(244, 63, 94, 0.15), rgba(251, 146, 60, 0.2));" onclick="switchEnglishSubMode('dictation')">
+        ✍️ Dikte & Ketik Suara
       </button>
     </div>
 
@@ -2850,12 +2869,39 @@ function triggerConfetti() {
   update();
 }
 
+// ================= CONTROLLER AKSEN BAHASA INGGRIS =================
+window.toggleAccent = function() {
+  sfx.playClick();
+  const newAccent = speechEngine.toggleEnglishAccent();
+  const label = newAccent === 'en-GB' ? 'British (UK) 🇬🇧' : 'American (US) 🇺🇸';
+  setKodiSpeech(
+    `Aksen bahasa Inggris berhasil diubah ke ${label}! Sekarang semua audio listening dan soal akan dibacakan dengan logat ini.`,
+    "Kamu bisa ganti kapan saja sesuai tes impianmu!"
+  );
+  const engTab = document.getElementById("tab-english-trainer");
+  if (engTab && engTab.classList.contains("active")) {
+    renderEnglishTrainer();
+  }
+};
+
+window.setAccentPreference = function(accent) {
+  sfx.playClick();
+  speechEngine.setEnglishAccent(accent);
+  const label = accent === 'en-GB' ? 'British (UK) 🇬🇧' : 'American (US) 🇺🇸';
+  setKodiSpeech(
+    `Aksen bahasa Inggris diubah ke ${label}!`,
+    "Semua audio reading & listening otomatis memakai logat ini."
+  );
+  renderEnglishTrainer();
+};
+
 // ================= APP INITIALIZATION =================
 window.addEventListener("DOMContentLoaded", () => {
   loadProgress();
   renderQuestGrid();
   initDictionarySearch();
   initPwaInstall();
+  speechEngine.updateAccentUi();
 
   // Sound toggle button
   const soundBtn = document.getElementById("sound-toggle");

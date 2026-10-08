@@ -160,35 +160,66 @@ body {
   transform: scale(1.05);
 }
 
+.accent-toggle-btn {
+  background: rgba(56, 189, 248, 0.12);
+  border: 1px solid var(--accent-cyan);
+  color: #fff;
+  padding: 6px 14px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 0.82rem;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s;
+  box-shadow: 0 0 10px rgba(56, 189, 248, 0.2);
+}
+.accent-toggle-btn:hover {
+  background: var(--accent-cyan);
+  color: #0b0f19;
+  transform: scale(1.05);
+}
+
 /* ================= MAIN NAVIGATION BAR ================= */
 .main-nav {
   display: flex;
-  gap: 10px;
-  background: rgba(15, 23, 42, 0.6);
+  gap: 8px;
+  background: rgba(15, 23, 42, 0.7);
   padding: 6px;
   border-radius: var(--radius-md);
   margin-bottom: 24px;
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  overflow-x: auto;
+  border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .nav-tab {
   flex: 1;
-  min-width: 140px;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
-  padding: 10px 16px;
+  padding: 10px 14px;
   background: transparent;
   border: none;
   color: var(--text-muted);
   font-size: 0.88rem;
-  font-weight: 600;
+  font-weight: 700;
   border-radius: var(--radius-sm);
   cursor: pointer;
   transition: all 0.25s ease;
   white-space: nowrap;
+}
+
+.nav-tab .nav-icon {
+  font-size: 1.15rem;
+  line-height: 1;
+  display: inline-block;
+}
+
+.nav-tab .nav-label {
+  font-size: 0.86rem;
+  font-weight: 700;
+  display: inline-block;
 }
 
 .nav-tab:hover {
@@ -989,6 +1020,105 @@ body {
   transform: translateX(4px);
 }
 
+.choice-card-btn.active-eng-mode,
+.choice-card-btn.active-sql-mode {
+  border-color: var(--accent-cyan);
+  background: rgba(56, 189, 248, 0.2);
+  box-shadow: 0 0 14px rgba(56, 189, 248, 0.3);
+}
+
+/* Submode Switcher Grids */
+.sql-submode-switcher {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.eng-submode-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+/* Accent Selector Banner Card */
+.accent-selector-card {
+  background: linear-gradient(135deg, rgba(30, 41, 59, 0.9), rgba(15, 23, 42, 0.95));
+  border: 1.5px solid rgba(56, 189, 248, 0.35);
+  border-radius: var(--radius-md);
+  padding: 14px 18px;
+  margin-bottom: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.accent-selector-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 1;
+  min-width: 220px;
+}
+
+.accent-flag-icon {
+  font-size: 2rem;
+  line-height: 1;
+}
+
+.accent-card-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.accent-card-val {
+  color: var(--accent-cyan);
+  font-weight: 800;
+}
+
+.accent-card-desc {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+.accent-pills-row {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.accent-pill-btn {
+  background: rgba(15, 23, 42, 0.8);
+  border: 1.5px solid rgba(255, 255, 255, 0.15);
+  color: var(--text-muted);
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.accent-pill-btn:hover {
+  border-color: var(--accent-cyan);
+  color: #fff;
+}
+
+.accent-pill-btn.active {
+  background: linear-gradient(135deg, #0ea5e9, #6366f1);
+  border-color: var(--accent-cyan);
+  color: #fff;
+  box-shadow: 0 0 15px rgba(56, 189, 248, 0.4);
+}
+
 /* ================= MODAL FOOTER ================= */
 .modal-footer {
   padding: 16px 24px;
@@ -1351,31 +1481,384 @@ body {
   box-shadow: 0 0 22px rgba(16, 185, 129, 0.7);
 }
 
-/* Responsive adjustments */
+/* ===================================================================
+   RESPONSIVE DESIGN SYSTEM (MOBILE & TABLET OPTIMIZED)
+   Menyesuaikan seluruh elemen, tombol, ikon, & tab agar pas sempurna di HP
+   =================================================================== */
+
 @media (max-width: 768px) {
+  /* Layout & Container Utama */
+  .app-wrapper {
+    padding: 8px 10px 50px;
+  }
+
+  /* Header & Stats Bar */
   .app-header {
     flex-direction: column;
-    gap: 14px;
-    align-items: flex-start;
+    padding: 12px 14px;
+    gap: 12px;
+    align-items: stretch;
+    border-radius: 14px;
+    margin-bottom: 16px;
   }
-  .boti-hero-card, .kodi-hero-card {
+
+  .logo-area {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+  }
+
+  .mascot-avatar-small {
+    width: 38px;
+    height: 38px;
+    min-width: 38px;
+    flex-shrink: 0;
+  }
+
+  .mascot-avatar-small svg {
+    width: 24px;
+    height: 24px;
+  }
+
+  .logo-text h1 {
+    font-size: 1.05rem;
+    line-height: 1.25;
+    margin-bottom: 2px;
+  }
+
+  .logo-text p {
+    font-size: 0.72rem;
+    line-height: 1.2;
+  }
+
+  .header-stats {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    width: 100%;
+    align-items: center;
+    justify-content: flex-start;
+  }
+
+  .stat-badge {
+    padding: 4px 10px;
+    font-size: 0.74rem;
+    gap: 5px;
+    white-space: nowrap;
+    border-radius: 14px;
+  }
+
+  .pwa-install-btn {
+    padding: 5px 12px;
+    font-size: 0.74rem;
+    white-space: nowrap;
+    border-radius: 14px;
+  }
+
+  .accent-toggle-btn {
+    padding: 4px 10px;
+    font-size: 0.74rem;
+    border-radius: 14px;
+  }
+
+  .sound-toggle-btn {
+    padding: 4px 10px;
+    font-size: 0.85rem;
+    border-radius: 14px;
+  }
+
+  /* TAB NAVIGASI UTAMA (GRID 3x2: KELIHATAN SEMUA, TIDAK KEPOTONG, TIDAK MENUMPUK) */
+  .main-nav {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 6px;
+    padding: 6px;
+    margin-bottom: 18px;
+    border-radius: 14px;
+    background: rgba(15, 23, 42, 0.85);
+  }
+
+  .nav-tab {
+    flex: none;
+    min-width: 0;
+    width: 100%;
+    padding: 10px 4px;
+    display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    border-radius: 10px;
+    white-space: normal;
     text-align: center;
   }
+
+  .nav-tab .nav-icon {
+    font-size: 1.35rem;
+    line-height: 1;
+  }
+
+  .nav-tab .nav-label {
+    font-size: 0.74rem;
+    line-height: 1.25;
+    word-break: break-word;
+    font-weight: 700;
+  }
+
+  /* Hero Mascot Card */
+  .boti-hero-card, .kodi-hero-card {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 16px 14px;
+    gap: 12px;
+    border-radius: 14px;
+    margin-bottom: 18px;
+  }
+
+  .kodi-character-wrap, .boti-avatar-wrap {
+    width: 75px;
+    height: 75px;
+    flex-shrink: 0;
+  }
+
+  .kodi-character-svg {
+    width: 75px;
+    height: 75px;
+  }
+
+  .boti-speech-bubble, .kodi-speech-bubble {
+    width: 100%;
+    padding: 12px 14px;
+    font-size: 0.88rem;
+    line-height: 1.5;
+  }
+
   .boti-speech-bubble::before, .kodi-speech-bubble::before {
     display: none;
   }
+
+  /* Peta Petualangan Quest Grid */
+  .quest-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+
+  .quest-card {
+    padding: 16px;
+    border-radius: 12px;
+  }
+
+  .section-title {
+    font-size: 1.35rem;
+  }
+
+  .section-subtitle {
+    font-size: 0.85rem;
+  }
+
+  /* Switcher Submode SQL & English Studio */
+  .sql-submode-switcher {
+    grid-template-columns: 1fr;
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+
+  .eng-submode-grid {
+    grid-template-columns: 1fr;
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+
+  .accent-selector-card {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 12px 14px;
+    gap: 10px;
+    border-radius: 12px;
+  }
+
+  .accent-selector-info {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .accent-pills-row {
+    width: 100%;
+  }
+
+  .accent-pill-btn {
+    flex: 1;
+    justify-content: center;
+    padding: 8px 10px;
+    font-size: 0.78rem;
+  }
+
+  /* Tombol Pilihan Soal & Kartu Aksi */
+  .choice-card-btn {
+    padding: 12px 14px;
+    font-size: 0.88rem;
+    line-height: 1.4;
+    word-break: break-word;
+    border-radius: 10px;
+  }
+
+  .quick-cmd-btn {
+    padding: 6px 10px;
+    font-size: 0.76rem;
+    white-space: nowrap;
+  }
+
+  .btn-primary, .btn-secondary {
+    padding: 10px 14px;
+    font-size: 0.85rem;
+  }
+
+  /* Kamus Bayi IT */
+  .dict-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .dict-card {
+    padding: 14px 16px;
+    border-radius: 12px;
+  }
+
+  .dict-term {
+    font-size: 1rem;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .dict-baby-analogy {
+    font-size: 0.82rem;
+    padding: 6px 10px;
+  }
+
+  .dict-formal-desc {
+    font-size: 0.78rem;
+    line-height: 1.45;
+  }
+
+  /* Dictation Studio & Huruf Ubin */
+  .dictation-char-stream {
+    gap: 4px;
+    margin: 12px 0;
+    min-height: 40px;
+  }
+
+  .dictation-char-tile {
+    min-width: 28px;
+    height: 38px;
+    font-size: 1.05rem;
+    border-radius: 5px;
+    padding: 0 4px;
+  }
+
+  .dictation-char-tile.space {
+    min-width: 14px;
+  }
+
+  .dictation-input-field {
+    padding: 12px 14px;
+    font-size: 0.95rem;
+  }
+
+  /* Panel AI Tutor & Chat Stream */
+  .kodi-ai-panel {
+    padding: 14px;
+    border-radius: 12px;
+  }
+
+  .ai-panel-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .ai-header-left {
+    width: 100%;
+  }
+
+  .ai-title-text {
+    font-size: 0.95rem;
+  }
+
+  .ai-speech-top-btn {
+    align-self: flex-start;
+    padding: 6px 12px;
+    font-size: 0.75rem;
+  }
+
+  .ai-user-prompt-field {
+    font-size: 0.82rem;
+    padding: 10px 12px;
+  }
+
+  .ai-send-btn {
+    padding: 10px 14px;
+    font-size: 0.82rem;
+  }
+
+  .ai-prompt-input-row {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .ai-pills-container {
+    gap: 6px;
+    padding-bottom: 6px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .ai-prompt-pill {
+    padding: 6px 10px;
+    font-size: 0.75rem;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  /* Modal Popup */
+  .modal-card {
+    width: 95vw;
+    max-width: 95vw;
+    padding: 16px;
+    border-radius: 14px;
+    margin: 10px;
+  }
+
+  .modal-title {
+    font-size: 1.15rem;
+  }
+
   .code-blocks-container {
     flex-direction: column;
   }
+}
+
+/* Extra Small Phones (layar di bawah 380px) */
+@media (max-width: 380px) {
   .main-nav {
-    overflow-x: auto;
-    padding-bottom: 8px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 6px;
   }
+
   .nav-tab {
-    min-width: 120px;
-    font-size: 0.8rem;
-    padding: 8px 12px;
+    padding: 8px 6px;
+  }
+
+  .nav-tab .nav-label {
+    font-size: 0.72rem;
+  }
+
+  .dictation-char-tile {
+    min-width: 24px;
+    height: 34px;
+    font-size: 0.95rem;
   }
 }
 

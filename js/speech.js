@@ -13,10 +13,44 @@ class SpeechEngine {
     this.currentText = "";
     this.activeButton = null;
     this.voices = [];
+    this.englishAccent = localStorage.getItem('kodi_english_accent') || 'en-US'; // 'en-US' (Amerika) atau 'en-GB' (British)
 
     this.initVoices();
     this.initRecognition();
     this.initWarmUp();
+  }
+
+  setEnglishAccent(accent) {
+    if (accent === 'en-US' || accent === 'en-GB') {
+      this.englishAccent = accent;
+      localStorage.setItem('kodi_english_accent', accent);
+      this.updateAccentUi();
+    }
+  }
+
+  toggleEnglishAccent() {
+    const next = this.englishAccent === 'en-US' ? 'en-GB' : 'en-US';
+    this.setEnglishAccent(next);
+    return next;
+  }
+
+  updateAccentUi() {
+    const isGb = this.englishAccent === 'en-GB';
+    
+    // Tombol di header atas
+    const headerBtn = document.getElementById('accent-toggle-btn');
+    if (headerBtn) {
+      headerBtn.innerHTML = isGb ? '🇬🇧 UK' : '🇺🇸 US';
+      headerBtn.setAttribute('title', isGb ? 'Aksen: British (UK). Klik untuk ganti ke Amerika (US).' : 'Aksen: Amerika (US). Klik untuk ganti ke British (UK).');
+    }
+
+    // Tombol pill di English Studio
+    const usPill = document.getElementById('pill-accent-us');
+    const gbPill = document.getElementById('pill-accent-gb');
+    if (usPill && gbPill) {
+      usPill.classList.toggle('active', !isGb);
+      gbPill.classList.toggle('active', isGb);
+    }
   }
 
   // Pre-load dan simpan daftar suara agar langsung siap pada klik pertama
@@ -89,15 +123,34 @@ class SpeechEngine {
       );
       if (idVoice) return idVoice;
     } else {
-      // Prioritas 2: Suara English Alami
-      const enVoice = this.voices.find(v => 
-        v.lang && v.lang.startsWith('en') && 
-        (v.name.includes('Google') || v.name.includes('Natural') || v.name.includes('Samantha') || v.name.includes('Jenny') || v.name.includes('Zira'))
-      );
-      if (enVoice) return enVoice;
+      // Prioritas 2: Suara English (Bisa British en-GB atau American en-US)
+      const accent = (lang === 'en-GB' || (lang.startsWith('en') && this.englishAccent === 'en-GB')) ? 'en-GB' : 'en-US';
 
-      const anyEnVoice = this.voices.find(v => v.lang && v.lang.startsWith('en'));
+      if (accent === 'en-GB') {
+        // Prioritas British / UK
+        const gbVoice = this.voices.find(v => 
+          (v.lang && (v.lang === 'en-GB' || v.lang === 'en_GB')) ||
+          (v.name && (v.name.toLowerCase().includes('united kingdom') || v.name.toLowerCase().includes('uk') || v.name.toLowerCase().includes('british') || v.name.toLowerCase().includes('george') || v.name.toLowerCase().includes('hazel') || v.name.toLowerCase().includes('oliver') || v.name.toLowerCase().includes('daniel') || v.name.toLowerCase().includes('serena') || v.name.toLowerCase().includes('stephanie')))
+        );
+        if (gbVoice) return gbVoice;
+      } else {
+        // Prioritas American / US
+        const usVoice = this.voices.find(v => 
+          (v.lang && (v.lang === 'en-US' || v.lang === 'en_US')) ||
+          (v.name && (v.name.toLowerCase().includes('united states') || v.name.toLowerCase().includes('us') || v.name.toLowerCase().includes('samantha') || v.name.toLowerCase().includes('zira') || v.name.toLowerCase().includes('jenny') || v.name.toLowerCase().includes('david') || v.name.toLowerCase().includes('aria')))
+        );
+        if (usVoice) return usVoice;
+      }
+
+      // Fallback: Suara English alami apapun
+      const anyEnVoice = this.voices.find(v => 
+        v.lang && v.lang.startsWith('en') && 
+        (v.name.includes('Google') || v.name.includes('Natural') || v.name.includes('Samantha') || v.name.includes('Jenny') || v.name.includes('Zira') || v.name.includes('George'))
+      );
       if (anyEnVoice) return anyEnVoice;
+
+      const anyEn = this.voices.find(v => v.lang && v.lang.startsWith('en'));
+      if (anyEn) return anyEn;
     }
     return null;
   }
@@ -133,7 +186,7 @@ class SpeechEngine {
    * @param {string} text Teks yang akan dibacakan
    * @param {number} rate Kecepatan bicara (0.5 - 1.5)
    * @param {HTMLElement|string|null} btnOrSelector Tombol pemanggil (opsional, untuk toggle play/stop)
-   * @param {string|null} explicitLang Pilihan bahasa manual ("id-ID" / "en-US")
+   * @param {string|null} explicitLang Pilihan bahasa manual ("id-ID" / "en-US" / "en-GB")
    */
   speakText(text, rate = 0.85, btnOrSelector = null, explicitLang = null) {
     if (!this.synth) {
@@ -161,7 +214,12 @@ class SpeechEngine {
     // WAKE UP SYNTH (Anti Macet di Chrome / Android / iOS)
     this.synth.resume();
 
-    const targetLang = explicitLang || this.detectLanguage(text);
+    let targetLang = explicitLang || this.detectLanguage(text);
+    if (targetLang.startsWith("en")) {
+      // Jika bahasa Inggris, otomatis gunakan aksen yang dipilih pengguna
+      targetLang = (explicitLang === 'en-GB' || explicitLang === 'en-US') ? explicitLang : this.englishAccent;
+    }
+
     const utterance = new SpeechSynthesisUtterance(text);
     utterance.lang = targetLang;
     utterance.rate = rate;
