@@ -170,6 +170,61 @@ const missingLetterPuzzles = [
     category: "Jaringan",
     babyClue: "🍼 Pintu gerbang utama komplek rumah buat paket data internet keluar masuk!",
     meaning: "Gerbang jaringan (IP Router default)."
+  },
+  // KOSAKATA BAND 9 DARI BUKU REFERENSI CAMBRIDGE & IELTS BAND 9 VOCAB SECRETS
+  {
+    id: "ml-13",
+    word: "FLUCTUATE",
+    masked: "F L _ C T _ A T E",
+    missingLetters: ["U", "U"],
+    category: "IELTS Task 1: Data Tren",
+    babyClue: "🍼 Grafik angka yang naik turun kayak ombak di laut, ga pernah diam di satu garis lurus!",
+    meaning: "Berfluktuasi / naik turun secara berkala (khas analisis grafik matematika IELTS Task 1)."
+  },
+  {
+    id: "ml-14",
+    word: "SIGNIFICANT",
+    masked: "S _ G N _ F _ C A N T",
+    missingLetters: ["I", "I", "I"],
+    category: "IELTS Band 9 Academic",
+    babyClue: "🍼 Sesuatu yang dampaknya luar biasa besar dan sangat berharga, ga boleh disepelekan!",
+    meaning: "Signifikan / berpengaruh besar dan penting."
+  },
+  {
+    id: "ml-15",
+    word: "ACCURACY",
+    masked: "A C C _ R _ C Y",
+    missingLetters: ["U", "A"],
+    category: "Matematika & IT Testing",
+    babyClue: "🍼 Ketepatan kalkulasi 100% pas di sasaran tanpa ada selip angka satu digit pun!",
+    meaning: "Akurasi / ketepatan perhitungan."
+  },
+  {
+    id: "ml-16",
+    word: "INNOVATION",
+    masked: "I N N _ V _ T _ O N",
+    missingLetters: ["O", "A", "I"],
+    category: "Teknologi & Industri",
+    babyClue: "🍼 Ide dan cara baru yang kreatif buat bikin kerjaan manual jadi otomatis dan canggih!",
+    meaning: "Inovasi / terobosan teknologi baru."
+  },
+  {
+    id: "ml-17",
+    word: "COLLABORATE",
+    masked: "C _ L L _ B _ R A T E",
+    missingLetters: ["O", "A", "O"],
+    category: "Teamwork & Soft Skills",
+    babyClue: "🍼 Bekerja sama kompak bareng teman satu tim biar kerjaan berat jadi ringan!",
+    meaning: "Berkolaborasi / bekerja sama secara sinergis."
+  },
+  {
+    id: "ml-18",
+    word: "METHODOLOGY",
+    masked: "M _ T H _ D _ L O G Y",
+    missingLetters: ["E", "O", "O"],
+    category: "Riset & Analisis Data",
+    babyClue: "🍼 Urutan langkah-langkah ilmiah yang teratur dan sistematis buat membongkar suatu masalah!",
+    meaning: "Metodologi / kerangka kerja terstruktur."
   }
 ];
 
@@ -177,6 +232,32 @@ const missingLetterPuzzles = [
 // 3. BANK SOAL MARATHON TOEFL ITP & IELTS (LENGKAP DENGAN KISI-KISI)
 // ===================================================================
 const comprehensiveToeflBank = [
+  // --- KISI-KISI CAMBRIDGE IELTS: Analisis Grafik & Data Tren (IELTS Writing Task 1) ---
+  {
+    id: "tf-ielts-1",
+    topic: "Cambridge IELTS Task 1: Trend Description",
+    question: "According to the annual production chart, the shoe output _____ dramatically between March and July.",
+    options: ["increased", "increasing", "increase", "is increase"],
+    correctIndex: 0,
+    explanation: "🍼 Bahasa Bayi: Kejadian di grafik sudah berlalu di masa lalu (between March and July), jadi gunakan kata kerja bentuk lampau (Past Tense) yaitu 'increased'!"
+  },
+  {
+    id: "tf-ielts-2",
+    topic: "Cambridge IELTS Academic: Linking & Contrast",
+    question: "Production costs grew substantially, _____ overall employee productivity reached record levels.",
+    options: ["whereas", "in spite of", "despite", "because of"],
+    correctIndex: 0,
+    explanation: "🍼 Bahasa Bayi: Kita mau membandingkan dua kalimat lengkap yang berlawanan (Biaya naik, PADAHAL produktivitas juga rekor). Kata hubung untuk dua klausa kalimat utuh adalah 'whereas' (sedangkan/padahal)!"
+  },
+  {
+    id: "tf-ielts-3",
+    topic: "Cambridge IELTS Grammar: Cause and Effect (-ing Clause)",
+    question: "The engineering team upgraded the server hardware, _____ in a 40 percent boost in database speed.",
+    options: ["result", "resulted", "resulting", "results"],
+    correctIndex: 2,
+    explanation: "🍼 Bahasa Bayi: Ini pola khas Cambridge IELTS Academic! Untuk menyatakan akibat langsung di akhir kalimat tanpa kata sambung, gunakan partikel '-ing' (present participle), yaitu 'resulting in' (sehingga menghasilkan)!"
+  },
+
   // --- KISI-KISI 1: Tenses Dasar (Simple Past vs Present) ---
   {
     id: "tf-1",
