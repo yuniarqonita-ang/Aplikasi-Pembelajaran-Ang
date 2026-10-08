@@ -1,5 +1,5 @@
 /* Service Worker for Kodi IT Academy PWA */
-const CACHE_NAME = 'kodi-it-academy-v2';
+const CACHE_NAME = 'kodi-it-academy-v3';
 const ASSETS_TO_CACHE = [
   './',
   './index.html',
@@ -10,6 +10,7 @@ const ASSETS_TO_CACHE = [
   './js/levels.js',
   './js/sql_trainer.js',
   './js/english_trainer.js',
+  './js/ai_tutor.js',
   './js/app.js',
   './manifest.json',
   './assets/icon-192.png',
