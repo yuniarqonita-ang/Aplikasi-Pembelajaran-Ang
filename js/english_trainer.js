@@ -21,68 +21,1290 @@ const cvInterviewSpeakingDrills = [
   },
   {
     "id": "spk-cv-2",
-    "category": "2. Pengalaman Kerja & Sistem TI",
-    "questionEn": "What IT and technical support experience do you have?",
+    "category": "1. Self Introduction & Background",
+    "questionEn": "What motivated you to transition into the information technology industry?",
     "workedExample": {
-      "modelStructure": "1. Posisi / Peran Terkini -> 2. Dua Tanggung Jawab Utama (Web & Hardware) -> 3. Hasil Pemecahan Masalah",
-      "sampleSentence": "I have hands-on experience maintaining network infrastructure and diagnosing operating system anomalies in fast-paced environments.",
-      "keyPhraseTip": "Kata kunci berbobot: 'hands-on experience', 'developing web portals', dan 'troubleshooting'."
+      "modelStructure": "1. Ketertarikan Pribadi -> 2. Relevansi Logika -> 3. Nilai Kontribusi",
+      "sampleSentence": "My analytical mindset naturally drew me toward software systems and technology troubleshooting.",
+      "keyPhraseTip": "Gunakan kata kunci: 'passionate about technology' dan 'solving complex problems'."
     },
-    "targetSentence": "I worked as an IT Systems Specialist, developing web portals and troubleshooting operating system and hardware issues.",
-    "translationId": "Saya bekerja sebagai staf spesialis sistem TI, mengembangkan portal web dan menyelesaikan masalah sistem operasi serta perangkat keras.",
-    "babyTips": "Kodi Tips: Sebutkan kata 'developing' (membangun sistem) dan 'troubleshooting' (memperbaiki error) dengan pelafalan yang mantap."
+    "targetSentence": "I have always been passionate about technology, and I enjoy solving complex problems using software and structured logic.",
+    "translationId": "Saya selalu bersemangat tentang teknologi, dan saya senang memecahkan masalah rumit menggunakan perangkat lunak dan logika terstruktur.",
+    "babyTips": "Kodi Tips: Tekankan minat belajar yang tinggi dan antusiasme terhadap teknologi komputer."
   },
   {
     "id": "spk-cv-3",
-    "category": "3. Keunggulan Lulusan Pendidikan di Dunia IT",
-    "questionEn": "Why should we hire you for this IT role even though your degree is in education?",
+    "category": "1. Self Introduction & Background",
+    "questionEn": "What are your greatest professional strengths?",
     "workedExample": {
-      "modelStructure": "1. Ubah Persepsi Jadi Kekuatan -> 2. Keterampilan Komunikasi & Sabar -> 3. Logika Pemecahan Masalah Eksak",
-      "sampleSentence": "My teaching background enables me to explain complex technical concepts clearly, while my analytical training ensures rigorous problem solving.",
-      "keyPhraseTip": "Tunjukkan kombinasi langka: Orang IT pada umumnya pendiam, sedangkan kamu punya komunikasi juara + logika matematika!"
+      "modelStructure": "1. Identifikasi 3 Kekuatan Utama -> 2. Bukti Nyata -> 3. Manfaat untuk Perusahaan",
+      "sampleSentence": "I excel at diagnosing technical issues quickly and communicating solutions in simple terms.",
+      "keyPhraseTip": "Frasa kunci: 'rapid learning', 'logical thinking', dan 'clear communication'."
     },
-    "targetSentence": "My education background makes me a great communicator and fast learner, while my math degree gives me strong problem-solving logic.",
-    "translationId": "Latar belakang pendidikan membuat saya terampil berkomunikasi dan cepat belajar, sementara gelar matematika memberi saya logika pemecahan masalah yang kuat.",
-    "babyTips": "Kodi Tips: Ini jawaban sakti! Orang IT sering kaku komunikasi, tapi kamu punya keahlian komunikasi + logika matematika + pengalaman kelola sistem web!"
+    "targetSentence": "My greatest strengths are rapid learning, logical thinking, and clear communication when explaining technical issues to users.",
+    "translationId": "Kekuatan terbesar saya adalah kemampuan belajar cepat, berpikir logis, dan komunikasi yang jelas saat menjelaskan masalah teknis kepada pengguna.",
+    "babyTips": "Kodi Tips: Gabungkan keahlian logika pemecahan masalah dengan kemampuan komunikasi yang sabar."
   },
   {
     "id": "spk-cv-4",
-    "category": "4. Database & SQL Query Skills",
-    "questionEn": "How do you handle data and database queries in your work?",
+    "category": "1. Self Introduction & Background",
+    "questionEn": "How do you handle tasks when you encounter unfamiliar technical tools?",
     "workedExample": {
-      "modelStructure": "1. Keahlian Kueri Relasional -> 2. Kemampuan Menangani Dataset Besar -> 3. Integritas dan Akurasi Data",
-      "sampleSentence": "I regularly write complex SQL queries using JOIN and WHERE clauses to optimize database retrieval and prevent data bottlenecks.",
-      "keyPhraseTip": "Sebutkan istilah teknis database: 'filter and manage tables', 'SQL queries', dan 'large datasets'."
+      "modelStructure": "1. Langkah Riset Mandiri -> 2. Uji Coba Aman -> 3. Kolaborasi Tim",
+      "sampleSentence": "When facing new technology, I study official documentation and build small proof-of-concept tests.",
+      "keyPhraseTip": "Frasa kunci: 'proactively read documentation' dan 'sandbox environments'."
     },
-    "targetSentence": "I write SQL queries to filter and manage tables, and I have solid experience processing large datasets and survey records.",
-    "translationId": "Saya menulis kueri SQL untuk memfilter dan mengelola tabel, dan saya berpengalaman mengolah dataset besar dan data survei.",
-    "babyTips": "Kodi Tips: Tekankan bahwa kamu terbiasa menangani data tabel yang banyak secara rapi dan teliti."
+    "targetSentence": "I proactively read documentation, test solutions in sandbox environments, and consult senior engineers to learn quickly.",
+    "translationId": "Saya secara proaktif membaca dokumentasi, menguji solusi di lingkungan sandbox, dan berkonsultasi dengan engineer senior untuk belajar cepat.",
+    "babyTips": "Kodi Tips: Tunjukkan inisiatif mandiri untuk riset dan belajar tanpa menunggu disuruh."
   },
   {
     "id": "spk-cv-5",
-    "category": "5. Kemampuan Desain & UI/UX (Sertifikat BNSP)",
-    "questionEn": "Do you have any design or user interface skills?",
+    "category": "1. Self Introduction & Background",
+    "questionEn": "Where do you see yourself professionally in the next three years?",
     "workedExample": {
-      "modelStructure": "1. Kualifikasi Resmi Nasional (BNSP) -> 2. Penerapan dalam Desain Web -> 3. Fokus pada Kenyamanan Pengguna (UX)",
-      "sampleSentence": "Holding a national BNSP certification in graphic design allows me to craft intuitive layouts and clean dashboard interfaces.",
-      "keyPhraseTip": "Sertifikasi resmi BNSP adalah bukti pengakuan kompetensi standar nasional yang sangat dihargai HRD!"
+      "modelStructure": "1. Target Keahlian -> 2. Tanggung Jawab Kepemimpinan -> 3. Komitmen Pertumbuhan",
+      "sampleSentence": "I aim to master enterprise network operations and contribute to major infrastructure upgrades.",
+      "keyPhraseTip": "Frasa kunci: 'experienced IT specialist' dan 'system optimization'."
     },
-    "targetSentence": "I hold a certified Graphic Designer credential from BNSP, which helps me design clean and user-friendly web interfaces.",
-    "translationId": "Saya memiliki sertifikat kompetensi Desainer Grafis resmi dari BNSP, yang membantu saya merancang antarmuka web yang rapi dan mudah digunakan.",
-    "babyTips": "Kodi Tips: Sertifikat resmi BNSP Desain Grafis adalah nilai tambah besar untuk posisi IT Software & Frontend antarmuka pengguna!"
+    "targetSentence": "In three years, I see myself as an experienced IT specialist leading system optimization and mentoring junior team members.",
+    "translationId": "Dalam tiga tahun, saya melihat diri saya sebagai spesialis IT berpengalaman yang memimpin optimasi sistem dan membimbing anggota tim junior.",
+    "babyTips": "Kodi Tips: Tunjukkan komitmen jangka panjang untuk bertumbuh bersama perusahaan."
   },
   {
     "id": "spk-cv-6",
-    "category": "6. Kesiapan & Komitmen Kerja",
-    "questionEn": "How do you prepare yourself to work in a fast-paced manufacturing or technology facility?",
+    "category": "1. Self Introduction & Background",
+    "questionEn": "What certified qualifications do you currently possess?",
     "workedExample": {
-      "modelStructure": "1. Sikap Adaptif & Gesit -> 2. Kolaborasi Lintas Tim -> 3. Dedikasi Menjaga Kelancaran Sistem",
-      "sampleSentence": "I maintain high flexibility and clear communication, ensuring fast resolution times whenever critical manufacturing systems need support.",
-      "keyPhraseTip": "Gunakan kata sifat profesional: 'highly adaptable', 'detail-oriented', dan 'ready to collaborate'."
+      "modelStructure": "1. Kualifikasi Resmi Nasional -> 2. Relevansi Portofolio -> 3. Penerapan Praktis",
+      "sampleSentence": "Holding a certified credential demonstrates my commitment to professional industry standards.",
+      "keyPhraseTip": "Frasa kunci: 'national certification from BNSP' dan 'practical training certificates'."
     },
-    "targetSentence": "I am highly adaptable, detail-oriented, and ready to collaborate closely with team members to support factory systems.",
-    "translationId": "Saya sangat mudah beradaptasi, berorientasi pada detail, dan siap berkolaborasi erat dengan tim untuk mendukung sistem perusahaan.",
-    "babyTips": "Kodi Tips: Jawaban ini menunjukkan dedikasi, kedisiplinan, dan kesiapan bekerja di lingkungan profesional yang dinamis."
+    "targetSentence": "I hold a national graphic design certification from BNSP and practical training certificates in IT support and database systems.",
+    "translationId": "Saya memegang sertifikasi desainer grafis nasional dari BNSP dan sertifikat pelatihan praktis dalam dukungan IT dan sistem basis data.",
+    "babyTips": "Kodi Tips: Sebutkan kredensial resmi untuk membuktikan kompetensi standarmu."
+  },
+  {
+    "id": "spk-cv-7",
+    "category": "1. Self Introduction & Background",
+    "questionEn": "Why are you interested in joining our company specifically?",
+    "workedExample": {
+      "modelStructure": "1. Pengakuan Reputasi -> 2. Keselarasan Nilai Kerja -> 3. Antusiasme Berkontribusi",
+      "sampleSentence": "Your company's reputation for engineering excellence makes it the ideal place for me to contribute.",
+      "keyPhraseTip": "Frasa kunci: 'innovative digital culture' dan 'high quality solutions'."
+    },
+    "targetSentence": "I admire your company's innovative digital culture and commitment to providing high quality solutions for modern businesses.",
+    "translationId": "Saya mengagumi budaya digital inovatif perusahaan Anda dan komitmen untuk menyediakan solusi berkualitas tinggi bagi bisnis modern.",
+    "babyTips": "Kodi Tips: Pujilah reputasi dan inovasi teknologi perusahaan yang kamu lamar."
+  },
+  {
+    "id": "spk-cv-8",
+    "category": "1. Self Introduction & Background",
+    "questionEn": "How do you manage your time when dealing with multiple urgent deadlines?",
+    "workedExample": {
+      "modelStructure": "1. Metode Prioritas -> 2. Pemecahan Target -> 3. Transparansi Komunikasi",
+      "sampleSentence": "I organize urgent tickets by impact level and focus on resolving mission-critical blockers first.",
+      "keyPhraseTip": "Frasa kunci: 'prioritize tasks using urgency matrices' dan 'daily milestones'."
+    },
+    "targetSentence": "I prioritize tasks using urgency matrices, break down complex goals into daily milestones, and maintain regular status updates.",
+    "translationId": "Saya memprioritaskan tugas menggunakan matriks urgensi, memecah target rumit menjadi capaian harian, dan menjaga pembaruan status berkala.",
+    "babyTips": "Kodi Tips: Jelaskan metodologi manajemen waktu yang terstruktur dan terukur."
+  },
+  {
+    "id": "spk-cv-9",
+    "category": "1. Self Introduction & Background",
+    "questionEn": "How would your former colleagues describe your working style?",
+    "workedExample": {
+      "modelStructure": "1. Sifat Karakter Utama -> 2. Sikap Menghadapi Tekanan -> 3. Semangat Membantu",
+      "sampleSentence": "They appreciate my collaborative attitude and my persistence in tracking down hard-to-find bugs.",
+      "keyPhraseTip": "Frasa kunci: 'dependable', 'patient in stressful situations', dan 'solve technical blockers'."
+    },
+    "targetSentence": "My colleagues would describe me as dependable, patient in stressful situations, and always eager to help solve technical blockers.",
+    "translationId": "Rekan kerja saya akan menggambarkan saya sebagai orang yang dapat diandalkan, sabar dalam situasi penuh tekanan, dan selalu bersemangat membantu menyelesaikan hambatan teknis.",
+    "babyTips": "Kodi Tips: Tunjukkan reputasi positifmu sebagai rekan tim yang solid dan menyenangkan."
+  },
+  {
+    "id": "spk-cv-10",
+    "category": "1. Self Introduction & Background",
+    "questionEn": "What values guide your daily professional conduct?",
+    "workedExample": {
+      "modelStructure": "1. Nilai Moral Utama -> 2. Komitmen Belajar -> 3. Empati Pelayanan",
+      "sampleSentence": "I believe in taking complete ownership of my work while actively listening to user feedback.",
+      "keyPhraseTip": "Frasa kunci: 'integrity', 'continuous self-improvement', dan 'user empathy'."
+    },
+    "targetSentence": "Integrity, continuous self-improvement, and user empathy guide my decisions in delivering reliable technical support.",
+    "translationId": "Integritas, peningkatan diri yang berkelanjutan, dan empati terhadap pengguna memandu keputusan saya dalam memberikan dukungan teknis yang andal.",
+    "babyTips": "Kodi Tips: Etika kerja yang tinggi sangat dihargai oleh manajer HRD."
+  },
+  {
+    "id": "spk-cv-11",
+    "category": "2. Hardware & PC Troubleshooting",
+    "questionEn": "What steps do you take when a desktop computer fails to power on?",
+    "workedExample": {
+      "modelStructure": "1. Cek Catu Daya Fisik -> 2. Uji PSU & Saklar -> 3. Observasi LED Motherboard",
+      "sampleSentence": "Always eliminate basic electrical faults first before testing internal modular hardware.",
+      "keyPhraseTip": "Frasa kunci: 'verify the power cable', 'power supply unit', dan 'motherboard indicator LEDs'."
+    },
+    "targetSentence": "I first verify the power cable and wall outlet, inspect the power supply unit, and check the motherboard indicator LEDs.",
+    "translationId": "Pertama saya memverifikasi kabel daya dan stopkontak, memeriksa unit catu daya (PSU), dan mengecek lampu LED indikator motherboard.",
+    "babyTips": "Kodi Tips: Urutkan troubleshooting dari hal paling dasar (kabel daya/PSU) sebelum mencurigai kerusakan komponen mahal."
+  },
+  {
+    "id": "spk-cv-12",
+    "category": "2. Hardware & PC Troubleshooting",
+    "questionEn": "How do you diagnose and resolve a Blue Screen of Death (BSOD) in Windows?",
+    "workedExample": {
+      "modelStructure": "1. Baca Kode Error -> 2. Review Driver / Software -> 3. Tes Fisik RAM",
+      "sampleSentence": "Most BSOD crashes stem from corrupted device drivers or faulty RAM modules.",
+      "keyPhraseTip": "Frasa kunci: 'stop error code', 'recent driver updates', dan 'Windows Memory Diagnostic'."
+    },
+    "targetSentence": "I analyze the stop error code, check recent driver updates, and test system memory using Windows Memory Diagnostic.",
+    "translationId": "Saya menganalisis kode stop error, memeriksa pembaruan driver terkini, dan menguji memori sistem menggunakan Windows Memory Diagnostic.",
+    "babyTips": "Kodi Tips: Sebutkan kode error BSOD dan pengujian RAM sebagai langkah diagnosis standar CompTIA A+."
+  },
+  {
+    "id": "spk-cv-13",
+    "category": "2. Hardware & PC Troubleshooting",
+    "questionEn": "What precautions must be observed to protect sensitive computer components from ESD?",
+    "workedExample": {
+      "modelStructure": "1. Perlengkapan Antistatis -> 2. Lingkungan Kerja Aman -> 3. Teknik Penanganan Fisik",
+      "sampleSentence": "Static electricity can destroy microchips without visible signs of physical damage.",
+      "keyPhraseTip": "Frasa kunci: 'antistatic wrist strap', 'ESD protective mats', dan 'handle by edges'."
+    },
+    "targetSentence": "I always use an antistatic wrist strap, work on ESD protective mats, and handle components strictly by their edges.",
+    "translationId": "Saya selalu menggunakan gelang antistatis, bekerja di atas matras pelindung ESD, dan memegang komponen hanya di bagian tepinya.",
+    "babyTips": "Kodi Tips: ESD (Electrostatic Discharge) adalah musuh tersembunyi komponen elektronik. Tekankan prosedur keselamatan kerja!"
+  },
+  {
+    "id": "spk-cv-14",
+    "category": "2. Hardware & PC Troubleshooting",
+    "questionEn": "How do you determine whether a computer overheating issue is caused by the cooler or thermal paste?",
+    "workedExample": {
+      "modelStructure": "1. Inspeksi Fisik Kipas -> 2. Baca Sensor BIOS -> 3. Ganti Thermal Paste",
+      "sampleSentence": "Overheating leads to thermal throttling and unexpected system shutdowns.",
+      "keyPhraseTip": "Frasa kunci: 'inspect fan rotation', 'monitor temperature sensors in BIOS', dan 'reapply thermal paste'."
+    },
+    "targetSentence": "I inspect the CPU fan rotation, monitor temperature sensors in BIOS, and clean and reapply thermal paste to the heatsink.",
+    "translationId": "Saya memeriksa putaran kipas CPU, memantau sensor suhu di BIOS, serta membersihkan dan mengoleskan kembali pasta termal pada heatsink.",
+    "babyTips": "Kodi Tips: Menjelaskan pasta termal dan sensor BIOS membuktikan kamu paham praktik perakitan PC nyata."
+  },
+  {
+    "id": "spk-cv-15",
+    "category": "2. Hardware & PC Troubleshooting",
+    "questionEn": "What is the difference between NVMe M.2 SSDs and traditional SATA hard drives?",
+    "workedExample": {
+      "modelStructure": "1. Jalur Bus Data -> 2. Kecepatan Transfer -> 3. Manfaat Performa Nyata",
+      "sampleSentence": "NVMe drives dramatically reduce boot times and accelerate database read operations.",
+      "keyPhraseTip": "Frasa kunci: 'communicate through the PCIe bus' dan 'faster read and write speeds'."
+    },
+    "targetSentence": "NVMe SSDs communicate directly through the PCIe bus delivering much faster read and write speeds than SATA drives.",
+    "translationId": "SSD NVMe berkomunikasi langsung melalui bus PCIe yang menghasilkan kecepatan baca dan tulis jauh lebih kencang dibanding drive SATA.",
+    "babyTips": "Kodi Tips: Sebutkan bus PCIe sebagai pembeda utama arsitektur penyimpanan modern."
+  },
+  {
+    "id": "spk-cv-16",
+    "category": "2. Hardware & PC Troubleshooting",
+    "questionEn": "What troubleshooting steps do you follow when a network printer stops printing?",
+    "workedExample": {
+      "modelStructure": "1. Cek Konektivitas IP -> 2. Restart Print Spooler -> 3. Cek Kertas & Toner Fisik",
+      "sampleSentence": "Clearing stuck print queues in Windows Services resolves the majority of office printer issues.",
+      "keyPhraseTip": "Frasa kunci: 'ping the printer IP', 'clear the print spooler', dan 'inspect paper trays'."
+    },
+    "targetSentence": "I ping the printer's IP address, clear the print spooler service, and inspect paper trays and toner status.",
+    "translationId": "Saya melakukan ping ke alamat IP printer, membersihkan layanan print spooler, dan memeriksa baki kertas serta status toner.",
+    "babyTips": "Kodi Tips: Masalah printer adalah tiket harian teknisi helpdesk. Kombinasikan cek jaringan dan restart spooler!"
+  },
+  {
+    "id": "spk-cv-17",
+    "category": "2. Hardware & PC Troubleshooting",
+    "questionEn": "How do you explain the purpose of RAM compared to a hard drive to a non-technical user?",
+    "workedExample": {
+      "modelStructure": "1. Analogi Meja Kerja -> 2. Sifat Sementara vs Permanen -> 3. Kesimpulan Sederhana",
+      "sampleSentence": "Using clear real-world metaphors helps non-technical staff understand computer limitations.",
+      "keyPhraseTip": "Frasa kunci: 'RAM acts like a working desk' dan 'hard drive is the storage cabinet'."
+    },
+    "targetSentence": "RAM acts like a working desk where open papers are held temporarily, while the hard drive is the storage cabinet for long-term files.",
+    "translationId": "RAM bertindak seperti meja kerja tempat berkas terbuka disimpan sementara, sedangkan hard drive adalah lemari penyimpanan untuk berkas jangka panjang.",
+    "babyTips": "Kodi Tips: Gunakan analogi meja kerja dan lemari arsip khas Kamus Bayi IT agar pewawancara kagum pada kemampuan komunikasimu!"
+  },
+  {
+    "id": "spk-cv-18",
+    "category": "2. Hardware & PC Troubleshooting",
+    "questionEn": "How do you access and navigate the BIOS or UEFI setup utility on modern motherboards?",
+    "workedExample": {
+      "modelStructure": "1. Prosedur Booting -> 2. Tombol Setup Utama -> 3. Pengaturan BIOS/UEFI",
+      "sampleSentence": "Modern motherboards also allow entering UEFI settings directly from Windows recovery options.",
+      "keyPhraseTip": "Frasa kunci: 'dedicated setup key F2 or Delete' dan 'initial POST screen'."
+    },
+    "targetSentence": "I restart the workstation and press the dedicated setup key, such as F2 or Delete, during the initial POST screen.",
+    "translationId": "Saya me-restart workstation dan menekan tombol setup khusus, seperti F2 atau Delete, selama layar POST awal.",
+    "babyTips": "Kodi Tips: Sebutkan istilah POST (Power-On Self-Test) untuk menunjukkan wawasan teknis CompTIA A+."
+  },
+  {
+    "id": "spk-cv-19",
+    "category": "2. Hardware & PC Troubleshooting",
+    "questionEn": "What signs indicate that a hard disk drive is approaching physical failure?",
+    "workedExample": {
+      "modelStructure": "1. Gejala Akustik -> 2. Gejala Sistem & File -> 3. Langkah Mitigasi Darurat",
+      "sampleSentence": "When a mechanical drive starts clicking, data backup must be prioritized immediately.",
+      "keyPhraseTip": "Frasa kunci: 'audible clicking noises', 'corrupted file warnings', dan 'immediate backup'."
+    },
+    "targetSentence": "Audible clicking noises, corrupted file warnings, and significant slow-downs indicate imminent drive failure requiring immediate backup.",
+    "translationId": "Suara klik yang terdengar, peringatan berkas rusak, dan pelambatan signifikan menandakan kegagalan drive sudah dekat yang membutuhkan backup segera.",
+    "babyTips": "Kodi Tips: 'Clicking noise of death' adalah tanda klasik mekanik harddisk rusak. Tindakan nomor satu: segera backup data!"
+  },
+  {
+    "id": "spk-cv-20",
+    "category": "2. Hardware & PC Troubleshooting",
+    "questionEn": "How do you upgrade workstation RAM ensuring full hardware compatibility?",
+    "workedExample": {
+      "modelStructure": "1. Cek Generasi DDR -> 2. Selaraskan Kecepatan -> 3. Konfigurasi Dual Channel",
+      "sampleSentence": "Installing matched memory pairs in alternate slots activates dual-channel architecture for better throughput.",
+      "keyPhraseTip": "Frasa kunci: 'supported DDR generations', 'matching clock speeds', dan 'dual-channel slots'."
+    },
+    "targetSentence": "I check the motherboard specifications for supported DDR generations, verify matching clock speeds, and install sticks in dual-channel slots.",
+    "translationId": "Saya memeriksa spesifikasi motherboard untuk generasi DDR yang didukung, memverifikasi kecocokan clock speed, dan memasang kepingan di slot dual-channel.",
+    "babyTips": "Kodi Tips: Sebutkan 'dual-channel slots' untuk membuktikan kamu tahu cara memaksimalkan bandwidth memori."
+  },
+  {
+    "id": "spk-cv-21",
+    "category": "3. Network Infrastructure & Connectivity",
+    "questionEn": "How does the OSI model help you isolate and troubleshoot network failures?",
+    "workedExample": {
+      "modelStructure": "1. Konsep Lapisan Bertingkat -> 2. Pendekatan Bottom-Up -> 3. Efisiensi Diagnosa",
+      "sampleSentence": "Dividing network functions into seven distinct layers prevents random guesswork during outages.",
+      "keyPhraseTip": "Frasa kunci: 'structured layer-by-layer approach', 'isolate physical cables', dan 'IP routing'."
+    },
+    "targetSentence": "The OSI model provides a structured layer-by-layer approach, allowing me to isolate physical cables first before inspecting IP routing or application protocols.",
+    "translationId": "Model OSI menyediakan pendekatan lapis demi lapis yang terstruktur, memungkinkan saya mengisolasi kabel fisik terlebih dahulu sebelum memeriksa perutean IP atau protokol aplikasi.",
+    "babyTips": "Kodi Tips: Sebutkan pendekatan 'bottom-up' (dari Layer 1 Physical ke Layer 7 Application) untuk menunjukkan metode troubleshooting sistematis."
+  },
+  {
+    "id": "spk-cv-22",
+    "category": "3. Network Infrastructure & Connectivity",
+    "questionEn": "What is the function of a default gateway in a local area network?",
+    "workedExample": {
+      "modelStructure": "1. Definisi Router/Pintu Keluar -> 2. Mekanisme Forwarding -> 3. Hubungan Subnet Lokal ke Internet",
+      "sampleSentence": "Without a configured default gateway, workstations can only communicate within their immediate local subnet.",
+      "keyPhraseTip": "Frasa kunci: 'serves as the access point or router', 'forwards traffic', dan 'external destination networks'."
+    },
+    "targetSentence": "A default gateway serves as the access point or router that forwards traffic from the local subnet to external destination networks like the Internet.",
+    "translationId": "Default gateway berfungsi sebagai titik akses atau router yang meneruskan lalu lintas dari subnet lokal ke jaringan tujuan eksternal seperti Internet.",
+    "babyTips": "Kodi Tips: Gunakan analogi pintu gerbang tol perumahan yang menghubungkan jalan kampung dengan jalan raya utama."
+  },
+  {
+    "id": "spk-cv-23",
+    "category": "3. Network Infrastructure & Connectivity",
+    "questionEn": "How do you troubleshoot a workstation that receives an APIPA IP address (169.254.x.x)?",
+    "workedExample": {
+      "modelStructure": "1. Arti Alamat APIPA -> 2. Cek Koneksi ke Server DHCP -> 3. Perintah ipconfig /renew",
+      "sampleSentence": "When DHCP fails, Windows assigns an automatic private IP address preventing Internet access.",
+      "keyPhraseTip": "Frasa kunci: 'client failed to reach a DHCP server', 'physical link lights', dan 'release and renew IP lease'."
+    },
+    "targetSentence": "An APIPA address indicates that the client failed to reach a DHCP server, so I verify physical link lights, check DHCP scope capacity, and release and renew the IP lease.",
+    "translationId": "Alamat APIPA menandakan bahwa klien gagal menjangkau server DHCP, jadi saya memverifikasi lampu indikator fisik, memeriksa kapasitas pool DHCP, serta melakukan release dan renew IP lease.",
+    "babyTips": "Kodi Tips: APIPA (169.254.x.x) adalah soal wajib ujian CompTIA Network+. Solusinya: cek kabel dan jalankan ipconfig /renew!"
+  },
+  {
+    "id": "spk-cv-24",
+    "category": "3. Network Infrastructure & Connectivity",
+    "questionEn": "What is the purpose of configuring VLANs on enterprise Cisco switches?",
+    "workedExample": {
+      "modelStructure": "1. Pembagian Logis Fisik -> 2. Isolasi Broadcast Domain -> 3. Manfaat Keamanan & Kinerja",
+      "sampleSentence": "Creating separate VLANs prevents sensitive departmental data from leaking across the office network.",
+      "keyPhraseTip": "Frasa kunci: 'isolated logical broadcast domains', 'improving network security', dan 'optimizing traffic bandwidth'."
+    },
+    "targetSentence": "VLANs partition a physical switch into isolated logical broadcast domains, improving network security and optimizing traffic bandwidth.",
+    "translationId": "VLAN membagi switch fisik menjadi beberapa domain siaran logis yang terisolasi, meningkatkan keamanan jaringan dan mengoptimalkan bandwidth lalu lintas data.",
+    "babyTips": "Kodi Tips: Sebutkan bahwa VLAN memisahkan jaringan HRD, Keuangan, dan Tamu agar tidak saling mengintip data."
+  },
+  {
+    "id": "spk-cv-25",
+    "category": "3. Network Infrastructure & Connectivity",
+    "questionEn": "What is the difference between TCP and UDP transport protocols?",
+    "workedExample": {
+      "modelStructure": "1. Karakteristik TCP (Reliable Handshake) -> 2. Karakteristik UDP (Fast Streaming) -> 3. Contoh Kasus Penggunaan",
+      "sampleSentence": "TCP requires a three-way handshake to establish reliability, while UDP transmits datagrams without acknowledgement.",
+      "keyPhraseTip": "Frasa kunci: 'connection-oriented protocol', 'guarantees packet delivery', dan 'connectionless prioritizes speed'."
+    },
+    "targetSentence": "TCP is a connection-oriented protocol that guarantees packet delivery through handshakes, whereas UDP is connectionless and prioritizes speed for streaming and gaming.",
+    "translationId": "TCP adalah protokol berorientasi koneksi yang menjamin pengiriman paket melalui handshake tiga arah, sedangkan UDP tanpa koneksi dan memprioritaskan kecepatan untuk streaming dan game.",
+    "babyTips": "Kodi Tips: Jelaskan bahwa web browsing dan transfer file memakai TCP (pasti sampai), sedangkan video call memakai UDP (cepat walau ada frame hilang)."
+  },
+  {
+    "id": "spk-cv-26",
+    "category": "3. Network Infrastructure & Connectivity",
+    "questionEn": "How does the DNS resolution process work when a user enters a domain name?",
+    "workedExample": {
+      "modelStructure": "1. Analogi Buku Telepon -> 2. Hierarki Root & TLD -> 3. Konversi Nama Domain ke IP",
+      "sampleSentence": "DNS translates user-friendly hostnames into the IP addresses required for network routing.",
+      "keyPhraseTip": "Frasa kunci: 'queries DNS servers', 'resolve human-readable domains', dan 'machine IP addresses'."
+    },
+    "targetSentence": "The system queries DNS servers starting from local cache to root, TLD, and authoritative nameservers to resolve human-readable domains into machine IP addresses.",
+    "translationId": "Sistem meminta server DNS mulai dari cache lokal hingga root, TLD, dan nameserver otoritatif untuk menerjemahkan domain yang mudah dibaca manusia menjadi alamat IP mesin.",
+    "babyTips": "Kodi Tips: Jelaskan DNS seperti buku telepon raksasa yang mengubah google.com menjadi alamat angka 142.250.x.x."
+  },
+  {
+    "id": "spk-cv-27",
+    "category": "3. Network Infrastructure & Connectivity",
+    "questionEn": "What is subnetting and why is it essential for IPv4 network planning?",
+    "workedExample": {
+      "modelStructure": "1. Konsep Pemecahan Jaringan -> 2. Reduksi Kemacetan Broadcast -> 3. Efisiensi Alokasi IP",
+      "sampleSentence": "Custom subnet masks allow network engineers to tailor host capacities to specific branch requirements.",
+      "keyPhraseTip": "Frasa kunci: 'divides a large network into smaller subnetworks', 'reducing broadcast congestion', dan 'conserving IPv4 address spaces'."
+    },
+    "targetSentence": "Subnetting divides a large network into smaller subnetworks, reducing broadcast congestion and conserving limited IPv4 address spaces.",
+    "translationId": "Subnetting membagi jaringan besar menjadi subjaringan yang lebih kecil, mengurangi kepadatan broadcast dan menghemat ruang alamat IPv4 yang terbatas.",
+    "babyTips": "Kodi Tips: Jelaskan bahwa subnetting seperti membagi gedung apartemen besar menjadi beberapa lantai dan kamar rapi."
+  },
+  {
+    "id": "spk-cv-28",
+    "category": "3. Network Infrastructure & Connectivity",
+    "questionEn": "How do you troubleshoot intermittent Wi-Fi drops in a crowded office area?",
+    "workedExample": {
+      "modelStructure": "1. Pindai Saluran Frekuensi -> 2. Cek Overlap Sinyal AP -> 3. Pembaruan Driver Perangkat",
+      "sampleSentence": "Switching dense office devices to the 5GHz frequency band eliminates common channel saturation.",
+      "keyPhraseTip": "Frasa kunci: 'wireless channel interference', 'access point signal coverage', dan 'update wireless adapter drivers'."
+    },
+    "targetSentence": "I analyze wireless channel interference, verify access point signal coverage, and update client wireless adapter drivers.",
+    "translationId": "Saya menganalisis interferensi saluran nirkabel, memverifikasi jangkauan sinyal access point, dan memperbarui driver adaptor nirkabel klien.",
+    "babyTips": "Kodi Tips: Sebutkan pemilihan channel 1, 6, 11 (2.4GHz) atau migrasi ke 5GHz/6GHz untuk menghindari tumpang tindih sinyal tetangga."
+  },
+  {
+    "id": "spk-cv-29",
+    "category": "3. Network Infrastructure & Connectivity",
+    "questionEn": "What command-line utilities do you utilize to diagnose remote connectivity problems?",
+    "workedExample": {
+      "modelStructure": "1. Ping untuk Latensi & Respon -> 2. Tracert untuk Menemukan Titik Putus -> 3. Nslookup untuk Uji Server Nama",
+      "sampleSentence": "Tracing route hops highlights precisely which upstream router is dropping packets.",
+      "keyPhraseTip": "Frasa kunci: 'ping to test reachability', 'tracert to identify routing hops', dan 'nslookup to verify DNS'."
+    },
+    "targetSentence": "I use ping to test basic reachability, tracert to identify routing hops, and nslookup to verify DNS resolution integrity.",
+    "translationId": "Saya menggunakan ping untuk menguji keterjangkauan dasar, tracert untuk mengidentifikasi lompatan router, dan nslookup untuk memverifikasi integritas resolusi DNS.",
+    "babyTips": "Kodi Tips: Tiga mantra sakti teknisi jaringan: ping, tracert/traceroute, dan nslookup!"
+  },
+  {
+    "id": "spk-cv-30",
+    "category": "3. Network Infrastructure & Connectivity",
+    "questionEn": "How does Network Address Translation (NAT) protect internal corporate workstations?",
+    "workedExample": {
+      "modelStructure": "1. Pemetaan IP Privat ke Publik -> 2. Proteksi Akses Langsung -> 3. Penghematan Alokasi IP Global",
+      "sampleSentence": "By masking internal hosts, NAT acts as an initial security perimeter against outside port scans.",
+      "keyPhraseTip": "Frasa kunci: 'hides private internal IP addresses', 'single public router IP', dan 'preventing direct unsolicited connections'."
+    },
+    "targetSentence": "NAT hides private internal IP addresses behind a single public router IP, preventing direct unsolicited connections from external attackers.",
+    "translationId": "NAT menyembunyikan alamat IP privat internal di balik satu IP publik router, mencegah koneksi langsung tanpa izin dari penyerang eksternal.",
+    "babyTips": "Kodi Tips: NAT bertindak seperti resepsionis kantor yang menerima semua surat dari luar tanpa membocorkan nomor kamar karyawan di dalam."
+  },
+  {
+    "id": "spk-cv-31",
+    "category": "4. Operating Systems, Linux & Windows Terminal",
+    "questionEn": "How do you inspect running system processes and terminate unresponsive tasks in Windows?",
+    "workedExample": {
+      "modelStructure": "1. Monitoring Visual via Task Manager -> 2. Deteksi Proses via CLI (tasklist) -> 3. Terminasi Paksa (taskkill)",
+      "sampleSentence": "Using taskkill via the terminal allows terminating background hung services without freezing the graphical UI.",
+      "keyPhraseTip": "Frasa kunci: 'run tasklist command', 'terminate hanging processes', dan 'taskkill with PID'."
+    },
+    "targetSentence": "I launch Task Manager or run the tasklist command in Command Prompt, and terminate hanging processes using taskkill with the process identifier.",
+    "translationId": "Saya membuka Task Manager atau menjalankan perintah tasklist di Command Prompt, dan menghentikan proses yang macet menggunakan taskkill dengan nomor PID.",
+    "babyTips": "Kodi Tips: Mengetahui perintah CLI 'taskkill /PID ... /F' membuktikan kamu bukan sekadar pengguna biasa tapi teknisi komputer handal!"
+  },
+  {
+    "id": "spk-cv-32",
+    "category": "4. Operating Systems, Linux & Windows Terminal",
+    "questionEn": "What essential Linux commands do you use for file navigation and permissions management?",
+    "workedExample": {
+      "modelStructure": "1. Navigasi Direktori (cd, ls) -> 2. Pencarian Konten Log (grep) -> 3. Hak Akses File (chmod, chown)",
+      "sampleSentence": "Managing permissions with chmod ensures sensitive configuration files cannot be modified by unprivileged users.",
+      "keyPhraseTip": "Frasa kunci: 'navigate directories using cd and ls', 'grep to search logs', dan 'chmod and chown for permissions'."
+    },
+    "targetSentence": "I use cd and ls to navigate directories, grep to search log contents, and chmod and chown to manage user file permissions.",
+    "translationId": "Saya menggunakan cd dan ls untuk menavigasi direktori, grep untuk mencari isi log, serta chmod dan chown untuk mengelola izin berkas pengguna.",
+    "babyTips": "Kodi Tips: Perintah Linux `chmod` (ubah hak akses) dan `grep` (filter teks log) adalah pertanyaan favorit tes IT perusahaan."
+  },
+  {
+    "id": "spk-cv-33",
+    "category": "4. Operating Systems, Linux & Windows Terminal",
+    "questionEn": "How do you repair corrupted Windows operating system files using built-in system tools?",
+    "workedExample": {
+      "modelStructure": "1. Buka CMD Administrator -> 2. Jalankan SFC Scannow -> 3. Jalankan DISM Image Repair",
+      "sampleSentence": "SFC verifies system file signatures, while DISM repairs the underlying component store from Windows Update.",
+      "keyPhraseTip": "Frasa kunci: 'elevated command prompt', 'sfc /scannow', dan 'DISM restorehealth'."
+    },
+    "targetSentence": "I open an elevated command prompt and run sfc /scannow, followed by DISM restorehealth to download and replace corrupted components.",
+    "translationId": "Saya membuka Command Prompt dengan hak administrator dan menjalankan sfc /scannow, diikuti oleh DISM restorehealth untuk mengunduh dan mengganti komponen yang rusak.",
+    "babyTips": "Kodi Tips: Duet sakti penyelamat Windows tanpa perlu install ulang: SFC (System File Checker) dan DISM!"
+  },
+  {
+    "id": "spk-cv-34",
+    "category": "4. Operating Systems, Linux & Windows Terminal",
+    "questionEn": "What is the role of Group Policy Objects (GPO) in managing Windows corporate workstations?",
+    "workedExample": {
+      "modelStructure": "1. Manajemen Terpusat Active Directory -> 2. Penegakan Aturan Keamanan -> 3. Standardisasi Konfigurasi",
+      "sampleSentence": "Centralized Group Policies ensure compliance across hundreds of workstations with a single push.",
+      "keyPhraseTip": "Frasa kunci: 'enforce centralized security policies', 'deploy software', dan 'restrict unauthorized changes across domains'."
+    },
+    "targetSentence": "GPOs allow system administrators to enforce centralized security policies, deploy software, and restrict unauthorized configuration changes across entire domains.",
+    "translationId": "GPO memungkinkan administrator sistem untuk menegakkan kebijakan keamanan terpusat, mendistribusikan perangkat lunak, dan membatasi perubahan konfigurasi tanpa izin di seluruh domain kantor.",
+    "babyTips": "Kodi Tips: GPO adalah remot kontrol seragam untuk ribuan komputer di perusahaan agar karyawan tidak bisa sembarangan colok flashdisk."
+  },
+  {
+    "id": "spk-cv-35",
+    "category": "4. Operating Systems, Linux & Windows Terminal",
+    "questionEn": "How do you investigate system errors and application crashes in the Windows Event Viewer?",
+    "workedExample": {
+      "modelStructure": "1. Akses Event Viewer -> 2. Filter Log Sistem & Aplikasi -> 3. Temukan Event ID & Modul Penyebab",
+      "sampleSentence": "Event IDs and error timestamps provide the definitive evidence needed to diagnose intermittent crashes.",
+      "keyPhraseTip": "Frasa kunci: 'Windows Logs section', 'filtering for Critical and Error events', dan 'identify faulty modules and timestamps'."
+    },
+    "targetSentence": "I navigate to the Windows Logs section under System and Application, filtering for Critical and Error events to identify faulty modules and timestamps.",
+    "translationId": "Saya membuka bagian Windows Logs di bawah System dan Application, memfilter kejadian Kritis dan Error untuk mengidentifikasi modul yang bermasalah dan catatan waktunya.",
+    "babyTips": "Kodi Tips: Event Viewer adalah buku harian rahasia Windows. Jangan menebak-nebak, langsung intip log error-nya!"
+  },
+  {
+    "id": "spk-cv-36",
+    "category": "4. Operating Systems, Linux & Windows Terminal",
+    "questionEn": "What is the difference between Windows PowerShell and the legacy Command Prompt (CMD)?",
+    "workedExample": {
+      "modelStructure": "1. Konsep Objek vs Teks Biasa -> 2. Integrasi .NET Framework -> 3. Kemampuan Otomasi Skrip",
+      "sampleSentence": "PowerShell allows piping complex data structures between cmdlets rather than parsing raw text strings.",
+      "keyPhraseTip": "Frasa kunci: 'advanced object-oriented shell', 'manipulates .NET objects', dan 'plain text streams in legacy CMD'."
+    },
+    "targetSentence": "PowerShell is an advanced object-oriented shell and scripting language that manipulates .NET objects, whereas CMD only processes plain text streams.",
+    "translationId": "PowerShell adalah shell dan bahasa skrip tingkat lanjut berorientasi objek yang memanipulasi objek .NET, sedangkan CMD hanya memproses aliran teks polos biasa.",
+    "babyTips": "Kodi Tips: Jelaskan bahwa PowerShell sangat kuat karena hasil perintahnya adalah objek data utuh yang bisa diolah kembali."
+  },
+  {
+    "id": "spk-cv-37",
+    "category": "4. Operating Systems, Linux & Windows Terminal",
+    "questionEn": "How do you automate routine administrative tasks using operating system scheduling tools?",
+    "workedExample": {
+      "modelStructure": "1. Penulisan Skrip Otomasi -> 2. Penjadwalan Waktu -> 3. Monitoring Hasil Eksekusi",
+      "sampleSentence": "Automating maintenance scripts eliminates human error in scheduled backups and log rotations.",
+      "keyPhraseTip": "Frasa kunci: 'automation scripts in PowerShell or Bash', 'Windows Task Scheduler', dan 'Linux Cron jobs'."
+    },
+    "targetSentence": "I write automation scripts in PowerShell or Bash and schedule automated executions using Windows Task Scheduler or Linux Cron jobs.",
+    "translationId": "Saya menulis skrip otomasi dalam PowerShell atau Bash dan menjadwalkan eksekusi otomatis menggunakan Windows Task Scheduler atau Cron jobs di Linux.",
+    "babyTips": "Kodi Tips: Sebutkan 'Cron jobs' untuk Linux dan 'Task Scheduler' untuk Windows agar terlihat menguasai kedua sistem operasi."
+  },
+  {
+    "id": "spk-cv-38",
+    "category": "4. Operating Systems, Linux & Windows Terminal",
+    "questionEn": "How do you configure and secure SSH remote terminal access on a Linux server?",
+    "workedExample": {
+      "modelStructure": "1. Pembuatan Kunci Kriptografi -> 2. Konfigurasi sshd_config -> 3. Pengerasan Keamanan Port",
+      "sampleSentence": "Enforcing key-based authentication protects servers from automated brute-force password dictionary attacks.",
+      "keyPhraseTip": "Frasa kunci: 'generate key pairs', 'disable root password logins', dan 'change default listening port'."
+    },
+    "targetSentence": "I generate RSA or ED25519 key pairs, disable root password logins in the sshd configuration, and change the default listening port.",
+    "translationId": "Saya membuat pasangan kunci RSA atau ED25519, menonaktifkan login kata sandi root pada konfigurasi sshd, dan mengubah port default.",
+    "babyTips": "Kodi Tips: Praktik standar keamanan server: matikan PermitRootLogin dan gunakan SSH key, bukan password biasa!"
+  },
+  {
+    "id": "spk-cv-39",
+    "category": "4. Operating Systems, Linux & Windows Terminal",
+    "questionEn": "What steps do you take when a user profile becomes corrupted in Windows 10 or 11?",
+    "workedExample": {
+      "modelStructure": "1. Login Admin Cadangan -> 2. Backup Dokumen Penting -> 3. Reset Kunci Registry ProfileList",
+      "sampleSentence": "Backing up user desktop and documents files prevents accidental data loss during profile recreation.",
+      "keyPhraseTip": "Frasa kunci: 'backup data folders', 'delete corrupted registry GUID entry', dan 'generate a fresh profile'."
+    },
+    "targetSentence": "I log in with an administrator account, backup the user's data folders, delete the corrupted registry GUID profile entry, and let Windows generate a fresh profile.",
+    "translationId": "Saya masuk dengan akun administrator, mencadangkan folder data pengguna, menghapus entri GUID profil yang rusak di registry, dan membiarkan Windows membuat profil baru yang segar.",
+    "babyTips": "Kodi Tips: Masalah 'We can't sign in to your account' sering terjadi di kantor. Backup data dulu baru reset registry profil!"
+  },
+  {
+    "id": "spk-cv-40",
+    "category": "4. Operating Systems, Linux & Windows Terminal",
+    "questionEn": "How do you monitor real-time CPU, memory, and disk usage in a headless Linux environment?",
+    "workedExample": {
+      "modelStructure": "1. Pemantau CPU Interaktif (top/htop) -> 2. Cek RAM Tersedia (free -m) -> 3. Cek Sisa Partisi Disk (df -h)",
+      "sampleSentence": "Interactive CLI monitors allow identifying runaway background processes without needing a graphical desktop.",
+      "keyPhraseTip": "Frasa kunci: 'htop for processor loads', 'free -m for memory', dan 'df -h for disk capacity'."
+    },
+    "targetSentence": "I use command-line monitoring tools like top or htop for processor loads, free -m for memory statistics, and df -h for disk capacity.",
+    "translationId": "Saya menggunakan alat pemantau baris perintah seperti top atau htop untuk beban prosesor, free -m untuk statistik memori, dan df -h untuk kapasitas penyimpanan disk.",
+    "babyTips": "Kodi Tips: Sebutkan opsi `-h` (human-readable) pada perintah `df -h` agar angka ukuran kapasitas tampil rapi dalam GB/MB."
+  },
+  {
+    "id": "spk-cv-41",
+    "category": "5. Database, Data Modeling & SQL Queries",
+    "questionEn": "What is the difference between INNER JOIN and LEFT JOIN in SQL queries?",
+    "workedExample": {
+      "modelStructure": "1. Definisi INNER JOIN (Irisan Cocok) -> 2. Definisi LEFT JOIN (Semua Baris Kiri) -> 3. Penanganan Nilai NULL",
+      "sampleSentence": "Choosing the correct join type prevents accidental omission of orphan records during data auditing.",
+      "keyPhraseTip": "Frasa kunci: 'matching keys in both tables', 'all rows from the left table', dan 'regardless of matches on the right'."
+    },
+    "targetSentence": "An INNER JOIN returns only records that have matching keys in both tables, whereas a LEFT JOIN returns all rows from the left table regardless of whether matches exist on the right.",
+    "translationId": "INNER JOIN hanya mengembalikan baris yang memiliki kunci yang cocok di kedua tabel, sedangkan LEFT JOIN mengembalikan semua baris dari tabel kiri terlepas dari apakah ada kecocokan di tabel kanan.",
+    "babyTips": "Kodi Tips: Gunakan analogi absensi: INNER JOIN hanya mengambil siswa yang hadir dan punya nomor meja, LEFT JOIN mengambil seluruh daftar siswa meski mejanya kosong."
+  },
+  {
+    "id": "spk-cv-42",
+    "category": "5. Database, Data Modeling & SQL Queries",
+    "questionEn": "Why is database normalization important and what does Third Normal Form (3NF) achieve?",
+    "workedExample": {
+      "modelStructure": "1. Tujuan Normalisasi -> 2. Mencegah Anomali Redundansi -> 3. Prinsip Ketergantungan 3NF",
+      "sampleSentence": "Proper normalization protects data consistency by storing each distinct fact in exactly one place.",
+      "keyPhraseTip": "Frasa kunci: 'eliminates data redundancy', 'update anomalies', dan 'depends solely on the primary key'."
+    },
+    "targetSentence": "Normalization eliminates data redundancy and update anomalies, and 3NF ensures that every non-key column depends solely on the primary key and nothing else.",
+    "translationId": "Normalisasi menghilangkan redundansi data dan anomali pembaruan, dan 3NF memastikan bahwa setiap kolom non-kunci hanya bergantung pada kunci primer dan tidak ada yang lain.",
+    "babyTips": "Kodi Tips: Slogan legendaris 3NF: 'The key, the whole key, and nothing but the key, so help me Codd!'"
+  },
+  {
+    "id": "spk-cv-43",
+    "category": "5. Database, Data Modeling & SQL Queries",
+    "questionEn": "How do indexes improve database search performance, and what is their drawback?",
+    "workedExample": {
+      "modelStructure": "1. Mekanisme B-Tree Indeks -> 2. Kecepatan Operasi SELECT -> 3. Biaya Tambahan Penulisan Data (Trade-off)",
+      "sampleSentence": "Indexing frequently queried foreign keys reduces full table scans from minutes to milliseconds.",
+      "keyPhraseTip": "Frasa kunci: 'speed up SELECT query filtering', 'slow down INSERT and UPDATE', dan 'index must be rebuilt'."
+    },
+    "targetSentence": "Indexes create balanced tree structures that dramatically speed up SELECT query filtering, but they slow down INSERT and UPDATE operations because the index must be rebuilt.",
+    "translationId": "Indeks membuat struktur balanced tree (B-Tree) yang secara dramatis mempercepat pencarian kueri SELECT, tetapi memperlambat operasi INSERT dan UPDATE karena indeks harus diperbarui.",
+    "babyTips": "Kodi Tips: Indeks seperti daftar indeks di belakang buku tebal. Sangat cepat menemukan halaman topik, tapi butuh waktu menulis indeks saat bab baru bertambah."
+  },
+  {
+    "id": "spk-cv-44",
+    "category": "5. Database, Data Modeling & SQL Queries",
+    "questionEn": "What are ACID properties in database transaction management?",
+    "workedExample": {
+      "modelStructure": "1. Kepanjangan Empat Pilar ACID -> 2. Prinsip All-or-Nothing (Atomicity) -> 3. Ketahanan Permanen (Durability)",
+      "sampleSentence": "ACID compliance prevents phantom reads and partial writes when concurrent transactions execute.",
+      "keyPhraseTip": "Frasa kunci: 'Atomicity Consistency Isolation Durability', 'complete entirely or roll back', dan 'without corruption'."
+    },
+    "targetSentence": "ACID stands for Atomicity, Consistency, Isolation, and Durability, ensuring that database financial transactions either complete entirely or roll back safely without corruption.",
+    "translationId": "ACID adalah singkatan dari Atomicity, Consistency, Isolation, dan Durability, memastikan bahwa transaksi finansial database selesai secara utuh atau dibatalkan dengan aman tanpa kerusakan data.",
+    "babyTips": "Kodi Tips: Konsep perbankan: transfer uang harus potong saldo pengirim SEKALIGUS tambah saldo penerima (Atomicity). Jika salah satu gagal, batalkan semua!"
+  },
+  {
+    "id": "spk-cv-45",
+    "category": "5. Database, Data Modeling & SQL Queries",
+    "questionEn": "How do you prevent SQL Injection vulnerabilities in software applications?",
+    "workedExample": {
+      "modelStructure": "1. Bahaya SQL Injection -> 2. Penerapan Prepared Statements -> 3. Validasi & Sanitasi Masukan",
+      "sampleSentence": "Parameterized statements neutralize malicious SQL commands injected through web login forms.",
+      "keyPhraseTip": "Frasa kunci: 'parameterized queries', 'prepared statements', dan 'treated as literal data'."
+    },
+    "targetSentence": "I strictly use parameterized queries and prepared statements, ensuring that user input is treated as literal data rather than executable code.",
+    "translationId": "Saya selalu menggunakan kueri terparameterisasi dan prepared statements, memastikan bahwa masukan pengguna diperlakukan sebagai data harfiah dan bukan kode yang dapat dieksekusi.",
+    "babyTips": "Kodi Tips: Jangan pernah menggabungkan string kueri dengan tanda plus (+)! Selalu gunakan prepared statement agar input hacker tidak bisa mengeksekusi perintah SQL."
+  },
+  {
+    "id": "spk-cv-46",
+    "category": "5. Database, Data Modeling & SQL Queries",
+    "questionEn": "What is the difference between WHERE and HAVING clauses in an aggregation query?",
+    "workedExample": {
+      "modelStructure": "1. Urutan Eksekusi Kueri -> 2. Posisi WHERE (Filter Baris Awal) -> 3. Posisi HAVING (Filter Hasil Agregat)",
+      "sampleSentence": "You cannot place aggregate functions like SUM or COUNT inside a WHERE clause; you must use HAVING.",
+      "keyPhraseTip": "Frasa kunci: 'filters individual rows before grouping', 'filters aggregated summary groups', dan 'after GROUP BY'."
+    },
+    "targetSentence": "The WHERE clause filters individual rows before grouping occurs, while the HAVING clause filters aggregated summary groups after GROUP BY is processed.",
+    "translationId": "Klausa WHERE memfilter baris individual sebelum pengelompokan terjadi, sedangkan klausa HAVING memfilter grup ringkasan agregat setelah GROUP BY diproses.",
+    "babyTips": "Kodi Tips: WHERE untuk menyaring sebelum dikelompokkan, HAVING untuk menyaring hasil agregasi fungsi seperti COUNT atau SUM!"
+  },
+  {
+    "id": "spk-cv-47",
+    "category": "5. Database, Data Modeling & SQL Queries",
+    "questionEn": "How do you identify and optimize a slow-running SQL database query?",
+    "workedExample": {
+      "modelStructure": "1. Analisis Execution Plan / EXPLAIN -> 2. Deteksi Full Table Scan -> 3. Penambahan Indeks & Refactoring Kueri",
+      "sampleSentence": "Query plans reveal where the database engine spends the most CPU time retrieving records.",
+      "keyPhraseTip": "Frasa kunci: 'inspect query execution plan', 'identify expensive table scans', dan 'rewrite subqueries using joins'."
+    },
+    "targetSentence": "I inspect the query execution plan to identify expensive table scans, verify missing indexes, and rewrite nested subqueries using efficient joins.",
+    "translationId": "Saya memeriksa execution plan kueri untuk mengidentifikasi full table scan yang boros, memverifikasi indeks yang hilang, dan menulis ulang subkueri bersarang menggunakan join yang efisien.",
+    "babyTips": "Kodi Tips: Gunakan fitur 'Execution Plan' di SQL Server atau EXPLAIN di MySQL untuk melihat di mana letak kemacetan query."
+  },
+  {
+    "id": "spk-cv-48",
+    "category": "5. Database, Data Modeling & SQL Queries",
+    "questionEn": "What is the purpose of database transactions and the ROLLBACK command?",
+    "workedExample": {
+      "modelStructure": "1. Pengelompokan Kueri (BEGIN TRANSACTION) -> 2. Verifikasi Keberhasilan (COMMIT) -> 3. Pembatalan Darurat (ROLLBACK)",
+      "sampleSentence": "Using rollback protects data integrity when network interruptions occur during batch updates.",
+      "keyPhraseTip": "Frasa kunci: 'group multiple statements into single unit', 'ROLLBACK allows undoing', dan 'uncommitted modifications'."
+    },
+    "targetSentence": "Transactions group multiple SQL statements into a single unit of work, and ROLLBACK allows undoing all uncommitted modifications if an error occurs mid-process.",
+    "translationId": "Transaksi mengelompokkan beberapa pernyataan SQL menjadi satu kesatuan kerja, dan ROLLBACK memungkinkan pembatalan semua perubahan yang belum disimpan jika terjadi error di tengah proses.",
+    "babyTips": "Kodi Tips: ROLLBACK adalah tombol darurat 'undo' jika ada kueri yang gagal dieksekusi di tengah jalan."
+  },
+  {
+    "id": "spk-cv-49",
+    "category": "5. Database, Data Modeling & SQL Queries",
+    "questionEn": "How do primary keys and foreign keys maintain referential integrity in relational databases?",
+    "workedExample": {
+      "modelStructure": "1. Definisi Unik Primary Key -> 2. Hubungan Relasi Foreign Key -> 3. Pencegahan Record Terbengkalai",
+      "sampleSentence": "Foreign key constraints enforce business rules by blocking deletions of active parent records.",
+      "keyPhraseTip": "Frasa kunci: 'primary key uniquely identifies', 'foreign key references that key', dan 'preventing orphan records'."
+    },
+    "targetSentence": "A primary key uniquely identifies each record in a parent table, while a foreign key in a child table references that key, preventing orphan records.",
+    "translationId": "Kunci primer secara unik mengidentifikasi setiap rekaman di tabel induk, sementara kunci asing di tabel anak mereferensikan kunci tersebut, mencegah rekaman tanpa induk (orphan).",
+    "babyTips": "Kodi Tips: Kunci asing memastikan kamu tidak bisa membuat pesanan barang untuk ID pelanggan yang tidak pernah ada di database!"
+  },
+  {
+    "id": "spk-cv-50",
+    "category": "5. Database, Data Modeling & SQL Queries",
+    "questionEn": "What backup strategies do you implement to guarantee zero database data loss?",
+    "workedExample": {
+      "modelStructure": "1. Cadangan Penuh (Full Backup) -> 2. Cadangan Selisih (Differential) -> 3. Pemulihan Menit Tepat (Point-in-Time Recovery)",
+      "sampleSentence": "Transaction log backups allow restoring the database to the exact minute before corruption occurred.",
+      "keyPhraseTip": "Frasa kunci: 'weekly full backups', 'daily differential backups', dan 'continuous transaction log backups'."
+    },
+    "targetSentence": "I combine weekly full backups, daily differential backups, and continuous transaction log backups to enable point-in-time recovery during disasters.",
+    "translationId": "Saya menggabungkan backup penuh mingguan, backup diferensial harian, dan backup log transaksi berkelanjutan untuk memungkinkan pemulihan ke titik waktu tertentu saat terjadi bencana.",
+    "babyTips": "Kodi Tips: Strategi 3 lapis standar administrator database: Full Backup + Differential Backup + Transaction Log Backup!"
+  },
+  {
+    "id": "spk-cv-51",
+    "category": "6. Cybersecurity, Firewalls & Data Privacy",
+    "questionEn": "What is the principle of least privilege in corporate access management?",
+    "workedExample": {
+      "modelStructure": "1. Batasan Hak Akses Minimum -> 2. Pengurangan Bidang Serangan (Attack Surface) -> 3. Penegakan Kebijakan Peran",
+      "sampleSentence": "Restricting administrator privileges prevents routine employee phishing incidents from compromising entire networks.",
+      "keyPhraseTip": "Frasa kunci: 'principle of least privilege', 'minimum permissions strictly necessary', dan 'assigned job duties'."
+    },
+    "targetSentence": "The principle of least privilege dictates that users and services should only be granted the minimum permissions strictly necessary to perform their assigned job duties.",
+    "translationId": "Prinsip hak istimewa terkecil (least privilege) menetapkan bahwa pengguna dan layanan hanya boleh diberikan izin minimum yang benar-benar diperlukan untuk menjalankan tugas kerja mereka.",
+    "babyTips": "Kodi Tips: Jangan pernah memberi semua orang akses admin! Berikan hak akses secukupnya sesuai jobdesk mereka untuk membatasi dampak jika terkena virus."
+  },
+  {
+    "id": "spk-cv-52",
+    "category": "6. Cybersecurity, Firewalls & Data Privacy",
+    "questionEn": "How does Multi-Factor Authentication (MFA) defend against credential theft?",
+    "workedExample": {
+      "modelStructure": "1. Kombinasi Faktor Verifikasi -> 2. Perlindungan dari Kebocoran Password -> 3. Penggunaan Aplikasi Authenticator",
+      "sampleSentence": "Requiring a time-based one-time passcode stops attackers who obtain passwords from dark web breaches.",
+      "keyPhraseTip": "Frasa kunci: 'independent authentication factors', 'password combined with authenticator app', dan 'blocking unauthorized logins'."
+    },
+    "targetSentence": "MFA requires two or more independent authentication factors, such as a password combined with an authenticator app token, blocking unauthorized logins even if passwords leak.",
+    "translationId": "MFA membutuhkan dua atau lebih faktor otentikasi independen, seperti kata sandi yang dikombinasikan dengan token aplikasi autentikator, memblokir login tanpa izin bahkan jika kata sandi bocor.",
+    "babyTips": "Kodi Tips: Tiga faktor autentikasi: sesuatu yang kamu tahu (password), sesuatu yang kamu punya (HP/token), dan sesuatu dari dirimu (sidik jari)."
+  },
+  {
+    "id": "spk-cv-53",
+    "category": "6. Cybersecurity, Firewalls & Data Privacy",
+    "questionEn": "What are the hallmarks of a sophisticated email phishing attempt and how do you train staff?",
+    "workedExample": {
+      "modelStructure": "1. Identifikasi Ciri Tipuan Email -> 2. Analisis Header & Tautan URL -> 3. Edukasi Simulasi Berkala untuk Staf",
+      "sampleSentence": "Regular phishing simulations teach employees to inspect sender email addresses before clicking attachments.",
+      "keyPhraseTip": "Frasa kunci: 'spoofed sender domains', 'urgent emotional language', dan 'simulated phishing tests'."
+    },
+    "targetSentence": "Hallmarks include spoofed sender domains, urgent emotional language, and suspicious attachment links; I train staff through simulated phishing tests and reporting drills.",
+    "translationId": "Ciri-cirinya meliputi domain pengirim palsu, bahasa emosional yang mendesak, dan tautan lampiran mencurigakan; saya melatih staf melalui uji simulasi phishing dan latihan pelaporan.",
+    "babyTips": "Kodi Tips: Ciri khas phishing: pura-pura dari pimpinan, menuntut transfer segera atau klik link reset akun darurat. Verifikasi selalu pengirimnya!"
+  },
+  {
+    "id": "spk-cv-54",
+    "category": "6. Cybersecurity, Firewalls & Data Privacy",
+    "questionEn": "What is the difference between symmetric and asymmetric data encryption?",
+    "workedExample": {
+      "modelStructure": "1. Enkripsi Simetris (Satu Kunci / Cepat) -> 2. Enkripsi Asimetris (Kunci Publik-Privat / Aman) -> 3. Kolaborasi pada Protokol SSL/TLS",
+      "sampleSentence": "SSL certificates use asymmetric cryptography to securely exchange a symmetric session key for fast transmission.",
+      "keyPhraseTip": "Frasa kunci: 'symmetric uses single shared key', 'asymmetric utilizes public and private keys', dan 'encryption and decryption'."
+    },
+    "targetSentence": "Symmetric encryption uses a single shared secret key for both encryption and decryption, while asymmetric encryption utilizes a public key for encryption and a private key for decryption.",
+    "translationId": "Enkripsi simetris menggunakan satu kunci rahasia bersama untuk enkripsi dan dekripsi, sedangkan enkripsi asimetris memanfaatkan kunci publik untuk enkripsi dan kunci privat untuk dekripsi.",
+    "babyTips": "Kodi Tips: Enkripsi simetris (AES) sangat cepat untuk data besar. Enkripsi asimetris (RSA/ECC) digunakan untuk pertukaran kunci aman seperti pada HTTPS SSL!"
+  },
+  {
+    "id": "spk-cv-55",
+    "category": "6. Cybersecurity, Firewalls & Data Privacy",
+    "questionEn": "How does a Next-Generation Firewall (NGFW) differ from a traditional port packet filter?",
+    "workedExample": {
+      "modelStructure": "1. Batasan Filter Port Tradisional -> 2. Fitur Deep Packet Inspection -> 3. Deteksi Ancaman Tingkat Aplikasi",
+      "sampleSentence": "Application awareness allows NGFWs to block specific web applications even when they operate over standard ports.",
+      "keyPhraseTip": "Frasa kunci: 'traditional firewalls filter IP and port', 'NGFWs perform deep packet inspection', dan 'application awareness'."
+    },
+    "targetSentence": "Traditional firewalls only filter traffic based on IP addresses and port numbers, whereas NGFWs perform deep packet inspection, application awareness, and malware detection.",
+    "translationId": "Firewall tradisional hanya memfilter lalu lintas berdasarkan alamat IP dan nomor port, sedangkan NGFW melakukan inspeksi paket mendalam, kesadaran aplikasi, dan deteksi malware.",
+    "babyTips": "Kodi Tips: NGFW bisa mengenali bahwa lalu lintas port 80/443 bukan sekadar web biasa, tapi bisa memblokir aplikasi torrent atau transfer file mencurigakan di dalamnya."
+  },
+  {
+    "id": "spk-cv-56",
+    "category": "6. Cybersecurity, Firewalls & Data Privacy",
+    "questionEn": "What immediate steps must you take when a workstation on the network is infected with ransomware?",
+    "workedExample": {
+      "modelStructure": "1. Isolasi Fisik Jaringan Instan -> 2. Pencegahan Penularan Lateral -> 3. Pemulihan Berkas dari Backup Kebal",
+      "sampleSentence": "Physically disconnecting the host halts the ransomware from spreading encryptor scripts to network shared drives.",
+      "keyPhraseTip": "Frasa kunci: 'disconnect infected machine from network', 'preserve volatile memory', dan 'restore from offline backups'."
+    },
+    "targetSentence": "I immediately disconnect the infected machine from the network cable and Wi-Fi, preserve volatile memory for forensics, and restore encrypted files from offline backups.",
+    "translationId": "Saya segera mencabut mesin yang terinfeksi dari kabel jaringan dan Wi-Fi, mengamankan memori volatil untuk forensik, dan memulihkan berkas yang terenkripsi dari cadangan offline.",
+    "babyTips": "Kodi Tips: Langkah nomor satu ransomware: CABUT KABEL LAN & MATIKAN WIFI DETIK ITU JUGA agar tidak menular ke server lain di kantor!"
+  },
+  {
+    "id": "spk-cv-57",
+    "category": "6. Cybersecurity, Firewalls & Data Privacy",
+    "questionEn": "What is the CIA Triad and how does it balance corporate information security policies?",
+    "workedExample": {
+      "modelStructure": "1. Kerahasiaan (Confidentiality) -> 2. Keutuhan & Akurasi (Integrity) -> 3. Ketersediaan Sistem (Availability)",
+      "sampleSentence": "A secure system maintains strong access controls without crippling daily operational availability.",
+      "keyPhraseTip": "Frasa kunci: 'Confidentiality Integrity Availability', 'balancing privacy protection', dan 'reliable system access'."
+    },
+    "targetSentence": "The CIA Triad stands for Confidentiality, Integrity, and Availability, balancing privacy protection, data accuracy, and reliable system access for authorized employees.",
+    "translationId": "CIA Triad adalah singkatan dari Confidentiality, Integrity, dan Availability, menyeimbangkan perlindungan privasi, keakuratan data, dan akses sistem yang andal bagi karyawan yang berhak.",
+    "babyTips": "Kodi Tips: Tiga hukum dasar keamanan siber: Data tidak boleh bocor (C), data tidak boleh dirusak (I), dan data harus selalu siap dipakai saat dibutuhkan (A)!"
+  },
+  {
+    "id": "spk-cv-58",
+    "category": "6. Cybersecurity, Firewalls & Data Privacy",
+    "questionEn": "How does a Zero Trust security architecture protect modern cloud enterprise networks?",
+    "workedExample": {
+      "modelStructure": "1. Filosofi 'Never Trust Always Verify' -> 2. Validasi Identitas Berkelanjutan -> 3. Pemeriksaan Kondisi Perangkat",
+      "sampleSentence": "Eliminating implicit internal trust prevents attackers with stolen credentials from moving freely across departments.",
+      "keyPhraseTip": "Frasa kunci: 'never trust always verify', 'continuous identity validation', dan 'device health checks'."
+    },
+    "targetSentence": "Zero Trust operates under the philosophy of 'never trust, always verify', requiring continuous identity validation and device health checks for every access request.",
+    "translationId": "Zero Trust beroperasi di bawah filosofi 'jangan pernah percaya, selalu verifikasi', membutuhkan validasi identitas berkelanjutan dan pemeriksaan kesehatan perangkat untuk setiap permintaan akses.",
+    "babyTips": "Kodi Tips: Zero Trust tidak membedakan antara jaringan di dalam kantor atau di luar kantor; semua orang dan perangkat wajib diverifikasi setiap saat."
+  },
+  {
+    "id": "spk-cv-59",
+    "category": "6. Cybersecurity, Firewalls & Data Privacy",
+    "questionEn": "What is a Denial of Service (DoS) attack and how do organizations mitigate distributed flood traffic?",
+    "workedExample": {
+      "modelStructure": "1. Konsep Serangan Banjir Lalu Lintas -> 2. Dampak Kelumpuhan Layanan -> 3. Solusi Cloudflare/CDN & Penyaringan Trafik",
+      "sampleSentence": "Global content delivery networks absorb volumetric DDoS floods before the traffic reaches the origin server.",
+      "keyPhraseTip": "Frasa kunci: 'floods servers with fake traffic', 'exhaust bandwidth and crash services', dan 'CDN caching and rate limiting'."
+    },
+    "targetSentence": "A DoS attack floods servers with fake traffic to exhaust bandwidth and crash services; organizations mitigate it using scrubbing centers, CDN caching, and rate limiting.",
+    "translationId": "Serangan DoS membanjiri server dengan lalu lintas palsu untuk menghabiskan bandwidth dan merusak layanan; organisasi memitigasinya menggunakan pusat scrubbing, caching CDN, dan rate limiting.",
+    "babyTips": "Kodi Tips: DoS seperti ribuan orang bayaran yang sengaja mengantre di kasir toko untuk membuat pembeli asli tidak bisa masuk belanja."
+  },
+  {
+    "id": "spk-cv-60",
+    "category": "6. Cybersecurity, Firewalls & Data Privacy",
+    "questionEn": "How do you safely manage and store administrative passwords in an IT support team?",
+    "workedExample": {
+      "modelStructure": "1. Penggunaan Password Manager Terenkripsi -> 2. Standar Panjang Passphrase -> 3. Kebijakan Rotasi & Larangan Plaintext",
+      "sampleSentence": "Storing credentials in a centralized encrypted vault allows seamless access revocation when personnel leave.",
+      "keyPhraseTip": "Frasa kunci: 'enterprise password managers with encryption', 'complex passphrases', dan 'prohibit sharing plain text'."
+    },
+    "targetSentence": "I enforce enterprise password managers with end-to-end encryption, mandate complex passphrases, rotate credentials regularly, and prohibit sharing credentials in plain text.",
+    "translationId": "Saya memberlakukan pengelola kata sandi perusahaan dengan enkripsi end-to-end, mewajibkan frasa sandi yang rumit, merotasi kredensial secara berkala, dan melarang berbagi kata sandi dalam teks polos.",
+    "babyTips": "Kodi Tips: Jangan pernah menyimpan password di sticky note atau file Notepad! Gunakan password manager resmi yang terenkripsi."
+  },
+  {
+    "id": "spk-cv-61",
+    "category": "7. Programming, Python & Algorithms",
+    "questionEn": "How do you automate file organization and batch renaming using Python scripts?",
+    "workedExample": {
+      "modelStructure": "1. Pustaka Python Utama (os, shutil) -> 2. Pemindaian Direktori & Pola Regex -> 3. Pemindahan Berkas Otomatis",
+      "sampleSentence": "Automating directory sorting replaces hours of tedious manual file sorting with a 10-line script.",
+      "keyPhraseTip": "Frasa kunci: 'os and shutil modules', 'regular expressions', dan 'move files automatically'."
+    },
+    "targetSentence": "I use the os and shutil modules to scan directory paths, parse timestamps or filenames with regular expressions, and move files to structured folders automatically.",
+    "translationId": "Saya menggunakan modul os dan shutil untuk memindai jalur direktori, membedah catatan waktu atau nama berkas dengan regular expression, dan memindahkan berkas ke folder terstruktur secara otomatis.",
+    "babyTips": "Kodi Tips: Berasal dari buku 'Automate the Boring Stuff with Python'. Modul `os` dan `shutil` adalah senjata ampuh merapikan ribuan file kantor dalam 2 detik!"
+  },
+  {
+    "id": "spk-cv-62",
+    "category": "7. Programming, Python & Algorithms",
+    "questionEn": "What is Big O notation and why is it crucial for evaluating software algorithms?",
+    "workedExample": {
+      "modelStructure": "1. Konsep Skalabilitas Algoritma -> 2. Perbandingan Kompleksitas Waktu & Memori -> 3. Pemilihan Solusi Optimal",
+      "sampleSentence": "Big O allows comparing algorithmic efficiency independent of machine hardware and CPU clock speeds.",
+      "keyPhraseTip": "Frasa kunci: 'quantifies execution time or memory space', 'as input size grows', dan 'most scalable solution'."
+    },
+    "targetSentence": "Big O notation quantifies how an algorithm's execution time or memory space scales as the input size grows, helping engineers select the most scalable solution.",
+    "translationId": "Notasi Big O mengukur bagaimana waktu eksekusi atau ruang memori suatu algoritma berkembang seiring bertambahnya ukuran data masukan, membantu insinyur memilih solusi yang paling terukur.",
+    "babyTips": "Kodi Tips: Berasal dari buku 'Grokking Algorithms'. O(1) konstan cepat kilat, O(log n) pencarian biner mantap, O(n) linier, O(n^2) lambat saat data membesar!"
+  },
+  {
+    "id": "spk-cv-63",
+    "category": "7. Programming, Python & Algorithms",
+    "questionEn": "How does the Binary Search algorithm work and what prerequisite must be satisfied before using it?",
+    "workedExample": {
+      "modelStructure": "1. Syarat Wajib Array Terurut -> 2. Mekanisme Bagi Dua (Divide and Conquer) -> 3. Efisiensi Luar Biasa O(log n)",
+      "sampleSentence": "Searching one million sorted records with binary search requires a maximum of only twenty comparisons.",
+      "keyPhraseTip": "Frasa kunci: 'repeatedly divides search interval in half', 'O(log n) time', dan 'requires array to be sorted beforehand'."
+    },
+    "targetSentence": "Binary Search repeatedly divides a search interval in half to find target items in O(log n) time, but it strictly requires the input array to be sorted beforehand.",
+    "translationId": "Binary Search berulang kali membagi dua interval pencarian untuk menemukan item target dalam waktu O(log n), tetapi algoritma ini secara mutlak mewajibkan array masukan harus sudah diurutkan terlebih dahulu.",
+    "babyTips": "Kodi Tips: Seperti menebak halaman kamus: buka pas di tengah, jika kata yang dicari lebih besar, buang separuh bagian kiri, lalu bagi dua lagi!"
+  },
+  {
+    "id": "spk-cv-64",
+    "category": "7. Programming, Python & Algorithms",
+    "questionEn": "What are Python list comprehensions and how do they make data processing code cleaner?",
+    "workedExample": {
+      "modelStructure": "1. Sintaksis Ringkas Satu Baris -> 2. Kemampuan Transformasi & Filter -> 3. Peningkatan Keterbacaan & Kecepatan",
+      "sampleSentence": "Using list comprehensions produces Pythonic code that eliminates verbose temporary accumulator arrays.",
+      "keyPhraseTip": "Frasa kunci: 'concise syntax to transform and filter', 'single readable line', dan 'executing faster than manual loops'."
+    },
+    "targetSentence": "List comprehensions provide a concise syntax to transform and filter iterable sequences in a single readable line, executing faster than manual for-loops.",
+    "translationId": "List comprehension menyediakan sintaksis ringkas untuk mengubah dan memfilter urutan iterable dalam satu baris kode yang mudah dibaca, serta berjalan lebih cepat daripada perulangan for manual.",
+    "babyTips": "Kodi Tips: Mengubah 4 baris loop `for` menjadi satu baris elegan `[x * 2 for x in data if x > 10]` adalah ciri programmer Python berkelas!"
+  },
+  {
+    "id": "spk-cv-65",
+    "category": "7. Programming, Python & Algorithms",
+    "questionEn": "What is the difference between a Stack and a Queue data structure?",
+    "workedExample": {
+      "modelStructure": "1. Karakteristik Stack LIFO -> 2. Karakteristik Queue FIFO -> 3. Contoh Kasus Nyata Komputer",
+      "sampleSentence": "Undo buffers in text editors utilize stacks, while background printer job spoolers rely on queues.",
+      "keyPhraseTip": "Frasa kunci: 'Stack follows Last-In First-Out', 'Queue follows First-In First-Out', dan 'LIFO versus FIFO'."
+    },
+    "targetSentence": "A Stack follows the Last-In First-Out (LIFO) principle like a stack of plates, whereas a Queue follows First-In First-Out (FIFO) like a line of customers at a ticket counter.",
+    "translationId": "Stack mengikuti prinsip Last-In First-Out (LIFO) seperti tumpukan piring kotor, sedangkan Queue mengikuti First-In First-Out (FIFO) seperti antrean pelanggan di loket tiket.",
+    "babyTips": "Kodi Tips: Fitur 'Ctrl+Z' (Undo) memakai Stack (perintah terakhir dibatalkan duluan). Antrean printer kantor memakai Queue (dokumen pertama dicetak duluan)!"
+  },
+  {
+    "id": "spk-cv-66",
+    "category": "7. Programming, Python & Algorithms",
+    "questionEn": "How do you handle exceptions and runtime errors gracefully in Python?",
+    "workedExample": {
+      "modelStructure": "1. Blok Pengaman try-except -> 2. Penanganan Error Spesifik -> 3. Pembersihan Sumber Daya di finally",
+      "sampleSentence": "Catching targeted exceptions prevents programs from terminating abruptly when network files are missing.",
+      "keyPhraseTip": "Frasa kunci: 'wrap risky operations in try-except', 'catch specific error types', dan 'finally blocks to clean up resources'."
+    },
+    "targetSentence": "I wrap risky operations in try-except blocks, catch specific error types like FileNotFoundError, and use finally blocks to clean up open resource handles.",
+    "translationId": "Saya membungkus operasi berisiko dalam blok try-except, menangkap jenis error spesifik seperti FileNotFoundError, dan menggunakan blok finally untuk membersihkan handle sumber daya yang terbuka.",
+    "babyTips": "Kodi Tips: Jangan biarkan program langsung crash di depan pengguna. Tangkap error-nya secara halus dan tampilkan pesan bantuan!"
+  },
+  {
+    "id": "spk-cv-67",
+    "category": "7. Programming, Python & Algorithms",
+    "questionEn": "What is a Hash Table (or Python dictionary) and why does it achieve O(1) average lookup speed?",
+    "workedExample": {
+      "modelStructure": "1. Pemetaan Kunci ke Indeks -> 2. Peran Fungsi Hashing Matematika -> 3. Efisiensi Konstan O(1)",
+      "sampleSentence": "Hash tables avoid linear searching by translating keys directly into specific memory addresses.",
+      "keyPhraseTip": "Frasa kunci: 'maps keys to bucket indices', 'mathematical hashing function', dan 'O(1) constant time on average'."
+    },
+    "targetSentence": "A Hash Table maps keys to bucket array indices using a mathematical hashing function, allowing direct instant access in O(1) constant time on average.",
+    "translationId": "Hash Table memetakan kunci ke indeks array menggunakan fungsi hashing matematika, memungkinkan akses instan langsung dalam waktu rata-rata konstan O(1).",
+    "babyTips": "Kodi Tips: Kamus Python (`dict`) adalah implementasi Hash Table. Tidak perlu mencari satu per satu dari awal, fungsi hash langsung menghitung posisi alamat memorinya!"
+  },
+  {
+    "id": "spk-cv-68",
+    "category": "7. Programming, Python & Algorithms",
+    "questionEn": "How does recursion work and what is the consequence of omitting a base case?",
+    "workedExample": {
+      "modelStructure": "1. Konsep Pemanggilan Diri Sendiri -> 2. Peran Krusial Base Case (Rem Penghenti) -> 3. Bahaya Fatal Stack Overflow",
+      "sampleSentence": "Every recursive algorithm must define a termination condition to prevent memory exhaustion.",
+      "keyPhraseTip": "Frasa kunci: 'function calls itself', 'smaller subproblems', dan 'omitting base case causes stack overflow'."
+    },
+    "targetSentence": "Recursion is a programming technique where a function calls itself to solve smaller subproblems; omitting a base case causes infinite looping and stack overflow crashes.",
+    "translationId": "Rekursi adalah teknik pemrograman di mana suatu fungsi memanggil dirinya sendiri untuk memecahkan submasalah yang lebih kecil; menghilangkan base case menyebabkan perulangan tak terbatas dan crash stack overflow.",
+    "babyTips": "Kodi Tips: Base case adalah rem darurat rekursi. Tanpa rem base case, memori komputer akan penuh sesak dan aplikasi langsung meledak!"
+  },
+  {
+    "id": "spk-cv-69",
+    "category": "7. Programming, Python & Algorithms",
+    "questionEn": "How do you scrape and extract data from web pages using Python libraries?",
+    "workedExample": {
+      "modelStructure": "1. Pengiriman Permintaan HTTP -> 2. Parsing Pohon Dokumen HTML -> 3. Ekstraksi Tag & Penyimpanan CSV",
+      "sampleSentence": "Targeting CSS selectors with BeautifulSoup allows harvesting tabular web records into clean spreadsheets.",
+      "keyPhraseTip": "Frasa kunci: 'requests library for HTTP', 'parse HTML with BeautifulSoup', dan 'exporting to CSV'."
+    },
+    "targetSentence": "I send HTTP GET requests using the requests library and parse HTML structures with BeautifulSoup, extracting specific data tags and exporting them to CSV.",
+    "translationId": "Saya mengirim permintaan HTTP GET menggunakan pustaka requests dan membedah struktur HTML dengan BeautifulSoup, mengekstrak tag data spesifik dan mengekspornya ke CSV.",
+    "babyTips": "Kodi Tips: Buku 'Automate the Boring Stuff' mengajarkan kombinasi requests + BeautifulSoup untuk mengambil data tabel kurs atau harga online secara otomatis."
+  },
+  {
+    "id": "spk-cv-70",
+    "category": "7. Programming, Python & Algorithms",
+    "questionEn": "What are the benefits of writing unit tests for your software functions?",
+    "workedExample": {
+      "modelStructure": "1. Verifikasi Otomatis Tiap Fungsi -> 2. Pengujian Kasus Batas (Edge Cases) -> 3. Pencegahan Bug Regresi",
+      "sampleSentence": "Automated unit test suites give developers confidence to refactor complex modules without breaking existing features.",
+      "keyPhraseTip": "Frasa kunci: 'verify individual functions produce expected outputs', 'under edge cases', dan 'preventing regression bugs'."
+    },
+    "targetSentence": "Unit tests automatically verify that individual functions produce expected outputs under edge cases, preventing regression bugs when modifying codebase logic.",
+    "translationId": "Unit test secara otomatis memverifikasi bahwa fungsi individual menghasilkan keluaran yang diharapkan pada kondisi batas, mencegah bug regresi saat memodifikasi logika basis kode.",
+    "babyTips": "Kodi Tips: Unit test adalah jaring pengaman programmer. Saat kita mengubah kode lama, tes otomatis langsung memberi tahu jika ada fitur yang rusak."
+  },
+  {
+    "id": "spk-cv-71",
+    "category": "8. IT Helpdesk, Customer Service & Ticketing",
+    "questionEn": "How do you handle an angry or frustrated user whose computer crashed right before a deadline?",
+    "workedExample": {
+      "modelStructure": "1. Mendengarkan Aktif Penuh Empati -> 2. Menghindari Sikap Defensif -> 3. Komitmen Prioritas Penyelesaian Cepat",
+      "sampleSentence": "Acknowledging user stress and taking immediate ownership defuses tension before diving into technical repairs.",
+      "keyPhraseTip": "Frasa kunci: 'listen actively with empathy', 'validate frustration without being defensive', dan 'resolving it swiftly'."
+    },
+    "targetSentence": "I listen actively with empathy, validate their frustration without being defensive, and reassure them that their issue is my top priority while resolving it swiftly.",
+    "translationId": "Saya mendengarkan secara aktif dengan empati, memvalidasi rasa frustrasi mereka tanpa bersikap defensif, dan meyakinkan mereka bahwa masalah mereka adalah prioritas utama saya sambil menyelesaikannya dengan cepat.",
+    "babyTips": "Kodi Tips: Berasal dari buku 'Oxford English for IT'. Dengarkan dulu kemarahan mereka sampai tuntas, jangan memotong pembicaraan, lalu fokus beri solusi nyata!"
+  },
+  {
+    "id": "spk-cv-72",
+    "category": "8. IT Helpdesk, Customer Service & Ticketing",
+    "questionEn": "What information do you record when creating a comprehensive IT support ticket?",
+    "workedExample": {
+      "modelStructure": "1. Identitas Pengguna & Aset Komputer -> 2. Kronologi & Kode Pesan Error -> 3. Riwayat Tindakan & Status Tiket",
+      "sampleSentence": "Detailed ticket logs allow secondary support tiers to understand the incident history without starting from scratch.",
+      "keyPhraseTip": "Frasa kunci: 'exact error messages', 'steps to reproduce fault', dan 'troubleshooting actions attempted'."
+    },
+    "targetSentence": "I document the user's details, exact error messages, steps to reproduce the fault, troubleshooting actions attempted, and the assigned priority level.",
+    "translationId": "Saya mendokumentasikan detail pengguna, pesan error persis, langkah-langkah untuk mereproduksi kesalahan, tindakan perbaikan yang telah dicoba, dan tingkat prioritas yang ditetapkan.",
+    "babyTips": "Kodi Tips: Tiket yang bagus harus bisa dibaca dan dipahami oleh teknisi lain tanpa perlu bertanya ulang kepada pengguna."
+  },
+  {
+    "id": "spk-cv-73",
+    "category": "8. IT Helpdesk, Customer Service & Ticketing",
+    "questionEn": "How do you assist a non-technical employee over the phone to check their IP address?",
+    "workedExample": {
+      "modelStructure": "1. Panduan Visual yang Tenang -> 2. Petunjuk Tombol Fisik Sederhana -> 3. Menghindari Istilah Teknis Membingungkan",
+      "sampleSentence": "Guiding remote users through clear physical keyboard shortcuts avoids miscommunication and reduces call duration.",
+      "keyPhraseTip": "Frasa kunci: 'calm step-by-step guidance', 'press Windows plus R', dan 'without using jargon'."
+    },
+    "targetSentence": "I provide calm step-by-step guidance, instructing them to right-click the network tray icon or press Windows plus R to type cmd and ipconfig without using jargon.",
+    "translationId": "Saya memberikan panduan tenang langkah demi langkah, menginstruksikan mereka untuk mengeklik kanan ikon baki jaringan atau menekan tombol Windows plus R untuk mengetik cmd dan ipconfig tanpa menggunakan jargon rumit.",
+    "babyTips": "Kodi Tips: Berasal dari 'Vocational English for IT'. Hindari singkatan aneh! Bimbing posisi tombol keyboard secara visual dan ramah."
+  },
+  {
+    "id": "spk-cv-74",
+    "category": "8. IT Helpdesk, Customer Service & Ticketing",
+    "questionEn": "What is an SLA (Service Level Agreement) and how do you ensure compliance under high ticket volume?",
+    "workedExample": {
+      "modelStructure": "1. Definisi Kontrak Waktu SLA -> 2. Pemantauan Timer Antrean -> 3. Eskalasi Cepat Sebelum Waktu Habis",
+      "sampleSentence": "Prioritizing tickets based on operational impact ensures high-severity outages are addressed within contractual windows.",
+      "keyPhraseTip": "Frasa kunci: 'guaranteed resolution and response timeframes', 'monitoring queue timers', dan 'escalating severe blockers'."
+    },
+    "targetSentence": "An SLA defines guaranteed resolution and response timeframes, and I ensure compliance by monitoring queue timers and escalating severe blockers before limits expire.",
+    "translationId": "SLA menetapkan batas waktu respons dan penyelesaian yang dijamin, dan saya memastikan kepatuhan dengan memantau penghitung waktu antrean serta meneruskan kendala berat sebelum batas waktu habis.",
+    "babyTips": "Kodi Tips: SLA adalah janji resmi departemen IT kepada perusahaan (misal: tiket prioritas tinggi harus selesai dalam 2 jam). Pantau terus timer antrean tiket!"
+  },
+  {
+    "id": "spk-cv-75",
+    "category": "8. IT Helpdesk, Customer Service & Ticketing",
+    "questionEn": "How do you maintain a clear Knowledge Base (KB) for internal IT teams?",
+    "workedExample": {
+      "modelStructure": "1. Panduan Ringkas & Tangkapan Layar -> 2. Baris Perintah Teruji -> 3. Dokumentasi Kasus Berulang",
+      "sampleSentence": "A well-maintained knowledge base accelerates onboarding and standardizes technical troubleshooting across support shifts.",
+      "keyPhraseTip": "Frasa kunci: 'concise troubleshooting walkthroughs', 'step-by-step screenshots', dan 'solutions for recurring tickets'."
+    },
+    "targetSentence": "I write concise troubleshooting walkthroughs with step-by-step screenshots, verified command lines, and solutions for recurring user tickets.",
+    "translationId": "Saya menulis panduan pemecahan masalah yang ringkas dengan tangkapan layar langkah demi langkah, baris perintah terverifikasi, dan solusi untuk tiket pengguna yang sering berulang.",
+    "babyTips": "Kodi Tips: Dokumentasi KB yang bagus menghemat waktu seluruh tim IT. Setiap kali berhasil memecahkan masalah langka, segera tuliskan resepnya di Knowledge Base!"
+  },
+  {
+    "id": "spk-cv-76",
+    "category": "8. IT Helpdesk, Customer Service & Ticketing",
+    "questionEn": "What steps do you take when onboarding a new employee with hardware and software credentials?",
+    "workedExample": {
+      "modelStructure": "1. Penyiapan Fisik Perangkat Keras -> 2. Pembuatan Akun Domain & Email -> 3. Orientasi Singkat Penggunaan Sistem",
+      "sampleSentence": "Thorough onboarding checklists ensure new hires have secure access to necessary applications on their first morning.",
+      "keyPhraseTip": "Frasa kunci: 'provision configured hardware', 'Active Directory accounts with least privilege', dan 'initial orientation'."
+    },
+    "targetSentence": "I provision configured hardware, create Active Directory accounts with least privilege roles, assign software licenses, and conduct a brief initial orientation.",
+    "translationId": "Saya menyiapkan perangkat keras yang telah terkonfigurasi, membuat akun Active Directory dengan peran least privilege, menetapkan lisensi perangkat lunak, dan mengadakan orientasi awal singkat.",
+    "babyTips": "Kodi Tips: Onboarding yang mulus membuat karyawan baru terkesan dengan profesionalisme tim IT sejak hari pertama bekerja."
+  },
+  {
+    "id": "spk-cv-77",
+    "category": "8. IT Helpdesk, Customer Service & Ticketing",
+    "questionEn": "How do you prioritize tickets when multiple users report urgent issues simultaneously?",
+    "workedExample": {
+      "modelStructure": "1. Evaluasi Dampak Skala Bisnis -> 2. Hitung Jumlah Pengguna Terdampak -> 3. Utamakan Jalur Kritis Perusahaan",
+      "sampleSentence": "Focusing first on incidents that halt manufacturing production lines protects corporate revenue.",
+      "keyPhraseTip": "Frasa kunci: 'evaluate business impact', 'number of affected users', dan 'prioritizing widespread server outages'."
+    },
+    "targetSentence": "I evaluate the business impact and number of affected users, prioritizing widespread server or production outages over isolated single-user workstation requests.",
+    "translationId": "Saya mengevaluasi dampak bisnis dan jumlah pengguna yang terdampak, memprioritaskan pemadaman server atau jalur produksi yang meluas di atas permintaan komputer satu pengguna yang terisolasi.",
+    "babyTips": "Kodi Tips: Matriks Prioritas: Jika server gudang pabrik mati dan 100 orang tidak bisa bekerja, itu darurat nomor 1 dibanding satu mouse karyawan yang rusak."
+  },
+  {
+    "id": "spk-cv-78",
+    "category": "8. IT Helpdesk, Customer Service & Ticketing",
+    "questionEn": "How do you handle remote desktop support sessions securely and ethically?",
+    "workedExample": {
+      "modelStructure": "1. Izin Eksplisit Pengguna -> 2. Transparansi Tindakan Administratif -> 3. Pemutusan Sesi Jarak Jauh Cepat",
+      "sampleSentence": "Explaining remote mouse movements over the phone builds trust and reassures users about data confidentiality.",
+      "keyPhraseTip": "Frasa kunci: 'obtain explicit user consent', 'announce every administrative action', dan 'disconnect session upon completion'."
+    },
+    "targetSentence": "I always obtain explicit user consent before connecting, announce every administrative action taken, and disconnect the remote session immediately upon completion.",
+    "translationId": "Saya selalu meminta izin eksplisit pengguna sebelum terhubung, memberi tahu setiap tindakan administratif yang diambil, dan segera memutus sesi jarak jauh setelah selesai.",
+    "babyTips": "Kodi Tips: Etika remote desktop: Jangan buka folder foto atau dokumen pribadi pengguna! Selalu jelaskan apa yang sedang kamu klik di layar mereka."
+  },
+  {
+    "id": "spk-cv-79",
+    "category": "8. IT Helpdesk, Customer Service & Ticketing",
+    "questionEn": "What procedure do you follow when decommissioning old hardware to prevent corporate data leakage?",
+    "workedExample": {
+      "modelStructure": "1. Pencopotan Label Aset Perusahaan -> 2. Sanitasi Disk Standar Militer (Wiping) -> 3. Sertifikasi Penghancuran Fisik",
+      "sampleSentence": "Overwriting drive sectors multiple times ensures proprietary financial databases cannot be retrieved from recycled disks.",
+      "keyPhraseTip": "Frasa kunci: 'cryptographic disk sanitization', 'physical destruction', dan 'record recycling certificates'."
+    },
+    "targetSentence": "I remove all company asset tags, perform multi-pass cryptographic disk sanitization using DBAN or physical destruction, and record recycling certificates.",
+    "translationId": "Saya mencopot semua label aset perusahaan, melakukan sanitasi disk kriptografi beberapa putaran menggunakan DBAN atau penghancuran fisik, dan mencatat sertifikat daur ulang.",
+    "babyTips": "Kodi Tips: Menghapus file ke Recycle Bin atau format biasa belum aman! Wajib gunakan software penghapus data standar militer (DBAN) sebelum komputer dibuang."
+  },
+  {
+    "id": "spk-cv-80",
+    "category": "8. IT Helpdesk, Customer Service & Ticketing",
+    "questionEn": "How do you communicate technical system maintenance schedules to avoid company-wide disruptions?",
+    "workedExample": {
+      "modelStructure": "1. Pengumuman Terjadwal Jauh Hari -> 2. Penjelasan Perkiraan Downtime -> 3. Eksekusi pada Jam Sepi (Off-Peak)",
+      "sampleSentence": "Notifying department heads in advance allows teams to adjust work schedules and minimizes surprise disruptions.",
+      "keyPhraseTip": "Frasa kunci: 'advance broadcast notifications', 'expected service downtimes', dan 'off-peak weekend hours'."
+    },
+    "targetSentence": "I send advance broadcast notifications detailing maintenance windows, explain expected service downtimes, and schedule intensive updates during off-peak weekend hours.",
+    "translationId": "Saya mengirimkan pemberitahuan siaran lebih awal yang merinci jendela waktu pemeliharaan, menjelaskan perkiraan waktu henti layanan, dan menjadwalkan pembaruan intensif selama jam sepi di akhir pekan.",
+    "babyTips": "Kodi Tips: Jangan lakukan restart server di jam sibuk kerja Senin pagi! Lakukan di hari Sabtu/Minggu malam setelah mengirim pengumuman H-3."
+  },
+  {
+    "id": "spk-cv-81",
+    "category": "9. Team Collaboration & Project Agility",
+    "questionEn": "How do you contribute to daily Agile standup meetings in a software or IT support team?",
+    "workedExample": {
+      "modelStructure": "1. Laporan Capaian Kemarin -> 2. Komitmen Target Hari Ini -> 3. Pengangkatan Hambatan (Blocker)",
+      "sampleSentence": "Keeping daily standup updates brief and actionable ensures teammates can unblock dependencies quickly.",
+      "keyPhraseTip": "Frasa kunci: 'completed yesterday', 'delivering today', dan 'technical impediments requiring collaboration'."
+    },
+    "targetSentence": "I clearly summarize what I completed yesterday, what I am delivering today, and highlight any technical impediments requiring collaboration.",
+    "translationId": "Saya dengan jelas merangkum apa yang saya selesaikan kemarin, apa yang saya kerjakan hari ini, dan menyoroti hambatan teknis apa pun yang membutuhkan kolaborasi.",
+    "babyTips": "Kodi Tips: Tiga pertanyaan emas Daily Standup: 1. Kemarin selesai apa? 2. Hari ini mau ngerjain apa? 3. Ada hambatan (blocker) apa?"
+  },
+  {
+    "id": "spk-cv-82",
+    "category": "9. Team Collaboration & Project Agility",
+    "questionEn": "How do you resolve a technical disagreement with a teammate regarding system architecture?",
+    "workedExample": {
+      "modelStructure": "1. Evaluasi Objektif Dua Opsi -> 2. Uji Coba Tolok Ukur Nyata -> 3. Konsensus Berbasis Data",
+      "sampleSentence": "Focusing on empirical test results removes personal ego from architectural architectural decision-making.",
+      "keyPhraseTip": "Frasa kunci: 'evaluate proposals objectively', 'proof-of-concept benchmarks', dan 'build consensus around data evidence'."
+    },
+    "targetSentence": "I evaluate both proposals objectively based on system scalability and maintainability, test proof-of-concept benchmarks, and build consensus around data evidence.",
+    "translationId": "Saya mengevaluasi kedua usulan secara objektif berdasarkan skalabilitas dan pemeliharaan sistem, menguji tolok ukur proof-of-concept, dan membangun konsensus seputar bukti data.",
+    "babyTips": "Kodi Tips: Jangan berdebat kusir pakai perasaan! Buat uji coba mini (Proof-of-Concept) dan biarkan angka performa yang menentukan keputusan tim."
+  },
+  {
+    "id": "spk-cv-83",
+    "category": "9. Team Collaboration & Project Agility",
+    "questionEn": "How do you use version control tools like Git to collaborate safely without overriding colleagues' code?",
+    "workedExample": {
+      "modelStructure": "1. Pembuatan Feature Branch Terisolasi -> 2. Sinkronisasi Upstream Rutin -> 3. Tinjauan Kode via Pull Request",
+      "sampleSentence": "Branch-based workflows allow multiple developers to modify parallel modules without risking production stability.",
+      "keyPhraseTip": "Frasa kunci: 'dedicated feature branches', 'resolve merge conflicts early', dan 'pull requests for peer reviews'."
+    },
+    "targetSentence": "I create dedicated feature branches, pull upstream changes frequently to resolve merge conflicts early, and submit descriptive pull requests for peer reviews.",
+    "translationId": "Saya membuat branch fitur khusus, sering menarik pembaruan upstream untuk menyelesaikan konflik penggabungan sejak dini, dan mengirimkan pull request yang deskriptif untuk ditinjau rekan kerja.",
+    "babyTips": "Kodi Tips: Praktik standar Git: buat branch sendiri, jangan langsung push ke main branch, dan minta rekan tim me-review kodingmu lewat Pull Request!"
+  },
+  {
+    "id": "spk-cv-84",
+    "category": "9. Team Collaboration & Project Agility",
+    "questionEn": "How do you conduct constructive and respectful code reviews for fellow team members?",
+    "workedExample": {
+      "modelStructure": "1. Fokus pada Kualitas & Keamanan -> 2. Apresiasi Solusi Elegan -> 3. Saran Konstruktif Ramah",
+      "sampleSentence": "Framing code feedback positively encourages junior developers to learn without feeling discouraged.",
+      "keyPhraseTip": "Frasa kunci: 'focus on code quality and security', 'praise elegant solutions', dan 'phrase suggestions as collaborative improvements'."
+    },
+    "targetSentence": "I focus comments on code quality and security rather than style preferences, praise elegant solutions, and phrase suggestions as collaborative improvements.",
+    "translationId": "Saya memfokuskan komentar pada kualitas kode dan keamanan daripada preferensi gaya pribadi, memuji solusi yang elegan, dan menyusun saran sebagai peningkatan kolaboratif.",
+    "babyTips": "Kodi Tips: Code review bukan tempat pamer kepintaran atau menjatuhkan orang lain, melainkan wadah belajar bersama agar kualitas software tim makin kokoh."
+  },
+  {
+    "id": "spk-cv-85",
+    "category": "9. Team Collaboration & Project Agility",
+    "questionEn": "How do you manage unexpected scope creep when project requirements expand close to release dates?",
+    "workedExample": {
+      "modelStructure": "1. Transparansi Dampak Waktu -> 2. Pindahkan ke Product Backlog -> 3. Negosiasi Rilis Bertahap",
+      "sampleSentence": "Documenting new feature requests in the project backlog preserves launch deadlines without discarding user ideas.",
+      "keyPhraseTip": "Frasa kunci: 'communicate schedule impact', 'document requirements in backlog', dan 'subsequent sprints'."
+    },
+    "targetSentence": "I communicate the schedule impact to the project manager, document the additional requirements in the backlog, and negotiate delivering them in subsequent sprints.",
+    "translationId": "Saya mengomunikasikan dampak jadwal kepada manajer proyek, mendokumentasikan persyaratan tambahan ke dalam backlog, dan menegosiasikan pengirimannya pada sprint berikutnya.",
+    "babyTips": "Kodi Tips: Scope creep adalah penambahan fitur mendadak yang bikin proyek molor. Simpan ide baru di backlog untuk fase 2 agar peluncuran utama tetap tepat waktu!"
+  },
+  {
+    "id": "spk-cv-86",
+    "category": "9. Team Collaboration & Project Agility",
+    "questionEn": "How do you support team morale during high-pressure system migration weekends?",
+    "workedExample": {
+      "modelStructure": "1. Sikap Tenang & Menenangkan -> 2. Ringan Tangan Menolong Rekan -> 3. Apresiasi Setiap Langkah Keberhasilan",
+      "sampleSentence": "Shared accountability and calm leadership during late-night deployments prevent burnout and sustain team performance.",
+      "keyPhraseTip": "Frasa kunci: 'positive proactive attitude', 'offer assistance to overburdened teammates', dan 'recognition of milestone achievements'."
+    },
+    "targetSentence": "I maintain a positive proactive attitude, offer assistance to overburdened teammates, and ensure clear communication and recognition of milestone achievements.",
+    "translationId": "Saya mempertahankan sikap positif yang proaktif, menawarkan bantuan kepada rekan tim yang terbebani, dan memastikan komunikasi yang jelas serta pengakuan atas pencapaian target.",
+    "babyTips": "Kodi Tips: Sikap tenang, humor ringan di sela kerja keras, dan kepedulian terhadap teman tim membuat proyek berat terasa jauh lebih ringan."
+  },
+  {
+    "id": "spk-cv-87",
+    "category": "9. Team Collaboration & Project Agility",
+    "questionEn": "How do you adapt when management shifts project priorities on short notice?",
+    "workedExample": {
+      "modelStructure": "1. Fleksibilitas Menerima Arah Baru -> 2. Dokumentasi Rapi Tugas Tertunda -> 3. Penyelarasan Fokus Cepat",
+      "sampleSentence": "Gracefully bookmarking paused work ensures zero effort is wasted when corporate strategies pivot.",
+      "keyPhraseTip": "Frasa kunci: 'embrace change with flexibility', 'document paused tasks for clean resumption', dan 'align on new priorities'."
+    },
+    "targetSentence": "I embrace the change with flexibility, quickly document the state of paused tasks for clean resumption, and align focus immediately on the new organizational priorities.",
+    "translationId": "Saya menyambut perubahan dengan fleksibel, segera mendokumentasikan status tugas yang dijeda agar dapat dilanjutkan dengan rapi, dan langsung menyelaraskan fokus pada prioritas baru perusahaan.",
+    "babyTips": "Kodi Tips: Dunia IT dan bisnis berubah sangat cepat. Dokumentasikan pekerjaan saat ini, simpan rapi, lalu beralih ke tugas baru tanpa mengeluh."
+  },
+  {
+    "id": "spk-cv-88",
+    "category": "9. Team Collaboration & Project Agility",
+    "questionEn": "How do you communicate complex technical progress to non-technical executive stakeholders?",
+    "workedExample": {
+      "modelStructure": "1. Konversi Bahasa Teknis ke Nilai Bisnis -> 2. Fokus pada Penghematan & Efisiensi -> 3. Penggunaan Dasbor Visual Sederhana",
+      "sampleSentence": "Presenting project benefits in financial and operational terms helps leadership appreciate IT contributions.",
+      "keyPhraseTip": "Frasa kunci: 'translate technical metrics into business impacts', 'cost savings and efficiency gains', dan 'summary dashboards'."
+    },
+    "targetSentence": "I translate technical metrics into business impacts like cost savings and efficiency gains, utilizing clear summary dashboards rather than raw technical jargon.",
+    "translationId": "Saya menerjemahkan metrik teknis ke dalam dampak bisnis seperti penghematan biaya dan peningkatan efisiensi, memanfaatkan dasbor ringkasan visual daripada jargon teknis mentah.",
+    "babyTips": "Kodi Tips: Para direktur dan manajer tidak peduli berapa baris kode yang kamu tulis, mereka peduli berapa jam waktu kerja yang berhasil kamu hematkan untuk perusahaan!"
+  },
+  {
+    "id": "spk-cv-89",
+    "category": "9. Team Collaboration & Project Agility",
+    "questionEn": "How do you ensure accountability when collaborating with cross-functional departments like Finance and HR?",
+    "workedExample": {
+      "modelStructure": "1. Pembagian Penanggung Jawab Jelas -> 2. Evaluasi Mingguan Konsisten -> 3. Transparansi di Manajemen Proyek (Jira/Trello)",
+      "sampleSentence": "Shared tracking dashboards ensure all departments understand project dependencies and deadlines.",
+      "keyPhraseTip": "Frasa kunci: 'unambiguous ownership', 'hold weekly check-ins', dan 'collaborative tracking tools'."
+    },
+    "targetSentence": "I establish shared project milestones with unambiguous ownership, hold weekly check-ins, and document deliverables transparently in collaborative tracking tools.",
+    "translationId": "Saya menetapkan pencapaian proyek bersama dengan penanggung jawab yang jelas, mengadakan pertemuan mingguan, dan mendokumentasikan hasil kerja secara transparan di alat pelacak kolaboratif.",
+    "babyTips": "Kodi Tips: Saat bekerja dengan divisi lain, pastikan ada PIC (Person In Charge) yang jelas untuk setiap tugas agar tidak saling lempar tanggung jawab."
+  },
+  {
+    "id": "spk-cv-90",
+    "category": "9. Team Collaboration & Project Agility",
+    "questionEn": "How do you conduct blameless post-mortems following unexpected production incidents?",
+    "workedExample": {
+      "modelStructure": "1. Pemetaan Kronologi Objektif -> 2. Fokus pada Akar Penyebab Sistem -> 3. Rencana Aksi Pencegahan Masa Depan",
+      "sampleSentence": "Blameless reviews encourage transparency and build robust engineering systems that withstand human mistakes.",
+      "keyPhraseTip": "Frasa kunci: 'analyze systemic root causes', 'rather than blaming individuals', dan 'preventive action items for future resilience'."
+    },
+    "targetSentence": "I gather the team to map out timeline events, analyze systemic root causes rather than blaming individuals, and formulate preventive action items for future resilience.",
+    "translationId": "Saya mengumpulkan tim untuk memetakan lini masa kejadian, menganalisis akar penyebab sistemik daripada menyalahkan individu, dan merumuskan tindakan pencegahan untuk ketahanan masa depan.",
+    "babyTips": "Kodi Tips: Blameless Post-Mortem adalah budaya perusahaan teknologi modern (Google/Netflix): jangan cari siapa yang salah, cari bagian sistem mana yang perlu diperbaiki!"
+  },
+  {
+    "id": "spk-cv-91",
+    "category": "10. Career Motivation & Long-term Vision",
+    "questionEn": "What drives you to continuously master new technological skills?",
+    "workedExample": {
+      "modelStructure": "1. Antusiasme terhadap Kemajuan Zaman -> 2. Kepuasan Memecahkan Masalah -> 3. Dorongan Menghadirkan Nilai Nyata",
+      "sampleSentence": "Continuous learning is essential in technology where industry tools and best practices advance rapidly.",
+      "keyPhraseTip": "Frasa kunci: 'rapid evolution of technology excites me', 'acquiring new capabilities', dan 'solve challenging business problems'."
+    },
+    "targetSentence": "The rapid evolution of technology excites me, and I find deep satisfaction in acquiring new capabilities that solve challenging business problems.",
+    "translationId": "Evolusi teknologi yang pesat membuat saya bersemangat, dan saya menemukan kepuasan mendalam dalam memperoleh keahlian baru yang memecahkan masalah bisnis yang menantang.",
+    "babyTips": "Kodi Tips: Tunjukkan rasa ingin tahu alami (curiosity) yang tinggi sebagai motor penggerak kariermu di dunia IT."
+  },
+  {
+    "id": "spk-cv-92",
+    "category": "10. Career Motivation & Long-term Vision",
+    "questionEn": "How do you stay updated with the latest trends in software engineering and IT security?",
+    "workedExample": {
+      "modelStructure": "1. Membaca Publikasi Otoritatif -> 2. Keaktifan Komunitas Open Source -> 3. Praktik Mandiri di Home Lab",
+      "sampleSentence": "Experimenting with new container tools in a personal home lab solidifies conceptual knowledge into practical skill.",
+      "keyPhraseTip": "Frasa kunci: 'authoritative engineering blogs', 'open-source developer communities', dan 'hands-on home lab experiments'."
+    },
+    "targetSentence": "I follow authoritative engineering blogs, participate in open-source developer communities, and test emerging tools through hands-on home lab experiments.",
+    "translationId": "Saya mengikuti blog rekayasa otoritatif, berpartisipasi dalam komunitas pengembang sumber terbuka, dan menguji alat-alat baru melalui eksperimen lab mandiri di rumah.",
+    "babyTips": "Kodi Tips: Memiliki 'home lab' (komputer uji coba sendiri di rumah) adalah nilai plus besar di mata manajer teknis!"
+  },
+  {
+    "id": "spk-cv-93",
+    "category": "10. Career Motivation & Long-term Vision",
+    "questionEn": "Describe a challenging technical problem you solved and what you learned from the experience.",
+    "workedExample": {
+      "modelStructure": "1. Tantangan Awal yang Sulit -> 2. Langkah Penelusuran Cerdas -> 3. Hikmah & Pelajaran Berharga",
+      "sampleSentence": "Tracking down the root cause taught me never to assume network cables or ports are functioning without physical tests.",
+      "keyPhraseTip": "Frasa kunci: 'elusive intermittent network disconnect', 'tracing packet drops', dan 'value of systematic verification'."
+    },
+    "targetSentence": "I resolved an elusive intermittent network disconnect by tracing packet drops to a faulty physical switch port, teaching me the value of systematic verification.",
+    "translationId": "Saya menyelesaikan masalah koneksi jaringan putus-nyambung yang sulit ditangkap dengan melacak penurunan paket ke port switch fisik yang rusak, mengajari saya pentingnya verifikasi sistematis.",
+    "babyTips": "Kodi Tips: Ceritakan kisah suksesmu dengan metode STAR (Situation, Task, Action, Result) yang ringkas dan memikat."
+  },
+  {
+    "id": "spk-cv-94",
+    "category": "10. Career Motivation & Long-term Vision",
+    "questionEn": "How do you handle repetitive administrative tasks without losing focus or quality?",
+    "workedExample": {
+      "modelStructure": "1. Kedisiplinan Kualitas Kerja -> 2. Inisiatif Berpikir Efisiensi -> 3. Otomasi Solusi Jangka Panjang",
+      "sampleSentence": "A great IT engineer automates mundane repetitive tasks so they can allocate focus to higher-value architectural improvements.",
+      "keyPhraseTip": "Frasa kunci: 'attention to detail', 'write automation scripts', dan 'streamline repetitive workflows permanently'."
+    },
+    "targetSentence": "I maintain high attention to detail while actively looking for opportunities to write automation scripts that streamline those repetitive workflows permanently.",
+    "translationId": "Saya mempertahankan perhatian tinggi terhadap detail sambil secara aktif mencari peluang untuk menulis skrip otomasi yang merampingkan alur kerja berulang tersebut secara permanen.",
+    "babyTips": "Kodi Tips: Jawaban kelas dunia: bukannya mengeluh bosan, kamu justru berinisiatif membuat skrip Python/PowerShell untuk mengotomasi tugas rutin itu!"
+  },
+  {
+    "id": "spk-cv-95",
+    "category": "10. Career Motivation & Long-term Vision",
+    "questionEn": "Why do you believe you are the best candidate for this technical support and systems role?",
+    "workedExample": {
+      "modelStructure": "1. Perpaduan Unik Logika Eksak -> 2. Keterampilan Teknis Teruji -> 3. Kepuasan Komunikasi Pengguna",
+      "sampleSentence": "Combining technical aptitude with empathetic user support ensures system stability and positive cross-departmental relationships.",
+      "keyPhraseTip": "Frasa kunci: 'analytical mathematical problem solving', 'hands-on infrastructure troubleshooting', dan 'certified communication skills'."
+    },
+    "targetSentence": "I offer a unique blend of analytical mathematical problem solving, hands-on infrastructure troubleshooting, and certified communication skills that drive user satisfaction.",
+    "translationId": "Saya menawarkan perpaduan unik antara pemecahan masalah matematika analitis, troubleshooting infrastruktur langsung, dan keterampilan komunikasi bersertifikat yang mendorong kepuasan pengguna.",
+    "babyTips": "Kodi Tips: Rangkum ketiga pilar keunggulanmu: 1. Latar belakang matematika, 2. Praktek hardware/jaringan, 3. Sertifikasi BNSP dan keramahan komunikasi!"
+  },
+  {
+    "id": "spk-cv-96",
+    "category": "10. Career Motivation & Long-term Vision",
+    "questionEn": "How do you balance high speed with meticulous accuracy when resolving production outages?",
+    "workedExample": {
+      "modelStructure": "1. Kepatuhan pada Standard Runbook -> 2. Verifikasi Ganda Perintah Kritis -> 3. Ketenangan Eksekusi Presisi",
+      "sampleSentence": "Taking three extra seconds to verify syntax on production database commands prevents catastrophic data loss.",
+      "keyPhraseTip": "Frasa kunci: 'standardized emergency runbooks', 'double-check destructive commands', dan 'composed precision'."
+    },
+    "targetSentence": "I follow standardized emergency runbooks, double-check destructive commands before execution, and keep stakeholders informed to maintain composed precision.",
+    "translationId": "Saya mengikuti buku panduan darurat standar, memeriksa ulang perintah destruktif sebelum eksekusi, dan terus memberi kabar kepada pemangku kepentingan untuk menjaga ketepatan yang tenang.",
+    "babyTips": "Kodi Tips: 'Speed without precision causes second outages'. Selalu baca dua kali sebelum menekan Enter pada perintah kritis server!"
+  },
+  {
+    "id": "spk-cv-97",
+    "category": "10. Career Motivation & Long-term Vision",
+    "questionEn": "What professional certifications are you planning to pursue in the upcoming year?",
+    "workedExample": {
+      "modelStructure": "1. Target Sertifikasi Jaringan (Cisco CCNA) -> 2. Target Keamanan Siber (Security+) -> 3. Komitmen Pengembangan Diri",
+      "sampleSentence": "Pursuing recognized vendor certifications ensures my knowledge remains aligned with evolving industry benchmarks.",
+      "keyPhraseTip": "Frasa kunci: 'CompTIA Security+ and Cisco CCNA', 'deepen cybersecurity credentials', dan 'enterprise networking'."
+    },
+    "targetSentence": "I plan to achieve the CompTIA Security+ and Cisco CCNA certifications to deepen my cybersecurity and enterprise networking credentials.",
+    "translationId": "Saya berencana meraih sertifikasi CompTIA Security+ dan Cisco CCNA untuk memperdalam kredensial keamanan siber dan jaringan perusahaan saya.",
+    "babyTips": "Kodi Tips: Menyebutkan target sertifikasi internasional CompTIA Security+ dan Cisco CCNA membuktikan kamu punya roadmap karier yang jelas dan berdedikasi tinggi."
+  },
+  {
+    "id": "spk-cv-98",
+    "category": "10. Career Motivation & Long-term Vision",
+    "questionEn": "How do you contribute to building an inclusive and collaborative IT department culture?",
+    "workedExample": {
+      "modelStructure": "1. Penghormatan Terhadap Keberagaman -> 2. Budaya Berbagi Ilmu (Mentoring) -> 3. Perayaan Sukses Bersama",
+      "sampleSentence": "Fostering an open culture where questions are welcomed accelerates knowledge sharing across the entire team.",
+      "keyPhraseTip": "Frasa kunci: 'listen actively to diverse perspectives', 'share technical knowledge generously', dan 'celebrate team milestones'."
+    },
+    "targetSentence": "I listen actively to diverse perspectives, share technical knowledge generously with junior peers, and celebrate team milestones collaboratively.",
+    "translationId": "Saya mendengarkan secara aktif berbagai perspektif yang beragam, berbagi pengetahuan teknis dengan murah hati kepada rekan junior, dan merayakan pencapaian tim secara kolaboratif.",
+    "babyTips": "Kodi Tips: Perusahaan modern sangat menghargai 'knowledge sharing'. Jangan pelit ilmu, jadilah mentor yang ramah bagi teman kerja!"
+  },
+  {
+    "id": "spk-cv-99",
+    "category": "10. Career Motivation & Long-term Vision",
+    "questionEn": "What is your philosophy on handling constructive criticism from technical supervisors?",
+    "workedExample": {
+      "modelStructure": "1. Resepsi Positif Tanpa Ego -> 2. Analisis Ruang Peningkatan -> 3. Implementasi Perbaikan Nyata",
+      "sampleSentence": "Embracing constructive critique with humility is the fastest catalyst for personal and professional growth.",
+      "keyPhraseTip": "Frasa kunci: 'valuable learning opportunity', 'without being defensive', dan 'implement corrective steps proactively'."
+    },
+    "targetSentence": "I view constructive feedback as a valuable learning opportunity, analyze areas for improvement without being defensive, and implement corrective steps proactively.",
+    "translationId": "Saya memandang umpan balik konstruktif sebagai peluang belajar yang berharga, menganalisis area peningkatan tanpa bersikap defensif, dan menerapkan langkah-langkah perbaikan secara proaktif.",
+    "babyTips": "Kodi Tips: Sikap dewasa menerima kritik: terima dengan senyuman dan terima kasih, catat apa yang perlu diperbaiki, dan buktikan dengan hasil kerja yang lebih baik!"
+  },
+  {
+    "id": "spk-cv-100",
+    "category": "10. Career Motivation & Long-term Vision",
+    "questionEn": "Do you have any questions for our interview panel regarding the team and technical roadmap?",
+    "workedExample": {
+      "modelStructure": "1. Pertanyaan Strategis Berbobot -> 2. Fokus pada Prioritas Kuartal Ini -> 3. Kesiapan Menyelaraskan Kontribusi",
+      "sampleSentence": "Asking about the department's upcoming technical priorities demonstrates strategic thinking and proactive readiness.",
+      "keyPhraseTip": "Frasa kunci: 'key technical priorities this quarter' dan 'how this role directly supports those objectives'."
+    },
+    "targetSentence": "Yes, could you share the key technical priorities your IT department is focusing on this quarter, and how this role directly supports those objectives?",
+    "translationId": "Ya, dapatkah Anda membagikan prioritas teknis utama yang menjadi fokus departemen IT Anda pada kuartal ini, dan bagaimana peran ini secara langsung mendukung tujuan tersebut?",
+    "babyTips": "Kodi Tips: Pertanyaan pamungkas brilian di akhir wawancara! Menunjukkan kamu antusias, cerdas, dan langsung berpikir tentang kontribusi nyata di perusahaan mereka."
   }
 ];
 
@@ -6068,531 +7290,1506 @@ const toeflIbtBuildingSkills = [
 ];
 
 // ================= EVC DICTATION CHALLENGES (SPEAKING & LISTENING) =================
+// ================= DIKTE AUDIO EVC & IT VOCATIONAL ENGLISH (100 SOAL) =================
 const evcDictationChallenges = [
-  // ==========================================
-  // LEVEL 1: EJA HURUF (SPELLING & ALPHABET)
-  // Khas EVC Chapter 1 & 2 (Spelling Names & Objects)
-  // ==========================================
   {
-    id: "dic-l1-1",
-    level: 1,
-    levelName: "Level 1: Eja Huruf",
-    targetText: "CARMONA",
-    audioText: "C, A, R, M, O, N, A",
-    chapterRef: "Chapter 1: Greetings & Spelling Names",
-    meaning: "Nama belakang Luis Carmona di dialog kelas EVC: C-A-R-M-O-N-A",
-    babyClue: "🍼 Kodi mengeja nama keluarga 'CARMONA'. Dengarkan ketukan hurufnya dan ketik satu demi satu!"
-  ,
-    workedExample: {
-      sampleAudio: "Dengarkan suara ejaan huruf: 'B, O, T, I'",
-      sampleTarget: 'BOTI',
-      sampleExplanation: "Tingkat 1 menguji pendengaran ejaan huruf alfabet. Saat audio mengeja 'C, A, R, M, O, N, A', ketik setiap huruf secara berurutan: 'CARMONA'."
+    "id": "dic-l1-1",
+    "level": 1,
+    "levelName": "Level 1: Eja Huruf",
+    "targetText": "CARMONA",
+    "audioText": "C, A, R, M, O, N, A",
+    "chapterRef": "Chapter 1: Greetings & Spelling Names",
+    "meaning": "Nama keluarga Luis Carmona di dialog kelas EVC: C-A-R-M-O-N-A",
+    "babyClue": "🍼 Kodi mengeja nama keluarga 'CARMONA'. Dengarkan ketukan hurufnya dan ketik satu demi satu!",
+    "workedExample": {
+      "sampleAudio": "Dengarkan suara ejaan huruf: 'B, O, T, I'",
+      "sampleTarget": "BOTI",
+      "sampleExplanation": "Tingkat 1 menguji pendengaran ejaan huruf alfabet. Saat audio mengeja 'C, A, R, M, O, N, A', ketik setiap huruf secara berurutan: 'CARMONA'."
     }
   },
   {
-    id: "dic-l1-2",
-    level: 1,
-    levelName: "Level 1: Eja Huruf",
-    targetText: "PEREZ",
-    audioText: "P, E, R, E, Z",
-    chapterRef: "Chapter 1: Assistant's Name",
-    meaning: "Nama asisten kelas di dialog EVC: P-E-R-E-Z",
-    babyClue: "🍼 Eja 5 huruf pendek: P - E - R - E - Z. Ketik hurufnya sampai 100% tepat!"
-  ,
-    workedExample: {
-      sampleAudio: "Dengarkan suara ejaan huruf: 'B, O, T, I'",
-      sampleTarget: 'BOTI',
-      sampleExplanation: "Tingkat 1 menguji pendengaran ejaan huruf alfabet. Saat audio mengeja 'P, E, R, E, Z', ketik setiap huruf secara berurutan: 'PEREZ'."
+    "id": "dic-l1-2",
+    "level": 1,
+    "levelName": "Level 1: Eja Huruf",
+    "targetText": "PEREZ",
+    "audioText": "P, E, R, E, Z",
+    "chapterRef": "Chapter 1: Assistant's Name",
+    "meaning": "Nama asisten kelas di dialog EVC: P-E-R-E-Z",
+    "babyClue": "🍼 Eja 5 huruf pendek: P - E - R - E - Z. Ketik hurufnya sampai 100% tepat!",
+    "workedExample": {
+      "sampleAudio": "Dengarkan suara ejaan huruf: 'B, O, T, I'",
+      "sampleTarget": "BOTI",
+      "sampleExplanation": "Tingkat 1 menguji pendengaran ejaan huruf alfabet. Saat audio mengeja 'P, E, R, E, Z', ketik setiap huruf secara berurutan: 'PEREZ'."
     }
   },
   {
-    id: "dic-l1-3",
-    level: 1,
-    levelName: "Level 1: Eja Huruf",
-    targetText: "PROJECTOR",
-    audioText: "P, R, O, J, E, C, T, O, R",
-    chapterRef: "Chapter 1: Classroom Equipment",
-    meaning: "Proyektor sorot layar di ruang kelas: P-R-O-J-E-C-T-O-R",
-    babyClue: "🍼 Alat proyektor di langit-langit kelas. Ada 9 huruf: P-R-O-J-E-C-T-O-R!"
-  ,
-    workedExample: {
-      sampleAudio: "Dengarkan suara ejaan huruf: 'B, O, T, I'",
-      sampleTarget: 'BOTI',
-      sampleExplanation: "Tingkat 1 menguji pendengaran ejaan huruf alfabet. Saat audio mengeja 'P, R, O, J, E, C, T, O, R', ketik setiap huruf secara berurutan: 'PROJECTOR'."
+    "id": "dic-l1-3",
+    "level": 1,
+    "levelName": "Level 1: Eja Huruf",
+    "targetText": "RODRIGUEZ",
+    "audioText": "R, O, D, R, I, G, U, E, Z",
+    "chapterRef": "Chapter 1: Student Roster",
+    "meaning": "Nama mahasiswa Rodriguez di daftar hadir: R-O-D-R-I-G-U-E-Z",
+    "babyClue": "🍼 Nama panjang 9 huruf berakhiran Z: R-O-D-R-I-G-U-E-Z. Dengarkan baik-baik vokal I dan U!",
+    "workedExample": {
+      "sampleAudio": "Dengarkan ejaan: 'L, U, I, S'",
+      "sampleTarget": "LUIS",
+      "sampleExplanation": "Perhatikan vokal ganda dan konsonan berulang. Saat audio mengeja 'R, O, D, R, I, G, U, E, Z', ketik 'RODRIGUEZ'."
     }
   },
   {
-    id: "dic-l1-4",
-    level: 1,
-    levelName: "Level 1: Eja Huruf",
-    targetText: "STAPLER",
-    audioText: "S, T, A, P, L, E, R",
-    chapterRef: "Chapter 1: Classroom Supplies",
-    meaning: "Alat penjepit kertas hekter: S-T-A-P-L-E-R",
-    babyClue: "🍼 Penjepit kertas di meja guru. 7 huruf: S - T - A - P - L - E - R!"
-  ,
-    workedExample: {
-      sampleAudio: "Dengarkan suara ejaan huruf: 'B, O, T, I'",
-      sampleTarget: 'BOTI',
-      sampleExplanation: "Tingkat 1 menguji pendengaran ejaan huruf alfabet. Saat audio mengeja 'S, T, A, P, L, E, R', ketik setiap huruf secara berurutan: 'STAPLER'."
+    "id": "dic-l1-4",
+    "level": 1,
+    "levelName": "Level 1: Eja Huruf",
+    "targetText": "FLORES",
+    "audioText": "F, L, O, R, E, S",
+    "chapterRef": "Chapter 2: Classroom Names",
+    "meaning": "Nama keluarga Flores: F-L-O-R-E-S",
+    "babyClue": "🍼 6 huruf nama latin: F - L - O - R - E - S.",
+    "workedExample": {
+      "sampleAudio": "Dengarkan ejaan: 'L, U, I, S'",
+      "sampleTarget": "LUIS",
+      "sampleExplanation": "Ketik huruf demi huruf sesuai pelafalan alfabet bahasa Inggris: F - L - O - R - E - S menjadi 'FLORES'."
     }
   },
   {
-    id: "dic-l1-5",
-    level: 1,
-    levelName: "Level 1: Eja Huruf",
-    targetText: "CALCULATOR",
-    audioText: "C, A, L, C, U, L, A, T, O, R",
-    chapterRef: "Chapter 1: Classroom Objects",
-    meaning: "Kalkulator hitung di laci guru: C-A-L-C-U-L-A-T-O-R",
-    babyClue: "🍼 Alat hitung angka di laci meja guru. Dengarkan ketukan hurufnya!"
-  ,
-    workedExample: {
-      sampleAudio: "Dengarkan suara ejaan huruf: 'B, O, T, I'",
-      sampleTarget: 'BOTI',
-      sampleExplanation: "Tingkat 1 menguji pendengaran ejaan huruf alfabet. Saat audio mengeja 'C, A, L, C, U, L, A, T, O, R', ketik setiap huruf secara berurutan: 'CALCULATOR'."
+    "id": "dic-l1-5",
+    "level": 1,
+    "levelName": "Level 1: Eja Huruf",
+    "targetText": "SANCHEZ",
+    "audioText": "S, A, N, C, H, E, Z",
+    "chapterRef": "Chapter 2: Classroom Introductions",
+    "meaning": "Nama Sanchez: S-A-N-C-H-E-Z",
+    "babyClue": "🍼 Dengarkan kombinasi konsonan C dan H: S - A - N - C - H - E - Z.",
+    "workedExample": {
+      "sampleAudio": "Dengarkan ejaan: 'L, U, I, S'",
+      "sampleTarget": "LUIS",
+      "sampleExplanation": "Di ejaan bahasa Inggris, huruf C dibaca /siː/ dan H dibaca /eɪtʃ/. Ketik 'SANCHEZ'."
     }
   },
   {
-    id: "dic-l1-6",
-    level: 1,
-    levelName: "Level 1: Eja Huruf",
-    targetText: "WHITEBOARD",
-    audioText: "W, H, I, T, E, B, O, A, R, D",
-    chapterRef: "Chapter 1: Classroom Objects",
-    meaning: "Papan tulis putih spidol: W-H-I-T-E-B-O-A-R-D",
-    babyClue: "🍼 Papan tulis putih di depan kelas: White + Board!"
-  ,
-    workedExample: {
-      sampleAudio: "Dengarkan suara ejaan huruf: 'B, O, T, I'",
-      sampleTarget: 'BOTI',
-      sampleExplanation: "Tingkat 1 menguji pendengaran ejaan huruf alfabet. Saat audio mengeja 'W, H, I, T, E, B, O, A, R, D', ketik setiap huruf secara berurutan: 'WHITEBOARD'."
+    "id": "dic-l1-6",
+    "level": 1,
+    "levelName": "Level 1: Eja Huruf",
+    "targetText": "RAMIREZ",
+    "audioText": "R, A, M, I, R, E, Z",
+    "chapterRef": "Chapter 2: Student Directory",
+    "meaning": "Nama Ramirez: R-A-M-I-R-E-Z",
+    "babyClue": "🍼 Huruf R muncul dua kali: R - A - M - I - R - E - Z.",
+    "workedExample": {
+      "sampleAudio": "Dengarkan ejaan: 'B, O, T, I'",
+      "sampleTarget": "BOTI",
+      "sampleExplanation": "Dengarkan ritme jeda huruf audio: R, A, M, I, R, E, Z menjadi 'RAMIREZ'."
     }
   },
   {
-    id: "dic-l1-7",
-    level: 1,
-    levelName: "Level 1: Eja Huruf",
-    targetText: "VIETNAM",
-    audioText: "V, I, E, T, N, A, M",
-    chapterRef: "Chapter 2: Places & Nationalities",
-    meaning: "Negara asal siswa Binh dan Duc di dialog EVC: V-I-E-T-N-A-M",
-    babyClue: "🍼 Nama negara tetangga di Asia Tenggara tempat asal Binh!"
-  ,
-    workedExample: {
-      sampleAudio: "Dengarkan suara ejaan huruf: 'B, O, T, I'",
-      sampleTarget: 'BOTI',
-      sampleExplanation: "Tingkat 1 menguji pendengaran ejaan huruf alfabet. Saat audio mengeja 'V, I, E, T, N, A, M', ketik setiap huruf secara berurutan: 'VIETNAM'."
+    "id": "dic-l1-7",
+    "level": 1,
+    "levelName": "Level 1: Eja Huruf",
+    "targetText": "GARCIA",
+    "audioText": "G, A, R, C, I, A",
+    "chapterRef": "Chapter 3: Personal Data",
+    "meaning": "Nama Garcia: G-A-R-C-I-A",
+    "babyClue": "🍼 Huruf G dibaca /dʒiː/: G - A - R - C - I - A.",
+    "workedExample": {
+      "sampleAudio": "Dengarkan ejaan: 'L, U, I, S'",
+      "sampleTarget": "LUIS",
+      "sampleExplanation": "Huruf G dalam alfabet bahasa Inggris berbunyi /dʒiː/. Ketik 'GARCIA'."
     }
   },
   {
-    id: "dic-l1-8",
-    level: 1,
-    levelName: "Level 1: Eja Huruf",
-    targetText: "BRAZIL",
-    audioText: "B, R, A, Z, I, L",
-    chapterRef: "Chapter 2: Places & Nationalities",
-    meaning: "Negara Brasil asal Cristiano dan Joao: B-R-A-Z-I-L",
-    babyClue: "🍼 Negara sepak bola terkenal asal Cristiano dan Joao di dialog EVC!"
-  ,
-    workedExample: {
-      sampleAudio: "Dengarkan suara ejaan huruf: 'B, O, T, I'",
-      sampleTarget: 'BOTI',
-      sampleExplanation: "Tingkat 1 menguji pendengaran ejaan huruf alfabet. Saat audio mengeja 'B, R, A, Z, I, L', ketik setiap huruf secara berurutan: 'BRAZIL'."
+    "id": "dic-l1-8",
+    "level": 1,
+    "levelName": "Level 1: Eja Huruf",
+    "targetText": "MARTINEZ",
+    "audioText": "M, A, R, T, I, N, E, Z",
+    "chapterRef": "Chapter 3: Campus Registry",
+    "meaning": "Nama Martinez: M-A-R-T-I-N-E-Z",
+    "babyClue": "🍼 8 huruf berakhiran Z: M - A - R - T - I - N - E - Z.",
+    "workedExample": {
+      "sampleAudio": "Dengarkan ejaan: 'B, O, T, I'",
+      "sampleTarget": "BOTI",
+      "sampleExplanation": "Ketik setiap huruf saat audio berbunyi: M, A, R, T, I, N, E, Z menjadi 'MARTINEZ'."
     }
   },
   {
-    id: "dic-l1-9",
-    level: 1,
-    levelName: "Level 1: Eja Huruf",
-    targetText: "WEBSITE",
-    audioText: "W, E, B, S, I, T, E",
-    chapterRef: "Chapter 4: Workplaces & Tech",
-    meaning: "Halaman web digital: W-E-B-S-I-T-E",
-    babyClue: "🍼 Portal online yang dirancang oleh profesi web designer!"
-  ,
-    workedExample: {
-      sampleAudio: "Dengarkan suara ejaan huruf: 'B, O, T, I'",
-      sampleTarget: 'BOTI',
-      sampleExplanation: "Tingkat 1 menguji pendengaran ejaan huruf alfabet. Saat audio mengeja 'W, E, B, S, I, T, E', ketik setiap huruf secara berurutan: 'WEBSITE'."
+    "id": "dic-l1-9",
+    "level": 1,
+    "levelName": "Level 1: Eja Huruf",
+    "targetText": "CASTILLO",
+    "audioText": "C, A, S, T, I, L, L, O",
+    "chapterRef": "Chapter 4: Contact Information",
+    "meaning": "Nama Castillo: C-A-S-T-I-L-L-O",
+    "babyClue": "🍼 Dengarkan konsonan ganda L-L: C - A - S - T - I - L - L - O.",
+    "workedExample": {
+      "sampleAudio": "Dengarkan ejaan: 'B, O, T, I'",
+      "sampleTarget": "BOTI",
+      "sampleExplanation": "Huruf L ganda (double L): C, A, S, T, I, L, L, O menghasilkan 'CASTILLO'."
     }
   },
   {
-    id: "dic-l1-10",
-    level: 1,
-    levelName: "Level 1: Eja Huruf",
-    targetText: "SCHEDULE",
-    audioText: "S, C, H, E, D, U, L, E",
-    chapterRef: "Chapter 3: Routines & Calendar",
-    meaning: "Jadwal kegiatan mingguan: S-C-H-E-D-U-L-E",
-    babyClue: "🍼 Agenda waktu belajar dan kerja. Awas ada huruf 'ch'-nya ya!"
-  ,
-    workedExample: {
-      sampleAudio: "Dengarkan suara ejaan huruf: 'B, O, T, I'",
-      sampleTarget: 'BOTI',
-      sampleExplanation: "Tingkat 1 menguji pendengaran ejaan huruf alfabet. Saat audio mengeja 'S, C, H, E, D, U, L, E', ketik setiap huruf secara berurutan: 'SCHEDULE'."
-    }
-  },
-
-  // ==========================================
-  // LEVEL 2: DIKTE KATA (WORD DICTATION)
-  // Khas EVC Chapter 1 - 8 (Vocabulary Mastery)
-  // ==========================================
-  {
-    id: "dic-l2-1",
-    level: 2,
-    levelName: "Level 2: Dikte Kata",
-    targetText: "hospital",
-    audioText: "hospital",
-    chapterRef: "Chapter 4: Workplaces",
-    meaning: "Rumah sakit tempat kerja dokter dan perawat",
-    babyClue: "🍼 Tempat kerja Roberto di buku EVC. 8 huruf: h - o - s - p - i - t - a - l."
-  ,
-    workedExample: {
-      sampleAudio: "Dengarkan suara kata: 'doctor'",
-      sampleTarget: 'doctor',
-      sampleExplanation: "Tingkat 2 menguji kosakata harian. Dengarkan pelafalan kata 'hospital' (Rumah sakit tempat kerja dokter dan perawat), lalu ketik ejaannya dengan tepat tanpa salah huruf."
+    "id": "dic-l1-10",
+    "level": 1,
+    "levelName": "Level 1: Eja Huruf",
+    "targetText": "VARGAS",
+    "audioText": "V, A, R, G, A, S",
+    "chapterRef": "Chapter 4: Identity Verification",
+    "meaning": "Nama Vargas: V-A-R-G-A-S",
+    "babyClue": "🍼 Huruf V dibaca /viː/: V - A - R - G - A - S.",
+    "workedExample": {
+      "sampleAudio": "Dengarkan ejaan: 'B, O, T, I'",
+      "sampleTarget": "BOTI",
+      "sampleExplanation": "Huruf V dibaca /viː/ berbeda dengan B /biː/. Ketik 'VARGAS'."
     }
   },
   {
-    id: "dic-l2-2",
-    level: 2,
-    levelName: "Level 2: Dikte Kata",
-    targetText: "weather",
-    audioText: "weather",
-    chapterRef: "Chapter 2: Weather & Seasons",
-    meaning: "Cuaca (panas, hujan, berangin)",
-    babyClue: "🍼 Ingat ejaannya ada huruf 'ea': w - e - a - t - h - e - r."
-  ,
-    workedExample: {
-      sampleAudio: "Dengarkan suara kata: 'doctor'",
-      sampleTarget: 'doctor',
-      sampleExplanation: "Tingkat 2 menguji kosakata harian. Dengarkan pelafalan kata 'weather' (Cuaca (panas, hujan, berangin)), lalu ketik ejaannya dengan tepat tanpa salah huruf."
+    "id": "dic-l1-11",
+    "level": 1,
+    "levelName": "Level 1: Eja Huruf",
+    "targetText": "ROUTER",
+    "audioText": "R, O, U, T, E, R",
+    "chapterRef": "Vocational IT: Hardware Devices",
+    "meaning": "Perangkat perute jaringan: R-O-U-T-E-R",
+    "babyClue": "🍼 6 huruf perangkat jaringan utama pembagi paket data: R - O - U - T - E - R.",
+    "workedExample": {
+      "sampleAudio": "Dengarkan ejaan: 'H, U, B'",
+      "sampleTarget": "HUB",
+      "sampleExplanation": "Dengarkan vokal O dan U: R, O, U, T, E, R membentuk kata 'ROUTER'."
     }
   },
   {
-    id: "dic-l2-3",
-    level: 2,
-    levelName: "Level 2: Dikte Kata",
-    targetText: "breakfast",
-    audioText: "breakfast",
-    chapterRef: "Chapter 3: Daily Routines",
-    meaning: "Sarapan pagi sebelum berangkat kerja/sekolah",
-    babyClue: "🍼 Makanan pertama di pagi hari Lisa dan anak-anaknya: b - r - e - a - k - f - a - s - t."
-  ,
-    workedExample: {
-      sampleAudio: "Dengarkan suara kata: 'doctor'",
-      sampleTarget: 'doctor',
-      sampleExplanation: "Tingkat 2 menguji kosakata harian. Dengarkan pelafalan kata 'breakfast' (Sarapan pagi sebelum berangkat kerja/sekolah), lalu ketik ejaannya dengan tepat tanpa salah huruf."
+    "id": "dic-l1-12",
+    "level": 1,
+    "levelName": "Level 1: Eja Huruf",
+    "targetText": "MODEM",
+    "audioText": "M, O, D, E, M",
+    "chapterRef": "Vocational IT: Communication Equipment",
+    "meaning": "Modulator demodulator sinyal: M-O-D-E-M",
+    "babyClue": "🍼 5 huruf perangkat konversi sinyal analog ke digital: M - O - D - E - M.",
+    "workedExample": {
+      "sampleAudio": "Dengarkan ejaan: 'H, U, B'",
+      "sampleTarget": "HUB",
+      "sampleExplanation": "Dua huruf M mengapit huruf vokal O, D, E. Ketik 'MODEM'."
     }
   },
   {
-    id: "dic-l2-4",
-    level: 2,
-    levelName: "Level 2: Dikte Kata",
-    targetText: "gardening",
-    audioText: "gardening",
-    chapterRef: "Chapter 6: Personal Hobbies",
-    meaning: "Berkebun / menanam bunga dan sayuran",
-    babyClue: "🍼 Hobi menanam tanaman di pekarangan rumah: g - a - r - d - e - n - i - n - g."
-  ,
-    workedExample: {
-      sampleAudio: "Dengarkan suara kata: 'doctor'",
-      sampleTarget: 'doctor',
-      sampleExplanation: "Tingkat 2 menguji kosakata harian. Dengarkan pelafalan kata 'gardening' (Berkebun / menanam bunga dan sayuran), lalu ketik ejaannya dengan tepat tanpa salah huruf."
+    "id": "dic-l1-13",
+    "level": 1,
+    "levelName": "Level 1: Eja Huruf",
+    "targetText": "SWITCH",
+    "audioText": "S, W, I, T, C, H",
+    "chapterRef": "Vocational IT: LAN Infrastructure",
+    "meaning": "Perangkat switch LAN layer 2: S-W-I-T-C-H",
+    "babyClue": "🍼 6 huruf perangkat penghubung kabel LAN di kantor: S - W - I - T - C - H.",
+    "workedExample": {
+      "sampleAudio": "Dengarkan ejaan: 'H, U, B'",
+      "sampleTarget": "HUB",
+      "sampleExplanation": "Huruf W dibaca /dʌbəl.juː/ dan C-H dibaca berurutan. Ketik 'SWITCH'."
     }
   },
   {
-    id: "dic-l2-5",
-    level: 2,
-    levelName: "Level 2: Dikte Kata",
-    targetText: "electrician",
-    audioText: "electrician",
-    chapterRef: "Chapter 4: Workplaces & Jobs",
-    meaning: "Teknisi ahli kelistrikan",
-    babyClue: "🍼 Profesi Kevin di buku EVC yang jago instalasi kabel listrik!"
-  ,
-    workedExample: {
-      sampleAudio: "Dengarkan suara kata: 'doctor'",
-      sampleTarget: 'doctor',
-      sampleExplanation: "Tingkat 2 menguji kosakata harian. Dengarkan pelafalan kata 'electrician' (Teknisi ahli kelistrikan), lalu ketik ejaannya dengan tepat tanpa salah huruf."
+    "id": "dic-l1-14",
+    "level": 1,
+    "levelName": "Level 1: Eja Huruf",
+    "targetText": "SUBNET",
+    "audioText": "S, U, B, N, E, T",
+    "chapterRef": "CompTIA Network+: IP Addressing",
+    "meaning": "Pembagian segmen jaringan: S-U-B-N-E-T",
+    "babyClue": "🍼 6 huruf istilah pemecah rentang IP address: S - U - B - N - E - T.",
+    "workedExample": {
+      "sampleAudio": "Dengarkan ejaan: 'N, E, T'",
+      "sampleTarget": "NET",
+      "sampleExplanation": "Gabungan kata sub dan net: S, U, B, N, E, T menjadi 'SUBNET'."
     }
   },
   {
-    id: "dic-l2-6",
-    level: 2,
-    levelName: "Level 2: Dikte Kata",
-    targetText: "sanitizer",
-    audioText: "sanitizer",
-    chapterRef: "Chapter 5: Food & Health",
-    meaning: "Cairan pembersih kuman tangan (Hand sanitizer)",
-    babyClue: "🍼 Pembersih tangan dari kuman sebelum makan: s - a - n - i - t - i - z - e - r."
-  ,
-    workedExample: {
-      sampleAudio: "Dengarkan suara kata: 'doctor'",
-      sampleTarget: 'doctor',
-      sampleExplanation: "Tingkat 2 menguji kosakata harian. Dengarkan pelafalan kata 'sanitizer' (Cairan pembersih kuman tangan (Hand sanitizer)), lalu ketik ejaannya dengan tepat tanpa salah huruf."
+    "id": "dic-l1-15",
+    "level": 1,
+    "levelName": "Level 1: Eja Huruf",
+    "targetText": "SERVER",
+    "audioText": "S, E, R, V, E, R",
+    "chapterRef": "Vocational IT: Client-Server Model",
+    "meaning": "Komputer peladen data pusat: S-E-R-V-E-R",
+    "babyClue": "🍼 6 huruf komputer bertenaga tinggi penyedia layanan web dan database: S - E - R - V - E - R.",
+    "workedExample": {
+      "sampleAudio": "Dengarkan ejaan: 'H, O, S, T'",
+      "sampleTarget": "HOST",
+      "sampleExplanation": "Perhatikan huruf V di tengah: S, E, R, V, E, R menghasilkan 'SERVER'."
     }
   },
   {
-    id: "dic-l2-7",
-    level: 2,
-    levelName: "Level 2: Dikte Kata",
-    targetText: "vacation",
-    audioText: "vacation",
-    chapterRef: "Chapter 7: Past Activities & Travel",
-    meaning: "Liburan / tamasya santai",
-    babyClue: "🍼 Waktu istirahat santai jalan-jalan bersama keluarga: v - a - c - a - t - i - o - n."
-  ,
-    workedExample: {
-      sampleAudio: "Dengarkan suara kata: 'doctor'",
-      sampleTarget: 'doctor',
-      sampleExplanation: "Tingkat 2 menguji kosakata harian. Dengarkan pelafalan kata 'vacation' (Liburan / tamasya santai), lalu ketik ejaannya dengan tepat tanpa salah huruf."
+    "id": "dic-l1-16",
+    "level": 1,
+    "levelName": "Level 1: Eja Huruf",
+    "targetText": "CLIENT",
+    "audioText": "C, L, I, E, N, T",
+    "chapterRef": "Vocational IT: Network Architecture",
+    "meaning": "Perangkat klien pengguna: C-L-I-E-N, T",
+    "babyClue": "🍼 6 huruf komputer pengguna yang meminta data ke server: C - L - I - E - N - T.",
+    "workedExample": {
+      "sampleAudio": "Dengarkan ejaan: 'H, O, S, T'",
+      "sampleTarget": "HOST",
+      "sampleExplanation": "Kombinasi vokal I dan E: C, L, I, E, N, T menjadi 'CLIENT'."
     }
   },
   {
-    id: "dic-l2-8",
-    level: 2,
-    levelName: "Level 2: Dikte Kata",
-    targetText: "ceremony",
-    audioText: "ceremony",
-    chapterRef: "Chapter 8: Invitations & Events",
-    meaning: "Upacara sakral pernikahan atau wisuda",
-    babyClue: "🍼 Upacara resmi pernikahan jam 2 siang: c - e - r - e - m - o - n - y."
-  ,
-    workedExample: {
-      sampleAudio: "Dengarkan suara kata: 'doctor'",
-      sampleTarget: 'doctor',
-      sampleExplanation: "Tingkat 2 menguji kosakata harian. Dengarkan pelafalan kata 'ceremony' (Upacara sakral pernikahan atau wisuda), lalu ketik ejaannya dengan tepat tanpa salah huruf."
+    "id": "dic-l1-17",
+    "level": 1,
+    "levelName": "Level 1: Eja Huruf",
+    "targetText": "PACKET",
+    "audioText": "P, A, C, K, E, T",
+    "chapterRef": "CompTIA Network+: Data Encapsulation",
+    "meaning": "Bungkusan data jaringan digital: P-A-C-K-E-T",
+    "babyClue": "🍼 6 huruf unit data protokol pada layer 3 jaringan: P - A - C - K - E - T.",
+    "workedExample": {
+      "sampleAudio": "Dengarkan ejaan: 'F, R, A, M, E'",
+      "sampleTarget": "FRAME",
+      "sampleExplanation": "Perhatikan kombinasi konsonan C dan K: P, A, C, K, E, T menjadi 'PACKET'."
     }
   },
   {
-    id: "dic-l2-9",
-    level: 2,
-    levelName: "Level 2: Dikte Kata",
-    targetText: "broccoli",
-    audioText: "broccoli",
-    chapterRef: "Chapter 5: Healthy Eating",
-    meaning: "Sayuran brokoli hijau sehat bergizi",
-    babyClue: "🍼 Sayuran hijau sehat kaya vitamin: b - r - o - c - c - o - l - i (ada huruf c ganda)!"
-  ,
-    workedExample: {
-      sampleAudio: "Dengarkan suara kata: 'doctor'",
-      sampleTarget: 'doctor',
-      sampleExplanation: "Tingkat 2 menguji kosakata harian. Dengarkan pelafalan kata 'broccoli' (Sayuran brokoli hijau sehat bergizi), lalu ketik ejaannya dengan tepat tanpa salah huruf."
+    "id": "dic-l1-18",
+    "level": 1,
+    "levelName": "Level 1: Eja Huruf",
+    "targetText": "DOMAIN",
+    "audioText": "D, O, M, A, I, N",
+    "chapterRef": "Vocational IT: Web Infrastructure",
+    "meaning": "Nama alamat situs web atau realm jaringan: D-O-M-A-I-N",
+    "babyClue": "🍼 6 huruf alamat identitas jaringan seperti .com atau .id: D - O - M - A - I - N.",
+    "workedExample": {
+      "sampleAudio": "Dengarkan ejaan: 'H, O, S, T'",
+      "sampleTarget": "HOST",
+      "sampleExplanation": "Dengarkan ejaan huruf alfabet: D, O, M, A, I, N menjadi 'DOMAIN'."
     }
   },
   {
-    id: "dic-l2-10",
-    level: 2,
-    levelName: "Level 2: Dikte Kata",
-    targetText: "comfortable",
-    audioText: "comfortable",
-    chapterRef: "Chapter 4: Home & Furniture",
-    meaning: "Nyaman / enak diduduki",
-    babyClue: "🍼 Kursi atau sofa yang empuk dan bikin betah duduk: c - o - m - f - o - r - t - a - b - l - e."
-  ,
-    workedExample: {
-      sampleAudio: "Dengarkan suara kata: 'doctor'",
-      sampleTarget: 'doctor',
-      sampleExplanation: "Tingkat 2 menguji kosakata harian. Dengarkan pelafalan kata 'comfortable' (Nyaman / enak diduduki), lalu ketik ejaannya dengan tepat tanpa salah huruf."
+    "id": "dic-l1-19",
+    "level": 1,
+    "levelName": "Level 1: Eja Huruf",
+    "targetText": "BACKUP",
+    "audioText": "B, A, C, K, U, P",
+    "chapterRef": "Oxford IT: Storage & Disaster Recovery",
+    "meaning": "Salinan cadangan file sistem: B-A-C-K-U-P",
+    "babyClue": "🍼 6 huruf penyelamat data saat harddisk rusak: B - A - C - K - U - P.",
+    "workedExample": {
+      "sampleAudio": "Dengarkan ejaan: 'D, A, T, A'",
+      "sampleTarget": "DATA",
+      "sampleExplanation": "Gabungan huruf B, A, C, K, U, P membentuk kata penting 'BACKUP'."
     }
   },
   {
-    id: "dic-l2-11",
-    level: 2,
-    levelName: "Level 2: Dikte Kata",
-    targetText: "sightseeing",
-    audioText: "sightseeing",
-    chapterRef: "Chapter 7: Shopping & Travel",
-    meaning: "Jalan-jalan melihat pemandangan kota/wisata",
-    babyClue: "🍼 Keliling kota naik bus wisata melihat tempat bersejarah: s - i - g - h - t - s - e - e - i - n - g."
-  ,
-    workedExample: {
-      sampleAudio: "Dengarkan suara kata: 'doctor'",
-      sampleTarget: 'doctor',
-      sampleExplanation: "Tingkat 2 menguji kosakata harian. Dengarkan pelafalan kata 'sightseeing' (Jalan-jalan melihat pemandangan kota/wisata), lalu ketik ejaannya dengan tepat tanpa salah huruf."
+    "id": "dic-l1-20",
+    "level": 1,
+    "levelName": "Level 1: Eja Huruf",
+    "targetText": "BUFFER",
+    "audioText": "B, U, F, F, E, R",
+    "chapterRef": "Oxford IT: Memory & Processing",
+    "meaning": "Memori penampung data sementara: B-U-F-F-E-R",
+    "babyClue": "🍼 6 huruf penyangga aliran data video atau IO: B - U - F - F - E - R.",
+    "workedExample": {
+      "sampleAudio": "Dengarkan ejaan: 'R, A, M'",
+      "sampleTarget": "RAM",
+      "sampleExplanation": "Dengarkan huruf F ganda (double F): B, U, F, F, E, R menjadi 'BUFFER'."
     }
   },
   {
-    id: "dic-l2-12",
-    level: 2,
-    levelName: "Level 2: Dikte Kata",
-    targetText: "frequency",
-    audioText: "frequency",
-    chapterRef: "Chapter 5: Adverbs of Frequency",
-    meaning: "Tingkat keseringan rutinitas (always, sometimes)",
-    babyClue: "🍼 Istilah seberapa sering kita melakukan kegiatan: f - r - e - q - u - e - n - c - y."
-  ,
-    workedExample: {
-      sampleAudio: "Dengarkan suara kata: 'doctor'",
-      sampleTarget: 'doctor',
-      sampleExplanation: "Tingkat 2 menguji kosakata harian. Dengarkan pelafalan kata 'frequency' (Tingkat keseringan rutinitas (always, sometimes)), lalu ketik ejaannya dengan tepat tanpa salah huruf."
-    }
-  },
-
-  // ==========================================
-  // LEVEL 3: DIKTE KALIMAT UTUH (SENTENCE DICTATION)
-  // Khas EVC Chapter 1 - 8 (Natural Dialogues)
-  // ==========================================
-  {
-    id: "dic-l3-1",
-    level: 3,
-    levelName: "Level 3: Dikte Kalimat",
-    targetText: "Where are you from?",
-    audioText: "Where are you from?",
-    chapterRef: "Chapter 1: Greetings & Introductions",
-    meaning: "Dari mana asalmu?",
-    babyClue: "🍼 Pertanyaan paling dasar dan sopan saat berkenalan dengan teman baru di kelas!"
-  ,
-    workedExample: {
-      sampleAudio: "Dengarkan kalimat: 'Nice to meet you.'",
-      sampleTarget: 'Nice to meet you.',
-      sampleExplanation: "Tingkat 3 menguji kalimat dialog utuh. Dengarkan intonasi kalimat 'Where are you from?', beri spasi pemisah antar kata yang rapi, dan ketik hingga 100% tepat."
+    "id": "dic-l1-21",
+    "level": 1,
+    "levelName": "Level 1: Eja Huruf",
+    "targetText": "KERNEL",
+    "audioText": "K, E, R, N, E, L",
+    "chapterRef": "Oxford IT: Operating Systems",
+    "meaning": "Inti sistem operasi komputer: K-E-R-N-E-L",
+    "babyClue": "🍼 6 huruf pengendali perangkat keras paling inti di Linux dan Windows: K - E - R - N - E - L.",
+    "workedExample": {
+      "sampleAudio": "Dengarkan ejaan: 'O, S'",
+      "sampleTarget": "OS",
+      "sampleExplanation": "Dengarkan ejaan huruf K, E, R, N, E, L menghasilkan kata 'KERNEL'."
     }
   },
   {
-    id: "dic-l3-2",
-    level: 3,
-    levelName: "Level 3: Dikte Kalimat",
-    targetText: "She is a web designer.",
-    audioText: "She is a web designer.",
-    chapterRef: "Chapter 4: Workplaces & Jobs",
-    meaning: "Dia adalah seorang desainer web.",
-    babyClue: "🍼 Menjelaskan profesi Mila yang merancang tampilan website kreatif di kantor teknologi!"
-  ,
-    workedExample: {
-      sampleAudio: "Dengarkan kalimat: 'Nice to meet you.'",
-      sampleTarget: 'Nice to meet you.',
-      sampleExplanation: "Tingkat 3 menguji kalimat dialog utuh. Dengarkan intonasi kalimat 'She is a web designer.', beri spasi pemisah antar kata yang rapi, dan ketik hingga 100% tepat."
+    "id": "dic-l1-22",
+    "level": 1,
+    "levelName": "Level 1: Eja Huruf",
+    "targetText": "SOCKET",
+    "audioText": "S, O, C, K, E, T",
+    "chapterRef": "CompTIA Network+: Port Communication",
+    "meaning": "Kombinasi alamat IP dan port komunikasi: S-O-C-K-E-T",
+    "babyClue": "🍼 6 huruf colokan logika endpoint komunikasi jaringan: S - O - C - K - E - T.",
+    "workedExample": {
+      "sampleAudio": "Dengarkan ejaan: 'P, O, R, T'",
+      "sampleTarget": "PORT",
+      "sampleExplanation": "Dengarkan ejaan huruf alfabet: S, O, C, K, E, T menjadi 'SOCKET'."
     }
   },
   {
-    id: "dic-l3-3",
-    level: 3,
-    levelName: "Level 3: Dikte Kalimat",
-    targetText: "The weather is warm and sunny.",
-    audioText: "The weather is warm and sunny.",
-    chapterRef: "Chapter 2: Weather & Places",
-    meaning: "Cuacanya hangat dan cerah.",
-    babyClue: "🍼 Menggambarkan suasana cuaca cerah di California saat matahari bersinar hangat!"
-  ,
-    workedExample: {
-      sampleAudio: "Dengarkan kalimat: 'Nice to meet you.'",
-      sampleTarget: 'Nice to meet you.',
-      sampleExplanation: "Tingkat 3 menguji kalimat dialog utuh. Dengarkan intonasi kalimat 'The weather is warm and sunny.', beri spasi pemisah antar kata yang rapi, dan ketik hingga 100% tepat."
+    "id": "dic-l1-23",
+    "level": 1,
+    "levelName": "Level 1: Eja Huruf",
+    "targetText": "PYTHON",
+    "audioText": "P, Y, T, H, O, N",
+    "chapterRef": "Vocational IT: Programming Languages",
+    "meaning": "Bahasa pemrograman skrip terpopuler: P-Y-T-H-O-N",
+    "babyClue": "🍼 6 huruf bahasa pemrograman ular serbaguna untuk automasi dan AI: P - Y - T - H - O - N.",
+    "workedExample": {
+      "sampleAudio": "Dengarkan ejaan: 'J, A, V, A'",
+      "sampleTarget": "JAVA",
+      "sampleExplanation": "Huruf Y dibaca /waɪ/: P, Y, T, H, O, N menjadi 'PYTHON'."
     }
   },
   {
-    id: "dic-l3-4",
-    level: 3,
-    levelName: "Level 3: Dikte Kalimat",
-    targetText: "There is a clock on the wall.",
-    audioText: "There is a clock on the wall.",
-    chapterRef: "Chapter 1 & 4: There is / There are",
-    meaning: "Ada sebuah jam dinding di tembok.",
-    babyClue: "🍼 Rumus keberadaan benda tunggal: 'There is' + sebuah jam + di atas dinding."
-  ,
-    workedExample: {
-      sampleAudio: "Dengarkan kalimat: 'Nice to meet you.'",
-      sampleTarget: 'Nice to meet you.',
-      sampleExplanation: "Tingkat 3 menguji kalimat dialog utuh. Dengarkan intonasi kalimat 'There is a clock on the wall.', beri spasi pemisah antar kata yang rapi, dan ketik hingga 100% tepat."
+    "id": "dic-l1-24",
+    "level": 1,
+    "levelName": "Level 1: Eja Huruf",
+    "targetText": "DOCKER",
+    "audioText": "D, O, C, K, E, R",
+    "chapterRef": "Vocational IT: Virtualization & Containers",
+    "meaning": "Platform wadah aplikasi portabel: D-O-C-K-E-R",
+    "babyClue": "🍼 6 huruf teknologi container software lambang ikan paus: D - O - C - K - E - R.",
+    "workedExample": {
+      "sampleAudio": "Dengarkan ejaan: 'V, M'",
+      "sampleTarget": "VM",
+      "sampleExplanation": "Dengarkan ketukan huruf: D, O, C, K, E, R menghasilkan 'DOCKER'."
     }
   },
   {
-    id: "dic-l3-5",
-    level: 3,
-    levelName: "Level 3: Dikte Kalimat",
-    targetText: "I walk to school every day.",
-    audioText: "I walk to school every day.",
-    chapterRef: "Chapter 2: Simple Present Routines",
-    meaning: "Saya berjalan kaki ke sekolah setiap hari.",
-    babyClue: "🍼 Rutinitas pagi hari yang dilakukan setiap hari secara rajin (every day)."
-  ,
-    workedExample: {
-      sampleAudio: "Dengarkan kalimat: 'Nice to meet you.'",
-      sampleTarget: 'Nice to meet you.',
-      sampleExplanation: "Tingkat 3 menguji kalimat dialog utuh. Dengarkan intonasi kalimat 'I walk to school every day.', beri spasi pemisah antar kata yang rapi, dan ketik hingga 100% tepat."
+    "id": "dic-l1-25",
+    "level": 1,
+    "levelName": "Level 1: Eja Huruf",
+    "targetText": "CIPHER",
+    "audioText": "C, I, P, H, E, R",
+    "chapterRef": "CompTIA Security+: Cryptography",
+    "meaning": "Algoritma penyandi data rahasia: C-I-P-H-E-R",
+    "babyClue": "🍼 6 huruf pengacak data menjadi kode rahasia enkripsi: C - I - P - H - E - R.",
+    "workedExample": {
+      "sampleAudio": "Dengarkan ejaan: 'K, E, Y'",
+      "sampleTarget": "KEY",
+      "sampleExplanation": "Kombinasi huruf P dan H dibaca /f/ dalam kata: C, I, P, H, E, R menjadi 'CIPHER'."
     }
   },
   {
-    id: "dic-l3-6",
-    level: 3,
-    levelName: "Level 3: Dikte Kalimat",
-    targetText: "Vegetables are always healthy.",
-    audioText: "Vegetables are always healthy.",
-    chapterRef: "Chapter 5: Food & Adverbs of Frequency",
-    meaning: "Sayur-mayur selalu sehat untuk tubuh.",
-    babyClue: "🍼 Fakta kesehatan: kata 'always' diletakkan tepat setelah to be 'are'!"
-  ,
-    workedExample: {
-      sampleAudio: "Dengarkan kalimat: 'Nice to meet you.'",
-      sampleTarget: 'Nice to meet you.',
-      sampleExplanation: "Tingkat 3 menguji kalimat dialog utuh. Dengarkan intonasi kalimat 'Vegetables are always healthy.', beri spasi pemisah antar kata yang rapi, dan ketik hingga 100% tepat."
+    "id": "dic-l1-26",
+    "level": 1,
+    "levelName": "Level 1: Eja Huruf",
+    "targetText": "APACHE",
+    "audioText": "A, P, A, C, H, E",
+    "chapterRef": "Vocational IT: Web Servers",
+    "meaning": "Web server open-source legendaris: A-P-A-C-H-E",
+    "babyClue": "🍼 6 huruf software peladen web terpopuler di dunia IT: A - P - A - C - H - E.",
+    "workedExample": {
+      "sampleAudio": "Dengarkan ejaan: 'W, E, B'",
+      "sampleTarget": "WEB",
+      "sampleExplanation": "Dua huruf A mengapit konsonan P: A, P, A, C, H, E menjadi 'APACHE'."
     }
   },
   {
-    id: "dic-l3-7",
-    level: 3,
-    levelName: "Level 3: Dikte Kalimat",
-    targetText: "He can swim in the ocean.",
-    audioText: "He can swim in the ocean.",
-    chapterRef: "Chapter 6: Modal Verb Can for Ability",
-    meaning: "Dia bisa berenang di lautan.",
-    babyClue: "🍼 Menunjukkan kemampuan fisik (ability): kata kerja setelah modal 'can' wajib polos (swim)!"
-  ,
-    workedExample: {
-      sampleAudio: "Dengarkan kalimat: 'Nice to meet you.'",
-      sampleTarget: 'Nice to meet you.',
-      sampleExplanation: "Tingkat 3 menguji kalimat dialog utuh. Dengarkan intonasi kalimat 'He can swim in the ocean.', beri spasi pemisah antar kata yang rapi, dan ketik hingga 100% tepat."
+    "id": "dic-l1-27",
+    "level": 1,
+    "levelName": "Level 1: Eja Huruf",
+    "targetText": "GITHUB",
+    "audioText": "G, I, T, H, U, B",
+    "chapterRef": "Vocational IT: Version Control Hosting",
+    "meaning": "Layanan cloud repositori kode sumber git: G-I-T-H-U-B",
+    "babyClue": "🍼 6 huruf rumah penyimpanan kode program para programmer: G - I - T - H - U - B.",
+    "workedExample": {
+      "sampleAudio": "Dengarkan ejaan: 'G, I, T'",
+      "sampleTarget": "GIT",
+      "sampleExplanation": "Huruf G dibaca /dʒiː/ diikuti I, T, H, U, B membentuk kata 'GITHUB'."
     }
   },
   {
-    id: "dic-l3-8",
-    level: 3,
-    levelName: "Level 3: Dikte Kalimat",
-    targetText: "I enjoyed my vacation last week.",
-    audioText: "I enjoyed my vacation last week.",
-    chapterRef: "Chapter 7: Simple Past Tense",
-    meaning: "Saya sangat menikmati liburan saya minggu lalu.",
-    babyClue: "🍼 Kalimat masa lampau: kata 'enjoy' diberi akhiran '-ed' karena ada keterangan 'last week'!"
-  ,
-    workedExample: {
-      sampleAudio: "Dengarkan kalimat: 'Nice to meet you.'",
-      sampleTarget: 'Nice to meet you.',
-      sampleExplanation: "Tingkat 3 menguji kalimat dialog utuh. Dengarkan intonasi kalimat 'I enjoyed my vacation last week.', beri spasi pemisah antar kata yang rapi, dan ketik hingga 100% tepat."
+    "id": "dic-l1-28",
+    "level": 1,
+    "levelName": "Level 1: Eja Huruf",
+    "targetText": "BINARY",
+    "audioText": "B, I, N, A, R, Y",
+    "chapterRef": "Oxford IT: Digital Data Representation",
+    "meaning": "Sistem bilangan basis dua (0 dan 1): B-I-N-A-R-Y",
+    "babyClue": "🍼 6 huruf bahasa asli mesin komputasi digital: B - I - N - A - R - Y.",
+    "workedExample": {
+      "sampleAudio": "Dengarkan ejaan: 'B, I, T'",
+      "sampleTarget": "BIT",
+      "sampleExplanation": "Huruf Y di akhir dibaca /waɪ/: B, I, N, A, R, Y menjadi 'BINARY'."
     }
   },
   {
-    id: "dic-l3-9",
-    level: 3,
-    levelName: "Level 3: Dikte Kalimat",
-    targetText: "We are going to visit the museum.",
-    audioText: "We are going to visit the museum.",
-    chapterRef: "Chapter 8: Future Plans with Be Going To",
-    meaning: "Kami akan mengunjungi museum itu.",
-    babyClue: "🍼 Rencana masa depan: rumus 'are going to' + kata kerja dasar 'visit'!"
-  ,
-    workedExample: {
-      sampleAudio: "Dengarkan kalimat: 'Nice to meet you.'",
-      sampleTarget: 'Nice to meet you.',
-      sampleExplanation: "Tingkat 3 menguji kalimat dialog utuh. Dengarkan intonasi kalimat 'We are going to visit the museum.', beri spasi pemisah antar kata yang rapi, dan ketik hingga 100% tepat."
+    "id": "dic-l1-29",
+    "level": 1,
+    "levelName": "Level 1: Eja Huruf",
+    "targetText": "CURSOR",
+    "audioText": "C, U, R, S, O, R",
+    "chapterRef": "Oxford IT: User Interface",
+    "meaning": "Penunjuk posisi pada layar monitor: C-U-R-S-O-R",
+    "babyClue": "🍼 6 huruf panah penunjuk klik mouse di layar komputer: C - U - R - S - O - R.",
+    "workedExample": {
+      "sampleAudio": "Dengarkan ejaan: 'P, O, I, N, T'",
+      "sampleTarget": "POINT",
+      "sampleExplanation": "Dengarkan huruf berurutan: C, U, R, S, O, R menjadi 'CURSOR'."
     }
   },
   {
-    id: "dic-l3-10",
-    level: 3,
-    levelName: "Level 3: Dikte Kalimat",
-    targetText: "Would you like to have some coffee?",
-    audioText: "Would you like to have some coffee?",
-    chapterRef: "Chapter 8: Invitations & Etiquette",
-    meaning: "Maukah kamu minum kopi bersama?",
-    babyClue: "🍼 Kalimat ajakan sopan elegan dalam bahasa Inggris: 'Would you like to...'!"
-  ,
-    workedExample: {
-      sampleAudio: "Dengarkan kalimat: 'Nice to meet you.'",
-      sampleTarget: 'Nice to meet you.',
-      sampleExplanation: "Tingkat 3 menguji kalimat dialog utuh. Dengarkan intonasi kalimat 'Would you like to have some coffee?', beri spasi pemisah antar kata yang rapi, dan ketik hingga 100% tepat."
+    "id": "dic-l1-30",
+    "level": 1,
+    "levelName": "Level 1: Eja Huruf",
+    "targetText": "UPTIME",
+    "audioText": "U, P, T, I, M, E",
+    "chapterRef": "Vocational IT: System Reliability",
+    "meaning": "Durasi waktu komputer beroperasi tanpa mati: U-P-T-I-M-E",
+    "babyClue": "🍼 6 huruf indikator keandalan server 99.9 persen aktif: U - P - T - I - M - E.",
+    "workedExample": {
+      "sampleAudio": "Dengarkan ejaan: 'P, I, N, G'",
+      "sampleTarget": "PING",
+      "sampleExplanation": "Kombinasi kata up dan time: U, P, T, I, M, E menjadi 'UPTIME'."
+    }
+  },
+  {
+    "id": "dic-l2-1",
+    "level": 2,
+    "levelName": "Level 2: Dikte Kata dan Frasa",
+    "targetText": "Notebook computer",
+    "audioText": "Notebook computer",
+    "chapterRef": "EVC Chapter 2: Office Equipment",
+    "meaning": "Komputer jinjing portabel / laptop kantor",
+    "babyClue": "🍼 Dua kata perangkat portabel yang bisa dibawa kemana-mana.",
+    "workedExample": {
+      "sampleAudio": "Dengarkan frasa: 'Desktop screen'",
+      "sampleTarget": "Desktop screen",
+      "sampleExplanation": "Tingkat 2 mendiktekan gabungan kata. Ketik 'Notebook' diikuti spasi lalu 'computer'."
+    }
+  },
+  {
+    "id": "dic-l2-2",
+    "level": 2,
+    "levelName": "Level 2: Dikte Kata dan Frasa",
+    "targetText": "Whiteboard marker",
+    "audioText": "Whiteboard marker",
+    "chapterRef": "EVC Chapter 2: Meeting Room Supplies",
+    "meaning": "Spidol papan tulis ruang rapat",
+    "babyClue": "🍼 Dua kata alat tulis untuk presentasi di papan putih.",
+    "workedExample": {
+      "sampleAudio": "Dengarkan frasa: 'Desktop screen'",
+      "sampleTarget": "Desktop screen",
+      "sampleExplanation": "Dengarkan jeda antar kata: ketik 'Whiteboard' lalu spasi dan 'marker'."
+    }
+  },
+  {
+    "id": "dic-l2-3",
+    "level": 2,
+    "levelName": "Level 2: Dikte Kata dan Frasa",
+    "targetText": "Extension number",
+    "audioText": "Extension number",
+    "chapterRef": "EVC Chapter 3: Office Telephone",
+    "meaning": "Nomor sambungan telepon internal kantor",
+    "babyClue": "🍼 Dua kata nomor nomor ekstensi meja kerja untuk telepon.",
+    "workedExample": {
+      "sampleAudio": "Dengarkan frasa: 'Phone number'",
+      "sampleTarget": "Phone number",
+      "sampleExplanation": "Dengarkan kata 'Extension' (e-x-t-e-n-s-i-o-n) diikuti kata 'number'."
+    }
+  },
+  {
+    "id": "dic-l2-4",
+    "level": 2,
+    "levelName": "Level 2: Dikte Kata dan Frasa",
+    "targetText": "Identification card",
+    "audioText": "Identification card",
+    "chapterRef": "EVC Chapter 3: Security & Access",
+    "meaning": "Kartu tanda pengenal identitas karyawan (ID card)",
+    "babyClue": "🍼 Dua kata kartu pengenal identitas yang dikalungkan di kantor.",
+    "workedExample": {
+      "sampleAudio": "Dengarkan frasa: 'Smart card'",
+      "sampleTarget": "Smart card",
+      "sampleExplanation": "Kata pertama 'Identification' berima panjang, lalu spasi dan 'card'."
+    }
+  },
+  {
+    "id": "dic-l2-5",
+    "level": 2,
+    "levelName": "Level 2: Dikte Kata dan Frasa",
+    "targetText": "Database management",
+    "audioText": "Database management",
+    "chapterRef": "Oxford IT: Database Systems",
+    "meaning": "Pengelolaan basis data informasi perusahaan",
+    "babyClue": "🍼 Dua kata sistem pengorganisasian tabel data terstruktur.",
+    "workedExample": {
+      "sampleAudio": "Dengarkan frasa: 'Data analysis'",
+      "sampleTarget": "Data analysis",
+      "sampleExplanation": "Dua kata: 'Database' lalu 'management'. Pastikan penulisan kata management berakhiran -ment."
+    }
+  },
+  {
+    "id": "dic-l2-6",
+    "level": 2,
+    "levelName": "Level 2: Dikte Kata dan Frasa",
+    "targetText": "Network administrator",
+    "audioText": "Network administrator",
+    "chapterRef": "Oxford IT: Jobs in Computing",
+    "meaning": "Spesialis pengelola konfigurasi dan keamanan jaringan",
+    "babyClue": "🍼 Dua kata profesi IT pengatur router, kabel LAN, dan switch kantor.",
+    "workedExample": {
+      "sampleAudio": "Dengarkan frasa: 'Data analyst'",
+      "sampleTarget": "Data analyst",
+      "sampleExplanation": "Ketik 'Network' lalu spasi dan 'administrator'."
+    }
+  },
+  {
+    "id": "dic-l2-7",
+    "level": 2,
+    "levelName": "Level 2: Dikte Kata dan Frasa",
+    "targetText": "Operating system",
+    "audioText": "Operating system",
+    "chapterRef": "Oxford IT: System Software",
+    "meaning": "Sistem operasi dasar komputer (Windows, Linux, macOS)",
+    "babyClue": "🍼 Dua kata perangkat lunak pengendali seluruh perangkat keras.",
+    "workedExample": {
+      "sampleAudio": "Dengarkan frasa: 'System software'",
+      "sampleTarget": "System software",
+      "sampleExplanation": "Ketik kata 'Operating' lalu spasi dan kata 'system'."
+    }
+  },
+  {
+    "id": "dic-l2-8",
+    "level": 2,
+    "levelName": "Level 2: Dikte Kata dan Frasa",
+    "targetText": "Wireless connection",
+    "audioText": "Wireless connection",
+    "chapterRef": "Oxford IT: Networking",
+    "meaning": "Koneksi jaringan nirkabel tanpa kabel fisik (Wi-Fi)",
+    "babyClue": "🍼 Dua kata teknologi gelombang radio untuk akses internet.",
+    "workedExample": {
+      "sampleAudio": "Dengarkan frasa: 'Fast connection'",
+      "sampleTarget": "Fast connection",
+      "sampleExplanation": "Ketik 'Wireless' (tanpa kabel) diikuti spasi dan 'connection'."
+    }
+  },
+  {
+    "id": "dic-l2-9",
+    "level": 2,
+    "levelName": "Level 2: Dikte Kata dan Frasa",
+    "targetText": "Software developer",
+    "audioText": "Software developer",
+    "chapterRef": "Oxford IT: Programming Careers",
+    "meaning": "Pengembang perangkat lunak / pembuat aplikasi program",
+    "babyClue": "🍼 Dua kata profesi pembuat program komputer dan logika aplikasi.",
+    "workedExample": {
+      "sampleAudio": "Dengarkan frasa: 'Web designer'",
+      "sampleTarget": "Web designer",
+      "sampleExplanation": "Ketik 'Software' diikuti spasi dan kata 'developer'."
+    }
+  },
+  {
+    "id": "dic-l2-10",
+    "level": 2,
+    "levelName": "Level 2: Dikte Kata dan Frasa",
+    "targetText": "Graphic designer",
+    "audioText": "Graphic designer",
+    "chapterRef": "EVC Chapter 4: Creative Professions",
+    "meaning": "Perancang grafis visual dan antarmuka gambar",
+    "babyClue": "🍼 Dua kata profesi pembuat layout visual dan materi grafis promosi.",
+    "workedExample": {
+      "sampleAudio": "Dengarkan frasa: 'Web designer'",
+      "sampleTarget": "Web designer",
+      "sampleExplanation": "Ketik 'Graphic' lalu spasi dan kata 'designer' (d-e-s-i-g-n-e-r)."
+    }
+  },
+  {
+    "id": "dic-l2-11",
+    "level": 2,
+    "levelName": "Level 2: Dikte Kata dan Frasa",
+    "targetText": "Business meeting",
+    "audioText": "Business meeting",
+    "chapterRef": "EVC Chapter 5: Corporate Communications",
+    "meaning": "Rapat koordinasi urusan bisnis dan proyek",
+    "babyClue": "🍼 Dua kata pertemuan formal membahas target dan strategi kerja.",
+    "workedExample": {
+      "sampleAudio": "Dengarkan frasa: 'Project review'",
+      "sampleTarget": "Project review",
+      "sampleExplanation": "Ketik 'Business' (b-u-s-i-n-e-s-s) diikuti spasi dan kata 'meeting'."
+    }
+  },
+  {
+    "id": "dic-l2-12",
+    "level": 2,
+    "levelName": "Level 2: Dikte Kata dan Frasa",
+    "targetText": "Conference room",
+    "audioText": "Conference room",
+    "chapterRef": "EVC Chapter 5: Workplace Facilities",
+    "meaning": "Ruang pertemuan besar untuk rapat dan diskusi tim",
+    "babyClue": "🍼 Dua kata ruangan kantor berpintu kaca tempat rapat penting.",
+    "workedExample": {
+      "sampleAudio": "Dengarkan frasa: 'Office desk'",
+      "sampleTarget": "Office desk",
+      "sampleExplanation": "Ketik kata 'Conference' lalu spasi dan kata 'room'."
+    }
+  },
+  {
+    "id": "dic-l2-13",
+    "level": 2,
+    "levelName": "Level 2: Dikte Kata dan Frasa",
+    "targetText": "Ethernet cable",
+    "audioText": "Ethernet cable",
+    "chapterRef": "Vocational IT: Physical Layer",
+    "meaning": "Kabel jaringan LAN berpenghubung RJ-45",
+    "babyClue": "🍼 Dua kata kabel twisted pair penghubung komputer ke port switch.",
+    "workedExample": {
+      "sampleAudio": "Dengarkan frasa: 'Power cable'",
+      "sampleTarget": "Power cable",
+      "sampleExplanation": "Dengarkan kata 'Ethernet' berawalan E-t-h-e-r-n-e-t lalu 'cable'."
+    }
+  },
+  {
+    "id": "dic-l2-14",
+    "level": 2,
+    "levelName": "Level 2: Dikte Kata dan Frasa",
+    "targetText": "Default gateway",
+    "audioText": "Default gateway",
+    "chapterRef": "CompTIA Network+: IP Routing",
+    "meaning": "Alamat pintu keluar paket data menuju jaringan luar",
+    "babyClue": "🍼 Dua kata alamat router perantara keluar dari subnet lokal.",
+    "workedExample": {
+      "sampleAudio": "Dengarkan frasa: 'Local subnet'",
+      "sampleTarget": "Local subnet",
+      "sampleExplanation": "Ketik kata 'Default' lalu spasi dan 'gateway'."
+    }
+  },
+  {
+    "id": "dic-l2-15",
+    "level": 2,
+    "levelName": "Level 2: Dikte Kata dan Frasa",
+    "targetText": "Subnet mask",
+    "audioText": "Subnet mask",
+    "chapterRef": "CompTIA Network+: IPv4 Addressing",
+    "meaning": "Topeng pembatas porsi network ID dan host ID dalam IP",
+    "babyClue": "🍼 Dua kata angka 255.255.255.0 pembagi segmen jaringan.",
+    "workedExample": {
+      "sampleAudio": "Dengarkan frasa: 'Network mask'",
+      "sampleTarget": "Network mask",
+      "sampleExplanation": "Ketik 'Subnet' diikuti spasi dan 'mask'."
+    }
+  },
+  {
+    "id": "dic-l2-16",
+    "level": 2,
+    "levelName": "Level 2: Dikte Kata dan Frasa",
+    "targetText": "Domain name server",
+    "audioText": "Domain name server",
+    "chapterRef": "CompTIA Network+: DNS Services",
+    "meaning": "Peladen penerjemah nama situs web ke alamat IP numerik",
+    "babyClue": "🍼 Tiga kata buku telepon internet penerjemah google.com ke IP address.",
+    "workedExample": {
+      "sampleAudio": "Dengarkan frasa: 'Web host server'",
+      "sampleTarget": "Web host server",
+      "sampleExplanation": "Tiga kata berturut-turut: 'Domain', spasi, 'name', spasi, 'server'."
+    }
+  },
+  {
+    "id": "dic-l2-17",
+    "level": 2,
+    "levelName": "Level 2: Dikte Kata dan Frasa",
+    "targetText": "Command line interface",
+    "audioText": "Command line interface",
+    "chapterRef": "Oxford IT: Operating Environments",
+    "meaning": "Antarmuka baris perintah teks terminal",
+    "babyClue": "🍼 Tiga kata antarmuka ketik perintah hitam putih seperti cmd atau bash.",
+    "workedExample": {
+      "sampleAudio": "Dengarkan frasa: 'User web interface'",
+      "sampleTarget": "User web interface",
+      "sampleExplanation": "Tiga kata: 'Command', spasi, 'line', spasi, 'interface'."
+    }
+  },
+  {
+    "id": "dic-l2-18",
+    "level": 2,
+    "levelName": "Level 2: Dikte Kata dan Frasa",
+    "targetText": "Cloud storage backup",
+    "audioText": "Cloud storage backup",
+    "chapterRef": "Vocational IT: Cloud Computing",
+    "meaning": "Pencadangan file ke ruang penyimpanan awan di internet",
+    "babyClue": "🍼 Tiga kata pengamanan file ke server Google Drive atau AWS.",
+    "workedExample": {
+      "sampleAudio": "Dengarkan frasa: 'Local file backup'",
+      "sampleTarget": "Local file backup",
+      "sampleExplanation": "Tiga kata: 'Cloud', spasi, 'storage', spasi, 'backup'."
+    }
+  },
+  {
+    "id": "dic-l2-19",
+    "level": 2,
+    "levelName": "Level 2: Dikte Kata dan Frasa",
+    "targetText": "Solid state drive",
+    "audioText": "Solid state drive",
+    "chapterRef": "CompTIA A+: Storage Technologies",
+    "meaning": "Media penyimpanan flash berkecepatan tinggi pengganti HDD",
+    "babyClue": "🍼 Tiga kata media penyimpanan SSD tanpa piringan berputar magnetik.",
+    "workedExample": {
+      "sampleAudio": "Dengarkan frasa: 'Hard disk drive'",
+      "sampleTarget": "Hard disk drive",
+      "sampleExplanation": "Tiga kata: 'Solid', spasi, 'state', spasi, 'drive'."
+    }
+  },
+  {
+    "id": "dic-l2-20",
+    "level": 2,
+    "levelName": "Level 2: Dikte Kata dan Frasa",
+    "targetText": "Virtual private network",
+    "audioText": "Virtual private network",
+    "chapterRef": "CompTIA Network+: VPN Security",
+    "meaning": "Jaringan terenkripsi aman melintasi internet publik (VPN)",
+    "babyClue": "🍼 Tiga kata terowongan koneksi aman untuk pegawai kerja dari rumah.",
+    "workedExample": {
+      "sampleAudio": "Dengarkan frasa: 'Local private network'",
+      "sampleTarget": "Local private network",
+      "sampleExplanation": "Tiga kata: 'Virtual', spasi, 'private', spasi, 'network'."
+    }
+  },
+  {
+    "id": "dic-l2-21",
+    "level": 2,
+    "levelName": "Level 2: Dikte Kata dan Frasa",
+    "targetText": "Fiber optic cable",
+    "audioText": "Fiber optic cable",
+    "chapterRef": "CompTIA Network+: Media Types",
+    "meaning": "Kabel serat kaca pemancar data berkecepatan cahaya",
+    "babyClue": "🍼 Tiga kata kabel super cepat pembawa sinyal pulsa cahaya.",
+    "workedExample": {
+      "sampleAudio": "Dengarkan frasa: 'Twisted pair cable'",
+      "sampleTarget": "Twisted pair cable",
+      "sampleExplanation": "Tiga kata: 'Fiber', spasi, 'optic', spasi, 'cable'."
+    }
+  },
+  {
+    "id": "dic-l2-22",
+    "level": 2,
+    "levelName": "Level 2: Dikte Kata dan Frasa",
+    "targetText": "Central processing unit",
+    "audioText": "Central processing unit",
+    "chapterRef": "CompTIA A+: CPU Architecture",
+    "meaning": "Unit pemrosesan data pusat atau otak komputer (CPU)",
+    "babyClue": "🍼 Tiga kata komponen chip silikon otak utama komputasi.",
+    "workedExample": {
+      "sampleAudio": "Dengarkan frasa: 'Graphic processing unit'",
+      "sampleTarget": "Graphic processing unit",
+      "sampleExplanation": "Tiga kata: 'Central', spasi, 'processing', spasi, 'unit'."
+    }
+  },
+  {
+    "id": "dic-l2-23",
+    "level": 2,
+    "levelName": "Level 2: Dikte Kata dan Frasa",
+    "targetText": "Random access memory",
+    "audioText": "Random access memory",
+    "chapterRef": "CompTIA A+: Memory Subsystems",
+    "meaning": "Memori penyimpanan data sementara berkecepatan tinggi (RAM)",
+    "babyClue": "🍼 Tiga kata modul memori kerja yang hilang saat komputer dimatikan.",
+    "workedExample": {
+      "sampleAudio": "Dengarkan frasa: 'Read only memory'",
+      "sampleTarget": "Read only memory",
+      "sampleExplanation": "Tiga kata: 'Random', spasi, 'access', spasi, 'memory'."
+    }
+  },
+  {
+    "id": "dic-l2-24",
+    "level": 2,
+    "levelName": "Level 2: Dikte Kata dan Frasa",
+    "targetText": "Power supply unit",
+    "audioText": "Power supply unit",
+    "chapterRef": "CompTIA A+: Power & Enclosures",
+    "meaning": "Perangkat catu daya penyuplai tegangan listrik DC (PSU)",
+    "babyClue": "🍼 Tiga kata kotak pengubah arus AC stopkontak menjadi DC tegangan rendah.",
+    "workedExample": {
+      "sampleAudio": "Dengarkan frasa: 'Battery backup unit'",
+      "sampleTarget": "Battery backup unit",
+      "sampleExplanation": "Tiga kata: 'Power', spasi, 'supply', spasi, 'unit'."
+    }
+  },
+  {
+    "id": "dic-l2-25",
+    "level": 2,
+    "levelName": "Level 2: Dikte Kata dan Frasa",
+    "targetText": "Relational database",
+    "audioText": "Relational database",
+    "chapterRef": "Learning SQL: RDBMS Concepts",
+    "meaning": "Basis data terstruktur dalam tabel-tabel berelasi kunci utama",
+    "babyClue": "🍼 Dua kata jenis database seperti MySQL dan PostgreSQL.",
+    "workedExample": {
+      "sampleAudio": "Dengarkan frasa: 'Simple database'",
+      "sampleTarget": "Simple database",
+      "sampleExplanation": "Ketik 'Relational' diikuti spasi dan kata 'database'."
+    }
+  },
+  {
+    "id": "dic-l2-26",
+    "level": 2,
+    "levelName": "Level 2: Dikte Kata dan Frasa",
+    "targetText": "Primary key constraint",
+    "audioText": "Primary key constraint",
+    "chapterRef": "Learning SQL: Schema Definition",
+    "meaning": "Batasan keunikan pengenal baris data dalam tabel",
+    "babyClue": "🍼 Tiga kata aturan integritas data agar nomor ID tidak pernah kembar.",
+    "workedExample": {
+      "sampleAudio": "Dengarkan frasa: 'Unique index rule'",
+      "sampleTarget": "Unique index rule",
+      "sampleExplanation": "Tiga kata: 'Primary', spasi, 'key', spasi, 'constraint'."
+    }
+  },
+  {
+    "id": "dic-l2-27",
+    "level": 2,
+    "levelName": "Level 2: Dikte Kata dan Frasa",
+    "targetText": "Firewall configuration",
+    "audioText": "Firewall configuration",
+    "chapterRef": "CompTIA Security+: Network Security",
+    "meaning": "Pengaturan aturan lalu lintas penyaring port jaringan",
+    "babyClue": "🍼 Dua kata setelan pagar penyekat koneksi berbahaya dari internet.",
+    "workedExample": {
+      "sampleAudio": "Dengarkan frasa: 'Router configuration'",
+      "sampleTarget": "Router configuration",
+      "sampleExplanation": "Ketik 'Firewall' lalu spasi dan kata 'configuration'."
+    }
+  },
+  {
+    "id": "dic-l2-28",
+    "level": 2,
+    "levelName": "Level 2: Dikte Kata dan Frasa",
+    "targetText": "Malware detection",
+    "audioText": "Malware detection",
+    "chapterRef": "CompTIA Security+: Threat Mitigation",
+    "meaning": "Pendeteksian perangkat lunak jahat dan virus sistem",
+    "babyClue": "🍼 Dua kata pemindaian aktivitas mencurigakan oleh software antivirus.",
+    "workedExample": {
+      "sampleAudio": "Dengarkan frasa: 'Threat prevention'",
+      "sampleTarget": "Threat prevention",
+      "sampleExplanation": "Ketik 'Malware' lalu spasi dan kata 'detection'."
+    }
+  },
+  {
+    "id": "dic-l2-29",
+    "level": 2,
+    "levelName": "Level 2: Dikte Kata dan Frasa",
+    "targetText": "Two factor authentication",
+    "audioText": "Two factor authentication",
+    "chapterRef": "CompTIA Security+: Identity & Access",
+    "meaning": "Verifikasi ganda kata sandi ditambah kode OTP ponsel",
+    "babyClue": "🍼 Tiga kata metode login aman dengan password dan kode rahasia sms/app.",
+    "workedExample": {
+      "sampleAudio": "Dengarkan frasa: 'User access verification'",
+      "sampleTarget": "User access verification",
+      "sampleExplanation": "Tiga kata: 'Two', spasi, 'factor', spasi, 'authentication'."
+    }
+  },
+  {
+    "id": "dic-l2-30",
+    "level": 2,
+    "levelName": "Level 2: Dikte Kata dan Frasa",
+    "targetText": "Software development",
+    "audioText": "Software development",
+    "chapterRef": "Vocational IT: Project Cycles",
+    "meaning": "Siklus perancangan dan pembuatan aplikasi komputer",
+    "babyClue": "🍼 Dua kata proses rekayasa aplikasi dari analisa sampai rilis.",
+    "workedExample": {
+      "sampleAudio": "Dengarkan frasa: 'Product development'",
+      "sampleTarget": "Product development",
+      "sampleExplanation": "Ketik 'Software' lalu spasi dan 'development'."
+    }
+  },
+  {
+    "id": "dic-l2-31",
+    "level": 2,
+    "levelName": "Level 2: Dikte Kata dan Frasa",
+    "targetText": "Continuous integration",
+    "audioText": "Continuous integration",
+    "chapterRef": "Vocational IT: DevOps & CI/CD",
+    "meaning": "Penggabungan kode program secara berkala dan otomatis",
+    "babyClue": "🍼 Dua kata praktik pengujian dan build kode tim secara serentak.",
+    "workedExample": {
+      "sampleAudio": "Dengarkan frasa: 'Automated deployment'",
+      "sampleTarget": "Automated deployment",
+      "sampleExplanation": "Ketik 'Continuous' lalu spasi dan 'integration'."
+    }
+  },
+  {
+    "id": "dic-l2-32",
+    "level": 2,
+    "levelName": "Level 2: Dikte Kata dan Frasa",
+    "targetText": "Binary search tree",
+    "audioText": "Binary search tree",
+    "chapterRef": "Grokking Algorithms: Data Structures",
+    "meaning": "Struktur pohon biner terurut untuk pencarian data cepat",
+    "babyClue": "🍼 Tiga kata diagram percabangan data kiri lebih kecil dan kanan lebih besar.",
+    "workedExample": {
+      "sampleAudio": "Dengarkan frasa: 'Simple linked list'",
+      "sampleTarget": "Simple linked list",
+      "sampleExplanation": "Tiga kata: 'Binary', spasi, 'search', spasi, 'tree'."
+    }
+  },
+  {
+    "id": "dic-l2-33",
+    "level": 2,
+    "levelName": "Level 2: Dikte Kata dan Frasa",
+    "targetText": "Regular expression",
+    "audioText": "Regular expression",
+    "chapterRef": "Automate Python: Pattern Matching",
+    "meaning": "Pola regex pencari format teks tertentu seperti email",
+    "babyClue": "🍼 Dua kata rumus formula pencocokan karakter string dalam pemrograman.",
+    "workedExample": {
+      "sampleAudio": "Dengarkan frasa: 'String pattern matching'",
+      "sampleTarget": "String pattern matching",
+      "sampleExplanation": "Ketik 'Regular' lalu spasi dan 'expression'."
+    }
+  },
+  {
+    "id": "dic-l2-34",
+    "level": 2,
+    "levelName": "Level 2: Dikte Kata dan Frasa",
+    "targetText": "Exception handling",
+    "audioText": "Exception handling",
+    "chapterRef": "Automate Python: Error Diagnostics",
+    "meaning": "Penanganan eror program menggunakan blok try dan except",
+    "babyClue": "🍼 Dua kata pencegah crash aplikasi saat terjadi kesalahan runtime.",
+    "workedExample": {
+      "sampleAudio": "Dengarkan frasa: 'Error detection'",
+      "sampleTarget": "Error detection",
+      "sampleExplanation": "Ketik 'Exception' lalu spasi dan 'handling'."
+    }
+  },
+  {
+    "id": "dic-l2-35",
+    "level": 2,
+    "levelName": "Level 2: Dikte Kata dan Frasa",
+    "targetText": "Version control system",
+    "audioText": "Version control system",
+    "chapterRef": "Vocational IT: Git Repository",
+    "meaning": "Sistem pelacak riwayat perubahan kode sumber (Git)",
+    "babyClue": "🍼 Tiga kata software pencatat snapshot riwayat kodingan tim.",
+    "workedExample": {
+      "sampleAudio": "Dengarkan frasa: 'Source code manager'",
+      "sampleTarget": "Source code manager",
+      "sampleExplanation": "Tiga kata: 'Version', spasi, 'control', spasi, 'system'."
+    }
+  },
+  {
+    "id": "dic-l3-1",
+    "level": 3,
+    "levelName": "Level 3: Dikte Kalimat",
+    "targetText": "What is your telephone extension number?",
+    "audioText": "What is your telephone extension number?",
+    "chapterRef": "EVC Chapter 3: Office Directory",
+    "meaning": "Berapa nomor sambungan ekstensi telepon Anda?",
+    "babyClue": "🍼 Pertanyaan menanyakan nomor ekstensi meja kantor.",
+    "workedExample": {
+      "sampleAudio": "Dengarkan kalimat: 'What is your email address?'",
+      "sampleTarget": "What is your email address?",
+      "sampleExplanation": "Tingkat 3 menguji ketelitian kalimat utuh. Ketik 'What is your telephone extension number?' diakhiri tanda tanya."
+    }
+  },
+  {
+    "id": "dic-l3-2",
+    "level": 3,
+    "levelName": "Level 3: Dikte Kalimat",
+    "targetText": "Please sign your name on the visitor register.",
+    "audioText": "Please sign your name on the visitor register.",
+    "chapterRef": "EVC Chapter 3: Office Security Desk",
+    "meaning": "Silakan tanda tangani nama Anda di buku tamu.",
+    "babyClue": "🍼 Instruksi resepsionis menyuruh tamu menandatangani buku hadir.",
+    "workedExample": {
+      "sampleAudio": "Dengarkan kalimat: 'Please enter your password.'",
+      "sampleTarget": "Please enter your password.",
+      "sampleExplanation": "Ketik kalimat instruksi sopan berawalan 'Please sign your name...' diakhiri titik."
+    }
+  },
+  {
+    "id": "dic-l3-3",
+    "level": 3,
+    "levelName": "Level 3: Dikte Kalimat",
+    "targetText": "Where is the emergency exit located?",
+    "audioText": "Where is the emergency exit located?",
+    "chapterRef": "EVC Chapter 4: Building Safety Orientation",
+    "meaning": "Di manakah pintu keluar darurat berada?",
+    "babyClue": "🍼 Pertanyaan denah keselamatan kerja di gedung perkantoran.",
+    "workedExample": {
+      "sampleAudio": "Dengarkan kalimat: 'Where is the main office?'",
+      "sampleTarget": "Where is the main office?",
+      "sampleExplanation": "Ketik 'Where is the emergency exit located?' diakhiri tanda tanya."
+    }
+  },
+  {
+    "id": "dic-l3-4",
+    "level": 3,
+    "levelName": "Level 3: Dikte Kalimat",
+    "targetText": "The morning conference starts at nine oclock.",
+    "audioText": "The morning conference starts at nine oclock.",
+    "chapterRef": "EVC Chapter 5: Daily Schedule",
+    "meaning": "Konferensi pagi dimulai tepat pada pukul sembilan.",
+    "babyClue": "🍼 Pemberitahuan jam mulai rapat kerja pagi hari.",
+    "workedExample": {
+      "sampleAudio": "Dengarkan kalimat: 'The class starts at eight.'",
+      "sampleTarget": "The class starts at eight.",
+      "sampleExplanation": "Ketik kata demi kata dengan spasi rapi: 'The morning conference starts at nine oclock.'"
+    }
+  },
+  {
+    "id": "dic-l3-5",
+    "level": 3,
+    "levelName": "Level 3: Dikte Kalimat",
+    "targetText": "Could you send me the technical report by email?",
+    "audioText": "Could you send me the technical report by email?",
+    "chapterRef": "EVC Chapter 6: Professional Correspondence",
+    "meaning": "Bisakah Anda mengirimi saya laporan teknis tersebut melalui email?",
+    "babyClue": "🍼 Permintaan sopan pengiriman dokumen kerja melalui surel.",
+    "workedExample": {
+      "sampleAudio": "Dengarkan kalimat: 'Could you help me with this task?'",
+      "sampleTarget": "Could you help me with this task?",
+      "sampleExplanation": "Gunakan awalan modal 'Could you send me the technical report by email?'"
+    }
+  },
+  {
+    "id": "dic-l3-6",
+    "level": 3,
+    "levelName": "Level 3: Dikte Kalimat",
+    "targetText": "We need to install the latest operating system update.",
+    "audioText": "We need to install the latest operating system update.",
+    "chapterRef": "Oxford IT: System Maintenance",
+    "meaning": "Kita perlu memasang pembaruan sistem operasi terbaru.",
+    "babyClue": "🍼 Instruksi teknisi IT untuk memperbarui patch OS komputer.",
+    "workedExample": {
+      "sampleAudio": "Dengarkan kalimat: 'We need to reboot the server.'",
+      "sampleTarget": "We need to reboot the server.",
+      "sampleExplanation": "Ketik kalimat lengkap: 'We need to install the latest operating system update.'"
+    }
+  },
+  {
+    "id": "dic-l3-7",
+    "level": 3,
+    "levelName": "Level 3: Dikte Kalimat",
+    "targetText": "The network connection is temporarily unavailable.",
+    "audioText": "The network connection is temporarily unavailable.",
+    "chapterRef": "Vocational IT: Helpdesk Notifications",
+    "meaning": "Koneksi jaringan untuk sementara waktu tidak tersedia.",
+    "babyClue": "🍼 Pesan peringatan sistem saat internet atau LAN terputus.",
+    "workedExample": {
+      "sampleAudio": "Dengarkan kalimat: 'The server is not responding.'",
+      "sampleTarget": "The server is not responding.",
+      "sampleExplanation": "Dengarkan kata 'temporarily' dan 'unavailable': ketik kalimat lengkap diakhiri titik."
+    }
+  },
+  {
+    "id": "dic-l3-8",
+    "level": 3,
+    "levelName": "Level 3: Dikte Kalimat",
+    "targetText": "Please enter your username and secure password.",
+    "audioText": "Please enter your username and secure password.",
+    "chapterRef": "Vocational IT: User Authentication",
+    "meaning": "Silakan masukkan nama pengguna dan kata sandi aman Anda.",
+    "babyClue": "🍼 Petunjuk di halaman masuk sistem aplikasi kantor.",
+    "workedExample": {
+      "sampleAudio": "Dengarkan kalimat: 'Please log in to your account.'",
+      "sampleTarget": "Please log in to your account.",
+      "sampleExplanation": "Ketik 'Please enter your username and secure password.' dengan spasi presisi."
+    }
+  },
+  {
+    "id": "dic-l3-9",
+    "level": 3,
+    "levelName": "Level 3: Dikte Kalimat",
+    "targetText": "How much memory does this workstation have?",
+    "audioText": "How much memory does this workstation have?",
+    "chapterRef": "Oxford IT: Hardware Specifications",
+    "meaning": "Berapa kapasitas memori RAM yang dimiliki komputer kerja ini?",
+    "babyClue": "🍼 Pertanyaan spesifikasi teknis komputer kantor.",
+    "workedExample": {
+      "sampleAudio": "Dengarkan kalimat: 'How many hard drives are installed?'",
+      "sampleTarget": "How many hard drives are installed?",
+      "sampleExplanation": "Ketik kalimat tanya: 'How much memory does this workstation have?'"
+    }
+  },
+  {
+    "id": "dic-l3-10",
+    "level": 3,
+    "levelName": "Level 3: Dikte Kalimat",
+    "targetText": "Would you like to have some coffee?",
+    "audioText": "Would you like to have some coffee?",
+    "chapterRef": "EVC Chapter 1: Hospitality & Welcome",
+    "meaning": "Apakah Anda ingin meminum secangkir kopi?",
+    "babyClue": "🍼 Tawaran ramah menyambut rekan bisnis atau tamu kantor.",
+    "workedExample": {
+      "sampleAudio": "Dengarkan kalimat: 'Nice to meet you.'",
+      "sampleTarget": "Nice to meet you.",
+      "sampleExplanation": "Ketik ungkapan sopan: 'Would you like to have some coffee?' diakhiri tanda tanya."
+    }
+  },
+  {
+    "id": "dic-l3-11",
+    "level": 3,
+    "levelName": "Level 3: Dikte Kalimat",
+    "targetText": "Have you tried restarting the router and modem?",
+    "audioText": "Have you tried restarting the router and modem?",
+    "chapterRef": "CompTIA Network+: First Step Troubleshooting",
+    "meaning": "Apakah Anda sudah mencoba menyalakan ulang router dan modem?",
+    "babyClue": "🍼 Pertanyaan standar tim helpdesk saat koneksi internet kantor bermasalah.",
+    "workedExample": {
+      "sampleAudio": "Dengarkan kalimat: 'Have you checked the cable?'",
+      "sampleTarget": "Have you checked the cable?",
+      "sampleExplanation": "Ketik pertanyaan diagnostik: 'Have you tried restarting the router and modem?'"
+    }
+  },
+  {
+    "id": "dic-l3-12",
+    "level": 3,
+    "levelName": "Level 3: Dikte Kalimat",
+    "targetText": "The technician replaced the faulty power supply unit.",
+    "audioText": "The technician replaced the faulty power supply unit.",
+    "chapterRef": "CompTIA A+: Hardware Maintenance",
+    "meaning": "Teknisi telah mengganti unit catu daya yang rusak.",
+    "babyClue": "🍼 Laporan perbaikan komputer PC yang mati total karena korsleting listrik.",
+    "workedExample": {
+      "sampleAudio": "Dengarkan kalimat: 'The engineer fixed the broken drive.'",
+      "sampleTarget": "The engineer fixed the broken drive.",
+      "sampleExplanation": "Ketik kalimat lampau: 'The technician replaced the faulty power supply unit.'"
+    }
+  },
+  {
+    "id": "dic-l3-13",
+    "level": 3,
+    "levelName": "Level 3: Dikte Kalimat",
+    "targetText": "Make sure the Ethernet cable is securely connected.",
+    "audioText": "Make sure the Ethernet cable is securely connected.",
+    "chapterRef": "CompTIA Network+: Cable Verification",
+    "meaning": "Pastikan kabel Ethernet terpasang kencang pada soketnya.",
+    "babyClue": "🍼 Instruksi pengecekan fisik koneksi kabel LAN komputer klien.",
+    "workedExample": {
+      "sampleAudio": "Dengarkan kalimat: 'Make sure the power cord is plugged in.'",
+      "sampleTarget": "Make sure the power cord is plugged in.",
+      "sampleExplanation": "Ketik kalimat instruksi: 'Make sure the Ethernet cable is securely connected.'"
+    }
+  },
+  {
+    "id": "dic-l3-14",
+    "level": 3,
+    "levelName": "Level 3: Dikte Kalimat",
+    "targetText": "Always backup your critical files before formatting the disk.",
+    "audioText": "Always backup your critical files before formatting the disk.",
+    "chapterRef": "Oxford IT: Data Protection Best Practices",
+    "meaning": "Selalu cadangkan file penting Anda sebelum memformat disk.",
+    "babyClue": "🍼 Aturan emas pencegahan kehilangan data sebelum instal ulang komputer.",
+    "workedExample": {
+      "sampleAudio": "Dengarkan kalimat: 'Save your work before closing the program.'",
+      "sampleTarget": "Save your work before closing the program.",
+      "sampleExplanation": "Ketik peringatan kerja: 'Always backup your critical files before formatting the disk.'"
+    }
+  },
+  {
+    "id": "dic-l3-15",
+    "level": 3,
+    "levelName": "Level 3: Dikte Kalimat",
+    "targetText": "The ping command tests network connectivity between hosts.",
+    "audioText": "The ping command tests network connectivity between hosts.",
+    "chapterRef": "Cisco CCNA: Network Diagnostics",
+    "meaning": "Perintah ping menguji keterhubungan jaringan antar komputer.",
+    "babyClue": "🍼 Penjelasan fungsi utilitas ICMP ping dalam mendeteksi latency paket.",
+    "workedExample": {
+      "sampleAudio": "Dengarkan kalimat: 'The traceroute tool shows every hop.'",
+      "sampleTarget": "The traceroute tool shows every hop.",
+      "sampleExplanation": "Ketik kalimat teknis: 'The ping command tests network connectivity between hosts.'"
+    }
+  },
+  {
+    "id": "dic-l3-16",
+    "level": 3,
+    "levelName": "Level 3: Dikte Kalimat",
+    "targetText": "Do not click on suspicious links in unsolicited emails.",
+    "audioText": "Do not click on suspicious links in unsolicited emails.",
+    "chapterRef": "CompTIA Security+: Phishing Prevention",
+    "meaning": "Jangan mengklik tautan mencurigakan dalam email tak dikenal.",
+    "babyClue": "🍼 Edukasi keamanan siber pencegah infeksi malware dan phishing.",
+    "workedExample": {
+      "sampleAudio": "Dengarkan kalimat: 'Do not share your password with anyone.'",
+      "sampleTarget": "Do not share your password with anyone.",
+      "sampleExplanation": "Ketik instruksi keamanan: 'Do not click on suspicious links in unsolicited emails.'"
+    }
+  },
+  {
+    "id": "dic-l3-17",
+    "level": 3,
+    "levelName": "Level 3: Dikte Kalimat",
+    "targetText": "The database server crashed due to high memory usage.",
+    "audioText": "The database server crashed due to high memory usage.",
+    "chapterRef": "Vocational IT: Incident Reporting",
+    "meaning": "Server database berhenti beroperasi karena lonjakan pemakaian RAM.",
+    "babyClue": "🍼 Laporan insiden sistem ketika server database kehabisan kapasitas memori.",
+    "workedExample": {
+      "sampleAudio": "Dengarkan kalimat: 'The web app stopped responding.'",
+      "sampleTarget": "The web app stopped responding.",
+      "sampleExplanation": "Ketik kalimat laporan: 'The database server crashed due to high memory usage.'"
+    }
+  },
+  {
+    "id": "dic-l3-18",
+    "level": 3,
+    "levelName": "Level 3: Dikte Kalimat",
+    "targetText": "You should change your password every ninety days.",
+    "audioText": "You should change your password every ninety days.",
+    "chapterRef": "CompTIA Security+: Access Control Policy",
+    "meaning": "Anda sebaiknya mengganti kata sandi akun Anda setiap sembilan puluh hari.",
+    "babyClue": "🍼 Kebijakan standar keamanan perusahaan untuk rotasi password.",
+    "workedExample": {
+      "sampleAudio": "Dengarkan kalimat: 'You should lock your screen when leaving.'",
+      "sampleTarget": "You should lock your screen when leaving.",
+      "sampleExplanation": "Ketik anjuran kebijakan: 'You should change your password every ninety days.'"
+    }
+  },
+  {
+    "id": "dic-l3-19",
+    "level": 3,
+    "levelName": "Level 3: Dikte Kalimat",
+    "targetText": "A firewall filters incoming and outgoing network traffic.",
+    "audioText": "A firewall filters incoming and outgoing network traffic.",
+    "chapterRef": "CompTIA Security+: Perimeter Defense",
+    "meaning": "Firewall menyaring lalu lintas data jaringan yang masuk dan keluar.",
+    "babyClue": "🍼 Prinsip kerja dinding pelindung jaringan komputer dari serangan siber.",
+    "workedExample": {
+      "sampleAudio": "Dengarkan kalimat: 'A router connects different local networks.'",
+      "sampleTarget": "A router connects different local networks.",
+      "sampleExplanation": "Ketik definisi kerja: 'A firewall filters incoming and outgoing network traffic.'"
+    }
+  },
+  {
+    "id": "dic-l3-20",
+    "level": 3,
+    "levelName": "Level 3: Dikte Kalimat",
+    "targetText": "Please verify your email address to activate the account.",
+    "audioText": "Please verify your email address to activate the account.",
+    "chapterRef": "Vocational IT: Account Activation",
+    "meaning": "Silakan verifikasi alamat email Anda untuk mengaktifkan akun.",
+    "babyClue": "🍼 Langkah wajib registrasi pengguna baru di platform cloud.",
+    "workedExample": {
+      "sampleAudio": "Dengarkan kalimat: 'Please check your inbox for instructions.'",
+      "sampleTarget": "Please check your inbox for instructions.",
+      "sampleExplanation": "Ketik instruksi aktivasi: 'Please verify your email address to activate the account.'"
+    }
+  },
+  {
+    "id": "dic-l3-21",
+    "level": 3,
+    "levelName": "Level 3: Dikte Kalimat",
+    "targetText": "The SQL query returns all active customer records.",
+    "audioText": "The SQL query returns all active customer records.",
+    "chapterRef": "Learning SQL: Data Query Language",
+    "meaning": "Kueri SQL menampilkan seluruh rekaman pelanggan yang masih aktif.",
+    "babyClue": "🍼 Deskripsi eksekusi kueri SELECT dari tabel database perusahaan.",
+    "workedExample": {
+      "sampleAudio": "Dengarkan kalimat: 'The script exports data to Excel.'",
+      "sampleTarget": "The script exports data to Excel.",
+      "sampleExplanation": "Ketik penjelasan kueri: 'The SQL query returns all active customer records.'"
+    }
+  },
+  {
+    "id": "dic-l3-22",
+    "level": 3,
+    "levelName": "Level 3: Dikte Kalimat",
+    "targetText": "An index improves the search speed of database queries.",
+    "audioText": "An index improves the search speed of database queries.",
+    "chapterRef": "SQL Antipatterns: Performance Tuning",
+    "meaning": "Indeks meningkatkan kecepatan pencarian pada kueri database.",
+    "babyClue": "🍼 Alasan teknis penambahan indeks B-tree pada kolom ID tabel besar.",
+    "workedExample": {
+      "sampleAudio": "Dengarkan kalimat: 'A cache reduces response latency.'",
+      "sampleTarget": "A cache reduces response latency.",
+      "sampleExplanation": "Ketik manfaat teknis: 'An index improves the search speed of database queries.'"
+    }
+  },
+  {
+    "id": "dic-l3-23",
+    "level": 3,
+    "levelName": "Level 3: Dikte Kalimat",
+    "targetText": "Python scripts can automate repetitive data entry tasks.",
+    "audioText": "Python scripts can automate repetitive data entry tasks.",
+    "chapterRef": "Automate Python: Workplace Efficiency",
+    "meaning": "Skrip Python dapat mengotomatiskan pekerjaan entri data berulang.",
+    "babyClue": "🍼 Solusi cerdas menghindari pekerjaan manual spreadsheet yang melelahkan.",
+    "workedExample": {
+      "sampleAudio": "Dengarkan kalimat: 'Macros speed up monthly reports.'",
+      "sampleTarget": "Macros speed up monthly reports.",
+      "sampleExplanation": "Ketik fakta produktivitas: 'Python scripts can automate repetitive data entry tasks.'"
+    }
+  },
+  {
+    "id": "dic-l3-24",
+    "level": 3,
+    "levelName": "Level 3: Dikte Kalimat",
+    "targetText": "We commit the source code to GitHub every afternoon.",
+    "audioText": "We commit the source code to GitHub every afternoon.",
+    "chapterRef": "Vocational IT: Agile Team Workflow",
+    "meaning": "Kami menyimpan kode sumber ke GitHub setiap sore hari.",
+    "babyClue": "🍼 Kebiasaan disiplin tim pengembang software agar kodingan selalu sinkron.",
+    "workedExample": {
+      "sampleAudio": "Dengarkan kalimat: 'We push changes to the main branch.'",
+      "sampleTarget": "We push changes to the main branch.",
+      "sampleExplanation": "Ketik rutinitas tim: 'We commit the source code to GitHub every afternoon.'"
+    }
+  },
+  {
+    "id": "dic-l3-25",
+    "level": 3,
+    "levelName": "Level 3: Dikte Kalimat",
+    "targetText": "Binary search is much faster than simple linear search.",
+    "audioText": "Binary search is much faster than simple linear search.",
+    "chapterRef": "Grokking Algorithms: Big-O Notation",
+    "meaning": "Pencarian biner jauh lebih cepat daripada pencarian linier sederhana.",
+    "babyClue": "🍼 Perbandingan efisiensi algoritma O(log n) melawan O(n) pada data terurut.",
+    "workedExample": {
+      "sampleAudio": "Dengarkan kalimat: 'Fast algorithms save server resources.'",
+      "sampleTarget": "Fast algorithms save server resources.",
+      "sampleExplanation": "Ketik prinsip algoritma: 'Binary search is much faster than simple linear search.'"
+    }
+  },
+  {
+    "id": "dic-l3-26",
+    "level": 3,
+    "levelName": "Level 3: Dikte Kalimat",
+    "targetText": "The server requires a secure shell connection for login.",
+    "audioText": "The server requires a secure shell connection for login.",
+    "chapterRef": "CompTIA Security+: Remote Administration",
+    "meaning": "Server mewajibkan koneksi secure shell (SSH) untuk proses masuk.",
+    "babyClue": "🍼 Standar keamanan administrasi remote server Linux menggunakan port 22.",
+    "workedExample": {
+      "sampleAudio": "Dengarkan kalimat: 'Use encrypted channels for management.'",
+      "sampleTarget": "Use encrypted channels for management.",
+      "sampleExplanation": "Ketik aturan administrasi: 'The server requires a secure shell connection for login.'"
+    }
+  },
+  {
+    "id": "dic-l3-27",
+    "level": 3,
+    "levelName": "Level 3: Dikte Kalimat",
+    "targetText": "Cloud computing allows scalable access to shared resources.",
+    "audioText": "Cloud computing allows scalable access to shared resources.",
+    "chapterRef": "Vocational IT: Cloud Infrastructure",
+    "meaning": "Komputasi awan memungkinkan akses elastis ke sumber daya bersama.",
+    "babyClue": "🍼 Definisi komputasi cloud menurut standar industri teknologi.",
+    "workedExample": {
+      "sampleAudio": "Dengarkan kalimat: 'Virtual machines run in the cloud.'",
+      "sampleTarget": "Virtual machines run in the cloud.",
+      "sampleExplanation": "Ketik definisi cloud: 'Cloud computing allows scalable access to shared resources.'"
+    }
+  },
+  {
+    "id": "dic-l3-28",
+    "level": 3,
+    "levelName": "Level 3: Dikte Kalimat",
+    "targetText": "The developer fixed the software bug before release.",
+    "audioText": "The developer fixed the software bug before release.",
+    "chapterRef": "Vocational IT: Software Quality Assurance",
+    "meaning": "Pengembang memperbaiki celah eror perangkat lunak sebelum peluncuran.",
+    "babyClue": "🍼 Tindakan preventif pengujian kode sebelum aplikasi dipakai pengguna.",
+    "workedExample": {
+      "sampleAudio": "Dengarkan kalimat: 'The tester found an unexpected error.'",
+      "sampleTarget": "The tester found an unexpected error.",
+      "sampleExplanation": "Ketik kalimat QA: 'The developer fixed the software bug before release.'"
+    }
+  },
+  {
+    "id": "dic-l3-29",
+    "level": 3,
+    "levelName": "Level 3: Dikte Kalimat",
+    "targetText": "Ensure the antivirus definitions are updated daily.",
+    "audioText": "Ensure the antivirus definitions are updated daily.",
+    "chapterRef": "CompTIA Security+: Endpoint Protection",
+    "meaning": "Pastikan basis data definisi antivirus diperbarui setiap hari.",
+    "babyClue": "🍼 Tindakan rutin pencegah infeksi varian ransomware dan spyware terbaru.",
+    "workedExample": {
+      "sampleAudio": "Dengarkan kalimat: 'Scan your computer for malware.'",
+      "sampleTarget": "Scan your computer for malware.",
+      "sampleExplanation": "Ketik instruksi kepatuhan: 'Ensure the antivirus definitions are updated daily.'"
+    }
+  },
+  {
+    "id": "dic-l3-30",
+    "level": 3,
+    "levelName": "Level 3: Dikte Kalimat",
+    "targetText": "Virtual machines share the physical hardware of the host.",
+    "audioText": "Virtual machines share the physical hardware of the host.",
+    "chapterRef": "Vocational IT: Hypervisor Architecture",
+    "meaning": "Mesin virtual berbagi perangkat keras fisik dari komputer induk.",
+    "babyClue": "🍼 Konsep dasar virtualisasi server modern berbasis hypervisor.",
+    "workedExample": {
+      "sampleAudio": "Dengarkan kalimat: 'Each container runs in isolation.'",
+      "sampleTarget": "Each container runs in isolation.",
+      "sampleExplanation": "Ketik konsep virtualisasi: 'Virtual machines share the physical hardware of the host.'"
+    }
+  },
+  {
+    "id": "dic-l3-31",
+    "level": 3,
+    "levelName": "Level 3: Dikte Kalimat",
+    "targetText": "The system administrator created a new user account.",
+    "audioText": "The system administrator created a new user account.",
+    "chapterRef": "Oxford IT: User Administration",
+    "meaning": "Administrator sistem membuatkan akun pengguna baru.",
+    "babyClue": "🍼 Proses penyiapan akses login untuk karyawan yang baru bergabung di kantor.",
+    "workedExample": {
+      "sampleAudio": "Dengarkan kalimat: 'The manager granted read permissions.'",
+      "sampleTarget": "The manager granted read permissions.",
+      "sampleExplanation": "Ketik kalimat administrasi: 'The system administrator created a new user account.'"
+    }
+  },
+  {
+    "id": "dic-l3-32",
+    "level": 3,
+    "levelName": "Level 3: Dikte Kalimat",
+    "targetText": "Wireless signals can degrade over long distances.",
+    "audioText": "Wireless signals can degrade over long distances.",
+    "chapterRef": "CompTIA Network+: Wireless Troubleshooting",
+    "meaning": "Sinyal nirkabel dapat melemah seiring bertambahnya jarak tempuh.",
+    "babyClue": "🍼 Faktor redaman sinyal Wi-Fi akibat dinding beton dan jarak pemancar.",
+    "workedExample": {
+      "sampleAudio": "Dengarkan kalimat: 'Antennas improve signal strength.'",
+      "sampleTarget": "Antennas improve signal strength.",
+      "sampleExplanation": "Ketik fakta jaringan: 'Wireless signals can degrade over long distances.'"
+    }
+  },
+  {
+    "id": "dic-l3-33",
+    "level": 3,
+    "levelName": "Level 3: Dikte Kalimat",
+    "targetText": "A solid state drive offers faster boot speeds.",
+    "audioText": "A solid state drive offers faster boot speeds.",
+    "chapterRef": "CompTIA A+: Storage Upgrades",
+    "meaning": "Solid state drive menawarkan kecepatan booting komputer yang jauh lebih singkat.",
+    "babyClue": "🍼 Keunggulan waktu nyala PC memakai SSD dibanding HDD mekanik.",
+    "workedExample": {
+      "sampleAudio": "Dengarkan kalimat: 'Fast drives improve performance.'",
+      "sampleTarget": "Fast drives improve performance.",
+      "sampleExplanation": "Ketik ulasan perangkat: 'A solid state drive offers faster boot speeds.'"
+    }
+  },
+  {
+    "id": "dic-l3-34",
+    "level": 3,
+    "levelName": "Level 3: Dikte Kalimat",
+    "targetText": "Always test the restored backup on a staging server.",
+    "audioText": "Always test the restored backup on a staging server.",
+    "chapterRef": "Vocational IT: Business Continuity",
+    "meaning": "Selalu uji pemulihan data cadangan pada server pengujian staging.",
+    "babyClue": "🍼 Verifikasi integritas arsip backup agar benar-benar dapat dipulihkan saat darurat.",
+    "workedExample": {
+      "sampleAudio": "Dengarkan kalimat: 'Test your emergency plan regularly.'",
+      "sampleTarget": "Test your emergency plan regularly.",
+      "sampleExplanation": "Ketik kaidah keandalan: 'Always test the restored backup on a staging server.'"
+    }
+  },
+  {
+    "id": "dic-l3-35",
+    "level": 3,
+    "levelName": "Level 3: Dikte Kalimat",
+    "targetText": "Our team delivers software updates on a weekly schedule.",
+    "audioText": "Our team delivers software updates on a weekly schedule.",
+    "chapterRef": "Vocational IT: Agile Delivery",
+    "meaning": "Tim kami meluncurkan pembaruan perangkat lunak setiap pekan.",
+    "babyClue": "🍼 Ritme kerja metodologi agile scrum dalam pengiriman fitur baru ke pengguna.",
+    "workedExample": {
+      "sampleAudio": "Dengarkan kalimat: 'We conduct standup meetings every morning.'",
+      "sampleTarget": "We conduct standup meetings every morning.",
+      "sampleExplanation": "Ketik pernyataan tim: 'Our team delivers software updates on a weekly schedule.'"
     }
   }
 ];

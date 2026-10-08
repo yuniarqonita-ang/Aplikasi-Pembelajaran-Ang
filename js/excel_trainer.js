@@ -2569,10 +2569,10 @@ const excelChallenges = [
     ],
     "expectedValue": 4,
     "workedExample": {
-      "title": "💡 CONTOH SERUPA: Menghitung Email dengan Domain Gmail",
-      "kasusSerupa": "Tabel Kontak: Daftar email di A2:A5. Rumus: =COUNTIF(A2:A5, '*@gmail.com').",
-      "rumusContoh": "=COUNTIF(A2:A5, \"*@gmail.com\")",
-      "nalarBayi": "Tanda bintang di depan artinya kata apa saja asalkan diakhiri dengan @gmail.com!"
+      "title": "💡 CONTOH SERUPA: Menghitung Email dengan Domain Kantor",
+      "kasusSerupa": "Tabel Kontak: Daftar email di A2:A5. Rumus: =COUNTIF(A2:A5, '*@kantor.com').",
+      "rumusContoh": "=COUNTIF(A2:A5, \"*@kantor.com\")",
+      "nalarBayi": "Tanda bintang di depan artinya kata apa saja asalkan diakhiri dengan @kantor.com!"
     }
   },
   {
@@ -8127,7 +8127,7 @@ const excelChallenges = [
     "id": "xl-87",
     "category": "9. Manipulasi Teks & Rapikan Data",
     "title": "Tantangan 87: Mengecek Panjang Karakter Nomor Telepon (LEN)",
-    "scenario": "Customer Service ingin memastikan nomor WhatsApp di sel A2 ('081234567890') valid dengan menghitung jumlah karakternya di sel B2.",
+    "scenario": "Customer Service ingin memastikan kode nomor telepon di sel A2 ('628001234567') valid dengan menghitung jumlah karakternya di sel B2.",
     "tableHeaders": [
       "A",
       "B"
@@ -8140,17 +8140,17 @@ const excelChallenges = [
       },
       {
         "row": 2,
-        "A": "081234567890",
+        "A": "628001234567",
         "B": ""
       },
       {
         "row": 3,
-        "A": "0857112233",
+        "A": "62800112233",
         "B": ""
       },
       {
         "row": 4,
-        "A": "08139988776655",
+        "A": "62800998877665",
         "B": ""
       }
     ],

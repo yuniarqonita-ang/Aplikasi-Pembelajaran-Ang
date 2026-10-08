@@ -150,6 +150,12 @@ function switchTab(tabName) {
       "Selamat datang di Studio Game Rumus Excel & Statistik Realtime! Ada 105 tantangan rumus kantor & materi statistik dosen langsung dipraktikkan di tabel spreadsheet!",
       "Ketik rumus di bilah formula fx, atau gunakan tombol bantuan chip di bawah tabel!"
     );
+  } else if (tabName === 'it-tech-trainer') {
+    renderItTechTrainer();
+    setKodiSpeech(
+      "Selamat datang di Laboratorium IT Tech & Jaringan! Ada 100 tantangan praktik standar CompTIA A+, Network+, Cisco CCNA, Security+, Algoritma & Automasi Python siap kamu taklukkan!",
+      "Pahami contoh soal dan jawaban benar dulu di kotak atas, lalu pecahkan tantangan teknisnya!"
+    );
   } else if (tabName === 'english-trainer') {
     renderEnglishTrainer();
     setKodiSpeech(
@@ -1718,13 +1724,53 @@ function renderEnglishTrainer() {
         </div>
       </div>
 
-      <!-- Pilihan Pertanyaan Wawancara Berbasis CV -->
-      <div style="display: flex; gap: 8px; margin-bottom: 16px; overflow-x: auto; padding-bottom: 6px;">
-        ${cvInterviewSpeakingDrills.map((d, idx) => `
-          <button class="quick-cmd-btn ${idx === appState.currentEnglishDrillIndex ? 'active' : ''}" style="padding: 8px 14px; font-weight: 700;" onclick="setEnglishDrillIndex(${idx})">
-            Q${idx + 1}: ${d.category.split('.')[1] || d.category}
-          </button>
-        `).join('')}
+      <!-- Filter Kategori Wawancara (100 Tantangan Berbobot) -->
+      <div style="margin-bottom: 12px;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+          <span style="font-size: 0.82rem; color: var(--accent-cyan); font-weight: 700;">
+            📂 Kategori Soal Wawancara (Total 100 Soal):
+          </span>
+          <span style="font-size: 0.8rem; color: var(--text-muted);">
+            Soal <strong>${appState.currentEnglishDrillIndex + 1}</strong> dari <strong>${cvInterviewSpeakingDrills.length}</strong>
+          </span>
+        </div>
+        <div style="display: flex; gap: 6px; overflow-x: auto; padding-bottom: 6px;">
+          ${[
+            { key: "all", label: `Semua (100)` },
+            { key: "1.", label: "1. Intro (10)" },
+            { key: "2.", label: "2. Akademik (10)" },
+            { key: "3.", label: "3. Hardware (10)" },
+            { key: "4.", label: "4. OS & Software (10)" },
+            { key: "5.", label: "5. Jaringan (10)" },
+            { key: "6.", label: "6. Database (10)" },
+            { key: "7.", label: "7. Security (10)" },
+            { key: "8.", label: "8. Automasi (10)" },
+            { key: "9.", label: "9. Teamwork (10)" },
+            { key: "10.", label: "10. Visi Karir (10)" }
+          ].map(c => `
+            <button class="filter-chip ${(appState.speakingCategoryFilter || 'all') === c.key ? 'active' : ''}" 
+                    style="padding: 5px 12px; font-size: 0.78rem; font-weight: 700; white-space: nowrap;" 
+                    onclick="setSpeakingCategoryFilter('${c.key}')">
+              ${c.label}
+            </button>
+          `).join('')}
+        </div>
+      </div>
+
+      <!-- Pilihan Pertanyaan Wawancara dalam Kategori -->
+      <div style="display: flex; gap: 8px; margin-bottom: 16px; overflow-x: auto; padding-bottom: 6px; align-items: center;">
+        <button class="btn-outline" style="padding: 6px 12px; font-size: 0.8rem;" onclick="prevSpeakingDrill()">◀ Prev</button>
+        ${cvInterviewSpeakingDrills
+          .map((d, idx) => ({ d, idx }))
+          .filter(item => (appState.speakingCategoryFilter || 'all') === 'all' || item.d.category.startsWith(appState.speakingCategoryFilter))
+          .map(item => `
+            <button class="quick-cmd-btn ${item.idx === appState.currentEnglishDrillIndex ? 'active' : ''}" 
+                    style="padding: 6px 12px; font-weight: 700; font-size: 0.8rem; white-space: nowrap;" 
+                    onclick="setEnglishDrillIndex(${item.idx})">
+              Q${item.idx + 1}
+            </button>
+          `).join('')}
+        <button class="btn-outline" style="padding: 6px 12px; font-size: 0.8rem;" onclick="nextSpeakingDrill()">Next ▶</button>
       </div>
 
       <div style="background: var(--bg-card); padding: 24px; border-radius: var(--radius-md); border: 1px solid var(--border-glow); margin-bottom: 20px;">
@@ -1816,6 +1862,38 @@ function renderEnglishTrainer() {
   window.setEnglishDrillIndex = function(idx) {
     sfx.playClick();
     appState.currentEnglishDrillIndex = idx;
+    renderEnglishTrainer();
+  };
+
+  window.setSpeakingCategoryFilter = function(catKey) {
+    sfx.playClick();
+    appState.speakingCategoryFilter = catKey;
+    if (catKey !== 'all') {
+      const firstIdx = cvInterviewSpeakingDrills.findIndex(d => d.category.startsWith(catKey));
+      if (firstIdx !== -1) {
+        appState.currentEnglishDrillIndex = firstIdx;
+      }
+    }
+    renderEnglishTrainer();
+  };
+
+  window.nextSpeakingDrill = function() {
+    sfx.playClick();
+    if (appState.currentEnglishDrillIndex + 1 < cvInterviewSpeakingDrills.length) {
+      appState.currentEnglishDrillIndex++;
+    } else {
+      appState.currentEnglishDrillIndex = 0;
+    }
+    renderEnglishTrainer();
+  };
+
+  window.prevSpeakingDrill = function() {
+    sfx.playClick();
+    if (appState.currentEnglishDrillIndex > 0) {
+      appState.currentEnglishDrillIndex--;
+    } else {
+      appState.currentEnglishDrillIndex = cvInterviewSpeakingDrills.length - 1;
+    }
     renderEnglishTrainer();
   };
 
@@ -3008,9 +3086,9 @@ function renderEvcDictationStudio() {
   if (!currentItem) return;
 
   const levelTabs = [
-    { level: 1, label: "🔤 Tingkat 1: Eja Huruf", desc: "Spelling Names & Acronyms (10 Soal)" },
-    { level: 2, label: "📝 Tingkat 2: Dikte Kata", desc: "Vocabulary Chapters 1-8 (12 Soal)" },
-    { level: 3, label: "💬 Tingkat 3: Dikte Kalimat", desc: "Natural Everyday Dialogues (10 Soal)" }
+    { level: 1, label: "🔤 Tingkat 1: Eja Huruf", desc: "Spelling Names, Acronyms & IT Terms (30 Soal)" },
+    { level: 2, label: "📝 Tingkat 2: Dikte Kata", desc: "Vocabulary & IT Workplace Terms (35 Soal)" },
+    { level: 3, label: "💬 Tingkat 3: Dikte Kalimat", desc: "Natural Everyday Dialogues & Scenarios (35 Soal)" }
   ];
 
   container.innerHTML = `
@@ -4058,6 +4136,304 @@ window.checkExcelCurrentChallenge = function() {
       `Coba lihat contoh di kotak atas atau petunjuk: ${chal.babyHint}`
     );
   }
+};
+
+// ================= IT TECH & NETWORK LAB (100 TANTANGAN) =================
+function renderItTechTrainer() {
+  const container = document.getElementById("it-tech-content-area");
+  if (!container) return;
+
+  if (typeof itTechChallenges === "undefined" || !itTechChallenges.length) {
+    container.innerHTML = `<div class="info-box">Data laboratorium IT Tech sedang dimuat...</div>`;
+    return;
+  }
+
+  appState.itTechCategoryFilter = appState.itTechCategoryFilter || "all";
+  appState.currentItTechIndex = appState.currentItTechIndex || 0;
+  appState.itTechCompleted = appState.itTechCompleted || [];
+  appState.itTechAnswers = appState.itTechAnswers || {};
+
+  const categories = [
+    { key: "all", label: `📂 Semua Lab (${itTechChallenges.length} Soal)` },
+    { key: "1. Perangkat Keras & Motherboard (CompTIA A+)", label: "🖥️ 1. Hardware & Motherboard (20)" },
+    { key: "2. Jaringan Komputer & Subnetting (Network+ & Cisco CCNA)", label: "🌐 2. Jaringan & CCNA (20)" },
+    { key: "3. Sistem Operasi & CLI Troubleshooting (Windows & Linux)", label: "💻 3. OS & CLI (20)" },
+    { key: "4. Pertahanan Siber & Keamanan IT (Security+ SY0-701)", label: "🛡️ 4. Cyber Security (20)" },
+    { key: "5. Algoritma & Automasi IT (Grokking & Python Automate)", label: "⚡ 5. Algoritma & Automasi (20)" }
+  ];
+
+  const filteredList = appState.itTechCategoryFilter === "all"
+    ? itTechChallenges.map((item, idx) => ({ item, originalIndex: idx }))
+    : itTechChallenges
+        .map((item, idx) => ({ item, originalIndex: idx }))
+        .filter(x => x.item.category === appState.itTechCategoryFilter);
+
+  if (appState.currentItTechIndex < 0 || appState.currentItTechIndex >= itTechChallenges.length) {
+    appState.currentItTechIndex = 0;
+  }
+
+  // Ensure currentItTechIndex matches filtered category if not in it
+  let activeEntry = filteredList.find(x => x.originalIndex === appState.currentItTechIndex);
+  if (!activeEntry && filteredList.length > 0) {
+    activeEntry = filteredList[0];
+    appState.currentItTechIndex = activeEntry.originalIndex;
+  }
+  const chal = itTechChallenges[appState.currentItTechIndex] || itTechChallenges[0];
+  const isCompleted = appState.itTechCompleted.includes(chal.id);
+  const selectedOption = appState.itTechAnswers[chal.id];
+  const completedCount = appState.itTechCompleted.length;
+  const progressPercent = Math.round((completedCount / itTechChallenges.length) * 100);
+
+  container.innerHTML = `
+    <!-- Hero Header -->
+    <div style="background: linear-gradient(135deg, rgba(30, 41, 59, 0.95), rgba(15, 23, 42, 0.98)); border: 1px solid var(--border-glow); border-radius: var(--radius-lg); padding: 22px; margin-bottom: 20px; box-shadow: var(--shadow-card);">
+      <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 14px;">
+        <div style="flex: 1; min-width: 260px;">
+          <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 6px;">
+            <span style="font-size: 1.8rem;">🛠️</span>
+            <div>
+              <h3 style="margin: 0; color: #fff; font-size: 1.3rem;">Laboratorium IT Tech, Jaringan & Keamanan</h3>
+              <p style="margin: 2px 0 0; font-size: 0.85rem; color: var(--accent-cyan);">
+                100 Tantangan Berbasis Buku Standar Dunia: CompTIA A+, Network+, Cisco CCNA, Security+ SY0-701, Grokking Algorithms, & Python Automate
+              </p>
+            </div>
+          </div>
+        </div>
+        <div style="text-align: right; min-width: 170px;">
+          <div style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 4px;">Pencapaian Laboratorium:</div>
+          <div style="font-size: 1.25rem; font-weight: 800; color: var(--accent-green);">
+            ${completedCount} / ${itTechChallenges.length} Selesai (${progressPercent}%)
+          </div>
+          <div style="height: 6px; width: 100%; background: rgba(255,255,255,0.1); border-radius: 3px; margin-top: 6px; overflow: hidden;">
+            <div style="height: 100%; width: ${progressPercent}%; background: linear-gradient(90deg, var(--accent-cyan), var(--accent-green));"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Kategori Filter Tabs -->
+      <div style="display: flex; gap: 8px; margin-top: 18px; overflow-x: auto; padding-bottom: 6px;">
+        ${categories.map(c => `
+          <button class="choice-card-btn ${appState.itTechCategoryFilter === c.key ? 'active-eng-mode' : ''}" 
+                  style="flex: 1; min-width: 170px; padding: 10px 14px; font-size: 0.82rem; font-weight: 700; text-align: center; justify-content: center; ${appState.itTechCategoryFilter === c.key ? 'border-color: var(--accent-cyan); background: rgba(6, 182, 212, 0.15);' : ''}" 
+                  onclick="setItTechCategory('${c.key}')">
+            ${c.label}
+          </button>
+        `).join('')}
+      </div>
+    </div>
+
+    <!-- Question Selector Navigation Bar -->
+    <div style="display: flex; gap: 8px; margin-bottom: 18px; overflow-x: auto; padding-bottom: 6px; align-items: center;">
+      <button class="btn-outline" style="padding: 6px 14px; font-size: 0.82rem; font-weight: 700;" onclick="prevItTechChallenge()">
+        ◀ Sebelumnya
+      </button>
+      <div style="display: flex; gap: 6px; overflow-x: auto; flex: 1; padding: 2px 4px;">
+        ${filteredList.map((entry, idx) => {
+          const itemDone = appState.itTechCompleted.includes(entry.item.id);
+          const isCurrent = entry.originalIndex === appState.currentItTechIndex;
+          return `
+            <button class="quick-cmd-btn ${isCurrent ? 'active' : ''}" 
+                    style="padding: 6px 12px; font-weight: 700; font-size: 0.8rem; white-space: nowrap; ${itemDone ? 'border-color: var(--accent-green); color: var(--accent-green);' : ''}" 
+                    onclick="setItTechIndex(${entry.originalIndex})">
+              ${itemDone ? '✓ ' : ''}Q${entry.originalIndex + 1}
+            </button>
+          `;
+        }).join('')}
+      </div>
+      <button class="btn-primary" style="padding: 6px 14px; font-size: 0.82rem; font-weight: 700;" onclick="nextItTechChallenge()">
+        Berikutnya ▶
+      </button>
+    </div>
+
+    <!-- Main Challenge Card -->
+    <div style="background: var(--bg-card); border-radius: var(--radius-lg); border: 1px solid var(--border-glow); padding: 24px; margin-bottom: 24px; box-shadow: var(--shadow-card);">
+      
+      <!-- Meta Information Row -->
+      <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; margin-bottom: 12px;">
+        <span style="font-size: 0.8rem; color: var(--accent-cyan); font-weight: 800; text-transform: uppercase;">
+          ${chal.category} • Soal ${appState.currentItTechIndex + 1} dari ${itTechChallenges.length}
+        </span>
+        <span class="badge-source" style="font-size: 0.78rem; background: rgba(56, 189, 248, 0.15); color: var(--accent-cyan); border: 1px solid rgba(56, 189, 248, 0.3); padding: 3px 10px; border-radius: 20px;">
+          📖 ${chal.sourceRef}
+        </span>
+      </div>
+
+      <!-- Challenge Title -->
+      <h3 style="color: #fff; margin: 0 0 12px; font-size: 1.25rem;">
+        ${chal.title}
+      </h3>
+
+      <!-- Scenario Box -->
+      <div style="background: rgba(15, 23, 42, 0.85); border-left: 4px solid var(--accent-cyan); padding: 14px 18px; border-radius: 6px; margin-bottom: 18px; font-size: 0.95rem; line-height: 1.6; color: #e2e8f0;">
+        <strong>Skenario Kasus Nyata:</strong><br>
+        ${chal.scenario}
+      </div>
+
+      <!-- KOTAK CONTOH SOAL & JAWABAN BENAR DULU -->
+      <div class="worked-example-card" style="margin-bottom: 22px;">
+        <div class="worked-example-header">
+          <span class="we-badge">💡 CONTOH KASUS SERUPA & JAWABAN BENAR DULU</span>
+          <span class="we-sub">Pelajari pola penyelesaian kasus serupa ini sebelum memilih jawaban tantanganmu:</span>
+        </div>
+        <div class="we-body">
+          <div class="we-row">
+            <span class="we-label">📝 Contoh Kasus Serupa:</span>
+            <span class="we-text">${chal.workedExample.kasusSerupa}</span>
+          </div>
+          <div class="we-row">
+            <span class="we-label">✅ Contoh Jawaban yang 100% Benar:</span>
+            <code class="we-code">${chal.workedExample.jawabanBenarContoh}</code>
+          </div>
+          <div class="we-row">
+            <span class="we-label">🍼 Nalar & Logika Bahasa Bayi Kodi:</span>
+            <span class="we-text">${chal.workedExample.nalarBayi}</span>
+          </div>
+        </div>
+        <div class="we-divider">🎯 SEKARANG PECAHKAN TANTANGAN ASLI DI BAWAH INI:</div>
+      </div>
+
+      <!-- Question Prompt -->
+      <div style="background: rgba(30, 41, 59, 0.6); padding: 14px 18px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.08); margin-bottom: 18px;">
+        <h4 style="margin: 0; color: #f8fafc; font-size: 1.05rem; line-height: 1.5;">
+          ${chal.question}
+        </h4>
+      </div>
+
+      <!-- Interactive Options -->
+      <div style="display: flex; flex-direction: column; gap: 10px; margin-bottom: 20px;">
+        ${chal.options.map((opt, optIdx) => {
+          let btnStyle = "background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(255,255,255,0.15); color: #e2e8f0;";
+          let icon = String.fromCharCode(65 + optIdx);
+          
+          if (selectedOption !== undefined) {
+            if (optIdx === chal.correctIndex) {
+              btnStyle = "background: rgba(34, 197, 94, 0.2); border: 1.5px solid var(--accent-green); color: #fff; font-weight: 700;";
+              icon = "✓";
+            } else if (selectedOption === optIdx) {
+              btnStyle = "background: rgba(239, 68, 68, 0.2); border: 1.5px solid var(--accent-pink); color: #fca5a5;";
+              icon = "✕";
+            }
+          }
+
+          return `
+            <button class="choice-card-btn" 
+                    style="padding: 14px 18px; text-align: left; font-size: 0.92rem; border-radius: 8px; cursor: pointer; transition: all 0.2s; ${btnStyle}" 
+                    onclick="selectItTechOption(${optIdx})">
+              <span style="font-weight: 800; min-width: 26px; display: inline-block;">${icon}.</span>
+              <span style="flex: 1;">${opt}</span>
+            </button>
+          `;
+        }).join('')}
+      </div>
+
+      <!-- Feedback & Explanation Box -->
+      <div id="it-tech-feedback-box" style="margin-bottom: 16px; ${selectedOption !== undefined ? 'display: block;' : 'display: none;'}">
+        ${selectedOption !== undefined ? `
+          <div class="alert-box ${selectedOption === chal.correctIndex ? 'success' : 'warning'}" style="margin-bottom: 14px;">
+            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 4px;">
+              <span style="font-size: 1.2rem;">${selectedOption === chal.correctIndex ? '🎉' : '⚠️'}</span>
+              <strong>${selectedOption === chal.correctIndex ? 'Jawaban Kamu Tepat 100%!' : 'Belum tepat nih, coba cermati lagi!'}</strong>
+            </div>
+            <div style="font-size: 0.9rem; line-height: 1.5;">
+              ${chal.explanation}
+            </div>
+          </div>
+        ` : ''}
+      </div>
+
+      <!-- Baby Clue Box -->
+      <div style="background: rgba(250, 204, 21, 0.08); border-left: 3px solid var(--accent-yellow); padding: 12px 16px; border-radius: 6px; font-size: 0.88rem; color: #fef08a; margin-bottom: 18px;">
+        ${chal.babyClue}
+      </div>
+
+      <!-- Bottom Navigation Buttons -->
+      <div style="display: flex; justify-content: space-between; align-items: center; pt-3; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 16px;">
+        <button class="btn-outline" onclick="prevItTechChallenge()">
+          ◀ Soal Sebelumnya
+        </button>
+        <button class="btn-primary" onclick="nextItTechChallenge()">
+          Soal Berikutnya ▶
+        </button>
+      </div>
+
+    </div>
+  `;
+}
+
+window.selectItTechOption = function(optionIdx) {
+  const chal = itTechChallenges[appState.currentItTechIndex];
+  if (!chal) return;
+
+  appState.itTechAnswers = appState.itTechAnswers || {};
+  appState.itTechAnswers[chal.id] = optionIdx;
+
+  if (optionIdx === chal.correctIndex) {
+    sfx.playSuccess();
+    if (!appState.itTechCompleted.includes(chal.id)) {
+      appState.itTechCompleted.push(chal.id);
+      saveProgress();
+    }
+    setKodiSpeech(
+      `Horeee! Jawaban kamu untuk ${chal.title} tepat 100%!`,
+      "Pemahaman teknis komputermu semakin tajam dan setara standar sertifikasi dunia!"
+    );
+  } else {
+    sfx.playWrong();
+    setKodiSpeech(
+      "Ups, pilihanmu belum tepat nih!",
+      `Coba baca lagi contoh nalar bayi di atas: ${chal.workedExample.nalarBayi}`
+    );
+  }
+
+  renderItTechTrainer();
+};
+
+window.setItTechCategory = function(catKey) {
+  sfx.playClick();
+  appState.itTechCategoryFilter = catKey;
+  if (catKey !== "all") {
+    const firstIdx = itTechChallenges.findIndex(c => c.category === catKey);
+    if (firstIdx !== -1) {
+      appState.currentItTechIndex = firstIdx;
+    }
+  }
+  renderItTechTrainer();
+};
+
+window.setItTechIndex = function(idx) {
+  sfx.playClick();
+  appState.currentItTechIndex = idx;
+  renderItTechTrainer();
+};
+
+window.nextItTechChallenge = function() {
+  sfx.playClick();
+  const filteredList = appState.itTechCategoryFilter === "all"
+    ? itTechChallenges.map((item, idx) => idx)
+    : itTechChallenges.map((item, idx) => idx).filter(idx => itTechChallenges[idx].category === appState.itTechCategoryFilter);
+
+  const curPos = filteredList.indexOf(appState.currentItTechIndex);
+  if (curPos !== -1 && curPos + 1 < filteredList.length) {
+    appState.currentItTechIndex = filteredList[curPos + 1];
+  } else if (filteredList.length > 0) {
+    appState.currentItTechIndex = filteredList[0];
+  }
+  renderItTechTrainer();
+};
+
+window.prevItTechChallenge = function() {
+  sfx.playClick();
+  const filteredList = appState.itTechCategoryFilter === "all"
+    ? itTechChallenges.map((item, idx) => idx)
+    : itTechChallenges.map((item, idx) => idx).filter(idx => itTechChallenges[idx].category === appState.itTechCategoryFilter);
+
+  const curPos = filteredList.indexOf(appState.currentItTechIndex);
+  if (curPos > 0) {
+    appState.currentItTechIndex = filteredList[curPos - 1];
+  } else if (filteredList.length > 0) {
+    appState.currentItTechIndex = filteredList[filteredList.length - 1];
+  }
+  renderItTechTrainer();
 };
 
 // ================= APP INITIALIZATION =================
