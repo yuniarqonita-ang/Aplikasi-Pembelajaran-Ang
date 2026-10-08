@@ -3060,3 +3060,168 @@ body.light-theme .modal-content {
   background: var(--border-glow);
   border-radius: 4px;
 }
+
+
+/* ===================================================================
+   EXCEL TRAINER STYLES - Spreadsheet Table, Formula Bar, Quick Chips
+   =================================================================== */
+
+.excel-container {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.excel-worked-example-card {
+  background: var(--bg-card);
+  border: 1px solid rgba(16, 185, 129, 0.4);
+  border-radius: var(--radius-md);
+  padding: 16px 20px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
+}
+
+.excel-formula-bar-wrap {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--bg-card);
+  border: 2px solid #107c41;
+  border-radius: var(--radius-md);
+  padding: 8px 14px;
+  flex-wrap: wrap;
+}
+
+.excel-cell-badge {
+  background: #107c41;
+  color: #ffffff;
+  font-weight: 800;
+  font-family: monospace;
+  font-size: 0.95rem;
+  padding: 6px 12px;
+  border-radius: 6px;
+  letter-spacing: 0.5px;
+}
+
+.excel-fx-icon {
+  font-style: italic;
+  font-weight: 900;
+  font-family: serif;
+  color: #107c41;
+  font-size: 1.25rem;
+  user-select: none;
+}
+
+.excel-formula-input {
+  flex: 1;
+  min-width: 200px;
+  background: var(--bg-secondary);
+  color: var(--text-main);
+  border: 1px solid var(--border-glow);
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-family: 'Consolas', 'Fira Code', monospace;
+  font-size: 0.95rem;
+  outline: none;
+}
+
+.excel-formula-input:focus {
+  border-color: #107c41;
+  box-shadow: 0 0 0 2px rgba(16, 124, 65, 0.25);
+}
+
+.excel-grid-wrapper {
+  overflow-x: auto;
+  background: var(--bg-card);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-glow);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  -webkit-overflow-scrolling: touch;
+}
+
+.excel-sheet-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.88rem;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  min-width: 480px;
+}
+
+.excel-sheet-table th,
+.excel-sheet-table td {
+  border: 1px solid var(--border-glow);
+  padding: 8px 14px;
+  text-align: left;
+}
+
+.excel-sheet-table th.col-header {
+  background: var(--bg-secondary);
+  color: var(--text-muted);
+  font-weight: 700;
+  text-align: center;
+  font-size: 0.8rem;
+}
+
+.excel-sheet-table td.row-header {
+  background: var(--bg-secondary);
+  color: var(--text-muted);
+  font-weight: 700;
+  text-align: center;
+  width: 40px;
+  user-select: none;
+  font-size: 0.8rem;
+}
+
+.excel-sheet-table tr.header-row td {
+  font-weight: 700;
+  background: rgba(16, 124, 65, 0.08);
+  color: var(--text-main);
+}
+
+.excel-target-cell {
+  background: rgba(16, 124, 65, 0.18) !important;
+  border: 2px solid #107c41 !important;
+  font-weight: 800;
+  color: #107c41;
+  position: relative;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.excel-target-cell.solved {
+  background: rgba(16, 185, 129, 0.25) !important;
+  border-color: #10b981 !important;
+  color: #10b981;
+}
+
+.excel-chips-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  align-items: center;
+  padding: 10px 14px;
+  background: var(--bg-card);
+  border-radius: var(--radius-md);
+  border: 1px dashed var(--border-glow);
+}
+
+.excel-chip-btn {
+  background: var(--bg-secondary);
+  color: var(--accent-cyan);
+  border: 1px solid var(--border-glow);
+  padding: 6px 10px;
+  border-radius: 6px;
+  font-family: monospace;
+  font-size: 0.82rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.excel-chip-btn:hover {
+  background: #107c41;
+  color: #ffffff;
+  border-color: #107c41;
+  transform: translateY(-1px);
+}

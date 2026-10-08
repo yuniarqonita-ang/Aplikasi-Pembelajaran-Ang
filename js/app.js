@@ -29,6 +29,10 @@ const appState = {
   currentDictationIndex: 0,
   currentDictationLevelFilter: 1,
   dictationHintRevealed: false,
+  currentExcelIndex: 0,
+  excelCategoryFilter: "all",
+  excelCompleted: [],
+  excelUserFormulas: {},
   deferredInstallPrompt: null
 };
 
@@ -41,6 +45,7 @@ function loadProgress() {
       appState.stars = parsed.stars || 0;
       appState.completedLevels = parsed.completedLevels || [];
       appState.playerName = parsed.playerName || "Siswa Hebat";
+      appState.excelCompleted = parsed.excelCompleted || [];
     }
   } catch (e) {
     console.warn("Storage error", e);
@@ -52,7 +57,8 @@ function saveProgress() {
     localStorage.setItem("kodi_it_academy_state", JSON.stringify({
       stars: appState.stars,
       completedLevels: appState.completedLevels,
-      playerName: appState.playerName
+      playerName: appState.playerName,
+      excelCompleted: appState.excelCompleted || []
     }));
   } catch (e) {
     console.warn("Storage error", e);
@@ -137,6 +143,12 @@ function switchTab(tabName) {
     setKodiSpeech(
       "Selamat datang di Studio Tes SQL & Output! Di sini kita bedah soal tabel dan tebak hasil koding khas tes perusahaan teknologi & manufaktur modern!",
       "Pilih 'Tabel Karyawan' atau 'Tabel Sepatu' untuk melihat isi datanya!"
+    );
+  } else if (tabName === 'excel-trainer') {
+    renderExcelTrainer();
+    setKodiSpeech(
+      "Selamat datang di Studio Game Rumus Excel & Statistik Realtime! Ada 105 tantangan rumus kantor & materi statistik dosen langsung dipraktikkan di tabel spreadsheet!",
+      "Ketik rumus di bilah formula fx, atau gunakan tombol bantuan chip di bawah tabel!"
     );
   } else if (tabName === 'english-trainer') {
     renderEnglishTrainer();
@@ -3670,6 +3682,382 @@ window.toggleTheme = function() {
       : "Mode Gelap aktif! Tampilan ramah mata buat sesi koding!",
     "Kamu bisa ganti mode kapan saja lewat tombol di pojok kanan atas."
   );
+};
+
+// ================= EXCEL FORMULA TRAINER CONTROLLER =================
+function renderExcelTrainer() {
+  const container = document.getElementById("excel-content-area");
+  if (!container) return;
+
+  if (typeof excelChallenges === "undefined" || !excelChallenges.length) {
+    container.innerHTML = `<div class="info-box">Data tantangan Excel sedang disiapkan...</div>`;
+    return;
+  }
+
+  appState.excelCategoryFilter = appState.excelCategoryFilter || "all";
+  appState.currentExcelIndex = appState.currentExcelIndex || 0;
+  appState.excelCompleted = appState.excelCompleted || [];
+  appState.excelUserFormulas = appState.excelUserFormulas || {};
+
+  const allCategories = [
+    "all",
+    "1. Logika Bisnis & Kondisional",
+    "2. Statistik Dasar & Agregasi",
+    "3. Statistik Bersyarat",
+    "4. Pencarian Data & Lookup",
+    "5. Statistik Deskriptif & Peringkat",
+    "6. Sebaran, Kuartil & Probabilitas",
+    "7. Varians, Deviasi & Korelasi",
+    "8. Prediksi, Regresi & Tren",
+    "9. Manipulasi Teks & Rapikan Data",
+    "10. Waktu, Finansial & Pembulatan"
+  ];
+
+  const filteredList = (appState.excelCategoryFilter === "all")
+    ? excelChallenges.map((c, i) => ({ item: c, originalIndex: i }))
+    : excelChallenges
+        .map((c, i) => ({ item: c, originalIndex: i }))
+        .filter(x => x.item.category.includes(appState.excelCategoryFilter.split('.')[1]?.trim() || appState.excelCategoryFilter) || x.item.category === appState.excelCategoryFilter);
+
+  if (appState.currentExcelIndex < 0 || appState.currentExcelIndex >= excelChallenges.length) {
+    appState.currentExcelIndex = 0;
+  }
+
+  let currentPos = filteredList.findIndex(x => x.originalIndex === appState.currentExcelIndex);
+  if (currentPos === -1 && filteredList.length > 0) {
+    appState.currentExcelIndex = filteredList[0].originalIndex;
+    currentPos = 0;
+  }
+
+  const chal = excelChallenges[appState.currentExcelIndex] || excelChallenges[0];
+  const isCompleted = appState.excelCompleted.includes(chal.id);
+  const currentFormula = appState.excelUserFormulas[chal.id] || chal.starterFormula || "=";
+
+  // Render Table HTML
+  const colHeaders = chal.tableHeaders || ["A", "B", "C", "D"];
+  const tableRows = chal.tableRows || [];
+
+  let tableHtml = `
+    <div class="excel-grid-wrapper">
+      <table class="excel-sheet-table">
+        <thead>
+          <tr>
+            <th class="col-header" style="width: 45px;">#</th>
+            ${colHeaders.map(col => `<th class="col-header">${col}</th>`).join('')}
+          </tr>
+        </thead>
+        <tbody>
+  `;
+
+  tableRows.forEach(rowObj => {
+    const rowNum = rowObj.row;
+    const isHeaderRow = (rowNum === 1);
+    tableHtml += `<tr class="${isHeaderRow ? 'header-row' : ''}">`;
+    tableHtml += `<td class="row-header">${rowNum}</td>`;
+    colHeaders.forEach(col => {
+      const cellCoord = `${col.toUpperCase()}${rowNum}`;
+      const isTarget = (cellCoord === chal.targetCell.toUpperCase());
+      const cellVal = rowObj[col] !== undefined ? rowObj[col] : "";
+
+      let displayVal = cellVal;
+      if (isTarget) {
+        if (isCompleted) {
+          displayVal = chal.expectedValue;
+        } else {
+          displayVal = `<span style="color: #107c41; font-style: italic; opacity: 0.85;">[ ${chal.targetCell} ]</span>`;
+        }
+      }
+
+      tableHtml += `
+        <td class="${isTarget ? 'excel-target-cell' + (isCompleted ? ' solved' : '') : ''}"
+            id="cell-${cellCoord}"
+            data-coord="${cellCoord}"
+            onclick="selectExcelCell('${cellCoord}')">
+          ${displayVal}
+        </td>
+      `;
+    });
+    tableHtml += `</tr>`;
+  });
+
+  tableHtml += `
+        </tbody>
+      </table>
+    </div>
+  `;
+
+  // Render HTML container
+  container.innerHTML = `
+    <div class="excel-container">
+      <!-- Navigasi & Filter Soal Excel 1 - 105 -->
+      <div class="challenge-nav-bar">
+        <div class="challenge-nav-controls">
+          <label style="font-size: 0.8rem; font-weight: 700; color: #10b981;">📂 Kategori:</label>
+          <select class="challenge-page-select" onchange="filterExcelCategory(this.value)">
+            <option value="all" ${appState.excelCategoryFilter === 'all' ? 'selected' : ''}>Semua Kategori (105 Soal)</option>
+            ${allCategories.filter(cat => cat !== 'all').map(cat => `
+              <option value="${cat}" ${appState.excelCategoryFilter === cat ? 'selected' : ''}>${cat}</option>
+            `).join('')}
+          </select>
+        </div>
+
+        <div class="challenge-nav-controls">
+          <button class="btn-secondary" style="padding: 6px 12px; font-size: 0.82rem;" onclick="navExcelChallenge(-1)" ${currentPos <= 0 ? 'disabled' : ''}>
+            ⬅️ Prev
+          </button>
+          <select class="challenge-page-select" onchange="setExcelChallenge(Number(this.value))">
+            ${filteredList.map((x) => `
+              <option value="${x.originalIndex}" ${x.originalIndex === appState.currentExcelIndex ? 'selected' : ''}>
+                Soal #${x.originalIndex + 1}: ${x.item.title.split(':')[1] || x.item.title} ${appState.excelCompleted.includes(x.item.id) ? '✅' : ''}
+              </option>
+            `).join('')}
+          </select>
+          <button class="btn-secondary" style="padding: 6px 12px; font-size: 0.82rem;" onclick="navExcelChallenge(1)" ${currentPos >= filteredList.length - 1 ? 'disabled' : ''}>
+            Next ➡️
+          </button>
+        </div>
+      </div>
+
+      <!-- WORKED EXAMPLE CARD (CONTOH SOAL & JAWABAN BENAR DULU) -->
+      ${chal.workedExample ? `
+        <div class="excel-worked-example-card" style="border-left: 5px solid #107c41;">
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
+            <div style="font-weight: 800; font-size: 0.95rem; color: #10b981; display: flex; align-items: center; gap: 6px;">
+              <span>💡</span> <span>${chal.workedExample.title || 'CONTOH SOAL & JAWABAN BENAR DULU'}</span>
+            </div>
+            <span style="font-size: 0.75rem; background: rgba(16, 124, 65, 0.2); color: #10b981; padding: 2px 8px; border-radius: 12px; font-weight: 700;">
+              Dipahami Dulu Ya! 🍼
+            </span>
+          </div>
+          <div style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 6px;">
+            <strong>Kasus Serupa:</strong> ${chal.workedExample.kasusSerupa}
+          </div>
+          <div style="background: rgba(0,0,0,0.25); border: 1px dashed rgba(16, 185, 129, 0.4); padding: 8px 12px; border-radius: 6px; font-family: monospace; font-size: 0.9rem; color: #34d399; margin-bottom: 8px;">
+            ${chal.workedExample.rumusContoh}
+          </div>
+          <div style="font-size: 0.83rem; color: var(--text-main); line-height: 1.45;">
+            <strong>🍼 Nalar Bayi Kodi:</strong> ${chal.workedExample.nalarBayi}
+          </div>
+        </div>
+      ` : ''}
+
+      <!-- KODI SCENARIO & QUESTION CARD -->
+      <div class="card" style="padding: 16px 20px; border-left: 5px solid var(--accent-cyan);">
+        <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 8px;">
+          <div>
+            <span style="font-size: 0.75rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; color: var(--accent-cyan); background: rgba(56, 189, 248, 0.15); padding: 2px 8px; border-radius: 4px;">
+              ${chal.category}
+            </span>
+            <h3 style="margin: 6px 0 4px 0; font-size: 1.1rem; color: var(--text-main);">${chal.title}</h3>
+          </div>
+          ${isCompleted ? '<span style="font-size: 0.85rem; font-weight: 700; color: #10b981; background: rgba(16, 185, 129, 0.15); padding: 4px 10px; border-radius: 12px;">✅ Selesai</span>' : ''}
+        </div>
+        <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 10px; line-height: 1.5;">
+          ${chal.scenario}
+        </p>
+        <div style="background: var(--bg-secondary); border-left: 4px solid var(--accent-yellow); padding: 10px 14px; border-radius: 4px; font-size: 0.88rem; color: var(--text-main);">
+          <strong>🎯 Target Tugas:</strong> ${chal.instruction}
+        </div>
+      </div>
+
+      <!-- SPREADSHEET TABLE GRID -->
+      <div>
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+          <span style="font-size: 0.82rem; font-weight: 700; color: var(--text-muted);">
+            📊 Lembar Kerja Spreadsheet (Sel Target: <strong style="color: #10b981;">${chal.targetCell}</strong>)
+          </span>
+          <span style="font-size: 0.75rem; color: var(--text-muted);">
+            Klik sel untuk melihat koordinat
+          </span>
+        </div>
+        ${tableHtml}
+      </div>
+
+      <!-- FORMULA BAR (FX) -->
+      <div class="excel-formula-bar-wrap">
+        <span class="excel-cell-badge" id="excel-active-coord">${chal.targetCell}</span>
+        <span class="excel-fx-icon">fx</span>
+        <input type="text"
+               id="excel-formula-input"
+               class="excel-formula-input"
+               value="${currentFormula}"
+               placeholder="Ketik rumus di sini... contoh: =IF(B2>=75, 'LULUS', 'REMIDI')"
+               onkeydown="if(event.key==='Enter') checkExcelCurrentChallenge()" />
+        <button class="btn-primary" style="background: #107c41; border: none; padding: 8px 16px;" onclick="checkExcelCurrentChallenge()">
+          ▶️ Periksa Rumus
+        </button>
+        <button class="btn-secondary" style="padding: 8px 12px; font-size: 0.82rem;" onclick="showExcelAnswer()" title="Lihat Bantuan Kunci Jawaban">
+          💡 Kunci Jawaban
+        </button>
+        <button class="btn-secondary" style="padding: 8px 12px; font-size: 0.82rem;" onclick="resetExcelFormula()" title="Kembalikan Rumus Awal">
+          🔄 Reset
+        </button>
+      </div>
+
+      <!-- QUICK CHIP BUTTONS FOR MOBILE TYPING -->
+      <div class="excel-chips-bar">
+        <span style="font-size: 0.8rem; font-weight: 700; color: var(--text-muted); margin-right: 4px;">
+          💡 Ketik Cepat:
+        </span>
+        ${(chal.quickChips || ["=", "(", ")", ";", ",", '"']).map(chip => `
+          <button class="excel-chip-btn" onclick="insertExcelChip('${chip.replace(/'/g, "\'")}')">
+            ${chip}
+          </button>
+        `).join('')}
+      </div>
+
+      <!-- FEEDBACK / ALERT CONTAINER -->
+      <div id="excel-feedback-box" style="display: none;"></div>
+    </div>
+  `;
+}
+
+window.filterExcelCategory = function(cat) {
+  sfx.playClick();
+  appState.excelCategoryFilter = cat;
+  renderExcelTrainer();
+};
+
+window.navExcelChallenge = function(delta) {
+  sfx.playClick();
+  const filteredList = (appState.excelCategoryFilter === "all")
+    ? excelChallenges.map((c, i) => i)
+    : excelChallenges
+        .map((c, i) => ({ item: c, originalIndex: i }))
+        .filter(x => x.item.category.includes(appState.excelCategoryFilter.split('.')[1]?.trim() || appState.excelCategoryFilter) || x.item.category === appState.excelCategoryFilter)
+        .map(x => x.originalIndex);
+
+  let currentPos = filteredList.indexOf(appState.currentExcelIndex);
+  let newPos = currentPos + delta;
+  if (newPos >= 0 && newPos < filteredList.length) {
+    appState.currentExcelIndex = filteredList[newPos];
+    renderExcelTrainer();
+  }
+};
+
+window.setExcelChallenge = function(idx) {
+  sfx.playClick();
+  appState.currentExcelIndex = idx;
+  renderExcelTrainer();
+};
+
+window.selectExcelCell = function(coord) {
+  sfx.playClick();
+  const badge = document.getElementById("excel-active-coord");
+  if (badge) badge.textContent = coord;
+  const input = document.getElementById("excel-formula-input");
+  if (input) {
+    input.value += coord;
+    input.focus();
+  }
+};
+
+window.insertExcelChip = function(snippet) {
+  sfx.playClick();
+  const input = document.getElementById("excel-formula-input");
+  if (input) {
+    input.value += snippet;
+    input.focus();
+  }
+};
+
+window.resetExcelFormula = function() {
+  sfx.playClick();
+  const chal = excelChallenges[appState.currentExcelIndex] || excelChallenges[0];
+  const input = document.getElementById("excel-formula-input");
+  if (input) {
+    input.value = chal.starterFormula || "=";
+    input.focus();
+  }
+  delete appState.excelUserFormulas[chal.id];
+  const feedbackBox = document.getElementById("excel-feedback-box");
+  if (feedbackBox) feedbackBox.style.display = "none";
+};
+
+window.showExcelAnswer = function() {
+  sfx.playClick();
+  const chal = excelChallenges[appState.currentExcelIndex] || excelChallenges[0];
+  const input = document.getElementById("excel-formula-input");
+  if (input) {
+    input.value = chal.acceptedFormulas[0] || "=";
+    input.focus();
+  }
+  const feedbackBox = document.getElementById("excel-feedback-box");
+  if (feedbackBox) {
+    feedbackBox.style.display = "block";
+    feedbackBox.className = "alert-box info";
+    feedbackBox.innerHTML = `
+      <strong>💡 Kunci Jawaban Kodi:</strong><br>
+      Ketik rumus: <code style="font-size: 0.95rem; font-weight: bold; color: #10b981;">${chal.acceptedFormulas[0]}</code><br>
+      <span style="font-size: 0.85rem; color: var(--text-muted);">
+        ${chal.babyHint}
+      </span>
+    `;
+  }
+};
+
+window.checkExcelCurrentChallenge = function() {
+  const chal = excelChallenges[appState.currentExcelIndex] || excelChallenges[0];
+  const input = document.getElementById("excel-formula-input");
+  const formula = input ? input.value : "";
+  appState.excelUserFormulas[chal.id] = formula;
+
+  const result = checkExcelChallengeAnswer(formula, chal);
+  const feedbackBox = document.getElementById("excel-feedback-box");
+
+  if (result.isCorrect) {
+    sfx.playSuccess();
+    if (!appState.excelCompleted.includes(chal.id)) {
+      appState.excelCompleted.push(chal.id);
+      appState.stars = (appState.stars || 0) + 1;
+      saveProgress();
+      const starCountEl = document.getElementById("header-stars");
+      if (starCountEl) starCountEl.textContent = `${appState.stars} Bintang`;
+    }
+
+    if (feedbackBox) {
+      feedbackBox.style.display = "block";
+      feedbackBox.className = "alert-box success";
+      feedbackBox.innerHTML = `
+        <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px;">
+          <div>
+            <strong>${result.feedback}</strong><br>
+            <span>Hasil di sel <strong>${chal.targetCell}</strong>: <strong style="color: #10b981;">${chal.expectedValue}</strong></span>
+          </div>
+          <button class="btn-primary" style="background: #107c41; border: none; padding: 8px 16px;" onclick="navExcelChallenge(1)">
+            Tantangan Berikutnya ➡️
+          </button>
+        </div>
+      `;
+    }
+
+    // Update target cell in table immediately
+    const targetCellEl = document.getElementById(`cell-${chal.targetCell.toUpperCase()}`);
+    if (targetCellEl) {
+      targetCellEl.textContent = chal.expectedValue;
+      targetCellEl.classList.add("solved");
+    }
+
+    setKodiSpeech(
+      `Horeee! Jawaban kamu untuk ${chal.title} benar 100%!`,
+      `Hasil perhitungan ${chal.targetCell} adalah ${chal.expectedValue}. Kamu dapat +1 Bintang!`
+    );
+  } else {
+    sfx.playWrong();
+    if (feedbackBox) {
+      feedbackBox.style.display = "block";
+      feedbackBox.className = "alert-box warning";
+      feedbackBox.innerHTML = `
+        <strong>⚠️ Belum tepat nih, coba lagi yuk!</strong><br>
+        <span>${result.feedback}</span>
+      `;
+    }
+
+    setKodiSpeech(
+      "Ups, rumus kamu belum menghasilkan jawaban yang diharapkan nih!",
+      `Coba lihat contoh di kotak atas atau petunjuk: ${chal.babyHint}`
+    );
+  }
 };
 
 // ================= APP INITIALIZATION =================

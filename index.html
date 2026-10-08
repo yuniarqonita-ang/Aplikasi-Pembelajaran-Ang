@@ -77,6 +77,10 @@
         <span class="nav-icon">🗄️</span>
         <span class="nav-label">Tes SQL & Koding</span>
       </button>
+      <button class="nav-tab" data-tab="excel-trainer" onclick="switchTab('excel-trainer')" title="Studio Rumus Excel & Statistik Realtime (105 Tantangan)">
+        <span class="nav-icon">📊</span>
+        <span class="nav-label">Excel Trainer</span>
+      </button>
       <button class="nav-tab" data-tab="english-trainer" onclick="switchTab('english-trainer')" title="Studio English Speaking & Wawancara">
         <span class="nav-icon">🗣️</span>
         <span class="nav-label">English Studio</span>
@@ -166,6 +170,18 @@
       </div>
 
       <div id="sql-content-area"></div>
+    </section>
+
+    <!-- ================= TAB: EXCEL FORMULA TRAINER ================= -->
+    <section id="tab-excel-trainer" class="tab-content">
+      <div class="section-title-wrap">
+        <h2 class="section-title">📊 Studio Game Rumus Excel & Statistik Realtime (105 Tantangan)</h2>
+        <p class="section-subtitle">
+          Praktik rumus Excel langsung di tabel kerja nyata (Penjualan Kasir, HRD Karyawan, Inventaris Gudang, Nilai Mahasiswa, Forecast Bisnis, & Statistik Dosen) lengkap dengan Nalar Bayi Kodi!
+        </p>
+      </div>
+
+      <div id="excel-content-area"></div>
     </section>
 
     <!-- ================= TAB 3: STUDIO ENGLISH & SPEAKING ================= -->
@@ -293,6 +309,7 @@
   <script src="js/levels.js"></script>
   <script src="js/sql_trainer.js"></script>
   <script src="js/english_trainer.js"></script>
+  <script src="js/excel_trainer.js"></script>
   <script src="js/ai_tutor.js"></script>
   <script src="js/app.js"></script>
 </body>
