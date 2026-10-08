@@ -10,7 +10,7 @@ cd /d "%~dp0"
 
 echo [1/3] Menyiapkan berkas terbaru...
 git add .
-git commit -m "Update: Kodi IT Academy - SQL Table Trainer, English Speaking/Listening, & PWA Mobile App"
+git commit -m "Update: Kodi IT Academy - TOEFL iBT Building Skills Edition, SQL Trainer, English Studio, & Mobile PWA"
 
 echo.
 echo [2/3] Memastikan cabang utama adalah 'main'...

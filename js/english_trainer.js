@@ -2,7 +2,8 @@
    ENGLISH_TRAINER.JS - STUDIO BAHASA INGGRIS INTERAKTIF KODI
    1. Wawancara Kerja Speaking Profesional (Format Tanya-Jawab Berbobot)
    2. Game Huruf Hilang (Missing Letters Vocab & Grammar Puzzle)
-   3. Bank Soal Latihan TOEFL ITP & IELTS Marathon + Kisi-Kisi Lengkap
+   3. Bank Soal Marathon TOEFL ITP & IELTS (Lengkap Kisi-Kisi)
+   4. Modul Spesial TOEFL iBT Beasiswa S2 (Building Skills Book Edition)
    =================================================================== */
 
 // ===================================================================
@@ -171,7 +172,6 @@ const missingLetterPuzzles = [
     babyClue: "🍼 Pintu gerbang utama komplek rumah buat paket data internet keluar masuk!",
     meaning: "Gerbang jaringan (IP Router default)."
   },
-  // KOSAKATA BAND 9 DARI BUKU REFERENSI CAMBRIDGE & IELTS BAND 9 VOCAB SECRETS
   {
     id: "ml-13",
     word: "FLUCTUATE",
@@ -225,6 +225,69 @@ const missingLetterPuzzles = [
     category: "Riset & Analisis Data",
     babyClue: "🍼 Urutan langkah-langkah ilmiah yang teratur dan sistematis buat membongkar suatu masalah!",
     meaning: "Metodologi / kerangka kerja terstruktur."
+  },
+  {
+    id: "ml-19",
+    word: "HYPOTHESIS",
+    masked: "H _ P _ T H _ S _ S",
+    missingLetters: ["Y", "O", "E", "I"],
+    category: "TOEFL iBT Academic Science",
+    babyClue: "🍼 Dugaan atau tebakan pintar para ilmuwan sebelum mereka mulai uji eksperimen di laboratorium!",
+    meaning: "Hipotesis / dugaan sementara yang harus diuji kebenarannya."
+  },
+  {
+    id: "ml-20",
+    word: "SUBJUNCTIVE",
+    masked: "S _ B J _ N C T _ V E",
+    missingLetters: ["U", "U", "I"],
+    category: "TOEFL Grammar Mastery",
+    babyClue: "🍼 Rumus tata bahasa perintah halus (suggest/insist that someone DO something tanpa embel-embel s/ed)!",
+    meaning: "Modus pengandaian / keharusan dalam grammar tingkat tinggi."
+  },
+  {
+    id: "ml-21",
+    word: "INFERENCE",
+    masked: "I N F _ R _ N C _",
+    missingLetters: ["E", "E", "E"],
+    category: "TOEFL iBT Reading Skill",
+    babyClue: "🍼 Menjadi detektif pintar: membaca maksud yang tersirat di balik kalimat tanpa ditulis gamblang!",
+    meaning: "Inferensi / kesimpulan tersirat berdasarkan fakta yang ada."
+  },
+  {
+    id: "ml-22",
+    word: "RESILIENT",
+    masked: "R _ S _ L _ E N T",
+    missingLetters: ["E", "I", "I"],
+    category: "Academic Vocab iBT",
+    babyClue: "🍼 Karakter pantang tumbang: jatuh berkali-kali tapi langsung bangkit tegak lagi dengan kuat!",
+    meaning: "Tangguh / ulet / mampu pulih dengan cepat setelah menghadapi kesulitan."
+  },
+  {
+    id: "ml-23",
+    word: "COMPREHENSIVE",
+    masked: "C _ M P R _ H _ N S _ V E",
+    missingLetters: ["O", "E", "E", "I"],
+    category: "Academic Vocab iBT",
+    babyClue: "🍼 Lengkap selengkap-lengkapnya dari A sampai Z, ga ada detail yang tertinggal sedikitpun!",
+    meaning: "Komprehensif / menyeluruh dan mencakup semua aspek."
+  },
+  {
+    id: "ml-24",
+    word: "EMPIRICAL",
+    masked: "E M P _ R _ C _ L",
+    missingLetters: ["I", "I", "A"],
+    category: "TOEFL Research Vocab",
+    babyClue: "🍼 Berdasarkan bukti nyata yang bisa dilihat, diraba, dan dihitung pakai data fakta, bukan sekadar teori dongeng!",
+    meaning: "Empiris / didasarkan pada observasi atau eksperimen nyata."
+  },
+  {
+    id: "ml-25",
+    word: "PARADIGM",
+    masked: "P _ R _ D _ G M",
+    missingLetters: ["A", "A", "I"],
+    category: "S2 Academic Theory",
+    babyClue: "🍼 Kacamata atau pola pikir besar yang dipakai para ahli dalam memandang dunia ilmu pengetahuan!",
+    meaning: "Paradigma / kerangka berpikir yang mendasari suatu ilmu atau teori."
   }
 ];
 
@@ -416,5 +479,413 @@ const comprehensiveToeflBank = [
     options: ["Although", "Despite", "Even though", "Because"],
     correctIndex: 1,
     explanation: "🍼 Bahasa Bayi: 'the severe network outage' cuma frasa kata benda (tanpa kata kerja). Kata yang artinya 'meskipun' dan diikuti kata benda adalah 'Despite' (atau 'In spite of'). Kalau 'Although' harus ada kalimat lengkap!"
+  },
+
+  // --- KISI-KISI 9: Inversi Kalimat Negatif (Rarely/Hardly) ---
+  {
+    id: "tf-19",
+    topic: "Negative Inversion (Pembalikan Subjek & Aux)",
+    question: "Rarely _____ such complex database anomalies occur without an immediate alert.",
+    options: ["do", "does", "they do", "are"],
+    correctIndex: 0,
+    explanation: "🍼 Bahasa Bayi: Kalau kalimat diawali kata negatif seperti 'Rarely' (jarang sekali), polanya dibalik seperti kalimat tanya: Aux + Subjek + Verb! Karena 'anomalies' jamak, kata bantunya adalah 'do'!"
+  },
+
+  // --- KISI-KISI 10: Subjunctive Mood (Perintah Halus Ilmiah) ---
+  {
+    id: "tf-20",
+    topic: "Subjunctive Mood (Kata Kerja Dasar)",
+    question: "The system security auditor recommended that every administrator _____ a two-factor authentication key.",
+    options: ["uses", "use", "used", "is using"],
+    correctIndex: 1,
+    explanation: "🍼 Bahasa Bayi: Rumus Subjunctive! Kata-kata seperti 'recommend that', 'insist that', 'suggest that' mewajibkan kata kerja di belakangnya polos tanpa 's' atau 'ed' (bare infinitive). Jadi wajib 'use', bukan 'uses'!"
+  },
+
+  // --- KISI-KISI 11: Reduced Relative Clause (Penyusutan Klausa) ---
+  {
+    id: "tf-21",
+    topic: "Reduced Relative Clause (Bentuk Pasif)",
+    question: "The software patch _____ by the developer yesterday resolved the security vulnerability.",
+    options: ["released", "releasing", "was released", "releases"],
+    correctIndex: 0,
+    explanation: "🍼 Bahasa Bayi: Kalimat ini aslinya 'The patch WHICH WAS RELEASED...'. Saat 'which was' disederhanakan, yang tersisa tinggal kata kerja ketiga (Verb 3 pasif) yaitu 'released' (yang dirilis)!"
+  },
+
+  // --- KISI-KISI 12: Causative Verbs (Menyuruh Orang Lain Mengerjakan) ---
+  {
+    id: "tf-22",
+    topic: "Causative Verbs (Have / Make / Let)",
+    question: "The department head will have the senior analyst _____ the database integrity log.",
+    options: ["check", "checked", "to check", "checking"],
+    correctIndex: 0,
+    explanation: "🍼 Bahasa Bayi: Rumus Causative 'Have someone DO something'! Kalau kita menyuruh orang (the analyst) melakukan sesuatu, kata kerjanya wajib polos (Verb 1) tanpa 'to' yaitu 'check'!"
+  },
+
+  // --- KISI-KISI 13: Countable vs Uncountable Nouns ---
+  {
+    id: "tf-23",
+    topic: "Quantifiers: Much vs Many",
+    question: "The research survey provides _____ valuable information regarding network vulnerabilities.",
+    options: ["many", "much", "several", "a few"],
+    correctIndex: 1,
+    explanation: "🍼 Bahasa Bayi: 'Information' adalah benda yang ga bisa dihitung bijiannya (uncountable). Pasangan untuk benda uncountable adalah 'much', sedangkan 'many' cuma untuk benda yang bisa dihitung jamak!"
+  },
+
+  // --- KISI-KISI 14: Gerund vs Infinitive ---
+  {
+    id: "tf-24",
+    topic: "Verbs Followed by Gerund",
+    question: "The software team avoided _____ unauthorized third-party libraries in the production build.",
+    options: ["to include", "include", "including", "included"],
+    correctIndex: 2,
+    explanation: "🍼 Bahasa Bayi: Kata kerja 'avoid' (menghindari) wajib selalu ditemani oleh gerund berakhiran '-ing'! Jadi pasangannya adalah 'avoided including'!"
+  },
+
+  // --- KISI-KISI 15: Conjunction: Not Only ... But Also ---
+  {
+    id: "tf-25",
+    topic: "Correlative Conjunctions",
+    question: "The cloud infrastructure is not only cost-effective _____ remarkably reliable under heavy web traffic.",
+    options: ["and also", "but also", "or also", "so also"],
+    correctIndex: 1,
+    explanation: "🍼 Bahasa Bayi: Pasangan sehidup semati dalam grammar! Kalau ada 'not only' (tidak hanya), pasangannya PASTI 'but also' (tetapi juga)!"
+  }
+];
+
+// ===================================================================
+// 4. MODUL SPESIAL TOEFL iBT BEASISWA S2 (BUILDING SKILLS BOOK EDITION)
+// Sesuai Buku: Building Skills for the TOEFL iBT [2nd Edition] (Compass Publishing)
+// Melatih 6 Kemampuan Inti:
+// 1. Vocabulary in Context (Kosakata Akademik Beasiswa)
+// 2. Sentence Simplification (Menyederhanakan Kalimat Panjang Mumet)
+// 3. Factual Information & Negative Fact (Detektif Fakta Teks Ilmiah)
+// 4. Inference Questions (Membaca Makna Tersirat Ilmiah)
+// 5. Text Insertion (Jigsaw Puzzle Kalimat Akademik [■])
+// 6. Speaking iBT Simulator (15s Prep, 45s Speech + Mic Audio Feedback)
+// ===================================================================
+const toeflIbtBuildingSkills = [
+  // -------------------------------------------------------------
+  // SKILL 1: VOCABULARY IN CONTEXT (Kosakata Akademik Beasiswa S2)
+  // -------------------------------------------------------------
+  {
+    id: "ibt-voc-1",
+    type: "reading",
+    skillCategory: "Vocabulary in Context",
+    bookChapter: "Chapter 3: Vocabulary & Reference Skills",
+    academicTopic: "Computer Science: Algorithmic Architecture",
+    passageSnippet: "Modern distributed database management systems utilize index mechanisms that are ubiquitous across enterprise data centers. By establishing structured pointers to raw data nodes, these search engines diminish query latency significantly even during peak transaction intervals.",
+    highlightWord: "ubiquitous",
+    questionPrompt: "The word 'ubiquitous' in the passage is closest in meaning to:",
+    targetSentenceForAudio: "Modern distributed database management systems utilize index mechanisms that are ubiquitous across enterprise data centers.",
+    options: [
+      "extremely rare and costly",
+      "present everywhere simultaneously",
+      "unstable and experimental",
+      "temporarily configured"
+    ],
+    correctIndex: 1,
+    babyExplanation: "🍼 Bahasa Bayi Kodi: Kata 'Ubiquitous' artinya 'ada di mana-mana / merajalela'! Bayangkan smartphone atau colokan listrik di kantor modern—ada di setiap meja dan ga bisa dihindari. Pilihan yang tepat adalah 'present everywhere simultaneously' (hadir di mana-mana)!"
+  },
+  {
+    id: "ibt-voc-2",
+    type: "reading",
+    skillCategory: "Vocabulary in Context",
+    bookChapter: "Chapter 3: Vocabulary & Reference Skills",
+    academicTopic: "Environmental Science: Alpine Glacier Retreat",
+    passageSnippet: "Due to prolonged atmospheric warming, alpine glaciers have begun to diminish at accelerated rates over the past four decades. This reduction directly alters downstream freshwater supplies, threatening agricultural irrigation and hydroelectric power reservoirs.",
+    highlightWord: "diminish",
+    questionPrompt: "The word 'diminish' in the passage is closest in meaning to:",
+    targetSentenceForAudio: "Due to prolonged atmospheric warming, alpine glaciers have begun to diminish at accelerated rates over the past four decades.",
+    options: [
+      "expand rapidly",
+      "freeze solid",
+      "decrease in size or amount",
+      "remain unchanged"
+    ],
+    correctIndex: 2,
+    babyExplanation: "🍼 Bahasa Bayi Kodi: Kata 'Diminish' artinya 'menyusut / berkurang / mengecil'! Bayangkan es batu di gelas yang kena panas matahari, makin lama makin ciut dan mengecil. Jadi sinonim akuratnya adalah 'decrease in size or amount'!"
+  },
+  {
+    id: "ibt-voc-3",
+    type: "reading",
+    skillCategory: "Vocabulary in Context",
+    bookChapter: "Chapter 3: Vocabulary & Reference Skills",
+    academicTopic: "Evolutionary Biology: Adaptive Camouflage",
+    passageSnippet: "The natural development of adaptive cryptic coloration played a pivotal role in the survival of temperate forest insects. Without the capacity to blend seamlessly into lichen-covered tree bark, juvenile insects were easily located by visual predators.",
+    highlightWord: "pivotal",
+    questionPrompt: "The word 'pivotal' in the passage is closest in meaning to:",
+    targetSentenceForAudio: "The natural development of adaptive cryptic coloration played a pivotal role in the survival of temperate forest insects.",
+    options: [
+      "minor and negligible",
+      "crucially important",
+      "unfortunate",
+      "fictional"
+    ],
+    correctIndex: 1,
+    babyExplanation: "🍼 Bahasa Bayi Kodi: Kata 'Pivotal' berasal dari poros (pivot) roda—kalau porosnya patah, rodanya copot! Jadi 'pivotal' artinya 'sangat penting / menjadi kunci penentu'! Sinonim akademiknya adalah 'crucially important'!"
+  },
+  {
+    id: "ibt-voc-4",
+    type: "reading",
+    skillCategory: "Vocabulary in Context",
+    bookChapter: "Chapter 3: Vocabulary & Reference Skills",
+    academicTopic: "Renewable Energy: Photovoltaic Cells",
+    passageSnippet: "Engineers have developed novel silicon crystal arrays to harness photon energy with minimal thermal loss. By converting ambient sunlight directly into direct current electricity, these panels offer an eco-friendly alternative to coal generation.",
+    highlightWord: "harness",
+    questionPrompt: "The word 'harness' in the passage is closest in meaning to:",
+    targetSentenceForAudio: "Engineers have developed novel silicon crystal arrays to harness photon energy with minimal thermal loss.",
+    options: [
+      "capture and utilize",
+      "waste and discard",
+      "prevent and block",
+      "measure roughly"
+    ],
+    correctIndex: 0,
+    babyExplanation: "🍼 Bahasa Bayi Kodi: Kata 'Harness' aslinya adalah tali pelana kuda buat mengendalikan tenaga kuda supaya bisa narik kereta. Di dunia sains/teknik, 'to harness energy' artinya 'menangkap energi dan memanfaatkannya untuk kerjaan kita' ('capture and utilize')!"
+  },
+  {
+    id: "ibt-voc-5",
+    type: "reading",
+    skillCategory: "Vocabulary in Context",
+    bookChapter: "Chapter 3: Vocabulary & Reference Skills",
+    academicTopic: "Archaeology: Ceramic Preservation",
+    passageSnippet: "Unlike organic wood artifacts that decay rapidly in humid soil, kiln-fired pottery demonstrates resilient structural durability, preserving intricate trade inscriptions over several millennia.",
+    highlightWord: "resilient",
+    questionPrompt: "The word 'resilient' in the passage is closest in meaning to:",
+    targetSentenceForAudio: "Unlike organic wood artifacts that decay rapidly in humid soil, kiln-fired pottery demonstrates resilient structural durability.",
+    options: [
+      "delicate and brittle",
+      "tough and damage-resistant",
+      "unusually colorful",
+      "chemically poisonous"
+    ],
+    correctIndex: 1,
+    babyExplanation: "🍼 Bahasa Bayi Kodi: Kata 'Resilient' artinya 'tangguh / kuat tahan banting'! Tembikar yang dibakar di oven kiln ga gampang rapuh kena tanah basah dan tahan ribuan tahun. Jadi artinya 'tough and damage-resistant'!"
+  },
+  {
+    id: "ibt-voc-6",
+    type: "reading",
+    skillCategory: "Vocabulary in Context",
+    bookChapter: "Chapter 3: Vocabulary & Reference Skills",
+    academicTopic: "Marine Ecology: Coral Bleaching",
+    passageSnippet: "Biologists have proposed several plausible hypotheses regarding thermal stress in coral reefs, pointing to elevated sea surface temperatures as the primary driver of zooxanthellae expulsion.",
+    highlightWord: "plausible",
+    questionPrompt: "The word 'plausible' in the passage is closest in meaning to:",
+    targetSentenceForAudio: "Biologists have proposed several plausible hypotheses regarding thermal stress in coral reefs.",
+    options: [
+      "believable and reasonable",
+      "ridiculous and impossible",
+      "dangerous to human health",
+      "untested and abandoned"
+    ],
+    correctIndex: 0,
+    babyExplanation: "🍼 Bahasa Bayi Kodi: Kata 'Plausible' artinya 'masuk akal / sangat masuk nalar berdasarkan bukti ilmiah'! Lawan katanya adalah 'implausible' (ga masuk akal). Jadi maknanya adalah 'believable and reasonable'!"
+  },
+
+  // -------------------------------------------------------------
+  // SKILL 2: SENTENCE SIMPLIFICATION (Menjinakkan Monster Kalimat)
+  // -------------------------------------------------------------
+  {
+    id: "ibt-simp-1",
+    type: "reading",
+    skillCategory: "Sentence Simplification",
+    bookChapter: "Chapter 4: Sentence Simplification & Text Insertion",
+    academicTopic: "Artificial Intelligence: Deep Learning Opacity",
+    passageSnippet: "Although neural network architectures have demonstrated unprecedented accuracy in image classification, their intrinsic opacity—frequently described by software engineers as the black box dilemma—prevents technical auditors from pinpointing the exact algorithmic rationale behind anomalous predictive outputs.",
+    highlightSentence: "Although neural network architectures have demonstrated unprecedented accuracy in image classification, their intrinsic opacity—frequently described by software engineers as the black box dilemma—prevents technical auditors from pinpointing the exact algorithmic rationale behind anomalous predictive outputs.",
+    questionPrompt: "Which of the sentences below best expresses the essential information in the highlighted sentence? (Incorrect choices change the meaning in important ways or leave out essential information).",
+    targetSentenceForAudio: "Although neural networks demonstrate high accuracy, their hidden internal processes prevent auditors from explaining strange errors.",
+    options: [
+      "Neural networks are highly accurate at classification, yet their hidden internal processes make it impossible for auditors to explain strange errors.",
+      "Because image classification is prone to severe errors, software engineers refuse to deploy neural network architectures in enterprise systems.",
+      "Technical auditors cannot understand anomalous errors because neural network architectures lack mathematical accuracy.",
+      "The black box dilemma proves that artificial intelligence can never achieve high accuracy in image recognition."
+    ],
+    correctIndex: 0,
+    babyExplanation: "🍼 Trik Menjinakkan Monster Kalimat Panjang: Bedah 3 tiang pondasi kalimat aslinya: (1) Mesin AI sangat akurat (unprecedented accuracy), TAPI (2) Isi dalamnya gelap ga kelihatan (opacity / black box), JADI (3) Auditor pusing ga bisa tahu alasan di balik error aneh (cannot pinpoint rationale behind errors). Pilihan A merangkum ketiga tiang ini dengan tepat tanpa membuang info penting atau mengarang cerita baru!"
+  },
+  {
+    id: "ibt-simp-2",
+    type: "reading",
+    skillCategory: "Sentence Simplification",
+    bookChapter: "Chapter 4: Sentence Simplification & Text Insertion",
+    academicTopic: "Economic History: Industrial Automation",
+    passageSnippet: "Even though the installation of mechanized steam looms initially prompted widespread labor unrest among artisan weavers who feared permanent displacement, it ultimately catalyzed unprecedented productivity gains that reduced textile costs for general consumers across the entire continent.",
+    highlightSentence: "Even though the installation of mechanized steam looms initially prompted widespread labor unrest among artisan weavers who feared permanent displacement, it ultimately catalyzed unprecedented productivity gains that reduced textile costs for general consumers across the entire continent.",
+    questionPrompt: "Which of the sentences below best expresses the essential information in the highlighted sentence?",
+    targetSentenceForAudio: "Even though steam looms initially caused labor unrest, they ultimately increased productivity and lowered textile costs for consumers.",
+    options: [
+      "Artisan weavers destroyed steam looms because textile prices across the continent had risen beyond what consumers could afford.",
+      "While steam looms initially triggered worker protests, they ultimately boosted productivity and made clothing much cheaper for the public.",
+      "Mechanized steam looms failed to increase productivity because artisan weavers permanently abandoned factory operations.",
+      "The high cost of steam equipment caused labor unrest that prevented factories from lowering consumer textile prices."
+    ],
+    correctIndex: 1,
+    babyExplanation: "🍼 Trik Menjinakkan Monster Kalimat Panjang: Cek hubungan kontras: 'Even though X (awalnya bikin demo buruh karena takut dipecat), it ultimately Y (pada akhirnya bikin produksi meledak dan harga baju jadi murah untuk rakyat)'. Opsi B adalah ringkasan paling jujur dan setia dengan makna aslinya!"
+  },
+  {
+    id: "ibt-simp-3",
+    type: "reading",
+    skillCategory: "Sentence Simplification",
+    bookChapter: "Chapter 4: Sentence Simplification & Text Insertion",
+    academicTopic: "Urban Planning: Urban Heat Islands",
+    passageSnippet: "Because metropolitan centers replace vegetated soil with dark asphalt pavement and dense concrete structures that continuously absorb solar radiation during daylight hours, nighttime urban ambient temperatures remain significantly elevated compared to surrounding rural landscapes.",
+    highlightSentence: "Because metropolitan centers replace vegetated soil with dark asphalt pavement and dense concrete structures that continuously absorb solar radiation during daylight hours, nighttime urban ambient temperatures remain significantly elevated compared to surrounding rural landscapes.",
+    questionPrompt: "Which of the sentences below best expresses the essential information in the highlighted sentence?",
+    targetSentenceForAudio: "Because cities replace vegetation with materials that absorb heat, nighttime temperatures in cities stay warmer than in rural areas.",
+    options: [
+      "Rural areas are hotter at night than cities because agricultural crops absorb solar radiation faster than dark asphalt pavement.",
+      "Cities stay warmer at night than rural areas because their dark pavements and concrete buildings soak up heat throughout the day.",
+      "Urban planners are removing all asphalt pavement in metropolitan centers to prevent solar radiation from reaching concrete buildings.",
+      "Nighttime temperatures in cities drop below rural levels once daylight solar radiation dissipates from concrete structures."
+    ],
+    correctIndex: 1,
+    babyExplanation: "🍼 Trik Menjinakkan Monster Kalimat Panjang: Cari SEBAB & AKIBAT. Sebab: Aspal & beton kota nyerap panas siang bolong. Akibat: Malam hari di kota tetep terasa gerah dibanding desa (rural). Opsi B menjelaskan hubungan sebab-akibat ini dengan bahasa yang bersih dan padat!"
+  },
+
+  // -------------------------------------------------------------
+  // SKILL 3: FACTUAL INFORMATION & NEGATIVE FACT (Detektif Fakta)
+  // -------------------------------------------------------------
+  {
+    id: "ibt-fact-1",
+    type: "reading",
+    skillCategory: "Fact & Negative Fact",
+    bookChapter: "Chapter 1: Factual Information & Negative Fact Skills",
+    academicTopic: "Geology: Hydrothermal Energy Reservoirs",
+    passageSnippet: "Geothermal power plants extract pressurized steam and hot brine from subterranean reservoirs to rotate electricity turbines. Unlike fossil fuel facilities, these power stations generate negligible greenhouse emissions and occupy a very small surface footprint. However, plant construction is strictly constrained to tectonic boundary regions, and continuous water withdrawal without adequate reinjection can cause underground reservoir pressure collapse.",
+    questionPrompt: "According to the passage, which of the following is NOT mentioned as a characteristic or benefit of geothermal power?",
+    targetSentenceForAudio: "Geothermal power plants extract pressurized steam from subterranean reservoirs to rotate electricity turbines.",
+    options: [
+      "It emits minimal amounts of harmful greenhouse gases.",
+      "It requires relatively little surface ground area.",
+      "It can be constructed anywhere in the world without geographic limitations.",
+      "It relies on steam and hot brine from underground reservoirs."
+    ],
+    correctIndex: 2,
+    babyExplanation: "🍼 Trik Detektif Negative Fact (Cari yang PALSU / TIDAK DISEBUTKAN): Teks menyatakan dengan tegas: 'plant construction is strictly constrained to tectonic boundary regions' (pembangunannya terbatas hanya di jalur lempeng tektonik tertentu, ga bisa sembarangan tempat!). Jadi opsi C yang bilang 'bisa dibangun di mana saja di dunia tanpa batasan' adalah BOHONG dan itulah jawaban yang benar untuk tipe soal NOT!"
+  },
+  {
+    id: "ibt-fact-2",
+    type: "reading",
+    skillCategory: "Fact & Negative Fact",
+    bookChapter: "Chapter 1: Factual Information & Negative Fact Skills",
+    academicTopic: "Zoology: Honeybee Communication (The Waggle Dance)",
+    passageSnippet: "When a foraging honeybee locates a nutrient-rich flower patch, it returns to the hive and performs a synchronized waggle dance on the vertical honeycomb. The angle of the bee's straight run relative to gravity indicates the exact solar compass direction to the food, while the duration of the waggle vibration communicates the flight distance required.",
+    questionPrompt: "According to the passage, how does the honeybee indicate the flight distance to the food source?",
+    targetSentenceForAudio: "The duration of the waggle vibration communicates the flight distance required.",
+    options: [
+      "By the angle of its run relative to the sun",
+      "By the duration of its waggle vibration",
+      "By bringing back small samples of flower nectar",
+      "By changing the color of the vertical honeycomb"
+    ],
+    correctIndex: 1,
+    babyExplanation: "🍼 Trik Detektif Fakta Teks: Pindai kata kunci 'flight distance' di teks! Teks langsung berbunyi: 'the duration of the waggle vibration communicates the flight distance required' (durasi getaran goyangan mengomunikasikan jarak terbang). Jadi jawabannya adalah opsi B!"
+  },
+
+  // -------------------------------------------------------------
+  // SKILL 4: INFERENCE QUESTIONS (Membaca Makna Tersirat Ilmiah)
+  // -------------------------------------------------------------
+  {
+    id: "ibt-inf-1",
+    type: "reading",
+    skillCategory: "Inference",
+    bookChapter: "Chapter 2: Inference & Rhetorical Purpose Skills",
+    academicTopic: "Cognitive Psychology: Working Memory Limits",
+    passageSnippet: "In controlled laboratory trials, subjects instructed to retain sequences of numeric digits while concurrently solving logic puzzles displayed steep decreases in memory accuracy. In contrast, when the secondary background task was limited to listening to ambient classical music, digit retention was preserved without significant degradation.",
+    questionPrompt: "Which of the following can be inferred from the passage about human working memory?",
+    targetSentenceForAudio: "Subjects instructed to retain sequences of digits while concurrently solving logic puzzles displayed steep decreases in memory accuracy.",
+    options: [
+      "Activities that compete for identical conscious cognitive resources impair performance more severely than passive sensory stimuli.",
+      "Listening to classical music automatically doubles a student's logic puzzle-solving IQ.",
+      "Human memory can store an infinite sequence of numbers if no background music is played.",
+      "Logic puzzles are physically impossible to solve in quiet environments."
+    ],
+    correctIndex: 0,
+    babyExplanation: "🍼 Trik Detektif Makna Tersirat (Inference): Perhatikan eksperimennya: Pas disuruh mikir logika sambil ngingat angka (dua-duanya butuh mikir sadar), otak langsung kelelahan dan drop. Tapi pas cuma denger musik pasif, memorinya aman. Kesimpulan tersirat yang logis: 'Dua tugas yang sama-sama rebutan jatah mikir otak bakal saling mengganggu, beda dengan suara musik pasif yang ga ngerebut kapasitas otak'!"
+  },
+  {
+    id: "ibt-inf-2",
+    type: "reading",
+    skillCategory: "Inference",
+    bookChapter: "Chapter 2: Inference & Rhetorical Purpose Skills",
+    academicTopic: "Space Exploration: Subsurface Water Ice on Mars",
+    passageSnippet: "While atmospheric pressure on modern Mars is insufficient to maintain liquid water on the planetary surface without rapid sublimation, radar sounders on orbiting spacecraft have detected extensive dielectric reflections beneath the southern polar ice sheet, consistent with buried sheets of ancient glacial ice.",
+    questionPrompt: "What can be inferred from the passage regarding surface water on Mars?",
+    targetSentenceForAudio: "While atmospheric pressure on modern Mars is insufficient to maintain liquid water on the surface, radar sounders detected subsurface reflections.",
+    options: [
+      "Mars' current atmosphere is too thin to allow liquid water to remain stable on its surface.",
+      "Liquid lakes exist freely in open craters across all equatorial zones of Mars today.",
+      "Orbiting spacecraft cannot operate scientific radar equipment in cold planetary climates.",
+      "Subsurface ice sheets have evaporated completely into Mars' outer atmosphere."
+    ],
+    correctIndex: 0,
+    babyExplanation: "🍼 Trik Detektif Makna Tersirat (Inference): Teks bilang: 'atmospheric pressure is insufficient to maintain liquid water without rapid sublimation' (tekanan udaranya ga cukup buat nahan air cair, jadi langsung menguap lenyap). Tersirat artinya: 'Atmosfer Mars sekarang terlalu tipis sehingga air cair ga bisa bertahan di permukaannya'! Opsi A tepat 100%!"
+  },
+
+  // -------------------------------------------------------------
+  // SKILL 5: TEXT INSERTION (Jigsaw Puzzle Kalimat Akademik [■])
+  // -------------------------------------------------------------
+  {
+    id: "ibt-ins-1",
+    type: "reading",
+    skillCategory: "Insert Text",
+    bookChapter: "Chapter 4: Sentence Simplification & Text Insertion",
+    academicTopic: "Solar Astrophysics: Coronal Mass Ejections",
+    passageSnippet: "Solar flares are catastrophic eruptions of magnetic radiation occurring in the Sun's coronal atmosphere. [A] These explosions release energetic particles equivalent to billions of megatons of conventional explosives. [B] Magnetic reconnection events within twisted coronal loops are considered the fundamental cause. [C] When these cloud particles subsequently collide with the Earth's geomagnetic shield, they can trigger widespread power grid failures and satellite communication blackouts. [D]",
+    insertedSentence: "Traveling outward across interplanetary space at millions of kilometers per hour, this radiation wave reaches Earth's orbital neighborhood in a matter of hours.",
+    questionPrompt: "Look at the four squares [A], [B], [C], and [D] in the passage. Where would the inserted sentence best fit?",
+    targetSentenceForAudio: "Traveling outward across interplanetary space, this radiation wave reaches Earth's orbital neighborhood in a matter of hours.",
+    options: [
+      "[A] Setelah kalimat pertama tentang pengertian solar flare",
+      "[B] Setelah kalimat kedua tentang besarnya energi ledakan",
+      "[C] Setelah kalimat ketiga tentang penyebab magnetic reconnection",
+      "[D] Setelah kalimat keempat di akhir teks tentang badai geomagnetik"
+    ],
+    correctIndex: 2,
+    babyExplanation: "🍼 Trik Jigsaw Puzzle Kalimat (Cari Sambungan Rel Kereta): Kalimat baru menyebutkan: 'Traveling outward across space... this radiation wave reaches Earth...' (Meluncur melintasi ruang angkasa, gelombang radiasi INI sampai di bumi). Kalimat berikutnya di teks adalah [C] -> 'When these cloud particles subsequently collide with the Earth's geomagnetic shield...' (Ketika partikel awan ini LALU bertabrakan dengan perisai bumi). Pas banget! Partikelnya meluncur dulu melewati luar angkasa (kotak C), baru kemudian menabrak perisai bumi!"
+  },
+
+  // -------------------------------------------------------------
+  // SKILL 6: SPEAKING iBT SIMULATOR (15s Prep, 45s Speech + Mic Audio)
+  // -------------------------------------------------------------
+  {
+    id: "ibt-spk-1",
+    type: "speaking",
+    skillCategory: "Speaking iBT Simulator",
+    bookChapter: "TOEFL iBT Speaking Task 1 (Independent: University Policy & Career)",
+    promptQuestion: "Some graduate university programs believe that all master's degree students should be required to complete an internship in a real industry or company, while others believe students should focus entirely on campus research and thesis coursework. Which approach do you support, and why? Use specific reasons and examples.",
+    prepSeconds: 15,
+    speechSeconds: 45,
+    babyStrategy: "🍼 Formula Sakti 4 Langkah Jawaban Speaking iBT (Skor 26-30):\n1. Detik 0-5: Nyatakan posisi tegas ('In my view, I strongly believe that...').\n2. Detik 6-25: Beri alasan utama (menghubungkan teori buku dengan praktek troubleshooting nyata).\n3. Detik 26-40: Ceritakan contoh konkret pengalaman proyek/lab pribadimu.\n4. Detik 41-45: Tutup dengan kalimat kesimpulan ringkas ('Therefore, practical internships are vital.').",
+    modelAnswer: "In my opinion, I strongly believe that master's students should be required to complete an industry internship. Firstly, practical experience allows students to apply academic theories to real-world software and engineering challenges. For example, during my project work, troubleshooting live database issues taught me far more about problem solving than textbooks alone. Additionally, working in an industry environment builds communication skills and teamwork. Therefore, internships provide indispensable preparation for future global careers.",
+    modelTranslation: "Menurut pendapat saya, saya sangat meyakini bahwa mahasiswa program magister harus diwajibkan menyelesaikan magang industri. Pertama, pengalaman praktis memungkinkan mahasiswa menerapkan teori akademik ke tantangan perangkat lunak nyata...",
+    audioSnippet: "In my opinion, I strongly believe that master's students should be required to complete an industry internship."
+  },
+  {
+    id: "ibt-spk-2",
+    type: "speaking",
+    skillCategory: "Speaking iBT Simulator",
+    bookChapter: "TOEFL iBT Speaking Task 2 (Campus Decision & Scholarship Motivation)",
+    promptQuestion: "Do you agree or disagree with the proposal that artificial intelligence software should grade university student coding assignments instead of human professors? Explain your viewpoint with specific reasons.",
+    prepSeconds: 15,
+    speechSeconds: 45,
+    babyStrategy: "🍼 Formula Sakti Menjawab Speaking iBT:\n1. Ambil posisi jelas: 'I disagree with the proposal because...'\n2. Alasan 1: AI hanya memeriksa sintaks kode, tetapi tidak memahami alur berpikir kreatif atau niat mahasiswa.\n3. Alasan 2: Umpan balik manusiawi dari dosen membangun motivasi dan etika profesional.\n4. Kesimpulan: 'Human mentoring cannot be replaced by automated scripts.'",
+    modelAnswer: "I disagree with the idea of having artificial intelligence grade student coding assignments entirely. Although automated systems can quickly detect syntax errors, they lack the ability to evaluate a student's creative problem-solving logic and effort. Furthermore, human professors provide personalized feedback and encouragement, which inspires students to learn from their mistakes. In my own educational journey, constructive guidance from mentors was essential for my growth. Thus, human evaluation remains crucial in academic instruction.",
+    modelTranslation: "Saya tidak setuju dengan ide bahwa kecerdasan buatan harus menilai seluruh tugas koding mahasiswa. Meskipun sistem otomatis dapat dengan cepat mendeteksi error sintaks, sistem tersebut tidak memiliki kemampuan menilai logika kreatif...",
+    audioSnippet: "I disagree with the idea of having artificial intelligence grade student coding assignments entirely."
+  },
+  {
+    id: "ibt-spk-3",
+    type: "speaking",
+    skillCategory: "Speaking iBT Simulator",
+    bookChapter: "TOEFL iBT Speaking Task 3 (Academic Reflection & Problem Solving)",
+    promptQuestion: "Describe a difficult technological challenge or complex project problem you encountered, and explain what steps you took to successfully overcome it.",
+    prepSeconds: 15,
+    speechSeconds: 45,
+    babyStrategy: "🍼 Cerita STAR (Situation, Task, Action, Result) Bahasa Bayi:\n1. Masalah: Sistem jaringan atau website mengalami error tidak terduga.\n2. Tindakan: Lakukan analisis log data langkah demi langkah, jangan panik, dan koordinasi dengan tim.\n3. Hasil: Masalah terselesaikan dan performa sistem meningkat 100%!",
+    modelAnswer: "A memorable technical challenge I faced was diagnosing an unexpected database slowdown during peak hours. To resolve it, I first examined the query logs systematically to locate bottlenecks. Then, I applied indexing to large tables and optimized repetitive data queries. As a result, query latency decreased significantly and the web portal returned to normal operation. This experience taught me that systematic analytical thinking and staying calm under pressure are key to solving complex technical issues.",
+    modelTranslation: "Tantangan teknis berkesan yang saya hadapi adalah mendiagnosis perlambatan database yang tidak terduga pada jam sibuk. Untuk menyelesaikannya, pertama saya memeriksa log kueri secara sistematis...",
+    audioSnippet: "A memorable technical challenge I faced was diagnosing an unexpected database slowdown during peak hours."
   }
 ];

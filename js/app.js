@@ -17,6 +17,10 @@ const appState = {
   currentOutputIndex: 0,
   currentEnglishDrillIndex: 0,
   currentToeflIndex: 0,
+  currentIbtIndex: 0,
+  currentIbtFilter: "all",
+  ibtTimerInterval: null,
+  ibtPrepInterval: null,
   deferredInstallPrompt: null
 };
 
@@ -129,8 +133,8 @@ function switchTab(tabName) {
   } else if (tabName === 'english-trainer') {
     renderEnglishTrainer();
     setKodiSpeech(
-      "Welcome to English Studio! Di sini kita latihan Speaking, Listening, dan Structure TOEFL/IELTS biar lancar tes wawancara!",
-      "Tekan 🔊 untuk mendengar suara asli, lalu tekan 🎙️ untuk berbicara dan dapatkan skor pelafalanmu!"
+      "Welcome to English Studio! Di sini kita latihan Speaking, Listening, TOEFL ITP/IELTS, dan Bedah Buku TOEFL iBT Beasiswa S2 Luar Negeri!",
+      "Tekan 🔊 untuk mendengar suara asli, coba timer speaking, lalu tekan 🎙️ untuk berbicara dan dapatkan skor pelafalanmu!"
     );
   } else if (tabName === 'dictionary') {
     renderDictionary();
@@ -927,16 +931,19 @@ function renderEnglishTrainer() {
   const drill = cvInterviewSpeakingDrills[appState.currentEnglishDrillIndex] || cvInterviewSpeakingDrills[0];
 
   container.innerHTML = `
-    <!-- Switcher 3 Mode English Studio -->
+    <!-- Switcher 4 Mode English Studio -->
     <div style="display: flex; gap: 10px; margin-bottom: 20px; flex-wrap: wrap;">
-      <button class="choice-card-btn active-eng-mode" id="btn-mode-spk" style="flex: 1; min-width: 220px; justify-content: center; font-weight: 800; border-color: var(--accent-cyan);" onclick="switchEnglishSubMode('speaking')">
+      <button class="choice-card-btn active-eng-mode" id="btn-mode-spk" style="flex: 1; min-width: 200px; justify-content: center; font-weight: 800; border-color: var(--accent-cyan);" onclick="switchEnglishSubMode('speaking')">
         🎙️ Wawancara Kerja Profesional
       </button>
-      <button class="choice-card-btn" id="btn-mode-puzzle" style="flex: 1; min-width: 220px; justify-content: center; font-weight: 800;" onclick="switchEnglishSubMode('puzzle')">
+      <button class="choice-card-btn" id="btn-mode-puzzle" style="flex: 1; min-width: 200px; justify-content: center; font-weight: 800;" onclick="switchEnglishSubMode('puzzle')">
         🔤 Game Huruf Hilang & Kosakata
       </button>
-      <button class="choice-card-btn" id="btn-mode-toefl" style="flex: 1; min-width: 220px; justify-content: center; font-weight: 800;" onclick="switchEnglishSubMode('toefl')">
+      <button class="choice-card-btn" id="btn-mode-toefl" style="flex: 1; min-width: 200px; justify-content: center; font-weight: 800;" onclick="switchEnglishSubMode('toefl')">
         📖 Marathon TOEFL ITP & IELTS
+      </button>
+      <button class="choice-card-btn" id="btn-mode-ibt" style="flex: 1; min-width: 200px; justify-content: center; font-weight: 800; background: linear-gradient(135deg, rgba(56, 189, 248, 0.15), rgba(168, 85, 247, 0.2));" onclick="switchEnglishSubMode('ibt')">
+        🎓 Master TOEFL iBT Beasiswa S2
       </button>
     </div>
 
@@ -1012,6 +1019,9 @@ function renderEnglishTrainer() {
 
     <!-- SUBMODE 3: MARATHON TOEFL ITP & IELTS -->
     <div id="submode-toefl" style="display: none;"></div>
+
+    <!-- SUBMODE 4: MASTER TOEFL iBT BEASISWA S2 -->
+    <div id="submode-ibt" style="display: none;"></div>
   `;
 
   window.setEnglishDrillIndex = function(idx) {
@@ -1095,29 +1105,41 @@ function renderEnglishTrainer() {
     const spkSec = document.getElementById("submode-speaking");
     const puzSec = document.getElementById("submode-puzzle");
     const toeflSec = document.getElementById("submode-toefl");
+    const ibtSec = document.getElementById("submode-ibt");
     const bS = document.getElementById("btn-mode-spk");
     const bP = document.getElementById("btn-mode-puzzle");
     const bT = document.getElementById("btn-mode-toefl");
+    const bI = document.getElementById("btn-mode-ibt");
 
-    [bS, bP, bT].forEach(b => { if (b) b.style.borderColor = "rgba(255,255,255,0.1)"; });
+    [bS, bP, bT, bI].forEach(b => { if (b) b.style.borderColor = "rgba(255,255,255,0.1)"; });
 
     if (mode === 'speaking') {
       spkSec.style.display = "block";
       puzSec.style.display = "none";
       toeflSec.style.display = "none";
+      if (ibtSec) ibtSec.style.display = "none";
       bS.style.borderColor = "var(--accent-cyan)";
     } else if (mode === 'puzzle') {
       spkSec.style.display = "none";
       puzSec.style.display = "block";
       toeflSec.style.display = "none";
+      if (ibtSec) ibtSec.style.display = "none";
       bP.style.borderColor = "var(--accent-cyan)";
       renderMissingLettersGame();
-    } else {
+    } else if (mode === 'toefl') {
       spkSec.style.display = "none";
       puzSec.style.display = "none";
       toeflSec.style.display = "block";
+      if (ibtSec) ibtSec.style.display = "none";
       bT.style.borderColor = "var(--accent-cyan)";
       renderComprehensiveToeflBank();
+    } else if (mode === 'ibt') {
+      spkSec.style.display = "none";
+      puzSec.style.display = "none";
+      toeflSec.style.display = "none";
+      if (ibtSec) ibtSec.style.display = "block";
+      bI.style.borderColor = "var(--accent-cyan)";
+      renderToeflIbtBuildingSkills();
     }
   };
 }
@@ -1297,6 +1319,389 @@ function renderComprehensiveToeflBank() {
         </div>
       `;
     }
+  };
+}
+
+// ================= MASTER TOEFL iBT BEASISWA S2 (BUILDING SKILLS BOOK) =================
+function renderToeflIbtBuildingSkills() {
+  const container = document.getElementById("submode-ibt");
+  if (!container) return;
+
+  const currentFilter = appState.currentIbtFilter || "all";
+  const filteredList = currentFilter === "all"
+    ? toeflIbtBuildingSkills
+    : toeflIbtBuildingSkills.filter(item => item.skillCategory === currentFilter);
+
+  if (appState.currentIbtIndex >= filteredList.length) {
+    appState.currentIbtIndex = 0;
+  }
+
+  const currentItem = filteredList[appState.currentIbtIndex] || filteredList[0];
+
+  const categories = [
+    { key: "all", label: `Semua Soal iBT (${toeflIbtBuildingSkills.length})` },
+    { key: "Vocabulary in Context", label: "1. Vocab in Context" },
+    { key: "Sentence Simplification", label: "2. Sentence Simplification" },
+    { key: "Fact & Negative Fact", label: "3. Fact & Negative Fact" },
+    { key: "Inference", label: "4. Inference Questions" },
+    { key: "Insert Text", label: "5. Text Insertion [■]" },
+    { key: "Speaking iBT Simulator", label: "6. Speaking iBT Simulator" }
+  ];
+
+  let passageHtml = "";
+  if (currentItem.type === "reading") {
+    let passageText = currentItem.passageSnippet;
+    if (currentItem.highlightWord) {
+      passageText = passageText.replace(
+        new RegExp(`\\b${currentItem.highlightWord}\\b`, "gi"),
+        `<span class="ibt-highlight-word">${currentItem.highlightWord}</span>`
+      );
+    }
+    if (currentItem.highlightSentence) {
+      passageText = passageText.replace(
+        currentItem.highlightSentence,
+        `<span class="ibt-highlight-sentence">${currentItem.highlightSentence}</span>`
+      );
+    }
+
+    let insertNotice = "";
+    if (currentItem.insertedSentence) {
+      insertNotice = `
+        <div style="margin: 12px 0; padding: 12px 16px; background: rgba(56, 189, 248, 0.15); border-left: 3px solid var(--accent-cyan); border-radius: 6px;">
+          <div style="font-size: 0.75rem; color: var(--accent-cyan); font-weight: 800; text-transform: uppercase; margin-bottom: 4px;">Kalimat yang Harus Disisipkan:</div>
+          <p style="color: #f8fafc; font-weight: 700; margin: 0;">"${currentItem.insertedSentence}"</p>
+        </div>
+      `;
+    }
+
+    const audioSentence = (currentItem.targetSentenceForAudio || currentItem.passageSnippet).replace(/'/g, "\\'");
+
+    passageHtml = `
+      <div class="ibt-passage-card">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; flex-wrap: wrap; gap: 6px;">
+          <span style="font-size: 0.75rem; color: var(--accent-cyan); font-weight: 800; text-transform: uppercase;">
+            📖 Bacaan Ilmiah (Academic Reading Excerpt)
+          </span>
+          <button class="btn-secondary" style="font-size: 0.78rem; padding: 4px 10px;" onclick="speechEngine.speakText('${audioSentence}', 0.8)">
+            🔊 Dengarkan Audio Teks
+          </button>
+        </div>
+        <p style="margin: 0;">${passageText}</p>
+        ${insertNotice}
+      </div>
+
+      <div style="margin-bottom: 16px;">
+        <h3 style="color: #fff; font-size: 1.1rem; line-height: 1.5; margin-bottom: 14px;">
+          "${currentItem.questionPrompt}"
+        </h3>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 10px;">
+          ${currentItem.options.map((opt, idx) => `
+            <button class="choice-card-btn" style="justify-content: flex-start; text-align: left; font-weight: 600; line-height: 1.4; padding: 12px 14px;" onclick="checkIbtReadingAnswer(${idx})">
+              ${opt}
+            </button>
+          `).join('')}
+        </div>
+      </div>
+
+      <div id="ibt-reading-feedback" style="display: none; margin-top: 14px;"></div>
+    `;
+  } else {
+    // SPEAKING iBT SIMULATOR
+    const promptAudio = currentItem.promptQuestion.replace(/'/g, "\\'");
+    const modelAudio = currentItem.modelAnswer.replace(/'/g, "\\'");
+
+    passageHtml = `
+      <div style="background: rgba(15, 23, 42, 0.9); border: 1.5px solid var(--accent-pink); border-radius: 12px; padding: 20px; margin-bottom: 18px;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; flex-wrap: wrap; gap: 6px;">
+          <span style="font-size: 0.75rem; color: var(--accent-pink); font-weight: 800; text-transform: uppercase;">
+            🎙️ Pertanyaan Ujian Speaking iBT (Task 1 & Integrated)
+          </span>
+          <button class="btn-secondary" style="font-size: 0.78rem; padding: 4px 10px;" onclick="speechEngine.speakText('${promptAudio}', 0.8)">
+            🔊 Dengarkan Soal
+          </button>
+        </div>
+
+        <h3 style="color: #fff; font-size: 1.15rem; line-height: 1.5; margin-bottom: 14px;">
+          "${currentItem.promptQuestion}"
+        </h3>
+
+        <!-- Countdown Timer Section -->
+        <div class="ibt-timer-display" id="ibt-timer-box">
+          <div style="text-align: center;">
+            <div id="ibt-timer-label" style="font-size: 0.8rem; color: #cbd5e1; font-weight: 700; text-transform: uppercase; margin-bottom: 4px;">
+              ⏱️ Siap Latihan Ujian?
+            </div>
+            <div class="ibt-timer-digits" id="ibt-timer-count">15s / 45s</div>
+            <div style="font-size: 0.75rem; color: #94a3b8; margin-top: 4px;">(15 Detik Persiapan • 45 Detik Berbicara)</div>
+          </div>
+        </div>
+
+        <!-- Tombol Kontrol Timer & Rekaman Suara -->
+        <div style="display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; margin-bottom: 18px;">
+          <button id="btn-ibt-prep" class="btn-secondary" style="font-weight: 700; padding: 10px 16px;" onclick="startIbtPrepCountdown(${currentItem.prepSeconds || 15})">
+            ⏱️ Mulai Waktu Persiapan (${currentItem.prepSeconds || 15}s)
+          </button>
+          <button id="btn-ibt-speech" class="btn-primary" style="font-weight: 800; padding: 10px 18px; background: linear-gradient(135deg, #f43f5e, #e11d48);" onclick="startIbtSpeakingCountdown(${currentItem.speechSeconds || 45})">
+            🎙️ Mulai Bicara Sekarang (${currentItem.speechSeconds || 45}s)
+          </button>
+          <button class="btn-secondary" style="font-size: 0.85rem;" onclick="resetIbtTimers()">
+            🔄 Reset Timer
+          </button>
+        </div>
+
+        <!-- Feedback Suara Mic -->
+        <div id="ibt-speech-eval-result" style="display: none; padding: 16px; border-radius: 10px; background: rgba(2, 6, 23, 0.9); border: 1.5px solid var(--accent-cyan); margin-bottom: 18px;"></div>
+
+        <!-- Formula Bahasa Bayi & Jawaban Juara Skor 26-30 -->
+        <div style="background: rgba(250, 204, 21, 0.1); border-left: 3px solid var(--accent-yellow); padding: 14px 18px; border-radius: 8px; font-size: 0.88rem; color: #fef08a; margin-bottom: 16px;">
+          <strong>🍼 Strategi Jawaban Skor 26-30 Kodi:</strong>
+          <p style="white-space: pre-line; margin-top: 6px; color: #fef08a; font-size: 0.85rem;">${currentItem.babyStrategy}</p>
+        </div>
+
+        <!-- Contoh Jawaban Model Native -->
+        <div style="background: rgba(15, 23, 42, 0.8); border: 1px dashed rgba(56, 189, 248, 0.4); border-radius: 10px; padding: 16px;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; flex-wrap: wrap; gap: 6px;">
+            <span style="font-size: 0.75rem; color: var(--accent-green); font-weight: 800; text-transform: uppercase;">
+              ⭐ Contoh Naskah Jawaban Terbaik (Model Band 26-30):
+            </span>
+            <div style="display: flex; gap: 6px;">
+              <button class="btn-secondary" style="font-size: 0.75rem; padding: 4px 8px;" onclick="speechEngine.speakText('${modelAudio}', 0.85)">
+                🔊 Dengarkan (Normal)
+              </button>
+              <button class="btn-secondary" style="font-size: 0.75rem; padding: 4px 8px;" onclick="speechEngine.speakText('${modelAudio}', 0.65)">
+                🐢 Slow
+              </button>
+            </div>
+          </div>
+          <p style="color: #f1f5f9; font-size: 0.95rem; line-height: 1.6; margin-bottom: 8px;">"${currentItem.modelAnswer}"</p>
+          <p style="color: var(--text-muted); font-size: 0.82rem; font-style: italic; margin: 0;">Arti: ${currentItem.modelTranslation}</p>
+        </div>
+      </div>
+    `;
+  }
+
+  container.innerHTML = `
+    <!-- Banner Acuan Buku TOEFL iBT -->
+    <div class="ibt-book-badge">
+      <div style="font-size: 2.4rem;">📘</div>
+      <div>
+        <div style="font-size: 0.75rem; color: var(--accent-cyan); font-weight: 800; text-transform: uppercase;">
+          Kurikulum Standar Beasiswa Luar Negeri (S2 Magister Abroad):
+        </div>
+        <h4 style="color: #fff; margin: 2px 0 4px;">Building Skills for the TOEFL iBT [2nd Edition]</h4>
+        <p style="font-size: 0.82rem; color: #cbd5e1; margin: 0;">
+          Latihan 6 Skill Kunci: Vocabulary in Context, Sentence Simplification, Detektif Fakta, Inference Tersirat, Jigsaw Puzzle Kalimat, & Speaking Simulator dengan Timer Resmi!
+        </p>
+      </div>
+    </div>
+
+    <!-- Category Filter Chips -->
+    <div style="display: flex; gap: 8px; margin-bottom: 16px; overflow-x: auto; padding-bottom: 6px;">
+      ${categories.map(cat => `
+        <button class="ibt-filter-pill ${currentFilter === cat.key ? 'active' : ''}" onclick="setIbtCategoryFilter('${cat.key}')">
+          ${cat.label}
+        </button>
+      `).join('')}
+    </div>
+
+    <!-- Soal Navigation Chips -->
+    <div style="display: flex; gap: 8px; margin-bottom: 16px; overflow-x: auto; padding-bottom: 6px;">
+      ${filteredList.map((item, idx) => `
+        <button class="quick-cmd-btn ${idx === appState.currentIbtIndex ? 'active' : ''}" style="padding: 8px 12px; font-weight: 700;" onclick="setIbtQuestionIndex(${idx})">
+          ${item.type === 'speaking' ? '🎙️ Speaking' : '📖 Soal'} #${idx + 1}
+        </button>
+      `).join('')}
+    </div>
+
+    <!-- Main Question Box -->
+    <div style="background: var(--bg-card); padding: 24px; border-radius: var(--radius-md); border: 1px solid var(--border-glow); margin-bottom: 20px;">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; flex-wrap: wrap; gap: 6px;">
+        <span style="font-size: 0.78rem; font-weight: 800; color: var(--accent-cyan); background: rgba(56, 189, 248, 0.15); padding: 4px 10px; border-radius: 12px;">
+          📌 ${currentItem.bookChapter} • ${currentItem.academicTopic || currentItem.skillCategory}
+        </span>
+        <span style="font-size: 0.75rem; color: var(--accent-yellow); font-weight: 700;">
+          Modul ${appState.currentIbtIndex + 1} dari ${filteredList.length}
+        </span>
+      </div>
+
+      ${passageHtml}
+    </div>
+  `;
+
+  // Window methods for iBT Interaction
+  window.setIbtCategoryFilter = function(catKey) {
+    sfx.playClick();
+    appState.currentIbtFilter = catKey;
+    appState.currentIbtIndex = 0;
+    resetIbtTimers();
+    renderToeflIbtBuildingSkills();
+  };
+
+  window.setIbtQuestionIndex = function(idx) {
+    sfx.playClick();
+    appState.currentIbtIndex = idx;
+    resetIbtTimers();
+    renderToeflIbtBuildingSkills();
+  };
+
+  window.checkIbtReadingAnswer = function(chosenIdx) {
+    const feedbackBox = document.getElementById("ibt-reading-feedback");
+    if (!feedbackBox) return;
+    feedbackBox.style.display = "block";
+
+    if (chosenIdx === currentItem.correctIndex) {
+      sfx.playSuccess();
+      triggerConfetti();
+      feedbackBox.innerHTML = `
+        <div style="background: rgba(74, 222, 128, 0.15); border: 1.5px solid var(--accent-green); padding: 16px; border-radius: 10px; color: #86efac;">
+          <h4 style="margin: 0 0 6px 0; color: #4ade80;">🎉 JAWABAN TEPAT! SKOR 100% UNTUK SKILL INI!</h4>
+          <p style="font-size: 0.9rem; color: #f8fafc; margin: 0; line-height: 1.5;">${currentItem.babyExplanation}</p>
+        </div>
+      `;
+    } else {
+      sfx.playError();
+      feedbackBox.innerHTML = `
+        <div style="background: rgba(248, 113, 113, 0.15); border: 1.5px solid var(--accent-red); padding: 16px; border-radius: 10px; color: #fca5a5;">
+          <h4 style="margin: 0 0 6px 0; color: #f87171;">😅 Jawaban Belum Pas! Yuk Bedah Triknya:</h4>
+          <p style="font-size: 0.9rem; color: #f8fafc; margin: 0; line-height: 1.5;">${currentItem.babyExplanation}</p>
+        </div>
+      `;
+    }
+  };
+
+  window.resetIbtTimers = function() {
+    if (appState.ibtPrepInterval) clearInterval(appState.ibtPrepInterval);
+    if (appState.ibtTimerInterval) clearInterval(appState.ibtTimerInterval);
+    appState.ibtPrepInterval = null;
+    appState.ibtTimerInterval = null;
+    speechEngine.stopListening();
+  };
+
+  window.startIbtPrepCountdown = function(seconds) {
+    sfx.playClick();
+    resetIbtTimers();
+
+    const countEl = document.getElementById("ibt-timer-count");
+    const labelEl = document.getElementById("ibt-timer-label");
+    const prepBtn = document.getElementById("btn-ibt-prep");
+    if (!countEl || !labelEl) return;
+
+    let remaining = seconds;
+    labelEl.innerText = "⏳ WAKTU PERSIAPAN (BERPIKIR & CATAT POIN):";
+    labelEl.style.color = "var(--accent-yellow)";
+    countEl.innerText = `${remaining}s`;
+    countEl.style.color = "var(--accent-yellow)";
+    if (prepBtn) prepBtn.disabled = true;
+
+    appState.ibtPrepInterval = setInterval(() => {
+      remaining--;
+      if (remaining > 0) {
+        countEl.innerText = `${remaining}s`;
+      } else {
+        clearInterval(appState.ibtPrepInterval);
+        appState.ibtPrepInterval = null;
+        sfx.playSuccess();
+        countEl.innerText = "0s - WAKTU PERSIAPAN HABIS!";
+        countEl.style.color = "var(--accent-green)";
+        labelEl.innerText = "🔔 TEEET! SILAKAN TEKAN TOMBOL 'MULAI BICARA' SEKARANG!";
+        if (prepBtn) prepBtn.disabled = false;
+      }
+    }, 1000);
+  };
+
+  window.startIbtSpeakingCountdown = function(seconds) {
+    sfx.playClick();
+    resetIbtTimers();
+
+    const countEl = document.getElementById("ibt-timer-count");
+    const labelEl = document.getElementById("ibt-timer-label");
+    const spkBtn = document.getElementById("btn-ibt-speech");
+    const resultBox = document.getElementById("ibt-speech-eval-result");
+    if (!countEl || !labelEl) return;
+
+    let remaining = seconds;
+    labelEl.innerText = "🔴 SEDANG MEREKAM SUARA (BICARA SEKARANG):";
+    labelEl.style.color = "var(--accent-pink)";
+    countEl.innerText = `${remaining}s`;
+    countEl.style.color = "var(--accent-pink)";
+    if (spkBtn) {
+      spkBtn.disabled = true;
+      spkBtn.innerText = "⏳ Mendengarkan...";
+    }
+
+    if (resultBox) {
+      resultBox.style.display = "block";
+      resultBox.innerHTML = `
+        <div style="text-align: center; color: var(--accent-pink); font-weight: 700; padding: 10px;">
+          🔴 Mikrofon sedang aktif merekam jawabanmu... Bicaralah dengan lantang & percaya diri!
+        </div>
+      `;
+    }
+
+    speechEngine.startListening(
+      currentItem.audioSnippet || currentItem.modelAnswer,
+      (evalResult) => {
+        if (spkBtn) {
+          spkBtn.disabled = false;
+          spkBtn.innerText = `🎙️ Mulai Bicara Lagi (${seconds}s)`;
+        }
+        if (evalResult.accuracy >= 65) {
+          sfx.playSuccess();
+        } else {
+          sfx.playError();
+        }
+        if (resultBox) {
+          resultBox.innerHTML = `
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 6px;">
+              <h4 style="color: ${evalResult.accuracy >= 70 ? 'var(--accent-green)' : 'var(--accent-yellow)'}; margin: 0;">
+                Skor Akurasi Speaking iBT: ${evalResult.accuracy}% (${evalResult.grade})
+              </h4>
+            </div>
+            <p style="font-size: 0.88rem; color: #cbd5e1; margin: 4px 0;"><strong>Kata yang terdeteksi:</strong> "${evalResult.spoken}"</p>
+            <div style="display: flex; flex-wrap: wrap; gap: 6px; margin: 8px 0;">
+              ${evalResult.wordAnalysis.map(w => `
+                <span style="padding: 2px 8px; border-radius: 4px; font-weight: 700; font-size: 0.8rem; background: ${w.matched ? 'rgba(74, 222, 128, 0.2)' : 'rgba(248, 113, 113, 0.2)'}; color: ${w.matched ? '#4ade80' : '#f87171'}; border: 1px solid ${w.matched ? '#4ade80' : '#f87171'};">
+                  ${w.word} ${w.matched ? '✓' : '✗'}
+                </span>
+              `).join('')}
+            </div>
+            <p style="font-size: 0.85rem; color: #fef08a; margin: 4px 0 0 0;">💡 ${evalResult.comment}</p>
+          `;
+        }
+      },
+      (error) => {
+        if (spkBtn) {
+          spkBtn.disabled = false;
+          spkBtn.innerText = `🎙️ Mulai Bicara (${seconds}s)`;
+        }
+        if (resultBox) {
+          resultBox.innerHTML = `
+            <div style="color: var(--accent-red); font-size: 0.85rem;">
+              ⚠️ Mikrofon tidak menangkap suara (${error}). Pastikan mic diizinkan (Allow) di browsermu!
+            </div>
+          `;
+        }
+      }
+    );
+
+    appState.ibtTimerInterval = setInterval(() => {
+      remaining--;
+      if (remaining > 0) {
+        countEl.innerText = `${remaining}s`;
+      } else {
+        clearInterval(appState.ibtTimerInterval);
+        appState.ibtTimerInterval = null;
+        speechEngine.stopListening();
+        countEl.innerText = "0s - WAKTU BICARA SELESAI!";
+        countEl.style.color = "var(--accent-green)";
+        labelEl.innerText = "🎉 SELESAI! Evaluasi rekamanmu sudah dianalisis di bawah!";
+        if (spkBtn) {
+          spkBtn.disabled = false;
+          spkBtn.innerText = `🎙️ Mulai Bicara Lagi (${seconds}s)`;
+        }
+      }
+    }, 1000);
   };
 }
 
