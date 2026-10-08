@@ -110,7 +110,7 @@ function renderQuestGrid() {
 
   const levelTagEl = document.getElementById("header-completed");
   if (levelTagEl) {
-    levelTagEl.textContent = `${appState.completedLevels.length}/5 Selesai`;
+    levelTagEl.textContent = `${appState.completedLevels.length}/${levelsData.length} Selesai`;
   }
 }
 
@@ -223,6 +223,14 @@ function renderModalStep() {
     renderTicketStep(step, workspace);
   } else if (step.interactiveType === "code-backup-mission") {
     renderBackupMissionStep(step, workspace);
+  } else if (step.interactiveType === "ipos-pipeline") {
+    renderIposPipelineStep(step, workspace);
+  } else if (step.interactiveType === "storage-ladder") {
+    renderStorageLadderStep(step, workspace);
+  } else if (step.interactiveType === "software-sorter") {
+    renderSoftwareSorterStep(step, workspace);
+  } else if (step.interactiveType === "it-roles-match") {
+    renderItRolesMatchStep(step, workspace);
   }
 
   const footerContainer = document.getElementById("modal-footer-actions");
@@ -701,6 +709,301 @@ function renderBackupMissionStep(step, container) {
       }
     }, 400);
   };
+}
+
+// 9. IPOS Pipeline Step (Richard Fox Chapter 1)
+function renderIposPipelineStep(step, container) {
+  const iposItems = [
+    { name: "Keyboard & Barcode Scanner Kasir", correct: "input", icon: "⌨️", hint: "Memasukkan data ketikan dan scan harga ke dalam mesin" },
+    { name: "CPU (Processor Inti)", correct: "processing", icon: "🧠", hint: "Mengolah, menghitung, dan mengeksekusi instruksi data" },
+    { name: "Layar Monitor & Printer Struk", correct: "output", icon: "🖥️", hint: "Menampilkan hasil gambar dan mencetak struk fisik ke manusia" },
+    { name: "SSD / Flashdisk & Memori RAM", correct: "storage", icon: "💾", hint: "Menyimpan data dan resep program sementara atau permanen" },
+    { name: "Mikrofon Suara", correct: "input", icon: "🎙️", hint: "Menangkap getaran suara dari luar untuk dimasukkan ke komputer" },
+    { name: "Speaker Audio Kantor", correct: "output", icon: "🔊", hint: "Mengeluarkan gelombang suara musik atau nada notifikasi" }
+  ];
+
+  let currentIndex = 0;
+
+  function renderCurrentItem() {
+    const item = iposItems[currentIndex];
+    container.innerHTML = `
+      <div style="background: rgba(15, 23, 42, 0.9); border: 1.5px solid var(--accent-cyan); border-radius: 12px; padding: 18px; margin-bottom: 16px; text-align: center;">
+        <span style="font-size: 0.75rem; color: var(--accent-yellow); font-weight: 800; text-transform: uppercase;">
+          Stasiun ${currentIndex + 1} dari ${iposItems.length}
+        </span>
+        <div style="font-size: 2.5rem; margin: 8px 0;">${item.icon}</div>
+        <h3 style="color: #fff; margin: 0 0 6px 0;">${item.name}</h3>
+        <p style="font-size: 0.85rem; color: #94a3b8; margin: 0;">💡 Petunjuk: ${item.hint}</p>
+      </div>
+
+      <p style="font-size: 0.88rem; font-weight: 700; margin-bottom: 10px; text-align: center;">Masuk ke tahapan Siklus IPOS mana perangkat ini?</p>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 10px;">
+        <button class="choice-card-btn" style="justify-content: center; font-weight: 700;" onclick="chooseIpos('input')">📥 1. INPUT</button>
+        <button class="choice-card-btn" style="justify-content: center; font-weight: 700;" onclick="chooseIpos('processing')">⚙️ 2. PROCESSING</button>
+        <button class="choice-card-btn" style="justify-content: center; font-weight: 700;" onclick="chooseIpos('output')">📤 3. OUTPUT</button>
+        <button class="choice-card-btn" style="justify-content: center; font-weight: 700;" onclick="chooseIpos('storage')">💾 4. STORAGE</button>
+      </div>
+    `;
+  }
+
+  window.chooseIpos = function(chosen) {
+    const item = iposItems[currentIndex];
+    if (chosen === item.correct) {
+      sfx.playSuccess();
+      currentIndex++;
+      if (currentIndex < iposItems.length) {
+        renderCurrentItem();
+      } else {
+        container.innerHTML = `
+          <div style="text-align: center; padding: 20px;">
+            <div style="font-size: 3rem; margin-bottom: 8px;">🏭✨</div>
+            <h3 style="color: var(--accent-green);">Pabrik Siklus IPOS Sempurna!</h3>
+            <p style="color: var(--text-muted); font-size: 0.9rem;">Kamu sudah menguasai 4 pilar mutlak yang menyusun seluruh komputer di dunia!</p>
+          </div>
+        `;
+        showStepSuccess("HEBAT! Kamu berhasil membedah seluruh stasiun Siklus IPOS (Input, Processing, Output, Storage)!");
+      }
+    } else {
+      sfx.playError();
+      alert(`Belum tepat! Perhatikan: ${item.hint}`);
+    }
+  };
+
+  renderCurrentItem();
+}
+
+// 10. Storage Ladder Step (Tabel 1.4 Storage Sizes)
+function renderStorageLadderStep(step, container) {
+  const ladderCases = [
+    {
+      challenge: "Menyimpan 1 buah saklar biner terkecil (hanya angka 0 atau 1, atau 1 pixel warna hitam/putih)",
+      correct: "Bit",
+      hint: "Unit terkecil di seluruh alam semesta komputer!"
+    },
+    {
+      challenge: "Menyimpan tepat 1 huruf abjad (contoh: huruf 'K' atau angka '7')",
+      correct: "Byte",
+      hint: "Terdiri dari 8 bit saklar biner!"
+    },
+    {
+      challenge: "Menyimpan 1 lembar email teks kantor pendek tanpa foto (sekitar 1.000 karakter)",
+      correct: "KB",
+      hint: "Kilobyte (sekitar 1.024 Bytes)!"
+    },
+    {
+      challenge: "Menyimpan 1 lagu MP3 berkualitas jernih atau 1 lembar foto jepretan kamera smartphone",
+      correct: "MB",
+      hint: "Megabyte (sekitar 1.024 Kilobytes / sejuta karakter)!"
+    },
+    {
+      challenge: "Menyimpan 1 file film bioskop HD berdurasi 2 jam atau lemari berisi 1.000 buku teks tebal",
+      correct: "GB",
+      hint: "Gigabyte (sekitar 1.024 Megabytes / semiliar karakter)!"
+    },
+    {
+      challenge: "Menyimpan seluruh arsip database transaksi pabrik dan rekaman video keamanan kantor selama bertahun-tahun",
+      correct: "TB",
+      hint: "Terabyte (sekitar 1.024 Gigabytes / satu triliun karakter)!"
+    }
+  ];
+
+  let currentCaseIndex = 0;
+
+  function renderLadder() {
+    const c = ladderCases[currentCaseIndex];
+    container.innerHTML = `
+      <div style="background: rgba(15, 23, 42, 0.9); border: 1.5px solid var(--accent-yellow); border-radius: 12px; padding: 18px; margin-bottom: 16px;">
+        <span style="font-size: 0.75rem; color: var(--accent-yellow); font-weight: 800; text-transform: uppercase;">
+          Kasus ${currentCaseIndex + 1} dari ${ladderCases.length} (Tabel 1.4 Richard Fox)
+        </span>
+        <h4 style="color: #fff; margin: 8px 0 6px 0; font-size: 1.05rem;">"${c.challenge}"</h4>
+        <p style="font-size: 0.85rem; color: #94a3b8; margin: 0;">💡 Petunjuk: ${c.hint}</p>
+      </div>
+
+      <p style="font-size: 0.88rem; font-weight: 700; margin-bottom: 10px; text-align: center;">Pilih satuan wadah penyimpanan yang tepat:</p>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 10px;">
+        <button class="choice-card-btn" style="justify-content: center; font-weight: 700;" onclick="chooseStorageUnit('Bit')">💡 Bit (0 atau 1)</button>
+        <button class="choice-card-btn" style="justify-content: center; font-weight: 700;" onclick="chooseStorageUnit('Byte')">🔤 Byte (8 Bit)</button>
+        <button class="choice-card-btn" style="justify-content: center; font-weight: 700;" onclick="chooseStorageUnit('KB')">📄 KB (Kilobyte)</button>
+        <button class="choice-card-btn" style="justify-content: center; font-weight: 700;" onclick="chooseStorageUnit('MB')">🎵 MB (Megabyte)</button>
+        <button class="choice-card-btn" style="justify-content: center; font-weight: 700;" onclick="chooseStorageUnit('GB')">🎬 GB (Gigabyte)</button>
+        <button class="choice-card-btn" style="justify-content: center; font-weight: 700;" onclick="chooseStorageUnit('TB')">🏢 TB (Terabyte)</button>
+      </div>
+    `;
+  }
+
+  window.chooseStorageUnit = function(unit) {
+    const c = ladderCases[currentCaseIndex];
+    if (unit === c.correct) {
+      sfx.playSuccess();
+      currentCaseIndex++;
+      if (currentCaseIndex < ladderCases.length) {
+        renderLadder();
+      } else {
+        container.innerHTML = `
+          <div style="text-align: center; padding: 20px;">
+            <div style="font-size: 3rem; margin-bottom: 8px;">🪜🌟</div>
+            <h3 style="color: var(--accent-green);">Puncak Tangga Memori Berhasil Ditaklukkan!</h3>
+            <p style="color: var(--text-muted); font-size: 0.9rem;">Kamu sekarang paham bedanya Bit, Byte, KB, MB, GB, sampai TB!</p>
+          </div>
+        `;
+        showStepSuccess("LUAR BIASA! Kamu menguasai Tangga Satuan Kapasitas Data Tabel 1.4 Richard Fox!");
+      }
+    } else {
+      sfx.playError();
+      alert(`Belum pas! Coba ingat: ${c.hint}`);
+    }
+  };
+
+  renderLadder();
+}
+
+// 11. Software Sorter Step (System Software vs Application Software)
+function renderSoftwareSorterStep(step, container) {
+  const softItems = [
+    { name: "Windows 11 & Linux Ubuntu Server", type: "system", icon: "🪟", hint: "Sistem operasi pengendali perangkat keras komputer" },
+    { name: "Microsoft Excel & Google Chrome", type: "app", icon: "📊", hint: "Program yang dipakai manusia untuk bekerja dan browsing" },
+    { name: "macOS & Unix BSD", type: "system", icon: "🍎", hint: "Sistem operasi yang mengelola memori dan akun pengguna" },
+    { name: "Adobe Photoshop & Spotify Music", type: "app", icon: "🎨", hint: "Aplikasi khusus untuk editing gambar dan memutar lagu" },
+    { name: "Android OS & iOS Smartphone", type: "system", icon: "📱", hint: "Sistem operasi penggerak seluruh organ smartphone" },
+    { name: "Game Mobile & WhatsApp Messenger", type: "app", icon: "🎮", hint: "Aplikasi chatting dan game yang diinstall oleh pengguna" }
+  ];
+
+  let currentSoftIndex = 0;
+
+  function renderSoftItem() {
+    const s = softItems[currentSoftIndex];
+    container.innerHTML = `
+      <div style="background: rgba(15, 23, 42, 0.9); border: 1.5px solid var(--accent-cyan); border-radius: 12px; padding: 18px; margin-bottom: 16px; text-align: center;">
+        <span style="font-size: 0.75rem; color: var(--accent-cyan); font-weight: 800; text-transform: uppercase;">
+          Item ${currentSoftIndex + 1} dari ${softItems.length}
+        </span>
+        <div style="font-size: 2.5rem; margin: 8px 0;">${s.icon}</div>
+        <h3 style="color: #fff; margin: 0 0 6px 0;">${s.name}</h3>
+        <p style="font-size: 0.85rem; color: #94a3b8; margin: 0;">💡 Petunjuk: ${s.hint}</p>
+      </div>
+
+      <p style="font-size: 0.88rem; font-weight: 700; margin-bottom: 10px; text-align: center;">Masuk ke kelompok software yang mana?</p>
+      <div style="display: flex; gap: 14px; justify-content: center; flex-wrap: wrap;">
+        <button class="choice-card-btn" style="flex: 1; min-width: 220px; justify-content: center; font-weight: 800;" onclick="chooseSoftType('system')">
+          🏠 1. System Software (Sistem Operasi)
+        </button>
+        <button class="choice-card-btn" style="flex: 1; min-width: 220px; justify-content: center; font-weight: 800;" onclick="chooseSoftType('app')">
+          📱 2. Application Software (Aplikasi Pengguna)
+        </button>
+      </div>
+    `;
+  }
+
+  window.chooseSoftType = function(chosen) {
+    const s = softItems[currentSoftIndex];
+    if (chosen === s.type) {
+      sfx.playSuccess();
+      currentSoftIndex++;
+      if (currentSoftIndex < softItems.length) {
+        renderSoftItem();
+      } else {
+        container.innerHTML = `
+          <div style="text-align: center; padding: 20px;">
+            <div style="font-size: 3rem; margin-bottom: 8px;">💿✨</div>
+            <h3 style="color: var(--accent-green);">Klasifikasi Software Sempurna!</h3>
+            <p style="color: var(--text-muted); font-size: 0.9rem;">Kamu paham betul mana Sistem Operasi (Rumah) dan mana Aplikasi (Perkakas)!</p>
+          </div>
+        `;
+        showStepSuccess("MANTAP! Kamu berhasil memilah System Software dan Application Software dengan sempurna!");
+      }
+    } else {
+      sfx.playError();
+      alert(`Ups! Ingat: ${s.hint}`);
+    }
+  };
+
+  renderSoftItem();
+}
+
+// 12. IT Roles Match Step (Tabel 1.1 Administrator Roles)
+function renderItRolesMatchStep(step, container) {
+  const roleCases = [
+    {
+      incident: "Kabel fiber optic putus di lorong pabrik dan router internet lantai 2 mati mendadak!",
+      role: "netadmin",
+      roleTitle: "Network Administrator",
+      hint: "Mengurus kabel, konektivitas, router, dan switch jaringan!"
+    },
+    {
+      incident: "Perusahaan butuh me-restore backup tabel database transaksi sepatu yang tidak sengaja terhapus 2 jam lalu!",
+      role: "dba",
+      roleTitle: "Database Administrator (DBA)",
+      hint: "Mengurus sistem basis data, backup tabel, dan integritas data SQL!"
+    },
+    {
+      incident: "Terdeteksi percobaan intrusi hacker dari luar negeri yang membobol port 22, firewall harus diperketat!",
+      role: "secadmin",
+      roleTitle: "Security Administrator",
+      hint: "Mengurus firewall, kebijakan keamanan, dan pencegahan serangan!"
+    },
+    {
+      incident: "Kantor merekrut 50 karyawan baru, butuh dibuatkan akun login Windows, hak akses folder, dan skrip otomasi!",
+      role: "sysadmin",
+      roleTitle: "System Administrator",
+      hint: "Mengurus akun pengguna, update sistem operasi server, dan skrip otomatisasi!"
+    },
+    {
+      incident: "Layar monitor staf kasir mendadak hitam dan printer struk tidak menyala karena kabel power longgar!",
+      role: "helpdesk",
+      roleTitle: "IT Help Desk Specialist",
+      hint: "Lini pertama yang membantu pengguna dengan masalah teknis sehari-hari!"
+    }
+  ];
+
+  let currentRoleIndex = 0;
+
+  function renderRoleCase() {
+    const rc = roleCases[currentRoleIndex];
+    container.innerHTML = `
+      <div style="background: rgba(15, 23, 42, 0.9); border: 1.5px solid var(--accent-pink); border-radius: 12px; padding: 18px; margin-bottom: 16px;">
+        <span style="font-size: 0.75rem; color: var(--accent-pink); font-weight: 800; text-transform: uppercase;">
+          Tiket Masuk #${currentRoleIndex + 1} dari ${roleCases.length} (Tabel 1.1 Richard Fox)
+        </span>
+        <h4 style="color: #fff; margin: 8px 0 6px 0; font-size: 1.05rem;">"${rc.incident}"</h4>
+        <p style="font-size: 0.85rem; color: #94a3b8; margin: 0;">💡 Petunjuk: ${rc.hint}</p>
+      </div>
+
+      <p style="font-size: 0.88rem; font-weight: 700; margin-bottom: 10px; text-align: center;">Siapa Spesialis IT yang paling tepat menanganinya?</p>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px;">
+        <button class="choice-card-btn" style="justify-content: flex-start; font-weight: 700;" onclick="chooseRole('sysadmin')">👨‍💼 System Administrator</button>
+        <button class="choice-card-btn" style="justify-content: flex-start; font-weight: 700;" onclick="chooseRole('netadmin')">🌐 Network Administrator</button>
+        <button class="choice-card-btn" style="justify-content: flex-start; font-weight: 700;" onclick="chooseRole('dba')">🗄️ Database Administrator</button>
+        <button class="choice-card-btn" style="justify-content: flex-start; font-weight: 700;" onclick="chooseRole('secadmin')">🛡️ Security Administrator</button>
+        <button class="choice-card-btn" style="justify-content: flex-start; font-weight: 700;" onclick="chooseRole('helpdesk')">🎧 IT Help Desk</button>
+      </div>
+    `;
+  }
+
+  window.chooseRole = function(roleKey) {
+    const rc = roleCases[currentRoleIndex];
+    if (roleKey === rc.role) {
+      sfx.playSuccess();
+      currentRoleIndex++;
+      if (currentRoleIndex < roleCases.length) {
+        renderRoleCase();
+      } else {
+        container.innerHTML = `
+          <div style="text-align: center; padding: 20px;">
+            <div style="font-size: 3rem; margin-bottom: 8px;">👥🏆</div>
+            <h3 style="color: var(--accent-green);">Semua Tiket Berhasil Ditangani oleh Ahlinya!</h3>
+            <p style="color: var(--text-muted); font-size: 0.9rem;">Kamu memahami pembagian tugas resmi spesialis IT Tabel 1.1 Richard Fox dengan sempurna!</p>
+          </div>
+        `;
+        showStepSuccess("HEBAT! Kamu paham betul peran spesialis IT (SysAdmin, NetAdmin, DBA, SecAdmin, HelpDesk)!");
+      }
+    } else {
+      sfx.playError();
+      alert(`Bukan tugas itu! Ingat: ${rc.hint}`);
+    }
+  };
+
+  renderRoleCase();
 }
 
 // ================= SQL TRAINER VIEW =================

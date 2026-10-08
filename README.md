@@ -51,12 +51,16 @@ Dirancang khusus berdasarkan soal-soal tes tertulis yang sering ditanyakan di pe
 
 ---
 
-### 4. 🗺️ 5 Misi Petualangan IT Support & Logika Koding (PBL)
-- **Level 1: Anatomi Komputer (Dapur Restoran)** 🖥️ — CPU (Koki), RAM (Meja Kerja), SSD (Kulkas File), PSU (Jantung Listrik).
-- **Level 2: Mantra Gaib Terminal (CLI IT Support)** 📟 — Perintah sakti `ipconfig`, `ping 8.8.8.8`, `mkdir`, `cls`.
-- **Level 3: Kantor Pos Jaringan (Networking Dasar)** 🌐 — IP Address (Nomor Rumah), DNS (Buku Kontak HP), Router (Polisi Lalu Lintas).
-- **Level 4: Resep Rahasia Koding (Logika Robot)** 🧠 — Toples Variabel, Logika IF-ELSE pendingin server kantor.
-- **Level 5: Meja Bantuan IT Support (Tiket Keluhan Nyata)** 🏆 — Printer macet (*paper jam*), WiFi tanda seru kuning ⚠️ (*renew IP*), dan otomatisasi backup data 1-klik.
+### 4. 🗺️ 8 Misi Petualangan IT Support & Logika Koding (Kurikulum Richard Fox)
+Diadaptasi dari buku referensi resmi **"Information Technology: An Introduction for Today's Digital World"** karya Richard Fox (Chapter 1, OCW UI):
+- **Level 1: Anatomi Komputer (Dapur Restoran)** 🖥️ — CPU (Koki), RAM (Meja Kerja), SSD (Kulkas File), PSU (Jantung Listrik), Motherboard.
+- **Level 2: Pabrik Siklus IPOS (Input-Processing-Output-Storage)** 🔄 — Membedah 4 stasiun kerja mutlak komputer digital, scanner kasir, sensor mikrofon, hingga layar output.
+- **Level 3: Tangga Kapasitas Data Digital** 📊 — Satuan memori Tabel 1.4: Bit (0/1), Byte (8 bit), KB, MB, GB, hingga TB serta duel RAM cepat vs SSD abadi.
+- **Level 4: Dunia Software (Rumah vs Perkakas)** 💿 — Memilah System Software (Sistem Operasi: Windows, Linux, macOS) vs Application Software (Excel, Browser, Games) & proses kompilasi kode mesin.
+- **Level 5: Mantra Gaib Terminal (CLI IT Support)** 📟 — Perintah sakti `ipconfig`, `ping 8.8.8.8`, `mkdir`, `cls`, dan pengantar shell script.
+- **Level 6: Kantor Pos Jaringan & Bandwidth** 🌐 — IP Address (Nomor Rumah), DNS (Buku Kontak HP), Router (Polisi Gerbang), dan lebar pipa bandwidth.
+- **Level 7: 6 Pendekar Spesialis IT (Siapa Menangani Apa?)** 👥 — Klasifikasi peran Tabel 1.1: System Admin, Network Admin, Database Admin, Security Admin, Web Admin, dan IT Help Desk.
+- **Level 8: Meja Bantuan IT Support (Tiket Proyek Nyata)** 🏆 — Penerapan metodologi 3 langkah (Detect ➔ Diagnose ➔ Solution): Printer macet (*paper jam*), WiFi tabrakan IP (*renew IP*), dan skrip otomatisasi backup data Pak Bos!
 
 ---
 

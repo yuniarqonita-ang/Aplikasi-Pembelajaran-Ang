@@ -1,5 +1,7 @@
 /* ===================================================================
-   LEVELS.JS - 5 LEVEL MISI PROJECT-BASED LEARNING (PBL)
+   LEVELS.JS - 8 LEVEL MISI PROJECT-BASED LEARNING (PBL)
+   Kurikulum Komprehensif Berdasarkan Acuan Buku Resmi:
+   "Information Technology: An Introduction for Today's Digital World" (Richard Fox)
    Petualangan Interaktif IT Support & Pemrograman Dasar bersama Kodi
    =================================================================== */
 
@@ -9,7 +11,7 @@ const levelsData = [
     id: 1,
     title: "Anatomi Komputer: Kenalan sama Organ Mesin",
     shortTitle: "Level 1: Organ Komputer",
-    tag: "Hardware & Dasar",
+    tag: "Hardware & Motherboard",
     icon: "🖥️",
     analogy: "Komputer itu ibarat Restoran: Ada koki (CPU), meja masak (RAM), dan kulkas (SSD)!",
     description: "Bongkar casing komputer bersama Kodi! Pelajari siapa yang mikir, siapa tempat naruh kerjaan sementara, dan siapa penyimpan data jangka panjang.",
@@ -78,14 +80,193 @@ const levelsData = [
     ]
   },
 
-  // ================= LEVEL 2 =================
+  // ================= LEVEL 2 (NEW: SIKLUS IPOS DARI BUKU RICHARD FOX) =================
   {
     id: 2,
-    title: "Mantra Gaib Terminal: Bisik-Bisik ke Mesin",
-    shortTitle: "Level 2: Terminal IT",
-    tag: "Command Line / CLI",
+    title: "Pabrik Siklus IPOS: Alur Kerja Komputer Digital",
+    shortTitle: "Level 2: Siklus IPOS",
+    tag: "IPOS Cycle (Richard Fox Ch 1)",
+    icon: "🔄",
+    analogy: "Komputer itu Pabrik Roti: Bahan Masuk (Input), Diadon (Processing), Roti Jadi (Output), Resep Disimpan (Storage)!",
+    description: "Pelajari siklus sakti IPOS (Input, Processing, Output, Storage) yang menjadi syarat mutlak suatu alat disebut komputer menurut Richard Fox!",
+    starsReward: 3,
+    steps: [
+      {
+        stepTitle: "Langkah 1: Menyortir 4 Stasiun Pabrik IPOS",
+        concept: `
+          <div class="concept-box">
+            <span class="concept-analogy-pill">Siklus IPOS Richard Fox</span>
+            <h4>Apa Syarat Suatu Alat Disebut Komputer?</h4>
+            <p>Di buku Richard Fox Bab 1 dijelaskan bahwa komputer adalah mesin elektronik yang menjalankan 4 siklus berulang:</p>
+            <ul>
+              <li><strong>1. INPUT (Masukan):</strong> Menerima data dari dunia luar (Keyboard, Mouse, Barcode Scanner).</li>
+              <li><strong>2. PROCESSING (Pemrosesan):</strong> CPU mengolah data & menghitung logika.</li>
+              <li><strong>3. OUTPUT (Keluaran):</strong> Menampilkan hasil ke manusia (Monitor, Printer, Speaker).</li>
+              <li><strong>4. STORAGE (Penyimpanan):</strong> Menyimpan data sementara di RAM atau permanen di SSD.</li>
+            </ul>
+          </div>
+        `,
+        interactiveType: "ipos-pipeline",
+        missionText: "Bantu Kodi menyortir perangkat di bawah ini ke stasiun IPOS yang benar!"
+      },
+      {
+        stepTitle: "Langkah 2: Detektif Komputer: 'Apakah HP & Mesin Kasir itu Komputer?'",
+        concept: `
+          <div class="concept-box">
+            <span class="concept-analogy-pill">Diskusi Bab 1 Richard Fox</span>
+            <h4>Banyak Orang Tidak Sadar Mereka Memegang Komputer!</h4>
+            <p>Richard Fox menegaskan: Smartphone di sakumu, Smart TV di ruang tamu, bahkan kalkulator canggih dan GPS di mobil itu SEMUANYA ADALAH KOMPUTER karena mereka memiliki CPU, memori, input, dan output!</p>
+          </div>
+        `,
+        interactiveType: "quiz-explain",
+        question: "Menurut konsep Richard Fox, mengapa Smartphone HP kamu resmi disebut sebagai Komputer?",
+        options: [
+          {
+            text: "Karena HP memiliki siklus lengkap: Touchscreen (Input), Chip Prosessor (Processing), Layar (Output), dan Memori internal (Storage)!",
+            correct: true,
+            feedback: "100% TEPAT! HP bukan sekadar alat telepon jadul, tapi komputer mini serba bisa yang menjalankan siklus IPOS!"
+          },
+          {
+            text: "Karena HP harganya mahal dan ada kamera selfie-nya.",
+            correct: false,
+            feedback: "Bukan itu alasannya. Kamera cuma salah satu sensor input, yang menentukan adalah siklus pemrosesan IPOS-nya."
+          },
+          {
+            text: "Bukan komputer, HP cuma radio mini pencari sinyal.",
+            correct: false,
+            feedback: "Salah besar! Di era sekarang, HP adalah komputer saku yang sangat canggih dan punya prosesor multi-core!"
+          }
+        ]
+      }
+    ]
+  },
+
+  // ================= LEVEL 3 (NEW: TANGGA KAPASITAS DATA TABEL 1.4) =================
+  {
+    id: 3,
+    title: "Tangga Kapasitas Data: Dari 1 Bit ke Terabyte",
+    shortTitle: "Level 3: Tangga Data",
+    tag: "Tabel 1.4 Storage Sizes",
+    icon: "📊",
+    analogy: "Ukuran data itu kayak beras: 1 butir (Bit), 1 sendok (Byte), 1 mangkok (KB), 1 karung (MB), 1 truk (GB), 1 gudang bulog (TB)!",
+    description: "Kuasai tangga satuan memori komputer dari buku Richard Fox Tabel 1.4: Bit, Byte, KB, MB, GB, hingga TB! Jangan tertukar lagi ukuran file.",
+    starsReward: 3,
+    steps: [
+      {
+        stepTitle: "Langkah 1: Simulator Tangga Kapasitas Digital",
+        concept: `
+          <div class="concept-box">
+            <span class="concept-analogy-pill">Tabel 1.4 Richard Fox</span>
+            <h4>Tangga Ukuran Memori Dunia Komputer</h4>
+            <ul>
+              <li><strong>1 Bit:</strong> Saklar tunggal terkecil (0 atau 1).</li>
+              <li><strong>1 Byte (8 Bit):</strong> Muat tepat 1 huruf abjad (contoh: huruf 'K').</li>
+              <li><strong>1 KB (Kilobyte = 1.024 Byte):</strong> Muat 1 halaman dokumen teks pendek.</li>
+              <li><strong>1 MB (Megabyte = 1.024 KB):</strong> Muat 1 lagu MP3 atau 1 foto jernih.</li>
+              <li><strong>1 GB (Gigabyte = 1.024 MB):</strong> Muat 1 film HD atau 1.000 buku teks tebal!</li>
+              <li><strong>1 TB (Terabyte = 1.024 GB):</strong> Muat lemari arsip data seluruh kantor pabrik.</li>
+            </ul>
+          </div>
+        `,
+        interactiveType: "storage-ladder",
+        missionText: "Uji insting kapasitasmu! Cocokkan benda digital dengan ukuran wadah memorinya yang pas."
+      },
+      {
+        stepTitle: "Langkah 2: Duel Memori: RAM Cepat vs SSD Awet",
+        concept: `
+          <div class="concept-box">
+            <span class="concept-analogy-pill">Short-term vs Long-term Storage</span>
+            <h4>Kenapa Komputer Ga Cuma Pakai SSD Aja?</h4>
+            <p>Di buku Richard Fox dijelaskan: RAM (Short-term) super cepat merespon instruksi CPU tapi cepat lupa saat mati lampu. SSD (Long-term) lambat dibanding RAM tapi datanya abadi. Komputer butuh KEDUANYA agar bisa bekerja kencang sekaligus aman!</p>
+          </div>
+        `,
+        interactiveType: "quiz-explain",
+        question: "Jika kamu sedang mengetik dokumen laporan lalu tiba-tiba listrik padam dan komputer mati mendadak, data yang belum disimpan di-Save hilang karena sebelumnya baru berada di mana?",
+        options: [
+          {
+            text: "Berada di RAM (Short-term memory yang bersifat hilang/volatile saat listrik mati)!",
+            correct: true,
+            feedback: "BINTANG 5! Pintar sekali! Sebelum tombol 'Save' ditekan, tulisanmu baru ditaruh di meja RAM. Pas tombol 'Save' ditekan, barulah dipindah ke kulkas abadi SSD!"
+          },
+          {
+            text: "Berada di kabel mouse yang terlilit.",
+            correct: false,
+            feedback: "Mouse ga punya memori buat nyimpan ketikan laporan yaa!"
+          },
+          {
+            text: "Berada di dalam layar monitor kaca.",
+            correct: false,
+            feedback: "Layar monitor cuma proyektor gambar, dia ga nyimpan teks."
+          }
+        ]
+      }
+    ]
+  },
+
+  // ================= LEVEL 4 (NEW: SISTEM OPERASI VS APLIKASI) =================
+  {
+    id: 4,
+    title: "Dunia Software: Sistem Operasi (Rumah) vs Aplikasi (Perkakas)",
+    shortTitle: "Level 4: Klasifikasi Software",
+    tag: "System vs App Software",
+    icon: "💿",
+    analogy: "Sistem Operasi (OS) itu Rumah dengan Pintu & Listrik. Aplikasi itu TV, Kasur, dan Kompor yang kamu pakai!",
+    description: "Berdasarkan Richard Fox, pahami perbedaan sakti antara System Software (Windows, Linux) yang mengelola hardware melawan Application Software (Excel, Browser).",
+    starsReward: 3,
+    steps: [
+      {
+        stepTitle: "Langkah 1: Memilah System Software vs Application Software",
+        concept: `
+          <div class="concept-box">
+            <span class="concept-analogy-pill">Klasifikasi Software Richard Fox</span>
+            <h4>Dua Sayap Perangkat Lunak</h4>
+            <p><strong>1. System Software (Sistem Operasi):</strong> Mengurus hal-hal mesin, membagi jatah RAM ke aplikasi, dan mengamankan berkas. Contoh: Windows, Linux (Ubuntu/Debian), macOS, Unix.</p>
+            <p><strong>2. Application Software:</strong> Dibuat agar manusia bisa bekerja: ngetik, ngitung keuangan, atau internetan. Contoh: Microsoft Excel, Google Chrome, Photoshop, Spotify.</p>
+          </div>
+        `,
+        interactiveType: "software-sorter",
+        missionText: "Bantu Kodi memilah software berikut ke kelompok System Software atau Application Software!"
+      },
+      {
+        stepTitle: "Langkah 2: Rahasia Kompilasi: Bahasa Manusia ➔ Bahasa Mesin",
+        concept: `
+          <div class="concept-box">
+            <span class="concept-analogy-pill">Proses Kompilasi (Compilation)</span>
+            <h4>Koki CPU Cuma Paham Angka 0 dan 1!</h4>
+            <p>Kita nulis kode pakai kata-kata bahasa Inggris (seperti C#, Java, Python). Agar CPU bisa menjalankannya, kode tersebut harus di-<strong>kompilasi</strong> (diterjemahkan) menjadi bahasa mesin (Machine Language).</p>
+          </div>
+        `,
+        interactiveType: "quiz-explain",
+        question: "Apa fungsi utama dari proses 'Kompilasi' (Compilation) menurut buku Richard Fox?",
+        options: [
+          {
+            text: "Menerjemahkan kode program yang ditulis manusia ke bahasa mesin (0 dan 1) yang bisa dieksekusi CPU!",
+            correct: true,
+            feedback: "TEPAT SEKALI! Kompiler adalah penerjemah setia antara otak manusia dan sirkuit listrik CPU!"
+          },
+          {
+            text: "Menghapus semua file virus di flashdisk secara otomatis.",
+            correct: false,
+            feedback: "Itu tugas antivirus, bukan proses kompilasi kode."
+          },
+          {
+            text: "Mengganti casing komputer menjadi warna baru.",
+            correct: false,
+            feedback: "Hehe itu modifikasi fisik, ga ada hubungannya sama bahasa koding!"
+          }
+        ]
+      }
+    ]
+  },
+
+  // ================= LEVEL 5 =================
+  {
+    id: 5,
+    title: "Mantra Gaib Terminal: Bisik-Bisik ke Mesin & Shell Scripting",
+    shortTitle: "Level 5: Terminal IT",
+    tag: "CLI & Shell Scripts",
     icon: "📟",
-    analogy: "Terminal itu bukan buat gaya hacker film, tapi cara bisik-bisik langsung ke komputer biar kerjaan beres kilat!",
+    analogy: "Terminal itu bukan buat gaya hacker, tapi cara bisik-bisik langsung ke komputer biar kerjaan beres kilat!",
     description: "Pelajari mantra sakti anak IT: ping, ipconfig, mkdir, cls! Ngetik satu baris perintah bisa menghemat 50 klik mouse.",
     starsReward: 3,
     steps: [
@@ -95,7 +276,7 @@ const levelsData = [
           <div class="concept-box">
             <span class="concept-analogy-pill">Mantra KTP Rumah</span>
             <h4>Ketik: ipconfig</h4>
-            <p>Perintah ini buat nanya ke komputer: 'Halo laptop, nomor rumah (IP Address) kamu di ruangan ini berapa sih?'. Penting banget pas ada masalah internet!</p>
+            <p>Perintah ini buat nanya ke komputer: 'Halo laptop, nomor rumah (IP Address) kamu di ruangan ini berapa sih?'. Sangat penting saat troubleshooting jaringan!</p>
           </div>
         `,
         interactiveType: "terminal-mission",
@@ -162,15 +343,15 @@ const levelsData = [
     ]
   },
 
-  // ================= LEVEL 3 =================
+  // ================= LEVEL 6 =================
   {
-    id: 3,
-    title: "Kantor Pos Jaringan: Rahasia Surat Digital",
-    shortTitle: "Level 3: Jaringan & Internet",
-    tag: "Networking Dasar",
+    id: 6,
+    title: "Kantor Pos Jaringan: Rahasia Surat Digital & Bandwidth",
+    shortTitle: "Level 6: Jaringan & Router",
+    tag: "Networking & Bandwidth",
     icon: "🌐",
     analogy: "IP itu nomor rumah, DNS itu buku kontak telepon, dan Router itu polisi perempatan!",
-    description: "Pelajari bagaimana data bisa terbang dari laptop kamu sampai ke server YouTube tanpa nyasar.",
+    description: "Pelajari bagaimana data bisa terbang dari laptop kamu sampai ke server YouTube tanpa nyasar, serta pentingnya bandwidth pipa data.",
     starsReward: 3,
     steps: [
       {
@@ -183,7 +364,7 @@ const levelsData = [
           </div>
           <div class="concept-box">
             <span class="concept-analogy-pill">Analogi Pak Satpam Perempatan</span>
-            <h4>🚦 Router</h4>
+            <h4>🚦 Router (Default Gateway)</h4>
             <p>Gerbang yang menghubungkan jaringan kantor kamu ke dunia luar (internet). Dialah yang tahu jalan tercepat menuju server tujuan.</p>
           </div>
         `,
@@ -197,7 +378,7 @@ const levelsData = [
         ]
       },
       {
-        stepTitle: "Langkah 2: Kasus Darurat: 'Web Ga Bisa Dibuka!'",
+        stepTitle: "Langkah 2: Kasus Darurat: 'Web Ga Bisa Dibuka tapi Ping Berhasil!'",
         concept: `
           <div class="concept-box">
             <span class="concept-analogy-pill">Troubleshooting Nyata</span>
@@ -216,61 +397,77 @@ const levelsData = [
     ]
   },
 
-  // ================= LEVEL 4 =================
+  // ================= LEVEL 7 (NEW: 6 PENDEKAR SPESIALIS IT TABEL 1.1) =================
   {
-    id: 4,
-    title: "Resep Rahasia Koding: Logika Si Robot Penurut",
-    shortTitle: "Level 4: Logika Koding",
-    tag: "Pemrograman Sederhana",
-    icon: "🧠",
-    analogy: "Koding itu cuma nulis resep bikin mi instan buat robot: langkah demi langkah!",
-    description: "Belajar 3 konsep inti koding: Variabel (Toples bertutup), Kondisi IF-ELSE (Pilihan payung saat hujan), dan Loop (Ulangi lagi).",
-    starsReward: 3,
+    id: 7,
+    title: "6 Pendekar Spesialis IT: Siapa Menangani Apa?",
+    shortTitle: "Level 7: Karir & Role IT",
+    tag: "Tabel 1.1 Administrator Roles",
+    icon: "👥",
+    analogy: "Kayak Rumah Sakit: Dokter Umum (Help Desk), Dokter Jantung (NetAdmin), Ahli Bedah (SysAdmin), dan Apoteker (DBA)!",
+    description: "Pelajari 6 peran spesialis IT resmi menurut Tabel 1.1 Richard Fox: SysAdmin, NetAdmin, DBA, SecAdmin, WebAdmin, dan Help Desk!",
+    starsReward: 4,
     steps: [
       {
-        stepTitle: "Langkah 1: Belajar Toples Berlabel (Variabel)",
+        stepTitle: "Langkah 1: Hotline Masalah: Hubungi Spesialis yang Tepat!",
         concept: `
           <div class="concept-box">
-            <span class="concept-analogy-pill">Konsep Toples Permen</span>
-            <h4>Variabel = Kotak Penyimpan Data</h4>
-            <p>Ibarat kamu ambil toples bening, kasih label tulisan 'nama_bos', lalu masukkan nama 'Pak Budi'. Kapanpun kamu panggil nama_bos, isinya adalah Pak Budi!</p>
+            <span class="concept-analogy-pill">Tabel 1.1 Administrator Roles Richard Fox</span>
+            <h4>Peta Kekuatan 6 Spesialis IT:</h4>
+            <ul>
+              <li><strong>System Administrator:</strong> Kelola akun user, update OS server, otomasi shell script.</li>
+              <li><strong>Network Administrator:</strong> Pasang kabel LAN, konfigurasi router & switch, atur subnet IP.</li>
+              <li><strong>Database Administrator:</strong> Backup data tabel, query SQL, pastikan database DBMS aman.</li>
+              <li><strong>Security Administrator:</strong> Pasang firewall, kebijakan password kuat, basmi hacker & virus.</li>
+              <li><strong>Web Administrator:</strong> Kelola web server, hosting, dan script halaman website.</li>
+              <li><strong>IT Help Desk:</strong> Lini depan melayani tiket user, printer macet, reset password lupa.</li>
+            </ul>
           </div>
         `,
-        interactiveType: "variable-playground",
-        task: "Bantu Kodi mengisi toples variabel di bawah ini!"
+        interactiveType: "it-roles-match",
+        missionText: "Tiket keluhan masuk dari berbagai divisi kantor! Siapa spesialis IT yang paling tepat menanganinya?"
       },
       {
-        stepTitle: "Langkah 2: Bikin Robot IT Otomatis (IF - ELSE)",
+        stepTitle: "Langkah 2: Kebijakan Keamanan Password & Etika IT",
         concept: `
           <div class="concept-box">
-            <span class="concept-analogy-pill">Pilihan Logika Sehari-hari</span>
-            <h4>Kondisi IF - ELSE</h4>
-            <p>JIKA suhu ruangan server di atas 30 derajat, MAKA nyalakan kipas AC! KALO ENGGA, tetap tenang santai.</p>
+            <span class="concept-analogy-pill">Etika & Security Policy Richard Fox</span>
+            <h4>Karyawan Sering Pakai Password '123456' atau 'Enter'!</h4>
+            <p>Richard Fox menyoroti bahwa banyak user teledor bikin password gampang ditebak. Security Administrator wajib menerapkan aturan: minimal 8 karakter, kombinasi huruf besar/kecil/angka, dan wajib diganti berkala tanpa menggunakan password lama.</p>
           </div>
         `,
-        interactiveType: "code-block-builder",
-        missionText: "Susun balok resep koding untuk mendinginkan Ruang Server jika suhunya panas!",
-        availableBlocks: [
-          { id: "b1", text: "JIKA suhu_server > 30 :", type: "type-if" },
-          { id: "b2", text: "    nyalakan_kipas_turbo()", type: "type-action" },
-          { id: "b3", text: "    kirim_peringatan_ke_hp()", type: "type-action" },
-          { id: "b4", text: "SELAIN ITU :", type: "type-if" },
-          { id: "b5", text: "    kipas_kecepatan_normal()", type: "type-action" }
-        ],
-        targetOrder: ["b1", "b2", "b3", "b4", "b5"]
+        interactiveType: "quiz-explain",
+        question: "Menurut standar keamanan IT Richard Fox, manakah password yang paling kuat dan memenuhi kebijakan keamanan?",
+        options: [
+          {
+            text: "K0d1#P4ssw0rd2026 (Kombinasi huruf besar, kecil, angka, dan simbol lebih dari 8 karakter)",
+            correct: true,
+            feedback: "BINTANG 5! Password ini sangat kokoh dan sulit ditembus oleh serangan brute-force hacker!"
+          },
+          {
+            text: "admin12345 (Cuma huruf kecil dan angka urut)",
+            correct: false,
+            feedback: "Ini salah satu password paling gampang ditebak robot hacker dalam waktu 1 detik!"
+          },
+          {
+            text: "111111 (Cuma angka kembar)",
+            correct: false,
+            feedback: "Sangat berbahaya! Jangan gunakan angka kembar untuk akun perusahaan!"
+          }
+        ]
       }
     ]
   },
 
-  // ================= LEVEL 5 (PROJECT-BASED BOSS LEVEL) =================
+  // ================= LEVEL 8 (PBL BOSS LEVEL: METODOLOGI TROUBLESHOOTING TABEL 1.3) =================
   {
-    id: 5,
+    id: 8,
     title: "Meja Bantuan IT Support: Selesaikan 3 Kasus Nyata!",
-    shortTitle: "Level 5: PBL Kasus Nyata",
+    shortTitle: "Level 8: PBL Kasus Nyata",
     tag: "Proyek Nyata (Helpdesk)",
     icon: "🏆",
-    analogy: "Saatnya terjun langsung jadi pahlawan IT Support kantor! Tangani 3 keluhan rekan kerja.",
-    description: "Terapkan semua ilmumu untuk memperbaiki printer macet, WiFi tanda seru kuning, dan otomatisasi backup file Pak Bos!",
+    analogy: "Terapkan Metodologi Diagnostik 3 Langkah Richard Fox: 1. Deteksi Masalah ➔ 2. Analisa Akar Sebab ➔ 3. Eksekusi Solusi!",
+    description: "Terapkan seluruh ilmumu untuk memperbaiki printer macet, WiFi tanda seru kuning, dan otomatisasi backup file Pak Bos!",
     starsReward: 5,
     steps: [
       {
@@ -338,12 +535,12 @@ const levelsData = [
         ]
       },
       {
-        stepTitle: "Tiket #3: Permintaan Bos: Otomatisasi Backup 1-Klik",
+        stepTitle: "Tiket #3: Permintaan Bos: Otomatisasi Backup Shell Script 1-Klik",
         concept: `
           <div class="concept-box">
-            <span class="concept-analogy-pill">Proyek Koding IT Support</span>
+            <span class="concept-analogy-pill">Proyek Shell Script IT Support (Richard Fox Ch 1)</span>
             <h4>Pak Bos Direktur:</h4>
-            <p>"Kodi, tolong buatin program otomatis kecil dong. Tiap sore saya mau salin semua dokumen dari folder 'Kerjaan' ke Flashdisk tanpa saya harus copy-paste manual satu per satu."</p>
+            <p>"Kodi, tolong buatin skrip otomatisasi kecil dong. Tiap sore saya mau salin semua dokumen dari folder 'Kerjaan' ke Flashdisk tanpa saya harus copy-paste manual satu per satu."</p>
           </div>
         `,
         interactiveType: "code-backup-mission",
@@ -361,4 +558,3 @@ const levelsData = [
     ]
   }
 ];
-

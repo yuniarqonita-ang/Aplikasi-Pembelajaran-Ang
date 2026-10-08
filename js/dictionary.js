@@ -1,161 +1,219 @@
 /* ===================================================================
    DICTIONARY.JS - KAMUS BAYI IT: DARI NOL JADI PAHAM!
    Kumpulan istilah IT & Koding dengan analogi bahasa bayi yang super gampang dicerna.
+   Diperkaya dengan standar buku acuan:
+   "Information Technology: An Introduction for Today's Digital World" (Richard Fox)
    =================================================================== */
 
 const itDictionary = [
+  // --- KONSEP UTAMA DARI BUKU RICHARD FOX (CHAPTER 1) ---
+  {
+    term: "Siklus IPOS (Input-Processing-Output-Storage)",
+    category: "Konsep Dasar IT",
+    icon: "🔄",
+    babyAnalogy: "Pabrik Roti: Bahan Masuk, Diadon, Roti Jadi, Resep Disimpan!",
+    detail: "4 langkah wajib yang membuat suatu alat disebut komputer menurut Richard Fox: Input (terima masukan), Processing (olah data di CPU), Output (tampilkan hasil di layar/cetak), dan Storage (simpan data di memori/SSD)."
+  },
+  {
+    term: "System Administrator (SysAdmin)",
+    category: "Peran & Karir IT",
+    icon: "👨‍💼",
+    babyAnalogy: "Kepala Rumah Tangga Komputer Kantor!",
+    detail: "Spesialis IT yang bertugas merawat seluruh komputer server, bikin akun pengguna baru, ngatur aturan password, update sistem operasi, dan nulis mantra skrip otomatis (Richard Fox Table 1.1)."
+  },
+  {
+    term: "Network Administrator (NetAdmin)",
+    category: "Peran & Karir IT",
+    icon: "🌐",
+    babyAnalogy: "Arsitek Jalan Tol & Polisi Lalu Lintas Kabel!",
+    detail: "Spesialis IT yang bertugas masang kabel LAN, nyetting router & switch, ngatur nomor IP, serta mastiin pipa koneksi internet kantor ga mampet atau putus."
+  },
+  {
+    term: "Database Administrator (DBA)",
+    category: "Peran & Karir IT",
+    icon: "🗄️",
+    babyAnalogy: "Mandor Lemari Arsip Raksasa Perusahaan!",
+    detail: "Spesialis IT yang mengelola software basis data (seperti SQL Server/Oracle), menjaga jutaan baris tabel transaksi, dan bikin backup rutin biar data ga hilang."
+  },
+  {
+    term: "Security Administrator (SecAdmin)",
+    category: "Peran & Karir IT",
+    icon: "🛡️",
+    babyAnalogy: "Komandan Pasukan Khusus Anti-Penyusup!",
+    detail: "Spesialis IT yang memasang dan memantau Firewall, membuat aturan keamanan ketat (password kuat dan ganti tiap bulan), serta menginspeksi log serangan hacker."
+  },
+  {
+    term: "IT Help Desk Specialist",
+    category: "Peran & Karir IT",
+    icon: "🎧",
+    babyAnalogy: "Dokter UGD Pertama Saat Karyawan Panik!",
+    detail: "Lini terdepan (Tier-1 Support) yang menjawab telepon/tiket saat karyawan bingung: printer macet, lupa password, layar mati, atau aplikasi error."
+  },
+  {
+    term: "System Software (Sistem Operasi)",
+    category: "Klasifikasi Software",
+    icon: "🏠",
+    babyAnalogy: "Rumah Utama Lengkap dengan Listrik, Air, & Pintu!",
+    detail: "Software pengatur mesin dasar seperti Windows, Linux, dan macOS. Tanpa sistem operasi, komputer cuma seonggok besi yang ga ngerti apa-apa."
+  },
+  {
+    term: "Application Software (Aplikasi Pengguna)",
+    category: "Klasifikasi Software",
+    icon: "📱",
+    babyAnalogy: "Perabotan & Perkakas di Dalam Rumah (Kasur, TV, Kompor)!",
+    detail: "Program yang dirancang khusus untuk membantu manusia bekerja atau bermain, contohnya: Google Chrome, Microsoft Excel, Photoshop, dan game."
+  },
+  {
+    term: "Bit (Binary Digit)",
+    category: "Ukuran Data",
+    icon: "💡",
+    babyAnalogy: "1 Saklar Lampu Kecil: Cuma Bisa Nyala (1) atau Mati (0)!",
+    detail: "Satuan data paling kecil di alam semesta komputer. Komputer ga paham huruf manusia, dia cuma paham saklar listrik hidup (1) atau mati (0)."
+  },
+  {
+    term: "Byte (B)",
+    category: "Ukuran Data",
+    icon: "🔤",
+    babyAnalogy: "Satu Sendok Beras = Gandengan 8 Saklar Bit Buat 1 Huruf!",
+    detail: "1 Byte terdiri dari 8 bit. 1 Byte pas banget untuk menyimpan 1 karakter huruf abjad atau angka, misalnya huruf 'A' disimpan sebagai 01000001."
+  },
+  {
+    term: "Kilobyte (KB) & Megabyte (MB)",
+    category: "Ukuran Data",
+    icon: "📦",
+    babyAnalogy: "1 Mangkok Beras (KB) & 1 Karung Beras (MB)!",
+    detail: "1 KB = 1.024 Byte (cukup buat nampung 1 lembar email pendek). 1 MB = 1.024 KB (cukup buat nampung 1 lagu MP3 atau 1 foto jepretan kamera HP)."
+  },
+  {
+    term: "Gigabyte (GB) & Terabyte (TB)",
+    category: "Ukuran Data",
+    icon: "🚚",
+    babyAnalogy: "1 Truk Fuso Beras (GB) & 1 Gudang Raksasa Bulog (TB)!",
+    detail: "1 GB = 1.024 MB (bisa nampung 1.000 buku teks tebal atau 1 film HD). 1 TB = 1.024 GB (bisa nyimpan jutaan dokumen seluruh kantor bertahun-tahun)."
+  },
+  {
+    term: "Periferal (Peripheral Devices)",
+    category: "Hardware",
+    icon: "⌨️",
+    babyAnalogy: "Aksesoris Tangan, Kaki, & Kacamata Komputer!",
+    detail: "Perangkat luar yang dicolok ke komputer untuk input atau output: keyboard, mouse, monitor, printer, webcam, dan barcode scanner."
+  },
+  {
+    term: "Kompilasi (Compilation)",
+    category: "Koding & Mesin",
+    icon: "📜",
+    babyAnalogy: "Penerjemah Bahasa Manusia ke Bisikan Rahasia Robot!",
+    detail: "Proses penerjemahan kode koding yang kita tulis (bahasa manusia seperti C#, Python, JS) menjadi bahasa mesin (0 dan 1) yang cuma bisa dipahami CPU."
+  },
+  {
+    term: "Bandwidth",
+    category: "Jaringan",
+    icon: "🌊",
+    babyAnalogy: "Lebar Pipa Paralon Air Internet!",
+    detail: "Seberapa banyak data yang bisa lewat per detik. Kalau pipanya sempit tapi yang download banyak orang, airnya bakal menetes lambat (lemot)!"
+  },
+  {
+    term: "Metodologi Troubleshooting",
+    category: "IT Support",
+    icon: "🩺",
+    babyAnalogy: "Jurus 3 Langkah Dokter: Cek Gejala ➔ Cari Sebab ➔ Obati!",
+    detail: "Pola pikir resmi IT menurut Richard Fox (Table 1.3): 1. Detect (deteksi error), 2. Diagnose (cari akar penyebabnya), 3. Find Solution & Verify (perbaiki dan pastikan sembuh)."
+  },
+
+  // --- HARDWARE DASAR ---
   {
     term: "CPU (Processor)",
     category: "Hardware",
     icon: "🧠",
     babyAnalogy: "Koki Masak Super Gesit di Restoran!",
-    detail: "CPU itu otaknya komputer. Tugasnya cuma satu: nerima perintah resep dan masaknya secepat kilat. Kalau koki masaknya hebat, pesanan seberat apapun cepat disajikan."
+    detail: "Otaknya komputer. Tugasnya cuma satu: nerima perintah resep dan masaknya secepat kilat. Kalau koki masaknya hebat, pesanan seberat apapun cepat disajikan."
   },
   {
-    term: "RAM (Memory)",
+    term: "RAM (Short-Term Memory)",
     category: "Hardware",
     icon: "🪵",
-    babyAnalogy: "Meja Kerja / Meja Dapur Tempat Potong Sayur!",
-    detail: "Tempat naruh aplikasi yang lagi kamu buka SEKARANG. Semakin luas mejanya (misal 16GB), semakin banyak buku atau game yang bisa kamu gelar barengan tanpa sempit atau lemot. Tapi kalau komputernya dimatikan, mejanya langsung disapu bersih!"
+    babyAnalogy: "Meja Kerja Tempat Potong Sayur!",
+    detail: "Tempat naruh aplikasi yang lagi dibuka SEKARANG. Cepat banget, tapi sifatnya volatile: kalau komputer dimatikan, mejanya langsung bersih kosong."
   },
   {
-    term: "SSD / Harddisk",
+    term: "SSD / Storage (Long-Term Memory)",
     category: "Hardware",
     icon: "🧊",
-    babyAnalogy: "Kulkas / Lemari Arsip Tempat Simpan Barang Abadi!",
-    detail: "Tempat nyimpan foto kenangan, film, dan dokumen. Biar komputer mati lampu berhari-hari, datanya ga bakal hilang. SSD itu versi kulkas turbo yang buka pintunya sekejap mata dibanding Harddisk piringan jadul."
+    babyAnalogy: "Kulkas / Lemari Arsip Abadi!",
+    detail: "Tempat nyimpan Windows, foto, dan aplikasi selamanya. Biar mati lampu berhari-hari, datanya ga bakal hilang (non-volatile)."
   },
   {
     term: "Motherboard",
     category: "Hardware",
     icon: "🗺️",
-    babyAnalogy: "Lantai Rumah / Lapangan Tempat Semua Part Berdiri!",
-    detail: "Papan sirkuit raksasa yang jadi fondasi. Koki (CPU), meja (RAM), dan kulkas (SSD) semuanya dicolok di papan ini, lalu ada lorong kabel tempat mereka saling ngobrol."
+    babyAnalogy: "Lantai Rumah Tempat Semua Part Berdiri!",
+    detail: "Papan sirkuit raksasa yang jadi fondasi. CPU, RAM, dan SSD semuanya dicolok di sini, terhubung oleh lorong kabel sirkuit (System Bus)."
   },
   {
     term: "PSU (Power Supply)",
     category: "Hardware",
     icon: "⚡",
-    babyAnalogy: "Jantung yang Memompa 'Darah Listrik'!",
-    detail: "Tanpa PSU, komputer cuma besi mati. PSU ngubah listrik tegangan rumah yang liar jadi listrik halus yang disukai komponen komputer."
+    babyAnalogy: "Jantung yang Memompa Darah Listrik!",
+    detail: "Tanpa PSU, komputer cuma besi mati. PSU mengubah listrik PLN 220V yang keras menjadi arus DC yang ramah bagi chip komputer."
   },
-  {
-    term: "Operating System (OS)",
-    category: "Software",
-    icon: "👔",
-    babyAnalogy: "Manajer Restoran yang Super Disiplin!",
-    detail: "Contohnya Windows, Linux, MacOS. Dia yang ngatur kapan koki masak, kapan kulkas dibuka, dan menampilkan layar cantik dengan tombol-tombol lucu biar kita manusia ga pusing ngomong sama mesin."
-  },
+
+  // --- JARINGAN DASAR ---
   {
     term: "IP Address",
     category: "Jaringan",
     icon: "🏠",
-    babyAnalogy: "Nomor Rumah & Kode Pos Paket Kiriman!",
-    detail: "Contoh: 192.168.1.50. Setiap gadget di dunia atau di kantor punya nomor rumah sendiri. Biar pas komputer kamu nonton YouTube, videonya dikirim ke layar kamu, bukan ke printer lantai dua!"
+    babyAnalogy: "Nomor Rumah & Kode Pos Surat Digital!",
+    detail: "Alamat unik di jaringan (contoh: 192.168.1.15). Biar saat kamu nonton YouTube, videonya dikirim ke layar laptopmu, bukan ke komputer sebelah!"
   },
   {
     term: "DNS (Domain Name System)",
     category: "Jaringan",
     icon: "📖",
-    babyAnalogy: "Buku Kontak Telepon di HP!",
-    detail: "Komputer cuma kenal angka (IP Address seperti 142.250.190.46), tapi otak manusia susah hapal angka. Kamu cukup ketik 'google.com', lalu DNS bakal nyariin: 'Oh, si google.com itu nomor teleponnya ini ya!'"
+    babyAnalogy: "Buku Kontak Telepon HP!",
+    detail: "Manusia susah hapal angka IP seperti 142.250.190.46, tapi gampang hapal 'google.com'. DNS yang menerjemahkan nama website ke nomor IP!"
   },
   {
-    term: "Router & Switch",
+    term: "Router",
     category: "Jaringan",
-    icon: "🚦",
-    babyAnalogy: "Pak Polisi Lalu Lintas & Tukang Sortir Surat!",
-    detail: "Switch nyambungin banyak komputer di dalam satu ruangan kantor lewat kabel. Router yang jadi gerbang ke luar, menghubungkan kantor kamu ke dunia luar (internet global)."
-  },
-  {
-    term: "Ping",
-    category: "Jaringan",
-    icon: "🏓",
-    babyAnalogy: "Lempar Bola Bekel: 'Halo, kamu masih melek ga?'",
-    detail: "Perintah buat ngetes: 'Halo server Google, dengar aku ngga?'. Kalau ada balasan 'Reply from...', berarti koneksi nyambung lancar. Kalau 'Request Timed Out', berarti kabel putus atau dia lagi pingsan."
-  },
-  {
-    term: "Terminal / CLI (Layar Hitam)",
-    category: "IT Support",
-    icon: "📟",
-    babyAnalogy: "Mantra Bisik-Bisik Rahasia Tanpa Mouse!",
-    detail: "Bukan buat sok keren kayak hacker film! IT Support pake terminal karena ngetik satu baris perintah bisa beresin masalah 100x lebih cepat daripada klik mouse 50 kali."
-  },
-  {
-    term: "Restart / Reboot",
-    category: "IT Support",
-    icon: "🔄",
-    babyAnalogy: "Tidur Siang 5 Menit Buat Ngilangin Pusing!",
-    detail: "Mantra sakti nomor satu anak IT Support! Kenapa 80% masalah beres pas di-restart? Karena saat mati, meja kerja (RAM) disapu bersih, sampah memori dibuang, dan komputer bangun dengan kondisi segar bugar."
-  },
-  {
-    term: "Driver",
-    category: "Software",
-    icon: "🗣️",
-    babyAnalogy: "Penerjemah Bahasa antara Printer dan Komputer!",
-    detail: "Printer baru merek X punya bahasa sendiri, Windows punya bahasa sendiri. Driver itu kamus penerjemah biar Windows bisa bilang: 'Tolong cetak foto kucing ini ya pak printer!'"
-  },
-  {
-    term: "Bandwidth",
-    category: "Jaringan",
-    icon: "🚿",
-    babyAnalogy: "Lebar Pipa / Selang Air!",
-    detail: "Bukan kecepatan airnya, tapi berapa banyak air yang bisa ngalir barengan. Kalau pipa kecil dipakai mandi sekeluarga barengan, airnya jadi netes-netes doang (lemot)."
-  },
-  {
-    term: "Cache",
-    category: "Software",
-    icon: "📝",
-    babyAnalogy: "Kertas Contekan di Saku!",
-    detail: "Ingatan jangka pendek browser. Biar ga download foto profil web yang sama berkali-kali setiap kamu klik halaman baru, browser nyimpen fotonya di saku biar langsung nampil instan."
-  },
-  {
-    term: "Variabel (Koding)",
-    category: "Koding",
-    icon: "📦",
-    babyAnalogy: "Toples Kosong Dikasih Label Kertas Tempel!",
-    detail: "Misal kamu ambil toples, kamu tempelin kertas tulisan 'skor', lalu kamu isi permen angka 10. Koding cuma permainan mindah-mindahin barang antar toples!"
-  },
-  {
-    term: "If / Else (Kondisi)",
-    category: "Koding",
-    icon: "🔀",
-    babyAnalogy: "Cabang Keputusan: 'Kalo Hujan, Bawa Payung!'",
-    detail: "Komputer ga punya insting, kita harus ajarin: 'JIKA (if) baterai kurang dari 10%, MAKA bunyikan nada bip. KALO ENGGA (else), diam aja.'"
-  },
-  {
-    term: "Loop (Perulangan)",
-    category: "Koding",
-    icon: "🔁",
-    babyAnalogy: "Lagu Favorit yang Diputar Ulang 100 Kali!",
-    detail: "Robot itu rajin banget dan ga pernah ngeluh. Daripada kamu nulis perintah 'Cuci piring' 100 kali, cukup ketik: 'Ulangi cuci piring sampai piringnya habis!'."
-  },
-  {
-    term: "Bug",
-    category: "Koding",
-    icon: "🐛",
-    babyAnalogy: "Kecoak / Nyamuk Nyasar di Dalam Resep Kue!",
-    detail: "Kesalahan di dalam kode yang bikin komputer bingung atau bertingkah aneh. Istilah ini beneran berawal dari zaman dulu pas ada ngengat (serangga) nyangkut di mesin komputer raksasa!"
-  },
-  {
-    term: "Syntax Error",
-    category: "Koding",
-    icon: "❌",
-    babyAnalogy: "Typo / Salah Tulis Huruf atau Titik Koma!",
-    detail: "Komputer itu polos dan kaku. Kalau kamu lupa nutup tanda kurung `)` atau salah eja satu huruf, dia bakal mogok dan bilang: 'Aku ga paham kamu ngomong apa!'."
-  },
-  {
-    term: "Task Manager",
-    category: "IT Support",
-    icon: "📊",
-    babyAnalogy: "CCTV Satpam Pengawas Ruangan!",
-    detail: "Alat di Windows (Ctrl+Shift+Esc) buat ngintip siapa aplikasi nakal yang makan CPU atau RAM kebanyakan sampai bikin komputer ngelag."
+    icon: "📡",
+    babyAnalogy: "Polisi Penjaga Gerbang Perempatan!",
+    detail: "Gerbang keluar masuk (Default Gateway) yang menghubungkan jaringan lokal kantor kamu dengan jaringan internet luar dunia."
   },
   {
     term: "Firewall",
     category: "Keamanan",
     icon: "🧱",
     babyAnalogy: "Satpam Komplek yang Minta KTP di Gerbang!",
-    detail: "Tembok pelindung yang ngecek setiap paket internet yang mau masuk ke komputer: 'Kamu tamu undangan bukan? Kalau bukan virus/hacker, silakan masuk!'"
+    detail: "Tembok filter penyaring data. Memeriksa siapa yang boleh masuk dan memblokir port yang dicurigai sebagai pintu masuk virus atau hacker."
+  },
+
+  // --- KODING & LOGIKA DASAR ---
+  {
+    term: "Variabel",
+    category: "Koding",
+    icon: "🫙",
+    babyAnalogy: "Toples Berlabel Tempat Nyimpan Barang!",
+    detail: "Wadah penyimpanan data di koding. Misalnya toples bernama 'nama_user' diisi teks 'Andi'. Kapanpun dipanggil, isinya adalah 'Andi'."
+  },
+  {
+    term: "If / Else (Kondisi)",
+    category: "Koding",
+    icon: "🔀",
+    babyAnalogy: "Pilihan Payung: 'Kalo Hujan Buka Payung, Kalo Engga Lipat!'",
+    detail: "Percabangan logika robot. 'JIKA suhu server > 30 derajat, MAKA nyalakan AC, KALO ENGGA biarkan normal'."
+  },
+  {
+    term: "Loop (Perulangan)",
+    category: "Koding",
+    icon: "🔁",
+    babyAnalogy: "Lagu Favorit Diputar Ulang Sampai Bosan!",
+    detail: "Perintah mengulang instruksi tanpa lelah. Daripada ngetik 100 baris kode, cukup ketik: 'Ulangi cetak 100 kali!'."
+  },
+  {
+    term: "Bug & Syntax Error",
+    category: "Koding",
+    icon: "🐛",
+    babyAnalogy: "Typo Huruf / Serangga Bikin Resep Kue Gagal!",
+    detail: "Kesalahan penulisan tanda baca atau alur logika koding yang membuat program komputer mogok atau salah menghitung angka."
   }
 ];
