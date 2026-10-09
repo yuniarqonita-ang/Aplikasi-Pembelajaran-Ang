@@ -3605,13 +3605,42 @@ function printCertificate() {
   window.print();
 }
 
-// ================= PWA MOBILE INSTALLATION =================
+// ================= PWA MOBILE INSTALLATION & AUTO-UPDATE =================
 function initPwaInstall() {
-  // Register Service Worker
+  // Register Service Worker with Auto-Update Detection
   if ('serviceWorker' in navigator) {
     navigator.serviceWorker.register('./sw.js')
-      .then(() => console.log('Kodi PWA Service Worker Registered!'))
+      .then((reg) => {
+        console.log('Kodi PWA Service Worker Registered! Scope:', reg.scope);
+        
+        // Cek pembaruan saat registrasi
+        reg.addEventListener('updatefound', () => {
+          const newWorker = reg.installing;
+          if (newWorker) {
+            newWorker.addEventListener('statechange', () => {
+              if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
+                // Ada versi baru siap diaktifkan!
+                console.log('Versi baru ditemukan, menampilkan banner pembaruan!');
+                const banner = document.getElementById('app-update-banner');
+                if (banner) {
+                  banner.style.display = 'block';
+                }
+              }
+            });
+          }
+        });
+      })
       .catch((err) => console.warn('SW registration failed:', err));
+
+    // Reload otomatis saat Service Worker versi baru mengambil alih
+    let refreshing = false;
+    navigator.serviceWorker.addEventListener('controllerchange', () => {
+      if (!refreshing) {
+        refreshing = true;
+        console.log('Controller berubah ke Service Worker baru! Memuat ulang...');
+        window.location.reload();
+      }
+    });
   }
 
   // Intercept beforeinstallprompt for Android Chrome
@@ -3624,6 +3653,39 @@ function initPwaInstall() {
     }
   });
 }
+
+// Fungsi Pamungkas Pembersih Cache di HP Pengguna
+window.forceAppUpdate = async function() {
+  sfx.playClick();
+  const updateBtn = document.getElementById('btn-force-update');
+  if (updateBtn) updateBtn.innerHTML = "⏳ Membersihkan...";
+
+  try {
+    // 1. Hapus semua Cache Storage di HP
+    if ('caches' in window) {
+      const cacheNames = await caches.keys();
+      await Promise.all(cacheNames.map(name => caches.delete(name)));
+      console.log('Semua Cache Storage berhasil dibersihkan!');
+    }
+
+    // 2. Unregister semua Service Worker lama
+    if ('serviceWorker' in navigator) {
+      const registrations = await navigator.serviceWorker.getRegistrations();
+      for (let reg of registrations) {
+        await reg.unregister();
+        console.log('Service Worker lama berhasil dicopot!');
+      }
+    }
+
+    localStorage.setItem('kodi_app_cache_version', 'v13');
+  } catch (err) {
+    console.warn('Gagal membersihkan cache:', err);
+  }
+
+  // 3. Muat ulang halaman dengan parameter anti-cache
+  const cleanUrl = window.location.origin + window.location.pathname + '?t=' + Date.now();
+  window.location.replace(cleanUrl);
+};
 
 function triggerPwaInstall() {
   sfx.playClick();
@@ -4444,6 +4506,22 @@ window.addEventListener("DOMContentLoaded", () => {
   initDictionarySearch();
   initPwaInstall();
   speechEngine.updateAccentUi();
+
+  // Auto-purge old caches if version is not v13
+  const lastVer = localStorage.getItem('kodi_app_cache_version');
+  if (lastVer !== 'v13') {
+    localStorage.setItem('kodi_app_cache_version', 'v13');
+    if ('caches' in window) {
+      caches.keys().then(keys => {
+        const oldKeys = keys.filter(k => k !== 'kodi-it-academy-v13');
+        if (oldKeys.length > 0) {
+          Promise.all(oldKeys.map(k => caches.delete(k))).then(() => {
+            console.log('Old caches purged automatically on startup!');
+          });
+        }
+      });
+    }
+  }
 
   // Sound toggle button
   const soundBtn = document.getElementById("sound-toggle");

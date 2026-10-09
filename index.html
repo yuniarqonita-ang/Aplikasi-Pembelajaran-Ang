@@ -12,7 +12,7 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <link rel="apple-touch-icon" href="assets/icon-192.png">
 
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/style.css?v=20261009-v13">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🤖</text></svg>">
 </head>
 <body>
@@ -55,6 +55,9 @@
         <button id="theme-toggle-btn" class="theme-toggle-btn" onclick="toggleTheme()" title="Ganti Mode Tampilan (Terang / Gelap)">
           ☀️ Terang
         </button>
+        <button id="btn-force-update" class="theme-toggle-btn" onclick="forceAppUpdate()" title="Bersihkan Cache & Perbarui Aplikasi ke Versi Terbaru (v13)" style="background: rgba(16, 185, 129, 0.25); border-color: var(--accent-green); color: #34d399; font-weight: 800;">
+          🔄 Update v13
+        </button>
         <div class="stat-badge star-count">
           <span>⭐</span>
           <span id="header-stars">0 Bintang</span>
@@ -67,35 +70,45 @@
       </div>
     </header>
 
+    <!-- Update Notification Banner -->
+    <div id="app-update-banner" class="app-update-banner" style="display: none;">
+      <div style="display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-wrap: wrap;">
+        <span class="update-banner-text">
+          🚀 <strong>Versi Baru (v13) Tersedia!</strong> 905 Tantangan Lengkap, Studio Excel (105), & IT Lab (100) siap dimuat.
+        </span>
+        <button class="btn-update-now" onclick="forceAppUpdate()">Perbarui Sekarang ⚡</button>
+      </div>
+    </div>
+
     <!-- Main Navigation Bar -->
     <nav class="main-nav">
       <button class="nav-tab active" data-tab="adventure" onclick="switchTab('adventure')" title="Peta Petualangan Belajar">
         <span class="nav-icon">🗺️</span>
         <span class="nav-label">Petualangan</span>
       </button>
-      <button class="nav-tab" data-tab="sql-trainer" onclick="switchTab('sql-trainer')" title="Tes Kueri SQL & Output Koding">
+      <button class="nav-tab" data-tab="sql-trainer" onclick="switchTab('sql-trainer')" title="Tes Kueri SQL & Output Koding (100 Tantangan)">
         <span class="nav-icon">🗄️</span>
-        <span class="nav-label">Tes SQL & Koding</span>
+        <span class="nav-label">Tes SQL</span>
       </button>
       <button class="nav-tab" data-tab="excel-trainer" onclick="switchTab('excel-trainer')" title="Studio Rumus Excel & Statistik Realtime (105 Tantangan)">
         <span class="nav-icon">📊</span>
-        <span class="nav-label">Excel Trainer</span>
+        <span class="nav-label">Excel (105)</span>
       </button>
       <button class="nav-tab" data-tab="it-tech-trainer" onclick="switchTab('it-tech-trainer')" title="Laboratorium IT Tech, Jaringan, Hardware & Security (100 Tantangan)">
         <span class="nav-icon">🛠️</span>
-        <span class="nav-label">IT Tech Lab</span>
+        <span class="nav-label">IT Lab (100)</span>
       </button>
-      <button class="nav-tab" data-tab="english-trainer" onclick="switchTab('english-trainer')" title="Studio English Speaking & Wawancara">
+      <button class="nav-tab" data-tab="english-trainer" onclick="switchTab('english-trainer')" title="Studio English Speaking, Dikte & Tes (500 Tantangan)">
         <span class="nav-icon">🗣️</span>
-        <span class="nav-label">English Studio</span>
+        <span class="nav-label">English (500)</span>
       </button>
       <button class="nav-tab" data-tab="dictionary" onclick="switchTab('dictionary')" title="Kamus Bayi IT: Istilah Mudah Dipahami">
         <span class="nav-icon">📖</span>
-        <span class="nav-label">Kamus Bayi IT</span>
+        <span class="nav-label">Kamus IT</span>
       </button>
       <button class="nav-tab" data-tab="sandbox" onclick="switchTab('sandbox')" title="Terminal Praktik Perintah Komputer">
         <span class="nav-icon">📟</span>
-        <span class="nav-label">Terminal Sandbox</span>
+        <span class="nav-label">Terminal</span>
       </button>
       <button class="nav-tab" data-tab="certificate" onclick="switchTab('certificate')" title="Lihat Sertifikat Kelulusan">
         <span class="nav-icon">🎓</span>
@@ -318,16 +331,16 @@
     </div>
   </div>
 
-  <!-- Scripts -->
-  <script src="js/sfx.js"></script>
-  <script src="js/speech.js"></script>
-  <script src="js/dictionary.js"></script>
-  <script src="js/levels.js"></script>
-  <script src="js/sql_trainer.js"></script>
-  <script src="js/english_trainer.js"></script>
-  <script src="js/excel_trainer.js"></script>
-  <script src="js/it_tech_trainer.js"></script>
-  <script src="js/ai_tutor.js"></script>
-  <script src="js/app.js"></script>
+  <!-- Scripts with Cache Buster v13 -->
+  <script src="js/sfx.js?v=20261009-v13"></script>
+  <script src="js/speech.js?v=20261009-v13"></script>
+  <script src="js/dictionary.js?v=20261009-v13"></script>
+  <script src="js/levels.js?v=20261009-v13"></script>
+  <script src="js/sql_trainer.js?v=20261009-v13"></script>
+  <script src="js/english_trainer.js?v=20261009-v13"></script>
+  <script src="js/excel_trainer.js?v=20261009-v13"></script>
+  <script src="js/it_tech_trainer.js?v=20261009-v13"></script>
+  <script src="js/ai_tutor.js?v=20261009-v13"></script>
+  <script src="js/app.js?v=20261009-v13"></script>
 </body>
 </html>
