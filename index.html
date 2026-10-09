@@ -55,8 +55,8 @@
         <button id="theme-toggle-btn" class="theme-toggle-btn" onclick="toggleTheme()" title="Ganti Mode Tampilan (Terang / Gelap)">
           ☀️ Terang
         </button>
-        <button id="btn-force-update" class="theme-toggle-btn" onclick="forceAppUpdate()" title="Bersihkan Cache & Perbarui Aplikasi ke Versi Terbaru (v15)" style="background: rgba(16, 185, 129, 0.25); border-color: var(--accent-green); color: #34d399; font-weight: 800;">
-          🔄 Update v15
+        <button id="btn-force-update" class="theme-toggle-btn" onclick="forceAppUpdate()" title="Bersihkan Cache & Perbarui Aplikasi ke Versi Terbaru (v16)" style="background: rgba(16, 185, 129, 0.25); border-color: var(--accent-green); color: #34d399; font-weight: 800;">
+          🔄 Update v16
         </button>
         <div class="stat-badge star-count">
           <span>⭐</span>
@@ -74,7 +74,7 @@
     <div id="app-update-banner" class="app-update-banner" style="display: none;">
       <div style="display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-wrap: wrap;">
         <span class="update-banner-text">
-          🚀 <strong>Versi Baru (v15) Tersedia!</strong> 100 Studio Koding (HTML, JS, Python, Java, C#), 1.300 English, 105 Excel Murni, 100 Lab IT & 100 SQL siap dimuat.
+          🚀 <strong>Versi Baru (v16) Tersedia!</strong> 100 Tantangan Cambridge Bilingual Math, 100 Studio Koding (HTML, JS, Python, Java, C#), 1.300 English, 105 Excel & 100 Lab IT siap dimuat!
         </span>
         <button class="btn-update-now" onclick="forceAppUpdate()">Perbarui Sekarang ⚡</button>
       </div>
@@ -101,6 +101,10 @@
       <button class="nav-tab" data-tab="it-tech-trainer" onclick="switchTab('it-tech-trainer')" title="Laboratorium IT Tech, Jaringan, Hardware & Security (100 Tantangan)">
         <span class="nav-icon">🛠️</span>
         <span class="nav-label">IT Lab (100)</span>
+      </button>
+      <button class="nav-tab" data-tab="math-trainer" onclick="switchTab('math-trainer')" title="Studio Cambridge Bilingual Mathematics (100 Tantangan)">
+        <span class="nav-icon">📐</span>
+        <span class="nav-label">Math (100)</span>
       </button>
       <button class="nav-tab" data-tab="english-trainer" onclick="switchTab('english-trainer')" title="Studio English Speaking, Dikte & Tes (1.300 Tantangan)">
         <span class="nav-icon">🗣️</span>
@@ -229,6 +233,18 @@
       <div id="it-tech-content-area"></div>
     </section>
 
+    <!-- ================= TAB: CAMBRIDGE BILINGUAL MATHEMATICS (100 TANTANGAN) ================= -->
+    <section id="tab-math-trainer" class="tab-content">
+      <div class="section-title-wrap">
+        <h2 class="section-title">📐 Cambridge Bilingual Mathematics Studio (100 Tantangan)</h2>
+        <p class="section-subtitle">
+          Kurikulum Standar Cambridge Checkpoint & IGCSE (0580/0862): Bilangan, Aljabar, Persamaan, Rasio, Keuangan, Geometri, Pengukuran, Pythagoras, Koordinat & Peluang lengkap dengan Nalar Bayi Kodi & Virtual Math Pad!
+        </p>
+      </div>
+
+      <div id="math-trainer-content-area"></div>
+    </section>
+
     <!-- ================= TAB 3: STUDIO ENGLISH & SPEAKING ================= -->
     <section id="tab-english-trainer" class="tab-content">
       <div class="section-title-wrap">
@@ -347,17 +363,18 @@
     </div>
   </div>
 
-  <!-- Scripts with Cache Buster v15 -->
-  <script src="js/sfx.js?v=20261009-v15"></script>
-  <script src="js/speech.js?v=20261009-v15"></script>
-  <script src="js/dictionary.js?v=20261009-v15"></script>
-  <script src="js/levels.js?v=20261009-v15"></script>
-  <script src="js/sql_trainer.js?v=20261009-v15"></script>
-  <script src="js/code_trainer.js?v=20261009-v15"></script>
-  <script src="js/english_trainer.js?v=20261009-v15"></script>
-  <script src="js/excel_trainer.js?v=20261009-v15"></script>
-  <script src="js/it_tech_trainer.js?v=20261009-v15"></script>
-  <script src="js/ai_tutor.js?v=20261009-v15"></script>
-  <script src="js/app.js?v=20261009-v15"></script>
+  <!-- Scripts with Cache Buster v16 -->
+  <script src="js/sfx.js?v=20261009-v16"></script>
+  <script src="js/speech.js?v=20261009-v16"></script>
+  <script src="js/dictionary.js?v=20261009-v16"></script>
+  <script src="js/levels.js?v=20261009-v16"></script>
+  <script src="js/sql_trainer.js?v=20261009-v16"></script>
+  <script src="js/code_trainer.js?v=20261009-v16"></script>
+  <script src="js/english_trainer.js?v=20261009-v16"></script>
+  <script src="js/excel_trainer.js?v=20261009-v16"></script>
+  <script src="js/it_tech_trainer.js?v=20261009-v16"></script>
+  <script src="js/math_trainer.js?v=20261009-v16"></script>
+  <script src="js/ai_tutor.js?v=20261009-v16"></script>
+  <script src="js/app.js?v=20261009-v16"></script>
 </body>
 </html>

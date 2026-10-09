@@ -33,7 +33,11 @@ const appState = {
   excelCategoryFilter: "all",
   excelCompleted: [],
   excelUserFormulas: {},
-  deferredInstallPrompt: null
+  deferredInstallPrompt: null,
+  currentMathIndex: 0,
+  mathUnitFilter: "all",
+  mathCompleted: [],
+  mathUserDrafts: {}
 };
 
 // Initialize State from LocalStorage
@@ -46,6 +50,8 @@ function loadProgress() {
       appState.completedLevels = parsed.completedLevels || [];
       appState.playerName = parsed.playerName || "Siswa Hebat";
       appState.excelCompleted = parsed.excelCompleted || [];
+      appState.mathCompleted = parsed.mathCompleted || [];
+      appState.mathUserDrafts = parsed.mathUserDrafts || {};
     }
   } catch (e) {
     console.warn("Storage error", e);
@@ -58,7 +64,9 @@ function saveProgress() {
       stars: appState.stars,
       completedLevels: appState.completedLevels,
       playerName: appState.playerName,
-      excelCompleted: appState.excelCompleted || []
+      excelCompleted: appState.excelCompleted || [],
+      mathCompleted: appState.mathCompleted || [],
+      mathUserDrafts: appState.mathUserDrafts || {}
     }));
   } catch (e) {
     console.warn("Storage error", e);
@@ -161,6 +169,12 @@ function switchTab(tabName) {
     setKodiSpeech(
       "Selamat datang di Laboratorium IT Tech & Jaringan! Ada 100 tantangan praktik standar CompTIA A+, Network+, Cisco CCNA, Security+, Algoritma & Automasi Python siap kamu taklukkan!",
       "Pahami contoh soal dan jawaban benar dulu di kotak atas, lalu pecahkan tantangan teknisnya!"
+    );
+  } else if (tabName === 'math-trainer') {
+    renderMathTrainer();
+    setKodiSpeech(
+      "Welcome to Cambridge Bilingual Mathematics Studio! 📐 Ada 100 tantangan matematika kurikulum Cambridge Checkpoint & IGCSE lengkap dengan Nalar Bayi Kodi!",
+      "Pahami Contoh Soal (Kasus A) terlebih dahulu, gunakan Virtual Math Pad untuk mengetik simbol pecahan, kuadrat, dan sudut, lalu klik Cek Jawaban Matematika!"
     );
   } else if (tabName === 'english-trainer') {
     renderEnglishTrainer();
@@ -4083,4 +4097,468 @@ window.runCodeChallengeTest = function() {
     );
   }
 };
+
+
+// ==============================================================================
+// 📐 CAMBRIDGE BILINGUAL MATHEMATICS STUDIO (100 INTERACTIVE CHALLENGES)
+// ==============================================================================
+
+function renderMathTrainer() {
+  const container = document.getElementById("math-trainer-content-area");
+  if (!container) return;
+
+  if (typeof window.CAMBRIDGE_MATH_CHALLENGES === "undefined" || !window.CAMBRIDGE_MATH_CHALLENGES.length) {
+    container.innerHTML = `<div class="info-box">Data tantangan matematika Cambridge sedang disiapkan...</div>`;
+    return;
+  }
+
+  const allChallenges = window.CAMBRIDGE_MATH_CHALLENGES;
+  appState.mathUnitFilter = appState.mathUnitFilter || "all";
+  appState.currentMathIndex = appState.currentMathIndex || 0;
+  appState.mathCompleted = appState.mathCompleted || [];
+  appState.mathUserDrafts = appState.mathUserDrafts || {};
+
+  const categories = [
+    { key: "all", label: "🌟 Semua Unit (100)" },
+    { key: "Unit 1", label: "🔢 1. Numbers (10)" },
+    { key: "Unit 2", label: "🧬 2. Algebra (10)" },
+    { key: "Unit 3", label: "⚖️ 3. Equations (10)" },
+    { key: "Unit 4", label: "⚖️ 4. Ratio & Rates (10)" },
+    { key: "Unit 5", label: "💰 5. Financial Math (10)" },
+    { key: "Unit 6", label: "📐 6. Geometry & Angles (10)" },
+    { key: "Unit 7", label: "🧊 7. Mensuration (10)" },
+    { key: "Unit 8", label: "📐 8. Pythagoras & Trig (10)" },
+    { key: "Unit 9", label: "📈 9. Coordinate & Func (10)" },
+    { key: "Unit 10", label: "🎲 10. Prob & Stats (10)" }
+  ];
+
+  const filteredList = (appState.mathUnitFilter === "all")
+    ? allChallenges.map((item, idx) => ({ item, originalIndex: idx }))
+    : allChallenges
+        .map((item, idx) => ({ item, originalIndex: idx }))
+        .filter(x => x.item.unit && x.item.unit.toLowerCase().indexOf(appState.mathUnitFilter.toLowerCase()) !== -1);
+
+  if (appState.currentMathIndex < 0 || appState.currentMathIndex >= allChallenges.length) {
+    appState.currentMathIndex = 0;
+  }
+
+  let currentPos = filteredList.findIndex(x => x.originalIndex === appState.currentMathIndex);
+  if (currentPos === -1 && filteredList.length > 0) {
+    appState.currentMathIndex = filteredList[0].originalIndex;
+    currentPos = 0;
+  }
+
+  const chal = allChallenges[appState.currentMathIndex] || allChallenges[0];
+  const isDone = appState.mathCompleted.includes(chal.id);
+  const currentDraft = (appState.mathUserDrafts[chal.id] !== undefined)
+    ? appState.mathUserDrafts[chal.id]
+    : "";
+
+  const completedCount = appState.mathCompleted.length;
+  const progressPercent = Math.round((completedCount / allChallenges.length) * 100);
+
+  const padSymbols = chal.quickPad && chal.quickPad.length ? chal.quickPad : ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "+", "-", "×", "/", "=", "x", "y"];
+
+  container.innerHTML = `
+    <!-- Header Card -->
+    <div style="background: linear-gradient(135deg, rgba(30, 41, 59, 0.95), rgba(15, 23, 42, 0.98)); border: 1px solid var(--border-glow); border-radius: 16px; padding: 20px; margin-bottom: 20px; box-shadow: var(--card-shadow);">
+      <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 14px;">
+        <div style="flex: 1; min-width: 260px;">
+          <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 6px;">
+            <span style="font-size: 1.8rem;">📐</span>
+            <div>
+              <h3 style="margin: 0; color: #fff; font-size: 1.3rem;">Cambridge Bilingual Mathematics Studio</h3>
+              <p style="margin: 2px 0 0; font-size: 0.85rem; color: var(--accent-cyan);">
+                100 Tantangan Interaktif Standar Cambridge Checkpoint & IGCSE (0580/0862) dengan Nalar Bayi Kodi & Virtual Math Pad
+              </p>
+            </div>
+          </div>
+        </div>
+        <div style="text-align: right; min-width: 170px;">
+          <div style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 4px;">Pencapaian Matematika:</div>
+          <div style="font-size: 1.25rem; font-weight: 800; color: var(--accent-green);">
+            ${completedCount} / ${allChallenges.length} Selesai (${progressPercent}%)
+          </div>
+          <div style="height: 6px; width: 100%; background: rgba(255,255,255,0.1); border-radius: 3px; margin-top: 6px; overflow: hidden;">
+            <div style="height: 100%; width: ${progressPercent}%; background: linear-gradient(90deg, var(--accent-cyan), var(--accent-green)); transition: width 0.3s ease;"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Kategori Filter Tabs -->
+      <div style="display: flex; gap: 8px; margin-top: 18px; overflow-x: auto; padding-bottom: 6px;">
+        ${categories.map(c => `
+          <button class="choice-card-btn ${appState.mathUnitFilter === c.key ? 'active-eng-mode' : ''}"
+                  style="flex: 1; min-width: 140px; padding: 10px 14px; font-size: 0.82rem; font-weight: 700; text-align: center; border-radius: 10px; white-space: nowrap;"
+                  onclick="setMathUnitFilter('${c.key}')">
+            ${c.label}
+          </button>
+        `).join('')}
+      </div>
+    </div>
+
+    <!-- Navigation Bar -->
+    <div class="challenge-nav-bar" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; margin-bottom: 20px; background: rgba(15, 23, 42, 0.6); padding: 12px 16px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.08);">
+      <div class="challenge-nav-controls" style="display: flex; align-items: center; gap: 8px;">
+        <label style="font-size: 0.8rem; font-weight: 700; color: var(--accent-cyan);">Navigasi Soal:</label>
+      </div>
+
+      <div class="challenge-nav-controls" style="display: flex; align-items: center; gap: 8px; flex: 1; max-width: 600px; justify-content: flex-end;">
+        <button class="btn-secondary" style="padding: 6px 12px; font-size: 0.82rem;" onclick="navMathChallenge(-1)" ${currentPos <= 0 ? 'disabled' : ''}>
+          ◀ Prev
+        </button>
+        <select class="challenge-page-select" style="flex: 1; padding: 6px 10px; font-size: 0.82rem; border-radius: 8px; background: #0f172a; color: #fff; border: 1px solid var(--border-glow);" onchange="setMathChallengeIndex(Number(this.value))">
+          ${filteredList.map((x) => `
+            <option value="${x.originalIndex}" ${x.originalIndex === appState.currentMathIndex ? 'selected' : ''}>
+              #${x.originalIndex + 1}: [${x.item.unit.split(':')[0]}] ${x.item.title} ${appState.mathCompleted.includes(x.item.id) ? '✓ Selesai' : ''}
+            </option>
+          `).join('')}
+        </select>
+        <button class="btn-secondary" style="padding: 6px 12px; font-size: 0.82rem;" onclick="navMathChallenge(1)" ${currentPos >= filteredList.length - 1 ? 'disabled' : ''}>
+          Next ▶
+        </button>
+      </div>
+    </div>
+
+    <!-- MAIN GRID: Worked Example (Left/Top) & Student Challenge (Right/Bottom) -->
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px; margin-bottom: 24px;">
+
+      <!-- ================= KOTAK CONTOH SOAL SERUPA (KASUS A) ================= -->
+      <div style="background: linear-gradient(145deg, rgba(30, 27, 75, 0.8), rgba(15, 23, 42, 0.9)); border: 1px solid rgba(167, 139, 250, 0.35); border-radius: 14px; padding: 18px; box-shadow: 0 4px 16px rgba(0,0,0,0.3);">
+        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+          <span style="font-size: 0.75rem; font-weight: 800; background: rgba(167, 139, 250, 0.2); color: #c4b5fd; padding: 4px 10px; border-radius: 20px; letter-spacing: 0.5px; border: 1px solid rgba(167, 139, 250, 0.3);">
+            📖 CONTOH SOAL & PEMBAHASAN TERPISAH (KASUS A)
+          </span>
+          <span style="font-size: 0.75rem; color: #a5b4fc; font-weight: 600;">Pelajari Polanya</span>
+        </div>
+
+        <!-- Soal Contoh Bilingual -->
+        <div style="background: rgba(0, 0, 0, 0.35); border-radius: 10px; padding: 14px; margin-bottom: 12px; border-left: 3px solid #a78bfa;">
+          <div style="font-size: 0.82rem; font-weight: 700; color: #c4b5fd; margin-bottom: 4px;">🇬🇧 Worked Example Statement:</div>
+          <div style="font-size: 0.95rem; color: #f8fafc; font-weight: 600; line-height: 1.4; margin-bottom: 8px;">
+            ${chal.workedExample ? chal.workedExample.kasusSerupaEN : '-'}
+          </div>
+          <div style="font-size: 0.82rem; font-weight: 700; color: #a5b4fc; margin-bottom: 4px;">🇮🇩 Arti & Soal Bahasa Indonesia:</div>
+          <div style="font-size: 0.88rem; color: #cbd5e1; line-height: 1.4;">
+            ${chal.workedExample ? chal.workedExample.kasusSerupaID : '-'}
+          </div>
+        </div>
+
+        <!-- Langkah Penyelesaian Terinci -->
+        <div style="background: rgba(15, 23, 42, 0.7); border-radius: 10px; padding: 12px 14px; margin-bottom: 12px; border: 1px solid rgba(255,255,255,0.06);">
+          <div style="font-size: 0.8rem; font-weight: 700; color: #86efac; margin-bottom: 4px;">📝 Langkah Kerja (Working Out):</div>
+          <div style="font-family: monospace; font-size: 0.88rem; color: #e2e8f0; line-height: 1.5; white-space: pre-wrap;">
+            ${chal.workedExample ? chal.workedExample.langkahPenyelesaian : '-'}
+          </div>
+        </div>
+
+        <!-- Jawaban Benar Contoh Kasus A -->
+        <div style="display: flex; align-items: center; justify-content: space-between; background: rgba(34, 197, 94, 0.12); border: 1px dashed rgba(34, 197, 94, 0.4); border-radius: 8px; padding: 10px 14px; margin-bottom: 12px;">
+          <span style="font-size: 0.82rem; font-weight: 700; color: #86efac;">Jawaban Benar Contoh Kasus A:</span>
+          <span style="font-size: 1.05rem; font-weight: 800; color: #4ade80; font-family: monospace;">${chal.workedExample ? chal.workedExample.jawabanBenarContoh : '-'}</span>
+        </div>
+
+        <!-- Nalar Bayi Kodi -->
+        <div style="background: rgba(250, 204, 21, 0.1); border-left: 3px solid #facc15; border-radius: 8px; padding: 10px 14px;">
+          <div style="display: flex; align-items: center; gap: 6px; margin-bottom: 3px;">
+            <span style="font-size: 1rem;">👶</span>
+            <strong style="font-size: 0.82rem; color: #facc15;">Nalar Bayi Kodi:</strong>
+          </div>
+          <div style="font-size: 0.85rem; color: #fef08a; line-height: 1.45;">
+            ${chal.workedExample ? chal.workedExample.nalarBayiKodi : '-'}
+          </div>
+        </div>
+      </div>
+
+      <!-- ================= KOTAK TANTANGAN SISWA (KASUS B - NO SPOILER) ================= -->
+      <div style="background: linear-gradient(145deg, rgba(15, 23, 42, 0.95), rgba(17, 24, 39, 0.98)); border: 1px solid rgba(56, 189, 248, 0.4); border-radius: 14px; padding: 18px; box-shadow: 0 4px 16px rgba(0,0,0,0.3); display: flex; flex-direction: column;">
+        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; flex-wrap: wrap; gap: 6px;">
+          <span style="font-size: 0.75rem; font-weight: 800; background: rgba(56, 189, 248, 0.2); color: #38bdf8; padding: 4px 10px; border-radius: 20px; letter-spacing: 0.5px; border: 1px solid rgba(56, 189, 248, 0.3);">
+            🎯 TANTANGAN MATEMATIKA B (KERJAKAN SENDIRI)
+          </span>
+          <span style="font-size: 0.75rem; color: var(--accent-cyan); font-weight: 600;">${chal.unit}</span>
+        </div>
+
+        <!-- Judul & Topik Soal -->
+        <div style="margin-bottom: 10px;">
+          <h4 style="margin: 0 0 4px; font-size: 1.05rem; color: #fff;">${chal.title}</h4>
+          <span style="font-size: 0.78rem; color: #94a3b8; background: rgba(255,255,255,0.06); padding: 2px 8px; border-radius: 4px;">Topik: ${chal.topic}</span>
+        </div>
+
+        <!-- Problem Statement Bilingual -->
+        <div style="background: rgba(0, 0, 0, 0.4); border-radius: 10px; padding: 14px; margin-bottom: 14px; border-left: 3px solid #38bdf8;">
+          <div style="font-size: 0.82rem; font-weight: 700; color: #38bdf8; margin-bottom: 4px;">🇬🇧 Cambridge Exam Question:</div>
+          <div style="font-size: 1rem; color: #f8fafc; font-weight: 600; line-height: 1.45; margin-bottom: 10px;">
+            ${chal.questionEN}
+          </div>
+          <div style="font-size: 0.82rem; font-weight: 700; color: #7dd3fc; margin-bottom: 4px;">🇮🇩 Terjemahan Soal:</div>
+          <div style="font-size: 0.9rem; color: #cbd5e1; line-height: 1.45;">
+            ${chal.questionID}
+          </div>
+        </div>
+
+        <!-- Input Box & Clear Buttons -->
+        <div style="margin-bottom: 12px;">
+          <label style="display: block; font-size: 0.82rem; font-weight: 700; color: #e2e8f0; margin-bottom: 6px;">
+            ✍️ Masukkan Jawaban Akhir Matematika:
+          </label>
+          <div style="display: flex; gap: 8px;">
+            <input type="text" id="math-answer-input"
+                   style="flex: 1; padding: 12px 14px; font-size: 1.05rem; font-family: monospace; font-weight: 700; background: #090d16; border: 1.5px solid rgba(56, 189, 248, 0.4); border-radius: 8px; color: #38bdf8; outline: none; transition: border-color 0.2s;"
+                   placeholder="Ketik atau gunakan keypad di bawah..."
+                   value="${currentDraft.replace(/"/g, '&quot;')}"
+                   oninput="saveMathDraft(this.value)"
+                   onkeydown="if(event.key==='Enter') submitMathAnswer()">
+            <button class="btn-secondary" style="padding: 8px 12px; font-size: 0.82rem;" onclick="backspaceMathInput()" title="Hapus satu karakter">
+              ⌫ Del
+            </button>
+            <button class="btn-secondary" style="padding: 8px 12px; font-size: 0.82rem;" onclick="clearMathInput()" title="Kosongkan jawaban">
+              ✕ Reset
+            </button>
+          </div>
+        </div>
+
+        <!-- Virtual Math Pad (QuickPad) -->
+        <div style="margin-bottom: 14px; background: rgba(0,0,0,0.25); padding: 10px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.05);">
+          <div style="font-size: 0.74rem; font-weight: 700; color: #94a3b8; margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.5px;">
+            🔢 Virtual Math Pad (Klik untuk Mengetik Cepat):
+          </div>
+          <div style="display: flex; flex-wrap: wrap; gap: 6px;">
+            ${padSymbols.map(sym => `
+              <button class="btn-secondary"
+                      style="padding: 6px 12px; font-size: 0.88rem; font-family: monospace; font-weight: 700; background: rgba(30, 41, 59, 0.8); border: 1px solid rgba(56, 189, 248, 0.25); color: #e2e8f0; border-radius: 6px; cursor: pointer; transition: all 0.15s;"
+                      onmouseover="this.style.background='rgba(56, 189, 248, 0.2)'"
+                      onmouseout="this.style.background='rgba(30, 41, 59, 0.8)'"
+                      onclick="appendMathSymbol('${sym}')">
+                ${sym}
+              </button>
+            `).join('')}
+            <button class="btn-secondary" style="padding: 6px 10px; font-size: 0.85rem; font-family: monospace; background: rgba(30, 41, 59, 0.8); border: 1px solid rgba(56, 189, 248, 0.25); color: #94a3b8; border-radius: 6px;" onclick="appendMathSymbol('/')">/</button>
+            <button class="btn-secondary" style="padding: 6px 10px; font-size: 0.85rem; font-family: monospace; background: rgba(30, 41, 59, 0.8); border: 1px solid rgba(56, 189, 248, 0.25); color: #94a3b8; border-radius: 6px;" onclick="appendMathSymbol('^')">^</button>
+            <button class="btn-secondary" style="padding: 6px 10px; font-size: 0.85rem; font-family: monospace; background: rgba(30, 41, 59, 0.8); border: 1px solid rgba(56, 189, 248, 0.25); color: #94a3b8; border-radius: 6px;" onclick="appendMathSymbol('(')">(</button>
+            <button class="btn-secondary" style="padding: 6px 10px; font-size: 0.85rem; font-family: monospace; background: rgba(30, 41, 59, 0.8); border: 1px solid rgba(56, 189, 248, 0.25); color: #94a3b8; border-radius: 6px;" onclick="appendMathSymbol(')')">)</button>
+          </div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div style="display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 12px;">
+          <button class="btn-primary"
+                  style="flex: 1; min-width: 180px; padding: 12px 18px; font-size: 0.95rem; font-weight: 800; background: linear-gradient(135deg, #059669, #10b981); border: none; border-radius: 8px; box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);"
+                  onclick="submitMathAnswer()">
+            🚀 Cek Jawaban Matematika
+          </button>
+          <button class="btn-secondary"
+                  style="padding: 12px 16px; font-size: 0.85rem; font-weight: 700; border-radius: 8px;"
+                  onclick="toggleMathHint()">
+            💡 Petunjuk Nalar Kodi
+          </button>
+          <button class="btn-secondary"
+                  style="padding: 12px 16px; font-size: 0.85rem; font-weight: 700; border-radius: 8px;"
+                  onclick="navMathChallenge(1)">
+            ⏭️ Soal Berikutnya
+          </button>
+        </div>
+
+        <!-- Hint Box (Toggled on demand) -->
+        <div id="math-hint-box" style="display: none; background: rgba(245, 158, 11, 0.12); border: 1px dashed #f59e0b; border-radius: 8px; padding: 12px 14px; margin-bottom: 12px;">
+          <div style="display: flex; align-items: center; gap: 6px; margin-bottom: 4px;">
+            <span style="font-size: 1rem;">💡</span>
+            <strong style="color: #fbbf24; font-size: 0.85rem;">Petunjuk Strategi Matematika:</strong>
+          </div>
+          <div style="color: #fef3c7; font-size: 0.85rem; line-height: 1.45;">
+            ${chal.hint || 'Perhatikan pola penyelesaian pada Kasus A di sebelah kiri!'}
+          </div>
+        </div>
+
+        <!-- Feedback & Validation Box -->
+        <div id="math-feedback-box" style="display: ${isDone ? 'block' : 'none'};">
+          ${isDone ? `
+            <div class="alert-box success" style="margin: 0; padding: 14px; border-radius: 8px;">
+              <div style="display: flex; align-items: flex-start; justify-content: space-between; gap: 10px;">
+                <div>
+                  <div style="font-size: 1rem; font-weight: 800; color: #4ade80; margin-bottom: 4px;">
+                    🎉 Tantangan Ini Sudah Berhasil Kamu Selesaikan!
+                  </div>
+                  <div style="font-size: 0.85rem; color: #cbd5e1; line-height: 1.4;">
+                    ${chal.explanation || 'Jawabanmu benar dan sesuai kaidah Cambridge!'}
+                  </div>
+                </div>
+                <button class="btn-primary" style="background: var(--accent-green); border: none; padding: 6px 14px; font-size: 0.82rem;" onclick="navMathChallenge(1)">
+                  Lanjut ⏭️
+                </button>
+              </div>
+            </div>
+          ` : ''}
+        </div>
+
+      </div>
+    </div>
+  `;
+}
+
+// Handler functions for Math Trainer
+window.setMathUnitFilter = function(unitKey) {
+  appState.mathUnitFilter = unitKey;
+  renderMathTrainer();
+};
+
+window.setMathChallengeIndex = function(index) {
+  appState.currentMathIndex = index;
+  renderMathTrainer();
+};
+
+window.navMathChallenge = function(delta) {
+  const allChallenges = window.CAMBRIDGE_MATH_CHALLENGES || [];
+  const filteredList = (appState.mathUnitFilter === "all")
+    ? allChallenges.map((item, idx) => ({ item, originalIndex: idx }))
+    : allChallenges
+        .map((item, idx) => ({ item, originalIndex: idx }))
+        .filter(x => x.item.unit && x.item.unit.toLowerCase().indexOf(appState.mathUnitFilter.toLowerCase()) !== -1);
+
+  let currentPos = filteredList.findIndex(x => x.originalIndex === appState.currentMathIndex);
+  if (currentPos === -1) currentPos = 0;
+
+  const nextPos = currentPos + delta;
+  if (nextPos >= 0 && nextPos < filteredList.length) {
+    appState.currentMathIndex = filteredList[nextPos].originalIndex;
+    renderMathTrainer();
+  }
+};
+
+window.saveMathDraft = function(val) {
+  const allChallenges = window.CAMBRIDGE_MATH_CHALLENGES || [];
+  const chal = allChallenges[appState.currentMathIndex];
+  if (chal) {
+    appState.mathUserDrafts = appState.mathUserDrafts || {};
+    appState.mathUserDrafts[chal.id] = val;
+  }
+};
+
+window.appendMathSymbol = function(sym) {
+  const inputEl = document.getElementById("math-answer-input");
+  if (!inputEl) return;
+  const currentVal = inputEl.value || "";
+  const nextVal = currentVal + (sym === ' ' ? ' ' : sym);
+  inputEl.value = nextVal;
+  inputEl.focus();
+  window.saveMathDraft(nextVal);
+};
+
+window.clearMathInput = function() {
+  const inputEl = document.getElementById("math-answer-input");
+  if (!inputEl) return;
+  inputEl.value = "";
+  inputEl.focus();
+  window.saveMathDraft("");
+};
+
+window.backspaceMathInput = function() {
+  const inputEl = document.getElementById("math-answer-input");
+  if (!inputEl) return;
+  const currentVal = inputEl.value || "";
+  if (currentVal.length > 0) {
+    const nextVal = currentVal.slice(0, -1);
+    inputEl.value = nextVal;
+    inputEl.focus();
+    window.saveMathDraft(nextVal);
+  }
+};
+
+window.toggleMathHint = function() {
+  const hintBox = document.getElementById("math-hint-box");
+  if (!hintBox) return;
+  if (hintBox.style.display === "none" || !hintBox.style.display) {
+    hintBox.style.display = "block";
+    sfx.playRobotChirp();
+  } else {
+    hintBox.style.display = "none";
+  }
+};
+
+window.submitMathAnswer = function() {
+  const allChallenges = window.CAMBRIDGE_MATH_CHALLENGES || [];
+  const chal = allChallenges[appState.currentMathIndex];
+  if (!chal) return;
+
+  const inputEl = document.getElementById("math-answer-input");
+  const userVal = inputEl ? inputEl.value : "";
+  const feedbackBox = document.getElementById("math-feedback-box");
+
+  if (!userVal || !userVal.trim()) {
+    sfx.playWrong();
+    if (feedbackBox) {
+      feedbackBox.style.display = "block";
+      feedbackBox.innerHTML = `
+        <div class="alert-box warning" style="margin: 0; padding: 12px; border-radius: 8px;">
+          <strong>Silakan ketik atau gunakan tombol keypad untuk mengisi jawabanmu terlebih dahulu!</strong>
+        </div>
+      `;
+    }
+    return;
+  }
+
+  // Call checker in js/math_trainer.js
+  const result = window.checkMathChallengeAnswer(chal.id, userVal);
+
+  if (result.isCorrect) {
+    sfx.playSuccess();
+    if (!appState.mathCompleted.includes(chal.id)) {
+      appState.mathCompleted.push(chal.id);
+      appState.stars = (appState.stars || 0) + 1;
+      saveProgress();
+      const starEl = document.getElementById("header-stars");
+      if (starEl) starEl.textContent = `${appState.stars} Bintang`;
+    }
+
+    if (feedbackBox) {
+      feedbackBox.style.display = "block";
+      feedbackBox.innerHTML = `
+        <div class="alert-box success" style="margin: 0; padding: 14px; border-radius: 8px;">
+          <div style="display: flex; align-items: flex-start; justify-content: space-between; flex-wrap: wrap; gap: 10px;">
+            <div>
+              <div style="font-size: 1.05rem; font-weight: 800; color: #4ade80; margin-bottom: 4px;">
+                🎉 Luar Biasa! Jawabanmu Benar (Cambridge Standard Pass)!
+              </div>
+              <div style="font-size: 0.88rem; color: #e2e8f0; line-height: 1.45;">
+                ${result.explanation || chal.explanation}
+              </div>
+            </div>
+            <button class="btn-primary" style="background: var(--accent-green); border: none; padding: 8px 16px; font-weight: 800;" onclick="navMathChallenge(1)">
+              Tantangan Berikutnya ⏭️
+            </button>
+          </div>
+        </div>
+      `;
+    }
+
+    setKodiSpeech(
+      `Horeee! Jawabanmu untuk ${chal.title} 100% tepat!`,
+      "Kemampuan kalkulasi dan penalaran matematika kamu luar biasa! Yuk taklukkan tantangan berikutnya!"
+    );
+  } else {
+    sfx.playWrong();
+    if (feedbackBox) {
+      feedbackBox.style.display = "block";
+      feedbackBox.innerHTML = `
+        <div class="alert-box warning" style="margin: 0; padding: 14px; border-radius: 8px;">
+          <div style="font-size: 0.95rem; font-weight: 800; color: #f59e0b; margin-bottom: 4px;">
+            ⚠️ Jawaban Belum Tepat, Yuk Coba Lagi!
+          </div>
+          <div style="font-size: 0.86rem; color: #cbd5e1; line-height: 1.45; margin-bottom: 6px;">
+            ${result.feedback}
+          </div>
+          <div style="font-size: 0.82rem; color: #fde68a;">
+            💡 <em>Tips: Cermati kembali cara kerja pada Kasus A di sebelah kiri atau klik tombol Petunjuk Nalar Kodi!</em>
+          </div>
+        </div>
+      `;
+    }
+
+    setKodiSpeech(
+      "Ups, jawaban matematika kamu belum pas!",
+      "Jangan putus asa ya! Coba cek petunjuk logika dan bandingkan dengan contoh Kasus A di sebelah kiri!"
+    );
+  }
+};
+
 
