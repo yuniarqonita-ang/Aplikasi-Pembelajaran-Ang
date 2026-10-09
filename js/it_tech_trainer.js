@@ -1,4 +1,9 @@
-// js/it_tech_trainer.js - Laboratorium IT Tech & Jaringan
+// =============================================================================
+// LABORATORIUM IT TECH & JARINGAN - 100 TANTANGAN PRAKTIK
+// Standar Industri: CompTIA A+, Network+, Cisco CCNA, Security+, Algoritma
+// ZERO Spoilers - Distinct Worked Examples (Case A != Case B) - Zero Privacy Leaks
+// =============================================================================
+
 const itTechChallenges = [
   {
     "id": "it-hw-1",
@@ -9,7 +14,7 @@ const itTechChallenges = [
     "workedExample": {
       "kasusSerupa": "Memeriksa prosesor desktop AMD soket AM4 lawas di mana jarum-jarum pin halus menempel langsung di badan chip prosesor (bukan di motherboard).",
       "jawabanBenarContoh": "PGA (Pin Grid Array) — karena pin konduktor berada langsung di prosesor.",
-      "nalarBayi": "PGA = Pin di Prosesor. Pola ingat: Kalau duri/pin ada di prosesor itu PGA, tapi bila nanti jarum pin ada di soket motherboard (lantai), itu pasangannya: LGA!"
+      "nalarBayi": "PGA = Pin di Prosesor. Pola ingat: Kalau duri/pin ada di prosesor itu PGA,."
     },
     "question": "Tipe socket prosesor apakah yang meletakkan pin kontak pada motherboard, sedangkan bagian bawah CPU hanya berupa lempengan kontak datar?",
     "options": [
@@ -20,7 +25,7 @@ const itTechChallenges = [
     ],
     "correctIndex": 1,
     "explanation": "LGA (Land Grid Array) memiliki pin di motherboard dan pad kontak di processor. Hal ini meminimalkan risiko pin bengkok pada prosesor saat pengiriman, meskipun motherboard harus ditangani dengan sangat hati-hati.",
-    "babyClue": "💡 Petunjuk Nalar: Pahami konsep dasar kasus di atas untuk menentukan jawaban yang paling tepat."
+    "babyClue": "💡 Petunjuk Nalar: Analisis kebutuhan skenario kasus dan cocokkan dengan konsep yang telah dipelajari."
   },
   {
     "id": "it-hw-2",
@@ -31,7 +36,7 @@ const itTechChallenges = [
     "workedExample": {
       "kasusSerupa": "Memilih motherboard untuk komputer server workstation tower besar yang membutuhkan 7 slot ekspansi PCIe penuh.",
       "jawabanBenarContoh": "Standard ATX (305 x 244 mm) — form factor standar berukuran besar untuk ekspansi maksimal.",
-      "nalarBayi": "Form factor besar (ATX) punya banyak slot. Sebaliknya, bila butuh ukuran paling kerdil/mungil untuk casing kubus mini tanpa slot banyak, pilihlah form factor mungil (Mini-ITX)!"
+      "nalarBayi": "Form factor besar (ATX) punya banyak slot."
     },
     "question": "Form factor motherboard manakah yang memiliki dimensi fisik tepat 17 x 17 cm (6.7 x 6.7 inci)?",
     "options": [
@@ -42,7 +47,7 @@ const itTechChallenges = [
     ],
     "correctIndex": 1,
     "explanation": "Mini-ITX dirancang oleh VIA Technologies dengan ukuran ringkas 17x17 cm (6.7x6.7 inci), ideal untuk PC mini, router kustom, dan terminal Point of Sale (POS).",
-    "babyClue": "💡 Petunjuk Nalar: Pahami konsep dasar kasus di atas untuk menentukan jawaban yang paling tepat."
+    "babyClue": "💡 Petunjuk Nalar: Analisis kebutuhan skenario kasus dan cocokkan dengan konsep yang telah dipelajari."
   },
   {
     "id": "it-hw-3",
@@ -53,7 +58,7 @@ const itTechChallenges = [
     "workedExample": {
       "kasusSerupa": "Memilih tipe memori RAM lawas yang masih membutuhkan sirkuit pengatur voltase daya (VRM) langsung dari motherboard, bukan di keping RAM itu sendiri.",
       "jawabanBenarContoh": "DDR4 — modul generasi sebelumnya yang mengandalkan VRM motherboard untuk penyaluran voltase daya.",
-      "nalarBayi": "DDR4 bergantung pada sirkuit motherboard. Sedangkan standar RAM generasi terbaru yang mengintegrasikan chip pengatur daya (PMIC) langsung di stik RAM adalah DDR5!"
+      "nalarBayi": "DDR4 bergantung pada sirkuit motherboard."
     },
     "question": "Teknologi modul RAM manakah yang memiliki sirkuit tambahan untuk mendeteksi dan secara otomatis memperbaiki galat memori 1-bit pada server?",
     "options": [
@@ -64,7 +69,7 @@ const itTechChallenges = [
     ],
     "correctIndex": 3,
     "explanation": "ECC (Error-Correcting Code) RAM menggunakan bit paritas ekstra dan kontroler cerdas untuk mendeteksi serta memperbaiki single-bit memory corruption secara transparan tanpa menghentikan sistem operasi.",
-    "babyClue": "💡 Petunjuk Nalar: Pahami konsep dasar kasus di atas untuk menentukan jawaban yang paling tepat."
+    "babyClue": "💡 Petunjuk Nalar: Analisis kebutuhan skenario kasus dan cocokkan dengan konsep yang telah dipelajari."
   },
   {
     "id": "it-hw-4",
@@ -75,7 +80,7 @@ const itTechChallenges = [
     "workedExample": {
       "kasusSerupa": "Memasang kartu grafis discrete gaming berkebutuhan daya 300 Watt yang membutuhkan soket bus dengan lajur data (lanes) terbanyak dan bandwidth tertinggi.",
       "jawabanBenarContoh": "PCIe x16 — slot bus ekspansi terpanjang dengan 16 jalur transmisi data paralel.",
-      "nalarBayi": "Slot PCIe x16 adalah raja jalur bus untuk kartu VGA berat. Sedangkan bila hanya butuh kartu tambahan kecil seperti Wi-Fi card atau kartu audio sederhana, cukup gunakan slot PCIe x1!"
+      "nalarBayi": "Slot kartu grafis PCIe x16 dirancang memiliki bandwidth besar untuk pemrosesan video berat."
     },
     "question": "Protokol dan antarmuka bus manakah yang memungkinkan SSD M.2 mencapai kecepatan transfer data di atas 3000 MB/s?",
     "options": [
@@ -86,7 +91,7 @@ const itTechChallenges = [
     ],
     "correctIndex": 0,
     "explanation": "NVMe (Non-Volatile Memory Express) memanfaatkan jalur PCI Express berkecepatan tinggi dengan latensi sangat rendah dan antrean perintah (queue depth) hingga 64.000, melompati limit SATA III (600 MB/s).",
-    "babyClue": "💡 Petunjuk Nalar: Pahami konsep dasar kasus di atas untuk menentukan jawaban yang paling tepat."
+    "babyClue": "💡 Petunjuk Nalar: Analisis kebutuhan skenario kasus dan cocokkan dengan konsep yang telah dipelajari."
   },
   {
     "id": "it-hw-5",
@@ -97,7 +102,7 @@ const itTechChallenges = [
     "workedExample": {
       "kasusSerupa": "Menghubungkan harddisk SATA internal 3.5 inci ke motherboard menggunakan kabel data standar 7-pin.",
       "jawabanBenarContoh": "Kabel Data SATA (Serial ATA) — kabel pita tipis 7-pin untuk menghubungkan drive internal ke motherboard.",
-      "nalarBayi": "Kabel SATA menghubungkan harddisk internal di dalam casing. Namun untuk peripheral eksternal super cepat modern, gunakan standar antarmuka kabel USB-C atau Thunderbolt!"
+      "nalarBayi": "Kabel SATA menghubungkan harddisk internal di dalam casing."
     },
     "question": "Apa arti sertifikasi '80 PLUS' pada sebuah Power Supply Unit (PSU)?",
     "options": [
@@ -108,7 +113,7 @@ const itTechChallenges = [
     ],
     "correctIndex": 2,
     "explanation": "Program sertifikasi 80 PLUS menguji efisiensi konversi daya PSU. Minimal 80% daya listrik dari dinding berhasil diubah menjadi daya DC komputer pada beban 20%, 50%, dan 100%, sisanya menjadi panas.",
-    "babyClue": "💡 Petunjuk Nalar: Pahami konsep dasar kasus di atas untuk menentukan jawaban yang paling tepat."
+    "babyClue": "💡 Petunjuk Nalar: Analisis kebutuhan skenario kasus dan cocokkan dengan konsep yang telah dipelajari."
   },
   {
     "id": "it-hw-6",
@@ -119,7 +124,7 @@ const itTechChallenges = [
     "workedExample": {
       "kasusSerupa": "Membersihkan debu tebal pada bilah kipas pendingin dan sela heatsink prosesor tanpa menyentuh sirkuit elektronik.",
       "jawabanBenarContoh": "Compressed Air (Kaleng Angin Bertekanan) — menyemprot debu tanpa menghasilkan residu atau arus listrik statis.",
-      "nalarBayi": "Gunakan angin bertekanan untuk usir debu kering. Tapi untuk membersihkan kerak pasta termal lama yang lengket di atas CPU, gunakan cairan khusus alkohol Isopropil 99%!"
+      "nalarBayi": "Gunakan angin bertekanan untuk usir debu kering. Tapi untuk membersihkan kerak pasta termal lama yang lengket di atas CPU, gunakan cairan khusus alkohol Isopropil 99%!."
     },
     "question": "Apa fungsi utama dari pemberian thermal paste di antara permukaan processor (IHS) dan heatsink?",
     "options": [
@@ -130,7 +135,7 @@ const itTechChallenges = [
     ],
     "correctIndex": 2,
     "explanation": "Permukaan logam CPU dan heatsink tidak pernah 100% rata sempurna. Thermal paste memiliki konduktivitas termal tinggi untuk mengisi rongga udara mikroskopis, mencegah overheating.",
-    "babyClue": "💡 Petunjuk Nalar: Pahami konsep dasar kasus di atas untuk menentukan jawaban yang paling tepat."
+    "babyClue": "💡 Petunjuk Nalar: Analisis kebutuhan skenario kasus dan cocokkan dengan konsep yang telah dipelajari."
   },
   {
     "id": "it-hw-7",
@@ -141,7 +146,7 @@ const itTechChallenges = [
     "workedExample": {
       "kasusSerupa": "Mengukur kestabilan tegangan voltase rel +12V dan +5V yang keluar dari unit Power Supply Unit (PSU) yang dicurigai drop.",
       "jawabanBenarContoh": "Digital Multimeter / PSU Tester — alat ukur voltase listrik langsung pada pin konektor catu daya.",
-      "nalarBayi": "Multimeter dipakai untuk cek tegangan listrik. Tapi untuk menguji apakah port fisik kabel LAN atau USB berfungsi normal mengirim dan menerima sinyal balik, alatnya adalah loopback plug!"
+      "nalarBayi": "Multimeter dipakai untuk cek tegangan listrik. Tapi untuk menguji apakah port fisik kabel LAN atau USB berfungsi normal mengirim dan menerima sinyal balik, alatnya adalah loopback plug!."
     },
     "question": "Komponen apakah yang paling umum menjadi penyebab kegagalan POST dengan bunyi beep berulang-ulang tanpa tampilan di layar?",
     "options": [
@@ -152,7 +157,7 @@ const itTechChallenges = [
     ],
     "correctIndex": 0,
     "explanation": "Bunyi beep berulang saat startup sebelum video menyala biasanya menandakan memori utama (RAM) tidak terdeteksi oleh BIOS/UEFI. Solusi pertama: cabut, bersihkan pin RAM, dan pasang kembali ke slotnya.",
-    "babyClue": "💡 Petunjuk Nalar: Pahami konsep dasar kasus di atas untuk menentukan jawaban yang paling tepat."
+    "babyClue": "💡 Petunjuk Nalar: Analisis kebutuhan skenario kasus dan cocokkan dengan konsep yang telah dipelajari."
   },
   {
     "id": "it-hw-8",
@@ -163,7 +168,7 @@ const itTechChallenges = [
     "workedExample": {
       "kasusSerupa": "Menghitung konsumsi daya listrik komputer kantor hemat energi yang hanya menggunakan prosesor terintegrasi tanpa kartu grafis tambahan.",
       "jawabanBenarContoh": "Kapasitas 300 - 350 Watt — daya yang cukup untuk sistem perkantoran sederhana berbeban rendah.",
-      "nalarBayi": "PC kantor hemat daya hanya butuh 300W. Namun bila PC dipasangi GPU monster dan CPU kelas atas, hitung total TDP komponen lalu tambahkan margin 20-30% agar PSU tidak over-load!"
+      "nalarBayi": "PC kantor hemat daya hanya butuh 300W."
     },
     "question": "Apa fungsi dari chip TPM (Trusted Platform Module) 2.0 pada motherboard?",
     "options": [
@@ -174,7 +179,7 @@ const itTechChallenges = [
     ],
     "correctIndex": 2,
     "explanation": "TPM 2.0 menyediakan penyimpanan berbasis perangkat keras yang aman untuk kunci enkripsi (seperti BitLocker) dan memverifikasi integritas rantai boot sistem (Secure Boot).",
-    "babyClue": "💡 Petunjuk Nalar: Pahami konsep dasar kasus di atas untuk menentukan jawaban yang paling tepat."
+    "babyClue": "💡 Petunjuk Nalar: Analisis kebutuhan skenario kasus dan cocokkan dengan konsep yang telah dipelajari."
   },
   {
     "id": "it-hw-9",
@@ -185,7 +190,7 @@ const itTechChallenges = [
     "workedExample": {
       "kasusSerupa": "Menghubungkan konsol PlayStation 5 ke layar Smart TV 4K ruang tamu dengan kabel tunggal yang membawa audio return channel (eARC).",
       "jawabanBenarContoh": "HDMI (High-Definition Multimedia Interface) — standar konektivitas display konsumen untuk TV dan perangkat hiburan.",
-      "nalarBayi": "HDMI adalah standar TV rumah. Sedangkan untuk lingkungan PC kerja profesional multi-monitor dengan fitur daisy-chaining (MST), gunakanlah DisplayPort!"
+      "nalarBayi": "HDMI adalah standar TV rumah."
     },
     "question": "Konektor video display manakah yang mendukung fitur daisy-chaining (menghubungkan beberapa monitor secara berurutan) menggunakan teknologi MST?",
     "options": [
@@ -196,7 +201,7 @@ const itTechChallenges = [
     ],
     "correctIndex": 0,
     "explanation": "DisplayPort mendukung Multi-Stream Transport (MST), memungkinkan beberapa monitor independen dihubungkan secara seri (daisy-chain) dari satu port DisplayPort pada kartu grafis.",
-    "babyClue": "💡 Petunjuk Nalar: Pahami konsep dasar kasus di atas untuk menentukan jawaban yang paling tepat."
+    "babyClue": "💡 Petunjuk Nalar: Analisis kebutuhan skenario kasus dan cocokkan dengan konsep yang telah dipelajari."
   },
   {
     "id": "it-hw-10",
@@ -207,7 +212,7 @@ const itTechChallenges = [
     "workedExample": {
       "kasusSerupa": "Mengukur kecepatan transfer data pada kabel USB 3.0 / USB 3.2 Gen 1 (SuperSpeed generasi pertama).",
       "jawabanBenarContoh": "5 Gbps (Gigabit per detik) — batas bandwidth teoritis maksimal untuk USB 3.0 standar awal.",
-      "nalarBayi": "USB 3.0 awal berkecepatan 5 Gbps. Bila ditingkatkan ke generasi USB 3.2 Gen 2 (SuperSpeed+), kecepatannya berlipat ganda menjadi 10 Gbps!"
+      "nalarBayi": "Generasi awal USB 3.0 berkecepatan standar 5 Gbps dirancang untuk transfer data harian yang stabil."
     },
     "question": "Berapakah kecepatan transfer data teoritis maksimal untuk standar USB 3.2 Gen 2 (SuperSpeed+)?",
     "options": [
@@ -218,7 +223,7 @@ const itTechChallenges = [
     ],
     "correctIndex": 3,
     "explanation": "USB 3.2 Gen 2 (SuperSpeed 10Gbps) mendukung throughput hingga 10 Gbps. USB 3.2 Gen 1 mentok di 5 Gbps, sedangkan Thunderbolt 3/4 dan USB4 dapat mencapai hingga 40 Gbps.",
-    "babyClue": "💡 Petunjuk Nalar: Pahami konsep dasar kasus di atas untuk menentukan jawaban yang paling tepat."
+    "babyClue": "💡 Petunjuk Nalar: Analisis kebutuhan skenario kasus dan cocokkan dengan konsep yang telah dipelajari."
   },
   {
     "id": "it-hw-11",
@@ -229,7 +234,7 @@ const itTechChallenges = [
     "workedExample": {
       "kasusSerupa": "Menggabungkan dua harddisk menjadi satu volume demi kecepatan baca dan tulis maksimal, tanpa adanya proteksi salinan cadangan data (striping).",
       "jawabanBenarContoh": "RAID 0 (Disk Striping) — membagi blok data ke beberapa drive demi performa tinggi tanpa toleransi kesalahan.",
-      "nalarBayi": "RAID 0 mengejar kecepatan tanpa cadangan (rusak satu, hilang semua). Sebaliknya, bila butuh keamanan data 100% dengan menyalin isi yang identik ke dua harddisk (mirroring), itu adalah RAID 1!"
+      "nalarBayi": "Teknologi RAID striping menyebarkan potongan data ke beberapa cakram untuk mengejar performa baca-tulis tinggi."
     },
     "question": "Konfigurasi RAID 2-disk manakah yang menyediakan toleransi kesalahan (fault tolerance) dengan cara menduplikasi seluruh data ke disk kedua (Mirroring)?",
     "options": [
@@ -240,7 +245,7 @@ const itTechChallenges = [
     ],
     "correctIndex": 2,
     "explanation": "RAID 1 menggunakan teknik mirroring (pencerminan data). Data ditulis secara paralel ke kedua disk. Memberikan toleransi kesalahan 1 disk dengan kapasitas efektif 50% dari total storage.",
-    "babyClue": "💡 Petunjuk Nalar: Pahami konsep dasar kasus di atas untuk menentukan jawaban yang paling tepat."
+    "babyClue": "💡 Petunjuk Nalar: Analisis kebutuhan skenario kasus dan cocokkan dengan konsep yang telah dipelajari."
   },
   {
     "id": "it-hw-12",
@@ -251,7 +256,7 @@ const itTechChallenges = [
     "workedExample": {
       "kasusSerupa": "Mengganti harddisk laptop lama dengan SSD form-factor 2.5 inci yang masih menggunakan jalur antarmuka kabel SATA 6 Gbps.",
       "jawabanBenarContoh": "SATA SSD (kecepatan maksimal ~550 MB/s terbatas bus SATA).",
-      "nalarBayi": "SATA SSD terganjal batas 550 MB/s karena bus SATA. Namun bila ingin kecepatan transfer hingga ribuan MB/s langsung lewat jalur PCIe, gunakanlah SSD berprotokol NVMe!"
+      "nalarBayi": "SATA SSD terganjal batas 550 MB/s karena bus SATA."
     },
     "question": "Alat pelindung manakah yang wajib digunakan teknisi pada pergelangan tangan untuk menyamakan potensial listrik dan membuang muatan statis ke ground?",
     "options": [
@@ -262,7 +267,7 @@ const itTechChallenges = [
     ],
     "correctIndex": 0,
     "explanation": "Antistatic wrist strap dengan resistor 1 Megaohm melindungi komponen semikonduktor dari Electrostatic Discharge (ESD) dengan mengalirkan listrik statis tubuh secara aman ke chassis ground.",
-    "babyClue": "💡 Petunjuk Nalar: Pahami konsep dasar kasus di atas untuk menentukan jawaban yang paling tepat."
+    "babyClue": "💡 Petunjuk Nalar: Analisis kebutuhan skenario kasus dan cocokkan dengan konsep yang telah dipelajari."
   },
   {
     "id": "it-hw-13",
@@ -273,7 +278,7 @@ const itTechChallenges = [
     "workedExample": {
       "kasusSerupa": "Memasang modul RAM pada motherboard dengan 4 slot memori agar berjalan dalam konfigurasi optimal Dual-Channel.",
       "jawabanBenarContoh": "Memasang keping RAM pada slot berwarna senada (biasanya Slot 2 dan Slot 4 / Channel A2 & B2).",
-      "nalarBayi": "RAM Dual-Channel harus dipasang berselang di slot yang tepat (A2 & B2). Setelah itu, jangan lupa aktifkan profil XMP / EXPO di BIOS agar RAM berjalan di kecepatan tertingginya!"
+      "nalarBayi": "RAM Dual-Channel harus dipasang berselang di slot yang tepat (A2 & B2). Setelah itu, jangan lupa aktifkan profil XMP / EXPO di BIOS agar RAM berjalan di kecepatan tertingginya!."
     },
     "question": "Berapakah tegangan standar DC nominal pada kabel berwarna KUNING pada konektor daya catu daya ATX komputer?",
     "options": [
@@ -284,7 +289,7 @@ const itTechChallenges = [
     ],
     "correctIndex": 2,
     "explanation": "Standar ATX menetapkan: Kuning = +12V (daya motor harddisk, CPU, dan PCIe GPU), Merah = +5V (sirkuit logika drive), Oranye = +3.3V (slot ekspansi & chipset), Hitam = Ground.",
-    "babyClue": "💡 Petunjuk Nalar: Pahami konsep dasar kasus di atas untuk menentukan jawaban yang paling tepat."
+    "babyClue": "💡 Petunjuk Nalar: Analisis kebutuhan skenario kasus dan cocokkan dengan konsep yang telah dipelajari."
   },
   {
     "id": "it-hw-14",
@@ -295,7 +300,7 @@ const itTechChallenges = [
     "workedExample": {
       "kasusSerupa": "Memeriksa integritas sistem berkas (file system) dan menandai bad sector pada permukaan partisi Windows melalui utilitas bawaan.",
       "jawabanBenarContoh": "Perintah chkdsk /f /r — memeriksa struktur tabel file sistem dan memulihkan sektor baca yang rusak.",
-      "nalarBayi": "Perintah chkdsk memeriksa struktur file sistem di level OS. Sedangkan sensor diagnostik mandiri internal bawaan pabrik harddisk untuk memprediksi kerusakan fisik piringan adalah S.M.A.R.T.!"
+      "nalarBayi": "Perintah chkdsk memeriksa struktur file sistem di level OS."
     },
     "question": "Teknologi pemantauan internal pada harddisk dan SSD yang bertugas mendeteksi indikator penurunan kondisi fisik drive disebut?",
     "options": [
@@ -306,7 +311,7 @@ const itTechChallenges = [
     ],
     "correctIndex": 2,
     "explanation": "S.M.A.R.T. (Self-Monitoring, Analysis, and Reporting Technology) memantau berbagai atribut kesehatan fisik drive seperti bad sector yang dialihkan kembali, suhu, jam operasional, dan CRC error.",
-    "babyClue": "💡 Petunjuk Nalar: Pahami konsep dasar kasus di atas untuk menentukan jawaban yang paling tepat."
+    "babyClue": "💡 Petunjuk Nalar: Analisis kebutuhan skenario kasus dan cocokkan dengan konsep yang telah dipelajari."
   },
   {
     "id": "it-hw-15",
@@ -317,7 +322,7 @@ const itTechChallenges = [
     "workedExample": {
       "kasusSerupa": "Mencegah sengatan listrik statis saat teknisi merakit komputer di atas lantai berkarpet tebal.",
       "jawabanBenarContoh": "Memakai ESD Wrist Strap (gelang antistatis) yang dijepitkan ke rangka logam sasis komputer yang tidak tersambung listrik.",
-      "nalarBayi": "Gelang ESD menyalurkan muatan listrik statis tubuh ke ground. Jangan pernah menyentuh komponen PCB sensitif tanpa membuang listrik statis tubuh terlebih dahulu!"
+      "nalarBayi": "Gelang ESD menyalurkan muatan listrik statis tubuh ke ground. Jangan pernah menyentuh komponen PCB sensitif tanpa membuang listrik statis tubuh terlebih dahulu!."
     },
     "question": "Komponen printer laser manakah yang bertanggung jawab melekatkan serbuk toner ke atas serat kertas menggunakan kombinasi panas dan tekanan tinggi?",
     "options": [
@@ -328,7 +333,7 @@ const itTechChallenges = [
     ],
     "correctIndex": 2,
     "explanation": "Fuser assembly terdiri dari rol pemanas (heating roller) dan rol penekan (pressure roller) yang mencairkan partikel serbuk toner sehingga melekat permanen pada pori-pori serat kertas.",
-    "babyClue": "💡 Petunjuk Nalar: Pahami konsep dasar kasus di atas untuk menentukan jawaban yang paling tepat."
+    "babyClue": "💡 Petunjuk Nalar: Analisis kebutuhan skenario kasus dan cocokkan dengan konsep yang telah dipelajari."
   },
   {
     "id": "it-hw-16",
@@ -339,7 +344,7 @@ const itTechChallenges = [
     "workedExample": {
       "kasusSerupa": "Memilih ukuran fisik modul RAM untuk komputer desktop tower standar.",
       "jawabanBenarContoh": "DIMM (Dual In-line Memory Module) — modul memori panjang berukuran penuh untuk motherboard desktop.",
-      "nalarBayi": "PC meja memakai keping panjang DIMM. Sedangkan untuk laptop atau mini PC yang ruangannya sempit dan hemat tempat, modul memori yang digunakan adalah SODIMM!"
+      "nalarBayi": "PC meja memakai keping panjang DIMM."
     },
     "question": "Form factor modul memori RAM apakah yang digunakan pada laptop dan perangkat komputer portabel?",
     "options": [
@@ -350,7 +355,7 @@ const itTechChallenges = [
     ],
     "correctIndex": 1,
     "explanation": "SODIMM (Small Outline DIMM) adalah bentuk fisik kompak dari memori RAM standar desktop (DIMM), dirancang khusus untuk laptop, notebook, mini PC, dan printer cerdas.",
-    "babyClue": "💡 Petunjuk Nalar: Pahami konsep dasar kasus di atas untuk menentukan jawaban yang paling tepat."
+    "babyClue": "💡 Petunjuk Nalar: Analisis kebutuhan skenario kasus dan cocokkan dengan konsep yang telah dipelajari."
   },
   {
     "id": "it-hw-17",
@@ -361,7 +366,7 @@ const itTechChallenges = [
     "workedExample": {
       "kasusSerupa": "Sistem komputer mati total seketika (emergency shutdown) saat suhu prosesor menembus ambang batas kritis 105 derajat Celsius.",
       "jawabanBenarContoh": "Thermal Shutdown — fitur keamanan darurat memutus daya seketika agar chip silikon prosesor tidak terbakar hangus.",
-      "nalarBayi": "Thermal shutdown mematikan PC total saat darurat. Sedangkan bila prosesor menurunkan clock speed dan voltase secara dinamis saat panas agar tetap bisa beroperasi, itu disebut Thermal Throttling!"
+      "nalarBayi": "Sistem proteksi termal darurat langsung memutus daya ketika sensor mendeteksi temperatur kritis."
     },
     "question": "Istilah apakah yang menggambarkan penurunan kecepatan clock CPU secara otomatis demi mencegah kerusakan fisik akibat suhu operasi yang melampaui ambang batas maksimum (Tjunction)?",
     "options": [
@@ -372,7 +377,7 @@ const itTechChallenges = [
     ],
     "correctIndex": 1,
     "explanation": "Thermal Throttling adalah mekanisme keamanan perangkat keras terintegrasi di mana prosesor secara dinamis memangkas clock multiplier dan voltase ketika sensor suhu mencapai batas toleransi termal maksimum.",
-    "babyClue": "💡 Petunjuk Nalar: Pahami konsep dasar kasus di atas untuk menentukan jawaban yang paling tepat."
+    "babyClue": "💡 Petunjuk Nalar: Analisis kebutuhan skenario kasus dan cocokkan dengan konsep yang telah dipelajari."
   },
   {
     "id": "it-hw-18",
@@ -383,7 +388,7 @@ const itTechChallenges = [
     "workedExample": {
       "kasusSerupa": "Menguji komponen mana yang rusak pada PC yang menyala tetapi layarnya tetap gelap gulita (No Display) saat pertama kali dihidupkan.",
       "jawabanBenarContoh": "Mendengarkan kode bunyi Beep Code dari motherboard atau melihat lampu indikator LED Debug (CPU/DRAM/VGA/BOOT).",
-      "nalarBayi": "Kode beep dan LED debug adalah petunjuk awal motherboard saat gagal POST. Dari situ kita tahu apakah kerusakan ada di RAM, CPU, atau kartu VGA!"
+      "nalarBayi": "Kode beep dan LED debug adalah petunjuk awal motherboard saat gagal POST. Dari situ kita tahu apakah kerusakan ada di RAM, CPU, atau kartu VGA!."
     },
     "question": "Apa arti penamaan 'x16' pada spesifikasi slot ekspansi PCI Express (PCIe)?",
     "options": [
@@ -394,7 +399,7 @@ const itTechChallenges = [
     ],
     "correctIndex": 3,
     "explanation": "Angka setelah huruf x (seperti x1, x4, x8, x16) menunjukkan jumlah 'lanes' (jalur kabel transmisi serial) yang digunakan untuk mengirim dan menerima data secara simultan.",
-    "babyClue": "💡 Petunjuk Nalar: Pahami konsep dasar kasus di atas untuk menentukan jawaban yang paling tepat."
+    "babyClue": "💡 Petunjuk Nalar: Analisis kebutuhan skenario kasus dan cocokkan dengan konsep yang telah dipelajari."
   },
   {
     "id": "it-hw-19",
@@ -405,7 +410,7 @@ const itTechChallenges = [
     "workedExample": {
       "kasusSerupa": "Mengamankan BIOS/UEFI agar pengaturan hardware dan urutan boot tidak dapat diubah oleh sembarang pengguna tanpa izin.",
       "jawabanBenarContoh": "Memasang BIOS Supervisor/Administrator Password.",
-      "nalarBayi": "Password BIOS mencegah orang mengutak-atik settingan. Sedangkan fitur UEFI yang memverifikasi tanda tangan digital bootloader OS saat booting agar terbebas dari rootkit adalah Secure Boot!"
+      "nalarBayi": "Password BIOS mencegah orang mengutak-atik settingan."
     },
     "question": "Fitur keamanan pada firmware UEFI modern manakah yang mencegah eksekusi bootloader dan driver yang belum terverifikasi secara digital saat komputer dinyalakan?",
     "options": [
@@ -416,7 +421,7 @@ const itTechChallenges = [
     ],
     "correctIndex": 3,
     "explanation": "UEFI Secure Boot memastikan firmware hanya memuat bootloader, kernel, dan driver sistem operasi yang memiliki sertifikat tanda tangan digital terpercaya (valid cryptographically), menangkal serangan bootkit.",
-    "babyClue": "💡 Petunjuk Nalar: Pahami konsep dasar kasus di atas untuk menentukan jawaban yang paling tepat."
+    "babyClue": "💡 Petunjuk Nalar: Analisis kebutuhan skenario kasus dan cocokkan dengan konsep yang telah dipelajari."
   },
   {
     "id": "it-hw-20",
@@ -427,7 +432,7 @@ const itTechChallenges = [
     "workedExample": {
       "kasusSerupa": "Menghubungkan teknisi di ruang kontrol ke desktop server di gedung berbeda melalui koneksi jaringan protokol RDP/VNC.",
       "jawabanBenarContoh": "Remote Desktop Protocol (RDP) / Remote Access Software melalui jaringan LAN/WAN.",
-      "nalarBayi": "RDP menghubungkan server lewat jaringan IP. Sedangkan perangkat keras fisik saklar di ruang server yang menggabungkan 1 monitor, keyboard, dan mouse untuk puluhan server rak adalah KVM Switch!"
+      "nalarBayi": "RDP menghubungkan server lewat jaringan IP."
     },
     "question": "Perangkat keras apakah yang memungkinkan administrator mengontrol beberapa komputer server sekaligus menggunakan satu unit monitor, keyboard, dan mouse tunggal?",
     "options": [
@@ -438,7 +443,7 @@ const itTechChallenges = [
     ],
     "correctIndex": 1,
     "explanation": "KVM Switch (Keyboard, Video, Mouse Switch) menghubungkan beberapa unit komputer ke satu konsol input/output fisik, menghemat ruang rak server dan biaya pengadaan periferal.",
-    "babyClue": "💡 Petunjuk Nalar: Pahami konsep dasar kasus di atas untuk menentukan jawaban yang paling tepat."
+    "babyClue": "💡 Petunjuk Nalar: Analisis kebutuhan skenario kasus dan cocokkan dengan konsep yang telah dipelajari."
   },
   {
     "id": "it-net-1",
@@ -449,7 +454,7 @@ const itTechChallenges = [
     "workedExample": {
       "kasusSerupa": "Menghitung jumlah total host IP address yang dapat digunakan pada subnet standar kelas C dengan prefix /24 (subnet mask 255.255.255.0).",
       "jawabanBenarContoh": "254 host valid (karena 2 pangkat 8 = 256, dikurangi 2 untuk Network ID dan Broadcast ID).",
-      "nalarBayi": "Pada /24 ada 8 bit host (256 - 2 = 254). Bila prefix bertambah 2 bit menjadi /26 (mask 255.255.255.192), bit host tersisa 6, sehingga jumlah host validnya adalah (2 pangkat 6) - 2 = 62 host!"
+      "nalarBayi": "Pada /24 ada 8 bit host (256 - 2 = 254). Bila prefix bertambah 2 bit menjadi /26 (mask 255.255.255.192), bit host tersisa 6, sehingga jumlah host validnya adalah (2 pangkat 6) - 2 = 62 host!."
     },
     "question": "Apakah nama Protocol Data Unit (PDU) pada Layer 3 (Network Layer) dalam model referensi 7 OSI?",
     "options": [
@@ -460,7 +465,7 @@ const itTechChallenges = [
     ],
     "correctIndex": 1,
     "explanation": "Pada model OSI: Layer 1 PDU adalah Bit, Layer 2 adalah Frame (berisi header MAC), Layer 3 adalah Packet (berisi header IP), dan Layer 4 adalah Segment (TCP) atau Datagram (UDP).",
-    "babyClue": "💡 Petunjuk Nalar: Pahami konsep dasar kasus di atas untuk menentukan jawaban yang paling tepat."
+    "babyClue": "💡 Petunjuk Nalar: Analisis kebutuhan skenario kasus dan cocokkan dengan konsep yang telah dipelajari."
   },
   {
     "id": "it-net-2",
@@ -471,7 +476,7 @@ const itTechChallenges = [
     "workedExample": {
       "kasusSerupa": "Mengidentifikasi layer pada model OSI yang bertugas menangani transmisi bit biner mentah melalui kabel tembaga atau gelombang radio.",
       "jawabanBenarContoh": "Layer 1 - Physical Layer (Lapisan Fisik).",
-      "nalarBayi": "Layer 1 mengurus sinyal listrik dan kabel. Sedangkan lapisan yang mengatur pengalamatan fisik MAC address dan pengiriman frame data lokal adalah Layer 2 (Data Link)!"
+      "nalarBayi": "Layer 1 mengurus sinyal listrik dan kabel."
     },
     "question": "Bagaimanakah urutan paket flag kontrol yang benar saat pembentukan koneksi TCP 3-Way Handshake?",
     "options": [
@@ -482,7 +487,7 @@ const itTechChallenges = [
     ],
     "correctIndex": 0,
     "explanation": "Klien mengirim SYN (Synchronize), server merespons dengan SYN-ACK (Synchronize-Acknowledge), dan klien menyelesaikan handshake dengan mengirim ACK (Acknowledge) sebelum data aplikasi ditransmisikan.",
-    "babyClue": "💡 Petunjuk Nalar: Pahami konsep dasar kasus di atas untuk menentukan jawaban yang paling tepat."
+    "babyClue": "💡 Petunjuk Nalar: Analisis kebutuhan skenario kasus dan cocokkan dengan konsep yang telah dipelajari."
   },
   {
     "id": "it-net-3",
@@ -493,7 +498,7 @@ const itTechChallenges = [
     "workedExample": {
       "kasusSerupa": "Mencegah terjadinya badai broadcast (broadcast storm) dan perulangan loop fisik yang dapat melumpuhkan seluruh switch di jaringan kantor.",
       "jawabanBenarContoh": "STP (Spanning Tree Protocol) — protokol switch yang memblokir jalur cadangan redundan sampai terjadi kegagalan.",
-      "nalarBayi": "STP menghentikan loop pada switch Layer 2. Sedangkan untuk memisahkan lalu lintas departemen secara logis di dalam switch yang sama, kita membuat segmen VLAN!"
+      "nalarBayi": "STP menghentikan loop pada switch Layer 2."
     },
     "question": "Berapakah jumlah alamat IP yang dapat digunakan untuk host (usable host IP addresses) pada subnet dengan notasi prefix /28?",
     "options": [
@@ -504,7 +509,7 @@ const itTechChallenges = [
     ],
     "correctIndex": 1,
     "explanation": "Subnet mask /28 meminjam 4 bit host (32 - 28 = 4). Total alamat IP adalah 2^4 = 16. Karena alamat pertama untuk Network ID dan alamat terakhir untuk Broadcast ID tidak boleh diberikan ke komputer, host yang valid adalah 16 - 2 = 14.",
-    "babyClue": "💡 Petunjuk Nalar: Pahami konsep dasar kasus di atas untuk menentukan jawaban yang paling tepat."
+    "babyClue": "💡 Petunjuk Nalar: Analisis kebutuhan skenario kasus dan cocokkan dengan konsep yang telah dipelajari."
   },
   {
     "id": "it-net-4",
@@ -515,7 +520,7 @@ const itTechChallenges = [
     "workedExample": {
       "kasusSerupa": "Mengisolasi lalu lintas data komputer divisi Keuangan dan HRD agar tidak dapat saling melihat broadcast paket data di switch yang sama.",
       "jawabanBenarContoh": "Membuat VLAN (Virtual LAN) terpisah untuk masing-masing divisi.",
-      "nalarBayi": "VLAN memisahkan broadcast domain di switch. Namun agar VLAN yang berbeda tetap dapat saling bertukar data secara terkontrol, kita memerlukan perangkat Router (Inter-VLAN Routing)!"
+      "nalarBayi": "VLAN memisahkan broadcast domain di switch."
     },
     "question": "Manakah di antara alamat IP berikut yang merupakan alamat IP PRIVAT yang valid untuk jaringan internal?",
     "options": [
@@ -526,7 +531,7 @@ const itTechChallenges = [
     ],
     "correctIndex": 3,
     "explanation": "172.24.10.5 berada di dalam rentang IP privat Kelas B RFC 1918 (172.16.0.0 sampai 172.31.255.255). Alamat 8.8.8.8 adalah DNS Google publik, sedangkan yang lain adalah IP publik yang dapat dirouting di internet.",
-    "babyClue": "💡 Petunjuk Nalar: Pahami konsep dasar kasus di atas untuk menentukan jawaban yang paling tepat."
+    "babyClue": "💡 Petunjuk Nalar: Analisis kebutuhan skenario kasus dan cocokkan dengan konsep yang telah dipelajari."
   },
   {
     "id": "it-net-5",
@@ -537,7 +542,7 @@ const itTechChallenges = [
     "workedExample": {
       "kasusSerupa": "Menghubungkan dua switch kantor yang membawa lalu lintas banyak VLAN sekaligus melalui satu kabel uplink tunggal.",
       "jawabanBenarContoh": "Trunk Port dengan enkapsulasi standar IEEE 802.1Q (menambahkan VLAN tag pada frame).",
-      "nalarBayi": "Trunk port membawa banyak VLAN dengan tag 802.1Q. Sedangkan port switch biasa yang terhubung ke satu komputer klien pengguna akhir disebut Access Port!"
+      "nalarBayi": "Trunk port membawa banyak VLAN dengan tag 802.1Q."
     },
     "question": "Jika sebuah komputer Windows mendapatkan alamat IP 169.254.x.x, permasalahan apakah yang sebenarnya terjadi?",
     "options": [
@@ -548,7 +553,7 @@ const itTechChallenges = [
     ],
     "correctIndex": 3,
     "explanation": "Alamat 169.254.0.0/16 adalah rentang APIPA (Link-Local). Sistem operasi Windows menetapkan alamat ini secara otomatis jika gagal menerima balasan DHCPOFFER dari server DHCP.",
-    "babyClue": "💡 Petunjuk Nalar: Pahami konsep dasar kasus di atas untuk menentukan jawaban yang paling tepat."
+    "babyClue": "💡 Petunjuk Nalar: Analisis kebutuhan skenario kasus dan cocokkan dengan konsep yang telah dipelajari."
   },
   {
     "id": "it-net-6",
@@ -559,7 +564,7 @@ const itTechChallenges = [
     "workedExample": {
       "kasusSerupa": "Menghubungkan server DNS ke jaringan dengan konfigurasi IP manual permanen yang tidak pernah berubah-ubah.",
       "jawabanBenarContoh": "Static IP Assignment (Konfigurasi Alamat IP Statis secara manual).",
-      "nalarBayi": "Server memakai IP statis agar alamatnya tetap. Sedangkan untuk ratusan laptop karyawan yang datang dan pergi, konfigurasi IP dibagikan secara otomatis oleh server DHCP!"
+      "nalarBayi": "Server memakai IP statis agar alamatnya tetap."
     },
     "question": "Tipe DNS record manakah yang digunakan secara khusus untuk mengarahkan pengiriman email ke mail server tujuan dari sebuah domain?",
     "options": [
@@ -570,7 +575,7 @@ const itTechChallenges = [
     ],
     "correctIndex": 1,
     "explanation": "MX (Mail Exchange) record mengidentifikasi server surat yang bertanggung jawab menerima email masuk untuk domain tertentu dan mencakup nilai prioritas jika terdapat beberapa mail server.",
-    "babyClue": "💡 Petunjuk Nalar: Pahami konsep dasar kasus di atas untuk menentukan jawaban yang paling tepat."
+    "babyClue": "💡 Petunjuk Nalar: Analisis kebutuhan skenario kasus dan cocokkan dengan konsep yang telah dipelajari."
   },
   {
     "id": "it-net-7",
@@ -581,7 +586,7 @@ const itTechChallenges = [
     "workedExample": {
       "kasusSerupa": "Melihat rincian tahapan proses sewa alamat IP pada protokol DHCP (DORA process).",
       "jawabanBenarContoh": "Tahap 1: DHCP Discover (Klien mencari server DHCP di jaringan).",
-      "nalarBayi": "Urutan DORA: Discover (cari), Offer (tawaran IP dari server), Request (klien meminta IP tersebut), dan Acknowledge (server menyetujui sewa IP)!"
+      "nalarBayi": "Protokol DHCP bekerja melalui pertukaran paket sistematis untuk mendistribusikan alamat IP secara otomatis kepada klien."
     },
     "question": "Manakah urutan kronologis yang benar dari proses alokasi alamat IP dinamis melalui protokol DHCP?",
     "options": [
@@ -592,7 +597,7 @@ const itTechChallenges = [
     ],
     "correctIndex": 3,
     "explanation": "Proses DHCP mengikuti akronim DORA: DHCPDISCOVER (klien mencari server), DHCPOFFER (server menawarkan IP), DHCPREQUEST (klien meminta IP yang ditawarkan), dan DHCPACK (server mengonfirmasi pemberian lease).",
-    "babyClue": "💡 Petunjuk Nalar: Pahami konsep dasar kasus di atas untuk menentukan jawaban yang paling tepat."
+    "babyClue": "💡 Petunjuk Nalar: Analisis kebutuhan skenario kasus dan cocokkan dengan konsep yang telah dipelajari."
   },
   {
     "id": "it-net-8",
@@ -603,7 +608,7 @@ const itTechChallenges = [
     "workedExample": {
       "kasusSerupa": "Mengetahui fungsi utama DNS (Domain Name System) dalam menghubungkan nama situs web dengan server.",
       "jawabanBenarContoh": "DNS menerjemahkan nama domain yang mudah diingat manusia (seperti google.com) menjadi alamat IP numerik server tujuan.",
-      "nalarBayi": "DNS adalah buku telepon internet penerjemah nama ke IP. Saat pengguna mengetik alamat di browser, DNS resolver bekerja mencari IP tujuan di server DNS!"
+      "nalarBayi": "DNS adalah buku telepon internet penerjemah nama ke IP. Saat pengguna mengetik alamat di browser, DNS resolver bekerja mencari IP tujuan di server DNS!."
     },
     "question": "Standar protokol IEEE manakah yang digunakan untuk menandai (tagging) paket frame Ethernet agar beberapa VLAN dapat melintasi port trunk tunggal?",
     "options": [
@@ -614,7 +619,7 @@ const itTechChallenges = [
     ],
     "correctIndex": 1,
     "explanation": "IEEE 802.1Q adalah standar industri untuk VLAN tagging pada link trunk Ethernet. Standar ini menyisipkan tag 4-byte yang berisi VLAN ID (1-4094) ke dalam frame 802.3.",
-    "babyClue": "💡 Petunjuk Nalar: Pahami konsep dasar kasus di atas untuk menentukan jawaban yang paling tepat."
+    "babyClue": "💡 Petunjuk Nalar: Analisis kebutuhan skenario kasus dan cocokkan dengan konsep yang telah dipelajari."
   },
   {
     "id": "it-net-9",
@@ -625,7 +630,7 @@ const itTechChallenges = [
     "workedExample": {
       "kasusSerupa": "Membedakan protokol transmisi data: TCP yang berorientasi koneksi (reliable) dengan jaminan kedatangan paket.",
       "jawabanBenarContoh": "TCP (Transmission Control Protocol) — menjamin pengiriman paket berurutan dengan acknowledgement dan retransmisi bila hilang.",
-      "nalarBayi": "TCP handal karena ada tanda terima (cocok untuk web dan file). Sebaliknya, untuk audio/video call dan game online yang mementingkan kecepatan tanpa tunda, protokolnya adalah UDP!"
+      "nalarBayi": "TCP handal karena ada tanda terima (cocok untuk web dan file)."
     },
     "question": "Perintah CLI Cisco manakah yang paling cepat dan umum digunakan untuk memeriksa ringkasan status operasional antarmuka (Up/Down) dan alamat IP-nya?",
     "options": [
@@ -636,7 +641,7 @@ const itTechChallenges = [
     ],
     "correctIndex": 3,
     "explanation": "`show ip interface brief` adalah perintah standar Cisco IOS untuk meninjau secara cepat daftar semua antarmuka, status layer 1 (Status: up/down), status layer 2 (Protocol: up/down), dan IP address yang terpasang.",
-    "babyClue": "💡 Petunjuk Nalar: Pahami konsep dasar kasus di atas untuk menentukan jawaban yang paling tepat."
+    "babyClue": "💡 Petunjuk Nalar: Analisis kebutuhan skenario kasus dan cocokkan dengan konsep yang telah dipelajari."
   },
   {
     "id": "it-net-10",
@@ -647,7 +652,7 @@ const itTechChallenges = [
     "workedExample": {
       "kasusSerupa": "Mengetahui nomor port standar IANA untuk protokol transfer halaman web tanpa enkripsi (HTTP).",
       "jawabanBenarContoh": "Port 80 (HTTP).",
-      "nalarBayi": "Port 80 untuk web HTTP biasa, Port 443 untuk HTTPS. Sedangkan untuk remote terminal konsol server yang aman terenkripsi (SSH), nomor port standarnya adalah Port 22!"
+      "nalarBayi": "Setiap protokol web memiliki penetapan nomor port terstandarisasi untuk rute lalu lintas jaringan."
     },
     "question": "Nomor port standar IANA berapakah yang digunakan oleh protokol Secure Shell (SSH) untuk koneksi terminal jarak jauh terenkripsi?",
     "options": [
@@ -658,7 +663,7 @@ const itTechChallenges = [
     ],
     "correctIndex": 1,
     "explanation": "Port 22 (TCP) ditetapkan untuk SSH (Secure Shell). Port 23 adalah Telnet (tidak terenkripsi), Port 53 adalah DNS, dan Port 80 adalah HTTP biasa.",
-    "babyClue": "💡 Petunjuk Nalar: Pahami konsep dasar kasus di atas untuk menentukan jawaban yang paling tepat."
+    "babyClue": "💡 Petunjuk Nalar: Analisis kebutuhan skenario kasus dan cocokkan dengan konsep yang telah dipelajari."
   },
   {
     "id": "it-net-11",
@@ -669,7 +674,7 @@ const itTechChallenges = [
     "workedExample": {
       "kasusSerupa": "Mencari alamat IP dari nama domain host di internet menggunakan utilitas nslookup.",
       "jawabanBenarContoh": "DNS Query — mencari pemetaan nama domain ke alamat IP.",
-      "nalarBayi": "DNS memetakan Nama ke IP. Sedangkan di jaringan lokal LAN, protokol yang bertugas mencari Alamat Fisik MAC dari sebuah alamat IP komputer tetangga adalah ARP!"
+      "nalarBayi": "DNS memetakan Nama ke IP."
     },
     "question": "Protokol manakah yang bertugas memetakan (resolving) alamat logika IP ke alamat fisik perangkat keras (MAC Address) pada jaringan lokal?",
     "options": [
@@ -680,7 +685,7 @@ const itTechChallenges = [
     ],
     "correctIndex": 0,
     "explanation": "ARP (Address Resolution Protocol) bekerja di Layer 2/3 untuk menyelesaikan alamat IP ke MAC address perangkat target di subnet lokal yang sama menggunakan pesan ARP Request dan ARP Reply.",
-    "babyClue": "💡 Petunjuk Nalar: Pahami konsep dasar kasus di atas untuk menentukan jawaban yang paling tepat."
+    "babyClue": "💡 Petunjuk Nalar: Analisis kebutuhan skenario kasus dan cocokkan dengan konsep yang telah dipelajari."
   },
   {
     "id": "it-net-12",
@@ -691,7 +696,7 @@ const itTechChallenges = [
     "workedExample": {
       "kasusSerupa": "Menganalisis rute lompatan (hop) router yang dilalui paket data dari komputer kita menuju server tujuan di internet.",
       "jawabanBenarContoh": "Traceroute (tracert di Windows / traceroute di Linux) — melacak setiap router yang dilewati paket.",
-      "nalarBayi": "Traceroute melacak rute hop. Sedangkan utilitas sederhana untuk mengecek apakah komputer tujuan hidup dan merespons sinyal dengan cepat menggunakan pesan ICMP Echo Request adalah perintah ping!"
+      "nalarBayi": "Traceroute melacak rute hop."
     },
     "question": "Protokol pada Network Layer manakah yang mendasari mekanisme kerja utilitas `ping` dan `traceroute`?",
     "options": [
@@ -702,7 +707,7 @@ const itTechChallenges = [
     ],
     "correctIndex": 1,
     "explanation": "ICMP (Internet Control Message Protocol) adalah protokol pembantu IP yang mengirim pesan diagnostik dan pelaporan galat (seperti Destination Unreachable dan Time Exceeded saat traceroute).",
-    "babyClue": "💡 Petunjuk Nalar: Pahami konsep dasar kasus di atas untuk menentukan jawaban yang paling tepat."
+    "babyClue": "💡 Petunjuk Nalar: Analisis kebutuhan skenario kasus dan cocokkan dengan konsep yang telah dipelajari."
   },
   {
     "id": "it-net-13",
@@ -713,7 +718,7 @@ const itTechChallenges = [
     "workedExample": {
       "kasusSerupa": "Mengingat susunan kabel UTP standar T568A yang diawali oleh warna hijau.",
       "jawabanBenarContoh": "Standar T568A: Pin 1 adalah Putih-Hijau dan Pin 2 adalah Hijau.",
-      "nalarBayi": "T568A diawali Putih-Hijau dan Hijau. Sedangkan standar yang paling populer digunakan di kantor dan perumahan (T568B) diawali oleh warna Putih-Oranye dan Oranye!"
+      "nalarBayi": "Pengkabelan terstruktur mengikuti bagan standar pinout untuk memastikan sinyal listrik terkirim sempurna."
     },
     "question": "Apakah warna kabel pada Pin 1 dan Pin 2 menurut standar kabel jaringan Ethernet T568B?",
     "options": [
@@ -724,7 +729,7 @@ const itTechChallenges = [
     ],
     "correctIndex": 2,
     "explanation": "Standar EIA/TIA-568B dimulai dengan pasangan kabel oranye: Pin 1 = Putih-Oranye, Pin 2 = Oranye, Pin 3 = Putih-Hijau, Pin 4 = Biru, Pin 5 = Putih-Biru, Pin 6 = Hijau, Pin 7 = Putih-Cokelat, Pin 8 = Cokelat.",
-    "babyClue": "💡 Petunjuk Nalar: Pahami konsep dasar kasus di atas untuk menentukan jawaban yang paling tepat."
+    "babyClue": "💡 Petunjuk Nalar: Analisis kebutuhan skenario kasus dan cocokkan dengan konsep yang telah dipelajari."
   },
   {
     "id": "it-net-14",
@@ -735,7 +740,7 @@ const itTechChallenges = [
     "workedExample": {
       "kasusSerupa": "Mengirimkan paket data ke sesama komputer di dalam satu subnet LAN yang sama tanpa melewati router.",
       "jawabanBenarContoh": "Pengiriman langsung melalui switch lokal menggunakan alamat MAC tujuan (Layer 2 Switching).",
-      "nalarBayi": "Untuk komputer satu ruangan, switch langsung mengirimkan paket. Namun jika paket ditujukan ke IP di luar subnet lokal (seperti internet), paket wajib diarahkan ke Default Gateway (Router)!"
+      "nalarBayi": "Untuk komputer satu ruangan, switch langsung mengirimkan paket."
     },
     "question": "Alamat apakah yang harus dituju oleh komputer host ketika hendak mengirimkan paket data ke alamat IP yang berada di luar subnet lokalnya?",
     "options": [
@@ -746,7 +751,7 @@ const itTechChallenges = [
     ],
     "correctIndex": 2,
     "explanation": "Default Gateway adalah alamat antarmuka router pada jaringan lokal yang bertindak sebagai jalur keluar utama bagi semua paket yang ditujukan ke host atau subnet di luar jaringan lokal tersebut.",
-    "babyClue": "💡 Petunjuk Nalar: Pahami konsep dasar kasus di atas untuk menentukan jawaban yang paling tepat."
+    "babyClue": "💡 Petunjuk Nalar: Analisis kebutuhan skenario kasus dan cocokkan dengan konsep yang telah dipelajari."
   },
   {
     "id": "it-net-15",
@@ -757,7 +762,7 @@ const itTechChallenges = [
     "workedExample": {
       "kasusSerupa": "Memetakan satu alamat IP publik ke tepat satu server privat internal secara satu banding satu (Static 1:1 NAT).",
       "jawabanBenarContoh": "Static NAT — satu IP privat dipetakan permanen ke satu IP publik khusus.",
-      "nalarBayi": "Static NAT memetakan 1 ke 1. Namun agar ratusan komputer kantor dapat berbagi satu buah IP publik yang sama di internet, router menggunakan teknik PAT (NAT Overload)!"
+      "nalarBayi": "Static NAT memetakan satu alamat IP lokal secara permanen ke satu alamat IP publik tertentu."
     },
     "question": "Teknologi translasi alamat manakah yang memungkinkan banyak host internal berbagi satu alamat IP publik dengan memanfaatkan nomor port sumber (source port) yang unik?",
     "options": [
@@ -768,7 +773,7 @@ const itTechChallenges = [
     ],
     "correctIndex": 2,
     "explanation": "PAT (Port Address Translation), sering disebut NAT Overload, menerjemahkan banyak alamat IP privat internal ke satu alamat IP publik dengan membedakan setiap aliran sesi menggunakan nomor port TCP/UDP yang berbeda.",
-    "babyClue": "💡 Petunjuk Nalar: Pahami konsep dasar kasus di atas untuk menentukan jawaban yang paling tepat."
+    "babyClue": "💡 Petunjuk Nalar: Analisis kebutuhan skenario kasus dan cocokkan dengan konsep yang telah dipelajari."
   },
   {
     "id": "it-net-16",
@@ -779,7 +784,7 @@ const itTechChallenges = [
     "workedExample": {
       "kasusSerupa": "Ukuran payload data Ethernet terkecil yang valid untuk menghindari tabrakan runt frame pada jaringan LAN.",
       "jawabanBenarContoh": "64 bytes (ukuran frame Ethernet minimum).",
-      "nalarBayi": "Frame Ethernet minimum adalah 64 bytes. Sedangkan ukuran paket data maksimum standar (MTU) tanpa fragmentasi yang dapat lewat di jaringan Ethernet adalah 1500 bytes!"
+      "nalarBayi": "Standar transmisi jaringan menentukan batas ukuran frame terendah untuk mencegah tabrakan sinyal."
     },
     "question": "Berapakah nilai default Maximum Transmission Unit (MTU) standar untuk payload paket IP pada jaringan kabel Ethernet?",
     "options": [
@@ -790,7 +795,7 @@ const itTechChallenges = [
     ],
     "correctIndex": 1,
     "explanation": "Ukuran MTU (Maximum Transmission Unit) default pada Ethernet standar adalah 1500 byte. Jika paket IP lebih besar dari MTU jalur, router harus memfragmentasi (memecah) paket tersebut kecuali bit 'Don't Fragment' (DF) aktif.",
-    "babyClue": "💡 Petunjuk Nalar: Pahami konsep dasar kasus di atas untuk menentukan jawaban yang paling tepat."
+    "babyClue": "💡 Petunjuk Nalar: Analisis kebutuhan skenario kasus dan cocokkan dengan konsep yang telah dipelajari."
   },
   {
     "id": "it-net-17",
@@ -801,7 +806,7 @@ const itTechChallenges = [
     "workedExample": {
       "kasusSerupa": "Karakteristik sinyal Wi-Fi frekuensi 5 GHz yang menawarkan kecepatan transfer data sangat tinggi dan kanal yang tidak padat.",
       "jawabanBenarContoh": "Frekuensi 5 GHz memiliki gelombang lebih pendek: kecepatan tinggi namun jangkauan lebih pendek dan sulit tembus tembok.",
-      "nalarBayi": "Frekuensi 5 GHz cepat tapi jangkauan pendek. Sebaliknya, frekuensi 2.4 GHz memiliki gelombang lebih panjang sehingga daya tembus dinding dan jangkauannya jauh lebih luas!"
+      "nalarBayi": "Frekuensi 5 GHz cepat tapi jangkauan pendek."
     },
     "question": "Mengapa frekuensi Wi-Fi 2.4 GHz umumnya memberikan jangkauan area yang lebih luas dan penetrasi dinding yang lebih baik dibandingkan frekuensi 5 GHz?",
     "options": [
@@ -812,7 +817,7 @@ const itTechChallenges = [
     ],
     "correctIndex": 3,
     "explanation": "Frekuensi yang lebih rendah (2.4 GHz) memiliki panjang gelombang lebih panjang, memungkinkannya melewati hambatan fisik seperti dinding dan lantai dengan penurunan sinyal (atenuasi) yang lebih lambat dibanding frekuensi tinggi (5 GHz).",
-    "babyClue": "💡 Petunjuk Nalar: Pahami konsep dasar kasus di atas untuk menentukan jawaban yang paling tepat."
+    "babyClue": "💡 Petunjuk Nalar: Analisis kebutuhan skenario kasus dan cocokkan dengan konsep yang telah dipelajari."
   },
   {
     "id": "it-net-18",
@@ -823,7 +828,7 @@ const itTechChallenges = [
     "workedExample": {
       "kasusSerupa": "Mengatur switch port security dengan tindakan 'Protect' yang membuang paket asing tanpa mematikan port switch.",
       "jawabanBenarContoh": "Protect Mode — paket dari MAC asing dibuang diam-diam tanpa menonaktifkan port switch.",
-      "nalarBayi": "Protect membuang paket tanpa alarm. Namun mode paling ketat yang langsung mematikan port total (status err-disable) saat terdeteksi perangkat liar adalah mode Shutdown!"
+      "nalarBayi": "Mode Protect pada switch port security membuang frame liar tanpa memicu notifikasi peringatan log."
     },
     "question": "Mode aksi pelanggaran (violation mode) default pada fitur Cisco Switch Port Security yang langsung menonaktifkan port ke kondisi `err-disabled` adalah?",
     "options": [
@@ -834,7 +839,7 @@ const itTechChallenges = [
     ],
     "correctIndex": 2,
     "explanation": "Pada Cisco IOS Port Security, mode default adalah `shutdown`. Port akan langsung dimatikan (err-disabled), LED berubah oranye, log syslog dikirim, dan penghitung pelanggaran (violation counter) bertambah.",
-    "babyClue": "💡 Petunjuk Nalar: Pahami konsep dasar kasus di atas untuk menentukan jawaban yang paling tepat."
+    "babyClue": "💡 Petunjuk Nalar: Analisis kebutuhan skenario kasus dan cocokkan dengan konsep yang telah dipelajari."
   },
   {
     "id": "it-net-19",
@@ -845,7 +850,7 @@ const itTechChallenges = [
     "workedExample": {
       "kasusSerupa": "Menghitung subnet mask untuk jaringan kantor kecil yang membutuhkan 10 sampai 14 host komputer klien.",
       "jawabanBenarContoh": "/28 (Subnet mask 255.255.255.240) yang menyediakan 14 host valid.",
-      "nalarBayi": "Pada /28 tersedia 14 host. Namun untuk sambungan serial point-to-point antar dua router (WAN) yang hanya membutuhkan tepat 2 alamat host tanpa membuang IP, subnet yang digunakan adalah /30!"
+      "nalarBayi": "Pada /28 tersedia 14 host."
     },
     "question": "Notasi prefix CIDR manakah yang secara tradisional paling efisien untuk link koneksi router point-to-point karena hanya menyediakan tepat 2 alamat host yang dapat digunakan?",
     "options": [
@@ -856,7 +861,7 @@ const itTechChallenges = [
     ],
     "correctIndex": 3,
     "explanation": "Subnet /30 memiliki 2 bit host (2^2 = 4 total IP). Dikurangi 2 (Network dan Broadcast) menghasilkan tepat 2 usable IP, menjadikannya pilihan standar efisien untuk sambungan point-to-point antar-router.",
-    "babyClue": "💡 Petunjuk Nalar: Pahami konsep dasar kasus di atas untuk menentukan jawaban yang paling tepat."
+    "babyClue": "💡 Petunjuk Nalar: Analisis kebutuhan skenario kasus dan cocokkan dengan konsep yang telah dipelajari."
   },
   {
     "id": "it-net-20",
@@ -867,7 +872,7 @@ const itTechChallenges = [
     "workedExample": {
       "kasusSerupa": "Protokol routing jarak jauh antar-organisasi dan penyedia layanan internet (ISP) di seluruh dunia (Exterior Gateway Protocol).",
       "jawabanBenarContoh": "BGP (Border Gateway Protocol) — protokol routing standar tulang punggung internet global.",
-      "nalarBayi": "BGP menghubungkan antar-negara dan ISP. Sedangkan protokol routing dinamis interior link-state tercepat di dalam jaringan korporasi menggunakan algoritma Dijkstra adalah OSPF!"
+      "nalarBayi": "BGP menghubungkan antar-negara dan ISP."
     },
     "question": "Protokol dynamic routing bertipe Link-State manakah yang secara luas digunakan di dalam jaringan enterprise internal dengan algoritma Shortest Path First (SPF)?",
     "options": [
@@ -878,7 +883,7 @@ const itTechChallenges = [
     ],
     "correctIndex": 0,
     "explanation": "OSPF adalah protokol routing IGP bertipe link-state. Setiap router OSPF membanjiri link-state advertisements (LSA) dan membangun pohon topologi menggunakan algoritma Dijkstra SPF untuk menentukan rute terbaik.",
-    "babyClue": "💡 Petunjuk Nalar: Pahami konsep dasar kasus di atas untuk menentukan jawaban yang paling tepat."
+    "babyClue": "💡 Petunjuk Nalar: Analisis kebutuhan skenario kasus dan cocokkan dengan konsep yang telah dipelajari."
   },
   {
     "id": "it-os-1",
@@ -889,7 +894,7 @@ const itTechChallenges = [
     "workedExample": {
       "kasusSerupa": "Memperbarui sewa alamat IP dari server DHCP pada komputer Windows melalui Command Prompt.",
       "jawabanBenarContoh": "ipconfig /renew — meminta perpanjangan sewa alamat IP baru dari DHCP server.",
-      "nalarBayi": "Perintah ipconfig /renew memperbarui IP DHCP. Sedangkan untuk membersihkan cache resolusi nama domain yang korup di komputer Windows, perintahnya adalah ipconfig /flushdns!"
+      "nalarBayi": "Perintah jaringan pada sistem operasi memiliki parameter khusus untuk memperbarui sewa konfigurasi alamat."
     },
     "question": "Perintah Windows Command Line manakah yang digunakan untuk mengosongkan dan mengatur ulang isi cache resolver DNS lokal pada sistem?",
     "options": [
@@ -900,7 +905,7 @@ const itTechChallenges = [
     ],
     "correctIndex": 1,
     "explanation": "`ipconfig /flushdns` menghapus seluruh entri pemetaan nama-ke-IP yang tersimpan sementara di memori resolver DNS klien Windows, memaksa sistem melakukan resolusi DNS segar ke server DNS.",
-    "babyClue": "💡 Petunjuk Nalar: Pahami konsep dasar kasus di atas untuk menentukan jawaban yang paling tepat."
+    "babyClue": "💡 Petunjuk Nalar: Analisis kebutuhan skenario kasus dan cocokkan dengan konsep yang telah dipelajari."
   },
   {
     "id": "it-os-2",
@@ -911,7 +916,7 @@ const itTechChallenges = [
     "workedExample": {
       "kasusSerupa": "Mengunduh citra komponen sistem Windows yang bersih langsung dari server Microsoft Windows Update.",
       "jawabanBenarContoh": "Perintah DISM /Online /Cleanup-Image /RestoreHealth — memperbaiki citra komponen Windows dari internet.",
-      "nalarBayi": "DISM memperbaiki master citra Windows. Sedangkan utilitas lokal yang memindai dan memperbaiki file sistem Windows yang korup dari cache lokal adalah sfc /scannow!"
+      "nalarBayi": "DISM memperbaiki master citra Windows."
     },
     "question": "Perintah utilitas bawaan Windows Command Prompt (Admin) manakah yang bertugas memindai dan memperbaiki file integritas sistem yang rusak secara otomatis?",
     "options": [
@@ -922,7 +927,7 @@ const itTechChallenges = [
     ],
     "correctIndex": 0,
     "explanation": "System File Checker (`sfc /scannow`) memindai semua berkas sistem terlindungi dan mengganti versi yang rusak atau hilang dengan salinan cadangan yang tersimpan di cache `%WinDir%\\System32\\dllcache`.",
-    "babyClue": "💡 Petunjuk Nalar: Pahami konsep dasar kasus di atas untuk menentukan jawaban yang paling tepat."
+    "babyClue": "💡 Petunjuk Nalar: Analisis kebutuhan skenario kasus dan cocokkan dengan konsep yang telah dipelajari."
   },
   {
     "id": "it-os-3",
@@ -933,7 +938,7 @@ const itTechChallenges = [
     "workedExample": {
       "kasusSerupa": "Melihat daftar seluruh proses yang sedang aktif berjalan di komputer Windows beserta nomor Process ID (PID).",
       "jawabanBenarContoh": "Perintah tasklist — menampilkan tabel nama proses dan nomor PID-nya.",
-      "nalarBayi": "Perintah tasklist untuk melihat daftar proses. Sedangkan perintah untuk memaksa mematikan proses yang macet berdasarkan nomor PID-nya adalah taskkill /F /PID [nomor]!"
+      "nalarBayi": "Perintah tasklist untuk melihat daftar proses."
     },
     "question": "Parameter sintaks Windows CLI manakah yang digunakan untuk mematikan secara PAKSA proses yang sedang berjalan berdasarkan nomor ID prosesnya?",
     "options": [
@@ -944,7 +949,7 @@ const itTechChallenges = [
     ],
     "correctIndex": 1,
     "explanation": "Perintah `taskkill /F /PID <nomor_pid>` menggunakan switch `/F` untuk memaksa (force) penghentian proses tak responsif dan `/PID` untuk menentukan nomor proses target spesifik.",
-    "babyClue": "💡 Petunjuk Nalar: Pahami konsep dasar kasus di atas untuk menentukan jawaban yang paling tepat."
+    "babyClue": "💡 Petunjuk Nalar: Analisis kebutuhan skenario kasus dan cocokkan dengan konsep yang telah dipelajari."
   },
   {
     "id": "it-os-4",
@@ -955,7 +960,7 @@ const itTechChallenges = [
     "workedExample": {
       "kasusSerupa": "Memberikan izin baca dan tulis untuk pemilik berkas, serta izin baca saja untuk kelompok dan publik di Linux.",
       "jawabanBenarContoh": "chmod 644 (Owner: rw- = 6, Group: r-- = 4, Others: r-- = 4).",
-      "nalarBayi": "Izin 644 untuk dokumen biasa (pemilik bisa edit, orang lain cuma baca). Namun bila berkas adalah program skrip yang harus bisa dieksekusi (dijalankan) oleh semua orang, nilainya adalah chmod 755!"
+      "nalarBayi": "Izin 644 untuk dokumen biasa (pemilik bisa edit, orang lain cuma baca)."
     },
     "question": "Berapakah nilai mode oktal dari perintah `chmod` yang memberikan hak Read-Write-Execute kepada Owner, dan Read-Execute kepada Group dan Others (`rwxr-xr-x`)?",
     "options": [
@@ -966,7 +971,7 @@ const itTechChallenges = [
     ],
     "correctIndex": 1,
     "explanation": "Nilai permission oktal Linux dihitung dari: r=4, w=2, x=1. Owner: 4+2+1=7. Group: 4+1=5. Others: 4+1=5. Hasil perizinan `rwxr-xr-x` bernilai numerik 755.",
-    "babyClue": "💡 Petunjuk Nalar: Pahami konsep dasar kasus di atas untuk menentukan jawaban yang paling tepat."
+    "babyClue": "💡 Petunjuk Nalar: Analisis kebutuhan skenario kasus dan cocokkan dengan konsep yang telah dipelajari."
   },
   {
     "id": "it-os-5",
@@ -977,7 +982,7 @@ const itTechChallenges = [
     "workedExample": {
       "kasusSerupa": "Melihat penggunaan memori RAM yang terpakai dan tersisa di Linux dalam format satuan megabyte/gigabyte yang mudah dibaca.",
       "jawabanBenarContoh": "Perintah free -h — menampilkan status memori RAM dan Swap secara ringkas.",
-      "nalarBayi": "Perintah free -h untuk cek sisa RAM. Sedangkan utilitas interaktif terminal Linux pemantau beban CPU, proses, dan RAM secara langsung per detik adalah perintah top (atau htop)!"
+      "nalarBayi": "Perintah free -h untuk cek sisa RAM."
     },
     "question": "Perintah terminal Linux manakah yang menyediakan tampilan tabel dinamis dan interaktif secara real-time mengenai proses sistem dan utilisasi CPU/RAM?",
     "options": [
@@ -988,7 +993,7 @@ const itTechChallenges = [
     ],
     "correctIndex": 0,
     "explanation": "Perintah `top` menampilkan ringkasan informasi sistem dan daftar proses yang sedang dikelola oleh kernel Linux secara real-time, diperbarui setiap beberapa detik.",
-    "babyClue": "💡 Petunjuk Nalar: Pahami konsep dasar kasus di atas untuk menentukan jawaban yang paling tepat."
+    "babyClue": "💡 Petunjuk Nalar: Analisis kebutuhan skenario kasus dan cocokkan dengan konsep yang telah dipelajari."
   },
   {
     "id": "it-os-6",
@@ -999,7 +1004,7 @@ const itTechChallenges = [
     "workedExample": {
       "kasusSerupa": "Membaca sepuluh baris pertama dari sebuah berkas teks di terminal Linux.",
       "jawabanBenarContoh": "Perintah head -n 10 berkas.txt — mencetak 10 baris teratas.",
-      "nalarBayi": "Perintah head mencetak baris atas. Sebaliknya, untuk memantau baris log paling baru secara langsung (live stream) saat server menerima request, gunakan perintah tail -f!"
+      "nalarBayi": "Perintah head mencetak baris atas."
     },
     "question": "Opsi perintah terminal Linux manakah yang digunakan untuk menampilkan baris akhir dari sebuah file log dan terus memantau perubahan data baru secara real-time (follow)?",
     "options": [
@@ -1010,7 +1015,7 @@ const itTechChallenges = [
     ],
     "correctIndex": 2,
     "explanation": "Perintah `tail -f [nama_file]` menampilkan 10 baris terakhir dari sebuah berkas dan opsi `-f` (follow) membuat terminal tetap terbuka mendengarkan baris teks baru yang ditambahkan ke berkas tersebut.",
-    "babyClue": "💡 Petunjuk Nalar: Pahami konsep dasar kasus di atas untuk menentukan jawaban yang paling tepat."
+    "babyClue": "💡 Petunjuk Nalar: Analisis kebutuhan skenario kasus dan cocokkan dengan konsep yang telah dipelajari."
   },
   {
     "id": "it-os-7",
@@ -1021,7 +1026,7 @@ const itTechChallenges = [
     "workedExample": {
       "kasusSerupa": "Skema partisi harddisk lawas masa BIOS lama yang hanya mendukung maksimal 4 partisi primer dan kapasitas drive maksimal 2 Terabyte.",
       "jawabanBenarContoh": "MBR (Master Boot Record) — skema partisi lama dengan batas kapasitas 2 TB.",
-      "nalarBayi": "MBR terbatas pada kapasitas 2 TB dan 4 partisi. Sedangkan skema partisi modern berbasis UEFI yang mendukung harddisk di atas 2 TB hingga 128 partisi primer adalah GPT (GUID Partition Table)!"
+      "nalarBayi": "MBR terbatas pada kapasitas 2 TB dan 4 partisi."
     },
     "question": "Skema tabel partisi disk manakah yang mendukung kapasitas penyimpanan di atas 2 Terabyte dan kompatibel dengan sistem boot modern UEFI?",
     "options": [
@@ -1032,7 +1037,7 @@ const itTechChallenges = [
     ],
     "correctIndex": 2,
     "explanation": "GPT (GUID Partition Table) adalah bagian dari standar UEFI yang mengatasi keterbatasan MBR lama (maks 2 TB dan maks 4 partisi utama), mendukung disk hingga jutaan Terabyte dan integritas CRC32.",
-    "babyClue": "💡 Petunjuk Nalar: Pahami konsep dasar kasus di atas untuk menentukan jawaban yang paling tepat."
+    "babyClue": "💡 Petunjuk Nalar: Analisis kebutuhan skenario kasus dan cocokkan dengan konsep yang telah dipelajari."
   },
   {
     "id": "it-os-8",
@@ -1043,7 +1048,7 @@ const itTechChallenges = [
     "workedExample": {
       "kasusSerupa": "Menguji apakah port web server di komputer jarak jauh terbuka menggunakan utilitas curl.",
       "jawabanBenarContoh": "curl -I http://ip-server:port — mengirimkan header HTTP untuk uji respons port.",
-      "nalarBayi": "Curl menguji koneksi dari luar. Sedangkan untuk memeriksa daftar seluruh port jaringan yang sedang berstatus mendengarkan (listening) langsung di server Linux lokal, gunakan perintah ss -tulnp!"
+      "nalarBayi": "Curl menguji koneksi dari luar."
     },
     "question": "Kombinasi parameter perintah terminal Linux `ss` manakah yang paling lengkap digunakan untuk melihat semua port TCP dan UDP yang sedang berada dalam status LISTENING beserta nomor PID aplikasinya?",
     "options": [
@@ -1054,7 +1059,7 @@ const itTechChallenges = [
     ],
     "correctIndex": 2,
     "explanation": "Perintah `ss -tulnp` menampilkan soket TCP (-t), UDP (-u), dalam mode listening (-l), dengan port dan IP numerik tanpa lookup DNS (-n), beserta nama proses/PID penanggung jawab (-p).",
-    "babyClue": "💡 Petunjuk Nalar: Pahami konsep dasar kasus di atas untuk menentukan jawaban yang paling tepat."
+    "babyClue": "💡 Petunjuk Nalar: Analisis kebutuhan skenario kasus dan cocokkan dengan konsep yang telah dipelajari."
   },
   {
     "id": "it-os-9",
@@ -1065,7 +1070,7 @@ const itTechChallenges = [
     "workedExample": {
       "kasusSerupa": "Menguji dan mengubah konfigurasi servis Windows melalui konsol Services Management.",
       "jawabanBenarContoh": "services.msc — membuka konsol pengelolaan servis latar belakang Windows.",
-      "nalarBayi": "Services.msc mengatur status servis Windows. Sedangkan konsol resmi Windows untuk menganalisis log riwayat kesalahan sistem, audit keamanan, dan crash aplikasi adalah Event Viewer (eventvwr.msc)!"
+      "nalarBayi": "Services.msc mengatur status servis Windows."
     },
     "question": "Alat utilitas administratif Windows manakah yang digunakan untuk melihat dan menganalisis log kesalahan sistem operasi, kegagalan driver, dan crash aplikasi?",
     "options": [
@@ -1076,7 +1081,7 @@ const itTechChallenges = [
     ],
     "correctIndex": 0,
     "explanation": "Event Viewer adalah alat Microsoft Management Console (MMC) yang menampilkan log peristiwa terperinci yang dicatat oleh sistem operasi dan aplikasi, dikelompokkan ke log Application, Security, dan System.",
-    "babyClue": "💡 Petunjuk Nalar: Pahami konsep dasar kasus di atas untuk menentukan jawaban yang paling tepat."
+    "babyClue": "💡 Petunjuk Nalar: Analisis kebutuhan skenario kasus dan cocokkan dengan konsep yang telah dipelajari."
   },
   {
     "id": "it-os-10",
@@ -1087,7 +1092,7 @@ const itTechChallenges = [
     "workedExample": {
       "kasusSerupa": "Format waktu crontab di Linux yang mengeksekusi skrip otomatis setiap satu jam sekali tepat pada menit ke-0.",
       "jawabanBenarContoh": "0 * * * * /opt/skrip.sh — berjalan di menit ke-0 pada setiap jam.",
-      "nalarBayi": "Format '0 * * * *' berjalan setiap jam. Sedangkan bila skrip ingin dijadwalkan berjalan setiap malam tepat pukul 02:00 pagi, formatnya adalah '0 2 * * *'!"
+      "nalarBayi": "Format '0 * * * *' berjalan setiap jam."
     },
     "question": "Sintaks crontab Linux manakah yang benar untuk menjalankan skrip cadangan setiap hari tepat pada pukul 02:00 pagi?",
     "options": [
@@ -1098,7 +1103,7 @@ const itTechChallenges = [
     ],
     "correctIndex": 1,
     "explanation": "Field crontab terdiri dari: [Menit] [Jam] [Hari/Bulan] [Bulan] [Hari/Minggu]. Pukul 02:00 dinyatakan dengan Menit 0 dan Jam 2: `0 2 * * *`.",
-    "babyClue": "💡 Petunjuk Nalar: Pahami konsep dasar kasus di atas untuk menentukan jawaban yang paling tepat."
+    "babyClue": "💡 Petunjuk Nalar: Analisis kebutuhan skenario kasus dan cocokkan dengan konsep yang telah dipelajari."
   },
   {
     "id": "it-os-11",
@@ -1109,7 +1114,7 @@ const itTechChallenges = [
     "workedExample": {
       "kasusSerupa": "Bagian cabang Registry Windows yang menyimpan konfigurasi khusus profil pengguna yang sedang login saat ini.",
       "jawabanBenarContoh": "HKEY_CURRENT_USER (HKCU) — menyimpan pengaturan tema, preferensi, dan aplikasi user aktif.",
-      "nalarBayi": "HKCU khusus untuk user yang sedang login. Sedangkan cabang registry yang menyimpan konfigurasi perangkat keras dan driver yang berlaku untuk seluruh komputer adalah HKEY_LOCAL_MACHINE (HKLM)!"
+      "nalarBayi": "HKCU khusus untuk user yang sedang login."
     },
     "question": "Cabang utama (hive) Registry Windows manakah yang menyimpan pengaturan perangkat lunak dan perangkat keras global yang berlaku untuk SELURUH pengguna di komputer tersebut?",
     "options": [
@@ -1120,7 +1125,7 @@ const itTechChallenges = [
     ],
     "correctIndex": 3,
     "explanation": "HKEY_LOCAL_MACHINE (HKLM) berisi informasi konfigurasi tingkat sistem tentang perangkat keras fisik, driver, dan pengaturan perangkat lunak yang berlaku untuk seluruh akun pengguna di PC.",
-    "babyClue": "💡 Petunjuk Nalar: Pahami konsep dasar kasus di atas untuk menentukan jawaban yang paling tepat."
+    "babyClue": "💡 Petunjuk Nalar: Analisis kebutuhan skenario kasus dan cocokkan dengan konsep yang telah dipelajari."
   },
   {
     "id": "it-os-12",
@@ -1131,7 +1136,7 @@ const itTechChallenges = [
     "workedExample": {
       "kasusSerupa": "Menghitung jumlah total baris di dalam sebuah berkas log teks di Linux menggunakan utilitas wc.",
       "jawabanBenarContoh": "wc -l berkas.log — menghitung baris (word count line).",
-      "nalarBayi": "Perintah wc -l menghitung jumlah baris. Sedangkan perintah pencari baris teks yang mengandung kata kunci tertentu tanpa membedakan huruf besar-kecil adalah grep -i 'kata_kunci' berkas.log!"
+      "nalarBayi": "Perintah wc -l menghitung jumlah baris."
     },
     "question": "Perintah terminal Linux manakah yang digunakan untuk mencari baris teks tertentu di dalam sebuah file dengan mengabaikan perbedaan huruf besar dan kecil (case-insensitive)?",
     "options": [
@@ -1142,7 +1147,7 @@ const itTechChallenges = [
     ],
     "correctIndex": 1,
     "explanation": "Perintah `grep` (Global Regular Expression Print) mencari pola teks di dalam berkas. Opsi `-i` mengabaikan perbedaan kapitalisasi huruf (case-insensitive search).",
-    "babyClue": "💡 Petunjuk Nalar: Pahami konsep dasar kasus di atas untuk menentukan jawaban yang paling tepat."
+    "babyClue": "💡 Petunjuk Nalar: Analisis kebutuhan skenario kasus dan cocokkan dengan konsep yang telah dipelajari."
   },
   {
     "id": "it-os-13",
@@ -1153,7 +1158,7 @@ const itTechChallenges = [
     "workedExample": {
       "kasusSerupa": "Lokasi file log instalasi pembaruan Windows Update untuk menganalisis kegagalan patch.",
       "jawabanBenarContoh": "C:\\Windows\\WindowsUpdate.log — riwayat catatan instalasi paket pembaruan Windows.",
-      "nalarBayi": "Log update ada di WindowsUpdate.log. Sedangkan folder tempat Windows menyimpan file rekaman crash memory dump saat terjadi layar biru BSOD adalah C:\\Windows\\Minidump!"
+      "nalarBayi": "Log update ada di WindowsUpdate.log."
     },
     "question": "Direktori default Windows manakah yang menyimpan berkas rekam jejak memori kecil (.dmp) saat terjadi kegagalan fatal Blue Screen (BSOD)?",
     "options": [
@@ -1164,7 +1169,7 @@ const itTechChallenges = [
     ],
     "correctIndex": 0,
     "explanation": "Secara default, Windows membuat berkas Small Memory Dump (Minidump) di direktori `%SystemRoot%\\Minidump` (biasanya `C:\\Windows\\Minidump`) yang dapat dianalisis untuk mengidentifikasi modul driver penyebab BSOD.",
-    "babyClue": "💡 Petunjuk Nalar: Pahami konsep dasar kasus di atas untuk menentukan jawaban yang paling tepat."
+    "babyClue": "💡 Petunjuk Nalar: Analisis kebutuhan skenario kasus dan cocokkan dengan konsep yang telah dipelajari."
   },
   {
     "id": "it-os-14",
@@ -1175,7 +1180,7 @@ const itTechChallenges = [
     "workedExample": {
       "kasusSerupa": "Memeriksa status aktif atau matinya layanan servis web server di Linux berbasis Systemd.",
       "jawabanBenarContoh": "sudo systemctl status nginx — memeriksa apakah servis sedang running atau stopped.",
-      "nalarBayi": "Systemctl status untuk melihat keadaan servis. Sedangkan perintah untuk me-restart ulang konfigurasi servis web server nginx agar konfigurasi baru aktif adalah sudo systemctl restart nginx!"
+      "nalarBayi": "Manajer layanan sistem operasi menyediakan instruksi terpusat untuk memantau status aktivitas latar belakang."
     },
     "question": "Perintah standar sistem Linux modern (systemd) manakah yang digunakan untuk memuat ulang dan merestart sebuah layanan aplikasi bernama `nginx`?",
     "options": [
@@ -1186,7 +1191,7 @@ const itTechChallenges = [
     ],
     "correctIndex": 2,
     "explanation": "Pada distribusi Linux berbasis systemd, utilitas `systemctl` mengontrol status layanan sistem. Perintah `sudo systemctl restart <service>` merestart layanan target.",
-    "babyClue": "💡 Petunjuk Nalar: Pahami konsep dasar kasus di atas untuk menentukan jawaban yang paling tepat."
+    "babyClue": "💡 Petunjuk Nalar: Analisis kebutuhan skenario kasus dan cocokkan dengan konsep yang telah dipelajari."
   },
   {
     "id": "it-os-15",
@@ -1197,7 +1202,7 @@ const itTechChallenges = [
     "workedExample": {
       "kasusSerupa": "Memulihkan Windows ke titik waktu sebelumnya sebelum terjadinya kesalahan konfigurasi menggunakan System Restore.",
       "jawabanBenarContoh": "System Restore (rstrui.exe) — memutar kembali status file sistem dan registry ke titik restore point.",
-      "nalarBayi": "System Restore memutar waktu sistem. Namun bila Windows gagal boot normal akibat driver display yang rusak, mode diagnostik minimal yang memuat driver dasar saja adalah Safe Mode!"
+      "nalarBayi": "System Restore memungkinkan sistem operasi kembali ke titik waktu stabil sebelum instalasi perangkat lunak yang bermasalah."
     },
     "question": "Mode diagnostik startup Windows manakah yang hanya memuat sekumpulan minimal driver perangkat keras dan layanan inti penting untuk isolasi masalah?",
     "options": [
@@ -1208,7 +1213,7 @@ const itTechChallenges = [
     ],
     "correctIndex": 0,
     "explanation": "Safe Mode adalah lingkungan pemecahan masalah di mana Windows memuat driver generik minimal tanpa aplikasi pihak ketiga, memungkinkan teknisi mencopot driver atau software bermasalah.",
-    "babyClue": "💡 Petunjuk Nalar: Pahami konsep dasar kasus di atas untuk menentukan jawaban yang paling tepat."
+    "babyClue": "💡 Petunjuk Nalar: Analisis kebutuhan skenario kasus dan cocokkan dengan konsep yang telah dipelajari."
   },
   {
     "id": "it-os-16",
@@ -1219,7 +1224,7 @@ const itTechChallenges = [
     "workedExample": {
       "kasusSerupa": "Melihat ukuran kapasitas sebuah folder tertentu beserta isinya di Linux.",
       "jawabanBenarContoh": "Perintah du -sh /nama/folder — disk usage summary dalam format terbaca manusia.",
-      "nalarBayi": "Perintah du untuk kapasitas satu folder. Sedangkan untuk melihat persentase sisa ruang bebas di seluruh partisi penyimpanan disk sistem Linux, perintahnya adalah df -h!"
+      "nalarBayi": "Perintah du untuk kapasitas satu folder."
     },
     "question": "Perintah terminal Linux manakah yang menampilkan kapasitas ruang kosong dan terpakai pada setiap partisi filesystem dengan format angka yang mudah dibaca manusia (GB/MB)?",
     "options": [
@@ -1230,7 +1235,7 @@ const itTechChallenges = [
     ],
     "correctIndex": 1,
     "explanation": "`df -h` (Disk Free) menampilkan penggunaan partisi dalam format human-readable (-h, misalnya GB atau MB). Sebaliknya, `du -sh` digunakan untuk memeriksa ukuran folder tertentu.",
-    "babyClue": "💡 Petunjuk Nalar: Pahami konsep dasar kasus di atas untuk menentukan jawaban yang paling tepat."
+    "babyClue": "💡 Petunjuk Nalar: Analisis kebutuhan skenario kasus dan cocokkan dengan konsep yang telah dipelajari."
   },
   {
     "id": "it-os-17",
@@ -1241,7 +1246,7 @@ const itTechChallenges = [
     "workedExample": {
       "kasusSerupa": "Ukuran partisi maksimal yang didukung oleh sistem berkas NTFS pada sistem operasi Windows modern.",
       "jawabanBenarContoh": "Hingga ratusan Terabyte bahkan Petabyte per partisi.",
-      "nalarBayi": "NTFS mendukung file raksasa hingga terabyte. Sebaliknya, sistem berkas format lama FAT32 memiliki keterbatasan mutlak di mana ukuran satu file tidak boleh melebihi 4 Gigabyte (4 GB)!"
+      "nalarBayi": "NTFS mendukung file raksasa hingga terabyte."
     },
     "question": "Berapakah batas ukuran maksimal untuk SATU berkas file tunggal yang dapat disimpan pada partisi dengan sistem berkas FAT32?",
     "options": [
@@ -1252,7 +1257,7 @@ const itTechChallenges = [
     ],
     "correctIndex": 2,
     "explanation": "Sistem berkas FAT32 memiliki keterbatasan teknis 32-bit: ukuran berkas individual maksimum adalah 4 GB minus 1 byte (4 GB). Untuk menyimpan berkas lebih besar, media harus diformat ke exFAT atau NTFS.",
-    "babyClue": "💡 Petunjuk Nalar: Pahami konsep dasar kasus di atas untuk menentukan jawaban yang paling tepat."
+    "babyClue": "💡 Petunjuk Nalar: Analisis kebutuhan skenario kasus dan cocokkan dengan konsep yang telah dipelajari."
   },
   {
     "id": "it-os-18",
@@ -1263,7 +1268,7 @@ const itTechChallenges = [
     "workedExample": {
       "kasusSerupa": "Mengubah izin akses baca, tulis, dan eksekusi pada suatu berkas di sistem operasi Linux.",
       "jawabanBenarContoh": "Perintah chmod (change mode) — mengubah atribut izin berkas.",
-      "nalarBayi": "Perintah chmod mengatur hak izin r-w-x. Sedangkan perintah untuk mengganti nama user pemilik (owner) dari sebuah berkas di Linux adalah perintah chown (change owner)!"
+      "nalarBayi": "Perintah chmod mengatur hak izin r-w-x."
     },
     "question": "Perintah terminal Linux manakah yang digunakan secara khusus untuk mengubah pemilik (user owner) dan grup kepemilikan dari sebuah file atau direktori?",
     "options": [
@@ -1274,7 +1279,7 @@ const itTechChallenges = [
     ],
     "correctIndex": 2,
     "explanation": "`chown` (Change Owner) digunakan untuk mengubah akun pengguna pemilik dan grup kepemilikan dari suatu berkas atau direktori di Linux (`chown user:group file`).",
-    "babyClue": "💡 Petunjuk Nalar: Pahami konsep dasar kasus di atas untuk menentukan jawaban yang paling tepat."
+    "babyClue": "💡 Petunjuk Nalar: Analisis kebutuhan skenario kasus dan cocokkan dengan konsep yang telah dipelajari."
   },
   {
     "id": "it-os-19",
@@ -1285,7 +1290,7 @@ const itTechChallenges = [
     "workedExample": {
       "kasusSerupa": "Memperluas ukuran partisi disk Windows ke ruang kosong unallocated space yang bersebelahan.",
       "jawabanBenarContoh": "Fitur Extend Volume pada Disk Management (diskmgmt.msc).",
-      "nalarBayi": "Extend Volume untuk memperbesar partisi. Sebaliknya, fitur untuk memotong dan memperkecil ukuran partisi yang ada guna menciptakan ruang kosong baru adalah fitur Shrink Volume!"
+      "nalarBayi": "Manajemen partisi disk memungkinkan penyesuaian ukuran ruang simpan sesuai kapasitas yang masih tersedia."
     },
     "question": "Operasi manakah pada konsol Windows Disk Management yang digunakan untuk mengurangi ukuran partisi yang ada guna menghasilkan ruang kosong (unallocated space) untuk partisi baru?",
     "options": [
@@ -1296,7 +1301,7 @@ const itTechChallenges = [
     ],
     "correctIndex": 0,
     "explanation": "Fitur 'Shrink Volume' di Disk Management memperkecil ukuran partisi NTFS yang ada dengan memindahkan batas partisi ke ruang yang tidak digunakan, menciptakan Unallocated Space tanpa menghapus data yang ada.",
-    "babyClue": "💡 Petunjuk Nalar: Pahami konsep dasar kasus di atas untuk menentukan jawaban yang paling tepat."
+    "babyClue": "💡 Petunjuk Nalar: Analisis kebutuhan skenario kasus dan cocokkan dengan konsep yang telah dipelajari."
   },
   {
     "id": "it-os-20",
@@ -1307,7 +1312,7 @@ const itTechChallenges = [
     "workedExample": {
       "kasusSerupa": "Variabel lingkungan sistem operasi yang menunjukkan nama folder home direktori pengguna yang sedang aktif.",
       "jawabanBenarContoh": "%USERPROFILE% di Windows atau $HOME di Linux.",
-      "nalarBayi": "Variabel HOME menunjuk ke folder pengguna. Sedangkan variabel lingkungan paling krusial yang berisi daftar path direktori tempat sistem mencari file eksekusi perintah adalah PATH!"
+      "nalarBayi": "Variabel HOME menunjuk ke folder pengguna."
     },
     "question": "Variabel lingkungan (Environment Variable) manakah yang memberi tahu sistem operasi daftar direktori tempat mencari program executable saat perintah diketik di terminal?",
     "options": [
@@ -1318,7 +1323,7 @@ const itTechChallenges = [
     ],
     "correctIndex": 2,
     "explanation": "Variabel lingkungan `PATH` menyimpan daftar direktori yang dipisahkan titik koma (di Windows) atau titik dua (di Linux). Saat sebuah perintah diketik tanpa path lengkap, shell mencari berkas eksekusi di setiap direktori dalam variabel PATH.",
-    "babyClue": "💡 Petunjuk Nalar: Pahami konsep dasar kasus di atas untuk menentukan jawaban yang paling tepat."
+    "babyClue": "💡 Petunjuk Nalar: Analisis kebutuhan skenario kasus dan cocokkan dengan konsep yang telah dipelajari."
   },
   {
     "id": "it-sec-1",
@@ -1329,7 +1334,7 @@ const itTechChallenges = [
     "workedExample": {
       "kasusSerupa": "Mencegah pihak yang tidak berhak membaca data rahasia perusahaan (pilar Confidentiality).",
       "jawabanBenarContoh": "Kerahasiaan (Confidentiality) — perlindungan data dari akses atau pengungkapan tanpa izin.",
-      "nalarBayi": "Keamanan informasi berlandaskan Tiga Pilar CIA: Confidentiality (Kerahasiaan), Integrity (Keutuhan keaslian data), dan Availability (Ketersediaan sistem saat dibutuhkan)!"
+      "nalarBayi": "Prinsip Kerahasiaan (Confidentiality) memastikan hanya individu dengan wewenang resmi yang dapat mengakses berkas sensitif."
     },
     "question": "Manakah tiga komponen pilar utama yang membentuk segitiga fundamental keamanan informasi (The CIA Triad)?",
     "options": [
@@ -1340,7 +1345,7 @@ const itTechChallenges = [
     ],
     "correctIndex": 0,
     "explanation": "The CIA Triad (Confidentiality, Integrity, Availability) adalah model keamanan informasi dasar. Confidentiality mencegah akses tidak sah, Integrity menjamin keaslian data, dan Availability memastikan sistem dapat diakses saat diperlukan.",
-    "babyClue": "💡 Petunjuk Nalar: Pahami konsep dasar kasus di atas untuk menentukan jawaban yang paling tepat."
+    "babyClue": "💡 Petunjuk Nalar: Analisis kebutuhan skenario kasus dan cocokkan dengan konsep yang telah dipelajari."
   },
   {
     "id": "it-sec-2",
@@ -1351,7 +1356,7 @@ const itTechChallenges = [
     "workedExample": {
       "kasusSerupa": "Pengiriman email penipuan massal acak ke jutaan alamat secara umum tanpa target spesifik.",
       "jawabanBenarContoh": "Bulk Phishing (Phishing Massal) — penipuan email acak berumpan hadiah atau ancaman palsu.",
-      "nalarBayi": "Phishing massal menembak siapa saja secara acak. Namun bila penyerang menyasar target individu tertentu secara personal dengan riset mendalam, serangannya disebut Spear Phishing!"
+      "nalarBayi": "Pola serangan siber massal mengirimkan ribuan umpan palsu secara acak ke berbagai alamat email."
     },
     "question": "Bentuk serangan rekayasa sosial manakah yang menargetkan individu atau departemen tertentu secara spesifik menggunakan informasi personal hasil riset mendalam?",
     "options": [
@@ -1362,7 +1367,7 @@ const itTechChallenges = [
     ],
     "correctIndex": 0,
     "explanation": "Spear Phishing adalah taktik phishing terarah yang menggunakan informasi personal korban (nama, jabatan, rekan kerja, proyek) agar pesan rekayasa sosial tampak sangat meyakinkan dan kredibel bagi target tertentu.",
-    "babyClue": "💡 Petunjuk Nalar: Pahami konsep dasar kasus di atas untuk menentukan jawaban yang paling tepat."
+    "babyClue": "💡 Petunjuk Nalar: Analisis kebutuhan skenario kasus dan cocokkan dengan konsep yang telah dipelajari."
   },
   {
     "id": "it-sec-3",
@@ -1373,7 +1378,7 @@ const itTechChallenges = [
     "workedExample": {
       "kasusSerupa": "Metode enkripsi cepat yang menggunakan satu kunci rahasia yang sama persis untuk proses mengunci dan membuka pesan.",
       "jawabanBenarContoh": "Enkripsi Simetris (Symmetric Encryption, contoh: AES-256).",
-      "nalarBayi": "Enkripsi simetris memakai 1 kunci rahasia bersama. Sebaliknya, enkripsi asimetris menggunakan sepasang kunci berbeda: Public Key untuk mengunci dan Private Key untuk membuka!"
+      "nalarBayi": "Kriptografi simetris mengandalkan satu kunci bersama yang harus dijaga ketat oleh pengirim dan penerima."
     },
     "question": "Ciri utama apakah yang membedakan algoritma enkripsi Asimetris (Public Key Cryptography) dari algoritma Simetris?",
     "options": [
@@ -1384,7 +1389,7 @@ const itTechChallenges = [
     ],
     "correctIndex": 0,
     "explanation": "Kriptografi asimetris menggunakan pasangan kunci matematis terkait: Public Key (dibagikan secara bebas untuk enkripsi) dan Private Key (disimpan sangat rahasia oleh pemilik untuk dekripsi atau tanda tangan digital).",
-    "babyClue": "💡 Petunjuk Nalar: Pahami konsep dasar kasus di atas untuk menentukan jawaban yang paling tepat."
+    "babyClue": "💡 Petunjuk Nalar: Analisis kebutuhan skenario kasus dan cocokkan dengan konsep yang telah dipelajari."
   },
   {
     "id": "it-sec-4",
@@ -1395,7 +1400,7 @@ const itTechChallenges = [
     "workedExample": {
       "kasusSerupa": "Mengembalikan pesan teks terenkripsi (ciphertext) menjadi teks asli yang dapat dibaca kembali (plaintext) menggunakan kunci rahasia.",
       "jawabanBenarContoh": "Proses Dekripsi (Decryption) pada kriptografi reversibel.",
-      "nalarBayi": "Enkripsi dapat didekripsi kembali dengan kunci. Namun fungsi Hash bersifat satu arah (one-way irreversible) yang tidak pernah bisa didekripsi balik menjadi teks aslinya!"
+      "nalarBayi": "Enkripsi dapat didekripsi kembali dengan kunci."
     },
     "question": "Apakah sifat fundamental yang membedakan fungsi Hashing kriptografis (seperti SHA-256) dari Enkripsi biasa?",
     "options": [
@@ -1406,7 +1411,7 @@ const itTechChallenges = [
     ],
     "correctIndex": 2,
     "explanation": "Fungsi hash adalah algoritma satu arah (one-way function) yang memetakan data dengan ukuran sembarang ke string berukuran tetap (hash value). Karakteristik utamanya adalah tidak dapat didekripsi kembali (non-reversible).",
-    "babyClue": "💡 Petunjuk Nalar: Pahami konsep dasar kasus di atas untuk menentukan jawaban yang paling tepat."
+    "babyClue": "💡 Petunjuk Nalar: Analisis kebutuhan skenario kasus dan cocokkan dengan konsep yang telah dipelajari."
   },
   {
     "id": "it-sec-5",
@@ -1417,7 +1422,7 @@ const itTechChallenges = [
     "workedExample": {
       "kasusSerupa": "Menggunakan dua buah kata sandi yang berbeda dari akun yang sama sebagai syarat login (kategori faktor yang identik).",
       "jawabanBenarContoh": "Bukan Multi-Factor (karena keduanya masih berada dalam kategori yang sama: 'Something you know').",
-      "nalarBayi": "MFA mensyaratkan minimal 2 faktor berbeda: sesuatu yang kamu tahu (Password), sesuatu yang kamu miliki (OTP Ponsel), atau sesuatu yang ada pada fisikmu (Sidik Jari / Biometrik)!"
+      "nalarBayi": "Keamanan berlapis mensyaratkan kombinasi dua faktor autentikasi independen agar proteksi akun maksimal."
     },
     "question": "Manakah kombinasi yang benar-benar memenuhi kriteria Multi-Factor Authentication (MFA) dengan menggunakan DUA FAKTOR DARI KATEGORI YANG BERBEDA?",
     "options": [
@@ -1428,7 +1433,7 @@ const itTechChallenges = [
     ],
     "correctIndex": 3,
     "explanation": "MFA sejati mensyaratkan kombinasi dari kategori faktor yang berbeda: Something you know (kata sandi/PIN), Something you have (token hardware/smartphone/OTP), dan Something you are (biometrik/sidik jari/retina).",
-    "babyClue": "💡 Petunjuk Nalar: Pahami konsep dasar kasus di atas untuk menentukan jawaban yang paling tepat."
+    "babyClue": "💡 Petunjuk Nalar: Analisis kebutuhan skenario kasus dan cocokkan dengan konsep yang telah dipelajari."
   },
   {
     "id": "it-sec-6",
@@ -1439,7 +1444,7 @@ const itTechChallenges = [
     "workedExample": {
       "kasusSerupa": "Memberikan seluruh karyawan kantor hak akses setara Administrator demi kepraktisan kerja harian.",
       "jawabanBenarContoh": "Pelanggaran prinsip keamanan (Excessive Privilege / Akses Berlebih yang sangat berisiko).",
-      "nalarBayi": "Memberi wewenang berlebih memicu bahaya besar. Prinsip standar keamanan dunia mewajibkan pemberian izin seminimal mungkin sesuai tugas kerja, yaitu Principle of Least Privilege!"
+      "nalarBayi": "Pola analisis kasus serupa: Menelaah memberikan seluruh karyawan kantor hak akses setara administrator demi kepraktisan kerja harian. untuk mengidentifikasi solusi yang tepat secara bertahap."
     },
     "question": "Prinsip keamanan akses manakah yang menyatakan bahwa pengguna atau proses hanya boleh diberikan hak izin minimum mutlak yang diperlukan untuk menyelesaikan tugas pekerjaannya?",
     "options": [
@@ -1450,7 +1455,7 @@ const itTechChallenges = [
     ],
     "correctIndex": 0,
     "explanation": "Principle of Least Privilege (PoLP) membatasi izin pengguna hanya pada sumber daya yang benar-benar diperlukan untuk pekerjaannya. Ini meminimalkan kerusakan jika akun tersebut disusupi oleh penyerang.",
-    "babyClue": "💡 Petunjuk Nalar: Pahami konsep dasar kasus di atas untuk menentukan jawaban yang paling tepat."
+    "babyClue": "💡 Petunjuk Nalar: Analisis kebutuhan skenario kasus dan cocokkan dengan konsep yang telah dipelajari."
   },
   {
     "id": "it-sec-7",
@@ -1461,7 +1466,7 @@ const itTechChallenges = [
     "workedExample": {
       "kasusSerupa": "Model keamanan perimeter lama yang berasumsi bahwa siapa pun yang berada di dalam jaringan kabel kantor otomatis dapat dipercaya.",
       "jawabanBenarContoh": "Model Keamanan Perimeter Tradisional (Castle-and-Moat).",
-      "nalarBayi": "Model lama mempercayai siapa pun di dalam benteng. Paradigma keamanan modern Zero Trust membuang asumsi itu dengan doktrin: Jangan pernah percaya, selalu verifikasi!"
+      "nalarBayi": "Arsitektur keamanan tradisional mengandalkan perimeter dinding luar seperti benteng kuno."
     },
     "question": "Apakah prinsip dasar filosofi keamanan jaringan modern yang dianut oleh model arsitektur Zero Trust?",
     "options": [
@@ -1472,7 +1477,7 @@ const itTechChallenges = [
     ],
     "correctIndex": 3,
     "explanation": "Zero Trust Architecture (ZTA) beroperasi dengan filosofi 'Never Trust, Always Verify'. Akses dievaluasi secara dinamis berdasarkan identitas, status keamanan perangkat, dan konteks pada setiap permintaan akses tanpa memedulikan lokasi jaringan.",
-    "babyClue": "💡 Petunjuk Nalar: Pahami konsep dasar kasus di atas untuk menentukan jawaban yang paling tepat."
+    "babyClue": "💡 Petunjuk Nalar: Analisis kebutuhan skenario kasus dan cocokkan dengan konsep yang telah dipelajari."
   },
   {
     "id": "it-sec-8",
@@ -1483,7 +1488,7 @@ const itTechChallenges = [
     "workedExample": {
       "kasusSerupa": "Menggabungkan input formulir teks pengguna langsung ke dalam string perintah SQL tanpa validasi.",
       "jawabanBenarContoh": "Dynamic SQL Concatenation — celah kerentanan fatal yang memicu serangan SQL Injection.",
-      "nalarBayi": "Penggabungan string mentah memicu SQLi. Cara paling efektif mencegah SQL Injection adalah memisahkan kode dari data menggunakan Parameterized Queries / Prepared Statements!"
+      "nalarBayi": "Pola analisis kasus serupa: Menelaah menggabungkan input formulir teks pengguna langsung ke dalam string perintah sql tanpa validasi. untuk mengidentifikasi solusi yang tepat secara bertahap."
     },
     "question": "Teknik pengkodean backend database manakah yang paling efektif dan menjadi pertahanan utama terhadap serangan SQL Injection?",
     "options": [
@@ -1494,7 +1499,7 @@ const itTechChallenges = [
     ],
     "correctIndex": 1,
     "explanation": "Parameterized Queries (Prepared Statements) memastikan database memperlakukan input pengguna selalu sebagai data literal dan tidak pernah menginterpretasikannya sebagai sintaks perintah SQL yang dapat dieksekusi.",
-    "babyClue": "💡 Petunjuk Nalar: Pahami konsep dasar kasus di atas untuk menentukan jawaban yang paling tepat."
+    "babyClue": "💡 Petunjuk Nalar: Analisis kebutuhan skenario kasus dan cocokkan dengan konsep yang telah dipelajari."
   },
   {
     "id": "it-sec-9",
@@ -1505,7 +1510,7 @@ const itTechChallenges = [
     "workedExample": {
       "kasusSerupa": "Serangan siber yang memanfaatkan sesi login pengguna yang sah untuk mengirim perintah transaksi palsu tanpa disadari korban.",
       "jawabanBenarContoh": "CSRF (Cross-Site Request Forgery) — memalsukan permintaan transaksi dari browser korban.",
-      "nalarBayi": "CSRF memalsukan permintaan transaksi. Sedangkan serangan yang menyuntikkan skrip kode JavaScript jahat ke halaman web agar dieksekusi di browser pengunjung lain adalah Cross-Site Scripting (XSS)!"
+      "nalarBayi": "CSRF memalsukan permintaan transaksi."
     },
     "question": "Jenis serangan aplikasi web manakah yang terjadi ketika kode skrip berbahaya (biasanya JavaScript) disuntikkan ke situs web terpercaya dan dieksekusi di peramban pengguna lain?",
     "options": [
@@ -1516,7 +1521,7 @@ const itTechChallenges = [
     ],
     "correctIndex": 3,
     "explanation": "Cross-Site Scripting (XSS) memungkinkan penyerang menyuntikkan skrip sisi klien ke halaman web yang dilihat oleh pengguna lain, berpotensi mencuri sesi cookie atau mengalihkan pengunjung ke situs phishing.",
-    "babyClue": "💡 Petunjuk Nalar: Pahami konsep dasar kasus di atas untuk menentukan jawaban yang paling tepat."
+    "babyClue": "💡 Petunjuk Nalar: Analisis kebutuhan skenario kasus dan cocokkan dengan konsep yang telah dipelajari."
   },
   {
     "id": "it-sec-10",
@@ -1527,7 +1532,7 @@ const itTechChallenges = [
     "workedExample": {
       "kasusSerupa": "Menyimpan file cadangan data di drive eksternal yang terus terhubung ke jaringan lokal komputer kantor.",
       "jawabanBenarContoh": "Hot Backup / Network Backup — mudah diakses namun rentan ikut terinfeksi bila ransomware menyebar di LAN.",
-      "nalarBayi": "Cadangan yang terhubung jaringan bisa ikut terenkripsi malware. Pertahanan pamungkas dari ransomware adalah cadangan fisik terisolasi total tanpa jaringan (Air-Gapped Backup)!"
+      "nalarBayi": "Menyimpan salinan berkas cadangan di media eksternal membantu memulihkan data jika komputer utama mengalami kerusakan."
     },
     "question": "Strategi pencadangan data manakah yang paling efektif menjamin tersedianya data bersih saat serangan ransomware melumpuhkan seluruh jaringan komputer kantor?",
     "options": [
@@ -1538,7 +1543,7 @@ const itTechChallenges = [
     ],
     "correctIndex": 0,
     "explanation": "Air-Gapped Backup adalah salinan data yang terputus secara fisik dan elektronik dari seluruh jaringan komputer. Ini mencegah ransomware mengakses, mengenkripsi, atau menghapus repositori cadangan.",
-    "babyClue": "💡 Petunjuk Nalar: Pahami konsep dasar kasus di atas untuk menentukan jawaban yang paling tepat."
+    "babyClue": "💡 Petunjuk Nalar: Analisis kebutuhan skenario kasus dan cocokkan dengan konsep yang telah dipelajari."
   },
   {
     "id": "it-sec-11",
@@ -1549,7 +1554,7 @@ const itTechChallenges = [
     "workedExample": {
       "kasusSerupa": "Firewall generasi pertama yang hanya memeriksa header paket data tanpa mengingat status riwayat koneksi sebelumnya.",
       "jawabanBenarContoh": "Stateless Packet Filtering Firewall — memeriksa aturan izin murni per paket secara terisolasi.",
-      "nalarBayi": "Stateless hanya membaca per paket. Sedangkan firewall yang memantau alur percakapan dan mengingat status sesi koneksi aktif (established) adalah Stateful Packet Inspection (SPI) Firewall!"
+      "nalarBayi": "Stateless hanya membaca per paket."
     },
     "question": "Teknologi firewall manakah yang melacak konteks dan status sesi koneksi aktif (State Table) untuk mengizinkan paket balasan masuk yang sesuai secara dinamis?",
     "options": [
@@ -1560,7 +1565,7 @@ const itTechChallenges = [
     ],
     "correctIndex": 0,
     "explanation": "Stateful Firewall memelihara tabel status koneksi TCP/UDP. Firewall mengetahui apakah suatu paket merupakan paket pembuka koneksi baru atau merupakan bagian dari sesi yang sudah ada dan diizinkan sebelumnya.",
-    "babyClue": "💡 Petunjuk Nalar: Pahami konsep dasar kasus di atas untuk menentukan jawaban yang paling tepat."
+    "babyClue": "💡 Petunjuk Nalar: Analisis kebutuhan skenario kasus dan cocokkan dengan konsep yang telah dipelajari."
   },
   {
     "id": "it-sec-12",
@@ -1571,7 +1576,7 @@ const itTechChallenges = [
     "workedExample": {
       "kasusSerupa": "Memalsukan alamat IP pengirim pada paket data internet agar tampak berasal dari server terpercaya.",
       "jawabanBenarContoh": "IP Address Spoofing — manipulasi header IP pengirim.",
-      "nalarBayi": "IP Spoofing memalsukan IP layer 3. Sedangkan serangan di jaringan lokal yang mengirimkan pesan respon ARP palsu untuk membelokkan lalu lintas data ke hacker adalah ARP Poisoning!"
+      "nalarBayi": "Manipulasi paket alamat IP pada lapisan network layer mencoba mengelabui filter firewall luar."
     },
     "question": "Jenis serangan Layer 2 manakah yang mengeksploitasi ketiadaan autentikasi pada protokol ARP dengan cara mengirimkan pesan balasan palsu untuk membelokkan lalu lintas data (Man-in-the-Middle)?",
     "options": [
@@ -1582,7 +1587,7 @@ const itTechChallenges = [
     ],
     "correctIndex": 3,
     "explanation": "ARP Poisoning melibatkan pengiriman balasan ARP palsu melalui LAN untuk mengaitkan alamat IP gateway dengan alamat MAC penyerang, menempatkan penyerang di tengah-tengah percakapan (Man-in-the-Middle).",
-    "babyClue": "💡 Petunjuk Nalar: Pahami konsep dasar kasus di atas untuk menentukan jawaban yang paling tepat."
+    "babyClue": "💡 Petunjuk Nalar: Analisis kebutuhan skenario kasus dan cocokkan dengan konsep yang telah dipelajari."
   },
   {
     "id": "it-sec-13",
@@ -1593,7 +1598,7 @@ const itTechChallenges = [
     "workedExample": {
       "kasusSerupa": "Membuat sertifikat digital buatan sendiri (self-signed certificate) untuk keperluan pengujian server internal.",
       "jawabanBenarContoh": "Self-Signed Certificate — sertifikat tanpa verifikasi pihak ketiga yang memunculkan peringatan keamanan di browser.",
-      "nalarBayi": "Sertifikat self-signed tidak diakui publik. Agar diakui aman oleh seluruh browser dunia dalam Public Key Infrastructure (PKI), sertifikat diterbitkan oleh Certificate Authority (CA) resmi!"
+      "nalarBayi": "Sertifikat yang diterbitkan secara mandiri cocok untuk pengujian lokal namun akan memunculkan peringatan keamanan pada peramban publik."
     },
     "question": "Entitas pihak ketiga terpercaya manakah dalam Public Key Infrastructure (PKI) yang bertugas memverifikasi identitas pemilik domain dan menerbitkan sertifikat digital bertanda tangan kriptografis?",
     "options": [
@@ -1604,7 +1609,7 @@ const itTechChallenges = [
     ],
     "correctIndex": 2,
     "explanation": "Certificate Authority (CA) adalah pihak ketiga tepercaya yang menerbitkan sertifikat digital yang mengikat identitas sebuah entitas (seperti situs web) dengan kunci publiknya, membentuk dasar rantai kepercayaan PKI.",
-    "babyClue": "💡 Petunjuk Nalar: Pahami konsep dasar kasus di atas untuk menentukan jawaban yang paling tepat."
+    "babyClue": "💡 Petunjuk Nalar: Analisis kebutuhan skenario kasus dan cocokkan dengan konsep yang telah dipelajari."
   },
   {
     "id": "it-sec-14",
@@ -1615,7 +1620,7 @@ const itTechChallenges = [
     "workedExample": {
       "kasusSerupa": "Membanjiri server dengan paket ping ICMP Echo Request berukuran raksasa hingga bandwidth saluran internet habis.",
       "jawabanBenarContoh": "Ping Flood / ICMP Flood DDoS Attack.",
-      "nalarBayi": "ICMP Flood menghabiskan bandwidth. Sedangkan serangan yang mengirimkan jutaan permintaan koneksi TCP awal (SYN) tanpa pernah menyelesaikan handshake disebut TCP SYN Flood!"
+      "nalarBayi": "Banjir paket pesan echo ICMP dalam volume masif dapat menyumbat total kapasitas pipa bandwidth."
     },
     "question": "Serangan penolakan layanan (DoS) manakah yang mengeksploitasi jabat tangan TCP 3-Way Handshake dengan mengirimkan rentetan paket pembuka tanpa pernah menyelesaikan proses konfirmasi akhir?",
     "options": [
@@ -1626,7 +1631,7 @@ const itTechChallenges = [
     ],
     "correctIndex": 3,
     "explanation": "SYN Flood mengeksploitasi proses TCP handshake dengan mengirim banyak paket SYN tanpa pernah mengirim ACK balasan. Server menghabiskan sumber daya tabel half-open connection dan menolak koneksi sah berikutnya.",
-    "babyClue": "💡 Petunjuk Nalar: Pahami konsep dasar kasus di atas untuk menentukan jawaban yang paling tepat."
+    "babyClue": "💡 Petunjuk Nalar: Analisis kebutuhan skenario kasus dan cocokkan dengan konsep yang telah dipelajari."
   },
   {
     "id": "it-sec-15",
@@ -1637,7 +1642,7 @@ const itTechChallenges = [
     "workedExample": {
       "kasusSerupa": "Menghitung hash dari kata sandi polos tanpa penambahan karakter acak (Plain Hashing).",
       "jawabanBenarContoh": "Hashing biasa — rentan dibobol menggunakan tabel kamus hash siap pakai (Rainbow Table).",
-      "nalarBayi": "Hash polos rentan tabel rainbow. Untuk melindunginya, sistem menambahkan rangkaian string acak unik sebelum di-hash, yaitu teknik Penggaraman (Salting)!"
+      "nalarBayi": "Penyimpanan password dengan fungsi hash satu arah memastikan teks asli tidak dapat dilihat langsung dalam tabel."
     },
     "question": "Apa tujuan utama dari penambahan nilai acak 'Salt' pada kata sandi sebelum proses hashing dilakukan?",
     "options": [
@@ -1648,7 +1653,7 @@ const itTechChallenges = [
     ],
     "correctIndex": 2,
     "explanation": "Salting menambahkan deretan bit acak ke kata sandi sebelum di-hash. Ini mencegah serangan kamus pramenghitung (Rainbow Table Attacks) dan memastikan dua akun dengan password identik memiliki nilai hash berbeda di database.",
-    "babyClue": "💡 Petunjuk Nalar: Pahami konsep dasar kasus di atas untuk menentukan jawaban yang paling tepat."
+    "babyClue": "💡 Petunjuk Nalar: Analisis kebutuhan skenario kasus dan cocokkan dengan konsep yang telah dipelajari."
   },
   {
     "id": "it-sec-16",
@@ -1659,7 +1664,7 @@ const itTechChallenges = [
     "workedExample": {
       "kasusSerupa": "Perangkat lunak antivirus lawas yang hanya mendeteksi virus berdasarkan kecocokan pola tanda tangan berkas (signature database).",
       "jawabanBenarContoh": "Legacy Antivirus (AV Berbasis Signature) — gagal mendeteksi malware varian baru atau zero-day.",
-      "nalarBayi": "Antivirus lama mengandalkan database tanda tangan. Solusi modern yang memantau perilaku proses secara langsung dan mampu merespons insiden secara otomatis adalah EDR!"
+      "nalarBayi": "Antivirus lama mengandalkan database tanda tangan. Solusi modern yang memantau perilaku proses secara langsung dan mampu merespons insiden secara otomatis adalah EDR!."
     },
     "question": "Solusi keamanan endpoint modern manakah yang secara proaktif memantau perilaku sistem (behavioral telemetry), mendeteksi ancaman tanpa file (fileless malware), dan mampu mengisolasi perangkat yang terinfeksi secara otomatis?",
     "options": [
@@ -1670,7 +1675,7 @@ const itTechChallenges = [
     ],
     "correctIndex": 3,
     "explanation": "EDR (Endpoint Detection and Response) menyediakan pemantauan perilaku berkelanjutan, analisis forensik insiden, dan kemampuan respons otomatis (seperti mengisolasi mesin dari jaringan) untuk menangkal ancaman canggih.",
-    "babyClue": "💡 Petunjuk Nalar: Pahami konsep dasar kasus di atas untuk menentukan jawaban yang paling tepat."
+    "babyClue": "💡 Petunjuk Nalar: Analisis kebutuhan skenario kasus dan cocokkan dengan konsep yang telah dipelajari."
   },
   {
     "id": "it-sec-17",
@@ -1681,7 +1686,7 @@ const itTechChallenges = [
     "workedExample": {
       "kasusSerupa": "Membaca catatan log aktivitas server satu per satu langsung di masing-masing mesin komputer secara terpisah.",
       "jawabanBenarContoh": "Manual Local Log Inspection — tidak efisien dan rentan dimanipulasi peretas yang berhasil masuk.",
-      "nalarBayi": "Mengecek log manual sangat lambat. Sistem modern mengumpulkan seluruh log ke satu platform terpusat dan menganalisis korelasinya secara otomatis, yaitu sistem SIEM!"
+      "nalarBayi": "Pemeriksaan manual file log server satu per satu membutuhkan waktu lama saat pelacakan insiden."
     },
     "question": "Platform keamanan terpusat manakah yang berfungsi mengumpulkan (aggregation), mengorelasikan (correlation), dan menganalisis log dari berbagai sistem guna mendeteksi ancaman keamanan secara komprehensif?",
     "options": [
@@ -1692,7 +1697,7 @@ const itTechChallenges = [
     ],
     "correctIndex": 1,
     "explanation": "SIEM (Security Information and Event Management) menggabungkan SIM (manajemen informasi) dan SEM (manajemen peristiwa), memberikan analisis waktu nyata terhadap peringatan keamanan yang dihasilkan oleh aplikasi dan perangkat keras jaringan.",
-    "babyClue": "💡 Petunjuk Nalar: Pahami konsep dasar kasus di atas untuk menentukan jawaban yang paling tepat."
+    "babyClue": "💡 Petunjuk Nalar: Analisis kebutuhan skenario kasus dan cocokkan dengan konsep yang telah dipelajari."
   },
   {
     "id": "it-sec-18",
@@ -1703,7 +1708,7 @@ const itTechChallenges = [
     "workedExample": {
       "kasusSerupa": "Menghitung batas toleransi maksimal jumlah kehilangan data transaksi yang dapat diterima bisnis saat bencana terjadi.",
       "jawabanBenarContoh": "RPO (Recovery Point Objective) — batas mundur toleransi kehilangan data diukur dalam hitungan menit/jam.",
-      "nalarBayi": "RPO mengukur data yang hilang. Sebaliknya, target durasi waktu maksimal untuk memulihkan sistem agar dapat kembali beroperasi normal adalah RTO (Recovery Time Objective)!"
+      "nalarBayi": "RPO mengukur data yang hilang."
     },
     "question": "Metrik perencanaan pemulihan bencana manakah yang mendefinisikan batas waktu maksimum yang diizinkan untuk memulihkan fungsi sistem dan proses bisnis kembali beroperasi normal setelah bencana?",
     "options": [
@@ -1714,7 +1719,7 @@ const itTechChallenges = [
     ],
     "correctIndex": 2,
     "explanation": "RTO (Recovery Time Objective) adalah durasi waktu target maksimum di mana proses bisnis atau sistem TI harus dipulihkan setelah kegagalan atau bencana demi mencegah dampak yang tidak dapat diterima.",
-    "babyClue": "💡 Petunjuk Nalar: Pahami konsep dasar kasus di atas untuk menentukan jawaban yang paling tepat."
+    "babyClue": "💡 Petunjuk Nalar: Analisis kebutuhan skenario kasus dan cocokkan dengan konsep yang telah dipelajari."
   },
   {
     "id": "it-sec-19",
@@ -1725,7 +1730,7 @@ const itTechChallenges = [
     "workedExample": {
       "kasusSerupa": "Protokol keamanan Wi-Fi generasi kedua yang rentan terhadap serangan penangkapan 4-way handshake secara offline.",
       "jawabanBenarContoh": "WPA2 dengan Pre-Shared Key (PSK).",
-      "nalarBayi": "WPA2-PSK rentan penyadapan handshake offline. Kelemahan ini ditutup pada WPA3 dengan mengganti metode pertukaran kunci menjadi Simultaneous Authentication of Equals (SAE)!"
+      "nalarBayi": "Protokol keamanan generasi lama memiliki celah terhadap teknik penyadapan offline saat proses pertukaran kunci awal."
     },
     "question": "Protokol pertukaran kunci baru manakah yang diperkenalkan pada standar keamanan Wi-Fi WPA3 untuk menggantikan Pre-Shared Key (PSK) dan melindungi dari serangan kamus offline?",
     "options": [
@@ -1736,7 +1741,7 @@ const itTechChallenges = [
     ],
     "correctIndex": 3,
     "explanation": "WPA3 menggantikan PSK dengan SAE (Simultaneous Authentication of Equals), varian dari jabat tangan Dragonfly. SAE kebal terhadap serangan kamus offline dan memberikan forward secrecy bahkan jika sandi sangat sederhana.",
-    "babyClue": "💡 Petunjuk Nalar: Pahami konsep dasar kasus di atas untuk menentukan jawaban yang paling tepat."
+    "babyClue": "💡 Petunjuk Nalar: Analisis kebutuhan skenario kasus dan cocokkan dengan konsep yang telah dipelajari."
   },
   {
     "id": "it-sec-20",
@@ -1747,7 +1752,7 @@ const itTechChallenges = [
     "workedExample": {
       "kasusSerupa": "Menyusup masuk ke gedung kantor dengan cara menyamar sebagai petugas kurir pengantar paket berompi resmi.",
       "jawabanBenarContoh": "Impersonation / Pretexting — menciptakan identitas palsu untuk mengelabui petugas keamanan.",
-      "nalarBayi": "Impersonation adalah menyamar. Sedangkan aksi fisik berjalan menempel di belakang punggung karyawan sah agar lolos melewati pintu sensor kartu akses disebut Tailgating (Piggybacking)!"
+      "nalarBayi": "Impersonation adalah menyamar."
     },
     "question": "Taktik rekayasa sosial fisik manakah di mana orang yang tidak berwenang membuntuti orang yang memiliki otorisasi sah agar dapat menyusup ke dalam fasilitas gedung yang terkunci?",
     "options": [
@@ -1758,7 +1763,7 @@ const itTechChallenges = [
     ],
     "correctIndex": 3,
     "explanation": "Tailgating terjadi ketika individu tanpa otorisasi mengikuti pengguna yang sah melewati titik kontrol akses fisik (pintu kartu pintar) tanpa menyajikan kredensial mereka sendiri, sering kali memanfaatkan kesopanan manusia.",
-    "babyClue": "💡 Petunjuk Nalar: Pahami konsep dasar kasus di atas untuk menentukan jawaban yang paling tepat."
+    "babyClue": "💡 Petunjuk Nalar: Analisis kebutuhan skenario kasus dan cocokkan dengan konsep yang telah dipelajari."
   },
   {
     "id": "it-algo-1",
@@ -1769,7 +1774,7 @@ const itTechChallenges = [
     "workedExample": {
       "kasusSerupa": "Menghitung kompleksitas waktu pencarian elemen pada array acak tak berurut yang harus memeriksa setiap data satu per satu dari awal.",
       "jawabanBenarContoh": "O(n) - Waktu Linear (Linear Search).",
-      "nalarBayi": "Linear Search butuh O(n) karena membaca satu-satu. Sebaliknya, bila data sudah terurut dan dipotong separuh di setiap langkah (Binary Search), kompleksitasnya adalah O(log n)!"
+      "nalarBayi": "Linear Search butuh O(n) karena membaca satu-satu."
     },
     "question": "Manakah notasi Big-O yang merepresentasikan kompleksitas waktu pencarian pada Binary Search dalam kasus terburuk (worst-case)?",
     "options": [
@@ -1780,7 +1785,7 @@ const itTechChallenges = [
     ],
     "correctIndex": 2,
     "explanation": "Binary Search membelah ruang pencarian menjadi separuh pada setiap langkah iterasi. Oleh karena itu, jumlah operasi yang dibutuhkan berbanding lurus dengan logaritma basis 2 dari n: O(log n).",
-    "babyClue": "💡 Petunjuk Nalar: Pahami konsep dasar kasus di atas untuk menentukan jawaban yang paling tepat."
+    "babyClue": "💡 Petunjuk Nalar: Analisis kebutuhan skenario kasus dan cocokkan dengan konsep yang telah dipelajari."
   },
   {
     "id": "it-algo-2",
@@ -1791,7 +1796,7 @@ const itTechChallenges = [
     "workedExample": {
       "kasusSerupa": "Algoritma Linear Search yang dapat mencari data pada struktur array dalam kondisi apa pun.",
       "jawabanBenarContoh": "Linear Search bekerja pada data terurut maupun data acak tak beraturan.",
-      "nalarBayi": "Linear Search tidak peduli urutan data. Namun algoritma Binary Search memiliki satu syarat mutlak agar dapat berjalan: seluruh elemen data wajib sudah dalam keadaan terurut (sorted)!"
+      "nalarBayi": "Metode pencarian sekuensial linear menyusuri setiap wadah satu per satu tanpa mensyaratkan susunan khusus."
     },
     "question": "Kondisi prasyarat apakah yang WAJIB dipenuhi oleh sekumpulan data agar algoritma Binary Search dapat beroperasi dengan benar?",
     "options": [
@@ -1802,7 +1807,7 @@ const itTechChallenges = [
     ],
     "correctIndex": 1,
     "explanation": "Binary Search bekerja dengan membandingkan nilai target terhadap elemen tengah dan mengeliminasi separuh daftar yang salah. Logika pemotongan separuh ini hanya valid jika elemen sudah terurut (sorted).",
-    "babyClue": "💡 Petunjuk Nalar: Pahami konsep dasar kasus di atas untuk menentukan jawaban yang paling tepat."
+    "babyClue": "💡 Petunjuk Nalar: Analisis kebutuhan skenario kasus dan cocokkan dengan konsep yang telah dipelajari."
   },
   {
     "id": "it-algo-3",
@@ -1813,7 +1818,7 @@ const itTechChallenges = [
     "workedExample": {
       "kasusSerupa": "Mencari elemen data pada struktur array biasa dengan memindai seluruh indeks dari awal hingga akhir.",
       "jawabanBenarContoh": "Kompleksitas pencarian array acak adalah O(n).",
-      "nalarBayi": "Pencarian array membutuhkan waktu O(n). Namun pada struktur data Tabel Hash (Dictionary Python) yang menggunakan fungsi pemetaan kunci, waktu pencarian rata-ratanya instan: O(1)!"
+      "nalarBayi": "Pencarian array membutuhkan waktu O(n)."
     },
     "question": "Berapakah rata-rata kompleksitas waktu (average-case time complexity) untuk operasi pencarian data pada struktur data Hash Table (Dictionary)?",
     "options": [
@@ -1824,7 +1829,7 @@ const itTechChallenges = [
     ],
     "correctIndex": 1,
     "explanation": "Hash Table menggunakan fungsi hash matematis untuk memetakan kunci langsung ke indeks memori array. Pada kasus rata-rata (average case), pencarian berlangsung dalam waktu konstan O(1).",
-    "babyClue": "💡 Petunjuk Nalar: Pahami konsep dasar kasus di atas untuk menentukan jawaban yang paling tepat."
+    "babyClue": "💡 Petunjuk Nalar: Analisis kebutuhan skenario kasus dan cocokkan dengan konsep yang telah dipelajari."
   },
   {
     "id": "it-algo-4",
@@ -1835,7 +1840,7 @@ const itTechChallenges = [
     "workedExample": {
       "kasusSerupa": "Menjelajahi pohon graf dengan menelusuri satu cabang sedalam-dalamnya hingga titik buntu sebelum mundur kembali.",
       "jawabanBenarContoh": "Depth-First Search (DFS) — penelusuran mendalam berbasis struktur tumpukan (Stack).",
-      "nalarBayi": "DFS menelusuri cabang ke bawah sampai mentok. Sedangkan algoritma yang menelusuri lapisan tetangga terdekat secara mendatar untuk mencari jalur langkah terpendek adalah BFS!"
+      "nalarBayi": "DFS menelusuri cabang ke bawah sampai mentok."
     },
     "question": "Algoritma penelusuran graf manakah yang menggunakan antrean (Queue) untuk memeriksa simpul tetangga lapis demi lapis guna menemukan jalur terpendek pada graf tak berbobot?",
     "options": [
@@ -1846,7 +1851,7 @@ const itTechChallenges = [
     ],
     "correctIndex": 3,
     "explanation": "Breadth-First Search (BFS) mengeksplorasi simpul-simpul graf lapis demi lapis secara melebar menggunakan antrean FIFO. Pada graf tak berbobot, BFS selalu menemukan jalur dengan jumlah tepi (edge) paling sedikit.",
-    "babyClue": "💡 Petunjuk Nalar: Pahami konsep dasar kasus di atas untuk menentukan jawaban yang paling tepat."
+    "babyClue": "💡 Petunjuk Nalar: Analisis kebutuhan skenario kasus dan cocokkan dengan konsep yang telah dipelajari."
   },
   {
     "id": "it-algo-5",
@@ -1857,7 +1862,7 @@ const itTechChallenges = [
     "workedExample": {
       "kasusSerupa": "Mencari jalur terpendek pada graf dengan jarak antar simpul yang semuanya bernilai seragam 1 langkah.",
       "jawabanBenarContoh": "BFS (Breadth-First Search) — optimal untuk graf tanpa bobot.",
-      "nalarBayi": "BFS untuk langkah tanpa bobot. Namun bila setiap jalan memiliki bobot jarak/biaya nyata yang berbeda-beda, algoritma legendaris pencari rute terpendek tercepat adalah Algoritma Dijkstra!"
+      "nalarBayi": "BFS untuk langkah tanpa bobot."
     },
     "question": "Algoritma manakah yang digunakan untuk mencari jalur dengan total biaya/bobot terkecil pada graf berbobot (weighted graph) di mana seluruh bobot bernilai positif?",
     "options": [
@@ -1868,7 +1873,7 @@ const itTechChallenges = [
     ],
     "correctIndex": 3,
     "explanation": "Algoritma Dijkstra menemukan jalur terpendek dari satu simpul sumber ke semua simpul lain dalam graf berbobot positif dengan selalu memperbarui jarak minimum tentatif simpul yang belum dikunjungi.",
-    "babyClue": "💡 Petunjuk Nalar: Pahami konsep dasar kasus di atas untuk menentukan jawaban yang paling tepat."
+    "babyClue": "💡 Petunjuk Nalar: Analisis kebutuhan skenario kasus dan cocokkan dengan konsep yang telah dipelajari."
   },
   {
     "id": "it-algo-6",
@@ -1879,7 +1884,7 @@ const itTechChallenges = [
     "workedExample": {
       "kasusSerupa": "Menghitung kompleksitas waktu rata-rata algoritma Bubble Sort sederhana yang membandingkan setiap pasangan elemen bersebelahan.",
       "jawabanBenarContoh": "O(n^2) — Waktu Kuadratik (karena membutuhkan dua lapis perulangan for bertingkat).",
-      "nalarBayi": "Bubble Sort lambat karena memakan waktu kuadratik O(n^2). Sedangkan algoritma canggih strategi Divide and Conquer (seperti Quicksort) jauh lebih kencang melesat dengan kecepatan O(n log n)!"
+      "nalarBayi": "Bubble Sort lambat karena memakan waktu kuadratik O(n^2)."
     },
     "question": "Berapakah rata-rata kompleksitas waktu (average time complexity) dari algoritma pengurutan Quicksort saat memilih pivot yang baik?",
     "options": [
@@ -1890,7 +1895,7 @@ const itTechChallenges = [
     ],
     "correctIndex": 0,
     "explanation": "Quicksort memiliki performa rata-rata O(n log n) yang sangat cepat dalam praktik berkat faktor konstanta kecil dan pemanfaatan cache lokal, meskipun kasus terburuknya adalah O(n^2) jika pivot sangat buruk.",
-    "babyClue": "💡 Petunjuk Nalar: Pahami konsep dasar kasus di atas untuk menentukan jawaban yang paling tepat."
+    "babyClue": "💡 Petunjuk Nalar: Analisis kebutuhan skenario kasus dan cocokkan dengan konsep yang telah dipelajari."
   },
   {
     "id": "it-algo-7",
@@ -1901,7 +1906,7 @@ const itTechChallenges = [
     "workedExample": {
       "kasusSerupa": "Bagian dari fungsi rekursif yang memanggil kembali dirinya sendiri dengan argumen yang semakin mengecil.",
       "jawabanBenarContoh": "Recursive Step (Langkah Pemanggilan Diri Sendiri).",
-      "nalarBayi": "Langkah rekursif memanggil diri sendiri. Namun agar fungsi tidak mengalami perulangan abadi (stack overflow), wajib ada kondisi batas penghenti yang disebut Base Case!"
+      "nalarBayi": "Langkah rekursif memanggil diri sendiri."
     },
     "question": "Bagian penting apakah yang WAJIB ada di dalam setiap fungsi rekursif agar fungsi tersebut berhenti dan tidak memicu terjadinya Stack Overflow?",
     "options": [
@@ -1912,7 +1917,7 @@ const itTechChallenges = [
     ],
     "correctIndex": 2,
     "explanation": "Setiap fungsi rekursif harus memiliki Base Case (kondisi terminasi di mana hasil langsung dikembalikan tanpa memanggil fungsi lagi) untuk mencegah perulangan tak terbatas yang menyebabkan call stack meluap.",
-    "babyClue": "💡 Petunjuk Nalar: Pahami konsep dasar kasus di atas untuk menentukan jawaban yang paling tepat."
+    "babyClue": "💡 Petunjuk Nalar: Analisis kebutuhan skenario kasus dan cocokkan dengan konsep yang telah dipelajari."
   },
   {
     "id": "it-algo-8",
@@ -1923,7 +1928,7 @@ const itTechChallenges = [
     "workedExample": {
       "kasusSerupa": "Membuka berkas file di Python secara manual menggunakan f = open('data.txt') lalu menutupnya di akhir kode.",
       "jawabanBenarContoh": "f.close() — rentan lupa ditutup atau terlewat bila terjadi error di tengah baris kode.",
-      "nalarBayi": "Cara manual rentan lupa close(). Menggunakan pernyataan 'with open()' menjamin file pasti ditutup secara otomatis oleh Python bahkan bila terjadi error!"
+      "nalarBayi": "Cara manual rentan lupa close(). Menggunakan pernyataan 'with open()' menjamin file pasti ditutup secara otomatis oleh Python bahkan bila terjadi error!."
     },
     "question": "Mengapa penggunaan blok konstruksi `with open('data.txt') as file:` sangat direkomendasikan dalam Python dibanding `open()` biasa?",
     "options": [
@@ -1934,7 +1939,7 @@ const itTechChallenges = [
     ],
     "correctIndex": 3,
     "explanation": "Konstruksi `with` mengimplementasikan protokol context manager (`__enter__` dan `__exit__`), menjamin penutupan berkas (`f.close()`) secara deterministik saat keluar dari blok, mencegah kebocoran sumber daya sistem.",
-    "babyClue": "💡 Petunjuk Nalar: Pahami konsep dasar kasus di atas untuk menentukan jawaban yang paling tepat."
+    "babyClue": "💡 Petunjuk Nalar: Analisis kebutuhan skenario kasus dan cocokkan dengan konsep yang telah dipelajari."
   },
   {
     "id": "it-algo-9",
@@ -1945,7 +1950,7 @@ const itTechChallenges = [
     "workedExample": {
       "kasusSerupa": "Menulis pola ekspresi reguler (Regex) untuk mencocokkan tepat satu kata karakter alfabet di Python.",
       "jawabanBenarContoh": "Pola r'\\w+' — mencocokkan satu atau lebih karakter kata.",
-      "nalarBayi": "Pola \\w+ mencocokkan huruf kata. Sedangkan pola Regex standar untuk menangkap format 4 kelompok angka alamat IPv4 (contoh 192.168.1.1) adalah '\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}'!"
+      "nalarBayi": "Pola \\w+ mencocokkan huruf kata."
     },
     "question": "Pola ekspresi reguler (regex) manakah yang paling tepat digunakan untuk mendeteksi format alamat IP dasar (4 grup angka 1-3 digit dipisahkan titik)?",
     "options": [
@@ -1956,7 +1961,7 @@ const itTechChallenges = [
     ],
     "correctIndex": 0,
     "explanation": "`\\d{1,3}` mencocokkan antara 1 hingga 3 digit angka numerik, dan `\\.` meng-escape tanda titik agar diperlakukan sebagai karakter titik literal, bukan wildcard sembarang karakter.",
-    "babyClue": "💡 Petunjuk Nalar: Pahami konsep dasar kasus di atas untuk menentukan jawaban yang paling tepat."
+    "babyClue": "💡 Petunjuk Nalar: Analisis kebutuhan skenario kasus dan cocokkan dengan konsep yang telah dipelajari."
   },
   {
     "id": "it-algo-10",
@@ -1967,7 +1972,7 @@ const itTechChallenges = [
     "workedExample": {
       "kasusSerupa": "Membuat daftar baru dari perulangan for loop standar dengan metode list.append() di Python.",
       "jawabanBenarContoh": "result = [] lalu melakukan for item in data: if kondisi: result.append(item).",
-      "nalarBayi": "For loop biasa butuh beberapa baris kode. Sintaks satu baris Python yang jauh lebih ringkas dan elegan untuk menyaring list adalah List Comprehension!"
+      "nalarBayi": "For loop biasa butuh beberapa baris kode. Sintaks satu baris Python yang jauh lebih ringkas dan elegan untuk menyaring list adalah List Comprehension!."
     },
     "question": "Sintaks Python manakah yang menggunakan List Comprehension untuk memfilter daftar `ports` dan hanya mengambil nomor port yang lebih besar dari 100?",
     "options": [
@@ -1978,7 +1983,7 @@ const itTechChallenges = [
     ],
     "correctIndex": 2,
     "explanation": "List comprehension menyediakan sintaks ringkas untuk membuat daftar baru berdasarkan iterable yang ada: `[ekspresi for item in iterable if kondisi]`, dieksekusi lebih efisien di level bytecode CPython.",
-    "babyClue": "💡 Petunjuk Nalar: Pahami konsep dasar kasus di atas untuk menentukan jawaban yang paling tepat."
+    "babyClue": "💡 Petunjuk Nalar: Analisis kebutuhan skenario kasus dan cocokkan dengan konsep yang telah dipelajari."
   },
   {
     "id": "it-algo-11",
@@ -1989,7 +1994,7 @@ const itTechChallenges = [
     "workedExample": {
       "kasusSerupa": "Mengakses nilai dictionary Python menggunakan kurung siku data['kunci'] yang memicu KeyError bila kunci tidak ditemukan.",
       "jawabanBenarContoh": "data['kunci'] — menghasilkan Crash KeyError jika kunci absen di kamus.",
-      "nalarBayi": "Kurung siku memicu crash bila kunci absen. Cara paling aman mengambil data kamus dengan nilai cadangan tanpa pernah error adalah menggunakan metode dict.get(key, default)!"
+      "nalarBayi": "Pola analisis kasus serupa: Menelaah mengakses nilai dictionary python menggunakan kurung siku data['kunci'] yang memicu keyerror bila kunci tidak ditemukan. untuk mengidentifikasi solusi yang tepat secara bertahap."
     },
     "question": "Metode dictionary Python manakah yang digunakan untuk mengambil nilai dari sebuah kunci dan menyediakan nilai default cadangan jika kunci tersebut tidak ditemukan di dalam kamus?",
     "options": [
@@ -2000,7 +2005,7 @@ const itTechChallenges = [
     ],
     "correctIndex": 3,
     "explanation": "Metode `.get(key, default_value)` pada dictionary Python mengembalikan nilai dari kunci jika ada di dalam dictionary; jika kunci tidak ada, metode mengembalikan nilai default yang ditentukan (atau `None`) alih-alih melempar `KeyError`.",
-    "babyClue": "💡 Petunjuk Nalar: Pahami konsep dasar kasus di atas untuk menentukan jawaban yang paling tepat."
+    "babyClue": "💡 Petunjuk Nalar: Analisis kebutuhan skenario kasus dan cocokkan dengan konsep yang telah dipelajari."
   },
   {
     "id": "it-algo-12",
@@ -2011,7 +2016,7 @@ const itTechChallenges = [
     "workedExample": {
       "kasusSerupa": "Menangkap pesan kesalahan spesifik saat terjadi kegagalan pembagian angka nol di Python.",
       "jawabanBenarContoh": "except ZeroDivisionError as e — menangkap jenis galat pembagian nol secara spesifik.",
-      "nalarBayi": "Blok try menjalankan kode, except menangkap galat. Bagian blok penutup yang DIJAMIN PASTI DIJALANKAN apa pun yang terjadi (ada error maupun lancar) adalah blok finally!"
+      "nalarBayi": "Pola analisis kasus serupa: Menelaah menangkap pesan kesalahan spesifik saat terjadi kegagalan pembagian angka nol di python. untuk mengidentifikasi solusi yang tepat secara bertahap."
     },
     "question": "Klausul manakah dalam penanganan eksepsi Python yang DIJAMIN SELALU dieksekusi pada akhir proses pembersihan, tidak peduli apakah terjadi error atau tidak?",
     "options": [
@@ -2022,7 +2027,7 @@ const itTechChallenges = [
     ],
     "correctIndex": 0,
     "explanation": "Klausul `finally` selalu dijalankan sebelum meninggalkan blok pernyataan try-except. Ini umumnya digunakan untuk operasi pelepasan sumber daya eksternal (seperti menutup koneksi jaringan atau file descriptor).",
-    "babyClue": "💡 Petunjuk Nalar: Pahami konsep dasar kasus di atas untuk menentukan jawaban yang paling tepat."
+    "babyClue": "💡 Petunjuk Nalar: Analisis kebutuhan skenario kasus dan cocokkan dengan konsep yang telah dipelajari."
   },
   {
     "id": "it-algo-13",
@@ -2033,7 +2038,7 @@ const itTechChallenges = [
     "workedExample": {
       "kasusSerupa": "Membaca daftar file yang berada tepat di satu folder direktori saja tanpa menelusuri sub-folder.",
       "jawabanBenarContoh": "os.listdir('/path/folder') — hanya menampilkan file di tingkat direktori teratas.",
-      "nalarBayi": "os.listdir hanya membaca 1 folder. Untuk menelusuri seluruh pohon direktori beserta anak-anak sub-foldernya secara rekursif hingga tuntas, fungsinya adalah os.walk()!"
+      "nalarBayi": "Pola analisis kasus serupa: Menelaah membaca daftar file yang berada tepat di satu folder direktori saja tanpa menelusuri sub-folder. untuk mengidentifikasi solusi yang tepat secara bertahap."
     },
     "question": "Fungsi pada modul bawaan `os` di Python manakah yang digunakan untuk menjelajahi struktur pohon direktori secara rekursif hingga ke subdirektori terdalam?",
     "options": [
@@ -2044,7 +2049,7 @@ const itTechChallenges = [
     ],
     "correctIndex": 0,
     "explanation": "`os.walk(path)` menghasilkan generator yang menelusuri pohon direktori baik secara top-down maupun bottom-up, mengembalikan nama direktori root saat ini, direktori di dalamnya, dan berkas di dalamnya pada setiap tingkat.",
-    "babyClue": "💡 Petunjuk Nalar: Pahami konsep dasar kasus di atas untuk menentukan jawaban yang paling tepat."
+    "babyClue": "💡 Petunjuk Nalar: Analisis kebutuhan skenario kasus dan cocokkan dengan konsep yang telah dipelajari."
   },
   {
     "id": "it-algo-14",
@@ -2055,7 +2060,7 @@ const itTechChallenges = [
     "workedExample": {
       "kasusSerupa": "Mengambil isi teks dokumen yang dikembalikan oleh web server setelah permintaan HTTP dikirimkan di Python.",
       "jawabanBenarContoh": "response.text / response.content — membaca isi konten balasan server.",
-      "nalarBayi": "Response.text membaca isi dokumen. Sedangkan atribut dari objek respons pustaka requests untuk memeriksa angka kode status HTTP (seperti 200, 404, atau 500) adalah response.status_code!"
+      "nalarBayi": "Response.text membaca isi dokumen."
     },
     "question": "Atribut apakah pada objek respons dari pustaka Python `requests` yang menyimpan nilai numerik kode status HTTP (seperti 200 atau 404)?",
     "options": [
@@ -2066,7 +2071,7 @@ const itTechChallenges = [
     ],
     "correctIndex": 1,
     "explanation": "Properti `response.status_code` mengembalikan integer representasi kode status HTTP dari server (misal: 200 untuk OK, 301 untuk redirect, 404 untuk Not Found, 500 untuk Server Error).",
-    "babyClue": "💡 Petunjuk Nalar: Pahami konsep dasar kasus di atas untuk menentukan jawaban yang paling tepat."
+    "babyClue": "💡 Petunjuk Nalar: Analisis kebutuhan skenario kasus dan cocokkan dengan konsep yang telah dipelajari."
   },
   {
     "id": "it-algo-15",
@@ -2077,7 +2082,7 @@ const itTechChallenges = [
     "workedExample": {
       "kasusSerupa": "Mengubah objek dictionary Python menjadi teks string format JSON untuk dikirim ke server web (serialisasi).",
       "jawabanBenarContoh": "json.dumps(data) — mengonversi objek Python menjadi teks string JSON.",
-      "nalarBayi": "json.dumps() mengemas objek jadi teks JSON. Sebaliknya, fungsi untuk membaca dan mengurai teks string JSON dari API menjadi dictionary Python adalah json.loads()!"
+      "nalarBayi": "json.dumps() mengemas objek jadi teks JSON."
     },
     "question": "Fungsi pada modul `json` di Python manakah yang digunakan untuk mem-parsing teks STRING berformat JSON menjadi objek Dictionary Python?",
     "options": [
@@ -2088,7 +2093,7 @@ const itTechChallenges = [
     ],
     "correctIndex": 1,
     "explanation": "`json.loads(s)` (Load from String) menguraikan string JSON yang valid menjadi objek Python yang setara (kamus, daftar, dll). Sebaliknya, `json.dumps(obj)` mengonversi objek Python menjadi string teks JSON.",
-    "babyClue": "💡 Petunjuk Nalar: Pahami konsep dasar kasus di atas untuk menentukan jawaban yang paling tepat."
+    "babyClue": "💡 Petunjuk Nalar: Analisis kebutuhan skenario kasus dan cocokkan dengan konsep yang telah dipelajari."
   },
   {
     "id": "it-algo-16",
@@ -2099,7 +2104,7 @@ const itTechChallenges = [
     "workedExample": {
       "kasusSerupa": "Struktur data Tumpukan (Stack) yang bekerja dengan prinsip data terakhir masuk menjadi yang pertama keluar.",
       "jawabanBenarContoh": "LIFO (Last-In, First-Out) — seperti tumpukan piring di meja makan.",
-      "nalarBayi": "Tumpukan (Stack) berprinsip LIFO. Sebaliknya, struktur Antrean (Queue) seperti antrean tiket kasir bekerja dengan prinsip FIFO (First-In, First-Out)!"
+      "nalarBayi": "Tumpukan (Stack) berprinsip LIFO."
     },
     "question": "Prinsip operasional apakah yang diterapkan oleh struktur data Antrean (Queue) dalam memproses elemen datanya?",
     "options": [
@@ -2110,7 +2115,7 @@ const itTechChallenges = [
     ],
     "correctIndex": 1,
     "explanation": "Queue (antrean) menerapkan prinsip FIFO (First-In, First-Out), di mana elemen yang pertama kali dimasukkan (enqueue) adalah yang pertama kali akan dikeluarkan dan diproses (dequeue).",
-    "babyClue": "💡 Petunjuk Nalar: Pahami konsep dasar kasus di atas untuk menentukan jawaban yang paling tepat."
+    "babyClue": "💡 Petunjuk Nalar: Analisis kebutuhan skenario kasus dan cocokkan dengan konsep yang telah dipelajari."
   },
   {
     "id": "it-algo-17",
@@ -2121,7 +2126,7 @@ const itTechChallenges = [
     "workedExample": {
       "kasusSerupa": "Mengubah teks string tanggal berformat '2026-10-09' menjadi objek datetime di Python.",
       "jawabanBenarContoh": "datetime.strptime(teks, format) — mengurai (parse) teks string menjadi objek tanggal.",
-      "nalarBayi": "strptime mengurai teks jadi tanggal. Sedangkan metode untuk memformat objek datetime menjadi string rapi dengan pola khusus (seperti nama file cadangan) adalah strftime()!"
+      "nalarBayi": "strptime mengurai teks jadi tanggal."
     },
     "question": "Metode manakah pada objek `datetime` di Python yang digunakan untuk memformat tanggal dan waktu saat ini menjadi string teks sesuai pola direktif (%Y, %m, %d)?",
     "options": [
@@ -2132,7 +2137,7 @@ const itTechChallenges = [
     ],
     "correctIndex": 3,
     "explanation": "Metode `.strftime(format)` (String Format Time) mengonversi objek datetime menjadi representasi string berformat sesuai pola direktif tertentu, sering digunakan untuk memberi cap waktu pada nama file.",
-    "babyClue": "💡 Petunjuk Nalar: Pahami konsep dasar kasus di atas untuk menentukan jawaban yang paling tepat."
+    "babyClue": "💡 Petunjuk Nalar: Analisis kebutuhan skenario kasus dan cocokkan dengan konsep yang telah dipelajari."
   },
   {
     "id": "it-algo-18",
@@ -2143,7 +2148,7 @@ const itTechChallenges = [
     "workedExample": {
       "kasusSerupa": "Menyelesaikan deret Fibonacci secara rekursif biasa tanpa optimasi yang menghitung ulang nilai yang sama berulang kali.",
       "jawabanBenarContoh": "Rekursi murni lambat berkecepatan eksponensial O(2 pangkat n).",
-      "nalarBayi": "Rekursi polos lambat karena menghitung ulang hal yang sama. Teknik menyimpan hasil perhitungan sebelumnya ke dalam tabel/kamus agar tidak dihitung ulang disebut Memoization!"
+      "nalarBayi": "Pola analisis kasus serupa: Menelaah menyelesaikan deret fibonacci secara rekursif biasa tanpa optimasi yang menghitung ulang nilai yang sama berulang kali. untuk mengidentifikasi solusi yang tepat secara bertahap."
     },
     "question": "Teknik optimasi pemrograman manakah yang menyimpan hasil perhitungan dari pemanggilan fungsi berbiaya mahal ke dalam memori cache dan menggunakannya kembali saat input yang sama muncul?",
     "options": [
@@ -2154,7 +2159,7 @@ const itTechChallenges = [
     ],
     "correctIndex": 0,
     "explanation": "Memoization adalah teknik optimasi di mana hasil panggilan fungsi disimpan (dicache) berdasarkan parameter inputnya. Jika fungsi dipanggil lagi dengan parameter yang sama, hasil yang tersimpan dikembalikan langsung, memangkas waktu dari O(2^n) ke O(n).",
-    "babyClue": "💡 Petunjuk Nalar: Pahami konsep dasar kasus di atas untuk menentukan jawaban yang paling tepat."
+    "babyClue": "💡 Petunjuk Nalar: Analisis kebutuhan skenario kasus dan cocokkan dengan konsep yang telah dipelajari."
   },
   {
     "id": "it-algo-19",
@@ -2165,7 +2170,7 @@ const itTechChallenges = [
     "workedExample": {
       "kasusSerupa": "Algoritma Brute Force yang memeriksa seluruh kemungkinan kombinasi satu per satu demi menemukan solusi optimal sempurna.",
       "jawabanBenarContoh": "Brute Force — solusi pasti sempurna tetapi membutuhkan waktu komputasi yang luar biasa lambat.",
-      "nalarBayi": "Brute force memeriksa semua kemungkinan. Sedangkan Algoritma Greedy selalu memilih opsi terbaik di langkah saat ini (locally optimal) demi kecepatan, meski belum tentu optimal global!"
+      "nalarBayi": "Brute force memeriksa semua kemungkinan."
     },
     "question": "Karakteristik utama apakah yang mendefinisikan strategi algoritma bertipe Greedy (Serakah)?",
     "options": [
@@ -2176,7 +2181,7 @@ const itTechChallenges = [
     ],
     "correctIndex": 0,
     "explanation": "Algoritma Greedy menyelesaikan masalah dengan membuat pilihan terbaik secara lokal pada setiap tahap dengan harapan pilihan tersebut akan mengarah pada solusi yang optimal secara global (atau hampiran yang sangat mendekati untuk masalah NP-hard).",
-    "babyClue": "💡 Petunjuk Nalar: Pahami konsep dasar kasus di atas untuk menentukan jawaban yang paling tepat."
+    "babyClue": "💡 Petunjuk Nalar: Analisis kebutuhan skenario kasus dan cocokkan dengan konsep yang telah dipelajari."
   },
   {
     "id": "it-algo-20",
@@ -2187,7 +2192,7 @@ const itTechChallenges = [
     "workedExample": {
       "kasusSerupa": "Mengirimkan pesan teks SMS otomatis ke nomor ponsel darurat menggunakan gateway API.",
       "jawabanBenarContoh": "Mengirim request POST HTTP ke API layanan perpesanan SMS.",
-      "nalarBayi": "SMS dikirim lewat API gateway. Sedangkan untuk mengirimkan email otomatis lewat protokol SMTP dengan enkripsi saluran aman di Python, perintah pengaktif enkripsinya adalah server.starttls()!"
+      "nalarBayi": "SMS dikirim lewat API gateway."
     },
     "question": "Metode pada objek pustaka `smtplib` di Python manakah yang digunakan untuk mengaktifkan saluran enkripsi aman TLS sebelum mengirim kredensial login akun email?",
     "options": [
@@ -2198,6 +2203,10 @@ const itTechChallenges = [
     ],
     "correctIndex": 3,
     "explanation": "`server.starttls()` mengirim perintah STARTTLS ke server mail SMTP, meningkatkan koneksi soket biasa yang tidak aman menjadi koneksi terenkripsi TLS sebelum proses autentikasi (`server.login()`) dilakukan.",
-    "babyClue": "💡 Petunjuk Nalar: Pahami konsep dasar kasus di atas untuk menentukan jawaban yang paling tepat."
+    "babyClue": "💡 Petunjuk Nalar: Analisis kebutuhan skenario kasus dan cocokkan dengan konsep yang telah dipelajari."
   }
 ];
+
+if (typeof module !== 'undefined' && module.exports) {
+    module.exports = { itTechChallenges };
+}

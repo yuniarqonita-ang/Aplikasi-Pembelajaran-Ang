@@ -144,6 +144,12 @@ function switchTab(tabName) {
       "Selamat datang di Studio Tes SQL & Output! Di sini kita bedah soal tabel dan tebak hasil koding khas tes perusahaan teknologi & manufaktur modern!",
       "Pilih 'Tabel Karyawan' atau 'Tabel Sepatu' untuk melihat isi datanya!"
     );
+  } else if (tabName === 'code-trainer') {
+    renderCodeTrainer();
+    setKodiSpeech(
+      "Selamat datang di Studio Koding Manual! Di sini kamu bisa praktik menulis sintaks langsung untuk HTML/CSS, JavaScript, Python, Java, dan C#!",
+      "Pahami contoh soal di kotak atas, manfaatkan tombol shortcut untuk ngetik simbol kurung dan titik koma lebih cepat, lalu klik Uji & Jalankan Kode!"
+    );
   } else if (tabName === 'excel-trainer') {
     renderExcelTrainer();
     setKodiSpeech(
@@ -1993,60 +1999,49 @@ function renderEnglishTrainer() {
 
   window.switchEnglishSubMode = function(mode) {
     sfx.playClick();
-    const spkSec = document.getElementById("submode-speaking");
-    const puzSec = document.getElementById("submode-puzzle");
-    const ieltsSec = document.getElementById("submode-ielts");
-    const ibtSec = document.getElementById("submode-ibt");
-    const dicSec = document.getElementById("submode-dictation");
-    const bS = document.getElementById("btn-mode-spk");
-    const bP = document.getElementById("btn-mode-puzzle");
-    const bIelts = document.getElementById("btn-mode-ielts");
-    const bI = document.getElementById("btn-mode-ibt");
-    const bD = document.getElementById("btn-mode-dictation");
+    appState.currentEnglishSubMode = mode;
+    
+    const modes = [
+      { id: 'speaking', btnId: 'btn-mode-spk', secId: 'submode-speaking', color: 'var(--accent-cyan)' },
+      { id: 'puzzle', btnId: 'btn-mode-puzzle', secId: 'submode-puzzle', color: 'var(--accent-cyan)' },
+      { id: 'ielts', btnId: 'btn-mode-ielts', secId: 'submode-ielts', color: 'var(--accent-green)' },
+      { id: 'ibt', btnId: 'btn-mode-ibt', secId: 'submode-ibt', color: 'var(--accent-cyan)' },
+      { id: 'dictation', btnId: 'btn-mode-dictation', secId: 'submode-dictation', color: 'var(--accent-pink)' }
+    ];
 
-    [bS, bP, bIelts, bI, bD].forEach(b => { if (b) b.style.borderColor = "rgba(255,255,255,0.1)"; });
+    modes.forEach(m => {
+      const sec = document.getElementById(m.secId);
+      const btn = document.getElementById(m.btnId);
+      const isActive = (m.id === mode);
+      
+      if (sec) sec.style.display = isActive ? 'block' : 'none';
+      if (btn) {
+        btn.classList.toggle('active-eng-mode', isActive);
+        if (isActive) {
+          btn.style.borderColor = m.color;
+          btn.style.boxShadow = `0 0 12px ${m.color.replace('var(--accent-cyan)', 'rgba(6,182,212,0.3)').replace('var(--accent-green)', 'rgba(16,185,129,0.3)').replace('var(--accent-pink)', 'rgba(244,63,94,0.3)')}`;
+        } else {
+          btn.style.borderColor = 'rgba(255,255,255,0.1)';
+          btn.style.boxShadow = 'none';
+        }
+      }
+    });
 
     if (mode === 'speaking') {
-      spkSec.style.display = "block";
-      puzSec.style.display = "none";
-      if (ieltsSec) ieltsSec.style.display = "none";
-      if (ibtSec) ibtSec.style.display = "none";
-      if (dicSec) dicSec.style.display = "none";
-      bS.style.borderColor = "var(--accent-cyan)";
+      // speaking submode is rendered by default in DOM
     } else if (mode === 'puzzle') {
-      spkSec.style.display = "none";
-      puzSec.style.display = "block";
-      if (ieltsSec) ieltsSec.style.display = "none";
-      if (ibtSec) ibtSec.style.display = "none";
-      if (dicSec) dicSec.style.display = "none";
-      bP.style.borderColor = "var(--accent-cyan)";
       renderMissingLettersGame();
     } else if (mode === 'ielts') {
-      spkSec.style.display = "none";
-      puzSec.style.display = "none";
-      if (ieltsSec) ieltsSec.style.display = "block";
-      if (ibtSec) ibtSec.style.display = "none";
-      if (dicSec) dicSec.style.display = "none";
-      if (bIelts) bIelts.style.borderColor = "var(--accent-green)";
       renderIeltsAcademicStudio();
     } else if (mode === 'ibt') {
-      spkSec.style.display = "none";
-      puzSec.style.display = "none";
-      if (ieltsSec) ieltsSec.style.display = "none";
-      if (ibtSec) ibtSec.style.display = "block";
-      if (dicSec) dicSec.style.display = "none";
-      bI.style.borderColor = "var(--accent-cyan)";
       renderToeflIbtBuildingSkills();
     } else if (mode === 'dictation') {
-      spkSec.style.display = "none";
-      puzSec.style.display = "none";
-      if (ieltsSec) ieltsSec.style.display = "none";
-      if (ibtSec) ibtSec.style.display = "none";
-      if (dicSec) dicSec.style.display = "block";
-      if (bD) bD.style.borderColor = "var(--accent-pink)";
       renderEvcDictationStudio();
     }
   };
+
+  // Auto-restore previously active English submode or default to speaking
+  window.switchEnglishSubMode(appState.currentEnglishSubMode || 'speaking');
 }
 
 // ================= GAME HURUF HILANG (SPELLING & VOCAB PUZZLE) =================
@@ -2397,7 +2392,15 @@ function renderIeltsAcademicStudio() {
   const container = document.getElementById("submode-ielts");
   if (!container) return;
 
+  if (typeof ieltsAcademicBank === "undefined" || !ieltsAcademicBank.length) {
+    container.innerHTML = `<div class="info-box">Data IELTS Academic sedang disiapkan...</div>`;
+    return;
+  }
+
   appState.ieltsCategoryFilter = appState.ieltsCategoryFilter || "all";
+  appState.currentIeltsIndex = appState.currentIeltsIndex || 0;
+  appState.ieltsCompleted = appState.ieltsCompleted || [];
+  appState.ieltsUserAnswers = appState.ieltsUserAnswers || {};
 
   const ieltsClusters = [
     { key: "all", label: `📂 Semua Unit Cambridge (${ieltsAcademicBank.length} Soal)`, min: 0, max: 99 },
@@ -2430,6 +2433,17 @@ function renderIeltsAcademicStudio() {
   }
 
   const q = ieltsAcademicBank[appState.currentIeltsIndex] || ieltsAcademicBank[0];
+  const isDone = appState.ieltsCompleted.includes(q.id);
+  const selectedAnswer = appState.ieltsUserAnswers[q.id];
+  const questionPrompt = q.questionPrompt || q.question || "";
+  const correctAnswer = q.correctAnswer || (q.options ? q.options[0] : "");
+
+  let displaySentence = questionPrompt;
+  if (selectedAnswer) {
+    const isCorrect = (selectedAnswer === correctAnswer);
+    const spanClass = isCorrect ? 'sentence-fill-correct' : 'sentence-fill-wrong';
+    displaySentence = questionPrompt.replace(/_+/g, `<span class="${spanClass}">${selectedAnswer}</span>`);
+  }
 
   container.innerHTML = `
     <!-- Banner Acuan Buku Cambridge Grammar for IELTS -->
@@ -2464,7 +2478,7 @@ function renderIeltsAcademicStudio() {
         <select class="challenge-page-select" onchange="setIeltsIndex(Number(this.value))">
           ${filteredList.map((x) => `
             <option value="${x.originalIndex}" ${x.originalIndex === appState.currentIeltsIndex ? 'selected' : ''}>
-              #${x.originalIndex + 1}: ${x.item.cambridgeUnit.split(':')[0]} (${x.item.ieltsFocus})
+              #${x.originalIndex + 1}: ${x.item.cambridgeUnit.split(':')[0]} (${x.item.ieltsFocus}) ${appState.ieltsCompleted.includes(x.item.id) ? '✅' : ''}
             </option>
           `).join('')}
         </select>
@@ -2474,151 +2488,189 @@ function renderIeltsAcademicStudio() {
       </div>
     </div>
 
-    <!-- Quick Pills Selector -->
-    <div class="challenge-pills-row" style="margin-bottom: 16px;">
-      ${filteredList.map((x) => `
-        <button class="quick-cmd-btn ${x.originalIndex === appState.currentIeltsIndex ? 'active' : ''}" 
-                style="padding: 6px 12px; font-size: 0.8rem; font-weight: 700; white-space: nowrap;" 
-                onclick="setIeltsIndex(${x.originalIndex})">
-          #${x.originalIndex + 1} ${x.item.cambridgeUnit.split(':')[0]}
-        </button>
-      `).join('')}
-    </div>
-
     <div style="background: var(--bg-card); padding: 24px; border-radius: var(--radius-md); border: 1px solid var(--border-glow); margin-bottom: 20px;">
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; flex-wrap: wrap; gap: 6px;">
         <span style="font-size: 0.78rem; font-weight: 800; color: var(--accent-green); background: rgba(74, 222, 128, 0.15); padding: 4px 10px; border-radius: 12px;">
           📌 ${q.cambridgeUnit}
         </span>
         <span style="font-size: 0.75rem; color: var(--accent-yellow); font-weight: 700;">
-          Soal ${appState.currentIeltsIndex + 1} dari ${ieltsAcademicBank.length} (${q.ieltsFocus})
+          Soal ${appState.currentIeltsIndex + 1} dari ${ieltsAcademicBank.length} (${q.ieltsFocus}) ${isDone ? '✅ Selesai' : ''}
         </span>
       </div>
 
-      <!-- KOTAK CONTOH SOAL & JAWABAN CAMBRIDGE DULU -->
-      <div class="worked-example-card">
-        <div class="worked-example-header">
-          <span class="we-badge">💡 CONTOH SOAL & JAWABAN CAMBRIDGE DULU</span>
-          <span class="we-sub">Pahami pola tata bahasa ini sebelum menjawab soal tantangan!</span>
+      <!-- KOTAK CONTOH SOAL & JAWABAN CAMBRIDGE DULU (KASUS A) -->
+      ${q.workedExample ? `
+        <div class="worked-example-card">
+          <div class="worked-example-header">
+            <span class="we-badge">💡 CONTOH SOAL & JAWABAN CAMBRIDGE DULU</span>
+            <span class="we-sub">Pahami pola tata bahasa kasus serupa ini sebelum menjawab tantangan!</span>
+          </div>
+          <div class="we-body">
+            <div class="we-row">
+              <span class="we-label">📝 Contoh Kasus Serupa:</span>
+              <span class="we-text">"${q.workedExample.sampleQuestion}"</span>
+            </div>
+            <div class="we-row">
+              <span class="we-label">✅ Kunci Jawaban Benar Contoh:</span>
+              <code class="we-code">${q.workedExample.sampleAnswer}</code>
+            </div>
+            <div class="we-row">
+              <span class="we-label">🍼 Analogi & Nalar Bahasa Bayi:</span>
+              <span class="we-text">${q.workedExample.sampleLogic}</span>
+            </div>
+          </div>
+          <div class="we-divider">🎯 SEKARANG GILIRAN TANTANGAN SOAL CAMBRIDGE INI:</div>
         </div>
-        <div class="we-body">
-          <div class="we-row">
-            <span class="we-label">📝 Contoh Kasus Serupa:</span>
-            <span class="we-text">"${q.workedExample.sampleQuestion}"</span>
-          </div>
-          <div class="we-row">
-            <span class="we-label">✅ Kunci Jawaban Benar:</span>
-            <code class="we-code">${q.workedExample.sampleAnswer}</code>
-          </div>
-          <div class="we-row">
-            <span class="we-label">🍼 Analogi & Nalar Bahasa Bayi:</span>
-            <span class="we-text">${q.workedExample.sampleLogic}</span>
-          </div>
-        </div>
-        <div class="we-divider">🎯 SEKARANG GILIRAN TANTANGAN SOAL CAMBRIDGE INI:</div>
-      </div>
+      ` : ''}
 
       <!-- Teks Kalimat Soal (Bisa Diisi Dinamis Saat Dijawab) -->
       <h3 id="ielts-question-sentence" style="color: #fff; margin-bottom: 16px; font-size: 1.15rem; line-height: 1.6;">
-        "${q.question}"
+        "${displaySentence}"
       </h3>
 
-      <!-- Tombol Audio untuk Mendengar Soal -->
+      <!-- Tombol Audio Aman -->
       <div style="margin-bottom: 14px; display: flex; gap: 8px; flex-wrap: wrap;">
-        <button class="btn-secondary" style="font-size: 0.8rem; padding: 6px 12px;" onclick="speechEngine.speakText('${q.question.replace(/'/g, "\\'").replace('_____', 'blank')}', 0.8, this, speechEngine.englishAccent)">
-          🔊 Dengarkan Kalimat Soal (${speechEngine.englishAccent === 'en-GB' ? 'Aksen UK' : 'Aksen US'})
+        <button class="btn-secondary" style="font-size: 0.8rem; padding: 6px 12px;" onclick="playIeltsAudio(${appState.currentIeltsIndex}, this)">
+          🔊 Dengarkan Kalimat Soal (${speechEngine.englishAccent === 'en-GB' ? 'Aksen UK 🇬🇧' : 'Aksen US 🇺🇸'})
         </button>
       </div>
 
+      <!-- Pilihan Jawaban A, B, C, D -->
       <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 10px; margin-bottom: 16px;">
-        ${q.options.map((opt, idx) => `
-          <button class="choice-card-btn" style="justify-content: center; font-weight: 700;" onclick="checkIeltsAnswer(${idx})">
-            ${opt}
-          </button>
-        `).join('')}
+        ${(q.options || []).map((opt, idx) => {
+          let btnStyle = "justify-content: center; font-weight: 700; padding: 12px;";
+          if (selectedAnswer === opt) {
+            if (opt === correctAnswer) {
+              btnStyle += " border-color: var(--accent-green); background: rgba(16, 185, 129, 0.25); color: #34d399;";
+            } else {
+              btnStyle += " border-color: var(--accent-pink); background: rgba(244, 63, 94, 0.25); color: #fda4af;";
+            }
+          }
+          return `
+            <button class="choice-card-btn" style="${btnStyle}" onclick="checkIeltsAnswer(${idx})">
+              ${opt}
+            </button>
+          `;
+        }).join('')}
       </div>
 
-      <div id="ielts-feedback-box" style="display: none;"></div>
+      <!-- Feedback Alert Box -->
+      <div id="ielts-feedback-box">
+        ${selectedAnswer ? (selectedAnswer === correctAnswer ? `
+          <div class="alert-box success">
+            <strong>🎉 Benar Sekali! (+1 Poin IELTS)</strong><br>
+            <span>${q.babyExplanation || 'Jawaban Anda tepat sesuai kaidah tata bahasa akademik Cambridge!'}</span>
+          </div>
+        ` : `
+          <div class="alert-box warning">
+            <strong>⚠️ Belum Tepat!</strong><br>
+            <span>Kata <em>"${selectedAnswer}"</em> belum pas untuk melengkapi kalimat ini. Coba pilih opsi lainnya!</span>
+          </div>
+        `) : ''}
+      </div>
     </div>
   `;
-
-  window.filterIeltsCategory = function(cat) {
-    sfx.playClick();
-    appState.ieltsCategoryFilter = cat;
-    renderIeltsAcademicStudio();
-  };
-
-  window.navIeltsChallenge = function(delta) {
-    sfx.playClick();
-    const newPos = currentPos + delta;
-    if (newPos >= 0 && newPos < filteredList.length) {
-      appState.currentIeltsIndex = filteredList[newPos].originalIndex;
-      renderIeltsAcademicStudio();
-    }
-  };
-
-  window.setIeltsIndex = function(idx) {
-    sfx.playClick();
-    appState.currentIeltsIndex = idx;
-    renderIeltsAcademicStudio();
-  };
-
-  window.checkIeltsAnswer = function(idx) {
-    const isCorrect = idx === q.correctIndex;
-    const chosenOpt = q.options[idx];
-    const sentenceEl = document.getElementById("ielts-question-sentence");
-
-    if (sentenceEl) {
-      if (isCorrect) {
-        const completedHtml = q.question.replace('_____', `<span class="sentence-fill-correct">${chosenOpt}</span>`);
-        sentenceEl.innerHTML = `"${completedHtml}"`;
-      } else {
-        const errorHtml = q.question.replace('_____', `<span class="sentence-fill-wrong">${chosenOpt}</span> (Jawaban benar: <span class="sentence-fill-correct">${q.options[q.correctIndex]}</span>)`);
-        sentenceEl.innerHTML = `"${errorHtml}"`;
-      }
-    }
-
-    if (isCorrect) {
-      sfx.playSuccess();
-      triggerConfetti();
-      const cleanSentence = q.question.replace('_____', chosenOpt);
-      speechEngine.speakText(cleanSentence, 0.85, null, speechEngine.englishAccent);
-    } else {
-      sfx.playError();
-    }
-
-    kodiAI.renderFeedback({
-      containerId: "ielts-feedback-box",
-      isCorrect,
-      question: q.question,
-      userAnswer: q.options[idx],
-      correctAnswer: q.options[q.correctIndex],
-      explanation: `${q.babyExplanation} Kaidah Akademis: ${q.academicRule}`,
-      concept: `IELTS Academic (${q.cambridgeUnit})`,
-      babyClue: q.babyExplanation,
-      choices: q.options
-    });
-  };
 }
 
-// ================= MASTER TOEFL iBT BEASISWA S2 (BUILDING SKILLS BOOK) =================
+window.playIeltsAudio = function(idx, btn) {
+  if (typeof ieltsAcademicBank === "undefined") return;
+  const item = ieltsAcademicBank[idx];
+  if (!item) return;
+  const text = (item.questionPrompt || item.question || "").replace(/_+/g, "blank");
+  speechEngine.speakText(text, 0.8, btn, speechEngine.englishAccent || 'en-GB');
+};
+
+window.filterIeltsCategory = function(cat) {
+  sfx.playClick();
+  appState.ieltsCategoryFilter = cat;
+  renderIeltsAcademicStudio();
+};
+
+window.navIeltsChallenge = function(delta) {
+  sfx.playClick();
+  const currentCluster = [
+    { key: "all", min: 0, max: 99 },
+    { key: "unit1-3", min: 0, max: 9 },
+    { key: "unit4-6", min: 10, max: 19 },
+    { key: "unit7-9", min: 20, max: 29 },
+    { key: "unit10-12", min: 30, max: 39 },
+    { key: "unit13-15", min: 40, max: 49 },
+    { key: "unit16-18", min: 50, max: 59 },
+    { key: "unit19-21", min: 60, max: 69 },
+    { key: "unit22-23", min: 70, max: 79 },
+    { key: "unit24-25", min: 80, max: 89 },
+    { key: "style", min: 90, max: 99 }
+  ].find(c => c.key === (appState.ieltsCategoryFilter || 'all')) || { min: 0, max: 99 };
+
+  const filteredList = ieltsAcademicBank
+    .map((item, idx) => ({ item, originalIndex: idx }))
+    .filter(x => x.originalIndex >= currentCluster.min && x.originalIndex <= currentCluster.max);
+
+  let currentPos = filteredList.findIndex(x => x.originalIndex === appState.currentIeltsIndex);
+  let newPos = currentPos + delta;
+  if (newPos >= 0 && newPos < filteredList.length) {
+    appState.currentIeltsIndex = filteredList[newPos].originalIndex;
+    renderIeltsAcademicStudio();
+  }
+};
+
+window.setIeltsIndex = function(idx) {
+  sfx.playClick();
+  appState.currentIeltsIndex = idx;
+  renderIeltsAcademicStudio();
+};
+
+window.checkIeltsAnswer = function(idx) {
+  const q = ieltsAcademicBank[appState.currentIeltsIndex];
+  if (!q) return;
+
+  const chosenOpt = q.options[idx];
+  const correctAnswer = q.correctAnswer || q.options[0];
+  const isCorrect = (chosenOpt === correctAnswer);
+
+  appState.ieltsUserAnswers = appState.ieltsUserAnswers || {};
+  appState.ieltsUserAnswers[q.id] = chosenOpt;
+
+  if (isCorrect) {
+    sfx.playSuccess();
+    if (!appState.ieltsCompleted.includes(q.id)) {
+      appState.ieltsCompleted.push(q.id);
+      appState.stars = (appState.stars || 0) + 1;
+      saveProgress();
+      const starEl = document.getElementById("header-stars");
+      if (starEl) starEl.textContent = `${appState.stars} Bintang`;
+    }
+    setKodiSpeech(
+      "Awesome! Jawaban IELTS kamu tepat 100%!",
+      q.babyExplanation || "Struktur tata bahasa kalimat akademikmu sangat rapi!"
+    );
+  } else {
+    sfx.playWrong();
+    setKodiSpeech(
+      "Ups, pilihan kata itu belum tepat!",
+      "Coba perhatikan petunjuk waktu (tenses) atau konteks kalimat di contoh kasus serupa!"
+    );
+  }
+
+  renderIeltsAcademicStudio();
+};
+
 function renderToeflIbtBuildingSkills() {
   const container = document.getElementById("submode-ibt");
   if (!container) return;
 
-  const currentFilter = appState.currentIbtFilter || "all";
-  const filteredList = currentFilter === "all"
-    ? toeflIbtBuildingSkills
-    : toeflIbtBuildingSkills.filter(item => item.skillCategory === currentFilter);
-
-  if (appState.currentIbtIndex >= filteredList.length) {
-    appState.currentIbtIndex = 0;
+  if (typeof toeflIbtBuildingSkills === "undefined" || !toeflIbtBuildingSkills.length) {
+    container.innerHTML = `<div class="info-box">Data TOEFL iBT Building Skills sedang disiapkan...</div>`;
+    return;
   }
 
-  const currentItem = filteredList[appState.currentIbtIndex] || filteredList[0];
+  appState.currentIbtFilter = appState.currentIbtFilter || "all";
+  appState.currentIbtIndex = appState.currentIbtIndex || 0;
+  appState.ibtCompleted = appState.ibtCompleted || [];
+  appState.ibtUserAnswers = appState.ibtUserAnswers || {};
 
   const categories = [
-    { key: "all", label: `Semua Soal iBT (${toeflIbtBuildingSkills.length})` },
+    { key: "all", label: `📂 Semua Soal iBT (${toeflIbtBuildingSkills.length})` },
     { key: "Vocabulary in Context", label: "1. Vocab in Context (18 Soal)" },
     { key: "Sentence Simplification", label: "2. Sentence Simplification (17 Soal)" },
     { key: "Fact & Negative Fact", label: "3. Fact & Negative Fact (17 Soal)" },
@@ -2627,1326 +2679,266 @@ function renderToeflIbtBuildingSkills() {
     { key: "Speaking iBT Simulator", label: "6. Speaking iBT Simulator (16 Soal)" }
   ];
 
-  let passageHtml = "";
-  if (currentItem.type === "reading") {
-    let passageText = currentItem.passageSnippet;
-    if (currentItem.highlightWord) {
-      passageText = passageText.replace(
-        new RegExp(`\\b${currentItem.highlightWord}\\b`, "gi"),
-        `<span class="ibt-highlight-word">${currentItem.highlightWord}</span>`
-      );
-    }
-    if (currentItem.highlightSentence) {
-      passageText = passageText.replace(
-        currentItem.highlightSentence,
-        `<span class="ibt-highlight-sentence">${currentItem.highlightSentence}</span>`
-      );
-    }
+  const filteredList = (appState.currentIbtFilter === "all")
+    ? toeflIbtBuildingSkills.map((item, idx) => ({ item, originalIndex: idx }))
+    : toeflIbtBuildingSkills
+        .map((item, idx) => ({ item, originalIndex: idx }))
+        .filter(x => x.item.skillCategory === appState.currentIbtFilter);
 
-    let insertNotice = "";
-    if (currentItem.insertedSentence) {
-      insertNotice = `
-        <div style="margin: 12px 0; padding: 12px 16px; background: rgba(56, 189, 248, 0.15); border-left: 3px solid var(--accent-cyan); border-radius: 6px;">
-          <div style="font-size: 0.75rem; color: var(--accent-cyan); font-weight: 800; text-transform: uppercase; margin-bottom: 4px;">Kalimat yang Harus Disisipkan:</div>
-          <p style="color: #f8fafc; font-weight: 700; margin: 0;">"${currentItem.insertedSentence}"</p>
+  if (appState.currentIbtIndex < 0 || appState.currentIbtIndex >= toeflIbtBuildingSkills.length) {
+    appState.currentIbtIndex = 0;
+  }
+
+  let currentPos = filteredList.findIndex(x => x.originalIndex === appState.currentIbtIndex);
+  if (currentPos === -1 && filteredList.length > 0) {
+    appState.currentIbtIndex = filteredList[0].originalIndex;
+    currentPos = 0;
+  }
+
+  const currentItem = toeflIbtBuildingSkills[appState.currentIbtIndex] || toeflIbtBuildingSkills[0];
+  const isDone = appState.ibtCompleted.includes(currentItem.id);
+  const selectedAnswer = appState.ibtUserAnswers[currentItem.id];
+  const isSpeaking = (currentItem.type === "speaking" || currentItem.skillCategory === "Speaking iBT Simulator");
+
+  let passageText = currentItem.passageSnippet || "";
+  if (currentItem.highlightWord) {
+    passageText = passageText.replace(
+      new RegExp(`\\b${currentItem.highlightWord}\\b`, "gi"),
+      `<span class="ibt-highlight-word">${currentItem.highlightWord}</span>`
+    );
+  }
+  if (currentItem.highlightSentence) {
+    passageText = passageText.replace(
+      currentItem.highlightSentence,
+      `<span class="ibt-highlight-sentence">${currentItem.highlightSentence}</span>`
+    );
+  }
+
+  let insertNotice = "";
+  if (currentItem.insertedSentence) {
+    insertNotice = `
+      <div style="margin: 12px 0; padding: 12px 16px; background: rgba(56, 189, 248, 0.15); border-left: 3px solid var(--accent-cyan); border-radius: 6px;">
+        <div style="font-size: 0.75rem; color: var(--accent-cyan); font-weight: 800; text-transform: uppercase; margin-bottom: 4px;">Kalimat yang Harus Disisipkan [■]:</div>
+        <p style="color: #f8fafc; font-weight: 700; margin: 0;">"${currentItem.insertedSentence}"</p>
+      </div>
+    `;
+  }
+
+  const workedEx = currentItem.workedExample;
+  const wePrompt = workedEx ? (workedEx.modelPrompt || workedEx.sampleQuestion || "") : "";
+  const weAns = workedEx ? (workedEx.correctAnswer || workedEx.sampleAnswer || "") : "";
+  const weLogic = workedEx ? (workedEx.strategyLogic || workedEx.babyLogic || workedEx.sampleLogic || "") : "";
+
+  container.innerHTML = `
+    <!-- Banner Acuan Buku TOEFL iBT Building Skills -->
+    <div style="background: linear-gradient(135deg, rgba(15, 23, 42, 0.95), rgba(30, 58, 138, 0.45)); border: 1.5px solid var(--accent-cyan); border-radius: 12px; padding: 14px 18px; margin-bottom: 16px; display: flex; align-items: center; gap: 14px;">
+      <div style="font-size: 2.2rem;">🎓</div>
+      <div>
+        <div style="font-size: 0.75rem; color: var(--accent-cyan); font-weight: 800; text-transform: uppercase;">
+          Kurikulum Standar Beasiswa S2 Dunia:
         </div>
-      `;
-    }
+        <h4 style="color: #fff; margin: 2px 0;">Building Skills for the TOEFL iBT (Paul Edmunds & N. McKinnon)</h4>
+        <p style="font-size: 0.8rem; color: #cbd5e1; margin: 0;">
+          Latihan 100 Soal TOEFL iBT: Vocab in Context, Simplifikasi Kalimat, Insert Text [■], Negative Fact, Inference & Simulator Speaking!
+        </p>
+      </div>
+    </div>
 
-    const audioSentence = (currentItem.targetSentenceForAudio || currentItem.passageSnippet).replace(/'/g, "\\'");
+    <!-- Filter & Navigation Bar -->
+    <div class="challenge-nav-bar">
+      <div class="challenge-nav-controls">
+        <label style="font-size: 0.8rem; font-weight: 700; color: var(--accent-cyan);">Kategori Skill:</label>
+        <select class="challenge-page-select" onchange="filterIbtCategory(this.value)">
+          ${categories.map(c => `
+            <option value="${c.key}" ${appState.currentIbtFilter === c.key ? 'selected' : ''}>${c.label}</option>
+          `).join('')}
+        </select>
+      </div>
 
-    passageHtml = `
-      <!-- KOTAK CONTOH STRATEGI & JAWABAN BENAR DULU -->
-      ${currentItem.workedExample ? `
-        <div class="worked-example-card" style="margin-bottom: 16px;">
+      <div class="challenge-nav-controls">
+        <button class="btn-secondary" style="padding: 6px 12px; font-size: 0.82rem;" onclick="navIbtChallenge(-1)" ${currentPos <= 0 ? 'disabled' : ''}>
+          ⬅️ Prev
+        </button>
+        <select class="challenge-page-select" onchange="setIbtIndex(Number(this.value))">
+          ${filteredList.map((x) => `
+            <option value="${x.originalIndex}" ${x.originalIndex === appState.currentIbtIndex ? 'selected' : ''}>
+              #${x.originalIndex + 1}: ${x.item.skillCategory} (${x.item.academicTopic || 'Academic'}) ${appState.ibtCompleted.includes(x.item.id) ? '✅' : ''}
+            </option>
+          `).join('')}
+        </select>
+        <button class="btn-secondary" style="padding: 6px 12px; font-size: 0.82rem;" onclick="navIbtChallenge(1)" ${currentPos >= filteredList.length - 1 ? 'disabled' : ''}>
+          Next ➡️
+        </button>
+      </div>
+    </div>
+
+    <div style="background: var(--bg-card); padding: 24px; border-radius: var(--radius-md); border: 1px solid var(--border-glow); margin-bottom: 20px;">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; flex-wrap: wrap; gap: 6px;">
+        <span style="font-size: 0.78rem; font-weight: 800; color: var(--accent-cyan); background: rgba(56, 189, 248, 0.15); padding: 4px 10px; border-radius: 12px;">
+          📌 ${currentItem.bookChapter}
+        </span>
+        <span style="font-size: 0.75rem; color: var(--accent-yellow); font-weight: 700;">
+          Soal ${appState.currentIbtIndex + 1} dari ${toeflIbtBuildingSkills.length} (${currentItem.academicTopic || 'Umum'}) ${isDone ? '✅ Selesai' : ''}
+        </span>
+      </div>
+
+      <!-- KOTAK CONTOH STRATEGI & JAWABAN BENAR DULU (KASUS A) -->
+      ${workedEx ? `
+        <div class="worked-example-card" style="margin-bottom: 18px;">
           <div class="worked-example-header">
             <span class="we-badge">💡 STRATEGI & CONTOH JAWABAN BENAR DULU</span>
             <span class="we-sub">${currentItem.bookChapter} • ${currentItem.academicTopic || ''}</span>
           </div>
           <div class="we-body">
             <div class="we-row">
-              <span class="we-label">📝 Model Soal:</span>
-              <span class="we-text">${currentItem.workedExample.modelPrompt}</span>
+              <span class="we-label">📝 Model Kasus Serupa:</span>
+              <span class="we-text">"${wePrompt}"</span>
             </div>
             <div class="we-row">
-              <span class="we-label">✅ Kunci Jawaban Benar:</span>
-              <code class="we-code">${currentItem.workedExample.correctAnswer}</code>
+              <span class="we-label">✅ Contoh Jawaban Benar:</span>
+              <code class="we-code">${weAns}</code>
             </div>
             <div class="we-row">
-              <span class="we-label">🍼 Trik & Cara Nalar Detektif:</span>
-              <span class="we-text">${currentItem.workedExample.strategyLogic.replace(/\\n/g, '<br>')}</span>
+              <span class="we-label">🍼 Trik & Nalar Detektif Kodi:</span>
+              <span class="we-text">${weLogic.replace(/\n/g, '<br>')}</span>
             </div>
           </div>
-          <div class="we-divider">🎯 SEKARANG BACA TEKS & SELESAIKAN TANTANGAN DI BAWAH:</div>
+          <div class="we-divider">🎯 SEKARANG PECAHKAN TANTANGAN ASLI DI BAWAH INI:</div>
         </div>
       ` : ''}
 
-      <div class="ibt-passage-card">
+      <!-- Academic Reading Passage or Speaking Scenario -->
+      <div class="ibt-passage-card" style="margin-bottom: 18px;">
         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; flex-wrap: wrap; gap: 6px;">
           <span style="font-size: 0.75rem; color: var(--accent-cyan); font-weight: 800; text-transform: uppercase;">
-            📖 Bacaan Ilmiah (Academic Reading Excerpt)
+            ${isSpeaking ? '🎙️ Skenario Kampus & Audio Percakapan' : '📖 Teks Bacaan Ilmiah (Academic Reading Excerpt)'}
           </span>
-          <button class="btn-secondary" style="font-size: 0.78rem; padding: 4px 10px;" onclick="speechEngine.speakText('${audioSentence}', 0.8, this, 'en-US')">
+          <button class="btn-secondary" style="font-size: 0.78rem; padding: 4px 10px;" onclick="playToeflAudio(${appState.currentIbtIndex}, this)">
             🔊 Dengarkan Audio Teks
           </button>
         </div>
-        <p style="margin: 0;">${passageText}</p>
+        <p style="margin: 0; line-height: 1.6; color: #cbd5e1;">${passageText}</p>
         ${insertNotice}
       </div>
 
-      <div style="margin-bottom: 16px;">
-        <h3 style="color: #fff; font-size: 1.1rem; line-height: 1.5; margin-bottom: 14px;">
+      <!-- Pertanyaan Tantangan -->
+      <div style="margin-bottom: 18px;">
+        <h3 style="color: #fff; font-size: 1.15rem; line-height: 1.5; margin-bottom: 14px;">
           "${currentItem.questionPrompt}"
         </h3>
 
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 10px;">
-          ${currentItem.options.map((opt, idx) => `
-            <button class="choice-card-btn" style="justify-content: flex-start; text-align: left; font-weight: 600; line-height: 1.4; padding: 12px 14px;" onclick="checkIbtReadingAnswer(${idx})">
-              ${opt}
-            </button>
-          `).join('')}
-        </div>
-      </div>
-
-      <div id="ibt-reading-feedback" style="display: none; margin-top: 14px;"></div>
-    `;
-  } else {
-    // SPEAKING iBT SIMULATOR
-    const promptAudio = currentItem.promptQuestion.replace(/'/g, "\\'");
-    const modelAudio = currentItem.modelAnswer.replace(/'/g, "\\'");
-
-    passageHtml = `
-      <!-- KOTAK CONTOH STRATEGI SPEAKING SKOR 26-30 DULU -->
-      ${currentItem.workedExample ? `
-        <div class="worked-example-card" style="margin-bottom: 16px;">
-          <div class="worked-example-header">
-            <span class="we-badge">💡 STRATEGI SPEAKING SKOR 26-30 DULU</span>
-            <span class="we-sub">${currentItem.bookChapter}</span>
-          </div>
-          <div class="we-body">
-            <div class="we-row">
-              <span class="we-label">📝 Inti Pertanyaan:</span>
-              <span class="we-text">${currentItem.workedExample.modelPrompt}</span>
-            </div>
-            <div class="we-row">
-              <span class="we-label">✅ Kunci Sikap & Posisi Jawaban:</span>
-              <code class="we-code">${currentItem.workedExample.correctAnswer}</code>
-            </div>
-            <div class="we-row">
-              <span class="we-label">🍼 Trik Manajemen Waktu 45 Detik:</span>
-              <span class="we-text">${currentItem.workedExample.strategyLogic.replace(/\\n/g, '<br>')}</span>
-            </div>
-          </div>
-          <div class="we-divider">🎯 SEKARANG COBA LATIHAN BICARA SESUAI FORMULA:</div>
-        </div>
-      ` : ''}
-
-      <div style="background: rgba(15, 23, 42, 0.9); border: 1.5px solid var(--accent-pink); border-radius: 12px; padding: 20px; margin-bottom: 18px;">
-        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; flex-wrap: wrap; gap: 6px;">
-          <span style="font-size: 0.75rem; color: var(--accent-pink); font-weight: 800; text-transform: uppercase;">
-            🎙️ Pertanyaan Ujian Speaking iBT (Task 1 & Integrated)
-          </span>
-          <button class="btn-secondary" style="font-size: 0.78rem; padding: 4px 10px;" onclick="speechEngine.speakText('${promptAudio}', 0.8, this, 'en-US')">
-            🔊 Dengarkan Soal
-          </button>
-        </div>
-
-        <h3 style="color: #fff; font-size: 1.15rem; line-height: 1.5; margin-bottom: 14px;">
-          "${currentItem.promptQuestion}"
-        </h3>
-
-        <!-- Countdown Timer Section -->
-        <div class="ibt-timer-display" id="ibt-timer-box">
-          <div style="text-align: center;">
-            <div id="ibt-timer-label" style="font-size: 0.8rem; color: #cbd5e1; font-weight: 700; text-transform: uppercase; margin-bottom: 4px;">
-              ⏱️ Siap Latihan Ujian?
-            </div>
-            <div class="ibt-timer-digits" id="ibt-timer-count">15s / 45s</div>
-            <div style="font-size: 0.75rem; color: #94a3b8; margin-top: 4px;">(15 Detik Persiapan • 45 Detik Berbicara)</div>
-          </div>
-        </div>
-
-        <!-- Tombol Kontrol Timer & Rekaman Suara -->
-        <div style="display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; margin-bottom: 18px;">
-          <button id="btn-ibt-prep" class="btn-secondary" style="font-weight: 700; padding: 10px 16px;" onclick="startIbtPrepCountdown(${currentItem.prepSeconds || 15})">
-            ⏱️ Mulai Waktu Persiapan (${currentItem.prepSeconds || 15}s)
-          </button>
-          <button id="btn-ibt-speech" class="btn-primary" style="font-weight: 800; padding: 10px 18px; background: linear-gradient(135deg, #f43f5e, #e11d48);" onclick="startIbtSpeakingCountdown(${currentItem.speechSeconds || 45})">
-            🎙️ Mulai Bicara Sekarang (${currentItem.speechSeconds || 45}s)
-          </button>
-          <button class="btn-secondary" style="font-size: 0.85rem;" onclick="resetIbtTimers()">
-            🔄 Reset Timer
-          </button>
-        </div>
-
-        <!-- Feedback Suara Mic -->
-        <div id="ibt-speech-eval-result" style="display: none; padding: 16px; border-radius: 10px; background: rgba(2, 6, 23, 0.9); border: 1.5px solid var(--accent-cyan); margin-bottom: 18px;"></div>
-
-        <!-- Formula Bahasa Bayi & Jawaban Juara Skor 26-30 -->
-        <div style="background: rgba(250, 204, 21, 0.1); border-left: 3px solid var(--accent-yellow); padding: 14px 18px; border-radius: 8px; font-size: 0.88rem; color: #fef08a; margin-bottom: 16px;">
-          <strong>🍼 Strategi Jawaban Skor 26-30 Kodi:</strong>
-          <p style="white-space: pre-line; margin-top: 6px; color: #fef08a; font-size: 0.85rem;">${currentItem.babyStrategy}</p>
-        </div>
-
-        <!-- Contoh Jawaban Model Native -->
-        <div style="background: rgba(15, 23, 42, 0.8); border: 1px dashed rgba(56, 189, 248, 0.4); border-radius: 10px; padding: 16px;">
-          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; flex-wrap: wrap; gap: 6px;">
-            <span style="font-size: 0.75rem; color: var(--accent-green); font-weight: 800; text-transform: uppercase;">
-              ⭐ Contoh Naskah Jawaban Terbaik (Model Band 26-30):
-            </span>
-            <div style="display: flex; gap: 6px;">
-              <button class="btn-secondary" style="font-size: 0.75rem; padding: 4px 8px;" onclick="speechEngine.speakText('${modelAudio}', 0.85, this, 'en-US')">
-                🔊 Dengarkan (Normal)
-              </button>
-              <button class="btn-secondary" style="font-size: 0.75rem; padding: 4px 8px;" onclick="speechEngine.speakText('${modelAudio}', 0.65, this, 'en-US')">
-                🐢 Slow
-              </button>
-            </div>
-          </div>
-          <p style="color: #f1f5f9; font-size: 0.95rem; line-height: 1.6; margin-bottom: 8px;">"${currentItem.modelAnswer}"</p>
-          <p style="color: var(--text-muted); font-size: 0.82rem; font-style: italic; margin: 0;">Arti: ${currentItem.modelTranslation}</p>
-        </div>
-      </div>
-    `;
-  }
-
-  container.innerHTML = `
-    <!-- Banner Acuan Buku TOEFL iBT -->
-    <div class="ibt-book-badge">
-      <div style="font-size: 2.4rem;">📘</div>
-      <div>
-        <div style="font-size: 0.75rem; color: var(--accent-cyan); font-weight: 800; text-transform: uppercase;">
-          Kurikulum Standar Beasiswa Luar Negeri (S2 Magister Abroad):
-        </div>
-        <h4 style="color: #fff; margin: 2px 0 4px;">Building Skills for the TOEFL iBT [2nd Edition]</h4>
-        <p style="font-size: 0.82rem; color: #cbd5e1; margin: 0;">
-          Latihan 6 Skill Kunci: Vocabulary in Context, Sentence Simplification, Detektif Fakta, Inference Tersirat, Jigsaw Puzzle Kalimat, & Speaking Simulator dengan Timer Resmi!
-        </p>
-      </div>
-    </div>
-
-    <!-- Category Filter Chips -->
-    <div style="display: flex; gap: 8px; margin-bottom: 14px; overflow-x: auto; padding-bottom: 6px;">
-      ${categories.map(cat => `
-        <button class="ibt-filter-pill ${currentFilter === cat.key ? 'active' : ''}" onclick="setIbtCategoryFilter('${cat.key}')">
-          ${cat.label}
-        </button>
-      `).join('')}
-    </div>
-
-    <!-- Navigasi Soal iBT Prev / Jump / Next -->
-    <div class="challenge-nav-bar">
-      <div class="challenge-nav-controls">
-        <button class="btn-secondary" style="padding: 6px 12px; font-size: 0.82rem;" onclick="navIbtQuestion(-1)" ${appState.currentIbtIndex <= 0 ? 'disabled' : ''}>
-          ⬅️ Prev
-        </button>
-        <select class="challenge-page-select" onchange="setIbtQuestionIndex(Number(this.value))">
-          ${filteredList.map((item, idx) => `
-            <option value="${idx}" ${idx === appState.currentIbtIndex ? 'selected' : ''}>
-              #${idx + 1} (${item.skillCategory}): ${item.type === 'speaking' ? 'Speaking Prep' : (item.targetWord || item.bookChapter)}
-            </option>
-          `).join('')}
-        </select>
-        <button class="btn-secondary" style="padding: 6px 12px; font-size: 0.82rem;" onclick="navIbtQuestion(1)" ${appState.currentIbtIndex >= filteredList.length - 1 ? 'disabled' : ''}>
-          Next ➡️
-        </button>
-      </div>
-    </div>
-
-    <!-- Quick Pills Selector -->
-    <div class="challenge-pills-row" style="margin-bottom: 16px;">
-      ${filteredList.map((item, idx) => `
-        <button class="quick-cmd-btn ${idx === appState.currentIbtIndex ? 'active' : ''}" 
-                style="padding: 6px 12px; font-size: 0.8rem; font-weight: 700; white-space: nowrap;" 
-                onclick="setIbtQuestionIndex(${idx})">
-          ${item.type === 'speaking' ? '🎙️' : '📖'} #${idx + 1}
-        </button>
-      `).join('')}
-    </div>
-
-    <!-- Main Question Box -->
-    <div style="background: var(--bg-card); padding: 24px; border-radius: var(--radius-md); border: 1px solid var(--border-glow); margin-bottom: 20px;">
-      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; flex-wrap: wrap; gap: 6px;">
-        <span style="font-size: 0.78rem; font-weight: 800; color: var(--accent-cyan); background: rgba(56, 189, 248, 0.15); padding: 4px 10px; border-radius: 12px;">
-          📌 ${currentItem.bookChapter} • ${currentItem.academicTopic || currentItem.skillCategory}
-        </span>
-        <span style="font-size: 0.75rem; color: var(--accent-yellow); font-weight: 700;">
-          Modul ${appState.currentIbtIndex + 1} dari ${filteredList.length}
-        </span>
-      </div>
-
-      ${passageHtml}
-    </div>
-  `;
-
-  // Window methods for iBT Interaction
-  window.navIbtQuestion = function(delta) {
-    sfx.playClick();
-    const newIdx = appState.currentIbtIndex + delta;
-    if (newIdx >= 0 && newIdx < filteredList.length) {
-      appState.currentIbtIndex = newIdx;
-      resetIbtTimers();
-      renderToeflIbtBuildingSkills();
-    }
-  };
-
-  window.setIbtCategoryFilter = function(catKey) {
-    sfx.playClick();
-    appState.currentIbtFilter = catKey;
-    appState.currentIbtIndex = 0;
-    resetIbtTimers();
-    renderToeflIbtBuildingSkills();
-  };
-
-  window.setIbtQuestionIndex = function(idx) {
-    sfx.playClick();
-    appState.currentIbtIndex = idx;
-    resetIbtTimers();
-    renderToeflIbtBuildingSkills();
-  };
-
-  window.checkIbtReadingAnswer = function(chosenIdx) {
-    const isCorrect = chosenIdx === currentItem.correctIndex;
-    if (isCorrect) {
-      sfx.playSuccess();
-      triggerConfetti();
-    } else {
-      sfx.playError();
-    }
-
-    kodiAI.renderFeedback({
-      containerId: "ibt-reading-feedback",
-      isCorrect,
-      question: currentItem.passageQuestion || currentItem.promptQuestion,
-      userAnswer: currentItem.options[chosenIdx],
-      correctAnswer: currentItem.options[currentItem.correctIndex],
-      explanation: currentItem.babyExplanation,
-      concept: `TOEFL iBT (${currentItem.skillCategory})`,
-      babyClue: currentItem.babyStrategy || currentItem.babyExplanation,
-      choices: currentItem.options
-    });
-  };
-
-  window.resetIbtTimers = function() {
-    if (appState.ibtPrepInterval) clearInterval(appState.ibtPrepInterval);
-    if (appState.ibtTimerInterval) clearInterval(appState.ibtTimerInterval);
-    appState.ibtPrepInterval = null;
-    appState.ibtTimerInterval = null;
-    speechEngine.stopListening();
-  };
-
-  window.startIbtPrepCountdown = function(seconds) {
-    sfx.playClick();
-    resetIbtTimers();
-
-    const countEl = document.getElementById("ibt-timer-count");
-    const labelEl = document.getElementById("ibt-timer-label");
-    const prepBtn = document.getElementById("btn-ibt-prep");
-    if (!countEl || !labelEl) return;
-
-    let remaining = seconds;
-    labelEl.innerText = "⏳ WAKTU PERSIAPAN (BERPIKIR & CATAT POIN):";
-    labelEl.style.color = "var(--accent-yellow)";
-    countEl.innerText = `${remaining}s`;
-    countEl.style.color = "var(--accent-yellow)";
-    if (prepBtn) prepBtn.disabled = true;
-
-    appState.ibtPrepInterval = setInterval(() => {
-      remaining--;
-      if (remaining > 0) {
-        countEl.innerText = `${remaining}s`;
-      } else {
-        clearInterval(appState.ibtPrepInterval);
-        appState.ibtPrepInterval = null;
-        sfx.playSuccess();
-        countEl.innerText = "0s - WAKTU PERSIAPAN HABIS!";
-        countEl.style.color = "var(--accent-green)";
-        labelEl.innerText = "🔔 TEEET! SILAKAN TEKAN TOMBOL 'MULAI BICARA' SEKARANG!";
-        if (prepBtn) prepBtn.disabled = false;
-      }
-    }, 1000);
-  };
-
-  window.startIbtSpeakingCountdown = function(seconds) {
-    sfx.playClick();
-    resetIbtTimers();
-
-    const countEl = document.getElementById("ibt-timer-count");
-    const labelEl = document.getElementById("ibt-timer-label");
-    const spkBtn = document.getElementById("btn-ibt-speech");
-    const resultBox = document.getElementById("ibt-speech-eval-result");
-    if (!countEl || !labelEl) return;
-
-    let remaining = seconds;
-    labelEl.innerText = "🔴 SEDANG MEREKAM SUARA (BICARA SEKARANG):";
-    labelEl.style.color = "var(--accent-pink)";
-    countEl.innerText = `${remaining}s`;
-    countEl.style.color = "var(--accent-pink)";
-    if (spkBtn) {
-      spkBtn.disabled = true;
-      spkBtn.innerText = "⏳ Mendengarkan...";
-    }
-
-    if (resultBox) {
-      resultBox.style.display = "block";
-      resultBox.innerHTML = `
-        <div style="text-align: center; color: var(--accent-pink); font-weight: 700; padding: 10px;">
-          🔴 Mikrofon sedang aktif merekam jawabanmu... Bicaralah dengan lantang & percaya diri!
-        </div>
-      `;
-    }
-
-    speechEngine.startListening(
-      currentItem.audioSnippet || currentItem.modelAnswer,
-      (evalResult) => {
-        if (spkBtn) {
-          spkBtn.disabled = false;
-          spkBtn.innerText = `🎙️ Mulai Bicara Lagi (${seconds}s)`;
-        }
-        if (evalResult.accuracy >= 65) {
-          sfx.playSuccess();
-        } else {
-          sfx.playError();
-        }
-        if (resultBox) {
-          resultBox.innerHTML = `
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 6px;">
-              <h4 style="color: ${evalResult.accuracy >= 70 ? 'var(--accent-green)' : 'var(--accent-yellow)'}; margin: 0;">
-                Skor Akurasi Speaking iBT: ${evalResult.accuracy}% (${evalResult.grade})
-              </h4>
-            </div>
-            <p style="font-size: 0.88rem; color: #cbd5e1; margin: 4px 0;"><strong>Kata yang terdeteksi:</strong> "${evalResult.spoken}"</p>
-            <div style="display: flex; flex-wrap: wrap; gap: 6px; margin: 8px 0;">
-              ${evalResult.wordAnalysis.map(w => `
-                <span style="padding: 2px 8px; border-radius: 4px; font-weight: 700; font-size: 0.8rem; background: ${w.matched ? 'rgba(74, 222, 128, 0.2)' : 'rgba(248, 113, 113, 0.2)'}; color: ${w.matched ? '#4ade80' : '#f87171'}; border: 1px solid ${w.matched ? '#4ade80' : '#f87171'};">
-                  ${w.word} ${w.matched ? '✓' : '✗'}
-                </span>
-              `).join('')}
-            </div>
-            <p style="font-size: 0.85rem; color: #fef08a; margin: 4px 0 0 0;">💡 ${evalResult.comment}</p>
-            <div id="ibt-speech-ai-feedback-box" style="margin-top: 14px;"></div>
-          `;
-
-          kodiAI.renderFeedback({
-            containerId: "ibt-speech-ai-feedback-box",
-            isCorrect: evalResult.accuracy >= 65,
-            question: `Soal Speaking iBT: "${currentItem.promptQuestion}"`,
-            userAnswer: evalResult.spoken || "(Suara tidak tertangkap)",
-            correctAnswer: currentItem.modelAnswer,
-            explanation: `Akurasi pengucapanmu ${evalResult.accuracy}% (${evalResult.grade}). ${evalResult.comment}. Contoh jawaban model: "${currentItem.modelAnswer}".`,
-            concept: `TOEFL iBT Speaking (${currentItem.skillCategory})`,
-            babyClue: currentItem.babyStrategy || currentItem.modelTranslation
-          });
-        }
-      },
-      (error) => {
-        if (spkBtn) {
-          spkBtn.disabled = false;
-          spkBtn.innerText = `🎙️ Mulai Bicara (${seconds}s)`;
-        }
-        if (resultBox) {
-          resultBox.innerHTML = `
-            <div style="color: var(--accent-red); font-size: 0.85rem;">
-              ⚠️ Mikrofon tidak menangkap suara (${error}). Pastikan mic diizinkan (Allow) di browsermu!
-            </div>
-          `;
-        }
-      }
-    );
-
-    appState.ibtTimerInterval = setInterval(() => {
-      remaining--;
-      if (remaining > 0) {
-        countEl.innerText = `${remaining}s`;
-      } else {
-        clearInterval(appState.ibtTimerInterval);
-        appState.ibtTimerInterval = null;
-        speechEngine.stopListening();
-        countEl.innerText = "0s - WAKTU BICARA SELESAI!";
-        countEl.style.color = "var(--accent-green)";
-        labelEl.innerText = "🎉 SELESAI! Evaluasi rekamanmu sudah dianalisis di bawah!";
-        if (spkBtn) {
-          spkBtn.disabled = false;
-          spkBtn.innerText = `🎙️ Mulai Bicara Lagi (${seconds}s)`;
-        }
-      }
-    }, 1000);
-  };
-}
-
-// ================= PROGRESSIVE LISTENING-TO-WRITING DICTATION STUDIO =================
-// Kurikulum Diktasi Berjenjang: Huruf -> Kata -> Kalimat (EVC ESL LibreTexts 2023)
-function updateHeaderStars() {
-  const starCountEl = document.getElementById("header-stars");
-  if (starCountEl) starCountEl.textContent = `${appState.stars} Bintang`;
-  const certStars = document.getElementById("cert-stars-total");
-  if (certStars) certStars.textContent = `${appState.stars} Bintang`;
-}
-
-function renderEvcDictationStudio() {
-  const container = document.getElementById("submode-dictation");
-  if (!container) return;
-
-  const currentLevel = appState.currentDictationLevelFilter || 1;
-  const filteredList = evcDictationChallenges.filter(c => c.level === currentLevel);
-
-  if (appState.currentDictationIndex >= filteredList.length) {
-    appState.currentDictationIndex = 0;
-  }
-
-  const currentItem = filteredList[appState.currentDictationIndex] || filteredList[0];
-  if (!currentItem) return;
-
-  const levelTabs = [
-    { level: 1, label: "🔤 Tingkat 1: Eja Huruf", desc: "Spelling Names, Acronyms & IT Terms (150 Soal)" },
-    { level: 2, label: "📝 Tingkat 2: Dikte Kata", desc: "Vocabulary & IT Workplace Terms (175 Soal)" },
-    { level: 3, label: "💬 Tingkat 3: Dikte Kalimat", desc: "Natural Everyday Dialogues & Scenarios (175 Soal)" }
-  ];
-
-  container.innerHTML = `
-    <!-- Header Hero Card EVC ESL -->
-    <div class="dictation-hero-card">
-      <div style="font-size: 2.4rem;">🎧</div>
-      <div>
-        <div style="font-size: 0.75rem; color: var(--accent-pink); font-weight: 800; text-transform: uppercase;">
-          Kurikulum Listening & Speaking EVC ESL LibreTexts (2023):
-        </div>
-        <h4 style="color: #fff; margin: 2px 0 4px;">Progressive Listening-to-Writing Dictation Studio</h4>
-        <p style="font-size: 0.82rem; color: #cbd5e1; margin: 0;">
-          Dengarkan audio Kodi dengan seksama, lalu ketik huruf demi huruf hingga 100% tepat! Asah ketajaman telinga (listening) dan keakuratan penulisan ejaan kata (writing) bahasa Inggris.
-        </p>
-      </div>
-    </div>
-
-    <!-- Level Filter Selector -->
-    <div style="display: flex; gap: 8px; margin-bottom: 16px; overflow-x: auto; padding-bottom: 6px;">
-      ${levelTabs.map(t => `
-        <button class="choice-card-btn ${currentLevel === t.level ? 'active-eng-mode' : ''}" 
-                style="flex: 1; min-width: 190px; justify-content: center; font-weight: 800; ${currentLevel === t.level ? 'border-color: var(--accent-pink); background: rgba(244, 63, 94, 0.15);' : ''}" 
-                onclick="setDictationLevelFilter(${t.level})">
-          ${t.label}
-        </button>
-      `).join('')}
-    </div>
-
-    <!-- Navigation List Soal -->
-    <div style="display: flex; gap: 8px; margin-bottom: 18px; overflow-x: auto; padding-bottom: 6px; align-items: center;">
-      <button class="btn-secondary" style="padding: 6px 14px; font-size: 0.82rem; font-weight: 700;" onclick="prevDictationChallenge()">
-        ⬅️ Prev
-      </button>
-      <select class="challenge-page-select" onchange="setDictationIndex(Number(this.value))">
-        ${filteredList.map((item, idx) => {
-          const isDone = appState.completedDictations && appState.completedDictations[item.id];
-          return `
-            <option value="${idx}" ${idx === appState.currentDictationIndex ? 'selected' : ''}>
-              ${isDone ? '✓ ' : ''}Tantangan #${idx + 1} (${item.targetText.length} Karakter)
-            </option>
-          `;
-        }).join('')}
-      </select>
-      <button class="btn-secondary" style="padding: 6px 14px; font-size: 0.82rem; font-weight: 700;" onclick="nextDictationChallenge()">
-        Next ➡️
-      </button>
-    </div>
-
-    <!-- Main Dictation Practice Arena -->
-    <div style="background: var(--bg-card); padding: 24px; border-radius: var(--radius-md); border: 1px solid var(--border-glow); margin-bottom: 20px;">
-      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; flex-wrap: wrap; gap: 8px;">
-        <span style="font-size: 0.78rem; font-weight: 800; color: var(--accent-pink); background: rgba(244, 63, 94, 0.15); padding: 4px 12px; border-radius: 12px; border: 1px solid rgba(244, 63, 94, 0.3);">
-          📌 ${currentItem.chapterRef} • ${currentItem.levelName}
-        </span>
-        <span style="font-size: 0.78rem; color: var(--accent-yellow); font-weight: 700;">
-          Tantangan #${appState.currentDictationIndex + 1} dari ${filteredList.length}
-        </span>
-      </div>
-
-      <!-- KOTAK CONTOH SOAL & JAWABAN BENAR DULU -->
-      ${currentItem.workedExample ? `
-        <div class="worked-example-card" style="margin-bottom: 18px;">
-          <div class="worked-example-header">
-            <span class="we-badge">💡 CONTOH SOAL & JAWABAN BENAR DULU</span>
-            <span class="we-sub">Pahami contoh pola audio dan ketikan benar ini sebelum mulai:</span>
-          </div>
-          <div class="we-body">
-            <div class="we-row">
-              <span class="we-label">📝 Contoh Suara Audio Serupa:</span>
-              <span class="we-text">${currentItem.workedExample.sampleAudio}</span>
-            </div>
-            <div class="we-row">
-              <span class="we-label">✅ Contoh Hasil Ketikan yang 100% Benar:</span>
-              <code class="we-code">${currentItem.workedExample.sampleTarget}</code>
-            </div>
-            <div class="we-row">
-              <span class="we-label">🍼 Analogi & Tips Ketik Kodi:</span>
-              <span class="we-text">${currentItem.workedExample.sampleExplanation}</span>
-            </div>
-          </div>
-          <div class="we-divider">🎯 SEKARANG DENGARKAN AUDIO TANTANGAN ASLI DI BAWAH:</div>
-        </div>
-      ` : ''}
-
-      <!-- Panduan Bahasa Bayi Singkat -->
-      <div style="text-align: center; margin-bottom: 20px;">
-        <h3 style="color: #fff; font-size: 1.15rem; margin-bottom: 6px;">
-          ${currentLevel === 1 ? '🔤 Dengarkan Ejaan Huruf Lalu Ketik Hurufnya!' : 
-            currentLevel === 2 ? '📝 Dengarkan Kata Lalu Ketik Kosakata Tersebut!' : 
-            '💬 Dengarkan Kalimat Percakapan Lalu Ketik Kalimat Utuhnya!'}
-        </h3>
-        <p style="font-size: 0.85rem; color: var(--text-muted); margin: 0;">
-          Syarat lulus: Akurasi ketik harus <strong>100% tepat</strong> tanpa ada huruf yang salah ya!
-        </p>
-      </div>
-
-      <!-- Kontrol Pemutar Audio Kodi -->
-      <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-bottom: 22px;">
-        <button class="btn-primary" style="font-size: 0.92rem; padding: 10px 18px; display: flex; align-items: center; gap: 8px; background: linear-gradient(135deg, #0ea5e9, #0284c7);" onclick="playCurrentDictationAudio(false, this)">
-          🔊 Dengarkan Suara (Normal)
-        </button>
-        <button class="btn-secondary" style="font-size: 0.92rem; padding: 10px 18px; display: flex; align-items: center; gap: 8px;" onclick="playCurrentDictationAudio(true, this)">
-          🐢 Dengarkan Lebih Lambat (Slow)
-        </button>
-        ${currentLevel > 1 ? `
-          <button class="btn-secondary" style="font-size: 0.85rem; padding: 10px 14px; display: flex; align-items: center; gap: 6px;" onclick="spellOutTargetAudio(this)">
-            🔤 Bantuan Eja Huruf demi Huruf
-          </button>
-        ` : ''}
-      </div>
-
-      <!-- Real-time Character Tiles Stream -->
-      <div id="dictation-char-stream" class="dictation-char-stream"></div>
-
-      <!-- Input Field Mengetik -->
-      <div style="max-width: 650px; margin: 0 auto 14px;">
-        <input type="text" 
-               id="dictation-user-input" 
-               class="dictation-input-field" 
-               placeholder="👉 Ketik di sini sesuai suara yang kamu dengar..." 
-               autocomplete="off" 
-               autocorrect="off" 
-               autocapitalize="off" 
-               spellcheck="false" 
-               oninput="onDictationInputChange(event)">
-      </div>
-
-      <!-- Status Bar Akurasi Live -->
-      <div style="max-width: 650px; margin: 0 auto 18px; display: flex; justify-content: space-between; align-items: center; font-size: 0.82rem; color: var(--text-muted);">
-        <span id="dictation-match-count">Karakter cocok: 0 / ${currentItem.targetText.length}</span>
-        <span id="dictation-accuracy-pct" style="font-weight: 800; color: var(--accent-cyan);">Akurasi: 0%</span>
-      </div>
-
-      <!-- Tombol Peek Clue (Intip Petunjuk Bahasa Bayi) -->
-      <div style="text-align: center; margin-bottom: 16px;">
-        <button class="btn-secondary" style="font-size: 0.82rem; padding: 6px 14px;" onclick="toggleDictationHint()">
-          ${appState.dictationHintRevealed ? '🙈 Sembunyikan Petunjuk' : '💡 Intip Petunjuk / Arti Bahasa Bayi'}
-        </button>
-      </div>
-
-      <!-- Box Petunjuk Bahasa Bayi (Toggleable) -->
-      <div id="dictation-hint-box" style="display: ${appState.dictationHintRevealed ? 'block' : 'none'}; max-width: 650px; margin: 0 auto 20px; background: rgba(250, 204, 21, 0.1); border-left: 3px solid var(--accent-yellow); padding: 14px 18px; border-radius: 8px; font-size: 0.88rem; color: #fef08a;">
-        <strong>🍼 Petunjuk Bahasa Bayi Kodi:</strong>
-        <p style="margin: 6px 0 4px 0; color: #fef08a;">${currentItem.babyClue}</p>
-        <div style="font-size: 0.82rem; color: #cbd5e1; font-style: italic; margin-top: 4px;">
-          Arti Terjemahan: "${currentItem.meaning}"
-        </div>
-      </div>
-
-      <!-- Banner Sukses (Muncul saat 100% Tepat) -->
-      <div id="dictation-success-banner" style="display: none; max-width: 650px; margin: 0 auto;"></div>
-    </div>
-  `;
-
-  // Render initial character tiles
-  updateDictationTiles("", currentItem.targetText);
-
-  // Fokuskan kursor otomatis ke kolom input
-  setTimeout(() => {
-    const inputEl = document.getElementById("dictation-user-input");
-    if (inputEl) inputEl.focus();
-  }, 100);
-}
-
-// Window Controller Functions for Dictation Studio
-window.setDictationLevelFilter = function(lvl) {
-  sfx.playClick();
-  appState.currentDictationLevelFilter = lvl;
-  appState.currentDictationIndex = 0;
-  appState.dictationHintRevealed = false;
-  renderEvcDictationStudio();
-};
-
-window.setDictationIndex = function(idx) {
-  sfx.playClick();
-  appState.currentDictationIndex = idx;
-  appState.dictationHintRevealed = false;
-  renderEvcDictationStudio();
-};
-
-window.toggleDictationHint = function() {
-  sfx.playClick();
-  appState.dictationHintRevealed = !appState.dictationHintRevealed;
-  const hintBox = document.getElementById("dictation-hint-box");
-  if (hintBox) {
-    hintBox.style.display = appState.dictationHintRevealed ? "block" : "none";
-  }
-  const btn = event?.currentTarget;
-  if (btn) {
-    btn.innerText = appState.dictationHintRevealed ? "🙈 Sembunyikan Petunjuk" : "💡 Intip Petunjuk / Arti Bahasa Bayi";
-  }
-};
-
-window.playCurrentDictationAudio = function(isSlow, btn = null) {
-  sfx.playClick();
-  const currentLevel = appState.currentDictationLevelFilter || 1;
-  const filteredList = evcDictationChallenges.filter(c => c.level === currentLevel);
-  const currentItem = filteredList[appState.currentDictationIndex] || filteredList[0];
-  if (!currentItem) return;
-
-  const rate = isSlow ? 0.6 : (currentLevel === 1 ? 0.75 : 0.85);
-  speechEngine.speakText(currentItem.audioText, rate, btn, "en-US");
-};
-
-window.spellOutTargetAudio = function(btn = null) {
-  sfx.playClick();
-  const currentLevel = appState.currentDictationLevelFilter || 1;
-  const filteredList = evcDictationChallenges.filter(c => c.level === currentLevel);
-  const currentItem = filteredList[appState.currentDictationIndex] || filteredList[0];
-  if (!currentItem) return;
-
-  // Eja huruf per huruf dipisahkan koma agar TTS melafalkan satu per satu
-  const spelled = currentItem.targetText
-    .toUpperCase()
-    .split('')
-    .filter(c => /[A-Z]/.test(c))
-    .join(', ');
-
-  speechEngine.speakText(spelled, 0.65, btn, "en-US");
-};
-
-window.onDictationInputChange = function(e) {
-  const currentLevel = appState.currentDictationLevelFilter || 1;
-  const filteredList = evcDictationChallenges.filter(c => c.level === currentLevel);
-  const currentItem = filteredList[appState.currentDictationIndex] || filteredList[0];
-  if (!currentItem) return;
-
-  const inputVal = e.target.value;
-  updateDictationTiles(inputVal, currentItem.targetText, currentItem);
-};
-
-function updateDictationTiles(inputVal, targetStr, currentItem = null) {
-  const streamEl = document.getElementById("dictation-char-stream");
-  const matchCountEl = document.getElementById("dictation-match-count");
-  const accPctEl = document.getElementById("dictation-accuracy-pct");
-  const successBanner = document.getElementById("dictation-success-banner");
-  const inputEl = document.getElementById("dictation-user-input");
-  if (!streamEl) return;
-
-  let tilesHtml = "";
-  let matchedCount = 0;
-
-  for (let i = 0; i < targetStr.length; i++) {
-    const targetChar = targetStr[i];
-    const isTargetSpace = targetChar === ' ';
-
-    if (i < inputVal.length) {
-      const userChar = inputVal[i];
-      if (isTargetSpace) {
-        if (userChar === ' ') {
-          tilesHtml += `<span class="dictation-char-tile space matched">␣</span>`;
-          matchedCount++;
-        } else {
-          tilesHtml += `<span class="dictation-char-tile space error">${userChar}</span>`;
-        }
-      } else {
-        if (userChar.toLowerCase() === targetChar.toLowerCase()) {
-          tilesHtml += `<span class="dictation-char-tile matched">${targetChar}</span>`;
-          matchedCount++;
-        } else {
-          tilesHtml += `<span class="dictation-char-tile error">${userChar}</span>`;
-        }
-      }
-    } else {
-      if (isTargetSpace) {
-        tilesHtml += `<span class="dictation-char-tile space">␣</span>`;
-      } else {
-        tilesHtml += `<span class="dictation-char-tile">_</span>`;
-      }
-    }
-  }
-
-  streamEl.innerHTML = tilesHtml;
-
-  // Hitung persentase akurasi
-  const totalChars = targetStr.length;
-  let accuracyPct = Math.round((matchedCount / totalChars) * 100);
-  if (accuracyPct > 100) accuracyPct = 100;
-
-  if (matchCountEl) matchCountEl.innerText = `Karakter cocok: ${matchedCount} / ${totalChars}`;
-  if (accPctEl) {
-    accPctEl.innerText = `Akurasi: ${accuracyPct}%`;
-    accPctEl.style.color = accuracyPct === 100 ? "var(--accent-green)" : (accuracyPct > 50 ? "var(--accent-yellow)" : "var(--accent-cyan)");
-  }
-
-  // Evaluasi 100% tepat
-  const isExactMatch = inputVal.trim().toLowerCase() === targetStr.trim().toLowerCase();
-  const normalizedUser = inputVal.trim().toLowerCase().replace(/[.,!?;:'"]/g, '');
-  const normalizedTarget = targetStr.trim().toLowerCase().replace(/[.,!?;:'"]/g, '');
-  const isNormalizedMatch = normalizedUser === normalizedTarget && normalizedUser.length > 0;
-
-  const isComplete = isExactMatch || isNormalizedMatch;
-
-  if (isComplete && currentItem) {
-    if (successBanner && successBanner.style.display !== "block") {
-      sfx.playSuccess();
-      triggerConfetti();
-
-      // Tambahkan bintang jika belum diselesaikan di sesi ini
-      if (!appState.completedDictations) appState.completedDictations = {};
-      if (!appState.completedDictations[currentItem.id]) {
-        appState.completedDictations[currentItem.id] = true;
-        appState.stars += 1;
-        saveProgress();
-        updateHeaderStars();
-      }
-
-      if (inputEl) {
-        inputEl.style.borderColor = "var(--accent-green)";
-        inputEl.style.boxShadow = "0 0 20px rgba(74, 222, 128, 0.4)";
-      }
-
-      // Pastikan semua ubin berwarna hijau berkilau
-      let allMatchedTiles = "";
-      for (let i = 0; i < targetStr.length; i++) {
-        const c = targetStr[i];
-        if (c === ' ') {
-          allMatchedTiles += `<span class="dictation-char-tile space matched">␣</span>`;
-        } else {
-          allMatchedTiles += `<span class="dictation-char-tile matched">${c}</span>`;
-        }
-      }
-      streamEl.innerHTML = allMatchedTiles;
-      if (accPctEl) accPctEl.innerText = "Akurasi: 100% (Sempurna!)";
-
-      successBanner.style.display = "block";
-      successBanner.innerHTML = `
-        <div style="background: rgba(74, 222, 128, 0.15); border: 2px solid var(--accent-green); padding: 18px 20px; border-radius: 12px; margin-top: 16px; text-align: center; animation: fadeIn 0.3s ease;">
-          <div style="font-size: 2.2rem; margin-bottom: 6px;">🎉 ⭐ 💯</div>
-          <h3 style="color: #4ade80; margin: 0 0 6px 0; font-size: 1.25rem;">
-            LUAR BIASA! 100% AKURAT & BENAR! (+1 Bintang ⭐)
-          </h3>
-          <p style="color: #f1f5f9; font-size: 1.05rem; font-weight: 700; margin: 6px 0;">
-            "${currentItem.targetText}"
-          </p>
-          <div style="font-size: 0.88rem; color: #a7f3d0; margin-bottom: 14px; font-style: italic;">
-            Arti: ${currentItem.meaning}
-          </div>
-          <button class="btn-primary" style="font-size: 0.95rem; padding: 10px 24px; font-weight: 800; background: linear-gradient(135deg, #10b981, #059669); margin-bottom: 14px;" onclick="nextDictationChallenge()">
-            ➡️ Lanjut ke Soal Berikutnya
-          </button>
-          <div id="dictation-ai-feedback-box"></div>
-        </div>
-      `;
-
-      kodiAI.renderFeedback({
-        containerId: "dictation-ai-feedback-box",
-        isCorrect: true,
-        question: `Dikte Kalimat/Kata: "${currentItem.audioText}"`,
-        userAnswer: inputVal,
-        correctAnswer: currentItem.targetText,
-        explanation: `Ejaan dan penulisanmu 100% tepat! Arti bahasa Indonesia: "${currentItem.meaning}". ${currentItem.babyClue}`,
-        concept: `${currentItem.chapterRef} (${currentItem.levelName})`,
-        babyClue: currentItem.babyClue
-      });
-    }
-  } else {
-    if (successBanner) successBanner.style.display = "none";
-    if (inputEl) {
-      inputEl.style.borderColor = "var(--accent-cyan)";
-      inputEl.style.boxShadow = "0 0 15px rgba(56, 189, 248, 0.25)";
-    }
-  }
-}
-
-window.prevDictationChallenge = function() {
-  sfx.playClick();
-  const currentLevel = appState.currentDictationLevelFilter || 1;
-  const filteredList = evcDictationChallenges.filter(c => c.level === currentLevel);
-
-  if (appState.currentDictationIndex > 0) {
-    appState.currentDictationIndex -= 1;
-  } else if (filteredList.length > 0) {
-    appState.currentDictationIndex = filteredList.length - 1;
-  }
-
-  appState.dictationHintRevealed = false;
-  renderEvcDictationStudio();
-};
-
-window.nextDictationChallenge = function() {
-  sfx.playClick();
-  const currentLevel = appState.currentDictationLevelFilter || 1;
-  const filteredList = evcDictationChallenges.filter(c => c.level === currentLevel);
-
-  if (appState.currentDictationIndex + 1 < filteredList.length) {
-    appState.currentDictationIndex += 1;
-  } else {
-    if (currentLevel < 3) {
-      appState.currentDictationLevelFilter += 1;
-      appState.currentDictationIndex = 0;
-      setKodiSpeech(
-        `Selamat! Kamu telah menaklukkan semua soal di Tingkat ${currentLevel}! Sekarang mari naik level ke Tingkat ${currentLevel + 1}!`,
-        "Telingamu semakin peka dan ketikanmu semakin gesit!"
-      );
-    } else {
-      appState.currentDictationIndex = 0;
-      setKodiSpeech(
-        `🏆 WOW FANTASTIS! Kamu telah menuntaskan seluruh ${evcDictationChallenges.length} tantangan Dikte & Mengetik EVC ESL!`,
-        "Kamu siap berbicara, mendengar, dan menulis bahasa Inggris profesional dengan percaya diri!"
-      );
-    }
-  }
-
-  appState.dictationHintRevealed = false;
-  renderEvcDictationStudio();
-};
-
-// ================= DICTIONARY TAB LOGIC =================
-appState.dictCategoryFilter = appState.dictCategoryFilter || "all";
-appState.dictSearchQuery = appState.dictSearchQuery || "";
-appState.dictDisplayLimit = appState.dictDisplayLimit || 60;
-
-function renderDictionary(filter = null) {
-  const container = document.getElementById("dictionary-list");
-  if (!container) return;
-
-  if (typeof itDictionary === "undefined" || !itDictionary.length) {
-    container.innerHTML = `<div class="info-box">Kamus IT sedang dimuat...</div>`;
-    return;
-  }
-
-  if (filter !== null) {
-    appState.dictSearchQuery = filter;
-    appState.dictDisplayLimit = 60;
-  }
-
-  const q = (appState.dictSearchQuery || "").toLowerCase().trim();
-  const cat = appState.dictCategoryFilter || "all";
-
-  const categories = [
-    { key: "all", label: `Semua (${itDictionary.length})` },
-    { key: "Hardware & Arsitektur", label: "🖥️ Hardware" },
-    { key: "Jaringan & Internet", label: "🌐 Jaringan" },
-    { key: "Sistem Operasi & CLI", label: "💻 OS & CLI" },
-    { key: "Basis Data & SQL", label: "🗄️ Database" },
-    { key: "Pemrograman & Software", label: "⚡ Pemrograman" },
-    { key: "Web, Cloud & DevOps", label: "☁️ Cloud & Web" },
-    { key: "Keamanan Siber", label: "🛡️ Cyber Security" },
-    { key: "AI & Sains Data", label: "🤖 AI & Data" },
-    { key: "IT Support & Troubleshooting", label: "🔧 IT Support" },
-    { key: "Metodologi & Karir IT", label: "💼 Karir IT" }
-  ];
-
-  const filtered = itDictionary.filter(item => {
-    const matchCat = (cat === "all") || (item.category && item.category.toLowerCase().includes(cat.toLowerCase()));
-    if (!matchCat) return false;
-    if (!q) return true;
-    return (item.term && item.term.toLowerCase().includes(q)) ||
-           (item.babyAnalogy && item.babyAnalogy.toLowerCase().includes(q)) ||
-           (item.detail && item.detail.toLowerCase().includes(q)) ||
-           (item.category && item.category.toLowerCase().includes(q));
-  });
-
-  const displayList = filtered.slice(0, appState.dictDisplayLimit);
-
-  // Render category filter chips on top if container parent has header
-  let filterBar = document.getElementById("dict-category-filter-bar");
-  if (!filterBar) {
-    filterBar = document.createElement("div");
-    filterBar.id = "dict-category-filter-bar";
-    filterBar.style = "display: flex; gap: 8px; margin: 12px 0 16px; overflow-x: auto; padding-bottom: 6px;";
-    container.parentNode.insertBefore(filterBar, container);
-  }
-
-  filterBar.innerHTML = categories.map(c => `
-    <button class="choice-card-btn ${appState.dictCategoryFilter === c.key ? 'active-eng-mode' : ''}" 
-            style="padding: 6px 14px; font-size: 0.82rem; font-weight: 700; white-space: nowrap; ${appState.dictCategoryFilter === c.key ? 'border-color: var(--accent-cyan); background: rgba(6, 182, 212, 0.15);' : ''}" 
-            onclick="setDictCategory('${c.key}')">
-      ${c.label}
-    </button>
-  `).join('');
-
-  if (filtered.length === 0) {
-    container.innerHTML = `
-      <div style="grid-column: 1 / -1; text-align: center; padding: 40px; color: var(--text-muted);">
-        <p style="font-size: 1.1rem; margin-bottom: 8px;">🔍 Istilah "${appState.dictSearchQuery}" tidak ditemukan.</p>
-        <p style="font-size: 0.85rem;">Coba cari dengan kata kunci lain atau pilih kategori "Semua".</p>
-      </div>
-    `;
-    return;
-  }
-
-  container.innerHTML = displayList.map(item => `
-    <div class="dict-card">
-      <div class="dict-term">
-        <span>${item.icon || '📌'} ${item.term}</span>
-        <span class="dict-category-tag">${item.category}</span>
-      </div>
-      <div class="dict-baby-analogy">
-        🍼 <strong>${item.babyAnalogy}</strong>
-      </div>
-      <p class="dict-formal-desc">${item.detail}</p>
-    </div>
-  `).join('') + (filtered.length > appState.dictDisplayLimit ? `
-    <div style="grid-column: 1 / -1; text-align: center; margin: 20px 0;">
-      <button class="btn-primary" style="padding: 12px 28px; font-weight: 800; font-size: 0.92rem;" onclick="loadMoreDictionary()">
-        📖 Tampilkan Lebih Banyak (+60 Istilah) — [${displayList.length} dari ${filtered.length} Ditampilkan]
-      </button>
-    </div>
-  ` : `
-    <div style="grid-column: 1 / -1; text-align: center; margin: 16px 0; color: var(--text-muted); font-size: 0.82rem;">
-      ✨ Menampilkan seluruh ${filtered.length} istilah IT dari 1.000 kosakata Kamus Bayi!
-    </div>
-  `);
-}
-
-window.setDictCategory = function(catKey) {
-  sfx.playClick();
-  appState.dictCategoryFilter = catKey;
-  appState.dictDisplayLimit = 60;
-  renderDictionary();
-};
-
-window.loadMoreDictionary = function() {
-  sfx.playClick();
-  appState.dictDisplayLimit += 60;
-  renderDictionary();
-};
-
-function initDictionarySearch() {
-  const searchInput = document.getElementById("dict-search-input");
-  if (searchInput) {
-    searchInput.addEventListener("input", (e) => {
-      renderDictionary(e.target.value);
-    });
-  }
-}
-
-// ================= SANDBOX TERMINAL LOGIC =================
-function initSandboxTerminal() {
-  const input = document.getElementById("sandbox-cmd-input");
-  const body = document.getElementById("sandbox-term-body");
-  if (!input || !body) return;
-
-  input.onkeydown = function(e) {
-    if (e.key === "Enter") {
-      const val = input.value.trim();
-      if (!val) return;
-      sfx.playClick();
-      body.innerHTML += `<div class="term-line"><span class="term-prompt">C:\\Users\\Playground&gt;</span> ${val}</div>`;
-      input.value = "";
-      processSandboxCmd(val, body);
-      body.scrollTop = body.scrollHeight;
-    }
-  };
-}
-
-function processSandboxCmd(cmd, termEl) {
-  const lower = cmd.toLowerCase();
-
-  if (lower === 'cls' || lower === 'clear') {
-    termEl.innerHTML = `<div class="term-line info">Terminal dibersihkan.</div>`;
-  } else if (lower === 'help') {
-    termEl.innerHTML += `
-      <div class="term-line info">Daftar mantra yang bisa kamu coba:</div>
-      <div class="term-line">  ipconfig     - Lihat nomor IP & Gateway</div>
-      <div class="term-line">  ping [host]  - Cek sambungan jaringan (contoh: ping google.com)</div>
-      <div class="term-line">  systeminfo   - Menampilkan info prosesor & OS</div>
-      <div class="term-line">  mkdir [nama] - Buat map folder baru</div>
-      <div class="term-line">  whoami       - Siapa nama user kamu</div>
-      <div class="term-line">  cls          - Bersihkan layar</div>
-    `;
-  } else if (lower.startsWith('ping')) {
-    termEl.innerHTML += `
-      <div class="term-line">Pinging host with 32 bytes of data...</div>
-      <div class="term-line success">Reply from host: bytes=32 time=18ms TTL=117 (Koneksi lancar jaya!)</div>
-      <div class="term-line success">Reply from host: bytes=32 time=20ms TTL=117</div>
-    `;
-  } else if (lower === 'ipconfig') {
-    termEl.innerHTML += `
-      <div class="term-line">IPv4 Address. . . . . . . . . . . : 192.168.1.100</div>
-      <div class="term-line">Subnet Mask . . . . . . . . . . . : 255.255.255.0</div>
-      <div class="term-line">Default Gateway . . . . . . . . . : 192.168.1.1</div>
-    `;
-  } else if (lower === 'systeminfo') {
-    termEl.innerHTML += `
-      <div class="term-line">OS Name: Kodi Windows 11 Education Pro</div>
-      <div class="term-line">Processor: Quad-Core Turbo Kodi-Chip 3.8 GHz</div>
-      <div class="term-line">Total Physical Memory: 16.384 MB (16 GB)</div>
-    `;
-  } else if (lower === 'whoami') {
-    termEl.innerHTML += `<div class="term-line info">junior-it-support\\${appState.playerName.toLowerCase().replace(/\\s+/g, '')}</div>`;
-  } else if (lower.startsWith('mkdir')) {
-    const folder = cmd.split(' ')[1] || 'FolderBaru';
-    termEl.innerHTML += `<div class="term-line success">✓ Folder '${folder}' berhasil dibuat di C:\\Users\\Playground\\Documents</div>`;
-  } else {
-    termEl.innerHTML += `
-      <div class="term-line error">'${cmd}' tidak dikenali. Ketik 'help' untuk melihat daftar perintah.</div>
-    `;
-  }
-}
-
-// ================= CERTIFICATE & CELEBRATION =================
-function renderCertificateView() {
-  const nameInput = document.getElementById("cert-student-name");
-  const starCount = document.getElementById("cert-stars-total");
-  const certDate = document.getElementById("cert-issue-date");
-
-  if (nameInput) {
-    nameInput.value = appState.playerName;
-    nameInput.oninput = (e) => {
-      appState.playerName = e.target.value;
-      saveProgress();
-    };
-  }
-
-  if (starCount) starCount.textContent = `${appState.stars} Bintang`;
-  if (certDate) {
-    const today = new Date();
-    certDate.textContent = today.toLocaleDateString("id-ID", {
-      year: 'numeric', month: 'long', day: 'numeric'
-    });
-  }
-
-  setKodiSpeech(
-    "Ini dia Sertifikat Kelulusan Resmi Akademi IT Support & Koding Pemula! Tulis namamu dan cetak buat kenang-kenangan!",
-    "Bisa kamu download atau cetak langsung lewat tombol di bawah!"
-  );
-}
-
-function printCertificate() {
-  sfx.playClick();
-  window.print();
-}
-
-// ================= PWA MOBILE INSTALLATION & AUTO-UPDATE =================
-function initPwaInstall() {
-  // Register Service Worker with Auto-Update Detection
-  if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('./sw.js')
-      .then((reg) => {
-        console.log('Kodi PWA Service Worker Registered! Scope:', reg.scope);
-        
-        // Cek pembaruan saat registrasi
-        reg.addEventListener('updatefound', () => {
-          const newWorker = reg.installing;
-          if (newWorker) {
-            newWorker.addEventListener('statechange', () => {
-              if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
-                // Ada versi baru siap diaktifkan!
-                console.log('Versi baru ditemukan, menampilkan banner pembaruan!');
-                const banner = document.getElementById('app-update-banner');
-                if (banner) {
-                  banner.style.display = 'block';
-                }
+        <!-- Pilihan Opsi A, B, C, D -->
+        <div style="display: flex; flex-direction: column; gap: 10px;">
+          ${(currentItem.options || []).map((opt, idx) => {
+            let btnStyle = "padding: 14px 18px; text-align: left; font-size: 0.92rem; border-radius: 8px; justify-content: flex-start; line-height: 1.45;";
+            let icon = String.fromCharCode(65 + idx);
+            if (selectedAnswer === opt) {
+              if (opt === currentItem.correctAnswer) {
+                btnStyle += " border-color: var(--accent-green); background: rgba(16, 185, 129, 0.25); color: #fff; font-weight: 700;";
+                icon = "✓";
+              } else {
+                btnStyle += " border-color: var(--accent-pink); background: rgba(244, 63, 94, 0.25); color: #fca5a5;";
+                icon = "✕";
               }
-            });
-          }
-        });
-      })
-      .catch((err) => console.warn('SW registration failed:', err));
+            }
+            return `
+              <button class="choice-card-btn" style="${btnStyle}" onclick="checkToeflIbtAnswer(${idx})">
+                <span style="font-weight: 800; min-width: 24px; display: inline-block;">${icon}.</span>
+                <span>${opt}</span>
+              </button>
+            `;
+          }).join('')}
+        </div>
+      </div>
 
-    // Reload otomatis saat Service Worker versi baru mengambil alih
-    let refreshing = false;
-    navigator.serviceWorker.addEventListener('controllerchange', () => {
-      if (!refreshing) {
-        refreshing = true;
-        console.log('Controller berubah ke Service Worker baru! Memuat ulang...');
-        window.location.reload();
-      }
-    });
-  }
-
-  // Intercept beforeinstallprompt for Android Chrome
-  window.addEventListener('beforeinstallprompt', (e) => {
-    e.preventDefault();
-    appState.deferredInstallPrompt = e;
-    const installBtn = document.getElementById('btn-pwa-install');
-    if (installBtn) {
-      installBtn.style.display = 'inline-flex';
-    }
-  });
+      <!-- Feedback Box -->
+      <div id="ibt-feedback-box">
+        ${selectedAnswer ? (selectedAnswer === currentItem.correctAnswer ? `
+          <div class="alert-box success">
+            <strong>🎉 Jawaban Kamu 100% Tepat! (+1 Poin TOEFL iBT)</strong><br>
+            <span>${currentItem.babyExplanation || 'Analisis teks dan penalaran kamu sangat akurat!'}</span>
+          </div>
+        ` : `
+          <div class="alert-box warning">
+            <strong>⚠️ Belum Tepat!</strong><br>
+            <span>Pilihan kamu belum sesuai dengan bukti eksplisit di bacaan. Coba baca ulang paragraf acuan dan pilih opsi lain!</span>
+          </div>
+        `) : ''}
+      </div>
+    </div>
+  `;
 }
 
-// Fungsi Pamungkas Pembersih Cache di HP Pengguna
-window.forceAppUpdate = async function() {
-  sfx.playClick();
-  const updateBtn = document.getElementById('btn-force-update');
-  if (updateBtn) updateBtn.innerHTML = "⏳ Membersihkan...";
-
-  try {
-    // 1. Hapus semua Cache Storage di HP
-    if ('caches' in window) {
-      const cacheNames = await caches.keys();
-      await Promise.all(cacheNames.map(name => caches.delete(name)));
-      console.log('Semua Cache Storage berhasil dibersihkan!');
-    }
-
-    // 2. Unregister semua Service Worker lama
-    if ('serviceWorker' in navigator) {
-      const registrations = await navigator.serviceWorker.getRegistrations();
-      for (let reg of registrations) {
-        await reg.unregister();
-        console.log('Service Worker lama berhasil dicopot!');
-      }
-    }
-
-    localStorage.setItem('kodi_app_cache_version', 'v13');
-  } catch (err) {
-    console.warn('Gagal membersihkan cache:', err);
-  }
-
-  // 3. Muat ulang halaman dengan parameter anti-cache
-  const cleanUrl = window.location.origin + window.location.pathname + '?t=' + Date.now();
-  window.location.replace(cleanUrl);
+window.playToeflAudio = function(idx, btn) {
+  if (typeof toeflIbtBuildingSkills === "undefined") return;
+  const item = toeflIbtBuildingSkills[idx];
+  if (!item) return;
+  const text = item.targetSentenceForAudio || item.passageSnippet || item.questionPrompt || "";
+  speechEngine.speakText(text, 0.8, btn, 'en-US');
 };
 
-function triggerPwaInstall() {
+window.filterIbtCategory = function(cat) {
   sfx.playClick();
-  if (appState.deferredInstallPrompt) {
-    appState.deferredInstallPrompt.prompt();
-    appState.deferredInstallPrompt.userChoice.then((choice) => {
-      if (choice.outcome === 'accepted') {
-        alert("Horee! Aplikasi berhasil dipasang di layar utama HP kamu! 🎉");
-      }
-      appState.deferredInstallPrompt = null;
-    });
+  appState.currentIbtFilter = cat;
+  renderToeflIbtBuildingSkills();
+};
+
+window.navIbtChallenge = function(delta) {
+  sfx.playClick();
+  const filteredList = (appState.currentIbtFilter === "all")
+    ? toeflIbtBuildingSkills.map((item, idx) => ({ item, originalIndex: idx }))
+    : toeflIbtBuildingSkills
+        .map((item, idx) => ({ item, originalIndex: idx }))
+        .filter(x => x.item.skillCategory === appState.currentIbtFilter);
+
+  let currentPos = filteredList.findIndex(x => x.originalIndex === appState.currentIbtIndex);
+  let newPos = currentPos + delta;
+  if (newPos >= 0 && newPos < filteredList.length) {
+    appState.currentIbtIndex = filteredList[newPos].originalIndex;
+    renderToeflIbtBuildingSkills();
+  }
+};
+
+window.setIbtIndex = function(idx) {
+  sfx.playClick();
+  appState.currentIbtIndex = idx;
+  renderToeflIbtBuildingSkills();
+};
+
+window.checkToeflIbtAnswer = function(idx) {
+  const currentItem = toeflIbtBuildingSkills[appState.currentIbtIndex];
+  if (!currentItem) return;
+
+  const chosenOpt = currentItem.options[idx];
+  const isCorrect = (chosenOpt === currentItem.correctAnswer);
+
+  appState.ibtUserAnswers = appState.ibtUserAnswers || {};
+  appState.ibtUserAnswers[currentItem.id] = chosenOpt;
+
+  if (isCorrect) {
+    sfx.playSuccess();
+    if (!appState.ibtCompleted.includes(currentItem.id)) {
+      appState.ibtCompleted.push(currentItem.id);
+      appState.stars = (appState.stars || 0) + 1;
+      saveProgress();
+      const starEl = document.getElementById("header-stars");
+      if (starEl) starEl.textContent = `${appState.stars} Bintang`;
+    }
+    setKodiSpeech(
+      "Excellent! Analisis TOEFL iBT kamu tepat sasaran!",
+      currentItem.babyExplanation || "Penalaran akademik kamu sudah siap untuk ujian beasiswa dunia!"
+    );
   } else {
-    // Petunjuk manual di HP jika belum otomatis
-    alert(
-      "📱 CARA PASANG DI HP:\n\n" +
-      "1. Buka link web ini di Google Chrome di HP-mu.\n" +
-      "2. Tekan titik tiga (⋮) di pojok kanan atas Chrome.\n" +
-      "3. Pilih 'Tambahkan ke Layar Utama' (Add to Home screen) atau 'Install Aplikasi'.\n\n" +
-      "Aplikasi akan langsung terpasang di HP seperti aplikasi resmi!"
+    sfx.playWrong();
+    setKodiSpeech(
+      "Ups, opsi itu belum tepat!",
+      "Hati-hati dengan jebakan distraktor! Cermati kembali bacaan ilmiah di atas ya!"
     );
   }
-}
 
-// ================= CONFETTI CANNON =================
-function triggerConfetti() {
-  const canvas = document.getElementById("confetti-canvas");
-  if (!canvas) return;
-
-  const ctx = canvas.getContext("2d");
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
-
-  const particles = [];
-  const colors = ["#38bdf8", "#4ade80", "#facc15", "#f472b6", "#a855f7", "#fb923c"];
-
-  for (let i = 0; i < 120; i++) {
-    particles.push({
-      x: canvas.width / 2,
-      y: canvas.height / 2,
-      vx: (Math.random() - 0.5) * 16,
-      vy: (Math.random() - 0.8) * 16,
-      size: Math.random() * 8 + 4,
-      color: colors[Math.floor(Math.random() * colors.length)],
-      rotation: Math.random() * 360,
-      rotationSpeed: (Math.random() - 0.5) * 10
-    });
-  }
-
-  let animationFrame;
-  function update() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    let alive = false;
-
-    particles.forEach(p => {
-      p.x += p.vx;
-      p.y += p.vy;
-      p.vy += 0.3;
-      p.rotation += p.rotationSpeed;
-
-      if (p.y < canvas.height) {
-        alive = true;
-        ctx.save();
-        ctx.translate(p.x, p.y);
-        ctx.rotate((p.rotation * Math.PI) / 180);
-        ctx.fillStyle = p.color;
-        ctx.fillRect(-p.size / 2, -p.size / 2, p.size, p.size);
-        ctx.restore();
-      }
-    });
-
-    if (alive) {
-      animationFrame = requestAnimationFrame(update);
-    } else {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      cancelAnimationFrame(animationFrame);
-    }
-  }
-
-  update();
-}
-
-// ================= CONTROLLER AKSEN BAHASA INGGRIS =================
-window.toggleAccent = function() {
-  sfx.playClick();
-  const newAccent = speechEngine.toggleEnglishAccent();
-  const label = newAccent === 'en-GB' ? 'British (UK) 🇬🇧' : 'American (US) 🇺🇸';
-  setKodiSpeech(
-    `Aksen bahasa Inggris berhasil diubah ke ${label}! Sekarang semua audio listening dan soal akan dibacakan dengan logat ini.`,
-    "Kamu bisa ganti kapan saja sesuai tes impianmu!"
-  );
-  const engTab = document.getElementById("tab-english-trainer");
-  if (engTab && engTab.classList.contains("active")) {
-    renderEnglishTrainer();
-  }
+  renderToeflIbtBuildingSkills();
 };
 
-window.setAccentPreference = function(accent) {
-  sfx.playClick();
-  speechEngine.setEnglishAccent(accent);
-  const label = accent === 'en-GB' ? 'British (UK) 🇬🇧' : 'American (US) 🇺🇸';
-  setKodiSpeech(
-    `Aksen bahasa Inggris diubah ke ${label}!`,
-    "Semua audio reading & listening otomatis memakai logat ini."
-  );
-  renderEnglishTrainer();
-};
-
-// ================= LIGHT / DARK THEME MANAGEMENT =================
-function initTheme() {
-  const saved = localStorage.getItem("kodi_theme") || "dark";
-  applyTheme(saved);
-}
-
-function applyTheme(theme) {
-  const btn = document.getElementById("theme-toggle-btn");
-  if (theme === "light") {
-    document.body.classList.add("light-theme");
-    if (btn) btn.innerHTML = "🌙 Gelap";
-  } else {
-    document.body.classList.remove("light-theme");
-    if (btn) btn.innerHTML = "☀️ Terang";
-  }
-}
-
-window.toggleTheme = function() {
-  if (window.sfx && typeof sfx.playClick === "function") sfx.playClick();
-  const isLight = document.body.classList.contains("light-theme");
-  const next = isLight ? "dark" : "light";
-  localStorage.setItem("kodi_theme", next);
-  applyTheme(next);
-  setKodiSpeech(
-    next === "light" 
-      ? "Mode Terang aktif! Tampilan putih bersih dan nyaman dibaca!" 
-      : "Mode Gelap aktif! Tampilan ramah mata buat sesi koding!",
-    "Kamu bisa ganti mode kapan saja lewat tombol di pojok kanan atas."
-  );
-};
-
-// ================= EXCEL FORMULA TRAINER CONTROLLER =================
 function renderExcelTrainer() {
   const container = document.getElementById("excel-content-area");
   if (!container) return;
@@ -4148,24 +3140,10 @@ function renderExcelTrainer() {
         <button class="btn-primary" style="background: #107c41; border: none; padding: 8px 16px;" onclick="checkExcelCurrentChallenge()">
           ▶️ Periksa Rumus
         </button>
-        <button class="btn-secondary" style="padding: 8px 12px; font-size: 0.82rem;" onclick="showExcelAnswer()" title="Lihat Bantuan Kunci Jawaban">
-          💡 Kunci Jawaban
-        </button>
+
         <button class="btn-secondary" style="padding: 8px 12px; font-size: 0.82rem;" onclick="resetExcelFormula()" title="Kembalikan Rumus Awal">
           🔄 Reset
         </button>
-      </div>
-
-      <!-- QUICK CHIP BUTTONS FOR MOBILE TYPING -->
-      <div class="excel-chips-bar">
-        <span style="font-size: 0.8rem; font-weight: 700; color: var(--text-muted); margin-right: 4px;">
-          💡 Ketik Cepat:
-        </span>
-        ${(chal.quickChips || ["=", "(", ")", ";", ",", '"']).map(chip => `
-          <button class="excel-chip-btn" onclick="insertExcelChip('${chip.replace(/'/g, "\'")}')">
-            ${chip}
-          </button>
-        `).join('')}
       </div>
 
       <!-- FEEDBACK / ALERT CONTAINER -->
@@ -4489,19 +3467,16 @@ function renderItTechTrainer() {
           let btnStyle = "background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(255,255,255,0.15); color: #e2e8f0;";
           let icon = String.fromCharCode(65 + optIdx);
           
-          const wrongAttempts = (appState.itTechAttempts && appState.itTechAttempts[chal.id]) ? appState.itTechAttempts[chal.id] : [];
-          const isCorrectChosen = selectedOption === chal.correctIndex;
-
-          if (isCorrectChosen) {
-            // Jawaban benar dipilih: sorot hijau
-            if (optIdx === chal.correctIndex) {
-              btnStyle = "background: rgba(34, 197, 94, 0.2); border: 1.5px solid var(--accent-green); color: #fff; font-weight: 700;";
-              icon = "✓";
+          if (selectedOption !== undefined) {
+            if (selectedOption === optIdx) {
+              if (optIdx === chal.correctIndex) {
+                btnStyle = "background: rgba(34, 197, 94, 0.25); border: 1.5px solid var(--accent-green); color: #fff; font-weight: 700;";
+                icon = "✓";
+              } else {
+                btnStyle = "background: rgba(239, 68, 68, 0.25); border: 1.5px solid var(--accent-pink); color: #fca5a5; font-weight: 700;";
+                icon = "✕";
+              }
             }
-          } else if (wrongAttempts.includes(optIdx)) {
-            // Pilihan salah yang pernah dicoba: tandai silang merah tanpa membocorkan yang benar
-            btnStyle = "background: rgba(239, 68, 68, 0.2); border: 1.5px solid var(--accent-pink); color: #fca5a5;";
-            icon = "✕";
           }
 
           return `
@@ -4558,32 +3533,39 @@ window.selectItTechOption = function(optionIdx) {
   const chal = itTechChallenges[appState.currentItTechIndex];
   if (!chal) return;
 
-  appState.itTechAttempts = appState.itTechAttempts || {};
-  appState.itTechAttempts[chal.id] = appState.itTechAttempts[chal.id] || [];
+  appState.itTechAnswers = appState.itTechAnswers || {};
+  appState.itTechAnswers[chal.id] = optionIdx;
 
   if (optionIdx === chal.correctIndex) {
-    appState.itTechAnswers = appState.itTechAnswers || {};
-    appState.itTechAnswers[chal.id] = optionIdx;
     sfx.playSuccess();
     if (!appState.itTechCompleted.includes(chal.id)) {
       appState.itTechCompleted.push(chal.id);
+      appState.stars = (appState.stars || 0) + 1;
       saveProgress();
+      const starEl = document.getElementById("header-stars");
+      if (starEl) starEl.textContent = `${appState.stars} Bintang`;
     }
     setKodiSpeech(
       `Horeee! Jawaban kamu untuk ${chal.title} tepat 100%!`,
       "Pemahaman teknis komputermu semakin tajam dan setara standar sertifikasi dunia!"
     );
   } else {
-    if (!appState.itTechAttempts[chal.id].includes(optionIdx)) {
-      appState.itTechAttempts[chal.id].push(optionIdx);
-    }
     sfx.playWrong();
     setKodiSpeech(
-      "Ups, pilihanmu belum tepat nih!",
-      "Coba cermati lagi skenario kasus di atas dan klik pilihan lainnya ya!"
+      `Pilihan ${String.fromCharCode(65 + optionIdx)} belum tepat nih!`,
+      "Coba cermati lagi skenario kasus di atas dan klik pilihan lainnya ya! Kamu bebas mencoba opsi lain."
     );
   }
 
+  renderItTechTrainer();
+};
+
+window.resetItTechOption = function() {
+  sfx.playClick();
+  const chal = itTechChallenges[appState.currentItTechIndex];
+  if (chal && appState.itTechAnswers) {
+    delete appState.itTechAnswers[chal.id];
+  }
   renderItTechTrainer();
 };
 
@@ -4695,3 +3677,410 @@ window.addEventListener("DOMContentLoaded", () => {
     "Pilih tab di atas untuk mulai berlatih!"
   );
 });
+
+// =============================================================================
+// STUDIO KODING MANUAL (100 TANTANGAN INTERAKTIF ESSAI)
+// HTML/CSS (20), JavaScript (20), Python (20), Java (20), C# (20)
+// =============================================================================
+function renderCodeTrainer() {
+  const container = document.getElementById("code-trainer-content-area") || document.getElementById("code-content-area");
+  if (!container) return;
+
+  if (typeof codeChallenges === "undefined" || !codeChallenges.length) {
+    container.innerHTML = `<div class="info-box">Data tantangan koding sedang disiapkan...</div>`;
+    return;
+  }
+
+  appState.codeLanguageFilter = appState.codeLanguageFilter || "all";
+  appState.currentCodeIndex = appState.currentCodeIndex || 0;
+  appState.codeCompleted = appState.codeCompleted || [];
+  appState.codeUserDrafts = appState.codeUserDrafts || {};
+
+  const categories = [
+    { key: "all", label: `📂 Semua Bahasa (100 Soal)` },
+    { key: "HTML/CSS", label: "🌐 1. HTML5 & CSS3 (20)" },
+    { key: "JavaScript", label: "⚡ 2. JavaScript ES6+ (20)" },
+    { key: "Python", label: "🐍 3. Python Data & Algo (20)" },
+    { key: "Java", label: "☕ 4. Java OOP & Structures (20)" },
+    { key: "C#", label: "🔷 5. C# .NET Modern (20)" }
+  ];
+
+  const filteredList = (appState.codeLanguageFilter === "all")
+    ? codeChallenges.map((item, idx) => ({ item, originalIndex: idx }))
+    : codeChallenges
+        .map((item, idx) => ({ item, originalIndex: idx }))
+        .filter(x => x.item.language === appState.codeLanguageFilter);
+
+  if (appState.currentCodeIndex < 0 || appState.currentCodeIndex >= codeChallenges.length) {
+    appState.currentCodeIndex = 0;
+  }
+
+  let currentPos = filteredList.findIndex(x => x.originalIndex === appState.currentCodeIndex);
+  if (currentPos === -1 && filteredList.length > 0) {
+    appState.currentCodeIndex = filteredList[0].originalIndex;
+    currentPos = 0;
+  }
+
+  const chal = codeChallenges[appState.currentCodeIndex] || codeChallenges[0];
+  const isDone = appState.codeCompleted.includes(chal.id);
+  const currentCode = (appState.codeUserDrafts[chal.id] !== undefined)
+    ? appState.codeUserDrafts[chal.id]
+    : chal.starterCode;
+
+  const completedCount = appState.codeCompleted.length;
+  const progressPercent = Math.round((completedCount / codeChallenges.length) * 100);
+
+  container.innerHTML = `
+    <!-- Header Card -->
+    <div style="background: linear-gradient(135deg, rgba(30, 41, 59, 0.95), rgba(15, 23, 42, 0.98)); border: 1px solid var(--border-glow); border-radius: var(--radius-lg); padding: 22px; margin-bottom: 20px; box-shadow: var(--shadow-card);">
+      <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 14px;">
+        <div style="flex: 1; min-width: 260px;">
+          <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 6px;">
+            <span style="font-size: 1.8rem;">💻</span>
+            <div>
+              <h3 style="margin: 0; color: #fff; font-size: 1.3rem;">Studio Koding Manual: Praktik Menulis Kode</h3>
+              <p style="margin: 2px 0 0; font-size: 0.85rem; color: var(--accent-cyan);">
+                100 Tantangan Essai: HTML/CSS (20), JavaScript (20), Python (20), Java (20), & C# (20) dengan Uji Eksekusi Otomatis
+              </p>
+            </div>
+          </div>
+        </div>
+        <div style="text-align: right; min-width: 170px;">
+          <div style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 4px;">Pencapaian Koding:</div>
+          <div style="font-size: 1.25rem; font-weight: 800; color: var(--accent-green);">
+            ${completedCount} / ${codeChallenges.length} Selesai (${progressPercent}%)
+          </div>
+          <div style="height: 6px; width: 100%; background: rgba(255,255,255,0.1); border-radius: 3px; margin-top: 6px; overflow: hidden;">
+            <div style="height: 100%; width: ${progressPercent}%; background: linear-gradient(90deg, var(--accent-cyan), var(--accent-green));"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Kategori Filter Tabs -->
+      <div style="display: flex; gap: 8px; margin-top: 18px; overflow-x: auto; padding-bottom: 6px;">
+        ${categories.map(c => `
+          <button class="choice-card-btn ${appState.codeLanguageFilter === c.key ? 'active-eng-mode' : ''}" 
+                  style="flex: 1; min-width: 150px; padding: 10px 14px; font-size: 0.82rem; font-weight: 700; text-align: center; justify-content: center; ${appState.codeLanguageFilter === c.key ? 'border-color: var(--accent-cyan); background: rgba(6, 182, 212, 0.15);' : ''}" 
+                  onclick="setCodeLanguageFilter('${c.key}')">
+            ${c.label}
+          </button>
+        `).join('')}
+      </div>
+    </div>
+
+    <!-- Navigation Bar -->
+    <div class="challenge-nav-bar">
+      <div class="challenge-nav-controls">
+        <label style="font-size: 0.8rem; font-weight: 700; color: var(--accent-cyan);">Navigasi Tantangan:</label>
+      </div>
+
+      <div class="challenge-nav-controls">
+        <button class="btn-secondary" style="padding: 6px 12px; font-size: 0.82rem;" onclick="navCodeChallenge(-1)" ${currentPos <= 0 ? 'disabled' : ''}>
+          ⬅️ Prev
+        </button>
+        <select class="challenge-page-select" onchange="setCodeChallengeIndex(Number(this.value))">
+          ${filteredList.map((x) => `
+            <option value="${x.originalIndex}" ${x.originalIndex === appState.currentCodeIndex ? 'selected' : ''}>
+              #${x.originalIndex + 1}: [${x.item.language}] ${x.item.title} ${appState.codeCompleted.includes(x.item.id) ? '✅' : ''}
+            </option>
+          `).join('')}
+        </select>
+        <button class="btn-secondary" style="padding: 6px 12px; font-size: 0.82rem;" onclick="navCodeChallenge(1)" ${currentPos >= filteredList.length - 1 ? 'disabled' : ''}>
+          Next ➡️
+        </button>
+      </div>
+    </div>
+
+    <!-- Main Challenge Card -->
+    <div style="background: var(--bg-card); border-radius: var(--radius-lg); border: 1px solid var(--border-glow); padding: 24px; margin-bottom: 24px; box-shadow: var(--shadow-card);">
+      
+      <!-- Meta Information Row -->
+      <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; margin-bottom: 12px;">
+        <span style="font-size: 0.8rem; color: var(--accent-cyan); font-weight: 800; text-transform: uppercase;">
+          ${chal.category} • Soal ${appState.currentCodeIndex + 1} dari ${codeChallenges.length}
+        </span>
+        <span style="font-size: 0.85rem; font-weight: 700; ${isDone ? 'color: var(--accent-green);' : 'color: var(--text-muted);'}">
+          ${isDone ? '✅ Selesai (+1 Bintang)' : '⏳ Sedang Dikerjakan'}
+        </span>
+      </div>
+
+      <!-- Title -->
+      <h3 style="color: #fff; margin: 0 0 12px; font-size: 1.25rem;">
+        ${chal.title}
+      </h3>
+
+      <!-- WORKED EXAMPLE CARD (KASUS SERUPA A & SINTAKS CONTOH DULU) -->
+      ${chal.workedExample ? `
+        <div class="worked-example-card" style="margin-bottom: 20px;">
+          <div class="worked-example-header">
+            <span class="we-badge">💡 CONTOH SOAL & JAWABAN BENAR DULU (KASUS A)</span>
+            <span class="we-sub">Pelajari pola penulisan kode kasus serupa ini sebelum menulis kodemu sendiri:</span>
+          </div>
+          <div class="we-body">
+            <div class="we-row">
+              <span class="we-label">📝 Contoh Kasus Serupa:</span>
+              <span class="we-text">${chal.workedExample.kasusSerupa}</span>
+            </div>
+            <div class="we-row" style="flex-direction: column; align-items: flex-start; gap: 6px;">
+              <span class="we-label">✅ Contoh Kode yang 100% Benar:</span>
+              <pre style="background: #060911; border: 1px dashed rgba(16, 185, 129, 0.4); border-radius: 6px; padding: 10px 14px; font-family: monospace; font-size: 0.88rem; color: #34d399; margin: 0; width: 100%; overflow-x: auto; white-space: pre-wrap;">${escapeCodeHtml(chal.workedExample.jawabanBenarContoh)}</pre>
+            </div>
+            <div class="we-row">
+              <span class="we-label">🍼 Analogi & Nalar Bayi Kodi:</span>
+              <span class="we-text">${chal.workedExample.nalarBayi}</span>
+            </div>
+          </div>
+          <div class="we-divider">🎯 SEKARANG TULIS KODE TANTANGAN (KASUS B) DI BAWAH INI:</div>
+        </div>
+      ` : ''}
+
+      <!-- Skenario & Instruksi Tugas B -->
+      <div style="background: rgba(15, 23, 42, 0.85); border-left: 4px solid var(--accent-cyan); padding: 14px 18px; border-radius: 6px; margin-bottom: 18px; font-size: 0.95rem; line-height: 1.6; color: #e2e8f0;">
+        <strong>🎯 Skenario Tugas Koding:</strong><br>
+        ${chal.description}
+      </div>
+
+      <!-- Bilah Shortcut Cepat Ngetik Simbol (Bantu Pengguna HP/Keyboard) -->
+      <div style="margin-bottom: 10px;">
+        <div style="font-size: 0.78rem; font-weight: 700; color: var(--text-muted); margin-bottom: 6px; display: flex; align-items: center; gap: 6px;">
+          <span>⚡ Shortcut Ketik Cepat:</span>
+          <span style="font-weight: normal; font-size: 0.72rem;">(Klik untuk menyisipkan simbol langsung ke kursor)</span>
+        </div>
+        <div style="display: flex; gap: 6px; flex-wrap: wrap;">
+          ${(chal.quickShortcuts || ["{", "}", "(", ")", "[", "]", ";", '"', "'", "="]).map(sc => `
+            <button class="btn-secondary" 
+                    style="padding: 4px 10px; font-size: 0.82rem; font-family: monospace; font-weight: 700; background: rgba(15, 23, 42, 0.9); border: 1px solid rgba(255,255,255,0.18);" 
+                    onclick="insertCodeShortcut('${escapeJsAttr(sc)}')">
+              ${escapeCodeHtml(sc)}
+            </button>
+          `).join('')}
+        </div>
+      </div>
+
+      <!-- Live Code Editor (Textarea Monospace IDE Style) -->
+      <div style="position: relative; margin-bottom: 16px;">
+        <div style="display: flex; justify-content: space-between; align-items: center; background: #0b1120; border: 1px solid rgba(255,255,255,0.1); border-bottom: none; border-radius: 8px 8px 0 0; padding: 8px 14px; font-size: 0.78rem; color: #94a3b8;">
+          <span style="font-family: monospace; font-weight: 700; color: var(--accent-cyan);">Editor: ${chal.language}</span>
+          <span>Tab / Spasi Otomatis</span>
+        </div>
+        <textarea id="code-studio-editor"
+                  style="width: 100%; min-height: 190px; background: #060911; color: #f8fafc; font-family: 'Consolas', 'Fira Code', 'Monaco', monospace; font-size: 0.92rem; line-height: 1.5; padding: 14px; border: 1px solid rgba(255,255,255,0.15); border-radius: 0 0 8px 8px; resize: vertical; box-sizing: border-box; outline: none;"
+                  placeholder="Tulis kode solusimu di sini..."
+                  spellcheck="false"
+                  oninput="handleCodeInput('${chal.id}', this.value)">${escapeCodeHtml(currentCode)}</textarea>
+      </div>
+
+      <!-- Tombol Aksi Eksekusi & Reset -->
+      <div style="display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 18px;">
+        <button class="btn-primary" style="padding: 10px 22px; font-weight: 800; font-size: 0.95rem; background: var(--accent-cyan); color: #0b1120; border: none;" onclick="runCodeChallengeTest()">
+          ▶️ Uji & Jalankan Kode
+        </button>
+        <button class="btn-secondary" style="padding: 10px 18px; font-size: 0.88rem;" onclick="resetCodeChallengeToStarter()">
+          🔄 Reset Kode Awal
+        </button>
+      </div>
+
+      <!-- Output Console & Test Results Box -->
+      <div id="code-test-console" style="display: none;"></div>
+
+      <!-- Penjelasan Konsep Setelah Sukses -->
+      <div id="code-concept-explanation" style="${isDone ? 'display: block;' : 'display: none;'} margin-top: 14px;">
+        <div class="alert-box info" style="background: rgba(15, 23, 42, 0.9); border-left: 4px solid var(--accent-cyan);">
+          <strong style="color: var(--accent-cyan);">📚 Rangkuman Pembelajaran:</strong><br>
+          <p style="margin: 6px 0 0; font-size: 0.88rem; line-height: 1.5; color: #cbd5e1;">${chal.explanation}</p>
+        </div>
+      </div>
+
+    </div>
+  `;
+}
+
+function escapeCodeHtml(str) {
+  if (!str) return "";
+  return String(str)
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;");
+}
+
+function escapeJsAttr(str) {
+  if (!str) return "";
+  return String(str).replace(/'/g, "\\'").replace(/"/g, '&quot;');
+}
+
+window.setCodeLanguageFilter = function(lang) {
+  sfx.playClick();
+  appState.codeLanguageFilter = lang;
+  if (lang !== "all") {
+    const firstIdx = codeChallenges.findIndex(c => c.language === lang);
+    if (firstIdx !== -1) {
+      appState.currentCodeIndex = firstIdx;
+    }
+  }
+  renderCodeTrainer();
+};
+
+window.navCodeChallenge = function(delta) {
+  sfx.playClick();
+  const filteredList = (appState.codeLanguageFilter === "all")
+    ? codeChallenges.map((item, idx) => idx)
+    : codeChallenges
+        .map((item, idx) => ({ item, originalIndex: idx }))
+        .filter(x => x.item.language === appState.codeLanguageFilter)
+        .map(x => x.originalIndex);
+
+  let currentPos = filteredList.indexOf(appState.currentCodeIndex);
+  let newPos = currentPos + delta;
+  if (newPos >= 0 && newPos < filteredList.length) {
+    appState.currentCodeIndex = filteredList[newPos];
+    renderCodeTrainer();
+  }
+};
+
+window.setCodeChallengeIndex = function(idx) {
+  sfx.playClick();
+  appState.currentCodeIndex = idx;
+  renderCodeTrainer();
+};
+
+window.handleCodeInput = function(chalId, value) {
+  appState.codeUserDrafts = appState.codeUserDrafts || {};
+  appState.codeUserDrafts[chalId] = value;
+};
+
+window.insertCodeShortcut = function(text) {
+  sfx.playClick();
+  const editor = document.getElementById("code-studio-editor");
+  if (!editor) return;
+
+  const start = editor.selectionStart;
+  const end = editor.selectionEnd;
+  const currentVal = editor.value;
+
+  editor.value = currentVal.substring(0, start) + text + currentVal.substring(end);
+  editor.selectionStart = editor.selectionEnd = start + text.length;
+  editor.focus();
+
+  const chal = codeChallenges[appState.currentCodeIndex];
+  if (chal) {
+    appState.codeUserDrafts = appState.codeUserDrafts || {};
+    appState.codeUserDrafts[chal.id] = editor.value;
+  }
+};
+
+window.resetCodeChallengeToStarter = function() {
+  sfx.playClick();
+  const chal = codeChallenges[appState.currentCodeIndex];
+  if (!chal) return;
+
+  appState.codeUserDrafts = appState.codeUserDrafts || {};
+  appState.codeUserDrafts[chal.id] = chal.starterCode;
+
+  const editor = document.getElementById("code-studio-editor");
+  if (editor) editor.value = chal.starterCode;
+
+  const consoleBox = document.getElementById("code-test-console");
+  if (consoleBox) consoleBox.style.display = "none";
+
+  renderCodeTrainer();
+};
+
+window.runCodeChallengeTest = function() {
+  const chal = codeChallenges[appState.currentCodeIndex];
+  if (!chal) return;
+
+  const editor = document.getElementById("code-studio-editor");
+  const userCode = editor ? editor.value.trim() : "";
+  const consoleBox = document.getElementById("code-test-console");
+  const conceptBox = document.getElementById("code-concept-explanation");
+
+  if (!userCode || userCode === chal.starterCode.trim()) {
+    sfx.playWrong();
+    if (consoleBox) {
+      consoleBox.style.display = "block";
+      consoleBox.className = "alert-box warning";
+      consoleBox.innerHTML = `
+        <strong>⚠️ Kode Belum Diisi / Masih Kode Awal!</strong><br>
+        Tuliskan sintaks solusi kamu di dalam kotak editor sebelum menekan tombol uji!
+      `;
+    }
+    return;
+  }
+
+  // Evaluate validation rules
+  const rules = chal.validationRules || [];
+  const missingRules = [];
+
+  for (const rule of rules) {
+    // Normalization check: ignores extra whitespace inside code
+    const cleanRule = rule.trim();
+    if (!userCode.includes(cleanRule)) {
+      // Try regex or case-insensitive check if appropriate
+      missingRules.push(cleanRule);
+    }
+  }
+
+  if (missingRules.length === 0) {
+    // SUCCESS! All rules passed!
+    sfx.playSuccess();
+    if (!appState.codeCompleted.includes(chal.id)) {
+      appState.codeCompleted.push(chal.id);
+      appState.stars = (appState.stars || 0) + 1;
+      saveProgress();
+      const starEl = document.getElementById("header-stars");
+      if (starEl) starEl.textContent = `${appState.stars} Bintang`;
+    }
+
+    if (consoleBox) {
+      consoleBox.style.display = "block";
+      consoleBox.className = "alert-box success";
+      consoleBox.innerHTML = `
+        <div style="display: flex; align-items: flex-start; justify-content: space-between; flex-wrap: wrap; gap: 10px;">
+          <div>
+            <div style="font-size: 1.1rem; font-weight: 800; margin-bottom: 4px;">🎉 Luar Biasa! Pengujian Kode Berhasil 100%! (+1 Bintang)</div>
+            <div style="font-size: 0.88rem; color: #e2e8f0; line-height: 1.5;">
+              Sintaks ${chal.language} yang kamu tulis telah memenuhi seluruh kriteria pengujian unit & struktur algoritma secara valid!
+            </div>
+            <div style="margin-top: 8px; font-family: monospace; font-size: 0.8rem; background: rgba(0,0,0,0.3); padding: 6px 10px; border-radius: 4px; color: #34d399;">
+              [STATUS: PASS] Semua ${rules.length} parameter uji terverifikasi sukses.
+            </div>
+          </div>
+          <button class="btn-primary" style="background: var(--accent-green); border: none; padding: 8px 16px;" onclick="navCodeChallenge(1)">
+            Tantangan Berikutnya ➡️
+          </button>
+        </div>
+      `;
+    }
+
+    if (conceptBox) conceptBox.style.display = "block";
+
+    setKodiSpeech(
+      `Horeee! Koding kamu untuk ${chal.title} berhasil 100%!`,
+      "Kemampuan koding manualmu luar biasa! Terus asah logika dan sintaksmu di tantangan berikutnya!"
+    );
+  } else {
+    // ERROR / MISSING RULES
+    sfx.playWrong();
+    if (consoleBox) {
+      consoleBox.style.display = "block";
+      consoleBox.className = "alert-box warning";
+      consoleBox.innerHTML = `
+        <div style="font-size: 1rem; font-weight: 800; margin-bottom: 4px;">⚠️ Kode Belum Memenuhi Kriteria Pengujian</div>
+        <div style="font-size: 0.88rem; line-height: 1.5; color: #cbd5e1;">
+          Masih ada elemen, instruksi, atau fungsi yang belum lengkap dalam kodemu. Cermati petunjuk tugas dan pelajari kembali struktur di contoh Kasus A di atas!
+        </div>
+        <div style="margin-top: 8px; font-size: 0.8rem; color: #fca5a5;">
+          💡 <strong>Petunjuk:</strong> Pastikan kamu sudah menyertakan instruksi/kata kunci yang diminta pada skenario tugas.
+        </div>
+      `;
+    }
+
+    setKodiSpeech(
+      "Ups, kode yang kamu tulis belum lolos semua tes pengujian!",
+      "Coba baca kembali instruksi tugas dan perhatikan contoh Kasus A di kotak atas ya!"
+    );
+  }
+};
+

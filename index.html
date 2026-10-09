@@ -55,8 +55,8 @@
         <button id="theme-toggle-btn" class="theme-toggle-btn" onclick="toggleTheme()" title="Ganti Mode Tampilan (Terang / Gelap)">
           ☀️ Terang
         </button>
-        <button id="btn-force-update" class="theme-toggle-btn" onclick="forceAppUpdate()" title="Bersihkan Cache & Perbarui Aplikasi ke Versi Terbaru (v14)" style="background: rgba(16, 185, 129, 0.25); border-color: var(--accent-green); color: #34d399; font-weight: 800;">
-          🔄 Update v14
+        <button id="btn-force-update" class="theme-toggle-btn" onclick="forceAppUpdate()" title="Bersihkan Cache & Perbarui Aplikasi ke Versi Terbaru (v15)" style="background: rgba(16, 185, 129, 0.25); border-color: var(--accent-green); color: #34d399; font-weight: 800;">
+          🔄 Update v15
         </button>
         <div class="stat-badge star-count">
           <span>⭐</span>
@@ -74,7 +74,7 @@
     <div id="app-update-banner" class="app-update-banner" style="display: none;">
       <div style="display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-wrap: wrap;">
         <span class="update-banner-text">
-          🚀 <strong>Versi Baru (v14) Tersedia!</strong> 1.300 Tantangan English, 1.000 Kamus Bayi IT, 105 Rumus Excel, 100 Lab IT & 100 SQL siap dimuat.
+          🚀 <strong>Versi Baru (v15) Tersedia!</strong> 100 Studio Koding (HTML, JS, Python, Java, C#), 1.300 English, 105 Excel Murni, 100 Lab IT & 100 SQL siap dimuat.
         </span>
         <button class="btn-update-now" onclick="forceAppUpdate()">Perbarui Sekarang ⚡</button>
       </div>
@@ -85,6 +85,10 @@
       <button class="nav-tab active" data-tab="adventure" onclick="switchTab('adventure')" title="Peta Petualangan Belajar">
         <span class="nav-icon">🗺️</span>
         <span class="nav-label">Petualangan</span>
+      </button>
+      <button class="nav-tab" data-tab="code-trainer" onclick="switchTab('code-trainer')" title="Studio Koding Manual: HTML, JS, Python, Java, C# (100 Tantangan)">
+        <span class="nav-icon">💻</span>
+        <span class="nav-label">Koding (100)</span>
       </button>
       <button class="nav-tab" data-tab="sql-trainer" onclick="switchTab('sql-trainer')" title="Tes Kueri SQL & Output Koding (100 Tantangan)">
         <span class="nav-icon">🗄️</span>
@@ -176,6 +180,18 @@
       <!-- Quest Cards Container -->
       <div id="quest-grid-container" class="quest-grid"></div>
     </main>
+
+    <!-- ================= TAB: STUDIO KODING MANUAL (100 TANTANGAN) ================= -->
+    <section id="tab-code-trainer" class="tab-content">
+      <div class="section-title-wrap">
+        <h2 class="section-title">💻 Studio Koding Manual: Praktik Menulis Kode (100 Tantangan)</h2>
+        <p class="section-subtitle">
+          Praktik menulis sintaks langsung untuk HTML/CSS (20), JavaScript (20), Python (20), Java (20), dan C# (20) lengkap dengan Contoh Soal & Jawaban Terpisah (Kasus A), Shortcut Ketik Cepat, dan Uji Eksekusi Otomatis!
+        </p>
+      </div>
+
+      <div id="code-trainer-content-area"></div>
+    </section>
 
     <!-- ================= TAB 2: TES SQL & OUTPUT KODING ================= -->
     <section id="tab-sql-trainer" class="tab-content">
@@ -331,16 +347,17 @@
     </div>
   </div>
 
-  <!-- Scripts with Cache Buster v14 -->
-  <script src="js/sfx.js?v=20261009-v14"></script>
-  <script src="js/speech.js?v=20261009-v14"></script>
-  <script src="js/dictionary.js?v=20261009-v14"></script>
-  <script src="js/levels.js?v=20261009-v14"></script>
-  <script src="js/sql_trainer.js?v=20261009-v14"></script>
-  <script src="js/english_trainer.js?v=20261009-v14"></script>
-  <script src="js/excel_trainer.js?v=20261009-v14"></script>
-  <script src="js/it_tech_trainer.js?v=20261009-v14"></script>
-  <script src="js/ai_tutor.js?v=20261009-v14"></script>
-  <script src="js/app.js?v=20261009-v14"></script>
+  <!-- Scripts with Cache Buster v15 -->
+  <script src="js/sfx.js?v=20261009-v15"></script>
+  <script src="js/speech.js?v=20261009-v15"></script>
+  <script src="js/dictionary.js?v=20261009-v15"></script>
+  <script src="js/levels.js?v=20261009-v15"></script>
+  <script src="js/sql_trainer.js?v=20261009-v15"></script>
+  <script src="js/code_trainer.js?v=20261009-v15"></script>
+  <script src="js/english_trainer.js?v=20261009-v15"></script>
+  <script src="js/excel_trainer.js?v=20261009-v15"></script>
+  <script src="js/it_tech_trainer.js?v=20261009-v15"></script>
+  <script src="js/ai_tutor.js?v=20261009-v15"></script>
+  <script src="js/app.js?v=20261009-v15"></script>
 </body>
 </html>
