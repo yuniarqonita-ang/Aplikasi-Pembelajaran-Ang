@@ -1728,48 +1728,54 @@ function renderEnglishTrainer() {
       <div style="margin-bottom: 12px;">
         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
           <span style="font-size: 0.82rem; color: var(--accent-cyan); font-weight: 700;">
-            📂 Kategori Soal Wawancara (Total 100 Soal):
+            📂 Kategori Soal Wawancara (${cvInterviewSpeakingDrills.length} Soal Praktik):
           </span>
           <span style="font-size: 0.8rem; color: var(--text-muted);">
             Soal <strong>${appState.currentEnglishDrillIndex + 1}</strong> dari <strong>${cvInterviewSpeakingDrills.length}</strong>
           </span>
         </div>
+        <div style="margin-bottom: 8px;">
+          <select class="challenge-page-select" style="width: 100%; font-weight: 700; padding: 6px 10px;" onchange="setSpeakingCategoryFilter(this.value)">
+            <option value="all" ${(appState.speakingCategoryFilter || 'all') === 'all' ? 'selected' : ''}>📂 Semua Topik (${cvInterviewSpeakingDrills.length} Soal Wawancara)</option>
+            ${Array.from(new Set(cvInterviewSpeakingDrills.map(d => d.category))).map(catName => {
+              const count = cvInterviewSpeakingDrills.filter(d => d.category === catName).length;
+              return `<option value="${catName}" ${(appState.speakingCategoryFilter || 'all') === catName ? 'selected' : ''}>${catName} (${count} Soal)</option>`;
+            }).join('')}
+          </select>
+        </div>
         <div style="display: flex; gap: 6px; overflow-x: auto; padding-bottom: 6px;">
-          ${[
-            { key: "all", label: `Semua (100)` },
-            { key: "1.", label: "1. Intro (10)" },
-            { key: "2.", label: "2. Akademik (10)" },
-            { key: "3.", label: "3. Hardware (10)" },
-            { key: "4.", label: "4. OS & Software (10)" },
-            { key: "5.", label: "5. Jaringan (10)" },
-            { key: "6.", label: "6. Database (10)" },
-            { key: "7.", label: "7. Security (10)" },
-            { key: "8.", label: "8. Automasi (10)" },
-            { key: "9.", label: "9. Teamwork (10)" },
-            { key: "10.", label: "10. Visi Karir (10)" }
-          ].map(c => `
-            <button class="filter-chip ${(appState.speakingCategoryFilter || 'all') === c.key ? 'active' : ''}" 
-                    style="padding: 5px 12px; font-size: 0.78rem; font-weight: 700; white-space: nowrap;" 
-                    onclick="setSpeakingCategoryFilter('${c.key}')">
-              ${c.label}
-            </button>
-          `).join('')}
+          <button class="filter-chip ${(appState.speakingCategoryFilter || 'all') === 'all' ? 'active' : ''}" 
+                  style="padding: 5px 12px; font-size: 0.78rem; font-weight: 700; white-space: nowrap;" 
+                  onclick="setSpeakingCategoryFilter('all')">
+            Semua (${cvInterviewSpeakingDrills.length})
+          </button>
+          ${Array.from(new Set(cvInterviewSpeakingDrills.map(d => d.category))).map(catName => {
+            const count = cvInterviewSpeakingDrills.filter(d => d.category === catName).length;
+            const shortLabel = catName.split('.')[0] + '. ' + (catName.split('.')[1] ? catName.split('.')[1].trim() : catName);
+            return `
+              <button class="filter-chip ${(appState.speakingCategoryFilter || 'all') === catName ? 'active' : ''}" 
+                      style="padding: 5px 12px; font-size: 0.78rem; font-weight: 700; white-space: nowrap;" 
+                      onclick="setSpeakingCategoryFilter('${catName}')">
+                ${shortLabel} (${count})
+              </button>
+            `;
+          }).join('')}
         </div>
       </div>
 
       <!-- Pilihan Pertanyaan Wawancara dalam Kategori -->
       <div style="display: flex; gap: 8px; margin-bottom: 16px; overflow-x: auto; padding-bottom: 6px; align-items: center;">
         <button class="btn-outline" style="padding: 6px 12px; font-size: 0.8rem;" onclick="prevSpeakingDrill()">◀ Prev</button>
-        ${cvInterviewSpeakingDrills
-          .map((d, idx) => ({ d, idx }))
-          .filter(item => (appState.speakingCategoryFilter || 'all') === 'all' || item.d.category.startsWith(appState.speakingCategoryFilter))
-          .map(item => `
-            <button class="quick-cmd-btn ${item.idx === appState.currentEnglishDrillIndex ? 'active' : ''}" 
-                    style="padding: 6px 12px; font-weight: 700; font-size: 0.8rem; white-space: nowrap;" 
-                    onclick="setEnglishDrillIndex(${item.idx})">
-              Q${item.idx + 1}
-            </button>
-          `).join('')}
+        <select class="challenge-page-select" onchange="setEnglishDrillIndex(Number(this.value))">
+          ${cvInterviewSpeakingDrills
+            .map((d, idx) => ({ d, idx }))
+            .filter(item => (appState.speakingCategoryFilter || 'all') === 'all' || item.d.category === appState.speakingCategoryFilter || item.d.category.startsWith(appState.speakingCategoryFilter))
+            .map(item => `
+              <option value="${item.idx}" ${item.idx === appState.currentEnglishDrillIndex ? 'selected' : ''}>
+                Soal #${item.idx + 1}: ${item.d.titleEn}
+              </option>
+            `).join('')}
+        </select>
         <button class="btn-outline" style="padding: 6px 12px; font-size: 0.8rem;" onclick="nextSpeakingDrill()">Next ▶</button>
       </div>
 
@@ -1777,28 +1783,24 @@ function renderEnglishTrainer() {
         <span style="font-size: 0.75rem; color: var(--accent-cyan); font-weight: 700; text-transform: uppercase;">
           ${drill.category}
         </span>
-        <h3 style="color: #fff; margin: 8px 0 14px; font-size: 1.15rem;">
-          Interviewer: "${drill.questionEn}"
-        </h3>
-
         <!-- KOTAK CONTOH SOAL & JAWABAN BENAR DULU -->
         ${drill.workedExample ? `
-          <div class="worked-example-card" style="margin-bottom: 16px;">
+          <div class="worked-example-card" style="margin-bottom: 20px;">
             <div class="worked-example-header">
-              <span class="we-badge">💡 CONTOH SOAL & JAWABAN BENAR DULU</span>
-              <span class="we-sub">Pahami contoh pola jawaban profesional ini sebelum berbicara:</span>
+              <span class="we-badge">💡 CONTOH KASUS SERUPA & JAWABAN BENAR DULU</span>
+              <span class="we-sub">Pelajari pola dan contoh jawaban untuk kasus serupa ini sebelum berbicara:</span>
             </div>
             <div class="we-body">
               <div class="we-row">
-                <span class="we-label">📝 Contoh Pertanyaan Serupa:</span>
-                <span class="we-text">"${drill.questionEn}"</span>
+                <span class="we-label">📝 Contoh Pertanyaan Serupa (Kasus Lain):</span>
+                <span class="we-text">"${drill.workedExample.analogousQuestion || drill.workedExample.sampleProblem || drill.questionEn}"</span>
               </div>
               <div class="we-row">
-                <span class="we-label">✅ Contoh Jawaban yang 100% Benar & Lancar:</span>
-                <code class="we-code">${drill.workedExample.sampleSentence || drill.targetSentence}</code>
+                <span class="we-label">✅ Contoh Jawaban Kasus Lain Tersebut:</span>
+                <code class="we-code">${drill.workedExample.sampleAnswer || drill.workedExample.sampleSentence || drill.targetSentence}</code>
               </div>
               <div class="we-row">
-                <span class="we-label">📐 Kerangka Alur Berbobot:</span>
+                <span class="we-label">📐 Rumus Alur Jawaban 3 Langkah:</span>
                 <span class="we-text">${drill.workedExample.modelStructure}</span>
               </div>
               <div class="we-row">
@@ -1806,9 +1808,19 @@ function renderEnglishTrainer() {
                 <span class="we-text">${drill.workedExample.keyPhraseTip}</span>
               </div>
             </div>
-            <div class="we-divider">🎯 SEKARANG TARGET JAWABAN ANDA (DENGARKAN & TIRUKAN):</div>
+            <div class="we-divider">🎯 SEKARANG JAWAB TANTANGAN WAWANCARA ANDA DI BAWAH:</div>
           </div>
         ` : ''}
+
+        <!-- Kotak Pertanyaan Wawancara Anda -->
+        <div style="background: rgba(30, 41, 59, 0.7); border: 1px solid rgba(255,255,255,0.12); border-radius: 10px; padding: 14px 18px; margin-bottom: 16px;">
+          <div style="font-size: 0.75rem; color: var(--accent-cyan); font-weight: 800; text-transform: uppercase; margin-bottom: 4px;">
+            🎙️ Pertanyaan Wawancara Anda:
+          </div>
+          <h3 style="color: #fff; margin: 0; font-size: 1.15rem; line-height: 1.5;">
+            Interviewer: "${drill.questionEn}"
+          </h3>
+        </div>
 
         <!-- Kalimat Sasaran untuk Ditirukan -->
         <div style="background: rgba(15, 23, 42, 0.9); border: 1.5px solid rgba(56, 189, 248, 0.3); border-radius: 12px; padding: 18px; margin-bottom: 16px;">
@@ -1869,7 +1881,7 @@ function renderEnglishTrainer() {
     sfx.playClick();
     appState.speakingCategoryFilter = catKey;
     if (catKey !== 'all') {
-      const firstIdx = cvInterviewSpeakingDrills.findIndex(d => d.category.startsWith(catKey));
+      const firstIdx = cvInterviewSpeakingDrills.findIndex(d => d.category === catKey || d.category.startsWith(catKey));
       if (firstIdx !== -1) {
         appState.currentEnglishDrillIndex = firstIdx;
       }
@@ -2147,7 +2159,7 @@ function renderMissingLettersGame() {
             const isDone = appState.puzzleStates && appState.puzzleStates[x.originalIndex]?.completed;
             return `
               <option value="${x.originalIndex}" ${x.originalIndex === appState.currentPuzzleIndex ? 'selected' : ''}>
-                ${isDone ? '✓ ' : ''}Kata #${x.originalIndex + 1}: ${x.item.word} (${x.item.category})
+                ${isDone ? '✓ ' : ''}Kata #${x.originalIndex + 1} (${x.item.word.length} Huruf) - ${x.item.category}
               </option>
             `;
           }).join('')}
@@ -2166,7 +2178,7 @@ function renderMissingLettersGame() {
           <button class="quick-cmd-btn ${x.originalIndex === appState.currentPuzzleIndex ? 'active' : ''}" 
                   style="padding: 6px 12px; font-size: 0.8rem; font-weight: 700; white-space: nowrap; ${isDone ? 'border-color: var(--accent-green); color: #86efac;' : ''}" 
                   onclick="setPuzzleIndex(${x.originalIndex})">
-            ${isDone ? '✓ ' : ''}#${x.originalIndex + 1} ${x.item.word}
+            ${isDone ? '✓ ' : ''}Kata #${x.originalIndex + 1}
           </button>
         `;
       }).join('')}
@@ -3086,9 +3098,9 @@ function renderEvcDictationStudio() {
   if (!currentItem) return;
 
   const levelTabs = [
-    { level: 1, label: "🔤 Tingkat 1: Eja Huruf", desc: "Spelling Names, Acronyms & IT Terms (30 Soal)" },
-    { level: 2, label: "📝 Tingkat 2: Dikte Kata", desc: "Vocabulary & IT Workplace Terms (35 Soal)" },
-    { level: 3, label: "💬 Tingkat 3: Dikte Kalimat", desc: "Natural Everyday Dialogues & Scenarios (35 Soal)" }
+    { level: 1, label: "🔤 Tingkat 1: Eja Huruf", desc: "Spelling Names, Acronyms & IT Terms (150 Soal)" },
+    { level: 2, label: "📝 Tingkat 2: Dikte Kata", desc: "Vocabulary & IT Workplace Terms (175 Soal)" },
+    { level: 3, label: "💬 Tingkat 3: Dikte Kalimat", desc: "Natural Everyday Dialogues & Scenarios (175 Soal)" }
   ];
 
   container.innerHTML = `
@@ -3118,14 +3130,23 @@ function renderEvcDictationStudio() {
     </div>
 
     <!-- Navigation List Soal -->
-    <div style="display: flex; gap: 8px; margin-bottom: 18px; overflow-x: auto; padding-bottom: 6px;">
-      ${filteredList.map((item, idx) => `
-        <button class="quick-cmd-btn ${idx === appState.currentDictationIndex ? 'active' : ''}" 
-                style="padding: 8px 14px; font-weight: 700;" 
-                onclick="setDictationIndex(${idx})">
-          #${idx + 1}
-        </button>
-      `).join('')}
+    <div style="display: flex; gap: 8px; margin-bottom: 18px; overflow-x: auto; padding-bottom: 6px; align-items: center;">
+      <button class="btn-secondary" style="padding: 6px 14px; font-size: 0.82rem; font-weight: 700;" onclick="prevDictationChallenge()">
+        ⬅️ Prev
+      </button>
+      <select class="challenge-page-select" onchange="setDictationIndex(Number(this.value))">
+        ${filteredList.map((item, idx) => {
+          const isDone = appState.completedDictations && appState.completedDictations[item.id];
+          return `
+            <option value="${idx}" ${idx === appState.currentDictationIndex ? 'selected' : ''}>
+              ${isDone ? '✓ ' : ''}Tantangan #${idx + 1} (${item.targetText.length} Karakter)
+            </option>
+          `;
+        }).join('')}
+      </select>
+      <button class="btn-secondary" style="padding: 6px 14px; font-size: 0.82rem; font-weight: 700;" onclick="nextDictationChallenge()">
+        Next ➡️
+      </button>
     </div>
 
     <!-- Main Dictation Practice Arena -->
@@ -3445,6 +3466,21 @@ function updateDictationTiles(inputVal, targetStr, currentItem = null) {
   }
 }
 
+window.prevDictationChallenge = function() {
+  sfx.playClick();
+  const currentLevel = appState.currentDictationLevelFilter || 1;
+  const filteredList = evcDictationChallenges.filter(c => c.level === currentLevel);
+
+  if (appState.currentDictationIndex > 0) {
+    appState.currentDictationIndex -= 1;
+  } else if (filteredList.length > 0) {
+    appState.currentDictationIndex = filteredList.length - 1;
+  }
+
+  appState.dictationHintRevealed = false;
+  renderEvcDictationStudio();
+};
+
 window.nextDictationChallenge = function() {
   sfx.playClick();
   const currentLevel = appState.currentDictationLevelFilter || 1;
@@ -3463,7 +3499,7 @@ window.nextDictationChallenge = function() {
     } else {
       appState.currentDictationIndex = 0;
       setKodiSpeech(
-        "🏆 WOW FANTASTIS! Kamu telah menuntaskan seluruh 32 tantangan Dikte & Mengetik EVC ESL!",
+        `🏆 WOW FANTASTIS! Kamu telah menuntaskan seluruh ${evcDictationChallenges.length} tantangan Dikte & Mengetik EVC ESL!`,
         "Kamu siap berbicara, mendengar, dan menulis bahasa Inggris profesional dengan percaya diri!"
       );
     }
@@ -3474,21 +3510,84 @@ window.nextDictationChallenge = function() {
 };
 
 // ================= DICTIONARY TAB LOGIC =================
-function renderDictionary(filter = "") {
+appState.dictCategoryFilter = appState.dictCategoryFilter || "all";
+appState.dictSearchQuery = appState.dictSearchQuery || "";
+appState.dictDisplayLimit = appState.dictDisplayLimit || 60;
+
+function renderDictionary(filter = null) {
   const container = document.getElementById("dictionary-list");
   if (!container) return;
 
+  if (typeof itDictionary === "undefined" || !itDictionary.length) {
+    container.innerHTML = `<div class="info-box">Kamus IT sedang dimuat...</div>`;
+    return;
+  }
+
+  if (filter !== null) {
+    appState.dictSearchQuery = filter;
+    appState.dictDisplayLimit = 60;
+  }
+
+  const q = (appState.dictSearchQuery || "").toLowerCase().trim();
+  const cat = appState.dictCategoryFilter || "all";
+
+  const categories = [
+    { key: "all", label: `Semua (${itDictionary.length})` },
+    { key: "Hardware & Arsitektur", label: "🖥️ Hardware" },
+    { key: "Jaringan & Internet", label: "🌐 Jaringan" },
+    { key: "Sistem Operasi & CLI", label: "💻 OS & CLI" },
+    { key: "Basis Data & SQL", label: "🗄️ Database" },
+    { key: "Pemrograman & Software", label: "⚡ Pemrograman" },
+    { key: "Web, Cloud & DevOps", label: "☁️ Cloud & Web" },
+    { key: "Keamanan Siber", label: "🛡️ Cyber Security" },
+    { key: "AI & Sains Data", label: "🤖 AI & Data" },
+    { key: "IT Support & Troubleshooting", label: "🔧 IT Support" },
+    { key: "Metodologi & Karir IT", label: "💼 Karir IT" }
+  ];
+
   const filtered = itDictionary.filter(item => {
-    const q = filter.toLowerCase();
-    return item.term.toLowerCase().includes(q) ||
-           item.babyAnalogy.toLowerCase().includes(q) ||
-           item.category.toLowerCase().includes(q);
+    const matchCat = (cat === "all") || (item.category && item.category.toLowerCase().includes(cat.toLowerCase()));
+    if (!matchCat) return false;
+    if (!q) return true;
+    return (item.term && item.term.toLowerCase().includes(q)) ||
+           (item.babyAnalogy && item.babyAnalogy.toLowerCase().includes(q)) ||
+           (item.detail && item.detail.toLowerCase().includes(q)) ||
+           (item.category && item.category.toLowerCase().includes(q));
   });
 
-  container.innerHTML = filtered.map(item => `
+  const displayList = filtered.slice(0, appState.dictDisplayLimit);
+
+  // Render category filter chips on top if container parent has header
+  let filterBar = document.getElementById("dict-category-filter-bar");
+  if (!filterBar) {
+    filterBar = document.createElement("div");
+    filterBar.id = "dict-category-filter-bar";
+    filterBar.style = "display: flex; gap: 8px; margin: 12px 0 16px; overflow-x: auto; padding-bottom: 6px;";
+    container.parentNode.insertBefore(filterBar, container);
+  }
+
+  filterBar.innerHTML = categories.map(c => `
+    <button class="choice-card-btn ${appState.dictCategoryFilter === c.key ? 'active-eng-mode' : ''}" 
+            style="padding: 6px 14px; font-size: 0.82rem; font-weight: 700; white-space: nowrap; ${appState.dictCategoryFilter === c.key ? 'border-color: var(--accent-cyan); background: rgba(6, 182, 212, 0.15);' : ''}" 
+            onclick="setDictCategory('${c.key}')">
+      ${c.label}
+    </button>
+  `).join('');
+
+  if (filtered.length === 0) {
+    container.innerHTML = `
+      <div style="grid-column: 1 / -1; text-align: center; padding: 40px; color: var(--text-muted);">
+        <p style="font-size: 1.1rem; margin-bottom: 8px;">🔍 Istilah "${appState.dictSearchQuery}" tidak ditemukan.</p>
+        <p style="font-size: 0.85rem;">Coba cari dengan kata kunci lain atau pilih kategori "Semua".</p>
+      </div>
+    `;
+    return;
+  }
+
+  container.innerHTML = displayList.map(item => `
     <div class="dict-card">
       <div class="dict-term">
-        <span>${item.icon} ${item.term}</span>
+        <span>${item.icon || '📌'} ${item.term}</span>
         <span class="dict-category-tag">${item.category}</span>
       </div>
       <div class="dict-baby-analogy">
@@ -3496,8 +3595,31 @@ function renderDictionary(filter = "") {
       </div>
       <p class="dict-formal-desc">${item.detail}</p>
     </div>
-  `).join('');
+  `).join('') + (filtered.length > appState.dictDisplayLimit ? `
+    <div style="grid-column: 1 / -1; text-align: center; margin: 20px 0;">
+      <button class="btn-primary" style="padding: 12px 28px; font-weight: 800; font-size: 0.92rem;" onclick="loadMoreDictionary()">
+        📖 Tampilkan Lebih Banyak (+60 Istilah) — [${displayList.length} dari ${filtered.length} Ditampilkan]
+      </button>
+    </div>
+  ` : `
+    <div style="grid-column: 1 / -1; text-align: center; margin: 16px 0; color: var(--text-muted); font-size: 0.82rem;">
+      ✨ Menampilkan seluruh ${filtered.length} istilah IT dari 1.000 kosakata Kamus Bayi!
+    </div>
+  `);
 }
+
+window.setDictCategory = function(catKey) {
+  sfx.playClick();
+  appState.dictCategoryFilter = catKey;
+  appState.dictDisplayLimit = 60;
+  renderDictionary();
+};
+
+window.loadMoreDictionary = function() {
+  sfx.playClick();
+  appState.dictDisplayLimit += 60;
+  renderDictionary();
+};
 
 function initDictionarySearch() {
   const searchInput = document.getElementById("dict-search-input");
@@ -4367,14 +4489,19 @@ function renderItTechTrainer() {
           let btnStyle = "background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(255,255,255,0.15); color: #e2e8f0;";
           let icon = String.fromCharCode(65 + optIdx);
           
-          if (selectedOption !== undefined) {
+          const wrongAttempts = (appState.itTechAttempts && appState.itTechAttempts[chal.id]) ? appState.itTechAttempts[chal.id] : [];
+          const isCorrectChosen = selectedOption === chal.correctIndex;
+
+          if (isCorrectChosen) {
+            // Jawaban benar dipilih: sorot hijau
             if (optIdx === chal.correctIndex) {
               btnStyle = "background: rgba(34, 197, 94, 0.2); border: 1.5px solid var(--accent-green); color: #fff; font-weight: 700;";
               icon = "✓";
-            } else if (selectedOption === optIdx) {
-              btnStyle = "background: rgba(239, 68, 68, 0.2); border: 1.5px solid var(--accent-pink); color: #fca5a5;";
-              icon = "✕";
             }
+          } else if (wrongAttempts.includes(optIdx)) {
+            // Pilihan salah yang pernah dicoba: tandai silang merah tanpa membocorkan yang benar
+            btnStyle = "background: rgba(239, 68, 68, 0.2); border: 1.5px solid var(--accent-pink); color: #fca5a5;";
+            icon = "✕";
           }
 
           return `
@@ -4389,23 +4516,28 @@ function renderItTechTrainer() {
       </div>
 
       <!-- Feedback & Explanation Box -->
-      <div id="it-tech-feedback-box" style="margin-bottom: 16px; ${selectedOption !== undefined ? 'display: block;' : 'display: none;'}">
-        ${selectedOption !== undefined ? `
-          <div class="alert-box ${selectedOption === chal.correctIndex ? 'success' : 'warning'}" style="margin-bottom: 14px;">
+      <div id="it-tech-feedback-box" style="margin-bottom: 16px;">
+        ${selectedOption === chal.correctIndex ? `
+          <div class="alert-box success" style="margin-bottom: 14px;">
             <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 4px;">
-              <span style="font-size: 1.2rem;">${selectedOption === chal.correctIndex ? '🎉' : '⚠️'}</span>
-              <strong>${selectedOption === chal.correctIndex ? 'Jawaban Kamu Tepat 100%!' : 'Belum tepat nih, coba cermati lagi!'}</strong>
+              <span style="font-size: 1.2rem;">🎉</span>
+              <strong>Jawaban Kamu Tepat 100%! (+1 Poin Laboratorium)</strong>
             </div>
             <div style="font-size: 0.9rem; line-height: 1.5;">
               ${chal.explanation}
             </div>
           </div>
-        ` : ''}
-      </div>
-
-      <!-- Baby Clue Box -->
-      <div style="background: rgba(250, 204, 21, 0.08); border-left: 3px solid var(--accent-yellow); padding: 12px 16px; border-radius: 6px; font-size: 0.88rem; color: #fef08a; margin-bottom: 18px;">
-        ${chal.babyClue}
+        ` : (appState.itTechAttempts && appState.itTechAttempts[chal.id] && appState.itTechAttempts[chal.id].length > 0 ? `
+          <div class="alert-box warning" style="margin-bottom: 14px;">
+            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 4px;">
+              <span style="font-size: 1.2rem;">⚠️</span>
+              <strong>Pilihan Belum Tepat!</strong>
+            </div>
+            <div style="font-size: 0.88rem; line-height: 1.5;">
+              Pilihanmu belum tepat nih. Coba cermati lagi skenario kasus di atas dan klik pilihan lainnya. Kamu bebas mencoba opsi lain sampai menemukan jawaban yang tepat!
+            </div>
+          </div>
+        ` : '')}
       </div>
 
       <!-- Bottom Navigation Buttons -->
@@ -4426,10 +4558,12 @@ window.selectItTechOption = function(optionIdx) {
   const chal = itTechChallenges[appState.currentItTechIndex];
   if (!chal) return;
 
-  appState.itTechAnswers = appState.itTechAnswers || {};
-  appState.itTechAnswers[chal.id] = optionIdx;
+  appState.itTechAttempts = appState.itTechAttempts || {};
+  appState.itTechAttempts[chal.id] = appState.itTechAttempts[chal.id] || [];
 
   if (optionIdx === chal.correctIndex) {
+    appState.itTechAnswers = appState.itTechAnswers || {};
+    appState.itTechAnswers[chal.id] = optionIdx;
     sfx.playSuccess();
     if (!appState.itTechCompleted.includes(chal.id)) {
       appState.itTechCompleted.push(chal.id);
@@ -4440,10 +4574,13 @@ window.selectItTechOption = function(optionIdx) {
       "Pemahaman teknis komputermu semakin tajam dan setara standar sertifikasi dunia!"
     );
   } else {
+    if (!appState.itTechAttempts[chal.id].includes(optionIdx)) {
+      appState.itTechAttempts[chal.id].push(optionIdx);
+    }
     sfx.playWrong();
     setKodiSpeech(
       "Ups, pilihanmu belum tepat nih!",
-      `Coba baca lagi contoh nalar bayi di atas: ${chal.workedExample.nalarBayi}`
+      "Coba cermati lagi skenario kasus di atas dan klik pilihan lainnya ya!"
     );
   }
 
@@ -4453,6 +4590,7 @@ window.selectItTechOption = function(optionIdx) {
 window.setItTechCategory = function(catKey) {
   sfx.playClick();
   appState.itTechCategoryFilter = catKey;
+  appState.itTechClueRevealed = false;
   if (catKey !== "all") {
     const firstIdx = itTechChallenges.findIndex(c => c.category === catKey);
     if (firstIdx !== -1) {
@@ -4465,11 +4603,13 @@ window.setItTechCategory = function(catKey) {
 window.setItTechIndex = function(idx) {
   sfx.playClick();
   appState.currentItTechIndex = idx;
+  appState.itTechClueRevealed = false;
   renderItTechTrainer();
 };
 
 window.nextItTechChallenge = function() {
   sfx.playClick();
+  appState.itTechClueRevealed = false;
   const filteredList = appState.itTechCategoryFilter === "all"
     ? itTechChallenges.map((item, idx) => idx)
     : itTechChallenges.map((item, idx) => idx).filter(idx => itTechChallenges[idx].category === appState.itTechCategoryFilter);
@@ -4485,6 +4625,7 @@ window.nextItTechChallenge = function() {
 
 window.prevItTechChallenge = function() {
   sfx.playClick();
+  appState.itTechClueRevealed = false;
   const filteredList = appState.itTechCategoryFilter === "all"
     ? itTechChallenges.map((item, idx) => idx)
     : itTechChallenges.map((item, idx) => idx).filter(idx => itTechChallenges[idx].category === appState.itTechCategoryFilter);
