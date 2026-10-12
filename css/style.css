@@ -7291,3 +7291,528 @@ body.light-theme .excel-syntax-tooltip {
   color: #0f172a;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
+
+/* ==============================================================================
+   🎮 OFFICE SHORTCUT REAL GAMEPLAY HUD, RADAR, ASSEMBLY PAD & REPORT MODAL
+   ============================================================================== */
+
+/* 1. Game HUD Bar */
+.office-game-hud {
+  background: linear-gradient(135deg, rgba(15, 23, 42, 0.95), rgba(30, 41, 59, 0.9));
+  border: 1px solid var(--border-glow);
+  border-radius: 14px;
+  padding: 16px 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.hud-top-stats {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.hud-stat-pill {
+  flex: 1;
+  min-width: 130px;
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  padding: 8px 14px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.hud-icon {
+  font-size: 1.4rem;
+}
+
+.hud-lbl {
+  font-size: 0.65rem;
+  font-weight: 800;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.hud-val {
+  font-size: 1.15rem;
+  font-weight: 900;
+  color: var(--text-main);
+  font-family: monospace;
+}
+
+.combo-pill { border-color: rgba(245, 158, 11, 0.4); }
+.combo-fire {
+  color: #f59e0b;
+  text-shadow: 0 0 10px rgba(245, 158, 11, 0.6);
+  animation: pulseGlow 1s infinite alternate;
+}
+
+.score-pill { border-color: rgba(56, 189, 248, 0.4); }
+.score-pill .hud-val { color: #38bdf8; }
+
+.target-pill {
+  border-color: rgba(16, 185, 129, 0.5);
+  background: rgba(16, 185, 129, 0.08);
+}
+.target-key-val {
+  color: #34d399;
+  font-size: 1.1rem;
+}
+
+/* Radar Detektor Keyboard Langsung */
+.hud-keyboard-radar {
+  border-radius: 10px;
+  padding: 12px 16px;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.hud-keyboard-radar.info {
+  border-left: 5px solid #38bdf8;
+}
+
+.hud-keyboard-radar.success {
+  border-left: 5px solid #10b981;
+  background: rgba(16, 185, 129, 0.15);
+  animation: pulseGreen 0.4s ease;
+}
+
+.hud-keyboard-radar.error {
+  border-left: 5px solid #ef4444;
+  background: rgba(239, 68, 68, 0.15);
+  animation: shake 0.35s ease;
+}
+
+.radar-status-line {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+
+.radar-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.radar-pulse-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #38bdf8;
+  box-shadow: 0 0 8px #38bdf8;
+  animation: pulseDot 1.2s infinite;
+}
+
+.radar-title {
+  font-size: 0.78rem;
+  font-weight: 800;
+  color: var(--text-muted);
+  text-transform: uppercase;
+}
+
+.radar-detected-keys {
+  font-size: 0.95rem;
+  font-weight: 900;
+  font-family: monospace;
+  color: #f8fafc;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 2px 10px;
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.radar-hint {
+  font-size: 0.84rem;
+  color: var(--text-main);
+}
+
+.radar-feedback-msg {
+  font-size: 0.88rem;
+  color: var(--text-main);
+  line-height: 1.4;
+  font-weight: 600;
+}
+
+/* 2. Target Highlight Animations inside Document */
+.doc-element-target-pulse {
+  position: relative;
+  outline: 2px dashed #2563eb !important;
+  outline-offset: 4px;
+  border-radius: 4px;
+  background: rgba(37, 99, 235, 0.04);
+  animation: pulseBorder 1.5s infinite;
+}
+
+.doc-target-focus-pill {
+  display: inline-block;
+  background: #2563eb;
+  color: #ffffff;
+  font-size: 0.72rem;
+  font-weight: 800;
+  padding: 2px 10px;
+  border-radius: 12px;
+  margin-bottom: 4px;
+  box-shadow: 0 2px 8px rgba(37, 99, 235, 0.4);
+}
+
+.doc-term-target-pulse {
+  border-bottom: 2px dashed #2563eb;
+  background: #dbeafe !important;
+  color: #1d4ed8 !important;
+}
+
+.col-target-highlight {
+  background: #dcfce7 !important;
+  color: #15803d !important;
+  font-weight: 900;
+}
+
+.target-col-glow {
+  background: rgba(16, 185, 129, 0.12) !important;
+  outline: 1.5px dashed #107c41;
+}
+
+.table-target-pulse {
+  outline: 2.5px dashed #107c41;
+  outline-offset: 4px;
+  animation: pulseBorder 1.5s infinite;
+}
+
+.autosum-target-row {
+  background: rgba(16, 185, 129, 0.12) !important;
+  border: 2px dashed #107c41 !important;
+}
+
+/* 3. Papan Rakit Pintasan Interaktif (Pad Praktik Mandiri) */
+.office-assembly-pad {
+  background: var(--bg-card);
+  border: 1px solid var(--border-glow);
+  border-radius: 14px;
+  padding: 16px 20px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+}
+
+.pad-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.pad-builder-row {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.pad-section {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.pad-sec-label {
+  font-size: 0.72rem;
+  font-weight: 800;
+  color: var(--text-muted);
+  text-transform: uppercase;
+}
+
+.pad-keys-wrap {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.pad-mod-btn {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-glow);
+  color: var(--text-muted);
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 800;
+  font-family: monospace;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.pad-mod-btn:hover {
+  border-color: #38bdf8;
+  color: var(--text-main);
+}
+
+.pad-mod-btn.active {
+  background: #0284c7;
+  color: #ffffff;
+  border-color: #38bdf8;
+  box-shadow: 0 0 12px rgba(56, 189, 248, 0.5);
+}
+
+.pad-action-btn {
+  background: linear-gradient(180deg, #334155, #1e293b);
+  border: 1px solid #475569;
+  border-bottom: 3px solid #0f172a;
+  color: #f8fafc;
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-weight: 800;
+  font-family: monospace;
+  cursor: pointer;
+  min-width: 40px;
+  text-align: center;
+  transition: all 0.15s ease;
+}
+
+.pad-action-btn:hover {
+  transform: translateY(-2px);
+  border-color: #38bdf8;
+  color: #38bdf8;
+}
+
+.pad-action-btn:active {
+  transform: translateY(1px);
+  border-bottom-width: 1px;
+}
+
+.pad-status-footer {
+  margin-top: 10px;
+  padding: 6px 12px;
+  border-radius: 6px;
+  background: rgba(0, 0, 0, 0.25);
+  font-size: 0.82rem;
+  color: var(--text-muted);
+}
+
+.badge-waiting-press {
+  background: rgba(245, 158, 11, 0.15);
+  border: 1px solid rgba(245, 158, 11, 0.5);
+  color: #f59e0b;
+  font-size: 0.8rem;
+  font-weight: 800;
+  padding: 6px 12px;
+  border-radius: 8px;
+  display: inline-block;
+  animation: pulseGlow 1.2s infinite alternate;
+}
+
+.badge-waiting-queue {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  opacity: 0.7;
+}
+
+.task-target-meta {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin-top: 4px;
+}
+
+.task-target-meta code {
+  color: #38bdf8;
+  background: rgba(56, 189, 248, 0.1);
+  padding: 1px 6px;
+  border-radius: 4px;
+}
+
+/* 4. Rapor Evaluasi Hasil Praktik Kantor Modal */
+.office-report-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-glow);
+  border-radius: 16px;
+  width: 100%;
+  max-width: 620px;
+  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+  animation: zoomIn 0.3s ease;
+}
+
+.report-header {
+  padding: 16px 22px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.report-close-btn {
+  background: transparent;
+  border: none;
+  color: #ffffff;
+  font-size: 1.4rem;
+  cursor: pointer;
+  opacity: 0.8;
+}
+
+.report-body {
+  padding: 22px;
+}
+
+.report-rank-box {
+  border: 2px solid;
+  border-radius: 14px;
+  padding: 18px;
+  text-align: center;
+  margin-bottom: 18px;
+}
+
+.rank-letter {
+  font-size: 2.8rem;
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: 2px;
+}
+
+.rank-desc {
+  font-size: 0.92rem;
+  font-weight: 800;
+  margin-top: 6px;
+  text-transform: uppercase;
+}
+
+.report-boss-review {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+  padding: 12px 16px;
+  margin-bottom: 18px;
+}
+
+.report-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  margin-bottom: 18px;
+}
+
+.report-stat-item {
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid var(--border-glow);
+  border-radius: 10px;
+  padding: 10px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.report-stat-item .stat-icon { font-size: 1.2rem; }
+.report-stat-item .stat-val { font-size: 1.05rem; font-weight: 900; color: var(--text-main); margin: 2px 0; }
+.report-stat-item .stat-lbl { font-size: 0.68rem; color: var(--text-muted); font-weight: 700; text-transform: uppercase; }
+
+.report-doc-summary {
+  background: rgba(0, 0, 0, 0.15);
+  border-radius: 8px;
+  padding: 12px 16px;
+}
+
+.report-footer {
+  padding: 14px 22px;
+  background: rgba(0, 0, 0, 0.2);
+  border-top: 1px solid var(--border-glow);
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+/* Light Theme Overrides */
+body.light-theme .office-game-hud {
+  background: #ffffff;
+  border-color: #cbd5e1;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+}
+
+body.light-theme .hud-stat-pill {
+  background: #f8fafc;
+  border-color: #cbd5e1;
+}
+
+body.light-theme .hud-keyboard-radar {
+  background: #f8fafc;
+  border-color: #cbd5e1;
+}
+
+body.light-theme .radar-detected-keys {
+  color: #0f172a;
+  background: #ffffff;
+  border-color: #cbd5e1;
+}
+
+body.light-theme .office-assembly-pad {
+  background: #ffffff;
+  border-color: #cbd5e1;
+}
+
+body.light-theme .pad-mod-btn {
+  background: #f8fafc;
+  border-color: #cbd5e1;
+  color: #0f172a;
+}
+
+body.light-theme .pad-action-btn {
+  background: linear-gradient(180deg, #f8fafc, #e2e8f0);
+  border-color: #cbd5e1;
+  border-bottom: 3px solid #94a3b8;
+  color: #0f172a;
+}
+
+body.light-theme .office-report-card {
+  background: #ffffff;
+  border-color: #cbd5e1;
+}
+
+body.light-theme .report-stat-item {
+  background: #f8fafc;
+  border-color: #e2e8f0;
+}
+
+body.light-theme .report-boss-review {
+  background: #f8fafc;
+}
+
+body.light-theme .report-doc-summary {
+  background: #f8fafc;
+}
+
+/* Animations */
+@keyframes pulseDot {
+  0% { transform: scale(0.9); opacity: 0.7; }
+  50% { transform: scale(1.3); opacity: 1; }
+  100% { transform: scale(0.9); opacity: 0.7; }
+}
+
+@keyframes pulseBorder {
+  0% { outline-color: rgba(37, 99, 235, 0.4); }
+  50% { outline-color: rgba(37, 99, 235, 1); }
+  100% { outline-color: rgba(37, 99, 235, 0.4); }
+}
+
+@keyframes shake {
+  0% { transform: translateX(0); }
+  20% { transform: translateX(-6px); }
+  40% { transform: translateX(6px); }
+  60% { transform: translateX(-4px); }
+  80% { transform: translateX(4px); }
+  100% { transform: translateX(0); }
+}
+
+@keyframes pulseGreen {
+  0% { background: rgba(16, 185, 129, 0.35); }
+  100% { background: rgba(16, 185, 129, 0.15); }
+}

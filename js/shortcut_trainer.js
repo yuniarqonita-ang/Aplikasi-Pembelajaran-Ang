@@ -1330,7 +1330,8 @@
 
   // =========================================================================
   // DATA PROYEK KANTOR NYATA & PERMINTAAN KLIEN (WORD & EXCEL)
-  // Simulasi Dunia Kerja Nyata: Boss/Klien Request + Dokumen Berubah Real-time
+  // GAME RESMI: Detektor Keyboard Langsung, Combo Counter, Timer Speedrun,
+  // Rapor Hasil Praktik Kerja (Rank S/A/B), dan Papan Rakit Tombol Mekanik
   // =========================================================================
 
   window.WORD_PROJECTS = [
@@ -1356,6 +1357,7 @@
           shortcut: 'Ctrl+B',
           keys: ['ctrl', 'b'],
           actionCode: 'title_bold',
+          targetLabel: 'Judul Dokumen Utama',
           babyLogic: 'Ctrl + B (Bold) = Mengubah teks biasa jadi berotot dan tebal seketika!'
         },
         {
@@ -1365,6 +1367,7 @@
           shortcut: 'Ctrl+E',
           keys: ['ctrl', 'e'],
           actionCode: 'title_center',
+          targetLabel: 'Posisi Judul Dokumen',
           babyLogic: 'Ctrl + E (Equator / Center) = Menarik teks ke garis khatulistiwa tengah!'
         },
         {
@@ -1374,6 +1377,7 @@
           shortcut: 'Ctrl+I',
           keys: ['ctrl', 'i'],
           actionCode: 'body_italic',
+          targetLabel: 'Kata Asing "Artificial Intelligence"',
           babyLogic: 'Ctrl + I (Italic) = Merebahkan huruf 15 derajat untuk istilah ilmiah/asing!'
         },
         {
@@ -1383,6 +1387,7 @@
           shortcut: 'Ctrl+J',
           keys: ['ctrl', 'j'],
           actionCode: 'body_justify',
+          targetLabel: 'Paragraf Isi Laporan',
           babyLogic: 'Ctrl + J (Justify) = Menjepit teks rapat rata di kedua dinding kertas!'
         },
         {
@@ -1392,6 +1397,7 @@
           shortcut: 'Ctrl+U',
           keys: ['ctrl', 'u'],
           actionCode: 'recom_underline',
+          targetLabel: 'Kalimat Rekomendasi Direksi',
           babyLogic: 'Ctrl + U (Underline) = Menggarisbawahi poin emas agar bos langsung melirik!'
         },
         {
@@ -1401,6 +1407,7 @@
           shortcut: 'Ctrl+S',
           keys: ['ctrl', 's'],
           actionCode: 'doc_save',
+          targetLabel: 'Status Berkas Dokumen',
           babyLogic: 'Ctrl + S (Save) = Mengunci gembok berkas ke harddisk, aman selamanya!'
         }
       ]
@@ -1427,6 +1434,7 @@
           shortcut: 'Ctrl+F',
           keys: ['ctrl', 'f'],
           actionCode: 'find_anggaran',
+          targetLabel: 'Pencarian Kata Kunci Anggaran',
           babyLogic: 'Ctrl + F (Find) = Lampu senter ajaib pemburu kata kunci dalam sekejap!'
         },
         {
@@ -1436,6 +1444,7 @@
           shortcut: 'Ctrl+K',
           keys: ['ctrl', 'k'],
           actionCode: 'insert_hyperlink',
+          targetLabel: 'Tautan Lampiran Spesifikasi',
           babyLogic: 'Ctrl + K (LinK) = Jembatan kawat biru menyambungkan kata ke alamat web!'
         },
         {
@@ -1445,6 +1454,7 @@
           shortcut: 'Ctrl+C',
           keys: ['ctrl', 'c'],
           actionCode: 'copy_summary',
+          targetLabel: 'Teks Ringkasan Spesifikasi',
           babyLogic: 'Ctrl + C (Copy) = Mesin fotokopi digital menangkap teks tanpa merusaknya!'
         },
         {
@@ -1454,6 +1464,7 @@
           shortcut: 'Ctrl+V',
           keys: ['ctrl', 'v'],
           actionCode: 'paste_summary',
+          targetLabel: 'Bagian Penutup Dokumen',
           babyLogic: 'Ctrl + V (Paste) = Menempelkan stempel teks hasil fotokopi seketika!'
         },
         {
@@ -1463,6 +1474,7 @@
           shortcut: 'Ctrl+P',
           keys: ['ctrl', 'p'],
           actionCode: 'doc_print',
+          targetLabel: 'Pratinjau Cetak Kertas',
           babyLogic: 'Ctrl + P (Print) = Mengirim sinyal perintah ke mesin printer kertas!'
         }
       ]
@@ -1489,6 +1501,7 @@
           shortcut: 'Ctrl+H',
           keys: ['ctrl', 'h'],
           actionCode: 'replace_dialog',
+          targetLabel: 'Teks "Pihak Pertama"',
           babyLogic: 'Ctrl + H = Ahli bedah kata yang mengganti ribuan kata salah dalam satu klik!'
         },
         {
@@ -1498,6 +1511,7 @@
           shortcut: 'F7',
           keys: ['f7'],
           actionCode: 'spelling_check',
+          targetLabel: 'Pemeriksaan Ejaan Dokumen',
           babyLogic: 'F7 = Hakim ejaan teliti penanda tinta merah bila ada tipo kata!'
         },
         {
@@ -1507,6 +1521,7 @@
           shortcut: 'Ctrl+A',
           keys: ['ctrl', 'a'],
           actionCode: 'select_all',
+          targetLabel: 'Seluruh Isi Dokumen',
           babyLogic: 'Ctrl + A (All) = Menjala seluruh lautan teks tanpa ada yang terlewat!'
         },
         {
@@ -1516,6 +1531,7 @@
           shortcut: 'F12',
           keys: ['f12'],
           actionCode: 'save_as_new',
+          targetLabel: 'Dialog Simpan Sebagai Baru',
           babyLogic: 'F12 (Save As) = Menduplikasi berkas dengan nama atau format baru!'
         }
       ]
@@ -1546,6 +1562,7 @@
           keys: ['ctrl', 'shift', '4'],
           altKeys: ['ctrl', 'shift', '$'],
           actionCode: 'format_currency',
+          targetLabel: 'Kolom Omset (C2:C5)',
           babyLogic: 'Ctrl + Shift + $ = Menaburkan simbol mata uang Rupiah & pemisah ribuan!'
         },
         {
@@ -1556,6 +1573,7 @@
           keys: ['ctrl', 'shift', '5'],
           altKeys: ['ctrl', 'shift', '%'],
           actionCode: 'format_percent',
+          targetLabel: 'Kolom Margin (D2:D5)',
           babyLogic: 'Ctrl + Shift + % = Mengalikan desimal dengan 100 dan menempel tanda %!'
         },
         {
@@ -1565,6 +1583,7 @@
           shortcut: 'Alt+=',
           keys: ['alt', '='],
           actionCode: 'autosum_total',
+          targetLabel: 'Baris Total Akhir (C6)',
           babyLogic: 'Alt + = (AutoSum) = Robot kalkulator cerdas langsung merangkum rumus SUM!'
         },
         {
@@ -1574,6 +1593,7 @@
           shortcut: 'Ctrl+T',
           keys: ['ctrl', 't'],
           actionCode: 'create_table',
+          targetLabel: 'Seluruh Rentang Tabel A1:E5',
           babyLogic: 'Ctrl + T (Table) = Merias data mentah jadi tabel profesional berwarna zebra!'
         },
         {
@@ -1583,6 +1603,7 @@
           shortcut: 'Ctrl+B',
           keys: ['ctrl', 'b'],
           actionCode: 'bold_total',
+          targetLabel: 'Teks Baris Total',
           babyLogic: 'Ctrl + B (Bold) = Mengunci baris total agar langsung terbaca pimpinan!'
         },
         {
@@ -1592,6 +1613,7 @@
           shortcut: 'Ctrl+S',
           keys: ['ctrl', 's'],
           actionCode: 'excel_save',
+          targetLabel: 'Buku Kerja Excel',
           babyLogic: 'Ctrl + S = Menyimpan berkas workbook excel, pantang kehilangan data!'
         }
       ]
@@ -1618,6 +1640,7 @@
           shortcut: 'Ctrl+0',
           keys: ['ctrl', '0'],
           actionCode: 'hide_column',
+          targetLabel: 'Kolom B (Nomor Rekening)',
           babyLogic: 'Ctrl + 0 = Jubah tembus pandang untuk melipat kolom rahasia seketika!'
         },
         {
@@ -1627,6 +1650,7 @@
           shortcut: 'Ctrl+9',
           keys: ['ctrl', '9'],
           actionCode: 'hide_row',
+          targetLabel: 'Baris 3 (Citra Kirana)',
           babyLogic: 'Ctrl + 9 = Menutupi baris tertentu agar lembar kerja fokus pada data aktif!'
         },
         {
@@ -1636,6 +1660,7 @@
           shortcut: 'Ctrl+;',
           keys: ['ctrl', ';'],
           actionCode: 'insert_date',
+          targetLabel: 'Sel Keterangan Tanggal Audit',
           babyLogic: 'Ctrl + ; = Stempel kalender kilat mencetak tanggal hari ini tanpa mengetik!'
         },
         {
@@ -1645,6 +1670,7 @@
           shortcut: 'Ctrl+D',
           keys: ['ctrl', 'd'],
           actionCode: 'fill_down',
+          targetLabel: 'Sel Kolom Bonus D3:D4',
           babyLogic: 'Ctrl + D (Down) = Menggandakan formula dari sel tepat di atasnya!'
         },
         {
@@ -1654,6 +1680,7 @@
           shortcut: 'Ctrl+F',
           keys: ['ctrl', 'f'],
           actionCode: 'excel_find',
+          targetLabel: 'Pencarian Nama Karyawan',
           babyLogic: 'Ctrl + F = Mesin radar pencari data di ribuan baris excel!'
         }
       ]
@@ -1680,6 +1707,7 @@
           shortcut: 'Ctrl+A',
           keys: ['ctrl', 'a'],
           actionCode: 'excel_select_all',
+          targetLabel: 'Seluruh Kisi Inventaris',
           babyLogic: 'Ctrl + A = Menyeleksi semua sel aktif sekaligus dalam satu jentikan jari!'
         },
         {
@@ -1689,6 +1717,7 @@
           shortcut: 'F11',
           keys: ['f11'],
           actionCode: 'create_chart',
+          targetLabel: 'Pembuatan Grafik Kolom',
           babyLogic: 'F11 = Tongkat sihir pencipta grafik visual kilat dari data tabel!'
         },
         {
@@ -1698,6 +1727,7 @@
           shortcut: 'F2',
           keys: ['f2'],
           actionCode: 'edit_cell',
+          targetLabel: 'Mode Edit Sel Aktif',
           babyLogic: 'F2 = Masuk ke dalam isi sel untuk mengoreksi teks tanpa takut tertimpa!'
         },
         {
@@ -1707,6 +1737,7 @@
           shortcut: 'F12',
           keys: ['f12'],
           actionCode: 'excel_save_as',
+          targetLabel: 'Dialog Simpan Cadangan Baru',
           babyLogic: 'F12 = Menyimpan berkas salinan baru sebagai arsip cadangan aman!'
         }
       ]
@@ -1724,6 +1755,39 @@
     activeStudioMode: { excel: 'project', word: 'project' },
     currentProjectIdx: { excel: 0, word: 0 },
     projectCompletedSteps: { excel: {}, word: {} },
+    // Game System State
+    projectGameState: {
+      excel: {
+        startTime: null,
+        timerInterval: null,
+        elapsedSeconds: 0,
+        score: 0,
+        combo: 0,
+        maxCombo: 0,
+        mistakes: 0,
+        correctCount: 0,
+        lastDetectedKeyString: 'Belum ada tombol ditekan',
+        lastMessage: 'Siap bermain! Tekan kombinasi tombol langsung di keyboard fisikmu atau rakit di Papan Pad Game bawah!',
+        lastMessageType: 'info',
+        isCompletedReportOpen: false,
+        virtualModifiers: new Set()
+      },
+      word: {
+        startTime: null,
+        timerInterval: null,
+        elapsedSeconds: 0,
+        score: 0,
+        combo: 0,
+        maxCombo: 0,
+        mistakes: 0,
+        correctCount: 0,
+        lastDetectedKeyString: 'Belum ada tombol ditekan',
+        lastMessage: 'Siap bermain! Tekan kombinasi tombol langsung di keyboard fisikmu atau rakit di Papan Pad Game bawah!',
+        lastMessageType: 'info',
+        isCompletedReportOpen: false,
+        virtualModifiers: new Set()
+      }
+    },
     projectDocState: {
       word: {
         titleBold: false,
@@ -1779,7 +1843,34 @@
     return k;
   }
 
-  // Submode Switcher (Simulasi Proyek Kantor vs Bank Pintasan Lengkap)
+  // Timer Management
+  function ensureGameTimer(mode) {
+    const gs = appState.projectGameState[mode];
+    if (!gs.startTime) {
+      gs.startTime = Date.now();
+      if (!gs.timerInterval) {
+        gs.timerInterval = setInterval(() => {
+          gs.elapsedSeconds = Math.floor((Date.now() - gs.startTime) / 100) / 10;
+          const timerEl = document.getElementById(`hud-timer-${mode}`);
+          if (timerEl) {
+            const mins = Math.floor(gs.elapsedSeconds / 60);
+            const secs = (gs.elapsedSeconds % 60).toFixed(1);
+            timerEl.textContent = `${String(mins).padStart(2, '0')}:${String(secs).padStart(4, '0')}`;
+          }
+        }, 100);
+      }
+    }
+  }
+
+  function stopGameTimer(mode) {
+    const gs = appState.projectGameState[mode];
+    if (gs.timerInterval) {
+      clearInterval(gs.timerInterval);
+      gs.timerInterval = null;
+    }
+  }
+
+  // Submode Switcher
   window.switchStudioSubmode = function(mode, submode) {
     if (window.sfx) sfx.playClick();
     appState.activeStudioMode[mode] = submode;
@@ -1790,10 +1881,29 @@
   window.switchProject = function(mode, idx) {
     if (window.sfx) sfx.playClick();
     appState.currentProjectIdx[mode] = idx;
+    resetGameSessionState(mode);
     window.renderShortcutStudio(mode);
   };
 
-  // Reset Proyek Aktif
+  // Reset Sesi Game
+  function resetGameSessionState(mode) {
+    stopGameTimer(mode);
+    const gs = appState.projectGameState[mode];
+    gs.startTime = null;
+    gs.elapsedSeconds = 0;
+    gs.score = 0;
+    gs.combo = 0;
+    gs.maxCombo = 0;
+    gs.mistakes = 0;
+    gs.correctCount = 0;
+    gs.lastDetectedKeyString = 'Belum ada tombol ditekan';
+    gs.lastMessage = 'Siap bermain! Tekan tombol di keyboard fisikmu atau rakit di Papan Pad Game bawah!';
+    gs.lastMessageType = 'info';
+    gs.isCompletedReportOpen = false;
+    gs.virtualModifiers.clear();
+  }
+
+  // Reset Proyek
   window.resetCurrentProject = function(mode) {
     if (window.sfx) sfx.playClick();
     const projList = mode === 'word' ? window.WORD_PROJECTS : window.EXCEL_PROJECTS;
@@ -1802,7 +1912,6 @@
       if (appState.projectCompletedSteps[mode]) {
         appState.projectCompletedSteps[mode][project.id] = [];
       }
-      // Reset doc state
       if (mode === 'word') {
         appState.projectDocState.word = {
           titleBold: false, titleAlign: 'left', bodyItalic: false, bodyJustify: false,
@@ -1819,10 +1928,11 @@
         };
       }
     }
+    resetGameSessionState(mode);
     window.renderShortcutStudio(mode);
   };
 
-  // Jalankan Aksi Perubahan Dokumen Kantor Berdasarkan actionCode
+  // Aksi Perubahan Dokumen Kantor Berdasarkan actionCode
   window.applyProjectAction = function(mode, actionCode) {
     const docState = appState.projectDocState[mode];
     if (mode === 'word') {
@@ -1866,113 +1976,176 @@
     }
   };
 
-  // Jalankan Langkah Proyek dari Tombol Interaktif atau Listener Keyboard
-  window.runProjectStepAction = function(mode, taskId) {
+  // =========================================================================
+  // SISTEM PENGUJIAN KOMBINASI TOMBOL & GAMEPLAY NYATA (BUKAN KLIK BIASA!)
+  // =========================================================================
+  window.testProjectKeyCombination = function(mode, pressedKeysList, sourceLabel) {
+    ensureGameTimer(mode);
+    const gs = appState.projectGameState[mode];
     const projList = mode === 'word' ? window.WORD_PROJECTS : window.EXCEL_PROJECTS;
     const project = projList[appState.currentProjectIdx[mode]];
     if (!project) return;
 
     if (!appState.projectCompletedSteps[mode]) appState.projectCompletedSteps[mode] = {};
     if (!appState.projectCompletedSteps[mode][project.id]) appState.projectCompletedSteps[mode][project.id] = [];
-
     const completed = appState.projectCompletedSteps[mode][project.id];
-    const task = project.tasks.find(t => t.id === taskId);
-    if (!task) return;
 
-    if (!completed.includes(taskId)) {
-      completed.push(taskId);
-      appState.stars = (appState.stars || 0) + 1;
-      if (window.saveProgress) saveProgress();
-      const starCountEl = document.getElementById("header-stars");
-      if (starCountEl) starCountEl.textContent = `${appState.stars} Bintang`;
+    // Tugas target yang harus dikerjakan berikutnya
+    const pendingTasks = project.tasks.filter(t => !completed.includes(t.id));
+    if (pendingTasks.length === 0) return;
+    const targetTask = pendingTasks[0];
+
+    // Format tombol untuk display HUD
+    const displayPressed = pressedKeysList.map(k => k.toUpperCase()).join(' + ');
+    gs.lastDetectedKeyString = displayPressed;
+
+    // Evaluasi kecocokan tombol
+    const normPressed = pressedKeysList.map(k => normalizeKey(k));
+    const isCtrl = normPressed.includes('ctrl');
+    const isShift = normPressed.includes('shift');
+    const isAlt = normPressed.includes('alt');
+
+    let isMatch = false;
+
+    // 1. Currency (Ctrl+Shift+$ atau Ctrl+Shift+4)
+    if (targetTask.actionCode === 'format_currency') {
+      if (isCtrl && isShift && (normPressed.includes('$') || normPressed.includes('4'))) isMatch = true;
+    }
+    // 2. Percent (Ctrl+Shift+% atau Ctrl+Shift+5)
+    else if (targetTask.actionCode === 'format_percent') {
+      if (isCtrl && isShift && (normPressed.includes('%') || normPressed.includes('5'))) isMatch = true;
+    }
+    // 3. AutoSum (Alt+=)
+    else if (targetTask.actionCode === 'autosum_total') {
+      if (isAlt && (normPressed.includes('=') || normPressed.includes('+'))) isMatch = true;
+    }
+    // 4. Hide Col (Ctrl+0)
+    else if (targetTask.actionCode === 'hide_column') {
+      if (isCtrl && normPressed.includes('0')) isMatch = true;
+    }
+    // 5. Hide Row (Ctrl+9)
+    else if (targetTask.actionCode === 'hide_row') {
+      if (isCtrl && normPressed.includes('9')) isMatch = true;
+    }
+    // 6. Insert Date (Ctrl+;)
+    else if (targetTask.actionCode === 'insert_date') {
+      if (isCtrl && (normPressed.includes(';') || normPressed.includes(':'))) isMatch = true;
+    }
+    // 7. Function keys: F11, F12, F7, F2
+    else if (targetTask.actionCode === 'create_chart' && normPressed.includes('f11')) isMatch = true;
+    else if ((targetTask.actionCode === 'save_as_new' || targetTask.actionCode === 'excel_save_as') && normPressed.includes('f12')) isMatch = true;
+    else if (targetTask.actionCode === 'spelling_check' && normPressed.includes('f7')) isMatch = true;
+    else if (targetTask.actionCode === 'edit_cell' && normPressed.includes('f2')) isMatch = true;
+    // 8. Standard Ctrl+Key shortcuts
+    else if (isCtrl && !isShift && !isAlt) {
+      const targetLetter = targetTask.keys.find(k => k !== 'ctrl');
+      if (targetLetter && normPressed.includes(targetLetter)) isMatch = true;
     }
 
-    // Apply visual transformation
-    window.applyProjectAction(mode, task.actionCode);
-    if (window.sfx) sfx.playSuccess();
+    if (isMatch) {
+      // ✅ SUKSES! HITUNG POIN & COMBO
+      gs.combo += 1;
+      if (gs.combo > gs.maxCombo) gs.maxCombo = gs.combo;
+      gs.correctCount += 1;
+      const pointsGained = 100 + (gs.combo * 25);
+      gs.score += pointsGained;
 
-    // Re-render
+      completed.push(targetTask.id);
+      appState.stars = (appState.stars || 0) + 1;
+      if (window.saveProgress) saveProgress();
+
+      window.applyProjectAction(mode, targetTask.actionCode);
+      if (window.sfx) sfx.playSuccess();
+
+      gs.lastMessageType = 'success';
+      gs.lastMessage = `🎉 TEPAT SEKALI! Pintasan [${targetTask.shortcut}] berhasil dieksekusi via ${sourceLabel}! (+${pointsGained} PTS) 🔥 Combo x${gs.combo}!`;
+
+      // Jika seluruh tugas di proyek ini sudah rampung
+      if (completed.length >= project.tasks.length) {
+        stopGameTimer(mode);
+        gs.isCompletedReportOpen = true;
+        setKodiSpeech(
+          "🏆 LUAR BIASA! PROYEK KANTOR SELESAI!",
+          `Kamu menyelesaikan seluruh permintaan bos dengan total skor ${gs.score} Poin dalam waktu ${gs.elapsedSeconds.toFixed(1)} detik!`
+        );
+      } else {
+        setKodiSpeech(
+          `Pintasan [${targetTask.shortcut}] Sukses!`,
+          `Hebat! Dokumen langsung bertransformasi. Lanjut ke tugas berikutnya: ${pendingTasks[1]?.name || 'Terakhir'}!`
+        );
+      }
+
+      gs.virtualModifiers.clear();
+      window.renderShortcutStudio(mode);
+    } else {
+      // ❌ SALAH! BREAK COMBO
+      gs.combo = 0;
+      gs.mistakes += 1;
+      if (window.sfx) sfx.playWrong();
+      gs.lastMessageType = 'error';
+      gs.lastMessage = `❌ Tombol terdeteksi [${displayPressed || 'Kosong'}]. Bos meminta pintasan [${targetTask.shortcut}] untuk: "${targetTask.name}". Ayo coba lagi! 🍼`;
+      
+      setKodiSpeech(
+        "Kombinasi Tombol Belum Tepat!",
+        `Yang ditekan tadi [${displayPressed}]. Ingat Nalar Bayi Kodi: ${targetTask.babyLogic}`
+      );
+      window.renderShortcutStudio(mode);
+    }
+  };
+
+  // Papan Rakit Tombol Virtual (Touchscreen / Mouse Keyboard Simulator Pad)
+  window.toggleProjectVirtualModifier = function(mode, modKey) {
+    if (window.sfx) sfx.playClick();
+    const gs = appState.projectGameState[mode];
+    if (gs.virtualModifiers.has(modKey)) {
+      gs.virtualModifiers.delete(modKey);
+    } else {
+      gs.virtualModifiers.add(modKey);
+    }
     window.renderShortcutStudio(mode);
   };
 
-  // Close Interactive Modals
+  window.pressProjectVirtualActionKey = function(mode, keyName) {
+    const gs = appState.projectGameState[mode];
+    const keysToSend = Array.from(gs.virtualModifiers);
+    keysToSend.push(keyName.toLowerCase());
+    window.testProjectKeyCombination(mode, keysToSend, 'Papan Pad Interaktif');
+  };
+
+  // Close Modals
   window.closeOfficeModal = function(mode, modalType) {
     if (window.sfx) sfx.playClick();
     if (mode === 'word') {
       if (modalType === 'print') appState.projectDocState.word.printed = false;
       if (modalType === 'saveAs') appState.projectDocState.word.saveAsNew = false;
+      if (modalType === 'report') appState.projectGameState.word.isCompletedReportOpen = false;
     } else {
       if (modalType === 'chart') appState.projectDocState.excel.chartCreated = false;
       if (modalType === 'saveAs') appState.projectDocState.excel.saveAsNew = false;
+      if (modalType === 'report') appState.projectGameState.excel.isCompletedReportOpen = false;
     }
     window.renderShortcutStudio(mode);
   };
 
-  // Tangani Tombol Fisik Keyboard pada Mode Simulasi Proyek
+  // Tangani Tombol Fisik Keyboard pada Mode Proyek
   function handleProjectPhysicalKey(mode, e) {
     const projList = mode === 'word' ? window.WORD_PROJECTS : window.EXCEL_PROJECTS;
     const project = projList[appState.currentProjectIdx[mode]];
     if (!project) return;
 
-    if (!appState.projectCompletedSteps[mode]) appState.projectCompletedSteps[mode] = {};
-    if (!appState.projectCompletedSteps[mode][project.id]) appState.projectCompletedSteps[mode][project.id] = [];
-    const completed = appState.projectCompletedSteps[mode][project.id];
+    // Kumpulkan tombol fisik yang ditekan
+    const keys = [];
+    if (e.ctrlKey || e.metaKey) keys.push('ctrl');
+    if (e.altKey) keys.push('alt');
+    if (e.shiftKey) keys.push('shift');
 
-    // Temukan tugas berikutnya yang belum selesai
-    const pendingTasks = project.tasks.filter(t => !completed.includes(t.id));
-    if (pendingTasks.length === 0) return;
+    let cleanKey = e.key.toLowerCase();
+    if (cleanKey === ' ') cleanKey = 'space';
 
-    // Normalisasi input
-    const isCtrl = e.ctrlKey || e.metaKey;
-    const isShift = e.shiftKey;
-    const isAlt = e.altKey;
-    const keyLower = e.key.toLowerCase();
-
-    // Cek kecocokan di pending tasks
-    for (const task of pendingTasks) {
-      let matched = false;
-
-      // Format Currency (Ctrl+Shift+$ atau Ctrl+Shift+4)
-      if (task.actionCode === 'format_currency') {
-        if (isCtrl && isShift && (e.key === '$' || e.key === '4' || e.code === 'Digit4')) matched = true;
-      }
-      // Format Percent (Ctrl+Shift+% atau Ctrl+Shift+5)
-      else if (task.actionCode === 'format_percent') {
-        if (isCtrl && isShift && (e.key === '%' || e.key === '5' || e.code === 'Digit5')) matched = true;
-      }
-      // AutoSum (Alt+=)
-      else if (task.actionCode === 'autosum_total') {
-        if (isAlt && (e.key === '=' || e.key === '+' || e.code === 'Equal')) matched = true;
-      }
-      // Hide Col (Ctrl+0)
-      else if (task.actionCode === 'hide_column') {
-        if (isCtrl && (e.key === '0' || e.code === 'Digit0')) matched = true;
-      }
-      // Hide Row (Ctrl+9)
-      else if (task.actionCode === 'hide_row') {
-        if (isCtrl && (e.key === '9' || e.code === 'Digit9')) matched = true;
-      }
-      // Insert Date (Ctrl+;)
-      else if (task.actionCode === 'insert_date') {
-        if (isCtrl && (e.key === ';' || e.code === 'Semicolon')) matched = true;
-      }
-      // Function keys: F11, F12, F7, F2
-      else if (task.actionCode === 'create_chart' && e.key === 'F11') matched = true;
-      else if ((task.actionCode === 'save_as_new' || task.actionCode === 'excel_save_as') && e.key === 'F12') matched = true;
-      else if (task.actionCode === 'spelling_check' && e.key === 'F7') matched = true;
-      else if (task.actionCode === 'edit_cell' && e.key === 'F2') matched = true;
-      // Standard Ctrl+Key shortcuts
-      else if (isCtrl && !isShift && !isAlt) {
-        if (task.keys.includes(keyLower) || task.shortcut.toLowerCase() === `ctrl+${keyLower}`) {
-          matched = true;
-        }
-      }
-
-      if (matched) {
-        e.preventDefault();
-        window.runProjectStepAction(mode, task.id);
-        return;
-      }
+    if (!['control', 'ctrl', 'alt', 'shift', 'meta'].includes(cleanKey)) {
+      keys.push(cleanKey);
+      e.preventDefault();
+      window.testProjectKeyCombination(mode, keys, 'Keyboard Fisik');
     }
   }
 
@@ -1985,6 +2158,14 @@
     const isReplaced = docState.replaced;
     const isSpelling = docState.spellingChecked;
     const isSaveAs = docState.saveAsNew;
+
+    // Cek tugas aktif untuk highlight target dalam dokumen
+    const pendingTasks = project.tasks.filter(t => !completed.includes(t.id));
+    const activeTask = pendingTasks[0];
+    const isTitleTarget = activeTask && (activeTask.actionCode === 'title_bold' || activeTask.actionCode === 'title_center');
+    const isItalicTarget = activeTask && activeTask.actionCode === 'body_italic';
+    const isJustifyTarget = activeTask && activeTask.actionCode === 'body_justify';
+    const isRecomTarget = activeTask && activeTask.actionCode === 'recom_underline';
 
     return `
       <div class="office-window-mockup word-window">
@@ -2080,10 +2261,17 @@
               </div>
             ` : ''}
 
-            <!-- JUDUL DOKUMEN REALTIME -->
-            <h2 class="word-doc-title ${docState.titleBold ? 'is-bold' : ''}" style="text-align: ${docState.titleAlign};">
-              ${project.initialDoc.title}
-            </h2>
+            <!-- JUDUL DOKUMEN REALTIME DENGAN HIGHLIGHT TARGET -->
+            <div class="word-doc-title-wrapper ${isTitleTarget ? 'doc-element-target-pulse' : ''}">
+              ${isTitleTarget ? `
+                <div class="doc-target-focus-pill">
+                  🎯 TARGET AKTIF SEKARANG: [${activeTask.name}] ➡️ Tekan ${activeTask.shortcut}!
+                </div>
+              ` : ''}
+              <h2 class="word-doc-title ${docState.titleBold ? 'is-bold' : ''}" style="text-align: ${docState.titleAlign};">
+                ${project.initialDoc.title}
+              </h2>
+            </div>
 
             <!-- SUBTITLE -->
             <div class="word-doc-subtitle" style="text-align: ${docState.titleAlign};">
@@ -2093,13 +2281,20 @@
             <hr class="word-doc-divider">
 
             <!-- PARAGRAF 1 REALTIME -->
-            <p class="word-doc-par" style="text-align: ${docState.bodyJustify ? 'justify' : 'left'};">
-              ${project.initialDoc.par1
-                .replace('Artificial Intelligence', `<span class="word-term-italic ${docState.bodyItalic ? 'is-italic' : ''}">Artificial Intelligence</span>`)
-                .replace('Anggaran Belanja Pokok', `<mark class="word-find-mark ${docState.findActive ? 'is-highlighted' : ''}">Anggaran Belanja Pokok</mark>`)
-                .replace('Pihak Pertama', isReplaced ? '<b style="color: #2563eb;">PT Inovasi Maju Nusantara</b>' : 'Pihak Pertama')
-              }
-            </p>
+            <div class="${isJustifyTarget ? 'doc-element-target-pulse' : ''}">
+              ${isJustifyTarget ? `
+                <div class="doc-target-focus-pill">
+                  🎯 TARGET AKTIF SEKARANG: Rapikan Tepi Paragraf ➡️ Tekan Ctrl+J!
+                </div>
+              ` : ''}
+              <p class="word-doc-par" style="text-align: ${docState.bodyJustify ? 'justify' : 'left'};">
+                ${project.initialDoc.par1
+                  .replace('Artificial Intelligence', `<span class="word-term-italic ${docState.bodyItalic ? 'is-italic' : ''} ${isItalicTarget ? 'doc-term-target-pulse' : ''}">Artificial Intelligence</span>`)
+                  .replace('Anggaran Belanja Pokok', `<mark class="word-find-mark ${docState.findActive ? 'is-highlighted' : ''}">Anggaran Belanja Pokok</mark>`)
+                  .replace('Pihak Pertama', isReplaced ? '<b style="color: #2563eb;">PT Inovasi Maju Nusantara</b>' : 'Pihak Pertama')
+                }
+              </p>
+            </div>
 
             <!-- TAUTAN HYPERLINK (PROJEK 2) -->
             ${docState.linkAdded ? `
@@ -2109,12 +2304,19 @@
             ` : ''}
 
             <!-- PARAGRAF 2 / REKOMENDASI REALTIME -->
-            <p class="word-doc-par" style="text-align: ${docState.bodyJustify ? 'justify' : 'left'};">
-              ${project.initialDoc.par2
-                .replace('REKOMENDASI DIREKSI:', `<span class="word-recom-line ${docState.recomUnderline ? 'is-underlined' : ''}">REKOMENDASI DIREKSI:</span>`)
-                .replace('Pihak Pertama', isReplaced ? '<b style="color: #2563eb;">PT Inovasi Maju Nusantara</b>' : 'Pihak Pertama')
-              }
-            </p>
+            <div class="${isRecomTarget ? 'doc-element-target-pulse' : ''}">
+              ${isRecomTarget ? `
+                <div class="doc-target-focus-pill">
+                  🎯 TARGET AKTIF: Garis Bawahi Rekomendasi ➡️ Tekan Ctrl+U!
+                </div>
+              ` : ''}
+              <p class="word-doc-par" style="text-align: ${docState.bodyJustify ? 'justify' : 'left'};">
+                ${project.initialDoc.par2
+                  .replace('REKOMENDASI DIREKSI:', `<span class="word-recom-line ${docState.recomUnderline ? 'is-underlined' : ''}">REKOMENDASI DIREKSI:</span>`)
+                  .replace('Pihak Pertama', isReplaced ? '<b style="color: #2563eb;">PT Inovasi Maju Nusantara</b>' : 'Pihak Pertama')
+                }
+              </p>
+            </div>
 
             <!-- PARAGRAF PASTE DARI RINGKASAN (PROJEK 2) -->
             ${docState.pastedSummary ? `
@@ -2134,7 +2336,7 @@
           </div>
         </div>
 
-        <!-- PRINT MODAL OVERLAY -->
+        <!-- MODAL-MODAL -->
         ${isPrinted ? `
           <div class="office-modal-overlay">
             <div class="office-modal-box">
@@ -2143,11 +2345,8 @@
                 <button onclick="closeOfficeModal('word', 'print')">✕</button>
               </div>
               <div class="office-modal-body">
-                <p><b>Printer Tujuan:</b> HP LaserJet Enterprise M608 (Siap Cetak)</p>
-                <p><b>Salinan:</b> 1 Rangkap | <b>Orientasi:</b> Portrait | <b>Ukuran:</b> A4</p>
-                <div class="print-mini-preview">
-                  📄 Dokumen "${project.docFilename}" siap dikirim ke mesin cetak!
-                </div>
+                <p><b>Printer:</b> HP LaserJet Enterprise M608 (Siap Cetak)</p>
+                <div class="print-mini-preview">📄 Dokumen "${project.docFilename}" siap dicetak!</div>
               </div>
               <div class="office-modal-footer">
                 <button class="btn-primary" style="background: #2563eb;" onclick="closeOfficeModal('word', 'print')">Tutup & Lanjutkan</button>
@@ -2156,7 +2355,6 @@
           </div>
         ` : ''}
 
-        <!-- SAVE AS MODAL OVERLAY -->
         ${isSaveAs ? `
           <div class="office-modal-overlay">
             <div class="office-modal-box">
@@ -2165,11 +2363,8 @@
                 <button onclick="closeOfficeModal('word', 'saveAs')">✕</button>
               </div>
               <div class="office-modal-body">
-                <p><b>Nama Berkas Baru:</b> [ARSIP-FINAL]_${project.docFilename}</p>
-                <p><b>Format:</b> Word Document (*.docx) / PDF (*.pdf)</p>
-                <div class="alert-box success" style="margin-top: 8px;">
-                  ✅ Salinan cadangan resmi telah berhasil disimpan ke folder arsip!
-                </div>
+                <p><b>Berkas Baru:</b> [ARSIP-FINAL]_${project.docFilename}</p>
+                <div class="alert-box success">✅ Salinan cadangan resmi tersimpan aman!</div>
               </div>
               <div class="office-modal-footer">
                 <button class="btn-primary" style="background: #2563eb;" onclick="closeOfficeModal('word', 'saveAs')">Tutup</button>
@@ -2211,20 +2406,25 @@
     const isDate = docState.dateInserted;
     const isFillDown = docState.fillDown;
 
-    // Helper format mata uang
     function formatMoney(num) {
       if (!isCurrency) return num.toLocaleString('id-ID');
       return 'Rp ' + num.toLocaleString('id-ID');
     }
 
-    // Helper format margin
     function formatMargin(num) {
       if (!isPercent) return num;
       return (Math.round(num * 100)) + '%';
     }
 
-    // Hitung total omset
     const totalC = project.initialGrid.reduce((acc, row) => acc + (typeof row.colC === 'number' ? row.colC : 0), 0);
+
+    // Cek target aktif
+    const pendingTasks = project.tasks.filter(t => !completed.includes(t.id));
+    const activeTask = pendingTasks[0];
+    const isCurrencyTarget = activeTask && activeTask.actionCode === 'format_currency';
+    const isPercentTarget = activeTask && activeTask.actionCode === 'format_percent';
+    const isAutoSumTarget = activeTask && activeTask.actionCode === 'autosum_total';
+    const isTableTarget = activeTask && activeTask.actionCode === 'create_table';
 
     return `
       <div class="office-window-mockup excel-window">
@@ -2294,15 +2494,14 @@
           </div>
         </div>
 
-        <!-- SPREADSHEET GRID (TRANSFORMASI VISUAL NYATA) -->
+        <!-- SPREADSHEET GRID DENGAN INDIKATOR TARGET -->
         <div class="office-canvas-viewport">
-          <div class="excel-spreadsheet-sheet ${docState.selectAll ? 'grid-selected' : ''}">
+          <div class="excel-spreadsheet-sheet ${docState.selectAll ? 'grid-selected' : ''} ${isTableTarget ? 'table-target-pulse' : ''}">
             <!-- Save Toast -->
             <div id="excel-save-toast" class="office-save-toast" style="display: ${isSaved ? 'flex' : 'none'};">
               <span>💾 Lembar kerja tersimpan otomatis! (Ctrl+S Berhasil)</span>
             </div>
 
-            <!-- TANGGAL AUDIT OTOMATIS (PROYEK 2) -->
             ${isDate ? `
               <div class="excel-audit-date-badge">
                 📅 <b>Tanggal Audit Terverifikasi (Ctrl+;):</b> 12 Oktober 2026
@@ -2320,29 +2519,27 @@
                   ` : `
                     <th class="excel-col-head">B</th>
                   `}
-                  <th class="excel-col-head">C</th>
-                  <th class="excel-col-head">D</th>
+                  <th class="excel-col-head ${isCurrencyTarget ? 'col-target-highlight' : ''}">C</th>
+                  <th class="excel-col-head ${isPercentTarget ? 'col-target-highlight' : ''}">D</th>
                   <th class="excel-col-head">E</th>
                 </tr>
               </thead>
               <tbody>
-                <!-- ROW 1: HEADER NAMA KOLOM -->
                 <tr class="excel-data-row ${isTable ? 'table-header-row' : ''}">
                   <td class="excel-row-num">1</td>
                   <td class="excel-cell head-cell">Nama / Unit ${isTable ? '▼' : ''}</td>
                   ${isColHidden ? '' : `<td class="excel-cell head-cell">Kota / Akun ${isTable ? '▼' : ''}</td>`}
-                  <td class="excel-cell head-cell">Omset / Gaji ${isTable ? '▼' : ''}</td>
-                  <td class="excel-cell head-cell">Margin / Bonus ${isTable ? '▼' : ''}</td>
+                  <td class="excel-cell head-cell ${isCurrencyTarget ? 'target-col-glow' : ''}">Omset / Gaji ${isTable ? '▼' : ''}</td>
+                  <td class="excel-cell head-cell ${isPercentTarget ? 'target-col-glow' : ''}">Margin / Bonus ${isTable ? '▼' : ''}</td>
                   <td class="excel-cell head-cell">Status ${isTable ? '▼' : ''}</td>
                 </tr>
 
-                <!-- DATA ROWS 2 to 5 -->
                 ${project.initialGrid.map((row, idx) => {
                   const rowNum = idx + 2;
                   const isThisRowHidden = (isRowHidden && idx === 2);
                   if (isThisRowHidden) {
                     return `
-                      <tr class="excel-data-row hidden-row-indicator" title="Baris 3 Tersembunyi (Ctrl+9)">
+                      <tr class="excel-data-row hidden-row-indicator">
                         <td class="excel-row-num hidden-row-badge">=</td>
                         <td colspan="${isColHidden ? 4 : 5}" style="background: rgba(239,68,68,0.15); color: #ef4444; font-size: 0.75rem; text-align: center; padding: 2px;">
                           🔒 [Baris Karyawan Cuti Disembunyikan Sesuai Permintaan Bos]
@@ -2359,10 +2556,10 @@
                       <td class="excel-row-num">${rowNum}</td>
                       <td class="excel-cell text-left">${row.colA}</td>
                       ${isColHidden ? '' : `<td class="excel-cell">${row.colB}</td>`}
-                      <td class="excel-cell text-right ${isCurrency ? 'cell-currency' : ''}">
+                      <td class="excel-cell text-right ${isCurrency ? 'cell-currency' : ''} ${isCurrencyTarget ? 'target-col-glow' : ''}">
                         ${typeof row.colC === 'number' ? formatMoney(row.colC) : row.colC}
                       </td>
-                      <td class="excel-cell text-right">
+                      <td class="excel-cell text-right ${isPercentTarget ? 'target-col-glow' : ''}">
                         ${displayBonus}
                       </td>
                       <td class="excel-cell text-center">
@@ -2372,7 +2569,6 @@
                   `;
                 }).join('')}
 
-                <!-- ROW 6: TOTAL / AUTOSUM -->
                 ${isTotalSum ? `
                   <tr class="excel-data-row total-row ${isTotalBold ? 'is-bold' : ''}">
                     <td class="excel-row-num">6</td>
@@ -2384,13 +2580,20 @@
                     <td class="excel-cell text-right" style="font-weight: 700;">—</td>
                     <td class="excel-cell text-center" style="font-size: 0.75rem; color: #107c41; font-weight: 700;">AutoSum Σ</td>
                   </tr>
-                ` : ''}
+                ` : (isAutoSumTarget ? `
+                  <tr class="excel-data-row total-row autosum-target-row">
+                    <td class="excel-row-num">6</td>
+                    <td colspan="${isColHidden ? 4 : 5}" style="padding: 6px; text-align: center; color: #107c41; font-weight: 800; font-size: 0.82rem;">
+                      👉 TARGET AUTOSUM: Tekan [Alt + =] di keyboard untuk merangkum total!
+                    </td>
+                  </tr>
+                ` : '')}
               </tbody>
             </table>
           </div>
         </div>
 
-        <!-- INSTANT CHART MODAL (F11) -->
+        <!-- MODALS -->
         ${isChart ? `
           <div class="office-modal-overlay">
             <div class="office-modal-box" style="max-width: 650px;">
@@ -2421,7 +2624,7 @@
                   </div>
                 </div>
                 <div class="alert-box success" style="margin-top: 14px;">
-                  ✨ Grafik kolom tercipta instan dari kisi-kisi data hanya dengan menekan F11!
+                  ✨ Grafik kolom tercipta instan dari data tabel hanya dengan menekan F11!
                 </div>
               </div>
               <div class="office-modal-footer">
@@ -2431,7 +2634,6 @@
           </div>
         ` : ''}
 
-        <!-- SAVE AS MODAL OVERLAY -->
         ${isSaveAs ? `
           <div class="office-modal-overlay">
             <div class="office-modal-box">
@@ -2440,11 +2642,8 @@
                 <button onclick="closeOfficeModal('excel', 'saveAs')">✕</button>
               </div>
               <div class="office-modal-body">
-                <p><b>Nama Berkas Baru:</b> [BACKUP-FINAL]_${project.docFilename}</p>
-                <p><b>Tipe:</b> Excel Workbook (*.xlsx)</p>
-                <div class="alert-box success" style="margin-top: 8px;">
-                  ✅ Berkas cadangan berhasil disimpan aman ke sistem komputer!
-                </div>
+                <p><b>Berkas Baru:</b> [BACKUP-FINAL]_${project.docFilename}</p>
+                <div class="alert-box success">✅ Berkas cadangan berhasil disimpan aman!</div>
               </div>
               <div class="office-modal-footer">
                 <button class="btn-primary" style="background: #107c41;" onclick="closeOfficeModal('excel', 'saveAs')">Tutup</button>
@@ -2471,7 +2670,7 @@
   }
 
   // =========================================================================
-  // RENDERER DAFTAR PERMINTAAN KLIEN / BOS (CHECKLIST TANTANGAN)
+  // RENDERER DAFTAR PERMINTAAN KLIEN / BOS (CHECKLIST GAME TANPA TOMBOL JALANKAN MALAS!)
   // =========================================================================
   function renderProjectTasksChecklist(mode, project, completed) {
     const isWord = (mode === 'word');
@@ -2480,6 +2679,7 @@
     const completedCount = completed.length;
     const isAllDone = (completedCount >= totalTasks);
     const progressPct = Math.round((completedCount / totalTasks) * 100);
+    const gs = appState.projectGameState[mode];
 
     return `
       <!-- KARTU BRIEF KLIEN / BOS -->
@@ -2515,31 +2715,15 @@
           </p>
         </div>
 
-        ${isAllDone ? `
-          <!-- BANNER CELEBRATION SEMPURNA -->
-          <div class="boss-celebration-banner">
-            <div style="font-size: 1.8rem; margin-bottom: 6px;">🎉 ⭐ 💼 ⭐ 🎉</div>
-            <h3 style="margin: 0 0 6px 0; color: #10b981; font-size: 1.3rem;">
-              LUAR BIASA! SELURUH PERMINTAAN KLIEN SELESAI 100%!
-            </h3>
-            <p style="margin: 0 0 14px 0; font-size: 0.92rem; color: var(--text-main);">
-              Bos sangat puas dengan kecepatan dan kerapian hasil kerjamu! Dokumen telah bertransformasi sempurna tanpa sentuh mouse berlebihan.
-            </p>
-            <div style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;">
-              <button class="btn-secondary" onclick="resetCurrentProject('${mode}')">
-                🔄 Ulangi Latihan Proyek Ini
-              </button>
-              <button class="btn-primary" style="background: ${themeColor};" onclick="switchProject('${mode}', ${(appState.currentProjectIdx[mode] + 1) % (isWord ? window.WORD_PROJECTS.length : window.EXCEL_PROJECTS.length)})">
-                Lanjut Proyek Kantor Berikutnya ➡️
-              </button>
-            </div>
-          </div>
-        ` : ''}
-
-        <!-- DAFTAR LANGKAH PERMINTAAN -->
+        <!-- DAFTAR LANGKAH PERMINTAAN (GAME QUESTS) -->
         <div class="boss-tasks-list">
-          <div style="font-size: 0.85rem; font-weight: 800; color: var(--text-muted); text-transform: uppercase; margin-bottom: 10px; letter-spacing: 0.5px;">
-            📋 Instruksi Permintaan Dokumen (Tekan di Keyboard atau Klik Tombol Pintasan):
+          <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; margin-bottom: 8px;">
+            <span style="font-size: 0.85rem; font-weight: 800; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px;">
+              📋 Daftar Misi Pintasan Keyboard (Praktekkan Sendiri di Keyboard / Pad):
+            </span>
+            <span style="font-size: 0.8rem; color: #10b981; font-weight: 700;">
+              🎮 Tekan langsung tombolnya di keyboard fisik laptopmu!
+            </span>
           </div>
 
           ${project.tasks.map((task, idx) => {
@@ -2556,13 +2740,16 @@
                   <div style="flex: 1;">
                     <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
                       <span class="task-title-text">${task.name}</span>
-                      ${isNext ? '<span class="badge-target-now">KERJAKAN SEKARANG</span>' : ''}
+                      ${isNext ? '<span class="badge-target-now">MISI AKTIF SEKARANG</span>' : ''}
                     </div>
                     <div class="task-desc-text">
                       ${task.instruction}
                     </div>
+                    <div class="task-target-meta">
+                      🎯 <b>Objek yang Berubah:</b> <code>${task.targetLabel || 'Dokumen'}</code>
+                    </div>
                     <div class="task-baby-logic">
-                      🍼 <b>Nalar Bayi:</b> ${task.babyLogic}
+                      🍼 <b>Nalar Bayi Kodi:</b> ${task.babyLogic}
                     </div>
                   </div>
                 </div>
@@ -2573,17 +2760,202 @@
                   </div>
                   <div>
                     ${isDone ? `
-                      <span class="badge-done-stamp">✓ Selesai Diterapkan</span>
+                      <span class="badge-done-stamp">✓ Selesai Dipraktikkan</span>
+                    ` : (isNext ? `
+                      <span class="badge-waiting-press">⌨️ Tekan di Keyboard!</span>
                     ` : `
-                      <button class="btn-primary btn-run-shortcut" style="background: ${themeColor};" onclick="runProjectStepAction('${mode}', '${task.id}')">
-                        ⚡ Jalankan Pintasan (${task.shortcut})
-                      </button>
-                    `}
+                      <span class="badge-waiting-queue">Menunggu Giliran</span>
+                    `)}
                   </div>
                 </div>
               </div>
             `;
           }).join('')}
+        </div>
+      </div>
+    `;
+  }
+
+  // =========================================================================
+  // PAPAN RAKIT PINTASAN INTERAKTIF (GAME PAD BAGI YANG TIDAK MEMILIKI KEYBOARD FISIK)
+  // Murid HARUS merakit kombinasi tombol sendiri, BUKAN klik 1 tombol instan!
+  // =========================================================================
+  function renderProjectVirtualAssemblyPad(mode) {
+    const isWord = (mode === 'word');
+    const themeColor = isWord ? '#2563eb' : '#107c41';
+    const gs = appState.projectGameState[mode];
+    const mods = gs.virtualModifiers;
+
+    // Kumpulan tombol umum yang dibutuhkan di proyek Word / Excel
+    const actionKeys = isWord
+      ? ['B', 'E', 'I', 'J', 'U', 'S', 'P', 'F', 'K', 'C', 'V', 'H', 'A', 'F7', 'F12']
+      : ['B', 'S', 'T', 'D', 'F', 'A', '0', '9', ';', '=', '$', '%', 'F2', 'F11', 'F12'];
+
+    return `
+      <div class="office-assembly-pad">
+        <div class="pad-header">
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <span style="font-size: 1.2rem;">🕹️</span>
+            <div>
+              <strong style="color: var(--text-main); font-size: 0.92rem;">Papan Perakit Pintasan Interaktif (Pad Praktik Mandiri)</strong>
+              <div style="font-size: 0.78rem; color: var(--text-muted);">
+                Bagi yang menggunakan layar sentuh / HP: Rakit kombinasi tombol sendiri! Klik tombol modifier (Ctrl/Shift/Alt) lalu klik hurufnya!
+              </div>
+            </div>
+          </div>
+          <button class="btn-secondary" style="font-size: 0.75rem; padding: 4px 8px;" onclick="appState.projectGameState['${mode}'].virtualModifiers.clear(); window.renderShortcutStudio('${mode}');">
+            Reset Pilihan
+          </button>
+        </div>
+
+        <div class="pad-builder-row">
+          <!-- MODIFIERS -->
+          <div class="pad-section">
+            <span class="pad-sec-label">1. PILIH MODIFIER:</span>
+            <div class="pad-keys-wrap">
+              <button type="button" class="pad-mod-btn ${mods.has('ctrl') ? 'active' : ''}" onclick="toggleProjectVirtualModifier('${mode}', 'ctrl')">
+                [ Ctrl ${mods.has('ctrl') ? '✓' : ''} ]
+              </button>
+              <button type="button" class="pad-mod-btn ${mods.has('shift') ? 'active' : ''}" onclick="toggleProjectVirtualModifier('${mode}', 'shift')">
+                [ Shift ${mods.has('shift') ? '✓' : ''} ]
+              </button>
+              <button type="button" class="pad-mod-btn ${mods.has('alt') ? 'active' : ''}" onclick="toggleProjectVirtualModifier('${mode}', 'alt')">
+                [ Alt ${mods.has('alt') ? '✓' : ''} ]
+              </button>
+            </div>
+          </div>
+
+          <!-- ACTION KEYS -->
+          <div class="pad-section" style="flex: 1;">
+            <span class="pad-sec-label">2. TEKAN TOMBOL AKSI UNTUK EKSEKUSI:</span>
+            <div class="pad-keys-wrap">
+              ${actionKeys.map(k => `
+                <button type="button" class="pad-action-btn" onclick="pressProjectVirtualActionKey('${mode}', '${k}')">
+                  ${k}
+                </button>
+              `).join('')}
+            </div>
+          </div>
+        </div>
+
+        <div class="pad-status-footer">
+          Kombinasi yang siap dieksekusi: 
+          <strong style="color: #38bdf8;">
+            ${mods.size > 0 ? Array.from(mods).map(m => m.toUpperCase()).join(' + ') + ' + [Pilih Tombol Aksi]' : 'Pilih tombol modifier (Ctrl/Alt/Shift) terlebih dahulu atau langsung klik tombol F1-F12'}
+          </strong>
+        </div>
+      </div>
+    `;
+  }
+
+  // =========================================================================
+  // RAPOR HASIL PRAKTIK KERJA GAME (OFFICE PERFORMANCE REPORT MODAL)
+  // Menampilkan statistik lengkap, Rank S/A/B, Waktu Speedrun, dan Bukti Kelulusan
+  // =========================================================================
+  function renderProjectReportModal(mode, project) {
+    const isWord = (mode === 'word');
+    const themeColor = isWord ? '#2563eb' : '#107c41';
+    const gs = appState.projectGameState[mode];
+    const totalTasks = project.tasks.length;
+    const mistakes = gs.mistakes;
+    const timeSec = gs.elapsedSeconds || 18.5;
+
+    // Hitung Rank Kelulusan Game
+    let rank = 'RANK S';
+    let rankTitle = 'DEWA PINTASAN KANTOR (Legenda Kecepatan & Akurasi 100%)';
+    let rankColor = '#f59e0b';
+    let rankBg = 'linear-gradient(135deg, rgba(245, 158, 11, 0.2), rgba(16, 185, 129, 0.2))';
+
+    if (mistakes > 3 || timeSec > 60) {
+      rank = 'RANK B';
+      rankTitle = 'OPERATOR MAHIR (Tugas Selesai dengan Baik)';
+      rankColor = '#3b82f6';
+      rankBg = 'linear-gradient(135deg, rgba(59, 130, 246, 0.15), rgba(16, 185, 129, 0.15))';
+    } else if (mistakes > 0 || timeSec > 35) {
+      rank = 'RANK A';
+      rankTitle = 'PROFESIONAL KANTOR (Kecepatan Tinggi & Rapi)';
+      rankColor = '#10b981';
+      rankBg = 'linear-gradient(135deg, rgba(16, 185, 129, 0.2), rgba(56, 189, 248, 0.2))';
+    }
+
+    const accuracyPct = Math.max(50, Math.round(((totalTasks) / (totalTasks + mistakes)) * 100));
+
+    return `
+      <div class="office-modal-overlay">
+        <div class="office-report-card">
+          <div class="report-header" style="background: ${themeColor};">
+            <div>
+              <div style="font-size: 0.8rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; color: rgba(255,255,255,0.8);">
+                RAPOR EVALUASI RESMI PRAKTIK KANTOR
+              </div>
+              <h3 style="margin: 2px 0 0 0; color: #ffffff; font-size: 1.3rem;">
+                ${project.title}
+              </h3>
+            </div>
+            <button class="report-close-btn" onclick="closeOfficeModal('${mode}', 'report')">✕</button>
+          </div>
+
+          <div class="report-body">
+            <!-- RANK BADGE BESAR -->
+            <div class="report-rank-box" style="background: ${rankBg}; border-color: ${rankColor};">
+              <div class="rank-letter" style="color: ${rankColor};">${rank}</div>
+              <div class="rank-desc" style="color: ${rankColor};">${rankTitle}</div>
+            </div>
+
+            <!-- APRESIASI BOS / KLIEN -->
+            <div class="report-boss-review">
+              <div style="font-size: 2rem;">${project.clientAvatar}</div>
+              <div>
+                <div style="font-weight: 800; color: var(--text-main); font-size: 0.95rem;">
+                  Review Direksi (${project.client} — ${project.clientRole}):
+                </div>
+                <div style="font-style: italic; color: var(--text-muted); font-size: 0.88rem; margin-top: 4px; line-height: 1.45;">
+                  "Kerja yang luar biasa! Dokumen berhasil diselesaikan dengan kecepatan tinggi tanpa perlu mencari-cari menu mouse yang lambat. Format dokumen sekarang rapi sempurna dan siap diserahkan!"
+                </div>
+              </div>
+            </div>
+
+            <!-- STATISTIK HASIL PRAKTIK GAME -->
+            <div class="report-stats-grid">
+              <div class="report-stat-item">
+                <span class="stat-icon">⏱️</span>
+                <span class="stat-val">${timeSec.toFixed(1)} Detik</span>
+                <span class="stat-lbl">Waktu Pengerjaan</span>
+              </div>
+              <div class="report-stat-item">
+                <span class="stat-icon">🎯</span>
+                <span class="stat-val">${accuracyPct}%</span>
+                <span class="stat-lbl">Akurasi Tombol</span>
+              </div>
+              <div class="report-stat-item">
+                <span class="stat-icon">🔥</span>
+                <span class="stat-val">${gs.maxCombo}x</span>
+                <span class="stat-lbl">Max Combo Streak</span>
+              </div>
+              <div class="report-stat-item">
+                <span class="stat-icon">💎</span>
+                <span class="stat-val">${gs.score} PTS</span>
+                <span class="stat-lbl">Skor Prestasi Game</span>
+              </div>
+            </div>
+
+            <!-- CHECKLIST HASIL DOKUMEN -->
+            <div class="report-doc-summary">
+              <strong style="color: var(--text-main); font-size: 0.86rem;">📜 Hasil Transformasi Dokumen (${project.docFilename}):</strong>
+              <ul style="margin: 6px 0 0 18px; padding: 0; font-size: 0.82rem; color: var(--text-muted); line-height: 1.5;">
+                ${project.tasks.map(t => `<li>✅ <b>${t.shortcut}</b>: ${t.name} (Telah diterapkan ke dokumen)</li>`).join('')}
+              </ul>
+            </div>
+          </div>
+
+          <div class="report-footer">
+            <button class="btn-secondary" onclick="closeOfficeModal('${mode}', 'report'); resetCurrentProject('${mode}');">
+              🔄 Mainkan Ulang (Speedrun)
+            </button>
+            <button class="btn-primary" style="background: ${themeColor};" onclick="closeOfficeModal('${mode}', 'report'); switchProject('${mode}', ${(appState.currentProjectIdx[mode] + 1) % (isWord ? window.WORD_PROJECTS.length : window.EXCEL_PROJECTS.length)});">
+              Lanjut Proyek Berikutnya ➡️
+            </button>
+          </div>
         </div>
       </div>
     `;
@@ -2602,13 +2974,23 @@
     if (!appState.projectCompletedSteps[mode][project.id]) appState.projectCompletedSteps[mode][project.id] = [];
     const completed = appState.projectCompletedSteps[mode][project.id];
     const docState = appState.projectDocState[mode];
+    const gs = appState.projectGameState[mode];
+
+    // Tugas target yang sedang aktif
+    const pendingTasks = project.tasks.filter(t => !completed.includes(t.id));
+    const activeTask = pendingTasks[0];
+
+    // Hitung waktu tampilan
+    const mins = Math.floor((gs.elapsedSeconds || 0) / 60);
+    const secs = ((gs.elapsedSeconds || 0) % 60).toFixed(1);
+    const timeDisplay = `${String(mins).padStart(2, '0')}:${String(secs).padStart(4, '0')}`;
 
     return `
       <div class="project-studio-wrapper">
-        <!-- PROJECT SELECTOR TABS -->
+        <!-- 1. PROJECT SELECTOR TABS -->
         <div class="project-selector-tabs">
           <span style="font-size: 0.85rem; font-weight: 800; color: var(--text-muted); align-self: center; margin-right: 6px;">
-            📁 Pilih Proyek Kantor:
+            📁 Pilih Misi Proyek:
           </span>
           ${projList.map((p, idx) => {
             const pCompleted = (appState.projectCompletedSteps[mode][p.id] || []).length;
@@ -2625,15 +3007,81 @@
           }).join('')}
         </div>
 
-        <!-- MOCKUP JENDELA OFFICE NYATA (DOKUMEN DITAMPILKAN & BERUBAH) -->
+        <!-- 2. LIVE GAME HUD BAR (WAKTU, COMBO, SKOR, TARGET & RADAR TOMBOL) -->
+        <div class="office-game-hud">
+          <div class="hud-top-stats">
+            <div class="hud-stat-pill timer-pill">
+              <span class="hud-icon">⏱️</span>
+              <div>
+                <div class="hud-lbl">WAKTU GAME</div>
+                <div class="hud-val" id="hud-timer-${mode}">${timeDisplay}</div>
+              </div>
+            </div>
+
+            <div class="hud-stat-pill combo-pill">
+              <span class="hud-icon">🔥</span>
+              <div>
+                <div class="hud-lbl">COMBO STREAK</div>
+                <div class="hud-val ${gs.combo > 0 ? 'combo-fire' : ''}">
+                  ${gs.combo}x COMBO
+                </div>
+              </div>
+            </div>
+
+            <div class="hud-stat-pill score-pill">
+              <span class="hud-icon">💎</span>
+              <div>
+                <div class="hud-lbl">SKOR PRAKTIK</div>
+                <div class="hud-val">${gs.score} PTS</div>
+              </div>
+            </div>
+
+            <div class="hud-stat-pill target-pill">
+              <span class="hud-icon">🎯</span>
+              <div>
+                <div class="hud-lbl">TARGET PINTASAN SEKARANG</div>
+                <div class="hud-val target-key-val">
+                  ${activeTask ? activeTask.shortcut : 'SEMUA SELESAI 🎉'}
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- RADAR DETEKTOR KEYBOARD LANGSUNG -->
+          <div class="hud-keyboard-radar ${gs.lastMessageType}">
+            <div class="radar-status-line">
+              <div class="radar-left">
+                <span class="radar-pulse-dot"></span>
+                <span class="radar-title">DETEKTOR KEYBOARD FISIK:</span>
+                <span class="radar-detected-keys">[ ${gs.lastDetectedKeyString} ]</span>
+              </div>
+              <div class="radar-hint">
+                ${activeTask ? `👉 Tekan di keyboardmu: <b>${activeTask.shortcut}</b> (${activeTask.name})` : '⭐ Seluruh Permintaan Bos Berhasil Dipraktikkan!'}
+              </div>
+            </div>
+            <div class="radar-feedback-msg">
+              ${gs.lastMessage}
+            </div>
+          </div>
+        </div>
+
+        <!-- 3. MOCKUP JENDELA OFFICE NYATA (DOKUMEN DITAMPILKAN & BERTRAFOSMASI LANGSUNG) -->
         <div style="margin-bottom: 24px;">
           ${isWord ? renderWordOfficeMockup(project, docState, completed) : renderExcelOfficeMockup(project, docState, completed)}
         </div>
 
-        <!-- BRIEF KLIEN & CHECKLIST PERMINTAAN BOS -->
+        <!-- 4. PAPAN RAKIT PINTASAN INTERAKTIF (BAGI LAYAR SENTUH / HP / MOUSE) -->
+        <div style="margin-bottom: 24px;">
+          ${renderProjectVirtualAssemblyPad(mode)}
+        </div>
+
+        <!-- 5. BRIEF KLIEN & CHECKLIST MISI PERMINTAAN BOS -->
         <div>
           ${renderProjectTasksChecklist(mode, project, completed)}
         </div>
+
+        <!-- 6. MODAL RAPOR EVALUASI HASIL PRAKTIK KERJA (JIKA SUDAH SELESAI) -->
+        ${gs.isCompletedReportOpen ? renderProjectReportModal(mode, project) : ''}
       </div>
     `;
   }
@@ -2681,7 +3129,6 @@
     const appTitle = isWord ? 'Microsoft Word' : 'Microsoft Excel';
     const activeSubmode = appState.activeStudioMode[mode] || 'project';
 
-    // RENDER HEADER BANNER & SUBMODE SWITCHER
     let html = `
       <div class="shortcut-studio-container">
         <!-- HERO BANNER DOKUMEN REFERENSI -->
@@ -2695,10 +3142,10 @@
                 Sumber Resmi: Referensi/Pintasan_Keyboard_${isWord ? 'Word' : 'Excel'}.pdf
               </div>
               <h3 style="margin: 2px 0 4px 0; font-size: 1.25rem; color: var(--text-main);">
-                Simulator & Praktik Pintasan ${appTitle}
+                Game Praktik Nyata Pintasan ${appTitle}
               </h3>
               <p style="margin: 0; font-size: 0.85rem; color: var(--text-muted);">
-                Pengalaman nyata di kantor: selesaikan proyek direksi dengan dokumen yang bertransformasi langsung!
+                Praktikkan langsung di keyboard fisikmu! Dilengkapi detektor tombol, skor kecepatan, combo streak, dan rapor hasil kerja!
               </p>
             </div>
           </div>
@@ -2712,7 +3159,7 @@
         <!-- DUAL MODE SWITCHER BAR -->
         <div class="shortcut-submode-switcher-bar">
           <button class="submode-tab-btn ${activeSubmode === 'project' ? 'active' : ''}" onclick="switchStudioSubmode('${mode}', 'project')">
-            💼 Simulasi Proyek Kantor Nyata (Tampilan ${isWord ? 'Word' : 'Excel'} Asli)
+            💼 Game Praktik Proyek Kantor (Detektor Keyboard & Dokumen Nyata)
           </button>
           <button class="submode-tab-btn ${activeSubmode === 'catalog' ? 'active' : ''}" onclick="switchStudioSubmode('${mode}', 'catalog')">
             ⌨️ Bank Pintasan Lengkap (${list.length} Pintasan + Keyboard Virtual)
@@ -2720,11 +3167,9 @@
         </div>
     `;
 
-    // IF SUBMODE IS PROJECT -> RENDER PROJECT STUDIO
     if (activeSubmode === 'project') {
       html += renderProjectStudioHtml(mode);
     } else {
-      // IF SUBMODE IS CATALOG -> RENDER ORIGINAL CATALOG & VIRTUAL KEYBOARD
       const filtered = window.getFilteredShortcuts(mode);
       const categories = window.getShortcutCategories(mode);
 
@@ -2740,11 +3185,9 @@
 
       const currentItem = list[appState.currentShortcutIdx[mode]] || list[0];
       const isCompleted = (appState.shortcutCompleted[mode] || []).includes(currentItem.id);
-      const totalCompleted = (appState.shortcutCompleted[mode] || []).length;
       const keyParts = currentItem.key.split('+').map(k => k.trim());
 
       html += `
-        <!-- NAVIGASI & PENCARIAN BANK PINTASAN -->
         <div class="challenge-nav-bar" style="margin-bottom: 0;">
           <div class="challenge-nav-controls" style="flex: 1; min-width: 240px;">
             <label style="font-size: 0.8rem; font-weight: 700; color: ${themeLight};">📂 Kategori:</label>
@@ -2784,7 +3227,6 @@
           </div>
         </div>
 
-        <!-- QUEST CARD -->
         <div class="shortcut-quest-card" style="border-left: 5px solid ${themeColor};">
           <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; flex-wrap: wrap; gap: 8px;">
             <span style="font-size: 0.78rem; font-weight: 800; background: rgba(56, 189, 248, 0.15); color: var(--accent-cyan); padding: 4px 10px; border-radius: 12px; border: 1px solid rgba(56, 189, 248, 0.3);">
@@ -2793,7 +3235,6 @@
             ${isCompleted ? '<span style="font-size: 0.85rem; font-weight: 800; color: #10b981; background: rgba(16, 185, 129, 0.15); padding: 4px 12px; border-radius: 20px;">✅ Sudah Dikuasai</span>' : '<span style="font-size: 0.82rem; font-weight: 700; color: var(--accent-yellow); background: rgba(250, 204, 21, 0.12); padding: 4px 10px; border-radius: 12px;">🎯 Tekan Tombol di Keyboard!</span>'}
           </div>
 
-          <!-- SKENARIO KANTOR -->
           <div style="background: rgba(0,0,0,0.25); border-radius: 10px; padding: 14px; margin-bottom: 14px; border-left: 3px solid ${themeLight};">
             <div style="font-size: 0.82rem; font-weight: 700; color: ${themeLight}; margin-bottom: 4px;">💼 Skenario Nyata di Kantor:</div>
             <div style="font-size: 0.95rem; color: var(--text-main); font-weight: 600; line-height: 1.45;">
@@ -2804,7 +3245,6 @@
             </div>
           </div>
 
-          <!-- TOMBOL DISPLAY BESAR -->
           <div style="text-align: center; margin: 20px 0;">
             <div style="font-size: 0.82rem; font-weight: 700; color: var(--text-muted); margin-bottom: 8px;">
               ⌨️ KOMBINASI TOMBOL YANG HARUS DITEKAN:
@@ -2815,39 +3255,32 @@
                 ${i < keyParts.length - 1 ? '<span class="shortcut-key-plus">+</span>' : ''}
               `).join('')}
             </div>
-            <div style="font-size: 0.8rem; color: var(--text-muted); margin-top: 6px;">
-              💡 Tips: Tekan langsung tombolnya di keyboard laptop/PC kamu, atau klik tombol di keyboard virtual bawah!
-            </div>
           </div>
 
-          <!-- 🍼 NALAR BAYI KODI CARD -->
           <div style="background: rgba(250, 204, 21, 0.08); border-left: 4px solid #facc15; border-radius: 8px; padding: 12px 16px; margin-bottom: 16px;">
             <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 4px;">
               <span style="font-size: 1.1rem;">🍼</span>
-              <strong style="font-size: 0.88rem; color: #facc15;">Nalar Bayi Kodi (Kenapa & Bagaimana Cara Ingatnya?):</strong>
+              <strong style="font-size: 0.88rem; color: #facc15;">Nalar Bayi Kodi:</strong>
             </div>
             <p style="margin: 0; font-size: 0.88rem; color: #fef08a; line-height: 1.5;">
               ${currentItem.nalarBayiKodi}
             </p>
           </div>
 
-          <!-- ALERT / FEEDBACK SUKSES -->
           <div id="shortcut-feedback-${mode}" style="display: none; margin-bottom: 14px;"></div>
 
-          <!-- PAPAN KETIK VIRTUAL INTERAKTIF -->
           <div>
             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
               <span style="font-size: 0.82rem; font-weight: 700; color: var(--text-muted);">
-                🕹️ Simulator Papan Ketik Interaktif (Klik atau Ketik Fisik):
+                🕹️ Simulator Papan Ketik Interaktif:
               </span>
               <button class="btn-secondary" style="font-size: 0.75rem; padding: 3px 8px;" onclick="resetVirtualKeys('${mode}')">
-                Bersihkan Tombol Aktif
+                Bersihkan Tombol
               </button>
             </div>
             ${renderVirtualKeyboardHtml(mode)}
           </div>
 
-          <!-- TOMBOL UJI MANUAL & RESET -->
           <div style="display: flex; gap: 10px; justify-content: flex-end; margin-top: 14px; flex-wrap: wrap;">
             <button class="btn-secondary" style="font-size: 0.82rem; padding: 8px 14px;" onclick="testShortcutCombinationManually('${mode}')">
               ⚡ Uji Kombinasi Tombol Sekarang
@@ -3045,12 +3478,7 @@
   // Mendeteksi tombol keyboard fisik PC/Laptop murid tanpa popup browser
   // =========================================================================
   window.addEventListener('keydown', function(e) {
-    const tabExcel = document.getElementById('tab-shortcut-excel');
-    const tabWord = document.getElementById('tab-shortcut-word');
-    const isExcelActive = tabExcel && tabExcel.classList.contains('active');
-    const isWordActive = tabWord && tabWord.classList.contains('active');
-
-    // CEK JUGA APAKAH TAB RUMUS EXCEL SEDANG AKTIF
+    // CEK APAKAH TAB RUMUS EXCEL SEDANG AKTIF
     const tabFormulaExcel = document.getElementById('tab-excel');
     const isFormulaExcelActive = tabFormulaExcel && tabFormulaExcel.classList.contains('active');
     if (isFormulaExcelActive) {
@@ -3059,6 +3487,11 @@
       }
       return;
     }
+
+    const tabExcel = document.getElementById('tab-shortcut-excel');
+    const tabWord = document.getElementById('tab-shortcut-word');
+    const isExcelActive = tabExcel && tabExcel.classList.contains('active');
+    const isWordActive = tabWord && tabWord.classList.contains('active');
 
     if (!isExcelActive && !isWordActive) return;
     const mode = isExcelActive ? 'excel' : 'word';
