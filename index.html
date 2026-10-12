@@ -12,7 +12,7 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <link rel="apple-touch-icon" href="assets/icon-192.png">
 
-  <link rel="stylesheet" href="css/style.css?v=20261012-v17-patch3">
+  <link rel="stylesheet" href="css/style.css?v=20261012-v18">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🤖</text></svg>">
 </head>
 <body>
@@ -119,6 +119,14 @@
             <span class="nav-icon">📊</span>
             <span class="nav-label">Excel (105)</span>
           </button>
+          <button class="nav-tab" data-tab="shortcut-excel" onclick="switchTab('shortcut-excel')" title="Game Pintasan Keyboard Excel Windows (53 Pintasan dari Buku Panduan)">
+            <span class="nav-icon">⌨️</span>
+            <span class="nav-label">Pintasan Excel (53)</span>
+          </button>
+          <button class="nav-tab" data-tab="shortcut-word" onclick="switchTab('shortcut-word')" title="Game Pintasan Keyboard Word Windows (55 Pintasan dari Buku Panduan)">
+            <span class="nav-icon">📝</span>
+            <span class="nav-label">Pintasan Word (55)</span>
+          </button>
           <button class="nav-tab" data-tab="it-tech-trainer" onclick="switchTab('it-tech-trainer')" title="Laboratorium IT Tech, Jaringan, Hardware & Security (100 Tantangan)">
             <span class="nav-icon">🛠️</span>
             <span class="nav-label">IT Lab (100)</span>
@@ -221,6 +229,28 @@
       </div>
 
       <div id="excel-content-area"></div>
+    </section>
+
+    <!-- ================= TAB: SHORTCUT EXCEL STUDIO (53 PINTASAN) ================= -->
+    <section id="tab-shortcut-excel" class="tab-content">
+      <div class="section-title-wrap">
+        <h2 class="section-title">⌨️ Game Pintasan Keyboard Excel Windows (53 Pintasan)</h2>
+        <p class="section-subtitle">
+          Kuasai 53 pintasan keyboard Excel resmi berdasarkan dokumen panduan kantor! Dilengkapi simulator tombol interaktif, keyboard fisik listener, dan Nalar Bayi Kodi!
+        </p>
+      </div>
+      <div id="shortcut-excel-content-area"></div>
+    </section>
+
+    <!-- ================= TAB: SHORTCUT WORD STUDIO (55 PINTASAN) ================= -->
+    <section id="tab-shortcut-word" class="tab-content">
+      <div class="section-title-wrap">
+        <h2 class="section-title">📝 Game Pintasan Keyboard Word Windows (55 Pintasan)</h2>
+        <p class="section-subtitle">
+          Kuasai 55 pintasan keyboard Microsoft Word resmi! Dari format heading daftar isi, spasi paragraf, perataan, hingga simbol hak cipta © ® ™ dengan Nalar Bayi Kodi!
+        </p>
+      </div>
+      <div id="shortcut-word-content-area"></div>
     </section>
 
     <!-- ================= TAB: IT TECH & NETWORK LAB ================= -->
@@ -389,19 +419,20 @@
     </div>
   </div>
 
-  <!-- Scripts with Cache Buster v17 -->
-  <script src="js/sfx.js?v=20261012-v17-patch3"></script>
-  <script src="js/speech.js?v=20261012-v17-patch3"></script>
-  <script src="js/dictionary.js?v=20261012-v17-patch3"></script>
-  <script src="js/levels.js?v=20261012-v17-patch3"></script>
-  <script src="js/sql_trainer.js?v=20261012-v17-patch3"></script>
-  <script src="js/code_trainer.js?v=20261012-v17-patch3"></script>
-  <script src="js/english_trainer.js?v=20261012-v17-patch3"></script>
-  <script src="js/excel_trainer.js?v=20261012-v17-patch3"></script>
-  <script src="js/it_tech_trainer.js?v=20261012-v17-patch3"></script>
-  <script src="js/math_trainer.js?v=20261012-v17-patch3"></script>
-  <script src="js/ihsaniyah_math.js?v=20261012-v17-patch3"></script>
-  <script src="js/ai_tutor.js?v=20261012-v17-patch3"></script>
-  <script src="js/app.js?v=20261012-v17-patch3"></script>
+  <!-- Scripts with Cache Buster v18 -->
+  <script src="js/sfx.js?v=20261012-v18"></script>
+  <script src="js/speech.js?v=20261012-v18"></script>
+  <script src="js/dictionary.js?v=20261012-v18"></script>
+  <script src="js/levels.js?v=20261012-v18"></script>
+  <script src="js/sql_trainer.js?v=20261012-v18"></script>
+  <script src="js/code_trainer.js?v=20261012-v18"></script>
+  <script src="js/english_trainer.js?v=20261012-v18"></script>
+  <script src="js/excel_trainer.js?v=20261012-v18"></script>
+  <script src="js/shortcut_trainer.js?v=20261012-v18"></script>
+  <script src="js/it_tech_trainer.js?v=20261012-v18"></script>
+  <script src="js/math_trainer.js?v=20261012-v18"></script>
+  <script src="js/ihsaniyah_math.js?v=20261012-v18"></script>
+  <script src="js/ai_tutor.js?v=20261012-v18"></script>
+  <script src="js/app.js?v=20261012-v18"></script>
 </body>
 </html>

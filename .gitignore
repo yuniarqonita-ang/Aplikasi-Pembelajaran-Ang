@@ -1,3 +1,7 @@
 # References heavy binary files
 Referensi/*.pdf
 Referensi/*.PDF
+Referensi/*.docx
+Referensi/*.xlsx
+Referensi/.~lock*
+scratch/

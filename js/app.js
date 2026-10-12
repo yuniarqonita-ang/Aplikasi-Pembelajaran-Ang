@@ -1,9 +1,21 @@
-// Stacked Mathematical Fractions Formatter (Atas-Bawah Nyata)
+// Stacked Mathematical Fractions Formatter (Atas-Bawah Nyata & Math Axis Alignment)
 window.formatMathFractions = function(text) {
   if (!text || typeof text !== "string") return text || "";
-  return text.replace(/(^|[^a-zA-Z0-9_\/])(-?\d+)\/(\d+)(?![a-zA-Z0-9_\/])/g, function(match, prefix, num, den) {
+  var formatted = text.replace(/(^|[^a-zA-Z0-9_\/])(-?\d+)\/(\d+)(?![a-zA-Z0-9_\/])/g, function(match, prefix, num, den) {
     return prefix + '<span class="math-fraction"><span class="num">' + num + '</span><span class="den">' + den + '</span></span>';
   });
+  var tokens = formatted.split(/(<[^>]+>)/g);
+  for (var i = 0; i < tokens.length; i++) {
+    if (!tokens[i].startsWith('<')) {
+      tokens[i] = tokens[i].replace(/(\s*)([\+\=\u00D7\u00F7\u00B1\u2260\u2248])(\s*)/g, function(m, sp1, op, sp2) {
+        return ' <span class="math-op">' + op + '</span> ';
+      });
+      tokens[i] = tokens[i].replace(/(^|\s|\d)(\-)(\s|\d|$)/g, function(m, left, op, right) {
+        return left + ' <span class="math-op">&minus;</span> ' + right;
+      });
+    }
+  }
+  return tokens.join('').replace(/\s{2,}/g, ' ');
 };
 
 /* ===================================================================
@@ -215,6 +227,18 @@ function switchTab(tabName) {
     setKodiSpeech(
       "Welcome to English Studio! Di sini kita latihan Speaking Wawancara Kerja, Kosakata & Ejaan, IELTS Academic Studio (Cambridge), dan Bedah Buku TOEFL iBT Beasiswa S2 Luar Negeri!",
       "Tekan 🔊 untuk mendengar suara asli, coba timer speaking, lalu tekan 🎙️ untuk berbicara dan dapatkan skor pelafalanmu!"
+    );
+  } else if (tabName === 'shortcut-excel') {
+    if (window.renderExcelShortcutStudio) renderExcelShortcutStudio();
+    setKodiSpeech(
+      "Selamat datang di Studio Pintasan Keyboard Excel! ⌨️ Ada 53 pintasan keyboard Windows resmi dari panduan kantor!",
+      "Pahami skenario kantor di atas, baca Nalar Bayi Kodi biar gampang hafal, lalu tekan tombolnya di keyboard fisik atau simulator!"
+    );
+  } else if (tabName === 'shortcut-word') {
+    if (window.renderWordShortcutStudio) renderWordShortcutStudio();
+    setKodiSpeech(
+      "Selamat datang di Studio Pintasan Keyboard Microsoft Word! 📝 Ada 55 pintasan pengetikan dokumen, heading, dan format paragraf!",
+      "Tekan tombol keyboard fisik laptopmu atau klik tombol di papan ketik interaktif untuk menguasai trik mengetik kilat!"
     );
   } else if (tabName === 'dictionary') {
     renderDictionary();
@@ -3035,13 +3059,97 @@ function renderExcelTrainer() {
   const isCompleted = appState.excelCompleted.includes(chal.id);
   const currentFormula = appState.excelUserFormulas[chal.id] || chal.starterFormula || "=";
 
+  // Active cell state (default to targetCell)
+  appState.excelActiveCell = appState.excelActiveCell || chal.targetCell.toUpperCase();
+
   // Render Table HTML
   const colHeaders = chal.tableHeaders || ["A", "B", "C", "D"];
   const tableRows = chal.tableRows || [];
 
   let tableHtml = `
-    <div class="excel-grid-wrapper">
-      <table class="excel-sheet-table">
+    <!-- PITA MENU EXCEL NYATA (REAL EXCEL RIBBON TOOLBAR) -->
+    <div class="excel-ribbon-wrap">
+      <div class="excel-ribbon-topbar">
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <span>📗 AutoSave: ON 🟢</span>
+          <span style="opacity: 0.6;">|</span>
+          <span>BukuKerja_Latihan_Kantor.xlsx - Excel Studio</span>
+        </div>
+        <div style="display: flex; align-items: center; gap: 10px;">
+          <span style="font-size: 0.75rem; background: rgba(255,255,255,0.18); padding: 3px 10px; border-radius: 12px; font-weight: 700;">
+            🖱️ Fitur Fill Handle Aktif (Bisa Di-tarik ke Bawah)
+          </span>
+        </div>
+      </div>
+
+      <div class="excel-ribbon-tabs">
+        <button class="excel-ribbon-tab-btn active">Beranda (Home)</button>
+        <button class="excel-ribbon-tab-btn" onclick="excelToolAction('tab-rumus')">Rumus (Formulas)</button>
+        <button class="excel-ribbon-tab-btn" onclick="excelToolAction('tab-data')">Data</button>
+      </div>
+
+      <div class="excel-ribbon-toolbar">
+        <div class="excel-ribbon-group" title="Clipboard">
+          <button type="button" class="excel-ribbon-btn" onclick="excelToolAction('paste')" title="Tempel (Ctrl+V)">
+            <span class="icon">📋</span>
+            <span>Tempel</span>
+          </button>
+          <button type="button" class="excel-ribbon-btn" onclick="excelToolAction('copy')" title="Salin (Ctrl+C)">
+            <span class="icon">📄</span>
+            <span>Salin</span>
+          </button>
+        </div>
+
+        <div class="excel-ribbon-group" title="Format Font">
+          <button type="button" class="excel-ribbon-btn" onclick="excelToolAction('bold')" title="Tebal (Ctrl+B)">
+            <span class="icon" style="font-weight: 900;">𝐁</span>
+            <span>Tebal</span>
+          </button>
+          <button type="button" class="excel-ribbon-btn" onclick="excelToolAction('italic')" title="Miring (Ctrl+I)">
+            <span class="icon" style="font-style: italic;">𝐼</span>
+            <span>Miring</span>
+          </button>
+          <button type="button" class="excel-ribbon-btn" onclick="excelToolAction('underline')" title="Garis Bawah (Ctrl+U)">
+            <span class="icon" style="text-decoration: underline;">U</span>
+            <span>Garis</span>
+          </button>
+        </div>
+
+        <div class="excel-ribbon-group" title="Perataan Sel">
+          <button type="button" class="excel-ribbon-btn" onclick="excelToolAction('align-left')" title="Rata Kiri">
+            <span class="icon">⇤</span>
+            <span>Kiri</span>
+          </button>
+          <button type="button" class="excel-ribbon-btn" onclick="excelToolAction('align-center')" title="Rata Tengah">
+            <span class="icon">⇥⇤</span>
+            <span>Tengah</span>
+          </button>
+          <button type="button" class="excel-ribbon-btn" onclick="excelToolAction('align-right')" title="Rata Kanan">
+            <span class="icon">⇥</span>
+            <span>Kanan</span>
+          </button>
+        </div>
+
+        <div class="excel-ribbon-group" title="Operasi Rumus & Auto-Fill">
+          <button type="button" class="excel-ribbon-btn" style="background: rgba(16, 124, 65, 0.2); border-color: #10b981; color: #10b981;" onclick="excelToolAction('autosum')" title="AutoSum Otomatis (Alt+=)">
+            <span class="icon" style="font-size: 1.1rem; font-weight: 900;">∑</span>
+            <span>AutoSum</span>
+          </button>
+          <button type="button" class="excel-ribbon-btn" style="background: rgba(56, 189, 248, 0.15); border-color: #38bdf8; color: #38bdf8;" onclick="excelToolAction('draginfo')" title="Cara Menarik Rumus">
+            <span class="icon">↕️</span>
+            <span>Tarik Rumus</span>
+          </button>
+          <button type="button" class="excel-ribbon-btn" onclick="excelToolAction('filter')" title="Nyalakan Filter (Ctrl+Shift+L)">
+            <span class="icon">🔻</span>
+            <span>Filter</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- SPREADSHEET GRID DENGAN ACTIVE CELL & DRAGGABLE FILL HANDLE -->
+    <div class="excel-grid-wrapper" style="border-radius: 0 0 10px 10px; border-top: none;">
+      <table class="excel-sheet-table" id="excel-main-sheet">
         <thead>
           <tr>
             <th class="col-header" style="width: 45px;">#</th>
@@ -3059,6 +3167,7 @@ function renderExcelTrainer() {
     colHeaders.forEach(col => {
       const cellCoord = `${col.toUpperCase()}${rowNum}`;
       const isTarget = (cellCoord === chal.targetCell.toUpperCase());
+      const isActive = (cellCoord === appState.excelActiveCell);
       const cellVal = rowObj[col] !== undefined ? rowObj[col] : "";
 
       let displayVal = cellVal;
@@ -3071,11 +3180,24 @@ function renderExcelTrainer() {
       }
 
       tableHtml += `
-        <td class="${isTarget ? 'excel-target-cell' + (isCompleted ? ' solved' : '') : ''}"
+        <td class="${isTarget ? 'excel-target-cell' + (isCompleted ? ' solved' : '') : ''} ${isActive ? 'excel-cell-active' : ''}"
             id="cell-${cellCoord}"
             data-coord="${cellCoord}"
-            onclick="selectExcelCell('${cellCoord}')">
-          ${displayVal}
+            data-col="${col.toUpperCase()}"
+            data-row="${rowNum}"
+            tabindex="0"
+            onclick="selectExcelCell('${cellCoord}')"
+            onkeydown="handleExcelGridKey(event, '${cellCoord}')">
+          <span class="cell-content">${displayVal}</span>
+          ${isActive ? `
+            <div class="excel-fill-handle"
+                 id="excel-fill-handle"
+                 title="Tarik kotak hijau ini ke bawah untuk Auto-Fill! Atau klik ganda 2x!"
+                 onmousedown="startExcelFillDrag(event, '${cellCoord}')"
+                 ontouchstart="startExcelFillDrag(event, '${cellCoord}')"
+                 ondblclick="excelAutoFillDoubleClicked('${cellCoord}')">
+            </div>
+          ` : ''}
         </td>
       `;
     });
@@ -3167,14 +3289,14 @@ function renderExcelTrainer() {
         </div>
       </div>
 
-      <!-- SPREADSHEET TABLE GRID -->
+      <!-- SPREADSHEET TABLE GRID & RIBBON WRAPPER -->
       <div>
-        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; flex-wrap: wrap; gap: 6px;">
           <span style="font-size: 0.82rem; font-weight: 700; color: var(--text-muted);">
             📊 Lembar Kerja Spreadsheet (Sel Target: <strong style="color: #10b981;">${chal.targetCell}</strong>)
           </span>
-          <span style="font-size: 0.75rem; color: var(--text-muted);">
-            Klik sel untuk melihat koordinat
+          <span style="font-size: 0.78rem; color: #10b981; font-weight: 700;">
+            💡 Tarik kotak hijau (■) di pojok sel ke bawah untuk Auto-Fill! Atau klik ganda 2x!
           </span>
         </div>
         ${tableHtml}
@@ -3182,7 +3304,7 @@ function renderExcelTrainer() {
 
       <!-- FORMULA BAR (FX) -->
       <div class="excel-formula-bar-wrap">
-        <span class="excel-cell-badge" id="excel-active-coord">${chal.targetCell}</span>
+        <span class="excel-cell-badge" id="excel-active-coord">${appState.excelActiveCell || chal.targetCell}</span>
         <span class="excel-fx-icon">fx</span>
         <input type="text"
                id="excel-formula-input"
@@ -3204,6 +3326,249 @@ function renderExcelTrainer() {
     </div>
   `;
 }
+
+// Interaktivitas Sel Excel & Fill Handle ("Bisa Di-tarik")
+window.selectExcelCell = function(coord) {
+  if (window.sfx) sfx.playClick();
+  appState.excelActiveCell = coord.toUpperCase();
+
+  // Update badge koordinat
+  const badge = document.getElementById("excel-active-coord");
+  if (badge) badge.textContent = coord;
+
+  // Re-render highlight cell & pindahkan fill handle
+  document.querySelectorAll(".excel-sheet-table td").forEach(td => {
+    td.classList.remove("excel-cell-active");
+    const oldHandle = td.querySelector(".excel-fill-handle");
+    if (oldHandle) oldHandle.remove();
+  });
+
+  const activeTd = document.getElementById(`cell-${coord}`);
+  if (activeTd) {
+    activeTd.classList.add("excel-cell-active");
+    const handleEl = document.createElement("div");
+    handleEl.className = "excel-fill-handle";
+    handleEl.id = "excel-fill-handle";
+    handleEl.title = "Tarik kotak hijau ini ke bawah untuk Auto-Fill! Atau klik ganda 2x!";
+    handleEl.onmousedown = (e) => startExcelFillDrag(e, coord);
+    handleEl.ontouchstart = (e) => startExcelFillDrag(e, coord);
+    handleEl.ondblclick = () => excelAutoFillDoubleClicked(coord);
+    activeTd.appendChild(handleEl);
+  }
+};
+
+// Drag Handle Auto-Fill Logic
+window.startExcelFillDrag = function(e, startCoord) {
+  e.preventDefault();
+  e.stopPropagation();
+
+  const chal = excelChallenges[appState.currentExcelIndex] || excelChallenges[0];
+  const colLetter = startCoord.replace(/[0-9]/g, '').toUpperCase();
+  const startRow = parseInt(startCoord.replace(/[^0-9]/g, ''), 10);
+
+  let maxRow = startRow;
+  let draggedCells = [];
+
+  // Buat tooltip melayang
+  let tooltip = document.getElementById("excel-drag-tooltip");
+  if (!tooltip) {
+    tooltip = document.createElement("div");
+    tooltip.id = "excel-drag-tooltip";
+    tooltip.className = "excel-drag-tooltip";
+    document.body.appendChild(tooltip);
+  }
+  tooltip.style.display = "block";
+  tooltip.textContent = `↕️ Tarik Rumus Auto-Fill (${startCoord})`;
+
+  function onMouseMove(moveEvent) {
+    const clientX = moveEvent.clientX || (moveEvent.touches && moveEvent.touches[0].clientX);
+    const clientY = moveEvent.clientY || (moveEvent.touches && moveEvent.touches[0].clientY);
+
+    tooltip.style.left = `${clientX + 14}px`;
+    tooltip.style.top = `${clientY + 14}px`;
+
+    // Cek elemen sel di bawah kursor
+    const elemBelow = document.elementFromPoint(clientX, clientY);
+    const targetTd = elemBelow ? elemBelow.closest("td[data-coord]") : null;
+
+    if (targetTd) {
+      const hoverCoord = targetTd.getAttribute("data-coord");
+      const hoverCol = targetTd.getAttribute("data-col");
+      const hoverRow = parseInt(targetTd.getAttribute("data-row"), 10);
+
+      // Hanya izinkan tarikan di kolom yang sama ke bawah
+      if (hoverCol === colLetter && hoverRow >= startRow) {
+        maxRow = hoverRow;
+        tooltip.textContent = `⬇️ Auto-Fill ke ${colLetter}${maxRow}`;
+
+        // Tandai sel-sel yang dilewati
+        draggedCells = [];
+        document.querySelectorAll(".excel-sheet-table td[data-col='" + colLetter + "']").forEach(td => {
+          const r = parseInt(td.getAttribute("data-row"), 10);
+          if (r >= startRow && r <= maxRow) {
+            td.classList.add("excel-drag-selecting");
+            draggedCells.push(td);
+          } else {
+            td.classList.remove("excel-drag-selecting");
+          }
+        });
+      }
+    }
+  }
+
+  function onMouseUp() {
+    window.removeEventListener("mousemove", onMouseMove);
+    window.removeEventListener("mouseup", onMouseUp);
+    window.removeEventListener("touchmove", onMouseMove);
+    window.removeEventListener("touchend", onMouseUp);
+
+    if (tooltip) tooltip.style.display = "none";
+    document.querySelectorAll(".excel-drag-selecting").forEach(td => td.classList.remove("excel-drag-selecting"));
+
+    // Jika berhasil ditarik minimal 1 baris ke bawah
+    if (maxRow > startRow) {
+      if (window.sfx) sfx.playSuccess();
+
+      // Isi rumus ke sel target jika berada dalam cakupan tarikan
+      const targetRow = parseInt(chal.targetCell.replace(/[^0-9]/g, ''), 10);
+      const targetCol = chal.targetCell.replace(/[0-9]/g, '').toUpperCase();
+
+      if (targetCol === colLetter && targetRow <= maxRow) {
+        const input = document.getElementById("excel-formula-input");
+        if (input && (!input.value || input.value === "=")) {
+          input.value = chal.acceptedFormulas[0] || chal.starterFormula || "=";
+        }
+        checkExcelCurrentChallenge();
+      }
+
+      setKodiSpeech(
+        "🎉 Hebaaat! Kamu berhasil menarik rumus (Auto-Fill) ke bawah!",
+        `Kotak hijau ditarik dari ${startCoord} sampai ${colLetter}${maxRow}. Rumus tersalin otomatis ke seluruh baris seperti di Excel asli!`
+      );
+    }
+  }
+
+  window.addEventListener("mousemove", onMouseMove);
+  window.addEventListener("mouseup", onMouseUp);
+  window.addEventListener("touchmove", onMouseMove, { passive: false });
+  window.addEventListener("touchend", onMouseUp);
+};
+
+// Double click pada fill handle -> Auto-fill sampai baris terakhir
+window.excelAutoFillDoubleClicked = function(coord) {
+  const chal = excelChallenges[appState.currentExcelIndex] || excelChallenges[0];
+  if (window.sfx) sfx.playSuccess();
+
+  const input = document.getElementById("excel-formula-input");
+  if (input && (!input.value || input.value === "=")) {
+    input.value = chal.acceptedFormulas[0] || chal.starterFormula || "=";
+  }
+  checkExcelCurrentChallenge();
+
+  setKodiSpeech(
+    "⚡ Wow! Trik Klik Ganda (Double-Click) Fill Handle!",
+    "Di Excel asli, klik dua kali pada kotak hijau kecil langsung mengisi rumus ke bawah sampai ujung tabel secara instan!"
+  );
+};
+
+// Ribbon Toolbar Actions
+window.excelToolAction = function(action) {
+  if (window.sfx) sfx.playClick();
+  const chal = excelChallenges[appState.currentExcelIndex] || excelChallenges[0];
+  const activeCoord = appState.excelActiveCell || chal.targetCell;
+  const activeTd = document.getElementById(`cell-${activeCoord}`);
+
+  if (action === 'bold') {
+    if (activeTd) {
+      const isBold = activeTd.style.fontWeight === 'bold' || activeTd.style.fontWeight === '800';
+      activeTd.style.fontWeight = isBold ? 'normal' : '800';
+    }
+    setKodiSpeech("Pintasan Keyboard: Ctrl+B", "Format tebal (Bold) diterapkan ke sel " + activeCoord + "!");
+  } else if (action === 'italic') {
+    if (activeTd) {
+      const isItalic = activeTd.style.fontStyle === 'italic';
+      activeTd.style.fontStyle = isItalic ? 'normal' : 'italic';
+    }
+    setKodiSpeech("Pintasan Keyboard: Ctrl+I", "Format miring (Italic) diterapkan ke sel " + activeCoord + "!");
+  } else if (action === 'underline') {
+    if (activeTd) {
+      const isU = activeTd.style.textDecoration === 'underline';
+      activeTd.style.textDecoration = isU ? 'none' : 'underline';
+    }
+    setKodiSpeech("Pintasan Keyboard: Ctrl+U", "Garis bawah (Underline) diterapkan ke sel " + activeCoord + "!");
+  } else if (action === 'align-left') {
+    if (activeTd) activeTd.style.textAlign = 'left';
+  } else if (action === 'align-center') {
+    if (activeTd) activeTd.style.textAlign = 'center';
+  } else if (action === 'align-right') {
+    if (activeTd) activeTd.style.textAlign = 'right';
+  } else if (action === 'autosum') {
+    const input = document.getElementById("excel-formula-input");
+    if (input) {
+      input.value = `=SUM(A1:A5)`;
+      input.focus();
+    }
+    setKodiSpeech(
+      "⚡ Pintasan Rahasia: Alt + = (AutoSum)",
+      "AutoSum otomatis memasukkan rumus =SUM(...) ke bilah rumus! Tekan Enter untuk menghitung hasilnya!"
+    );
+  } else if (action === 'draginfo') {
+    setKodiSpeech(
+      "💡 Cara Menarik Rumus (Auto-Fill Handle):",
+      "Perhatikan kotak hijau kecil di sudut kanan bawah sel target! Klik dan tahan (mouse down) lalu seret ke bawah, atau klik ganda 2x pada kotak hijau itu untuk auto-fill kilat!"
+    );
+  } else if (action === 'copy') {
+    if (activeTd) {
+      window._excelCopiedValue = activeTd.innerText;
+      setKodiSpeech("Pintasan: Ctrl+C", `Konten sel ${activeCoord} ('${window._excelCopiedValue}') berhasil disalin!`);
+    }
+  } else if (action === 'paste') {
+    const input = document.getElementById("excel-formula-input");
+    if (input && window._excelCopiedValue) {
+      input.value += window._excelCopiedValue;
+      setKodiSpeech("Pintasan: Ctrl+V", `Konten '${window._excelCopiedValue}' berhasil ditempel ke bilah formula!`);
+    }
+  } else if (action === 'filter') {
+    setKodiSpeech("Pintasan: Ctrl+Shift+L", "Filter otomatis pada judul tabel berhasil diaktifkan!");
+  } else if (action === 'tab-rumus') {
+    setKodiSpeech("Tab Rumus (Alt+M)", "Di tab ini kamu bisa mengakses pustaka fungsi: SUM, AVERAGE, IF, VLOOKUP, INDEX, dan STDEV!");
+  } else if (action === 'tab-data') {
+    setKodiSpeech("Tab Data (Alt+A)", "Tab Data digunakan untuk mengurutkan (Sort), menyaring (Filter), dan validasi data sel!");
+  }
+};
+
+// Keyboard Navigation di Grid
+window.handleExcelGridKey = function(e, coord) {
+  const chal = excelChallenges[appState.currentExcelIndex] || excelChallenges[0];
+  const colLetter = coord.replace(/[0-9]/g, '').toUpperCase();
+  const rowNum = parseInt(coord.replace(/[^0-9]/g, ''), 10);
+  const colHeaders = chal.tableHeaders || ["A", "B", "C", "D"];
+  const colIdx = colHeaders.indexOf(colLetter);
+
+  if (e.key === 'ArrowDown') {
+    e.preventDefault();
+    selectExcelCell(`${colLetter}${rowNum + 1}`);
+  } else if (e.key === 'ArrowUp' && rowNum > 1) {
+    e.preventDefault();
+    selectExcelCell(`${colLetter}${rowNum - 1}`);
+  } else if (e.key === 'ArrowRight' && colIdx < colHeaders.length - 1) {
+    e.preventDefault();
+    selectExcelCell(`${colHeaders[colIdx + 1]}${rowNum}`);
+  } else if (e.key === 'ArrowLeft' && colIdx > 0) {
+    e.preventDefault();
+    selectExcelCell(`${colHeaders[colIdx - 1]}${rowNum}`);
+  } else if (e.key === 'Enter') {
+    e.preventDefault();
+    selectExcelCell(`${colLetter}${rowNum + 1}`);
+  } else if (e.key === 'Tab') {
+    e.preventDefault();
+    if (colIdx < colHeaders.length - 1) selectExcelCell(`${colHeaders[colIdx + 1]}${rowNum}`);
+  } else if (e.key === 'F2') {
+    e.preventDefault();
+    const input = document.getElementById("excel-formula-input");
+    if (input) input.focus();
+  }
+};
 
 window.filterExcelCategory = function(cat) {
   sfx.playClick();
@@ -3234,17 +3599,6 @@ window.setExcelChallenge = function(idx) {
   renderExcelTrainer();
 };
 
-window.selectExcelCell = function(coord) {
-  sfx.playClick();
-  const badge = document.getElementById("excel-active-coord");
-  if (badge) badge.textContent = coord;
-  const input = document.getElementById("excel-formula-input");
-  if (input) {
-    input.value += coord;
-    input.focus();
-  }
-};
-
 window.insertExcelChip = function(snippet) {
   sfx.playClick();
   const input = document.getElementById("excel-formula-input");
@@ -3265,28 +3619,6 @@ window.resetExcelFormula = function() {
   delete appState.excelUserFormulas[chal.id];
   const feedbackBox = document.getElementById("excel-feedback-box");
   if (feedbackBox) feedbackBox.style.display = "none";
-};
-
-window.showExcelAnswer = function() {
-  sfx.playClick();
-  const chal = excelChallenges[appState.currentExcelIndex] || excelChallenges[0];
-  const input = document.getElementById("excel-formula-input");
-  if (input) {
-    input.value = chal.acceptedFormulas[0] || "=";
-    input.focus();
-  }
-  const feedbackBox = document.getElementById("excel-feedback-box");
-  if (feedbackBox) {
-    feedbackBox.style.display = "block";
-    feedbackBox.className = "alert-box info";
-    feedbackBox.innerHTML = `
-      <strong>💡 Kunci Jawaban Kodi:</strong><br>
-      Ketik rumus: <code style="font-size: 0.95rem; font-weight: bold; color: #10b981;">${chal.acceptedFormulas[0]}</code><br>
-      <span style="font-size: 0.85rem; color: var(--text-muted);">
-        ${chal.babyHint}
-      </span>
-    `;
-  }
 };
 
 window.checkExcelCurrentChallenge = function() {
@@ -3352,6 +3684,7 @@ window.checkExcelCurrentChallenge = function() {
     );
   }
 };
+
 
 // ================= IT TECH & NETWORK LAB (100 TANTANGAN) =================
 function renderItTechTrainer() {
