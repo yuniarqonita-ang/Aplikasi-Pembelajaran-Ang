@@ -4750,17 +4750,17 @@ function renderMathTrainer() {
   appState.mathUserDrafts = appState.mathUserDrafts || {};
 
   const categories = [
-    { key: "all", label: "🌟 Semua Unit (100)" },
-    { key: "Unit 1", label: "🔢 1. Numbers (10)" },
-    { key: "Unit 2", label: "🧬 2. Algebra (10)" },
-    { key: "Unit 3", label: "⚖️ 3. Equations (10)" },
-    { key: "Unit 4", label: "⚖️ 4. Ratio & Rates (10)" },
-    { key: "Unit 5", label: "💰 5. Financial Math (10)" },
-    { key: "Unit 6", label: "📐 6. Geometry & Angles (10)" },
-    { key: "Unit 7", label: "🧊 7. Mensuration (10)" },
-    { key: "Unit 8", label: "📐 8. Pythagoras & Trig (10)" },
-    { key: "Unit 9", label: "📈 9. Coordinate & Func (10)" },
-    { key: "Unit 10", label: "🎲 10. Prob & Stats (10)" }
+    { key: "all", icon: "🌟", name: "Semua Unit", count: 100 },
+    { key: "Unit 1", icon: "🔢", name: "1. Numbers", count: 10 },
+    { key: "Unit 2", icon: "🧬", name: "2. Algebra", count: 10 },
+    { key: "Unit 3", icon: "⚖️", name: "3. Equations", count: 10 },
+    { key: "Unit 4", icon: "📊", name: "4. Ratio & Rates", count: 10 },
+    { key: "Unit 5", icon: "💰", name: "5. Financial Math", count: 10 },
+    { key: "Unit 6", icon: "📐", name: "6. Geometry & Angles", count: 10 },
+    { key: "Unit 7", icon: "🧊", name: "7. Mensuration", count: 10 },
+    { key: "Unit 8", icon: "📏", name: "8. Pythagoras & Trig", count: 10 },
+    { key: "Unit 9", icon: "📈", name: "9. Coordinate & Func", count: 10 },
+    { key: "Unit 10", icon: "🎲", name: "10. Prob & Stats", count: 10 }
   ];
 
   const filteredList = (appState.mathUnitFilter === "all")
@@ -4792,14 +4792,14 @@ function renderMathTrainer() {
 
   container.innerHTML = `
     <!-- Header Card -->
-    <div style="background: linear-gradient(135deg, rgba(30, 41, 59, 0.95), rgba(15, 23, 42, 0.98)); border: 1px solid var(--border-glow); border-radius: 16px; padding: 20px; margin-bottom: 20px; box-shadow: var(--card-shadow);">
+    <div class="math-header-card">
       <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 14px;">
         <div style="flex: 1; min-width: 260px;">
-          <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 6px;">
-            <span style="font-size: 1.8rem;">📐</span>
+          <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 6px;">
+            <span style="font-size: 2rem;">📐</span>
             <div>
-              <h3 style="margin: 0; color: #fff; font-size: 1.3rem;">Cambridge Bilingual Mathematics Studio</h3>
-              <p style="margin: 2px 0 0; font-size: 0.85rem; color: var(--accent-cyan);">
+              <h3 style="margin: 0; font-size: 1.3rem;">Cambridge Bilingual Mathematics Studio</h3>
+              <p style="margin: 2px 0 0; font-size: 0.85rem; color: var(--accent-cyan); font-weight: 600;">
                 100 Tantangan Interaktif Standar Cambridge Checkpoint & IGCSE (0580/0862) dengan Nalar Bayi Kodi & Virtual Math Pad
               </p>
             </div>
@@ -4810,35 +4810,38 @@ function renderMathTrainer() {
           <div style="font-size: 1.25rem; font-weight: 800; color: var(--accent-green);">
             ${completedCount} / ${allChallenges.length} Selesai (${progressPercent}%)
           </div>
-          <div style="height: 6px; width: 100%; background: rgba(255,255,255,0.1); border-radius: 3px; margin-top: 6px; overflow: hidden;">
+          <div style="height: 6px; width: 100%; background: rgba(0,0,0,0.12); border-radius: 3px; margin-top: 6px; overflow: hidden;">
             <div style="height: 100%; width: ${progressPercent}%; background: linear-gradient(90deg, var(--accent-cyan), var(--accent-green)); transition: width 0.3s ease;"></div>
           </div>
         </div>
       </div>
 
-      <!-- Kategori Filter Tabs -->
-      <div style="display: flex; gap: 8px; margin-top: 18px; overflow-x: auto; padding-bottom: 6px;">
+      <!-- Kategori Filter Tabs (Auto-sizing & No Truncation) -->
+      <div class="math-unit-tab-wrap">
         ${categories.map(c => `
-          <button class="choice-card-btn ${appState.mathUnitFilter === c.key ? 'active-eng-mode' : ''}"
-                  style="flex: 1; min-width: 140px; padding: 10px 14px; font-size: 0.82rem; font-weight: 700; text-align: center; border-radius: 10px; white-space: nowrap;"
-                  onclick="setMathUnitFilter('${c.key}')">
-            ${c.label}
+          <button type="button"
+                  class="math-unit-tab-btn ${appState.mathUnitFilter === c.key ? 'active' : ''}"
+                  onclick="setMathUnitFilter('${c.key}')"
+                  title="${c.name} (${c.count} Soal)">
+            <span>${c.icon}</span>
+            <span>${c.name}</span>
+            <span class="math-unit-badge">${c.count}</span>
           </button>
         `).join('')}
       </div>
     </div>
 
-    <!-- Navigation Bar -->
-    <div class="challenge-nav-bar" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; margin-bottom: 20px; background: rgba(15, 23, 42, 0.6); padding: 12px 16px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.08);">
+    <!-- Navigation Bar & Peta Nomor Soal (1 - 100) -->
+    <div class="challenge-nav-bar" style="margin-bottom: 14px;">
       <div class="challenge-nav-controls" style="display: flex; align-items: center; gap: 8px;">
-        <label style="font-size: 0.8rem; font-weight: 700; color: var(--accent-cyan);">Navigasi Soal:</label>
+        <label style="font-size: 0.82rem; font-weight: 800; color: var(--accent-cyan);">Navigasi Soal:</label>
       </div>
 
-      <div class="challenge-nav-controls" style="display: flex; align-items: center; gap: 8px; flex: 1; max-width: 600px; justify-content: flex-end;">
+      <div class="challenge-nav-controls" style="display: flex; align-items: center; gap: 8px; flex: 1; max-width: 650px; justify-content: flex-end;">
         <button class="btn-secondary" style="padding: 6px 12px; font-size: 0.82rem;" onclick="navMathChallenge(-1)" ${currentPos <= 0 ? 'disabled' : ''}>
           ◀ Prev
         </button>
-        <select class="challenge-page-select" style="flex: 1; padding: 6px 10px; font-size: 0.82rem; border-radius: 8px; background: #0f172a; color: #fff; border: 1px solid var(--border-glow);" onchange="setMathChallengeIndex(Number(this.value))">
+        <select class="challenge-page-select" style="flex: 1;" onchange="setMathChallengeIndex(Number(this.value))">
           ${filteredList.map((x) => `
             <option value="${x.originalIndex}" ${x.originalIndex === appState.currentMathIndex ? 'selected' : ''}>
               #${x.originalIndex + 1}: [${x.item.unit.split(':')[0]}] ${x.item.title} ${appState.mathCompleted.includes(x.item.id) ? '✓ Selesai' : ''}
@@ -4851,60 +4854,82 @@ function renderMathTrainer() {
       </div>
     </div>
 
+    <!-- PETA LEMBAR NOMOR SOAL (1 - 100) CBT GRID PALETTE -->
+    <div class="math-number-palette-card">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; flex-wrap: wrap; gap: 6px;">
+        <div style="font-size: 0.8rem; font-weight: 800; color: var(--accent-cyan); display: flex; align-items: center; gap: 6px;">
+          <span>📋</span> <span>Peta Nomor Soal (${filteredList.length} Soal ${appState.mathUnitFilter === 'all' ? 'Tersedia' : appState.mathUnitFilter}):</span>
+        </div>
+        <span style="font-size: 0.74rem; color: var(--text-muted);">
+          Klik nomor kotak untuk langsung loncat ke soal • Hijau: Selesai ✅
+        </span>
+      </div>
+      <div class="math-number-grid">
+        ${filteredList.map((x) => `
+          <button type="button"
+                  class="math-num-chip ${x.originalIndex === appState.currentMathIndex ? 'active' : ''} ${appState.mathCompleted.includes(x.item.id) ? 'done' : ''}"
+                  onclick="setMathChallengeIndex(${x.originalIndex})"
+                  title="Soal #${x.originalIndex + 1}: [${x.item.unit.split(':')[0]}] ${x.item.title}">
+            ${x.originalIndex + 1}
+          </button>
+        `).join('')}
+      </div>
+    </div>
+
     <!-- MAIN GRID: Worked Example (Left/Top) & Student Challenge (Right/Bottom) -->
     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px; margin-bottom: 24px;">
 
       <!-- ================= KOTAK CONTOH SOAL SERUPA (KASUS A) ================= -->
-      <div style="background: linear-gradient(145deg, rgba(30, 27, 75, 0.8), rgba(15, 23, 42, 0.9)); border: 1px solid rgba(167, 139, 250, 0.35); border-radius: 14px; padding: 18px; box-shadow: 0 4px 16px rgba(0,0,0,0.3);">
-        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
-          <span style="font-size: 0.75rem; font-weight: 800; background: rgba(167, 139, 250, 0.2); color: #c4b5fd; padding: 4px 10px; border-radius: 20px; letter-spacing: 0.5px; border: 1px solid rgba(167, 139, 250, 0.3);">
+      <div class="math-worked-card">
+        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; flex-wrap: wrap; gap: 6px;">
+          <span style="font-size: 0.75rem; font-weight: 800; background: rgba(167, 139, 250, 0.2); color: #8b5cf6; padding: 4px 10px; border-radius: 20px; letter-spacing: 0.5px; border: 1px solid rgba(167, 139, 250, 0.3);">
             📖 CONTOH SOAL & PEMBAHASAN TERPISAH (KASUS A)
           </span>
-          <span style="font-size: 0.75rem; color: #a5b4fc; font-weight: 600;">Pelajari Polanya</span>
+          <span style="font-size: 0.75rem; color: var(--text-muted); font-weight: 600;">Pelajari Polanya 💡</span>
         </div>
 
         <!-- Soal Contoh Bilingual -->
-        <div style="background: rgba(0, 0, 0, 0.35); border-radius: 10px; padding: 14px; margin-bottom: 12px; border-left: 3px solid #a78bfa;">
-          <div style="font-size: 0.82rem; font-weight: 700; color: #c4b5fd; margin-bottom: 4px;">🇬🇧 Worked Example Statement:</div>
-          <div style="font-size: 0.95rem; color: #f8fafc; font-weight: 600; line-height: 1.4; margin-bottom: 8px;">
+        <div class="math-statement-box">
+          <div style="font-size: 0.82rem; font-weight: 700; color: #8b5cf6; margin-bottom: 4px;">🇬🇧 Worked Example Statement:</div>
+          <div style="font-size: 0.95rem; font-weight: 600; line-height: 1.4; margin-bottom: 8px;">
             ${chal.workedExample ? formatMathFractions(chal.workedExample.kasusSerupaEN) : '-'}
           </div>
-          <div style="font-size: 0.82rem; font-weight: 700; color: #a5b4fc; margin-bottom: 4px;">🇮🇩 Arti & Soal Bahasa Indonesia:</div>
-          <div style="font-size: 0.88rem; color: #cbd5e1; line-height: 1.4;">
+          <div style="font-size: 0.82rem; font-weight: 700; color: #6366f1; margin-bottom: 4px;">🇮🇩 Arti & Soal Bahasa Indonesia:</div>
+          <div style="font-size: 0.88rem; line-height: 1.4;">
             ${chal.workedExample ? formatMathFractions(chal.workedExample.kasusSerupaID) : '-'}
           </div>
         </div>
 
         <!-- Langkah Penyelesaian Terinci -->
-        <div style="background: rgba(15, 23, 42, 0.7); border-radius: 10px; padding: 12px 14px; margin-bottom: 12px; border: 1px solid rgba(255,255,255,0.06);">
-          <div style="font-size: 0.8rem; font-weight: 700; color: #86efac; margin-bottom: 4px;">📝 Langkah Kerja (Working Out):</div>
-          <div style="font-family: monospace; font-size: 0.88rem; color: #e2e8f0; line-height: 1.5; white-space: pre-wrap;">
+        <div class="math-steps-box">
+          <div style="font-size: 0.8rem; font-weight: 700; color: var(--accent-green); margin-bottom: 4px;">📝 Langkah Kerja (Working Out):</div>
+          <div style="font-family: monospace; font-size: 0.88rem; line-height: 1.5; white-space: pre-wrap;">
             ${chal.workedExample ? formatMathFractions(chal.workedExample.langkahPenyelesaian) : '-'}
           </div>
         </div>
 
         <!-- Jawaban Benar Contoh Kasus A -->
-        <div style="display: flex; align-items: center; justify-content: space-between; background: rgba(34, 197, 94, 0.12); border: 1px dashed rgba(34, 197, 94, 0.4); border-radius: 8px; padding: 10px 14px; margin-bottom: 12px;">
-          <span style="font-size: 0.82rem; font-weight: 700; color: #86efac;">Jawaban Benar Contoh Kasus A:</span>
-          <span style="font-size: 1.05rem; font-weight: 800; color: #4ade80; font-family: monospace;">${chal.workedExample ? formatMathFractions(chal.workedExample.jawabanBenarContoh) : '-'}</span>
+        <div class="math-answer-box">
+          <span style="font-size: 0.82rem; font-weight: 700; color: var(--accent-green);">Jawaban Benar Contoh Kasus A:</span>
+          <span style="font-size: 1.05rem; font-weight: 800; color: var(--accent-green); font-family: monospace;">${chal.workedExample ? formatMathFractions(chal.workedExample.jawabanBenarContoh) : '-'}</span>
         </div>
 
         <!-- Nalar Bayi Kodi -->
-        <div style="background: rgba(250, 204, 21, 0.1); border-left: 3px solid #facc15; border-radius: 8px; padding: 10px 14px;">
+        <div class="math-nalar-box">
           <div style="display: flex; align-items: center; gap: 6px; margin-bottom: 3px;">
             <span style="font-size: 1rem;">👶</span>
-            <strong style="font-size: 0.82rem; color: #facc15;">Nalar Bayi Kodi:</strong>
+            <strong style="font-size: 0.82rem;">Nalar Bayi Kodi:</strong>
           </div>
-          <div style="font-size: 0.85rem; color: #fef08a; line-height: 1.45;">
+          <div style="font-size: 0.85rem; line-height: 1.45;">
             ${chal.workedExample ? formatMathFractions(chal.workedExample.nalarBayiKodi) : '-'}
           </div>
         </div>
       </div>
 
       <!-- ================= KOTAK TANTANGAN SISWA (KASUS B - NO SPOILER) ================= -->
-      <div style="background: linear-gradient(145deg, rgba(15, 23, 42, 0.95), rgba(17, 24, 39, 0.98)); border: 1px solid rgba(56, 189, 248, 0.4); border-radius: 14px; padding: 18px; box-shadow: 0 4px 16px rgba(0,0,0,0.3); display: flex; flex-direction: column;">
+      <div class="math-challenge-card">
         <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; flex-wrap: wrap; gap: 6px;">
-          <span style="font-size: 0.75rem; font-weight: 800; background: rgba(56, 189, 248, 0.2); color: #38bdf8; padding: 4px 10px; border-radius: 20px; letter-spacing: 0.5px; border: 1px solid rgba(56, 189, 248, 0.3);">
+          <span style="font-size: 0.75rem; font-weight: 800; background: rgba(56, 189, 248, 0.2); color: var(--accent-cyan); padding: 4px 10px; border-radius: 20px; letter-spacing: 0.5px; border: 1px solid rgba(56, 189, 248, 0.3);">
             🎯 TANTANGAN MATEMATIKA B (KERJAKAN SENDIRI)
           </span>
           <span style="font-size: 0.75rem; color: var(--accent-cyan); font-weight: 600;">${chal.unit}</span>
@@ -4917,30 +4942,30 @@ function renderMathTrainer() {
                alt="Cambridge Math Hero #${String(23 + (appState.currentMathIndex % 4)).padStart(2, '0')}">
           <div>
             <h4 style="margin: 0 0 2px; font-size: 1.08rem; color: var(--text-main);">${chal.title}</h4>
-            <span style="font-size: 0.78rem; color: var(--text-muted); background: rgba(255,255,255,0.06); padding: 2px 8px; border-radius: 4px;">Topik: ${chal.topic}</span>
+            <span style="font-size: 0.78rem; color: var(--text-muted); background: rgba(0,0,0,0.06); padding: 2px 8px; border-radius: 4px;">Topik: ${chal.topic}</span>
           </div>
         </div>
 
         <!-- Problem Statement Bilingual -->
-        <div style="background: rgba(0, 0, 0, 0.4); border-radius: 10px; padding: 14px; margin-bottom: 14px; border-left: 3px solid #38bdf8;">
-          <div style="font-size: 0.82rem; font-weight: 700; color: #38bdf8; margin-bottom: 4px;">🇬🇧 Cambridge Exam Question:</div>
-          <div style="font-size: 1rem; color: #f8fafc; font-weight: 600; line-height: 1.45; margin-bottom: 10px;">
+        <div class="math-question-box">
+          <div style="font-size: 0.82rem; font-weight: 700; color: var(--accent-cyan); margin-bottom: 4px;">🇬🇧 Cambridge Exam Question:</div>
+          <div style="font-size: 1rem; font-weight: 600; line-height: 1.45; margin-bottom: 10px;">
             ${formatMathFractions(chal.questionEN)}
           </div>
-          <div style="font-size: 0.82rem; font-weight: 700; color: #7dd3fc; margin-bottom: 4px;">🇮🇩 Terjemahan Soal:</div>
-          <div style="font-size: 0.9rem; color: #cbd5e1; line-height: 1.45;">
+          <div style="font-size: 0.82rem; font-weight: 700; color: var(--accent-cyan); margin-bottom: 4px;">🇮🇩 Terjemahan Soal:</div>
+          <div style="font-size: 0.9rem; line-height: 1.45;">
             ${formatMathFractions(chal.questionID)}
           </div>
         </div>
 
         <!-- Input Box & Clear Buttons -->
         <div style="margin-bottom: 12px;">
-          <label style="display: block; font-size: 0.82rem; font-weight: 700; color: #e2e8f0; margin-bottom: 6px;">
+          <label style="display: block; font-size: 0.82rem; font-weight: 700; color: var(--text-main); margin-bottom: 6px;">
             ✍️ Masukkan Jawaban Akhir Matematika:
           </label>
           <div style="display: flex; gap: 8px;">
             <input type="text" id="math-answer-input"
-                   style="flex: 1; padding: 12px 14px; font-size: 1.05rem; font-family: monospace; font-weight: 700; background: #090d16; border: 1.5px solid rgba(56, 189, 248, 0.4); border-radius: 8px; color: #38bdf8; outline: none; transition: border-color 0.2s;"
+                   class="math-input"
                    placeholder="Ketik atau gunakan keypad di bawah..."
                    value="${currentDraft.replace(/"/g, '&quot;')}"
                    oninput="saveMathDraft(this.value)"
@@ -4955,68 +4980,45 @@ function renderMathTrainer() {
         </div>
 
         <!-- Virtual Math Pad (QuickPad) -->
-        <div style="margin-bottom: 14px; background: rgba(0,0,0,0.25); padding: 10px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.05);">
-          <div style="font-size: 0.74rem; font-weight: 700; color: #94a3b8; margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.5px;">
+        <div class="math-pad-box">
+          <div style="font-size: 0.74rem; font-weight: 700; color: var(--text-muted); margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.5px;">
             🔢 Virtual Math Pad (Klik untuk Mengetik Cepat):
           </div>
           <div style="display: flex; flex-wrap: wrap; gap: 6px;">
             ${padSymbols.map(sym => `
-              <button class="btn-secondary"
-                      style="padding: 6px 12px; font-size: 0.88rem; font-family: monospace; font-weight: 700; background: rgba(30, 41, 59, 0.8); border: 1px solid rgba(56, 189, 248, 0.25); color: #e2e8f0; border-radius: 6px; cursor: pointer; transition: all 0.15s;"
-                      onmouseover="this.style.background='rgba(56, 189, 248, 0.2)'"
-                      onmouseout="this.style.background='rgba(30, 41, 59, 0.8)'"
+              <button type="button"
+                      class="math-pad-btn"
                       onclick="appendMathSymbol('${sym}')">
                 ${sym}
               </button>
             `).join('')}
-            <button class="btn-secondary" style="padding: 6px 10px; font-size: 0.85rem; font-family: monospace; background: rgba(30, 41, 59, 0.8); border: 1px solid rgba(56, 189, 248, 0.25); color: #94a3b8; border-radius: 6px;" onclick="appendMathSymbol('/')">/</button>
-            <button class="btn-secondary" style="padding: 6px 10px; font-size: 0.85rem; font-family: monospace; background: rgba(30, 41, 59, 0.8); border: 1px solid rgba(56, 189, 248, 0.25); color: #94a3b8; border-radius: 6px;" onclick="appendMathSymbol('^')">^</button>
-            <button class="btn-secondary" style="padding: 6px 10px; font-size: 0.85rem; font-family: monospace; background: rgba(30, 41, 59, 0.8); border: 1px solid rgba(56, 189, 248, 0.25); color: #94a3b8; border-radius: 6px;" onclick="appendMathSymbol('(')">(</button>
-            <button class="btn-secondary" style="padding: 6px 10px; font-size: 0.85rem; font-family: monospace; background: rgba(30, 41, 59, 0.8); border: 1px solid rgba(56, 189, 248, 0.25); color: #94a3b8; border-radius: 6px;" onclick="appendMathSymbol(')')">)</button>
+            <button type="button"
+                    class="math-pad-btn"
+                    style="flex: 1; min-width: 60px;"
+                    onclick="appendMathSymbol(' ')">
+              Spasi
+            </button>
           </div>
         </div>
 
-        <!-- Action Buttons -->
-        <div style="display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 12px;">
+        <!-- Submit Button -->
+        <div style="margin-top: auto; display: flex; gap: 10px; align-items: center;">
           <button class="btn-primary"
-                  style="flex: 1; min-width: 180px; padding: 12px 18px; font-size: 0.95rem; font-weight: 800; background: linear-gradient(135deg, #059669, #10b981); border: none; border-radius: 8px; box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);"
+                  style="flex: 1; padding: 12px; font-size: 0.95rem; font-weight: 800; display: flex; align-items: center; justify-content: center; gap: 8px;"
                   onclick="submitMathAnswer()">
-            🚀 Cek Jawaban Matematika
-          </button>
-          <button class="btn-secondary"
-                  style="padding: 12px 16px; font-size: 0.85rem; font-weight: 700; border-radius: 8px;"
-                  onclick="toggleMathHint()">
-            💡 Petunjuk Nalar Kodi
-          </button>
-          <button class="btn-secondary"
-                  style="padding: 12px 16px; font-size: 0.85rem; font-weight: 700; border-radius: 8px;"
-                  onclick="navMathChallenge(1)">
-            ⏭️ Soal Berikutnya
+            <span>${isDone ? '🔄 Periksa Ulang' : '▶️ Cek Jawaban Matematika'}</span>
           </button>
         </div>
 
-        <!-- Hint Box (Toggled on demand) -->
-        <div id="math-hint-box" style="display: none; background: rgba(245, 158, 11, 0.12); border: 1px dashed #f59e0b; border-radius: 8px; padding: 12px 14px; margin-bottom: 12px;">
-          <div style="display: flex; align-items: center; gap: 6px; margin-bottom: 4px;">
-            <span style="font-size: 1rem;">💡</span>
-            <strong style="color: #fbbf24; font-size: 0.85rem;">Petunjuk Strategi Matematika:</strong>
-          </div>
-          <div style="color: #fef3c7; font-size: 0.85rem; line-height: 1.45;">
-            ${chal.hint || 'Perhatikan pola penyelesaian pada Kasus A di sebelah kiri!'}
-          </div>
-        </div>
-
-        <!-- Feedback & Validation Box -->
-        <div id="math-feedback-box" style="display: ${isDone ? 'block' : 'none'};">
+        <!-- Feedback Area -->
+        <div id="math-feedback-box" style="margin-top: 14px; display: ${isDone ? 'block' : 'none'};">
           ${isDone ? `
-            <div class="alert-box success" style="margin: 0; padding: 14px; border-radius: 8px;">
-              <div style="display: flex; align-items: flex-start; justify-content: space-between; gap: 10px;">
+            <div class="alert-box success" style="margin: 0;">
+              <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px;">
                 <div>
-                  <div style="font-size: 1rem; font-weight: 800; color: #4ade80; margin-bottom: 4px;">
-                    🎉 Tantangan Ini Sudah Berhasil Kamu Selesaikan!
-                  </div>
-                  <div style="font-size: 0.85rem; color: #cbd5e1; line-height: 1.4;">
-                    ${chal.explanation || 'Jawabanmu benar dan sesuai kaidah Cambridge!'}
+                  <strong>🎉 Soal Ini Sudah Berhasil Kamu Selesaikan!</strong>
+                  <div style="font-size: 0.82rem; margin-top: 2px;">
+                    Jawaban yang diterima: <code>${chal.expectedAnswer}</code>
                   </div>
                 </div>
                 <button class="btn-primary" style="background: var(--accent-green); border: none; padding: 6px 14px; font-size: 0.82rem;" onclick="navMathChallenge(1)">
@@ -5031,6 +5033,7 @@ function renderMathTrainer() {
     </div>
   `;
 }
+
 
 // Handler functions for Math Trainer
 window.setMathUnitFilter = function(unitKey) {
