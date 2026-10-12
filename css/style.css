@@ -5137,4 +5137,394 @@ body.light-theme .math-pad-btn:hover {
   color: #ffffff !important;
 }
 
+/* ==============================================================================
+   👩‍🏫 TEACHER PANEL GATE BUTTON & SECONDARY BUTTON LIGHT THEME CONTRAST
+   ============================================================================== */
+.teacher-panel-gate-btn {
+  background: rgba(30, 41, 59, 0.85);
+  color: #38bdf8 !important;
+  border: 1.5px solid rgba(56, 189, 248, 0.4) !important;
+  font-weight: 700;
+  transition: all 0.2s ease;
+}
+
+.teacher-panel-gate-btn:hover {
+  background: rgba(56, 189, 248, 0.25) !important;
+  border-color: #38bdf8 !important;
+  transform: translateY(-1.5px);
+}
+
+body.light-theme .teacher-panel-gate-btn {
+  background: #f0fdf4 !important;
+  color: #047857 !important;
+  border: 1.5px solid #10b981 !important;
+  box-shadow: 0 2px 8px rgba(16, 185, 129, 0.15) !important;
+}
+
+body.light-theme .teacher-panel-gate-btn:hover {
+  background: #dcfce7 !important;
+  color: #065f46 !important;
+  border-color: #059669 !important;
+}
+
+body.light-theme .btn-secondary {
+  background: #f1f5f9 !important;
+  color: #0f172a !important;
+  border: 1.5px solid #cbd5e1 !important;
+  font-weight: 700 !important;
+}
+
+body.light-theme .btn-secondary:hover {
+  background: #e2e8f0 !important;
+  color: #0284c7 !important;
+  border-color: #0284c7 !important;
+}
+
+/* ==============================================================================
+   📖 SMART DICTIONARY & EBOOK CITATION STYLING (DARK & LIGHT THEME)
+   ============================================================================== */
+.dict-main-wrapper {
+  margin-top: 6px;
+}
+
+.dict-hero-card {
+  background: linear-gradient(135deg, rgba(30, 41, 59, 0.95), rgba(15, 23, 42, 0.98));
+  border: 1px solid rgba(250, 204, 21, 0.4);
+  border-radius: 14px;
+  padding: 16px 20px;
+  margin-bottom: 18px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+}
+
+.dict-search-panel {
+  background: rgba(15, 23, 42, 0.75);
+  border: 1px solid var(--border-glow);
+  border-radius: 14px;
+  padding: 16px;
+  margin-bottom: 16px;
+}
+
+.dict-search-row {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.dict-search-input-field {
+  width: 100%;
+  padding: 12px 38px 12px 16px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  border-radius: 10px;
+  background: #090d16;
+  border: 1.5px solid rgba(56, 189, 248, 0.4);
+  color: #fff;
+  outline: none;
+  box-sizing: border-box;
+  transition: all 0.2s ease;
+}
+
+.dict-search-input-field:focus {
+  border-color: #38bdf8;
+  box-shadow: 0 0 12px rgba(56, 189, 248, 0.3);
+}
+
+.dict-clear-query-btn {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: transparent;
+  border: none;
+  color: #94a3b8;
+  font-size: 1rem;
+  font-weight: 800;
+  cursor: pointer;
+  padding: 4px 6px;
+}
+
+.dict-search-submit-btn {
+  padding: 12px 22px !important;
+  font-size: 0.9rem !important;
+  font-weight: 800 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+  white-space: nowrap !important;
+}
+
+.dict-reset-btn {
+  padding: 12px 18px !important;
+  font-size: 0.85rem !important;
+  font-weight: 700 !important;
+  white-space: nowrap !important;
+}
+
+.dict-quick-chips-row {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-top: 12px;
+  padding-top: 10px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.dict-quick-chip-btn {
+  background: rgba(30, 41, 59, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #cbd5e1;
+  font-size: 0.76rem;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 14px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.dict-quick-chip-btn:hover, .dict-quick-chip-btn.active {
+  background: #0284c7;
+  color: #fff;
+  border-color: #38bdf8;
+  transform: scale(1.04);
+}
+
+.dict-cat-pills-wrap {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding: 4px 2px 12px 2px;
+  margin-bottom: 14px;
+  scrollbar-width: thin;
+}
+
+.dict-cat-pill-btn {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 14px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  border-radius: 20px;
+  background: rgba(30, 41, 59, 0.8);
+  color: #cbd5e1;
+  border: 1.5px solid rgba(255, 255, 255, 0.1);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.dict-cat-pill-btn:hover {
+  background: rgba(56, 189, 248, 0.15);
+  color: #38bdf8;
+  border-color: #38bdf8;
+}
+
+.dict-cat-pill-btn.active {
+  background: #0284c7;
+  color: #fff;
+  border-color: #38bdf8;
+  box-shadow: 0 4px 12px rgba(2, 132, 199, 0.4);
+}
+
+.dict-results-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 10px 14px;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  margin-bottom: 16px;
+}
+
+.dict-card {
+  background: rgba(15, 23, 42, 0.85);
+  border: 1.5px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: all 0.2s ease;
+}
+
+.dict-card:hover {
+  border-color: #38bdf8;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+  transform: translateY(-2px);
+}
+
+.dict-term-title {
+  margin: 0;
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: #fff;
+}
+
+.dict-category-tag {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 800;
+  padding: 2px 8px;
+  border-radius: 10px;
+  background: rgba(56, 189, 248, 0.15);
+  color: #38bdf8;
+  margin-top: 3px;
+}
+
+.dict-audio-btn {
+  background: rgba(30, 41, 59, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #38bdf8;
+  border-radius: 8px;
+  width: 34px;
+  height: 34px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.dict-audio-btn:hover {
+  background: #0284c7;
+  color: #fff;
+}
+
+.dict-baby-analogy-box {
+  background: rgba(250, 204, 21, 0.08);
+  border-left: 3.5px solid #facc15;
+  border-radius: 8px;
+  padding: 10px 12px;
+  margin: 10px 0;
+  color: #fef08a;
+}
+
+.dict-technical-box {
+  background: rgba(0, 0, 0, 0.25);
+  border-radius: 8px;
+  padding: 10px 12px;
+  margin-bottom: 10px;
+}
+
+.dict-reference-box {
+  background: rgba(56, 189, 248, 0.08);
+  border-left: 3.5px solid #38bdf8;
+  border-radius: 8px;
+  padding: 8px 12px;
+  color: #e0f2fe;
+}
+
+.dict-empty-card {
+  text-align: center;
+  padding: 40px 20px;
+  background: rgba(15, 23, 42, 0.6);
+  border: 1.5px dashed rgba(255, 255, 255, 0.15);
+  border-radius: 14px;
+}
+
+/* Light Theme Styling for Dictionary */
+body.light-theme .dict-hero-card {
+  background: #ffffff !important;
+  border: 1.5px solid #fde047 !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05) !important;
+}
+
+body.light-theme .dict-search-panel {
+  background: #ffffff !important;
+  border: 1.5px solid #cbd5e1 !important;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.04) !important;
+}
+
+body.light-theme .dict-search-input-field {
+  background: #ffffff !important;
+  border-color: #0284c7 !important;
+  color: #0f172a !important;
+}
+
+body.light-theme .dict-quick-chips-row {
+  border-top-color: #e2e8f0 !important;
+}
+
+body.light-theme .dict-quick-chip-btn {
+  background: #f1f5f9 !important;
+  color: #0f172a !important;
+  border-color: #cbd5e1 !important;
+}
+
+body.light-theme .dict-quick-chip-btn:hover, body.light-theme .dict-quick-chip-btn.active {
+  background: #0284c7 !important;
+  color: #fff !important;
+}
+
+body.light-theme .dict-cat-pill-btn {
+  background: #ffffff !important;
+  color: #0f172a !important;
+  border-color: #cbd5e1 !important;
+}
+
+body.light-theme .dict-cat-pill-btn:hover {
+  background: #f0f9ff !important;
+  color: #0284c7 !important;
+  border-color: #0284c7 !important;
+}
+
+body.light-theme .dict-cat-pill-btn.active {
+  background: #0284c7 !important;
+  color: #fff !important;
+  border-color: #0369a1 !important;
+}
+
+body.light-theme .dict-results-bar {
+  background: #f8fafc !important;
+  border: 1px solid #e2e8f0 !important;
+}
+
+body.light-theme .dict-card {
+  background: #ffffff !important;
+  border: 1.5px solid #cbd5e1 !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04) !important;
+}
+
+body.light-theme .dict-term-title {
+  color: #0f172a !important;
+}
+
+body.light-theme .dict-category-tag {
+  background: #e0f2fe !important;
+  color: #0369a1 !important;
+}
+
+body.light-theme .dict-audio-btn {
+  background: #f1f5f9 !important;
+  color: #0284c7 !important;
+  border-color: #cbd5e1 !important;
+}
+
+body.light-theme .dict-baby-analogy-box {
+  background: #fefce8 !important;
+  border-left-color: #eab308 !important;
+  color: #713f12 !important;
+}
+
+body.light-theme .dict-technical-box {
+  background: #f8fafc !important;
+  border: 1px solid #e2e8f0 !important;
+  color: #0f172a !important;
+}
+
+body.light-theme .dict-reference-box {
+  background: #f0fdf4 !important;
+  border-left-color: #10b981 !important;
+  color: #065f46 !important;
+}
+
+body.light-theme .dict-empty-card {
+  background: #ffffff !important;
+  border-color: #cbd5e1 !important;
+}
+
 

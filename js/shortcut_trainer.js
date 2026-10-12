@@ -1328,12 +1328,14 @@
   }
 ];
 
-  // State Manajemen Game Pintasan
-  if (!window.appState) window.appState = {};
-  appState.shortcutCompleted = appState.shortcutCompleted || { excel: [], word: [] };
-  appState.currentShortcutIdx = appState.currentShortcutIdx || { excel: 0, word: 0 };
-  appState.shortcutFilter = appState.shortcutFilter || { excel: 'all', word: 'all' };
-  appState.shortcutSearch = appState.shortcutSearch || { excel: '', word: '' };
+  // State Manajemen Game Pintasan (Self-contained & Aman dari Urutan Script)
+  const appState = window.SHORTCUT_STATE = window.SHORTCUT_STATE || {
+    shortcutCompleted: { excel: [], word: [] },
+    currentShortcutIdx: { excel: 0, word: 0 },
+    shortcutFilter: { excel: 'all', word: 'all' },
+    shortcutSearch: { excel: '', word: '' },
+    stars: 0
+  };
   window.virtualPressedKeys = new Set();
 
   // Helper untuk Normalisasi Tombol

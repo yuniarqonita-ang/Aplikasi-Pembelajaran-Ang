@@ -71,8 +71,8 @@ const appState = {
   currentMathIndex: 0,
   mathUnitFilter: "all",
   mathCompleted: [],
-  mathUserDrafts: {}
 };
+window.appState = appState;
 
 // Initialize State from LocalStorage
 function loadProgress() {
@@ -4269,6 +4269,312 @@ window.closeKodiAvatarGallery = function() {
   if (modalEl) modalEl.className = "modal-overlay";
 };
 
+// ==============================================================================
+// 📖 KAMUS BAYI IT KODI DENGAN PENCARIAN & KUTIPAN RESMI EBOOK REFERENSI
+// ==============================================================================
+window.dictState = {
+  query: '',
+  category: 'all',
+  page: 1,
+  pageSize: 24
+};
+
+window.renderDictionary = function() {
+  const container = document.getElementById("dictionary-content-area") || document.getElementById("dictionary-list");
+  if (!container) return;
+
+  const rawList = window.itDictionary || [];
+  const state = window.dictState;
+
+  // Filter List
+  const q = (state.query || '').toLowerCase().trim();
+  const cat = state.category || 'all';
+
+  const filtered = rawList.filter(item => {
+    const matchCat = (cat === 'all' || item.category === cat);
+    if (!matchCat) return false;
+    if (!q) return true;
+    const term = (item.term || '').toLowerCase();
+    const analogy = (item.babyAnalogy || '').toLowerCase();
+    const detail = (item.detail || '').toLowerCase();
+    const book = item.reference ? (item.reference.book || '').toLowerCase() : '';
+    const author = item.reference ? (item.reference.author || '').toLowerCase() : '';
+    return term.includes(q) || analogy.includes(q) || detail.includes(q) || book.includes(q) || author.includes(q);
+  });
+
+  const categories = [
+    { key: 'all', label: 'Semua Kategori', icon: '📚' },
+    { key: 'Hardware & Arsitektur', label: 'Hardware', icon: '🧠' },
+    { key: 'Jaringan & Internet', label: 'Jaringan', icon: '🌐' },
+    { key: 'Keamanan Siber', label: 'Cyber Security', icon: '🛡️' },
+    { key: 'Basis Data & SQL', label: 'Basis Data & SQL', icon: '🗄️' },
+    { key: 'Pemrograman & Software', label: 'Koding', icon: '💻' },
+    { key: 'AI & Sains Data', label: 'AI & Algoritma', icon: '🤖' },
+    { key: 'Matematika & Tipografi Ilmiah', label: 'Matematika & Tipografi', icon: '📐' },
+    { key: 'Sistem Operasi & CLI', label: 'OS & Pintasan', icon: '🖥️' },
+    { key: 'IT Support & Troubleshooting', label: 'IT Support', icon: '🛠️' },
+    { key: 'Web, Cloud & DevOps', label: 'Web & Cloud', icon: '☁️' }
+  ];
+
+  const quickPills = [
+    'RAM', 'CPU', 'DNS', 'Math Axis', 'Primary Key', 'Firewall', 
+    'Binary Search', 'Vinculum', 'Phishing', 'UEFI', 'TCP/IP', 'Ctrl+S', 'Git'
+  ];
+
+  // Pagination slice
+  const totalPages = Math.ceil(filtered.length / state.pageSize) || 1;
+  if (state.page > totalPages) state.page = 1;
+  const startIdx = (state.page - 1) * state.pageSize;
+  const pagedItems = filtered.slice(startIdx, startIdx + state.pageSize);
+
+  container.innerHTML = `
+    <div class="dict-main-wrapper">
+      <!-- HERO BANNER INFORMASI SUMBER RESMI -->
+      <div class="dict-hero-card">
+        <div style="display: flex; align-items: center; gap: 14px; flex-wrap: wrap;">
+          <img src="assets/illustrations/3d_tiles/tile_3d_04.png"
+               style="width: 60px; height: 60px; border-radius: 12px; object-fit: cover; border: 2px solid var(--accent-yellow); box-shadow: 0 4px 12px rgba(0,0,0,0.3);"
+               alt="Kamus Bayi IT">
+          <div style="flex: 1; min-width: 250px;">
+            <div style="font-size: 0.78rem; font-weight: 800; color: var(--accent-yellow); text-transform: uppercase; letter-spacing: 0.5px;">
+              📚 Sumber Koleksi: Ebook Referensi Resmi Terverifikasi
+            </div>
+            <h3 style="margin: 2px 0 4px 0; font-size: 1.25rem; color: var(--text-main);">
+              Kamus Pintar Bayi IT & Tipografi Sains (1.000+ Kosakata)
+            </h3>
+            <p style="margin: 0; font-size: 0.85rem; color: var(--text-muted); line-height: 1.4;">
+              Rangkuman resmi berdasar buku ajar: <em>CompTIA A+, Cisco CCNA 200-301, Security+ SY0-701, Learning SQL (Alan Beaulieu), Grokking Algorithms, The TeXbook (Donald Knuth),</em> & <em>ISO 80000-2</em> lengkap dengan Nalar Bayi Kodi!
+            </p>
+          </div>
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <span style="background: rgba(250, 204, 21, 0.15); border: 1px solid var(--accent-yellow); padding: 6px 14px; border-radius: 20px; font-size: 0.85rem; font-weight: 800; color: #facc15;">
+              📖 ${rawList.length} Istilah Resmi
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <!-- KONTROL PENCARIAN DENGAN TOMBOL CARI NYATA -->
+      <div class="dict-search-panel">
+        <div class="dict-search-row">
+          <div style="flex: 1; position: relative;">
+            <input type="text"
+                   id="dict-search-input"
+                   class="dict-search-input-field"
+                   placeholder="Ketik istilah atau konsep... (contoh: RAM, DNS, Math Axis, SQL, Firewall, Phishing)"
+                   value="${state.query}"
+                   onkeydown="if(event.key==='Enter') executeDictionarySearch()" />
+            ${state.query ? `
+              <button class="dict-clear-query-btn" onclick="clearDictionaryQuery()" title="Hapus Pencarian">✕</button>
+            ` : ''}
+          </div>
+          <button class="btn-primary dict-search-submit-btn" onclick="executeDictionarySearch()">
+            🔍 Cari Definisi
+          </button>
+          <button class="btn-secondary dict-reset-btn" onclick="resetDictionarySearch()">
+            🔄 Tampilkan Semua
+          </button>
+        </div>
+
+        <!-- QUICK SEARCH CHIPS -->
+        <div class="dict-quick-chips-row">
+          <span style="font-size: 0.78rem; font-weight: 700; color: var(--text-muted); align-self: center;">💡 Pencarian Populer:</span>
+          ${quickPills.map(p => `
+            <button class="dict-quick-chip-btn ${state.query.toLowerCase() === p.toLowerCase() ? 'active' : ''}" onclick="quickSearchDictionary('${p}')">
+              ${p}
+            </button>
+          `).join('')}
+        </div>
+      </div>
+
+      <!-- FILTER KATEGORI -->
+      <div class="dict-cat-pills-wrap">
+        ${categories.map(c => `
+          <button class="dict-cat-pill-btn ${state.category === c.key ? 'active' : ''}" onclick="filterDictionaryCategory('${c.key}')">
+            <span>${c.icon}</span>
+            <span>${c.label}</span>
+          </button>
+        `).join('')}
+      </div>
+
+      <!-- STATS & HASIL PENCARIAN -->
+      <div class="dict-results-bar">
+        <div style="font-size: 0.88rem; font-weight: 700; color: var(--text-main);">
+          ${state.query ? `
+            🔍 Ditemukan <strong>${filtered.length}</strong> istilah untuk kata kunci: <em>"${state.query}"</em>
+          ` : `
+            Menampilkan <strong>${pagedItems.length}</strong> dari <strong>${filtered.length}</strong> istilah ${state.category !== 'all' ? 'kategori ' + state.category : ''}
+          `}
+        </div>
+        ${totalPages > 1 ? `
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <button class="btn-secondary" style="padding: 4px 10px; font-size: 0.78rem;" onclick="changeDictionaryPage(-1)" ${state.page <= 1 ? 'disabled' : ''}>
+              ⬅️ Hal Sebelumnya
+            </button>
+            <span style="font-size: 0.8rem; font-weight: 700; color: var(--text-muted);">
+              Hal ${state.page} / ${totalPages}
+            </span>
+            <button class="btn-secondary" style="padding: 4px 10px; font-size: 0.78rem;" onclick="changeDictionaryPage(1)" ${state.page >= totalPages ? 'disabled' : ''}>
+              Hal Berikutnya ➡️
+            </button>
+          </div>
+        ` : ''}
+      </div>
+
+      <!-- GRID KARTU DEFINISI -->
+      ${filtered.length === 0 ? `
+        <div class="dict-empty-card">
+          <div style="font-size: 2.8rem; margin-bottom: 8px;">🤔</div>
+          <h4 style="margin: 0 0 6px 0; font-size: 1.15rem; color: var(--text-main);">
+            Istilah "${state.query}" Tidak Ditemukan
+          </h4>
+          <p style="margin: 0 0 16px 0; font-size: 0.85rem; color: var(--text-muted);">
+            Coba gunakan kata kunci lain seperti <strong>RAM, DNS, Firewall, SQL, Math Axis,</strong> atau pilih kategori di atas.
+          </p>
+          <button class="btn-primary" onclick="resetDictionarySearch()">
+            🔄 Tampilkan Seluruh 1.000+ Istilah
+          </button>
+        </div>
+      ` : `
+        <div class="dict-grid">
+          ${pagedItems.map(item => `
+            <div class="dict-card">
+              <!-- HEADER KARTU -->
+              <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 8px; margin-bottom: 10px;">
+                <div style="display: flex; align-items: center; gap: 8px;">
+                  <span style="font-size: 1.4rem;">${item.icon || '📖'}</span>
+                  <div>
+                    <h4 class="dict-term-title">${item.term}</h4>
+                    <span class="dict-category-tag">${item.category}</span>
+                  </div>
+                </div>
+                <button class="dict-audio-btn" onclick="speakDictionaryItem('${item.term.replace(/'/g, "\\'")}', '${item.babyAnalogy.replace(/'/g, "\\'")}')" title="Dengarkan Suara Pelafalan & Penjelasan">
+                  🔊
+                </button>
+              </div>
+
+              <!-- NALAR BAYI KODI -->
+              <div class="dict-baby-analogy-box">
+                <div style="display: flex; align-items: center; gap: 6px; margin-bottom: 4px;">
+                  <span style="font-size: 1rem;">🍼</span>
+                  <strong style="font-size: 0.82rem; color: #b45309;">Nalar Bayi Kodi:</strong>
+                </div>
+                <div style="font-size: 0.86rem; line-height: 1.45; font-weight: 500;">
+                  "${item.babyAnalogy}"
+                </div>
+              </div>
+
+              <!-- PENJELASAN TEKNIS -->
+              <div class="dict-technical-box">
+                <div style="font-size: 0.78rem; font-weight: 700; color: var(--accent-cyan); margin-bottom: 2px;">
+                  🔬 Penjelasan Teknis & Ringkasan:
+                </div>
+                <div style="font-size: 0.82rem; color: var(--text-main); line-height: 1.45;">
+                  ${item.detail}
+                </div>
+              </div>
+
+              <!-- SUMBER RESMI DARI EBOOK REFERENSI -->
+              ${item.reference ? `
+                <div class="dict-reference-box">
+                  <div style="display: flex; align-items: center; gap: 5px; margin-bottom: 2px;">
+                    <span style="font-size: 0.85rem;">📚</span>
+                    <strong style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.4px;">Sumber Terpercaya Ebook:</strong>
+                  </div>
+                  <div style="font-size: 0.8rem; font-weight: 700; line-height: 1.35; margin-bottom: 2px;">
+                    📖 ${item.reference.book}
+                  </div>
+                  <div style="font-size: 0.74rem; opacity: 0.85; line-height: 1.3;">
+                    ✍️ Penulis: ${item.reference.author} • 📑 ${item.reference.page}
+                  </div>
+                  ${item.reference.pdfFile ? `
+                    <div style="font-size: 0.68rem; font-family: monospace; opacity: 0.6; margin-top: 3px;">
+                      📁 ${item.reference.pdfFile}
+                    </div>
+                  ` : ''}
+                </div>
+              ` : ''}
+            </div>
+          `).join('')}
+        </div>
+      `}
+
+      <!-- BOTTOM PAGINATION -->
+      ${totalPages > 1 ? `
+        <div style="display: flex; justify-content: center; align-items: center; gap: 10px; margin-top: 24px;">
+          <button class="btn-secondary" style="padding: 6px 14px;" onclick="changeDictionaryPage(-1)" ${state.page <= 1 ? 'disabled' : ''}>
+            ⬅️ Halaman Sebelumnya
+          </button>
+          <span style="font-weight: 700; font-size: 0.85rem; color: var(--text-muted);">
+            Halaman ${state.page} dari ${totalPages}
+          </span>
+          <button class="btn-secondary" style="padding: 6px 14px;" onclick="changeDictionaryPage(1)" ${state.page >= totalPages ? 'disabled' : ''}>
+            Halaman Berikutnya ➡️
+          </button>
+        </div>
+      ` : ''}
+    </div>
+  `;
+};
+
+window.executeDictionarySearch = function() {
+  if (window.sfx) sfx.playClick();
+  const input = document.getElementById("dict-search-input");
+  if (input) {
+    window.dictState.query = input.value;
+    window.dictState.page = 1;
+  }
+  window.renderDictionary();
+};
+
+window.clearDictionaryQuery = function() {
+  if (window.sfx) sfx.playClick();
+  window.dictState.query = '';
+  window.dictState.page = 1;
+  window.renderDictionary();
+};
+
+window.quickSearchDictionary = function(term) {
+  if (window.sfx) sfx.playClick();
+  window.dictState.query = term;
+  window.dictState.page = 1;
+  window.renderDictionary();
+};
+
+window.filterDictionaryCategory = function(cat) {
+  if (window.sfx) sfx.playClick();
+  window.dictState.category = cat;
+  window.dictState.page = 1;
+  window.renderDictionary();
+};
+
+window.resetDictionarySearch = function() {
+  if (window.sfx) sfx.playClick();
+  window.dictState.query = '';
+  window.dictState.category = 'all';
+  window.dictState.page = 1;
+  window.renderDictionary();
+};
+
+window.changeDictionaryPage = function(delta) {
+  if (window.sfx) sfx.playClick();
+  window.dictState.page += delta;
+  window.renderDictionary();
+  const container = document.getElementById("tab-dictionary");
+  if (container) container.scrollIntoView({ behavior: 'smooth', block: 'start' });
+};
+
+window.speakDictionaryItem = function(term, analogy) {
+  if (window.speechEngine) {
+    window.speechEngine.speak(`${term}. Nalar Bayi Kodi: ${analogy}`);
+  }
+};
+
+window.initDictionarySearch = function() {
+  if (document.getElementById("dictionary-content-area") || document.getElementById("dictionary-list")) {
+    window.renderDictionary();
+  }
+};
 
 // ================= APP INITIALIZATION =================
 window.addEventListener("DOMContentLoaded", () => {
@@ -5409,7 +5715,7 @@ function renderIhsaniyahStudentGate(container) {
       </button>
 
       <div style="margin-top: 16px;">
-        <button class="btn-secondary" style="padding: 8px 16px; font-size: 0.82rem;" onclick="openIhsaniyahAdminPanel()">
+        <button class="btn-secondary teacher-panel-gate-btn" style="padding: 10px 18px; font-size: 0.88rem; font-weight: 700; border-radius: 8px; cursor: pointer;" onclick="openIhsaniyahAdminPanel()">
           👩‍🏫 Panel Guru: Lihat Rekap Nilai & Unduh CSV
         </button>
       </div>
