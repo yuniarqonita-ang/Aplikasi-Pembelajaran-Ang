@@ -51,6 +51,16 @@ class SpeechEngine {
       usPill.classList.toggle('active', !isGb);
       gbPill.classList.toggle('active', isGb);
     }
+
+    // Label deskripsi aksen aktif di kartu studio
+    const valLabel = document.querySelector('.accent-card-val');
+    if (valLabel) {
+      valLabel.innerHTML = isGb ? 'British English (UK) 🇬🇧' : 'American English (US) 🇺🇸';
+    }
+    const flagIcon = document.querySelector('.accent-flag-icon');
+    if (flagIcon) {
+      flagIcon.innerHTML = isGb ? '🇬🇧' : '🇺🇸';
+    }
   }
 
   // Pre-load dan simpan daftar suara agar langsung siap pada klik pertama
@@ -136,7 +146,9 @@ class SpeechEngine {
                  n.includes('england') || n.includes('london') || n.includes('george') ||
                  n.includes('hazel') || n.includes('susan') || n.includes('oliver') ||
                  n.includes('daniel') || n.includes('arthur') || n.includes('kate') ||
-                 n.includes('serena') || n.includes('stephanie');
+                 n.includes('serena') || n.includes('stephanie') || n.includes('libby') ||
+                 n.includes('ryan') || n.includes('sonia') || n.includes('maisie') ||
+                 n.includes('alfie') || n.includes('clara');
         });
         if (gbVoice) return gbVoice;
       } else {
@@ -149,7 +161,7 @@ class SpeechEngine {
             l === 'en-us' || l.startsWith('en-us') ||
             n.includes('united states') || n.includes('us') || n.includes('samantha') ||
             n.includes('zira') || n.includes('david') || n.includes('jenny') ||
-            n.includes('guy') || n.includes('aria')
+            n.includes('guy') || n.includes('aria') || n.includes('mark')
           );
         });
         if (usVoice) return usVoice;
@@ -236,23 +248,28 @@ class SpeechEngine {
     const utterance = new SpeechSynthesisUtterance(text);
     utterance.lang = targetLang;
     
-    // Pemodelan akustik aksen British vs American
-    if (targetLang === 'en-GB' || (targetLang.startsWith('en') && this.englishAccent === 'en-GB')) {
-      utterance.lang = 'en-GB';
-      utterance.pitch = 1.08;
-      utterance.rate = rate * 0.94;
-    } else if (targetLang.startsWith('en')) {
-      utterance.lang = 'en-US';
-      utterance.pitch = 0.98;
-      utterance.rate = rate * 1.02;
-    } else {
-      utterance.rate = rate;
-      utterance.pitch = 1.0;
-    }
-
     const chosenVoice = this.getBestVoice(targetLang);
     if (chosenVoice) {
       utterance.voice = chosenVoice;
+    }
+
+    // Pemodelan akustik aksen British vs American
+    if (targetLang === 'en-GB' || (targetLang.startsWith('en') && this.englishAccent === 'en-GB')) {
+      utterance.lang = 'en-GB';
+      const isNativeGb = chosenVoice && (
+        (chosenVoice.lang && chosenVoice.lang.toLowerCase().includes('gb')) ||
+        (chosenVoice.name && (chosenVoice.name.toLowerCase().includes('uk') || chosenVoice.name.toLowerCase().includes('united kingdom') || chosenVoice.name.toLowerCase().includes('british')))
+      );
+      // Jika ada suara native UK gunakan nada UK elegan; jika fallback US di Windows jadul, modulasikan pitch 1.16 dan rate 0.86 agar artikulasi khas British terdengar jelas
+      utterance.pitch = isNativeGb ? 1.06 : 1.18;
+      utterance.rate = isNativeGb ? rate * 0.92 : rate * 0.88;
+    } else if (targetLang.startsWith('en')) {
+      utterance.lang = 'en-US';
+      utterance.pitch = 0.95;
+      utterance.rate = rate * 1.04;
+    } else {
+      utterance.rate = rate;
+      utterance.pitch = 1.0;
     }
 
     // Ubah status tombol jadi "⏹️ Berhenti" jika ada tombol
