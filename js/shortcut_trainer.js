@@ -1328,17 +1328,442 @@
   }
 ];
 
+  // =========================================================================
+  // DATA PROYEK KANTOR NYATA & PERMINTAAN KLIEN (WORD & EXCEL)
+  // Simulasi Dunia Kerja Nyata: Boss/Klien Request + Dokumen Berubah Real-time
+  // =========================================================================
+
+  window.WORD_PROJECTS = [
+    {
+      id: 'w-proj-1',
+      title: 'Laporan Riset Pasar & Rekomendasi Eksekutif',
+      client: 'Bpk. Hendra Pratama',
+      clientRole: 'Direktur Operasional & Bisnis',
+      clientAvatar: '👔',
+      docFilename: 'Laporan_Eksekutif_Q1_2026.docx',
+      story: 'Halo Kodi! Saya baru mengetik draf laporan riset pasar ini secara cepat. Tampilannya masih polos, judul belum di tengah dan belum tebal, istilah asing belum miring, dan paragrafnya belum rapi. Tolong gunakan pintasan keyboard saktimu untuk merapikannya sesuai instruksi di bawah ya!',
+      initialDoc: {
+        title: 'LAPORAN RISET PASAR & ANALISIS TREN BISNIS 2026',
+        subTitle: 'Divisi Strategi Korporat — Kuartal I',
+        par1: 'Perkembangan adopsi teknologi kecerdasan buatan atau Artificial Intelligence telah mentransformasi produktivitas kantor secara masif. Berdasarkan observasi triwulan pertama, kecepatan pemrosesan data meningkat hingga 45% ketika staf memanfaatkan pintasan keyboard dan automasi digital terarah.',
+        par2: 'REKOMENDASI DIREKSI: Manajemen merekomendasikan alokasi anggaran belanja modal sebesar 15% untuk pelatihan akselerasi digital seluruh staf operasional.'
+      },
+      tasks: [
+        {
+          id: 'w1_step1',
+          name: 'Tebalkan Judul Dokumen Utama',
+          instruction: 'Tebalkan judul agar mencolok dan berwibawa di hadapan dewan Direksi!',
+          shortcut: 'Ctrl+B',
+          keys: ['ctrl', 'b'],
+          actionCode: 'title_bold',
+          babyLogic: 'Ctrl + B (Bold) = Mengubah teks biasa jadi berotot dan tebal seketika!'
+        },
+        {
+          id: 'w1_step2',
+          name: 'Posisikan Judul ke Rata Tengah (Center)',
+          instruction: 'Tarik judul ke tengah halaman agar simetris dan rapi dipandang!',
+          shortcut: 'Ctrl+E',
+          keys: ['ctrl', 'e'],
+          actionCode: 'title_center',
+          babyLogic: 'Ctrl + E (Equator / Center) = Menarik teks ke garis khatulistiwa tengah!'
+        },
+        {
+          id: 'w1_step3',
+          name: 'Miringkan Istilah Asing "Artificial Intelligence"',
+          instruction: 'Beri gaya miring (Italic) pada istilah serapan bahasa asing!',
+          shortcut: 'Ctrl+I',
+          keys: ['ctrl', 'i'],
+          actionCode: 'body_italic',
+          babyLogic: 'Ctrl + I (Italic) = Merebahkan huruf 15 derajat untuk istilah ilmiah/asing!'
+        },
+        {
+          id: 'w1_step4',
+          name: 'Rapikan Paragraf ke Rata Kiri-Kanan (Justify)',
+          instruction: 'Buat batas tepi kiri dan kanan paragraf lurus sejajar tanpa gerigi!',
+          shortcut: 'Ctrl+J',
+          keys: ['ctrl', 'j'],
+          actionCode: 'body_justify',
+          babyLogic: 'Ctrl + J (Justify) = Menjepit teks rapat rata di kedua dinding kertas!'
+        },
+        {
+          id: 'w1_step5',
+          name: 'Beri Garis Bawah pada Rekomendasi Direksi',
+          instruction: 'Tandai poin rekomendasi penting dengan garis bawah resmi (Underline)!',
+          shortcut: 'Ctrl+U',
+          keys: ['ctrl', 'u'],
+          actionCode: 'recom_underline',
+          babyLogic: 'Ctrl + U (Underline) = Menggarisbawahi poin emas agar bos langsung melirik!'
+        },
+        {
+          id: 'w1_step6',
+          name: 'Simpan Dokumen Laporan (Save Document)',
+          instruction: 'Kunci seluruh editan ke dalam berkas agar tidak hilang saat mati lampu!',
+          shortcut: 'Ctrl+S',
+          keys: ['ctrl', 's'],
+          actionCode: 'doc_save',
+          babyLogic: 'Ctrl + S (Save) = Mengunci gembok berkas ke harddisk, aman selamanya!'
+        }
+      ]
+    },
+    {
+      id: 'w-proj-2',
+      title: 'Naskah Proposal Tender Pengadaan Infrastruktur IT',
+      client: 'Ibu Maya Anggraini',
+      clientRole: 'Manajer Administrasi & Pengadaan',
+      clientAvatar: '👩‍💼',
+      docFilename: 'Proposal_Tender_Server_2026.docx',
+      story: 'Kodi, besok pagi proposal tender pengadaan perangkat server ini harus diserahkan ke kementerian! Dokumen ini butuh pencarian kata kunci anggaran, penambahan hyperlink tautan teknis, dan pratinjau cetak printer. Yuk selesaikan dengan pintasan!',
+      initialDoc: {
+        title: 'PROPOSAL PENGADAAN PERANGKAT SERVER CLOUD',
+        subTitle: 'Nomor Registrasi: 048/TDR-IT/IV/2026',
+        par1: 'Alokasi rincian biaya teknis tertera pada dokumen Anggaran Belanja Pokok. Verifikasi rincian perangkat keras dapat dipantau langsung pada portal pengadaan nasional.',
+        par2: 'Lampiran Spesifikasi: Dokumen arsitektur komputasi awan berkapasitas tinggi ini mengacu pada standar ISO/IEC 27001.'
+      },
+      tasks: [
+        {
+          id: 'w2_step1',
+          name: 'Cari Kata Kunci "Anggaran" dalam Naskah (Find)',
+          instruction: 'Buka jendela pencarian untuk melacak kata kunci anggaran!',
+          shortcut: 'Ctrl+F',
+          keys: ['ctrl', 'f'],
+          actionCode: 'find_anggaran',
+          babyLogic: 'Ctrl + F (Find) = Lampu senter ajaib pemburu kata kunci dalam sekejap!'
+        },
+        {
+          id: 'w2_step2',
+          name: 'Sisipkan Tautan Hyperlink ke Portal Spesifikasi',
+          instruction: 'Ubah teks tautan menjadi hyperlink biru bergaris bawah!',
+          shortcut: 'Ctrl+K',
+          keys: ['ctrl', 'k'],
+          actionCode: 'insert_hyperlink',
+          babyLogic: 'Ctrl + K (LinK) = Jembatan kawat biru menyambungkan kata ke alamat web!'
+        },
+        {
+          id: 'w2_step3',
+          name: 'Salin Paragraf Ringkasan Spesifikasi (Copy)',
+          instruction: 'Gandakan paragraf spesifikasi ke clipboard naskah!',
+          shortcut: 'Ctrl+C',
+          keys: ['ctrl', 'c'],
+          actionCode: 'copy_summary',
+          babyLogic: 'Ctrl + C (Copy) = Mesin fotokopi digital menangkap teks tanpa merusaknya!'
+        },
+        {
+          id: 'w2_step4',
+          name: 'Tempelkan Hasil Salinan ke Penutup (Paste)',
+          instruction: 'Letakkan salinan paragraf tepat di penutup lembar proposal!',
+          shortcut: 'Ctrl+V',
+          keys: ['ctrl', 'v'],
+          actionCode: 'paste_summary',
+          babyLogic: 'Ctrl + V (Paste) = Menempelkan stempel teks hasil fotokopi seketika!'
+        },
+        {
+          id: 'w2_step5',
+          name: 'Buka Pratinjau Cetak Dokumen (Print Preview)',
+          instruction: 'Tampilkan dialog cetak untuk memeriksa hasil sebelum cetak kertas!',
+          shortcut: 'Ctrl+P',
+          keys: ['ctrl', 'p'],
+          actionCode: 'doc_print',
+          babyLogic: 'Ctrl + P (Print) = Mengirim sinyal perintah ke mesin printer kertas!'
+        }
+      ]
+    },
+    {
+      id: 'w-proj-3',
+      title: 'Perjanjian Kerjasama (MoU) Kemitraan Strategis',
+      client: 'Bpk. Rian Hidayat, S.H.',
+      clientRole: 'Konsultan Hukum & Legal Corporate',
+      clientAvatar: '👨‍⚖️',
+      docFilename: 'Perjanjian_MoU_Kemitraan_2026.docx',
+      story: 'Kodi, draf nota kesepahaman ini masih menggunakan sebutan draft "Pihak Pertama". Kita harus mengganti istilah tersebut secara serentak menjadi nama resmi PT, menjalankan pemeriksaan ejaan, dan menyimpan cadangan dokumen!',
+      initialDoc: {
+        title: 'NOTA KESEPAHAMAN BERSAMA (MEMORANDUM OF UNDERSTANDING)',
+        subTitle: 'Nomor: 102/MOU-LEGAL/III/2026',
+        par1: 'Bahwa Pihak Pertama dan Pihak Kedua sepakat menjalin kemitraan strategis dalam pengembangan fasilitas pembelajaran digital dan laboratorium komputer terpadu.',
+        par2: 'Segala hak serta kewajiban yang ditandatangani oleh Pihak Pertama dan Pihak Kedua berlaku sah dan mengikat kedua belah pihak.'
+      },
+      tasks: [
+        {
+          id: 'w3_step1',
+          name: 'Ganti Kata Otomatis (Replace Dialog)',
+          instruction: 'Buka dialog ganti kata untuk mengganti "Pihak Pertama" jadi "PT Inovasi Maju"!',
+          shortcut: 'Ctrl+H',
+          keys: ['ctrl', 'h'],
+          actionCode: 'replace_dialog',
+          babyLogic: 'Ctrl + H = Ahli bedah kata yang mengganti ribuan kata salah dalam satu klik!'
+        },
+        {
+          id: 'w3_step2',
+          name: 'Pemeriksaan Ejaan & Tata Bahasa (Spelling & Grammar)',
+          instruction: 'Jalankan pemeriksa ejaan F7 untuk memverifikasi dokumen!',
+          shortcut: 'F7',
+          keys: ['f7'],
+          actionCode: 'spelling_check',
+          babyLogic: 'F7 = Hakim ejaan teliti penanda tinta merah bila ada tipo kata!'
+        },
+        {
+          id: 'w3_step3',
+          name: 'Sorot Seluruh Isi Dokumen (Select All)',
+          instruction: 'Pilih seluruh teks dokumen dari awal hingga akhir!',
+          shortcut: 'Ctrl+A',
+          keys: ['ctrl', 'a'],
+          actionCode: 'select_all',
+          babyLogic: 'Ctrl + A (All) = Menjala seluruh lautan teks tanpa ada yang terlewat!'
+        },
+        {
+          id: 'w3_step4',
+          name: 'Buka Dialog Simpan Sebagai Cadangan (Save As)',
+          instruction: 'Buka dialog Simpan Sebagai untuk membuat berkas cadangan nama baru!',
+          shortcut: 'F12',
+          keys: ['f12'],
+          actionCode: 'save_as_new',
+          babyLogic: 'F12 (Save As) = Menduplikasi berkas dengan nama atau format baru!'
+        }
+      ]
+    }
+  ];
+
+  window.EXCEL_PROJECTS = [
+    {
+      id: 'e-proj-1',
+      title: 'Rekapitulasi Omset Penjualan & Kas Retail',
+      client: 'Bpk. Budi Santoso',
+      clientRole: 'Pemilik Toko Retail Nusantara',
+      clientAvatar: '🏪',
+      docFilename: 'Rekap_Penjualan_Maret_2026.xlsx',
+      story: 'Halo Kodi! Saya baru merekap catatan penjualan cabang toko kita bulan ini. Angkanya masih angka mentah tanpa simbol Rupiah, persentase margin masih desimal, kolom belum jadi tabel resmi, dan total akhir belum dihitung. Tolong sulap spreadsheet ini jadi profesional ya!',
+      initialGrid: [
+        { colA: 'Cabang A (Pusat)', colB: 'Jakarta', colC: 15500000, colD: 0.18, colE: 'Lunas' },
+        { colA: 'Cabang B (Barat)', colB: 'Bandung', colC: 12250000, colD: 0.12, colE: 'Lunas' },
+        { colA: 'Cabang C (Timur)', colB: 'Surabaya', colC: 18750000, colD: 0.22, colE: 'Lunas' },
+        { colA: 'Cabang D (Utara)', colB: 'Semarang', colC: 9800000, colD: 0.08, colE: 'Pending' }
+      ],
+      tasks: [
+        {
+          id: 'e1_step1',
+          name: 'Format Angka Omset ke Mata Uang Rupiah',
+          instruction: 'Ubah angka di Kolom Omset (C) menjadi format mata uang resmi Rp!',
+          shortcut: 'Ctrl+Shift+$',
+          keys: ['ctrl', 'shift', '4'],
+          altKeys: ['ctrl', 'shift', '$'],
+          actionCode: 'format_currency',
+          babyLogic: 'Ctrl + Shift + $ = Menaburkan simbol mata uang Rupiah & pemisah ribuan!'
+        },
+        {
+          id: 'e1_step2',
+          name: 'Format Angka Margin ke Persentase (%)',
+          instruction: 'Ubah angka di Kolom Margin (D) menjadi format persen rapi!',
+          shortcut: 'Ctrl+Shift+%',
+          keys: ['ctrl', 'shift', '5'],
+          altKeys: ['ctrl', 'shift', '%'],
+          actionCode: 'format_percent',
+          babyLogic: 'Ctrl + Shift + % = Mengalikan desimal dengan 100 dan menempel tanda %!'
+        },
+        {
+          id: 'e1_step3',
+          name: 'Hitung Total Otomatis dengan AutoSum',
+          instruction: 'Letakkan kursor di bawah kolom omset lalu panggil AutoSum!',
+          shortcut: 'Alt+=',
+          keys: ['alt', '='],
+          actionCode: 'autosum_total',
+          babyLogic: 'Alt + = (AutoSum) = Robot kalkulator cerdas langsung merangkum rumus SUM!'
+        },
+        {
+          id: 'e1_step4',
+          name: 'Ubah Rentang Data Jadi Tabel Resmi (Create Table)',
+          instruction: 'Sulap kisi-kisi data menjadi tabel bergaris cantik dengan filter otomatis!',
+          shortcut: 'Ctrl+T',
+          keys: ['ctrl', 't'],
+          actionCode: 'create_table',
+          babyLogic: 'Ctrl + T (Table) = Merias data mentah jadi tabel profesional berwarna zebra!'
+        },
+        {
+          id: 'e1_step5',
+          name: 'Tebalkan Baris Total Akhir',
+          instruction: 'Sorot baris total lalu beri gaya huruf tebal!',
+          shortcut: 'Ctrl+B',
+          keys: ['ctrl', 'b'],
+          actionCode: 'bold_total',
+          babyLogic: 'Ctrl + B (Bold) = Mengunci baris total agar langsung terbaca pimpinan!'
+        },
+        {
+          id: 'e1_step6',
+          name: 'Simpan Lembar Kerja Buku Kerja (Save)',
+          instruction: 'Simpan spreadsheet ke komputer agar data aman tersimpan!',
+          shortcut: 'Ctrl+S',
+          keys: ['ctrl', 's'],
+          actionCode: 'excel_save',
+          babyLogic: 'Ctrl + S = Menyimpan berkas workbook excel, pantang kehilangan data!'
+        }
+      ]
+    },
+    {
+      id: 'e-proj-2',
+      title: 'Audit Penggajian Karyawan & Kerahasiaan Rekening',
+      client: 'Ibu Sinta Dewi',
+      clientRole: 'Manajer Keuangan & Payroll',
+      clientAvatar: '👩‍💼',
+      docFilename: 'Audit_Payroll_Staff_2026.xlsx',
+      story: 'Kodi, kita sedang melakukan audit penggajian di depan dewan pengawas. Kita harus menyembunyikan kolom nomor rekening rahasia, menyembunyikan staf yang berstatus cuti, mencatat tanggal audit otomatis, dan mengisi formula insentif ke sel bawah!',
+      initialGrid: [
+        { colA: 'Andi Pratama', colB: '10001099238', colC: 7500000, colD: 500000, colE: 'Aktif' },
+        { colA: 'Bambang Sudiro', colB: '10001099239', colC: 6800000, colD: 500000, colE: 'Aktif' },
+        { colA: 'Citra Kirana', colB: '10001099240', colC: 7200000, colD: 0, colE: 'Cuti Panjang' },
+        { colA: 'Dewi Lestari', colB: '10001099241', colC: 8100000, colD: 500000, colE: 'Aktif' }
+      ],
+      tasks: [
+        {
+          id: 'e2_step1',
+          name: 'Sembunyikan Kolom Nomor Rekening Bank (Hide Column)',
+          instruction: 'Sembunyikan Kolom B agar nomor rekening tidak terbaca orang luar!',
+          shortcut: 'Ctrl+0',
+          keys: ['ctrl', '0'],
+          actionCode: 'hide_column',
+          babyLogic: 'Ctrl + 0 = Jubah tembus pandang untuk melipat kolom rahasia seketika!'
+        },
+        {
+          id: 'e2_step2',
+          name: 'Sembunyikan Baris Karyawan Cuti (Hide Row)',
+          instruction: 'Sembunyikan Baris Citra Kirana selama sesi audit berlangsung!',
+          shortcut: 'Ctrl+9',
+          keys: ['ctrl', '9'],
+          actionCode: 'hide_row',
+          babyLogic: 'Ctrl + 9 = Menutupi baris tertentu agar lembar kerja fokus pada data aktif!'
+        },
+        {
+          id: 'e2_step3',
+          name: 'Masukkan Tanggal Audit Hari Ini Otomatis',
+          instruction: 'Sisipkan cap tanggal hari ini ke sel keterangan audit!',
+          shortcut: 'Ctrl+;',
+          keys: ['ctrl', ';'],
+          actionCode: 'insert_date',
+          babyLogic: 'Ctrl + ; = Stempel kalender kilat mencetak tanggal hari ini tanpa mengetik!'
+        },
+        {
+          id: 'e2_step4',
+          name: 'Isi Formula Insentif ke Sel Bawahnya (Fill Down)',
+          instruction: 'Salin rumus insentif dari sel atas ke sel bawah secara presisi!',
+          shortcut: 'Ctrl+D',
+          keys: ['ctrl', 'd'],
+          actionCode: 'fill_down',
+          babyLogic: 'Ctrl + D (Down) = Menggandakan formula dari sel tepat di atasnya!'
+        },
+        {
+          id: 'e2_step5',
+          name: 'Cari Nama Karyawan Khusus (Find)',
+          instruction: 'Buka jendela pencarian data pegawai!',
+          shortcut: 'Ctrl+F',
+          keys: ['ctrl', 'f'],
+          actionCode: 'excel_find',
+          babyLogic: 'Ctrl + F = Mesin radar pencari data di ribuan baris excel!'
+        }
+      ]
+    },
+    {
+      id: 'e-proj-3',
+      title: 'Inventaris Stok Gudang & Pembuatan Grafik Kilat',
+      client: 'Bpk. Darmawan Kusuma',
+      clientRole: 'Kepala Bagian Logistik Gudang',
+      clientAvatar: '👷‍♂️',
+      docFilename: 'Monitoring_Stok_Gudang_2026.xlsx',
+      story: 'Kodi, direktur logistik ingin melihat grafik visual stok barang inventaris kita untuk rapat pagi ini, lalu kita harus memformat jumlah unit, memeriksa sel rumus, dan menyimpan lembar kerja dengan nama cadangan baru!',
+      initialGrid: [
+        { colA: 'Kabel Fiber Optik (Meter)', colB: 'Elektronik', colC: 12500, colD: 'Gudang Utama', colE: 'Aman' },
+        { colA: 'Switch Hub 24-Port', colB: 'Jaringan', colC: 45, colD: 'Gudang B', colE: 'Perlu Restok' },
+        { colA: 'Server Rack 42U', colB: 'Perangkat', colC: 12, colD: 'Gudang C', colE: 'Aman' },
+        { colA: 'Router Gateway Dual-Band', colB: 'Jaringan', colC: 88, colD: 'Gudang A', colE: 'Aman' }
+      ],
+      tasks: [
+        {
+          id: 'e3_step1',
+          name: 'Pilih Seluruh Data Lembar Kerja (Select All)',
+          instruction: 'Sorot seluruh area tabel inventaris barang!',
+          shortcut: 'Ctrl+A',
+          keys: ['ctrl', 'a'],
+          actionCode: 'excel_select_all',
+          babyLogic: 'Ctrl + A = Menyeleksi semua sel aktif sekaligus dalam satu jentikan jari!'
+        },
+        {
+          id: 'e3_step2',
+          name: 'Buat Grafik Visual Kilat (Instant Chart Sheet)',
+          instruction: 'Tekan F11 untuk menciptakan grafik kolom visual otomatis!',
+          shortcut: 'F11',
+          keys: ['f11'],
+          actionCode: 'create_chart',
+          babyLogic: 'F11 = Tongkat sihir pencipta grafik visual kilat dari data tabel!'
+        },
+        {
+          id: 'e3_step3',
+          name: 'Mode Edit Langsung Sel Aktif (Edit Cell)',
+          instruction: 'Buka mode edit teks di dalam sel tanpa menghapus isi!',
+          shortcut: 'F2',
+          keys: ['f2'],
+          actionCode: 'edit_cell',
+          babyLogic: 'F2 = Masuk ke dalam isi sel untuk mengoreksi teks tanpa takut tertimpa!'
+        },
+        {
+          id: 'e3_step4',
+          name: 'Simpan Lembar Kerja Cadangan Baru (Save As)',
+          instruction: 'Tekan F12 untuk membuka dialog simpan sebagai nama berkas cadangan!',
+          shortcut: 'F12',
+          keys: ['f12'],
+          actionCode: 'excel_save_as',
+          babyLogic: 'F12 = Menyimpan berkas salinan baru sebagai arsip cadangan aman!'
+        }
+      ]
+    }
+  ];
+
   // State Manajemen Game Pintasan (Self-contained & Aman dari Urutan Script)
   const appState = window.SHORTCUT_STATE = window.SHORTCUT_STATE || {
     shortcutCompleted: { excel: [], word: [] },
     currentShortcutIdx: { excel: 0, word: 0 },
     shortcutFilter: { excel: 'all', word: 'all' },
     shortcutSearch: { excel: '', word: '' },
-    stars: 0
+    stars: 0,
+    // Project Mode State
+    activeStudioMode: { excel: 'project', word: 'project' },
+    currentProjectIdx: { excel: 0, word: 0 },
+    projectCompletedSteps: { excel: {}, word: {} },
+    projectDocState: {
+      word: {
+        titleBold: false,
+        titleAlign: 'left',
+        bodyItalic: false,
+        bodyJustify: false,
+        recomUnderline: false,
+        saved: false,
+        findActive: false,
+        linkAdded: false,
+        copiedSummary: false,
+        pastedSummary: false,
+        printed: false,
+        replaced: false,
+        spellingChecked: false,
+        selectAll: false,
+        saveAsNew: false
+      },
+      excel: {
+        currencyFormatted: false,
+        percentFormatted: false,
+        autoSumDone: false,
+        tableCreated: false,
+        totalBold: false,
+        saved: false,
+        colHidden: false,
+        rowHidden: false,
+        dateInserted: false,
+        fillDown: false,
+        findActive: false,
+        selectAll: false,
+        chartCreated: false,
+        editCell: false,
+        saveAsNew: false
+      }
+    }
   };
   window.virtualPressedKeys = new Set();
 
-  // Helper untuk Normalisasi Tombol
+  // Helper Normalisasi Tombol
   function normalizeKey(k) {
     if (!k) return '';
     k = k.toLowerCase();
@@ -1354,7 +1779,868 @@
     return k;
   }
 
-  // Kategori List
+  // Submode Switcher (Simulasi Proyek Kantor vs Bank Pintasan Lengkap)
+  window.switchStudioSubmode = function(mode, submode) {
+    if (window.sfx) sfx.playClick();
+    appState.activeStudioMode[mode] = submode;
+    window.renderShortcutStudio(mode);
+  };
+
+  // Switch Proyek Aktif
+  window.switchProject = function(mode, idx) {
+    if (window.sfx) sfx.playClick();
+    appState.currentProjectIdx[mode] = idx;
+    window.renderShortcutStudio(mode);
+  };
+
+  // Reset Proyek Aktif
+  window.resetCurrentProject = function(mode) {
+    if (window.sfx) sfx.playClick();
+    const projList = mode === 'word' ? window.WORD_PROJECTS : window.EXCEL_PROJECTS;
+    const project = projList[appState.currentProjectIdx[mode]];
+    if (project) {
+      if (appState.projectCompletedSteps[mode]) {
+        appState.projectCompletedSteps[mode][project.id] = [];
+      }
+      // Reset doc state
+      if (mode === 'word') {
+        appState.projectDocState.word = {
+          titleBold: false, titleAlign: 'left', bodyItalic: false, bodyJustify: false,
+          recomUnderline: false, saved: false, findActive: false, linkAdded: false,
+          copiedSummary: false, pastedSummary: false, printed: false, replaced: false,
+          spellingChecked: false, selectAll: false, saveAsNew: false
+        };
+      } else {
+        appState.projectDocState.excel = {
+          currencyFormatted: false, percentFormatted: false, autoSumDone: false, tableCreated: false,
+          totalBold: false, saved: false, colHidden: false, rowHidden: false, dateInserted: false,
+          fillDown: false, findActive: false, selectAll: false, chartCreated: false, editCell: false,
+          saveAsNew: false
+        };
+      }
+    }
+    window.renderShortcutStudio(mode);
+  };
+
+  // Jalankan Aksi Perubahan Dokumen Kantor Berdasarkan actionCode
+  window.applyProjectAction = function(mode, actionCode) {
+    const docState = appState.projectDocState[mode];
+    if (mode === 'word') {
+      if (actionCode === 'title_bold') docState.titleBold = true;
+      if (actionCode === 'title_center') docState.titleAlign = 'center';
+      if (actionCode === 'body_italic') docState.bodyItalic = true;
+      if (actionCode === 'body_justify') docState.bodyJustify = true;
+      if (actionCode === 'recom_underline') docState.recomUnderline = true;
+      if (actionCode === 'doc_save') {
+        docState.saved = true;
+        setTimeout(() => { docState.saved = false; const el = document.getElementById('word-save-toast'); if (el) el.style.display = 'none'; }, 3000);
+      }
+      if (actionCode === 'find_anggaran') docState.findActive = true;
+      if (actionCode === 'insert_hyperlink') docState.linkAdded = true;
+      if (actionCode === 'copy_summary') docState.copiedSummary = true;
+      if (actionCode === 'paste_summary') docState.pastedSummary = true;
+      if (actionCode === 'doc_print') docState.printed = true;
+      if (actionCode === 'replace_dialog') docState.replaced = true;
+      if (actionCode === 'spelling_check') docState.spellingChecked = true;
+      if (actionCode === 'select_all') docState.selectAll = true;
+      if (actionCode === 'save_as_new') docState.saveAsNew = true;
+    } else {
+      if (actionCode === 'format_currency') docState.currencyFormatted = true;
+      if (actionCode === 'format_percent') docState.percentFormatted = true;
+      if (actionCode === 'autosum_total') docState.autoSumDone = true;
+      if (actionCode === 'create_table') docState.tableCreated = true;
+      if (actionCode === 'bold_total') docState.totalBold = true;
+      if (actionCode === 'excel_save') {
+        docState.saved = true;
+        setTimeout(() => { docState.saved = false; const el = document.getElementById('excel-save-toast'); if (el) el.style.display = 'none'; }, 3000);
+      }
+      if (actionCode === 'hide_column') docState.colHidden = true;
+      if (actionCode === 'hide_row') docState.rowHidden = true;
+      if (actionCode === 'insert_date') docState.dateInserted = true;
+      if (actionCode === 'fill_down') docState.fillDown = true;
+      if (actionCode === 'excel_find') docState.findActive = true;
+      if (actionCode === 'excel_select_all') docState.selectAll = true;
+      if (actionCode === 'create_chart') docState.chartCreated = true;
+      if (actionCode === 'edit_cell') docState.editCell = true;
+      if (actionCode === 'excel_save_as') docState.saveAsNew = true;
+    }
+  };
+
+  // Jalankan Langkah Proyek dari Tombol Interaktif atau Listener Keyboard
+  window.runProjectStepAction = function(mode, taskId) {
+    const projList = mode === 'word' ? window.WORD_PROJECTS : window.EXCEL_PROJECTS;
+    const project = projList[appState.currentProjectIdx[mode]];
+    if (!project) return;
+
+    if (!appState.projectCompletedSteps[mode]) appState.projectCompletedSteps[mode] = {};
+    if (!appState.projectCompletedSteps[mode][project.id]) appState.projectCompletedSteps[mode][project.id] = [];
+
+    const completed = appState.projectCompletedSteps[mode][project.id];
+    const task = project.tasks.find(t => t.id === taskId);
+    if (!task) return;
+
+    if (!completed.includes(taskId)) {
+      completed.push(taskId);
+      appState.stars = (appState.stars || 0) + 1;
+      if (window.saveProgress) saveProgress();
+      const starCountEl = document.getElementById("header-stars");
+      if (starCountEl) starCountEl.textContent = `${appState.stars} Bintang`;
+    }
+
+    // Apply visual transformation
+    window.applyProjectAction(mode, task.actionCode);
+    if (window.sfx) sfx.playSuccess();
+
+    // Re-render
+    window.renderShortcutStudio(mode);
+  };
+
+  // Close Interactive Modals
+  window.closeOfficeModal = function(mode, modalType) {
+    if (window.sfx) sfx.playClick();
+    if (mode === 'word') {
+      if (modalType === 'print') appState.projectDocState.word.printed = false;
+      if (modalType === 'saveAs') appState.projectDocState.word.saveAsNew = false;
+    } else {
+      if (modalType === 'chart') appState.projectDocState.excel.chartCreated = false;
+      if (modalType === 'saveAs') appState.projectDocState.excel.saveAsNew = false;
+    }
+    window.renderShortcutStudio(mode);
+  };
+
+  // Tangani Tombol Fisik Keyboard pada Mode Simulasi Proyek
+  function handleProjectPhysicalKey(mode, e) {
+    const projList = mode === 'word' ? window.WORD_PROJECTS : window.EXCEL_PROJECTS;
+    const project = projList[appState.currentProjectIdx[mode]];
+    if (!project) return;
+
+    if (!appState.projectCompletedSteps[mode]) appState.projectCompletedSteps[mode] = {};
+    if (!appState.projectCompletedSteps[mode][project.id]) appState.projectCompletedSteps[mode][project.id] = [];
+    const completed = appState.projectCompletedSteps[mode][project.id];
+
+    // Temukan tugas berikutnya yang belum selesai
+    const pendingTasks = project.tasks.filter(t => !completed.includes(t.id));
+    if (pendingTasks.length === 0) return;
+
+    // Normalisasi input
+    const isCtrl = e.ctrlKey || e.metaKey;
+    const isShift = e.shiftKey;
+    const isAlt = e.altKey;
+    const keyLower = e.key.toLowerCase();
+
+    // Cek kecocokan di pending tasks
+    for (const task of pendingTasks) {
+      let matched = false;
+
+      // Format Currency (Ctrl+Shift+$ atau Ctrl+Shift+4)
+      if (task.actionCode === 'format_currency') {
+        if (isCtrl && isShift && (e.key === '$' || e.key === '4' || e.code === 'Digit4')) matched = true;
+      }
+      // Format Percent (Ctrl+Shift+% atau Ctrl+Shift+5)
+      else if (task.actionCode === 'format_percent') {
+        if (isCtrl && isShift && (e.key === '%' || e.key === '5' || e.code === 'Digit5')) matched = true;
+      }
+      // AutoSum (Alt+=)
+      else if (task.actionCode === 'autosum_total') {
+        if (isAlt && (e.key === '=' || e.key === '+' || e.code === 'Equal')) matched = true;
+      }
+      // Hide Col (Ctrl+0)
+      else if (task.actionCode === 'hide_column') {
+        if (isCtrl && (e.key === '0' || e.code === 'Digit0')) matched = true;
+      }
+      // Hide Row (Ctrl+9)
+      else if (task.actionCode === 'hide_row') {
+        if (isCtrl && (e.key === '9' || e.code === 'Digit9')) matched = true;
+      }
+      // Insert Date (Ctrl+;)
+      else if (task.actionCode === 'insert_date') {
+        if (isCtrl && (e.key === ';' || e.code === 'Semicolon')) matched = true;
+      }
+      // Function keys: F11, F12, F7, F2
+      else if (task.actionCode === 'create_chart' && e.key === 'F11') matched = true;
+      else if ((task.actionCode === 'save_as_new' || task.actionCode === 'excel_save_as') && e.key === 'F12') matched = true;
+      else if (task.actionCode === 'spelling_check' && e.key === 'F7') matched = true;
+      else if (task.actionCode === 'edit_cell' && e.key === 'F2') matched = true;
+      // Standard Ctrl+Key shortcuts
+      else if (isCtrl && !isShift && !isAlt) {
+        if (task.keys.includes(keyLower) || task.shortcut.toLowerCase() === `ctrl+${keyLower}`) {
+          matched = true;
+        }
+      }
+
+      if (matched) {
+        e.preventDefault();
+        window.runProjectStepAction(mode, task.id);
+        return;
+      }
+    }
+  }
+
+  // =========================================================================
+  // RENDERER MOCKUP MS WORD NYATA
+  // =========================================================================
+  function renderWordOfficeMockup(project, docState, completed) {
+    const isSaved = docState.saved;
+    const isPrinted = docState.printed;
+    const isReplaced = docState.replaced;
+    const isSpelling = docState.spellingChecked;
+    const isSaveAs = docState.saveAsNew;
+
+    return `
+      <div class="office-window-mockup word-window">
+        <!-- TITLE BAR WORD -->
+        <div class="office-title-bar word-title-bar">
+          <div class="office-title-left">
+            <span class="office-app-badge word-badge">W</span>
+            <span class="office-autosave-badge ${isSaved ? 'saved' : ''}">
+              ${isSaved ? '✅ Tersimpan' : '💾 AutoSave: Aktif'}
+            </span>
+            <span class="office-filename">${project.docFilename} — Word</span>
+          </div>
+          <div class="office-window-controls">
+            <span>🗕</span>
+            <span>🗖</span>
+            <span>✕</span>
+          </div>
+        </div>
+
+        <!-- RIBBON TABS -->
+        <div class="office-ribbon-tabs word-ribbon-tabs">
+          <span class="ribbon-tab-item active">Beranda (Home)</span>
+          <span class="ribbon-tab-item">Sisipkan (Insert)</span>
+          <span class="ribbon-tab-item">Tata Letak (Layout)</span>
+          <span class="ribbon-tab-item">Referensi</span>
+          <span class="ribbon-tab-item">Tinjau (Review)</span>
+          <span class="ribbon-tab-item">Tampilan (View)</span>
+        </div>
+
+        <!-- RIBBON TOOLBAR -->
+        <div class="office-ribbon-toolbar">
+          <div class="ribbon-group">
+            <div class="ribbon-tools-row">
+              <span class="office-tool-select">Calibri (Body)</span>
+              <span class="office-tool-select" style="width: 44px;">12 pt</span>
+            </div>
+            <div class="ribbon-tools-row">
+              <button class="office-tool-btn ${docState.titleBold ? 'active' : ''}" title="Tebal (Ctrl+B)"><b>B</b></button>
+              <button class="office-tool-btn ${docState.bodyItalic ? 'active' : ''}" title="Miring (Ctrl+I)"><i>I</i></button>
+              <button class="office-tool-btn ${docState.recomUnderline ? 'active' : ''}" title="Garis Bawah (Ctrl+U)"><u>U</u></button>
+              <span class="tool-sep">|</span>
+              <button class="office-tool-btn ${docState.titleAlign === 'left' ? 'active' : ''}" title="Rata Kiri (Ctrl+L)">≡ Left</button>
+              <button class="office-tool-btn ${docState.titleAlign === 'center' ? 'active' : ''}" title="Rata Tengah (Ctrl+E)">≡ Center</button>
+              <button class="office-tool-btn ${docState.bodyJustify ? 'active' : ''}" title="Rata Kanan-Kiri (Ctrl+J)">≣ Justify</button>
+            </div>
+            <div class="ribbon-group-label">Font & Paragraf</div>
+          </div>
+
+          <div class="ribbon-group">
+            <div class="ribbon-tools-row">
+              <button class="office-tool-btn ${docState.findActive ? 'active' : ''}" title="Cari (Ctrl+F)">🔍 Cari</button>
+              <button class="office-tool-btn ${docState.replaced ? 'active' : ''}" title="Ganti (Ctrl+H)">🔄 Ganti</button>
+              <button class="office-tool-btn ${docState.selectAll ? 'active' : ''}" title="Pilih Semua (Ctrl+A)">📑 Pilih</button>
+            </div>
+            <div class="ribbon-group-label">Pengeditan</div>
+          </div>
+        </div>
+
+        <!-- RULER WORD -->
+        <div class="office-ruler-bar">
+          <div class="ruler-marker-left">▼</div>
+          <div class="ruler-ticks">| · · · 1 · · · 2 · · · 3 · · · 4 · · · 5 · · · 6 · · · 7 · · · 8 · · · 9 · · · 10 · · · 11 · · · 12 · · · 13 · · · 14 · · · 15 · · · 16 · · · 17</div>
+          <div class="ruler-marker-right">▲</div>
+        </div>
+
+        <!-- CANVAS DOKUMEN A4 WORD (TRANSFORMASI VISUAL NYATA) -->
+        <div class="office-canvas-viewport">
+          <div class="word-paper-sheet ${docState.selectAll ? 'doc-selected' : ''}">
+            <!-- Save Toast -->
+            <div id="word-save-toast" class="office-save-toast" style="display: ${isSaved ? 'flex' : 'none'};">
+              <span>💾 Berkas berhasil disimpan ke memori! (Ctrl+S Berhasil)</span>
+            </div>
+
+            <!-- Find Overlay Banner -->
+            ${docState.findActive ? `
+              <div class="word-search-panel">
+                <span>🔍 <b>Pencarian Berkas:</b> Menemukan 1 kata kunci "Anggaran"</span>
+                <span class="badge-match">1 Hasil</span>
+              </div>
+            ` : ''}
+
+            <!-- Replace Overlay Banner -->
+            ${isReplaced ? `
+              <div class="word-replace-panel">
+                <span>🔄 <b>Operasi Ganti Selesai:</b> Mengganti "Pihak Pertama" ➡️ <b>PT Inovasi Maju</b></span>
+              </div>
+            ` : ''}
+
+            <!-- Spelling Overlay Banner -->
+            ${isSpelling ? `
+              <div class="word-spelling-panel">
+                <span>✅ <b>Pemeriksaan Ejaan F7:</b> Seluruh tata bahasa dan tanda baca telah diverifikasi sempurna!</span>
+              </div>
+            ` : ''}
+
+            <!-- JUDUL DOKUMEN REALTIME -->
+            <h2 class="word-doc-title ${docState.titleBold ? 'is-bold' : ''}" style="text-align: ${docState.titleAlign};">
+              ${project.initialDoc.title}
+            </h2>
+
+            <!-- SUBTITLE -->
+            <div class="word-doc-subtitle" style="text-align: ${docState.titleAlign};">
+              ${project.initialDoc.subTitle}
+            </div>
+
+            <hr class="word-doc-divider">
+
+            <!-- PARAGRAF 1 REALTIME -->
+            <p class="word-doc-par" style="text-align: ${docState.bodyJustify ? 'justify' : 'left'};">
+              ${project.initialDoc.par1
+                .replace('Artificial Intelligence', `<span class="word-term-italic ${docState.bodyItalic ? 'is-italic' : ''}">Artificial Intelligence</span>`)
+                .replace('Anggaran Belanja Pokok', `<mark class="word-find-mark ${docState.findActive ? 'is-highlighted' : ''}">Anggaran Belanja Pokok</mark>`)
+                .replace('Pihak Pertama', isReplaced ? '<b style="color: #2563eb;">PT Inovasi Maju Nusantara</b>' : 'Pihak Pertama')
+              }
+            </p>
+
+            <!-- TAUTAN HYPERLINK (PROJEK 2) -->
+            ${docState.linkAdded ? `
+              <div class="word-hyperlink-box">
+                🔗 <b>Tautan Resmi:</b> <a href="javascript:void(0)" class="word-blue-link">https://portal-pengadaan.go.id/spesifikasi-server-2026</a>
+              </div>
+            ` : ''}
+
+            <!-- PARAGRAF 2 / REKOMENDASI REALTIME -->
+            <p class="word-doc-par" style="text-align: ${docState.bodyJustify ? 'justify' : 'left'};">
+              ${project.initialDoc.par2
+                .replace('REKOMENDASI DIREKSI:', `<span class="word-recom-line ${docState.recomUnderline ? 'is-underlined' : ''}">REKOMENDASI DIREKSI:</span>`)
+                .replace('Pihak Pertama', isReplaced ? '<b style="color: #2563eb;">PT Inovasi Maju Nusantara</b>' : 'Pihak Pertama')
+              }
+            </p>
+
+            <!-- PARAGRAF PASTE DARI RINGKASAN (PROJEK 2) -->
+            ${docState.pastedSummary ? `
+              <div class="word-pasted-summary-box">
+                <b>📋 Ringkasan Penutup (Hasil Tempel Ctrl+V):</b>
+                <div>Dokumen arsitektur komputasi awan berkapasitas tinggi ini siap disahkan oleh Pejabat Pembuat Komitmen (PPK).</div>
+              </div>
+            ` : ''}
+
+            <div class="word-doc-signature-area">
+              <div class="sig-block">
+                Mengetahui,<br>
+                <b>${project.client}</b><br>
+                <span>${project.clientRole}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- PRINT MODAL OVERLAY -->
+        ${isPrinted ? `
+          <div class="office-modal-overlay">
+            <div class="office-modal-box">
+              <div class="office-modal-header word-theme">
+                <span>🖨️ Kotak Dialog Cetak (Print Preview - Ctrl+P)</span>
+                <button onclick="closeOfficeModal('word', 'print')">✕</button>
+              </div>
+              <div class="office-modal-body">
+                <p><b>Printer Tujuan:</b> HP LaserJet Enterprise M608 (Siap Cetak)</p>
+                <p><b>Salinan:</b> 1 Rangkap | <b>Orientasi:</b> Portrait | <b>Ukuran:</b> A4</p>
+                <div class="print-mini-preview">
+                  📄 Dokumen "${project.docFilename}" siap dikirim ke mesin cetak!
+                </div>
+              </div>
+              <div class="office-modal-footer">
+                <button class="btn-primary" style="background: #2563eb;" onclick="closeOfficeModal('word', 'print')">Tutup & Lanjutkan</button>
+              </div>
+            </div>
+          </div>
+        ` : ''}
+
+        <!-- SAVE AS MODAL OVERLAY -->
+        ${isSaveAs ? `
+          <div class="office-modal-overlay">
+            <div class="office-modal-box">
+              <div class="office-modal-header word-theme">
+                <span>💾 Simpan Sebagai Cadangan Baru (Save As - F12)</span>
+                <button onclick="closeOfficeModal('word', 'saveAs')">✕</button>
+              </div>
+              <div class="office-modal-body">
+                <p><b>Nama Berkas Baru:</b> [ARSIP-FINAL]_${project.docFilename}</p>
+                <p><b>Format:</b> Word Document (*.docx) / PDF (*.pdf)</p>
+                <div class="alert-box success" style="margin-top: 8px;">
+                  ✅ Salinan cadangan resmi telah berhasil disimpan ke folder arsip!
+                </div>
+              </div>
+              <div class="office-modal-footer">
+                <button class="btn-primary" style="background: #2563eb;" onclick="closeOfficeModal('word', 'saveAs')">Tutup</button>
+              </div>
+            </div>
+          </div>
+        ` : ''}
+
+        <!-- WORD STATUS BAR -->
+        <div class="office-status-bar word-status-bar">
+          <div class="status-left">
+            <span>Halaman 1 dari 1</span>
+            <span>235 Kata</span>
+            <span>Bahasa Indonesia</span>
+          </div>
+          <div class="status-right">
+            <span>Tata Letak Cetak</span>
+            <span>100% ➖ 🎚️ ➕</span>
+          </div>
+        </div>
+      </div>
+    `;
+  }
+
+  // =========================================================================
+  // RENDERER MOCKUP MS EXCEL NYATA
+  // =========================================================================
+  function renderExcelOfficeMockup(project, docState, completed) {
+    const isSaved = docState.saved;
+    const isChart = docState.chartCreated;
+    const isSaveAs = docState.saveAsNew;
+    const isCurrency = docState.currencyFormatted;
+    const isPercent = docState.percentFormatted;
+    const isTable = docState.tableCreated;
+    const isTotalSum = docState.autoSumDone;
+    const isTotalBold = docState.totalBold;
+    const isColHidden = docState.colHidden;
+    const isRowHidden = docState.rowHidden;
+    const isDate = docState.dateInserted;
+    const isFillDown = docState.fillDown;
+
+    // Helper format mata uang
+    function formatMoney(num) {
+      if (!isCurrency) return num.toLocaleString('id-ID');
+      return 'Rp ' + num.toLocaleString('id-ID');
+    }
+
+    // Helper format margin
+    function formatMargin(num) {
+      if (!isPercent) return num;
+      return (Math.round(num * 100)) + '%';
+    }
+
+    // Hitung total omset
+    const totalC = project.initialGrid.reduce((acc, row) => acc + (typeof row.colC === 'number' ? row.colC : 0), 0);
+
+    return `
+      <div class="office-window-mockup excel-window">
+        <!-- TITLE BAR EXCEL -->
+        <div class="office-title-bar excel-title-bar">
+          <div class="office-title-left">
+            <span class="office-app-badge excel-badge">X</span>
+            <span class="office-autosave-badge ${isSaved ? 'saved' : ''}">
+              ${isSaved ? '✅ Tersimpan' : '💾 AutoSave: Aktif'}
+            </span>
+            <span class="office-filename">${project.docFilename} — Excel</span>
+          </div>
+          <div class="office-window-controls">
+            <span>🗕</span>
+            <span>🗖</span>
+            <span>✕</span>
+          </div>
+        </div>
+
+        <!-- RIBBON TABS -->
+        <div class="office-ribbon-tabs excel-ribbon-tabs">
+          <span class="ribbon-tab-item active">Beranda (Home)</span>
+          <span class="ribbon-tab-item">Sisipkan (Insert)</span>
+          <span class="ribbon-tab-item">Tata Letak Halaman</span>
+          <span class="ribbon-tab-item">Rumus (Formulas)</span>
+          <span class="ribbon-tab-item">Data</span>
+          <span class="ribbon-tab-item">Tinjau</span>
+          <span class="ribbon-tab-item">Tampilan</span>
+        </div>
+
+        <!-- RIBBON TOOLBAR -->
+        <div class="office-ribbon-toolbar">
+          <div class="ribbon-group">
+            <div class="ribbon-tools-row">
+              <span class="office-tool-select">Aptos Narrow</span>
+              <span class="office-tool-select" style="width: 44px;">11 pt</span>
+              <button class="office-tool-btn ${isTotalBold ? 'active' : ''}"><b>B</b></button>
+            </div>
+            <div class="ribbon-group-label">Huruf</div>
+          </div>
+
+          <div class="ribbon-group">
+            <div class="ribbon-tools-row">
+              <button class="office-tool-btn ${isCurrency ? 'active' : ''}" title="Format Rupiah (Ctrl+Shift+$)"><b>$</b> Rupiah</button>
+              <button class="office-tool-btn ${isPercent ? 'active' : ''}" title="Format Persen (Ctrl+Shift+%)"><b>%</b> Persen</button>
+              <button class="office-tool-btn" title="Koma Ribuan"><b>,</b></button>
+            </div>
+            <div class="ribbon-group-label">Angka</div>
+          </div>
+
+          <div class="ribbon-group">
+            <div class="ribbon-tools-row">
+              <button class="office-tool-btn ${isTable ? 'active' : ''}" title="Format Sebagai Tabel (Ctrl+T)">📊 Tabel</button>
+              <button class="office-tool-btn ${isTotalSum ? 'active' : ''}" title="AutoSum (Alt+=)"><b>Σ</b> AutoSum</button>
+              <button class="office-tool-btn ${isChart ? 'active' : ''}" title="Grafik Kilat (F11)">📈 Grafik</button>
+            </div>
+            <div class="ribbon-group-label">Gaya & Analisis</div>
+          </div>
+        </div>
+
+        <!-- FORMULA BAR EXCEL -->
+        <div class="excel-formula-bar">
+          <div class="formula-name-box">${isTotalSum ? 'C6' : 'C2'}</div>
+          <div class="formula-fx-icon"><b>✕</b> <b>✓</b> <i>fx</i></div>
+          <div class="formula-input-line">
+            ${isTotalSum ? '=SUM(C2:C5)' : (isCurrency ? '15500000' : 'Data Aktif')}
+          </div>
+        </div>
+
+        <!-- SPREADSHEET GRID (TRANSFORMASI VISUAL NYATA) -->
+        <div class="office-canvas-viewport">
+          <div class="excel-spreadsheet-sheet ${docState.selectAll ? 'grid-selected' : ''}">
+            <!-- Save Toast -->
+            <div id="excel-save-toast" class="office-save-toast" style="display: ${isSaved ? 'flex' : 'none'};">
+              <span>💾 Lembar kerja tersimpan otomatis! (Ctrl+S Berhasil)</span>
+            </div>
+
+            <!-- TANGGAL AUDIT OTOMATIS (PROYEK 2) -->
+            ${isDate ? `
+              <div class="excel-audit-date-badge">
+                📅 <b>Tanggal Audit Terverifikasi (Ctrl+;):</b> 12 Oktober 2026
+              </div>
+            ` : ''}
+
+            <!-- GRID TABLE -->
+            <table class="excel-table-grid ${isTable ? 'styled-excel-table' : ''}">
+              <thead>
+                <tr class="excel-header-row">
+                  <th class="excel-corner-cell">◢</th>
+                  <th class="excel-col-head">A</th>
+                  ${isColHidden ? `
+                    <th class="excel-col-head hidden-col-indicator" title="Kolom B Tersembunyi (Ctrl+0)">||</th>
+                  ` : `
+                    <th class="excel-col-head">B</th>
+                  `}
+                  <th class="excel-col-head">C</th>
+                  <th class="excel-col-head">D</th>
+                  <th class="excel-col-head">E</th>
+                </tr>
+              </thead>
+              <tbody>
+                <!-- ROW 1: HEADER NAMA KOLOM -->
+                <tr class="excel-data-row ${isTable ? 'table-header-row' : ''}">
+                  <td class="excel-row-num">1</td>
+                  <td class="excel-cell head-cell">Nama / Unit ${isTable ? '▼' : ''}</td>
+                  ${isColHidden ? '' : `<td class="excel-cell head-cell">Kota / Akun ${isTable ? '▼' : ''}</td>`}
+                  <td class="excel-cell head-cell">Omset / Gaji ${isTable ? '▼' : ''}</td>
+                  <td class="excel-cell head-cell">Margin / Bonus ${isTable ? '▼' : ''}</td>
+                  <td class="excel-cell head-cell">Status ${isTable ? '▼' : ''}</td>
+                </tr>
+
+                <!-- DATA ROWS 2 to 5 -->
+                ${project.initialGrid.map((row, idx) => {
+                  const rowNum = idx + 2;
+                  const isThisRowHidden = (isRowHidden && idx === 2);
+                  if (isThisRowHidden) {
+                    return `
+                      <tr class="excel-data-row hidden-row-indicator" title="Baris 3 Tersembunyi (Ctrl+9)">
+                        <td class="excel-row-num hidden-row-badge">=</td>
+                        <td colspan="${isColHidden ? 4 : 5}" style="background: rgba(239,68,68,0.15); color: #ef4444; font-size: 0.75rem; text-align: center; padding: 2px;">
+                          🔒 [Baris Karyawan Cuti Disembunyikan Sesuai Permintaan Bos]
+                        </td>
+                      </tr>
+                    `;
+                  }
+
+                  const isBonusFilled = isFillDown && idx > 0;
+                  const displayBonus = isBonusFilled ? 'Rp 500.000 (Fill Down)' : (typeof row.colD === 'number' ? formatMargin(row.colD) : row.colD);
+
+                  return `
+                    <tr class="excel-data-row ${idx % 2 === 1 && isTable ? 'zebra-row' : ''}">
+                      <td class="excel-row-num">${rowNum}</td>
+                      <td class="excel-cell text-left">${row.colA}</td>
+                      ${isColHidden ? '' : `<td class="excel-cell">${row.colB}</td>`}
+                      <td class="excel-cell text-right ${isCurrency ? 'cell-currency' : ''}">
+                        ${typeof row.colC === 'number' ? formatMoney(row.colC) : row.colC}
+                      </td>
+                      <td class="excel-cell text-right">
+                        ${displayBonus}
+                      </td>
+                      <td class="excel-cell text-center">
+                        <span class="badge-status ${row.colE === 'Lunas' || row.colE === 'Aktif' || row.colE === 'Aman' ? 'ok' : 'pending'}">${row.colE}</span>
+                      </td>
+                    </tr>
+                  `;
+                }).join('')}
+
+                <!-- ROW 6: TOTAL / AUTOSUM -->
+                ${isTotalSum ? `
+                  <tr class="excel-data-row total-row ${isTotalBold ? 'is-bold' : ''}">
+                    <td class="excel-row-num">6</td>
+                    <td class="excel-cell text-left" style="font-weight: 800;">TOTAL AKHIR</td>
+                    ${isColHidden ? '' : `<td class="excel-cell"></td>`}
+                    <td class="excel-cell text-right active-sum-cell" style="font-weight: 800; border-top: 2px solid #107c41; border-bottom: 3px double #107c41;">
+                      ${formatMoney(totalC)}
+                    </td>
+                    <td class="excel-cell text-right" style="font-weight: 700;">—</td>
+                    <td class="excel-cell text-center" style="font-size: 0.75rem; color: #107c41; font-weight: 700;">AutoSum Σ</td>
+                  </tr>
+                ` : ''}
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- INSTANT CHART MODAL (F11) -->
+        ${isChart ? `
+          <div class="office-modal-overlay">
+            <div class="office-modal-box" style="max-width: 650px;">
+              <div class="office-modal-header excel-theme">
+                <span>📈 Lembar Grafik Visual Kilat (F11 Instant Chart Sheet)</span>
+                <button onclick="closeOfficeModal('excel', 'chart')">✕</button>
+              </div>
+              <div class="office-modal-body">
+                <h4 style="margin: 0 0 12px 0; text-align: center; color: var(--text-main);">
+                  ANALISIS VISUAL STOK GUDANG & OMSET CABANG
+                </h4>
+                <div class="excel-chart-visual">
+                  <div class="chart-bar-group">
+                    <div class="chart-bar" style="height: 80%; background: #107c41;"><span class="bar-val">15.5M</span></div>
+                    <span class="bar-lbl">Cabang A</span>
+                  </div>
+                  <div class="chart-bar-group">
+                    <div class="chart-bar" style="height: 62%; background: #2563eb;"><span class="bar-val">12.2M</span></div>
+                    <span class="bar-lbl">Cabang B</span>
+                  </div>
+                  <div class="chart-bar-group">
+                    <div class="chart-bar" style="height: 96%; background: #f59e0b;"><span class="bar-val">18.7M</span></div>
+                    <span class="bar-lbl">Cabang C</span>
+                  </div>
+                  <div class="chart-bar-group">
+                    <div class="chart-bar" style="height: 48%; background: #8b5cf6;"><span class="bar-val">9.8M</span></div>
+                    <span class="bar-lbl">Cabang D</span>
+                  </div>
+                </div>
+                <div class="alert-box success" style="margin-top: 14px;">
+                  ✨ Grafik kolom tercipta instan dari kisi-kisi data hanya dengan menekan F11!
+                </div>
+              </div>
+              <div class="office-modal-footer">
+                <button class="btn-primary" style="background: #107c41;" onclick="closeOfficeModal('excel', 'chart')">Tutup & Lanjutkan</button>
+              </div>
+            </div>
+          </div>
+        ` : ''}
+
+        <!-- SAVE AS MODAL OVERLAY -->
+        ${isSaveAs ? `
+          <div class="office-modal-overlay">
+            <div class="office-modal-box">
+              <div class="office-modal-header excel-theme">
+                <span>💾 Simpan Lembar Kerja Baru (Save As - F12)</span>
+                <button onclick="closeOfficeModal('excel', 'saveAs')">✕</button>
+              </div>
+              <div class="office-modal-body">
+                <p><b>Nama Berkas Baru:</b> [BACKUP-FINAL]_${project.docFilename}</p>
+                <p><b>Tipe:</b> Excel Workbook (*.xlsx)</p>
+                <div class="alert-box success" style="margin-top: 8px;">
+                  ✅ Berkas cadangan berhasil disimpan aman ke sistem komputer!
+                </div>
+              </div>
+              <div class="office-modal-footer">
+                <button class="btn-primary" style="background: #107c41;" onclick="closeOfficeModal('excel', 'saveAs')">Tutup</button>
+              </div>
+            </div>
+          </div>
+        ` : ''}
+
+        <!-- EXCEL SHEET TABS & STATUS BAR -->
+        <div class="office-status-bar excel-status-bar">
+          <div class="status-left">
+            <span class="excel-sheet-pill active">Sheet1</span>
+            <span class="excel-sheet-pill">+</span>
+            <span style="margin-left: 14px; font-weight: 700;">SIAP</span>
+          </div>
+          <div class="status-right">
+            <span>Rata-rata: Rp 14.075.000</span>
+            <span>Jumlah Data: 4</span>
+            <span>Total: ${formatMoney(totalC)}</span>
+          </div>
+        </div>
+      </div>
+    `;
+  }
+
+  // =========================================================================
+  // RENDERER DAFTAR PERMINTAAN KLIEN / BOS (CHECKLIST TANTANGAN)
+  // =========================================================================
+  function renderProjectTasksChecklist(mode, project, completed) {
+    const isWord = (mode === 'word');
+    const themeColor = isWord ? '#2563eb' : '#107c41';
+    const totalTasks = project.tasks.length;
+    const completedCount = completed.length;
+    const isAllDone = (completedCount >= totalTasks);
+    const progressPct = Math.round((completedCount / totalTasks) * 100);
+
+    return `
+      <!-- KARTU BRIEF KLIEN / BOS -->
+      <div class="boss-brief-card" style="border-left: 6px solid ${themeColor};">
+        <div class="boss-profile-header">
+          <div class="boss-avatar-box">${project.clientAvatar}</div>
+          <div style="flex: 1;">
+            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px;">
+              <div>
+                <h4 style="margin: 0; font-size: 1.15rem; color: var(--text-main); font-weight: 800;">
+                  ${project.client}
+                </h4>
+                <div style="font-size: 0.82rem; color: var(--text-muted); font-weight: 600;">
+                  ${project.clientRole} — Klien Proyek
+                </div>
+              </div>
+              <div class="boss-progress-pill" style="border-color: ${themeColor}; color: ${themeColor};">
+                🏆 ${completedCount} / ${totalTasks} Permintaan Selesai (${progressPct}%)
+              </div>
+            </div>
+            <!-- Progress Bar -->
+            <div class="boss-progress-bar-wrap">
+              <div class="boss-progress-bar-fill" style="width: ${progressPct}%; background: ${themeColor};"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- PESAN CERITA DARI BOS -->
+        <div class="boss-speech-bubble">
+          <span class="speech-quote-icon">“</span>
+          <p style="margin: 0; font-size: 0.92rem; color: var(--text-main); line-height: 1.5; font-style: italic;">
+            ${project.story}
+          </p>
+        </div>
+
+        ${isAllDone ? `
+          <!-- BANNER CELEBRATION SEMPURNA -->
+          <div class="boss-celebration-banner">
+            <div style="font-size: 1.8rem; margin-bottom: 6px;">🎉 ⭐ 💼 ⭐ 🎉</div>
+            <h3 style="margin: 0 0 6px 0; color: #10b981; font-size: 1.3rem;">
+              LUAR BIASA! SELURUH PERMINTAAN KLIEN SELESAI 100%!
+            </h3>
+            <p style="margin: 0 0 14px 0; font-size: 0.92rem; color: var(--text-main);">
+              Bos sangat puas dengan kecepatan dan kerapian hasil kerjamu! Dokumen telah bertransformasi sempurna tanpa sentuh mouse berlebihan.
+            </p>
+            <div style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;">
+              <button class="btn-secondary" onclick="resetCurrentProject('${mode}')">
+                🔄 Ulangi Latihan Proyek Ini
+              </button>
+              <button class="btn-primary" style="background: ${themeColor};" onclick="switchProject('${mode}', ${(appState.currentProjectIdx[mode] + 1) % (isWord ? window.WORD_PROJECTS.length : window.EXCEL_PROJECTS.length)})">
+                Lanjut Proyek Kantor Berikutnya ➡️
+              </button>
+            </div>
+          </div>
+        ` : ''}
+
+        <!-- DAFTAR LANGKAH PERMINTAAN -->
+        <div class="boss-tasks-list">
+          <div style="font-size: 0.85rem; font-weight: 800; color: var(--text-muted); text-transform: uppercase; margin-bottom: 10px; letter-spacing: 0.5px;">
+            📋 Instruksi Permintaan Dokumen (Tekan di Keyboard atau Klik Tombol Pintasan):
+          </div>
+
+          ${project.tasks.map((task, idx) => {
+            const isDone = completed.includes(task.id);
+            const isNext = !isDone && (idx === 0 || completed.includes(project.tasks[idx - 1].id));
+            const keyParts = task.shortcut.split('+').map(k => k.trim());
+
+            return `
+              <div class="boss-task-item ${isDone ? 'is-completed' : ''} ${isNext ? 'is-active-target' : ''}">
+                <div class="task-col-left">
+                  <div class="task-status-icon">
+                    ${isDone ? '✅' : (isNext ? '👉' : '⏳')}
+                  </div>
+                  <div style="flex: 1;">
+                    <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
+                      <span class="task-title-text">${task.name}</span>
+                      ${isNext ? '<span class="badge-target-now">KERJAKAN SEKARANG</span>' : ''}
+                    </div>
+                    <div class="task-desc-text">
+                      ${task.instruction}
+                    </div>
+                    <div class="task-baby-logic">
+                      🍼 <b>Nalar Bayi:</b> ${task.babyLogic}
+                    </div>
+                  </div>
+                </div>
+
+                <div class="task-col-right">
+                  <div class="task-shortcut-caps">
+                    ${keyParts.map(kp => `<span class="project-keycap">${kp}</span>`).join(' <span class="cap-plus">+</span> ')}
+                  </div>
+                  <div>
+                    ${isDone ? `
+                      <span class="badge-done-stamp">✓ Selesai Diterapkan</span>
+                    ` : `
+                      <button class="btn-primary btn-run-shortcut" style="background: ${themeColor};" onclick="runProjectStepAction('${mode}', '${task.id}')">
+                        ⚡ Jalankan Pintasan (${task.shortcut})
+                      </button>
+                    `}
+                  </div>
+                </div>
+              </div>
+            `;
+          }).join('')}
+        </div>
+      </div>
+    `;
+  }
+
+  // =========================================================================
+  // RENDERER UTAMA SIMULATOR PROYEK KANTOR
+  // =========================================================================
+  function renderProjectStudioHtml(mode) {
+    const isWord = (mode === 'word');
+    const projList = isWord ? window.WORD_PROJECTS : window.EXCEL_PROJECTS;
+    const currentIdx = appState.currentProjectIdx[mode] || 0;
+    const project = projList[currentIdx] || projList[0];
+
+    if (!appState.projectCompletedSteps[mode]) appState.projectCompletedSteps[mode] = {};
+    if (!appState.projectCompletedSteps[mode][project.id]) appState.projectCompletedSteps[mode][project.id] = [];
+    const completed = appState.projectCompletedSteps[mode][project.id];
+    const docState = appState.projectDocState[mode];
+
+    return `
+      <div class="project-studio-wrapper">
+        <!-- PROJECT SELECTOR TABS -->
+        <div class="project-selector-tabs">
+          <span style="font-size: 0.85rem; font-weight: 800; color: var(--text-muted); align-self: center; margin-right: 6px;">
+            📁 Pilih Proyek Kantor:
+          </span>
+          ${projList.map((p, idx) => {
+            const pCompleted = (appState.projectCompletedSteps[mode][p.id] || []).length;
+            const pTotal = p.tasks.length;
+            const isPActive = (idx === currentIdx);
+            return `
+              <button class="project-tab-btn ${isPActive ? 'active' : ''}" onclick="switchProject('${mode}', ${idx})">
+                <span>${p.clientAvatar} Proyek ${idx + 1}: ${p.title.substring(0, 24)}...</span>
+                <span class="proj-badge-count ${pCompleted >= pTotal ? 'all-done' : ''}">
+                  ${pCompleted}/${pTotal} Selesai ${pCompleted >= pTotal ? '⭐' : ''}
+                </span>
+              </button>
+            `;
+          }).join('')}
+        </div>
+
+        <!-- MOCKUP JENDELA OFFICE NYATA (DOKUMEN DITAMPILKAN & BERUBAH) -->
+        <div style="margin-bottom: 24px;">
+          ${isWord ? renderWordOfficeMockup(project, docState, completed) : renderExcelOfficeMockup(project, docState, completed)}
+        </div>
+
+        <!-- BRIEF KLIEN & CHECKLIST PERMINTAAN BOS -->
+        <div>
+          ${renderProjectTasksChecklist(mode, project, completed)}
+        </div>
+      </div>
+    `;
+  }
+
+  // =========================================================================
+  // FILTER & KATEGORI UNTUK MODE BANK PINTASAN LENGKAP
+  // =========================================================================
   window.getShortcutCategories = function(mode) {
     const list = mode === 'excel' ? window.EXCEL_SHORTCUTS : window.WORD_SHORTCUTS;
     const cats = new Set();
@@ -1362,7 +2648,6 @@
     return ['all', ...Array.from(cats)];
   };
 
-  // Filtered List Helper
   window.getFilteredShortcuts = function(mode) {
     const list = mode === 'excel' ? window.EXCEL_SHORTCUTS : window.WORD_SHORTCUTS;
     const cat = appState.shortcutFilter[mode] || 'all';
@@ -1380,39 +2665,24 @@
       });
   };
 
-  // Render Studio Fungsi Utama
+  // =========================================================================
+  // RENDER STUDIO FUNGSI UTAMA (ROUTER SUBMODE: PROYEK VS BANK PINTASAN)
+  // =========================================================================
   window.renderShortcutStudio = function(mode) {
     const containerId = mode === 'excel' ? 'shortcut-excel-content-area' : 'shortcut-word-content-area';
     const container = document.getElementById(containerId);
     if (!container) return;
 
     const list = mode === 'excel' ? window.EXCEL_SHORTCUTS : window.WORD_SHORTCUTS;
-    const filtered = window.getFilteredShortcuts(mode);
-    const categories = window.getShortcutCategories(mode);
     const isWord = (mode === 'word');
     const themeColor = isWord ? '#2563eb' : '#107c41';
     const themeLight = isWord ? '#3b82f6' : '#10b981';
     const heroTile = isWord ? 'tile_3d_02.png' : 'tile_3d_08.png';
     const appTitle = isWord ? 'Microsoft Word' : 'Microsoft Excel';
+    const activeSubmode = appState.activeStudioMode[mode] || 'project';
 
-    if (appState.currentShortcutIdx[mode] < 0 || appState.currentShortcutIdx[mode] >= list.length) {
-      appState.currentShortcutIdx[mode] = 0;
-    }
-
-    let currentPos = filtered.findIndex(x => x.originalIndex === appState.currentShortcutIdx[mode]);
-    if (currentPos === -1 && filtered.length > 0) {
-      appState.currentShortcutIdx[mode] = filtered[0].originalIndex;
-      currentPos = 0;
-    }
-
-    const currentItem = list[appState.currentShortcutIdx[mode]] || list[0];
-    const isCompleted = (appState.shortcutCompleted[mode] || []).includes(currentItem.id);
-    const totalCompleted = (appState.shortcutCompleted[mode] || []).length;
-
-    // Pisah Tombol Kombinasi untuk Display Cap
-    const keyParts = currentItem.key.split('+').map(k => k.trim());
-
-    container.innerHTML = `
+    // RENDER HEADER BANNER & SUBMODE SWITCHER
+    let html = `
       <div class="shortcut-studio-container">
         <!-- HERO BANNER DOKUMEN REFERENSI -->
         <div class="shortcut-hero-card ${isWord ? 'word-theme' : ''}">
@@ -1425,24 +2695,56 @@
                 Sumber Resmi: Referensi/Pintasan_Keyboard_${isWord ? 'Word' : 'Excel'}.pdf
               </div>
               <h3 style="margin: 2px 0 4px 0; font-size: 1.25rem; color: var(--text-main);">
-                Game Pintasan Keyboard ${appTitle} Windows
+                Simulator & Praktik Pintasan ${appTitle}
               </h3>
               <p style="margin: 0; font-size: 0.85rem; color: var(--text-muted);">
-                Praktik langsung dengan papan ketik interaktif & nalar bayi Kodi! Kuasai ${list.length} pintasan kantor!
+                Pengalaman nyata di kantor: selesaikan proyek direksi dengan dokumen yang bertransformasi langsung!
               </p>
             </div>
           </div>
           <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
             <span style="background: rgba(0,0,0,0.3); border: 1px solid ${themeLight}; padding: 6px 14px; border-radius: 20px; font-size: 0.85rem; font-weight: 800; color: ${themeLight};">
-              ⭐ ${totalCompleted} / ${list.length} Dikuasai (${Math.round((totalCompleted / list.length) * 100)}%)
+              ⭐ ${appState.stars || 0} Bintang Terkumpul
             </span>
-            <button class="btn-secondary" style="font-size: 0.82rem; padding: 6px 12px;" onclick="shuffleShortcutQuest('${mode}')">
-              🎲 Acak Soal
-            </button>
           </div>
         </div>
 
-        <!-- NAVIGASI & PENCARIAN -->
+        <!-- DUAL MODE SWITCHER BAR -->
+        <div class="shortcut-submode-switcher-bar">
+          <button class="submode-tab-btn ${activeSubmode === 'project' ? 'active' : ''}" onclick="switchStudioSubmode('${mode}', 'project')">
+            💼 Simulasi Proyek Kantor Nyata (Tampilan ${isWord ? 'Word' : 'Excel'} Asli)
+          </button>
+          <button class="submode-tab-btn ${activeSubmode === 'catalog' ? 'active' : ''}" onclick="switchStudioSubmode('${mode}', 'catalog')">
+            ⌨️ Bank Pintasan Lengkap (${list.length} Pintasan + Keyboard Virtual)
+          </button>
+        </div>
+    `;
+
+    // IF SUBMODE IS PROJECT -> RENDER PROJECT STUDIO
+    if (activeSubmode === 'project') {
+      html += renderProjectStudioHtml(mode);
+    } else {
+      // IF SUBMODE IS CATALOG -> RENDER ORIGINAL CATALOG & VIRTUAL KEYBOARD
+      const filtered = window.getFilteredShortcuts(mode);
+      const categories = window.getShortcutCategories(mode);
+
+      if (appState.currentShortcutIdx[mode] < 0 || appState.currentShortcutIdx[mode] >= list.length) {
+        appState.currentShortcutIdx[mode] = 0;
+      }
+
+      let currentPos = filtered.findIndex(x => x.originalIndex === appState.currentShortcutIdx[mode]);
+      if (currentPos === -1 && filtered.length > 0) {
+        appState.currentShortcutIdx[mode] = filtered[0].originalIndex;
+        currentPos = 0;
+      }
+
+      const currentItem = list[appState.currentShortcutIdx[mode]] || list[0];
+      const isCompleted = (appState.shortcutCompleted[mode] || []).includes(currentItem.id);
+      const totalCompleted = (appState.shortcutCompleted[mode] || []).length;
+      const keyParts = currentItem.key.split('+').map(k => k.trim());
+
+      html += `
+        <!-- NAVIGASI & PENCARIAN BANK PINTASAN -->
         <div class="challenge-nav-bar" style="margin-bottom: 0;">
           <div class="challenge-nav-controls" style="flex: 1; min-width: 240px;">
             <label style="font-size: 0.8rem; font-weight: 700; color: ${themeLight};">📂 Kategori:</label>
@@ -1482,7 +2784,7 @@
           </div>
         </div>
 
-        <!-- QUEST CARD (TANTANGAN PRAKTIK) -->
+        <!-- QUEST CARD -->
         <div class="shortcut-quest-card" style="border-left: 5px solid ${themeColor};">
           <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; flex-wrap: wrap; gap: 8px;">
             <span style="font-size: 0.78rem; font-weight: 800; background: rgba(56, 189, 248, 0.15); color: var(--accent-cyan); padding: 4px 10px; border-radius: 12px; border: 1px solid rgba(56, 189, 248, 0.3);">
@@ -1502,7 +2804,7 @@
             </div>
           </div>
 
-          <!-- TOMBOL DISPLAY BESAR DENGAN ANIMASI NEON -->
+          <!-- TOMBOL DISPLAY BESAR -->
           <div style="text-align: center; margin: 20px 0;">
             <div style="font-size: 0.82rem; font-weight: 700; color: var(--text-muted); margin-bottom: 8px;">
               ⌨️ KOMBINASI TOMBOL YANG HARUS DITEKAN:
@@ -1514,7 +2816,7 @@
               `).join('')}
             </div>
             <div style="font-size: 0.8rem; color: var(--text-muted); margin-top: 6px;">
-              💡 Tips: Tekan langsung tombolnya di keyboard laptop/PC kamu, atau klik tombol di simulator bawah!
+              💡 Tips: Tekan langsung tombolnya di keyboard laptop/PC kamu, atau klik tombol di keyboard virtual bawah!
             </div>
           </div>
 
@@ -1532,7 +2834,7 @@
           <!-- ALERT / FEEDBACK SUKSES -->
           <div id="shortcut-feedback-${mode}" style="display: none; margin-bottom: 14px;"></div>
 
-          <!-- PAPAN KETIK VIRTUAL INTERAKTIF (ON-SCREEN KEYBOARD SIMULATOR) -->
+          <!-- PAPAN KETIK VIRTUAL INTERAKTIF -->
           <div>
             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
               <span style="font-size: 0.82rem; font-weight: 700; color: var(--text-muted);">
@@ -1555,8 +2857,11 @@
             </button>
           </div>
         </div>
-      </div>
-    `;
+      `;
+    }
+
+    html += `</div>`;
+    container.innerHTML = html;
   };
 
   // Render Virtual Keyboard Layout HTML
@@ -1601,7 +2906,6 @@
     const keyEl = document.querySelector(`.vkey[data-vkey="${clean}"]`);
 
     if (['ctrl', 'alt', 'shift', 'win'].includes(clean)) {
-      // Toggle modifier key
       if (virtualPressedKeys.has(clean)) {
         virtualPressedKeys.delete(clean);
         if (keyEl) keyEl.classList.remove('active-mod');
@@ -1610,14 +2914,12 @@
         if (keyEl) keyEl.classList.add('active-mod');
       }
     } else {
-      // Regular key pressed with active modifiers
       if (keyEl) {
         keyEl.classList.add('pressed');
         setTimeout(() => keyEl.classList.remove('pressed'), 200);
       }
       virtualPressedKeys.add(clean);
       checkActiveCombination(mode);
-      // Remove non-modifier key
       setTimeout(() => {
         virtualPressedKeys.delete(clean);
       }, 300);
@@ -1631,7 +2933,7 @@
     if (fb) fb.style.display = 'none';
   };
 
-  // Evaluasi Kombinasi Tombol
+  // Evaluasi Kombinasi Tombol pada Bank Pintasan
   function checkActiveCombination(mode) {
     const list = mode === 'excel' ? window.EXCEL_SHORTCUTS : window.WORD_SHORTCUTS;
     const currentItem = list[appState.currentShortcutIdx[mode]];
@@ -1640,12 +2942,10 @@
     const expectedKeys = currentItem.keysArray.map(k => normalizeKey(k));
     const currentKeysArray = Array.from(virtualPressedKeys).map(k => normalizeKey(k));
 
-    // Cek apakah semua tombol yang diharapkan ada di tombol yang ditekan
     const hasAll = expectedKeys.every(k => currentKeysArray.includes(k));
     const feedbackBox = document.getElementById(`shortcut-feedback-${mode}`);
 
     if (hasAll) {
-      // SUKSES!
       if (window.sfx) sfx.playSuccess();
       if (!appState.shortcutCompleted[mode].includes(currentItem.id)) {
         appState.shortcutCompleted[mode].push(currentItem.id);
@@ -1673,7 +2973,6 @@
         `;
       }
 
-      // Reset modifier visual setelah 600ms
       setTimeout(() => {
         window.resetVirtualKeys(mode);
       }, 600);
@@ -1743,10 +3042,9 @@
 
   // =========================================================================
   // GLOBAL PHYSICAL KEYBOARD EVENT LISTENER
-  // Mendeteksi tombol keyboard fisik PC/Laptop murid tanpa popup save/print
+  // Mendeteksi tombol keyboard fisik PC/Laptop murid tanpa popup browser
   // =========================================================================
   window.addEventListener('keydown', function(e) {
-    // Cek apakah tab aktif adalah salah satu studio pintasan
     const tabExcel = document.getElementById('tab-shortcut-excel');
     const tabWord = document.getElementById('tab-shortcut-word');
     const isExcelActive = tabExcel && tabExcel.classList.contains('active');
@@ -1756,7 +3054,7 @@
     const mode = isExcelActive ? 'excel' : 'word';
 
     // Cegah aksi default browser untuk tombol latihan (Save, Print, Help, Find, dll)
-    const interceptedKeys = ['s', 'p', 'w', 'f', 'h', 'o', 'n', 'b', 'i', 'u', 'e', 'l', 'r', 'j', 'd', '1', '2', '3', '4', '5', '9', '0', '='];
+    const interceptedKeys = ['s', 'p', 'w', 'f', 'h', 'o', 'n', 'b', 'i', 'u', 'e', 'l', 'r', 'j', 'd', 't', 'k', '1', '2', '3', '4', '5', '9', '0', '='];
     if (e.ctrlKey && interceptedKeys.includes(e.key.toLowerCase())) {
       e.preventDefault();
     }
@@ -1767,7 +3065,13 @@
       e.preventDefault();
     }
 
-    // Kumpulkan tombol aktif
+    // Jika sedang dalam MODE SIMULASI PROYEK KANTOR
+    if (appState.activeStudioMode[mode] === 'project') {
+      handleProjectPhysicalKey(mode, e);
+      return;
+    }
+
+    // Jika dalam MODE BANK PINTASAN LENGKAP
     virtualPressedKeys.clear();
     if (e.ctrlKey) virtualPressedKeys.add('ctrl');
     if (e.altKey) virtualPressedKeys.add('alt');
@@ -1778,7 +3082,6 @@
     if (keyName === ' ') keyName = 'space';
     virtualPressedKeys.add(normalizeKey(keyName));
 
-    // Animasi tombol di virtual keyboard
     const clean = normalizeKey(keyName);
     const keyEl = document.querySelector(`.vkey[data-vkey="${clean}"]`);
     if (keyEl) {

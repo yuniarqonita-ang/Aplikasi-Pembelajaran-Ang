@@ -241,14 +241,14 @@ function switchTab(tabName) {
   } else if (tabName === 'shortcut-excel') {
     if (window.renderExcelShortcutStudio) renderExcelShortcutStudio();
     setKodiSpeech(
-      "Selamat datang di Studio Pintasan Keyboard Excel! ⌨️ Ada 53 pintasan keyboard Windows resmi dari panduan kantor!",
-      "Pahami skenario kantor di atas, baca Nalar Bayi Kodi biar gampang hafal, lalu tekan tombolnya di keyboard fisik atau simulator!"
+      "Selamat datang di Studio Simulasi Proyek Kantor Excel! 💼 Ada proyek nyata dari bos dan 53 pintasan keyboard resmi!",
+      "Selesaikan checklist permintaan bos di atas! Spreadsheet Excel akan bertransformasi langsung saat kamu menekan pintasannya di keyboard!"
     );
   } else if (tabName === 'shortcut-word') {
     if (window.renderWordShortcutStudio) renderWordShortcutStudio();
     setKodiSpeech(
-      "Selamat datang di Studio Pintasan Keyboard Microsoft Word! 📝 Ada 55 pintasan pengetikan dokumen, heading, dan format paragraf!",
-      "Tekan tombol keyboard fisik laptopmu atau klik tombol di papan ketik interaktif untuk menguasai trik mengetik kilat!"
+      "Selamat datang di Studio Simulasi Dokumen Word Nyata! 📝 Selesaikan proyek laporan eksekutif dari direksi!",
+      "Tekan tombol keyboard laptopmu atau klik tombol aksi pintasan untuk melihat lembar A4 Word bertransformasi secara real-time!"
     );
   } else if (tabName === 'dictionary') {
     renderDictionary();
