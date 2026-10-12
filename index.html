@@ -74,7 +74,7 @@
     <div id="app-update-banner" class="app-update-banner" style="display: none;">
       <div style="display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-wrap: wrap;">
         <span class="update-banner-text">
-          🚀 <strong>Versi Baru (v16) Tersedia!</strong> 100 Tantangan Cambridge Bilingual Math, 100 Studio Koding (HTML, JS, Python, Java, C#), 1.300 English, 105 Excel & 100 Lab IT siap dimuat!
+          🚀 <strong>Versi Baru (v17) Tersedia!</strong> Ujian Formatif Matematika SD Ihsaniyah Gajahmada Tegal (Kampus Al Hafidz), Game Hubungkan Kaos-Gantungan, 31 Ilustrasi Clay 3D HD, Panel Guru & Download CSV Nilai, serta Tampilan Terang Kontras Tinggi siap dimuat!
         </span>
         <button class="btn-update-now" onclick="forceAppUpdate()">Perbarui Sekarang ⚡</button>
       </div>
@@ -85,6 +85,10 @@
       <button class="nav-tab active" data-tab="adventure" onclick="switchTab('adventure')" title="Peta Petualangan Belajar">
         <span class="nav-icon">🗺️</span>
         <span class="nav-label">Petualangan</span>
+      </button>
+      <button class="nav-tab" data-tab="ihsaniyah-test" onclick="switchTab('ihsaniyah-test')" title="Ujian Formatif Matematika SD Ihsaniyah Gajahmada Tegal (Kampus Al Hafidz)">
+        <span class="nav-icon">🎒</span>
+        <span class="nav-label">SD Ihsaniyah</span>
       </button>
       <button class="nav-tab" data-tab="code-trainer" onclick="switchTab('code-trainer')" title="Studio Koding Manual: HTML, JS, Python, Java, C# (100 Tantangan)">
         <span class="nav-icon">💻</span>
@@ -245,6 +249,11 @@
       <div id="math-trainer-content-area"></div>
     </section>
 
+    <!-- ================= TAB: SD IHSANIYAH MATH FORMATIVE TEST & DIVISION QUEST ================= -->
+    <section id="tab-ihsaniyah-test" class="tab-content">
+      <div id="ihsaniyah-content-area"></div>
+    </section>
+
     <!-- ================= TAB 3: STUDIO ENGLISH & SPEAKING ================= -->
     <section id="tab-english-trainer" class="tab-content">
       <div class="section-title-wrap">
@@ -363,18 +372,19 @@
     </div>
   </div>
 
-  <!-- Scripts with Cache Buster v16 -->
-  <script src="js/sfx.js?v=20261009-v16"></script>
-  <script src="js/speech.js?v=20261009-v16"></script>
-  <script src="js/dictionary.js?v=20261009-v16"></script>
-  <script src="js/levels.js?v=20261009-v16"></script>
-  <script src="js/sql_trainer.js?v=20261009-v16"></script>
-  <script src="js/code_trainer.js?v=20261009-v16"></script>
-  <script src="js/english_trainer.js?v=20261009-v16"></script>
-  <script src="js/excel_trainer.js?v=20261009-v16"></script>
-  <script src="js/it_tech_trainer.js?v=20261009-v16"></script>
-  <script src="js/math_trainer.js?v=20261009-v16"></script>
-  <script src="js/ai_tutor.js?v=20261009-v16"></script>
-  <script src="js/app.js?v=20261009-v16"></script>
+  <!-- Scripts with Cache Buster v17 -->
+  <script src="js/sfx.js?v=20261012-v17"></script>
+  <script src="js/speech.js?v=20261012-v17"></script>
+  <script src="js/dictionary.js?v=20261012-v17"></script>
+  <script src="js/levels.js?v=20261012-v17"></script>
+  <script src="js/sql_trainer.js?v=20261012-v17"></script>
+  <script src="js/code_trainer.js?v=20261012-v17"></script>
+  <script src="js/english_trainer.js?v=20261012-v17"></script>
+  <script src="js/excel_trainer.js?v=20261012-v17"></script>
+  <script src="js/it_tech_trainer.js?v=20261012-v17"></script>
+  <script src="js/math_trainer.js?v=20261012-v17"></script>
+  <script src="js/ihsaniyah_math.js?v=20261012-v17"></script>
+  <script src="js/ai_tutor.js?v=20261012-v17"></script>
+  <script src="js/app.js?v=20261012-v17"></script>
 </body>
 </html>

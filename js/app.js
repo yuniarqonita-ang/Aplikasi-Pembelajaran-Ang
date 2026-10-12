@@ -34,6 +34,10 @@ const appState = {
   excelCompleted: [],
   excelUserFormulas: {},
   deferredInstallPrompt: null,
+  currentIhsIndex: 0,
+  ihsUserAnswers: {},
+  ihsCompletedList: [],
+  ihsScore: 0,
   currentMathIndex: 0,
   mathUnitFilter: "all",
   mathCompleted: [],
@@ -169,6 +173,12 @@ function switchTab(tabName) {
     setKodiSpeech(
       "Selamat datang di Laboratorium IT Tech & Jaringan! Ada 100 tantangan praktik standar CompTIA A+, Network+, Cisco CCNA, Security+, Algoritma & Automasi Python siap kamu taklukkan!",
       "Pahami contoh soal dan jawaban benar dulu di kotak atas, lalu pecahkan tantangan teknisnya!"
+    );
+  } else if (tabName === 'ihsaniyah-test') {
+    renderIhsaniyahTest();
+    setKodiSpeech(
+      "Selamat datang di Math Formative Test 2 & Division Stories! 🎒 Soal resmi kurikulum SD Ihsaniyah Gajahmada Tegal (Kampus Al Hafidz) lengkap dengan Nalar Bayi Kodi!",
+      "Isi identitas siswa, selesaikan soal pilihan ganda, game hubungkan garis kaos ke gantungan baju, dan cerita pembagian!"
     );
   } else if (tabName === 'math-trainer') {
     renderMathTrainer();
@@ -4562,3 +4572,717 @@ window.submitMathAnswer = function() {
 };
 
 
+
+
+// ==============================================================================
+// 🎒 SD IHSANIYAH GAJAHMADA TEGAL: MATH FORMATIVE TEST 2 & DIVISION QUEST
+// Interaktif: Game Hubungkan Garis, Form Registrasi Siswa, & Panel Guru (CSV)
+// ==============================================================================
+
+function renderIhsaniyahTest() {
+  const container = document.getElementById("ihsaniyah-content-area");
+  if (!container) return;
+
+  if (typeof window.IHSANIYAH_QUESTIONS === "undefined" || !window.IHSANIYAH_QUESTIONS.length) {
+    container.innerHTML = `<div class="info-box">Data soal SD Ihsaniyah sedang disiapkan...</div>`;
+    return;
+  }
+
+  const student = window.getIhsaniyahStudent();
+  appState.currentIhsIndex = appState.currentIhsIndex || 0;
+  appState.ihsUserAnswers = appState.ihsUserAnswers || {};
+  appState.ihsCompletedList = appState.ihsCompletedList || [];
+  appState.matchingSelectedShirt = null;
+
+  // Jika siswa belum login / mendaftar: tampilkan Identity Gate
+  if (!student) {
+    renderIhsaniyahStudentGate(container);
+    return;
+  }
+
+  const questions = window.IHSANIYAH_QUESTIONS;
+  if (appState.currentIhsIndex < 0 || appState.currentIhsIndex >= questions.length) {
+    appState.currentIhsIndex = 0;
+  }
+
+  const q = questions[appState.currentIhsIndex];
+  const isDone = appState.ihsCompletedList.includes(q.id);
+  const totalScore = calculateIhsaniyahScore();
+
+  container.innerHTML = `
+    <!-- Header Siswa & Sekolah -->
+    <div style="background: linear-gradient(135deg, rgba(30, 41, 59, 0.95), rgba(15, 23, 42, 0.98)); border: 1.5px solid #38bdf8; border-radius: 16px; padding: 18px 22px; margin-bottom: 20px; box-shadow: var(--card-shadow);">
+      <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 14px;">
+        <div style="display: flex; align-items: center; gap: 12px;">
+          <span style="font-size: 2.2rem;">🎒</span>
+          <div>
+            <div style="font-size: 0.78rem; text-transform: uppercase; font-weight: 800; color: #38bdf8; letter-spacing: 0.5px;">
+              YAYASAN PERGURUAN IHSANIYAH • SD IHSANIYAH GAJAHMADA TEGAL
+            </div>
+            <h3 style="margin: 2px 0 0; color: #fff; font-size: 1.25rem;">
+              Math Formative Test 2 & Division Quest
+            </h3>
+            <div style="font-size: 0.82rem; color: #cbd5e1; margin-top: 2px;">
+              Kampus Al Hafidz • Kurikulum Matematika Bilingual SD
+            </div>
+          </div>
+        </div>
+
+        <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
+          <div style="background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.1); padding: 8px 14px; border-radius: 10px; text-align: right;">
+            <div style="font-size: 0.74rem; color: var(--text-muted);">Siswa Aktif:</div>
+            <div style="font-size: 0.92rem; font-weight: 800; color: #4ade80;">
+              ${student.name} (${student.className} / #${student.number})
+            </div>
+          </div>
+
+          <div style="background: rgba(16, 185, 129, 0.15); border: 1px solid #10b981; padding: 8px 14px; border-radius: 10px; text-align: center;">
+            <div style="font-size: 0.74rem; color: #86efac;">Skor Sementara:</div>
+            <div style="font-size: 1.15rem; font-weight: 800; color: #4ade80;">
+              ${totalScore} / 100
+            </div>
+          </div>
+
+          <button class="btn-secondary" style="padding: 8px 12px; font-size: 0.8rem; border-radius: 8px;" onclick="openIhsaniyahAdminPanel()">
+            👩‍🏫 Panel Guru (Rekap)
+          </button>
+          <button class="btn-secondary" style="padding: 8px 12px; font-size: 0.8rem; border-radius: 8px; color: #fca5a5;" onclick="logoutIhsaniyahStudentHandler()">
+            🚪 Keluar / Ganti Siswa
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Navigation Bar Soal -->
+    <div class="challenge-nav-bar" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; margin-bottom: 20px; background: rgba(15, 23, 42, 0.6); padding: 12px 16px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.08);">
+      <div style="display: flex; align-items: center; gap: 8px;">
+        <span style="font-size: 0.82rem; font-weight: 800; color: var(--accent-cyan);">Navigasi Soal Ujian:</span>
+        <span style="font-size: 0.82rem; color: #fff; font-weight: 700;">Soal #${appState.currentIhsIndex + 1} dari ${questions.length}</span>
+      </div>
+
+      <div style="display: flex; align-items: center; gap: 8px; flex: 1; max-width: 620px; justify-content: flex-end;">
+        <button class="btn-secondary" style="padding: 6px 12px; font-size: 0.82rem;" onclick="navIhsaniyahQuestion(-1)" ${appState.currentIhsIndex <= 0 ? 'disabled' : ''}>
+          ◀ Sebelumnya
+        </button>
+        <select class="challenge-page-select" style="flex: 1; padding: 6px 10px; font-size: 0.82rem; border-radius: 8px; background: #0f172a; color: #fff; border: 1px solid var(--border-glow);" onchange="setIhsaniyahIndex(Number(this.value))">
+          ${questions.map((item, idx) => `
+            <option value="${idx}" ${idx === appState.currentIhsIndex ? 'selected' : ''}>
+              #${idx + 1}: ${item.title} ${appState.ihsCompletedList.includes(item.id) ? '✓ Selesai' : ''}
+            </option>
+          `).join('')}
+        </select>
+        <button class="btn-secondary" style="padding: 6px 12px; font-size: 0.82rem;" onclick="navIhsaniyahQuestion(1)" ${appState.currentIhsIndex >= questions.length - 1 ? 'disabled' : ''}>
+          Berikutnya ▶
+        </button>
+      </div>
+    </div>
+
+    <!-- Kotak Soal Aktif -->
+    <div style="background: linear-gradient(145deg, rgba(15, 23, 42, 0.95), rgba(17, 24, 39, 0.98)); border: 1.5px solid rgba(56, 189, 248, 0.4); border-radius: 16px; padding: 22px; box-shadow: 0 4px 20px rgba(0,0,0,0.3); margin-bottom: 24px;">
+      <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; margin-bottom: 12px;">
+        <span style="font-size: 0.78rem; font-weight: 800; background: rgba(56, 189, 248, 0.2); color: #38bdf8; padding: 4px 12px; border-radius: 20px; border: 1px solid rgba(56, 189, 248, 0.35);">
+          ${q.badge}
+        </span>
+        <span style="font-size: 0.78rem; color: #94a3b8; font-weight: 600;">
+          ${q.page} (Ref: SD Ihsaniyah Math Test)
+        </span>
+      </div>
+
+      <h3 style="margin: 0 0 8px; font-size: 1.2rem; color: #fff;">${q.number}. ${q.title}</h3>
+      <p style="margin: 0 0 14px; font-size: 0.95rem; color: #e2e8f0; line-height: 1.5;">${q.instruction}</p>
+
+      ${q.diagram ? q.diagram : ''}
+
+      <!-- Render Area Khusus Tipe Soal -->
+      <div id="ihs-question-interactive-body" style="margin: 18px 0;">
+        ${renderIhsaniyahInteractiveBody(q)}
+      </div>
+
+      <!-- Action Buttons -->
+      <div style="display: flex; gap: 10px; flex-wrap: wrap; margin-top: 18px;">
+        <button class="btn-primary" style="padding: 12px 24px; font-size: 0.95rem; font-weight: 800; background: linear-gradient(135deg, #059669, #10b981); border: none; border-radius: 8px;" onclick="submitIhsaniyahAnswer()">
+          🚀 Periksa Jawaban & Buka Pembahasan
+        </button>
+        <button class="btn-secondary" style="padding: 12px 18px; font-size: 0.88rem; font-weight: 700; border-radius: 8px;" onclick="navIhsaniyahQuestion(1)">
+          ⏭️ Soal Berikutnya
+        </button>
+      </div>
+
+      <!-- Kotak Feedback & Nalar Bayi Kodi -->
+      <div id="ihs-feedback-box" style="margin-top: 16px; display: ${isDone ? 'block' : 'none'};">
+        ${isDone ? renderIhsaniyahExplanation(q) : ''}
+      </div>
+    </div>
+  `;
+}
+
+// Render Identity Gate (Form Siswa Sebelum Masuk)
+function renderIhsaniyahStudentGate(container) {
+  container.innerHTML = `
+    <div style="max-width: 600px; margin: 30px auto; background: linear-gradient(145deg, rgba(30, 41, 59, 0.95), rgba(15, 23, 42, 0.98)); border: 2px solid #38bdf8; border-radius: 20px; padding: 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.4); text-align: center;">
+      <div style="font-size: 3rem; margin-bottom: 8px;">🎒</div>
+      <div style="font-size: 0.85rem; font-weight: 800; text-transform: uppercase; color: #38bdf8; letter-spacing: 0.8px;">
+        YAYASAN PERGURUAN IHSANIYAH
+      </div>
+      <h2 style="margin: 4px 0 6px; color: #fff; font-size: 1.5rem;">
+        SD IHSANIYAH GAJAHMADA TEGAL
+      </h2>
+      <div style="font-size: 0.9rem; color: #cbd5e1; margin-bottom: 20px;">
+        Kampus Al Hafidz • Math Formative Test 2 & Division Stories
+      </div>
+
+      <div style="background: rgba(0,0,0,0.3); border-radius: 12px; padding: 20px; margin-bottom: 24px; text-align: left; border: 1px solid rgba(255,255,255,0.08);">
+        <p style="margin: 0 0 16px; font-size: 0.88rem; color: #e2e8f0; line-height: 1.5;">
+          Selamat datang di petualangan matematika! Sebelum mengerjakan soal, silakan tulis nama lengkap, kelas, dan nomor absenmu ya:
+        </p>
+
+        <div style="margin-bottom: 14px;">
+          <label style="display: block; font-size: 0.82rem; font-weight: 700; color: #38bdf8; margin-bottom: 6px;">Nama Lengkap Siswa:</label>
+          <input type="text" id="ihs-input-name" placeholder="Contoh: Muhammad Farhan" style="width: 100%; padding: 12px; font-size: 0.95rem; border-radius: 8px; border: 1.5px solid #cbd5e1; background: #0f172a; color: #fff; box-sizing: border-box;">
+        </div>
+
+        <div style="display: flex; gap: 12px; margin-bottom: 14px;">
+          <div style="flex: 1;">
+            <label style="display: block; font-size: 0.82rem; font-weight: 700; color: #38bdf8; margin-bottom: 6px;">Kelas:</label>
+            <select id="ihs-input-class" style="width: 100%; padding: 12px; font-size: 0.95rem; border-radius: 8px; border: 1.5px solid #cbd5e1; background: #0f172a; color: #fff; box-sizing: border-box;">
+              <option value="Kelas 2A">Kelas 2A</option>
+              <option value="Kelas 2B">Kelas 2B</option>
+              <option value="Kelas 2C">Kelas 2C</option>
+              <option value="Kelas 3A">Kelas 3A</option>
+              <option value="Kelas 3B">Kelas 3B</option>
+              <option value="Kelas 3C">Kelas 3C</option>
+            </select>
+          </div>
+          <div style="width: 120px;">
+            <label style="display: block; font-size: 0.82rem; font-weight: 700; color: #38bdf8; margin-bottom: 6px;">No Absen:</label>
+            <input type="number" id="ihs-input-number" min="1" max="50" placeholder="12" style="width: 100%; padding: 12px; font-size: 0.95rem; border-radius: 8px; border: 1.5px solid #cbd5e1; background: #0f172a; color: #fff; box-sizing: border-box;">
+          </div>
+        </div>
+
+        <div id="ihs-gate-error" style="display: none; color: #f87171; font-size: 0.82rem; font-weight: 700; margin-top: 8px;"></div>
+      </div>
+
+      <button class="btn-primary" style="width: 100%; padding: 14px; font-size: 1.05rem; font-weight: 800; background: linear-gradient(135deg, #059669, #10b981); border: none; border-radius: 10px; box-shadow: 0 4px 16px rgba(16, 185, 129, 0.4);" onclick="handleStudentGateSubmit()">
+        🚀 Masuk & Mulai Mengerjakan Ujian
+      </button>
+
+      <div style="margin-top: 16px;">
+        <button class="btn-secondary" style="padding: 8px 16px; font-size: 0.82rem;" onclick="openIhsaniyahAdminPanel()">
+          👩‍🏫 Panel Guru: Lihat Rekap Nilai & Unduh CSV
+        </button>
+      </div>
+    </div>
+  `;
+}
+
+window.handleStudentGateSubmit = function() {
+  const nameEl = document.getElementById("ihs-input-name");
+  const classEl = document.getElementById("ihs-input-class");
+  const numEl = document.getElementById("ihs-input-number");
+  const errEl = document.getElementById("ihs-gate-error");
+
+  const name = nameEl ? nameEl.value.trim() : "";
+  const className = classEl ? classEl.value : "Kelas 2A";
+  const number = numEl ? numEl.value.trim() : "";
+
+  if (!name || !number) {
+    if (errEl) {
+      errEl.style.display = "block";
+      errEl.textContent = "⚠️ Mohon lengkapi Nama Siswa dan Nomor Absen ya!";
+    }
+    sfx.playWrong();
+    return;
+  }
+
+  const student = { name, className, number, startTime: new Date().toISOString() };
+  window.setIhsaniyahStudent(student);
+  sfx.playSuccess();
+  renderIhsaniyahTest();
+};
+
+window.logoutIhsaniyahStudentHandler = function() {
+  if (confirm("Apakah kamu yakin ingin keluar dan mengganti siswa?")) {
+    window.logoutIhsaniyahStudent();
+    appState.ihsUserAnswers = {};
+    appState.ihsCompletedList = [];
+    renderIhsaniyahTest();
+  }
+};
+
+// Render Interaktif berdasarkan Tipe Soal
+function renderIhsaniyahInteractiveBody(q) {
+  const currentAnswer = appState.ihsUserAnswers[q.id] || {};
+
+  if (q.type === "multi_select") {
+    const selectedKeys = currentAnswer.selected || [];
+    return `
+      <div style="display: flex; flex-direction: column; gap: 10px;">
+        ${q.options.map(opt => `
+          <label style="display: flex; align-items: center; gap: 12px; padding: 12px 16px; border-radius: 10px; background: rgba(30, 41, 59, 0.7); border: 1.5px solid rgba(255,255,255,0.1); cursor: pointer; transition: all 0.2s;" class="choice-card-btn">
+            <input type="checkbox" name="ihs_chk_${q.id}" value="${opt.key}" ${selectedKeys.includes(opt.key) ? 'checked' : ''} onchange="saveIhsMultiSelect('${q.id}')" style="width: 18px; height: 18px; accent-color: #38bdf8;">
+            <span style="font-size: 0.95rem; font-weight: 700; color: #fff;">${opt.text}</span>
+          </label>
+        `).join('')}
+      </div>
+    `;
+  }
+
+  if (q.type === "true_false_table") {
+    const responses = currentAnswer.responses || {};
+    return `
+      <div style="background: rgba(0,0,0,0.25); border-radius: 10px; padding: 12px; border: 1px solid rgba(255,255,255,0.1);">
+        <table style="width: 100%; border-collapse: collapse; font-size: 0.9rem;">
+          <thead>
+            <tr style="border-bottom: 2px solid rgba(255,255,255,0.2); color: var(--accent-cyan); text-align: left;">
+              <th style="padding: 8px;">Pernyataan (Statement)</th>
+              <th style="padding: 8px; text-align: center; width: 80px;">Benar (True)</th>
+              <th style="padding: 8px; text-align: center; width: 80px;">Salah (False)</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${q.statements.map(st => `
+              <tr style="border-bottom: 1px solid rgba(255,255,255,0.06);">
+                <td style="padding: 10px 8px; color: #fff; font-weight: 600;">${st.text}</td>
+                <td style="padding: 10px 8px; text-align: center;">
+                  <input type="radio" name="tf_${st.id}" value="true" ${responses[st.id] === true ? 'checked' : ''} onchange="saveIhsTrueFalse('${q.id}', '${st.id}', true)">
+                </td>
+                <td style="padding: 10px 8px; text-align: center;">
+                  <input type="radio" name="tf_${st.id}" value="false" ${responses[st.id] === false ? 'checked' : ''} onchange="saveIhsTrueFalse('${q.id}', '${st.id}', false)">
+                </td>
+              </tr>
+            `).join('')}
+          </tbody>
+        </table>
+      </div>
+    `;
+  }
+
+  if (q.type === "fill_blank") {
+    const val = currentAnswer.text || "";
+    return `
+      <div style="margin: 12px 0;">
+        <label style="display: block; font-size: 0.85rem; font-weight: 700; color: #38bdf8; margin-bottom: 6px;">
+          ${q.questionPrompt || 'Tuliskan Jawabanmu:'}
+        </label>
+        <input type="text" id="ihs-text-input-${q.id}" value="${val.replace(/"/g, '&quot;')}" placeholder="${q.placeholder || 'Ketik jawabanmu...'}" oninput="saveIhsFillBlank('${q.id}', this.value)" style="width: 100%; max-width: 400px; padding: 12px; font-size: 1rem; font-weight: 700; font-family: monospace; border-radius: 8px; border: 1.5px solid #38bdf8; background: #0f172a; color: #fff;">
+      </div>
+    `;
+  }
+
+  if (q.type === "column_math") {
+    const vals = currentAnswer.subVals || {};
+    return `
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px;">
+        ${q.subQuestions.map((sq, idx) => `
+          <div style="background: rgba(0,0,0,0.3); padding: 12px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.1);">
+            <div style="font-size: 1rem; font-weight: 800; color: #fff; margin-bottom: 8px;">${sq.label}</div>
+            <input type="text" id="ihs-col-${idx}" value="${vals[idx] || ''}" placeholder="Hasil..." oninput="saveIhsColumnMath('${q.id}', ${idx}, this.value)" style="width: 100%; padding: 10px; font-size: 1rem; font-weight: 700; font-family: monospace; border-radius: 8px; border: 1.5px solid #38bdf8; background: #0f172a; color: #fff;">
+          </div>
+        `).join('')}
+      </div>
+    `;
+  }
+
+  if (q.type === "matching_game") {
+    const matched = currentAnswer.matchedPairs || {};
+    const matchedCount = Object.keys(matched).length;
+
+    return `
+      <div style="margin: 10px 0;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+          <span style="font-size: 0.85rem; color: #38bdf8; font-weight: 700;">
+            👕 Klik Kaos di kiri, lalu klik Gantungan pasangannya di kanan!
+          </span>
+          <span style="font-size: 0.85rem; font-weight: 800; color: #4ade80;">
+            Terhubung: ${matchedCount} / ${q.pairs.length} Pasang
+          </span>
+        </div>
+
+        <div class="matching-game-container">
+          <!-- Kolom Kiri: Kaos Perkalian -->
+          <div class="matching-col">
+            ${q.pairs.map(p => {
+              const isCardMatched = !!matched[p.leftId];
+              const isCardSelected = (appState.matchingSelectedShirt === p.leftId);
+              return `
+                <div class="matching-card ${isCardMatched ? 'matched' : ''} ${isCardSelected ? 'selected' : ''}" onclick="selectIhsShirt('${p.leftId}')">
+                  <span style="font-size: 1.05rem; font-weight: 800; color: #fff;">${p.leftText}</span>
+                  <span>${isCardMatched ? '✅' : '👉'}</span>
+                </div>
+              `;
+            }).join('')}
+          </div>
+
+          <!-- Kolom Kanan: Gantungan Pembagian (Shuffled) -->
+          <div class="matching-col">
+            ${q.pairs.map(p => {
+              const matchedShirt = Object.keys(matched).find(k => matched[k] === p.rightId);
+              const isHangerMatched = !!matchedShirt;
+              return `
+                <div class="matching-card ${isHangerMatched ? 'matched' : ''}" onclick="connectIhsHanger('${p.rightId}')">
+                  <span style="font-size: 1.05rem; font-weight: 800; color: #fff;">${p.rightText}</span>
+                  <span>${isHangerMatched ? '🔗' : '👈'}</span>
+                </div>
+              `;
+            }).join('')}
+          </div>
+        </div>
+      </div>
+    `;
+  }
+
+  if (q.type === "division_stories") {
+    const storyAnswers = currentAnswer.storyAnswers || {};
+    return `
+      <div style="display: flex; flex-direction: column; gap: 14px;">
+        ${q.stories.map(st => `
+          <div style="background: rgba(0,0,0,0.3); border-radius: 12px; padding: 14px; border: 1px solid rgba(255,255,255,0.1);">
+            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 6px;">
+              <span style="font-size: 1.3rem;">${st.icon}</span>
+              <strong style="font-size: 0.95rem; color: #fff;">${st.title}</strong>
+            </div>
+            <p style="margin: 0 0 8px; font-size: 0.88rem; color: #cbd5e1; line-height: 1.4;">${st.prompt}</p>
+            <div style="display: flex; align-items: center; gap: 10px;">
+              <span style="font-family: monospace; font-size: 1.05rem; font-weight: 800; color: #38bdf8;">${st.sentence}</span>
+              <input type="number" id="ihs_story_${st.id}" value="${storyAnswers[st.id] || ''}" placeholder="Jawaban..." oninput="saveIhsStoryAnswer('${q.id}', '${st.id}', this.value)" style="width: 100px; padding: 8px 12px; font-size: 1rem; font-weight: 700; border-radius: 8px; border: 1.5px solid #38bdf8; background: #0f172a; color: #fff;">
+              <span style="font-size: 0.85rem; color: #94a3b8;">${st.unit}</span>
+            </div>
+          </div>
+        `).join('')}
+      </div>
+    `;
+  }
+
+  if (q.type === "table_100") {
+    const selectedKey = currentAnswer.selectedOption || "";
+    return `
+      <div>
+        <p style="margin: 0 0 10px; font-size: 0.95rem; color: #fff; font-weight: 700;">${q.prompt}</p>
+        <div style="display: flex; flex-direction: column; gap: 10px;">
+          ${q.options.map(opt => `
+            <label style="display: flex; align-items: center; gap: 12px; padding: 12px 16px; border-radius: 10px; background: rgba(30, 41, 59, 0.7); border: 1.5px solid rgba(255,255,255,0.1); cursor: pointer;" class="choice-card-btn">
+              <input type="radio" name="ihs_table100" value="${opt.key}" ${selectedKey === opt.key ? 'checked' : ''} onchange="saveIhsTableOption('${q.id}', '${opt.key}')" style="width: 18px; height: 18px; accent-color: #38bdf8;">
+              <span style="font-size: 0.95rem; font-weight: 700; color: #fff;">${opt.text}</span>
+            </label>
+          `).join('')}
+        </div>
+      </div>
+    `;
+  }
+
+  return '';
+}
+
+// Handlers untuk menyimpan jawaban sementara
+window.saveIhsMultiSelect = function(qid) {
+  const checkboxes = document.querySelectorAll(`input[name="ihs_chk_${qid}"]:checked`);
+  const selected = Array.from(checkboxes).map(c => c.value);
+  appState.ihsUserAnswers[qid] = appState.ihsUserAnswers[qid] || {};
+  appState.ihsUserAnswers[qid].selected = selected;
+};
+
+window.saveIhsTrueFalse = function(qid, stId, val) {
+  appState.ihsUserAnswers[qid] = appState.ihsUserAnswers[qid] || {};
+  appState.ihsUserAnswers[qid].responses = appState.ihsUserAnswers[qid].responses || {};
+  appState.ihsUserAnswers[qid].responses[stId] = val;
+};
+
+window.saveIhsFillBlank = function(qid, val) {
+  appState.ihsUserAnswers[qid] = appState.ihsUserAnswers[qid] || {};
+  appState.ihsUserAnswers[qid].text = val;
+};
+
+window.saveIhsColumnMath = function(qid, idx, val) {
+  appState.ihsUserAnswers[qid] = appState.ihsUserAnswers[qid] || {};
+  appState.ihsUserAnswers[qid].subVals = appState.ihsUserAnswers[qid].subVals || {};
+  appState.ihsUserAnswers[qid].subVals[idx] = val;
+};
+
+window.saveIhsStoryAnswer = function(qid, stId, val) {
+  appState.ihsUserAnswers[qid] = appState.ihsUserAnswers[qid] || {};
+  appState.ihsUserAnswers[qid].storyAnswers = appState.ihsUserAnswers[qid].storyAnswers || {};
+  appState.ihsUserAnswers[qid].storyAnswers[stId] = val;
+};
+
+window.saveIhsTableOption = function(qid, optKey) {
+  appState.ihsUserAnswers[qid] = appState.ihsUserAnswers[qid] || {};
+  appState.ihsUserAnswers[qid].selectedOption = optKey;
+};
+
+// Handlers Matching Game (Hubungkan Kaos ke Gantungan Baju)
+window.selectIhsShirt = function(shirtId) {
+  const q = window.IHSANIYAH_QUESTIONS[appState.currentIhsIndex];
+  const ans = appState.ihsUserAnswers[q.id] || {};
+  ans.matchedPairs = ans.matchedPairs || {};
+
+  if (ans.matchedPairs[shirtId]) return; // sudah matched
+
+  appState.matchingSelectedShirt = shirtId;
+  sfx.playClick();
+  renderIhsaniyahTest();
+};
+
+window.connectIhsHanger = function(hangerId) {
+  const q = window.IHSANIYAH_QUESTIONS[appState.currentIhsIndex];
+  if (!appState.matchingSelectedShirt) {
+    alert("Silakan klik salah satu KAOS di sebelah kiri terlebih dahulu!");
+    return;
+  }
+
+  const shirtId = appState.matchingSelectedShirt;
+  const pair = q.pairs.find(p => p.leftId === shirtId);
+
+  if (pair && pair.rightId === hangerId) {
+    // MATCHED!
+    sfx.playSuccess();
+    appState.ihsUserAnswers[q.id] = appState.ihsUserAnswers[q.id] || {};
+    appState.ihsUserAnswers[q.id].matchedPairs = appState.ihsUserAnswers[q.id].matchedPairs || {};
+    appState.ihsUserAnswers[q.id].matchedPairs[shirtId] = hangerId;
+    appState.matchingSelectedShirt = null;
+    renderIhsaniyahTest();
+  } else {
+    // MISMATCH
+    sfx.playWrong();
+    alert("Ups, pasangan belum cocok! Coba ingat kembali keluarga perkalian dan pembagiannya ya!");
+    appState.matchingSelectedShirt = null;
+    renderIhsaniyahTest();
+  }
+};
+
+// Navigasi Soal
+window.setIhsaniyahIndex = function(idx) {
+  appState.currentIhsIndex = idx;
+  renderIhsaniyahTest();
+};
+
+window.navIhsaniyahQuestion = function(delta) {
+  const questions = window.IHSANIYAH_QUESTIONS || [];
+  const nextIdx = appState.currentIhsIndex + delta;
+  if (nextIdx >= 0 && nextIdx < questions.length) {
+    appState.currentIhsIndex = nextIdx;
+    renderIhsaniyahTest();
+  }
+};
+
+// Evaluasi & Pemeriksaan Jawaban
+window.submitIhsaniyahAnswer = function() {
+  const q = window.IHSANIYAH_QUESTIONS[appState.currentIhsIndex];
+  const ans = appState.ihsUserAnswers[q.id] || {};
+
+  let isCorrect = false;
+
+  if (q.type === "multi_select") {
+    const selected = ans.selected || [];
+    const correctKeys = q.options.filter(o => o.isCorrect).map(o => o.key);
+    isCorrect = (selected.length === correctKeys.length) && correctKeys.every(k => selected.includes(k));
+  } else if (q.type === "true_false_table") {
+    const res = ans.responses || {};
+    isCorrect = q.statements.every(st => res[st.id] === st.correctAnswer);
+  } else if (q.type === "fill_blank") {
+    const txt = (ans.text || "").trim().toLowerCase();
+    isCorrect = q.acceptedInputs.some(acc => txt.includes(acc.toLowerCase()));
+  } else if (q.type === "column_math") {
+    const vals = ans.subVals || {};
+    isCorrect = q.subQuestions.every((sq, idx) => (vals[idx] || "").trim() === sq.expected);
+  } else if (q.type === "matching_game") {
+    const matched = ans.matchedPairs || {};
+    isCorrect = (Object.keys(matched).length === q.pairs.length);
+  } else if (q.type === "division_stories") {
+    const sAns = ans.storyAnswers || {};
+    isCorrect = q.stories.every(st => (sAns[st.id] || "").trim() === st.expected);
+  } else if (q.type === "table_100") {
+    isCorrect = (ans.selectedOption === "A");
+  }
+
+  if (isCorrect) {
+    sfx.playSuccess();
+    if (!appState.ihsCompletedList.includes(q.id)) {
+      appState.ihsCompletedList.push(q.id);
+      saveCurrentStudentProgress();
+    }
+  } else {
+    sfx.playWrong();
+  }
+
+  // Tampilkan feedback box
+  const feedbackEl = document.getElementById("ihs-feedback-box");
+  if (feedbackEl) {
+    feedbackEl.style.display = "block";
+    feedbackEl.innerHTML = renderIhsaniyahExplanation(q, isCorrect);
+  }
+};
+
+function calculateIhsaniyahScore() {
+  const completed = appState.ihsCompletedList || [];
+  return completed.length * 10; // 10 soal x 10 poin = 100 poin
+}
+
+function saveCurrentStudentProgress() {
+  const student = window.getIhsaniyahStudent();
+  if (!student) return;
+
+  const score = calculateIhsaniyahScore();
+  const record = {
+    date: new Date().toLocaleDateString('id-ID'),
+    time: new Date().toLocaleTimeString('id-ID'),
+    studentName: student.name,
+    studentClass: student.className,
+    studentNumber: student.number,
+    score: score,
+    status: score >= 70 ? "Lulus / Tuntas" : "Perlu Bimbingan",
+    correctCount: appState.ihsCompletedList.length,
+    totalQuestions: window.IHSANIYAH_QUESTIONS.length
+  };
+
+  // Update record di localStorage
+  window.saveIhsaniyahRecord(record);
+}
+
+// Render Pembahasan Lengkap & Nalar Bayi Kodi
+function renderIhsaniyahExplanation(q, userIsCorrect = true) {
+  return `
+    <div class="alert-box ${userIsCorrect ? 'success' : 'warning'}" style="margin: 0; padding: 16px; border-radius: 12px;">
+      <div style="font-size: 1.05rem; font-weight: 800; margin-bottom: 6px;">
+        ${userIsCorrect ? '🎉 Luar Biasa! Jawabanmu Tepat!' : '⚠️ Masih Ada yang Belum Tepat, Pelajari Pembahasannya Yuk!'}
+      </div>
+
+      <div style="font-size: 0.9rem; line-height: 1.5; color: #e2e8f0; margin-bottom: 12px;">
+        ${q.explanation || ''}
+      </div>
+
+      <!-- Detail Pembahasan Tiap Opsi -->
+      ${q.options ? `
+        <div style="background: rgba(0,0,0,0.25); padding: 10px 14px; border-radius: 8px; margin-bottom: 10px;">
+          <div style="font-size: 0.8rem; font-weight: 800; color: #fff; margin-bottom: 4px;">Detail Pilihan Jawaban:</div>
+          <ul style="margin: 0; padding-left: 20px; font-size: 0.85rem; line-height: 1.45;">
+            ${q.options.map(o => `
+              <li style="color: ${o.isCorrect ? '#86efac' : '#fca5a5'}; margin-bottom: 4px;">
+                <strong>${o.key}:</strong> ${o.isCorrect ? o.reasonCorrect : o.reasonWrong}
+              </li>
+            `).join('')}
+          </ul>
+        </div>
+      ` : ''}
+
+      <!-- Nalar Bayi Kodi -->
+      <div style="background: rgba(250, 204, 21, 0.12); border-left: 4px solid #facc15; border-radius: 8px; padding: 10px 14px;">
+        <strong style="color: #facc15; font-size: 0.85rem;">👶 Nalar Bayi Kodi:</strong>
+        <div style="color: #fef08a; font-size: 0.88rem; line-height: 1.45; margin-top: 3px;">
+          ${q.nalarBayiKodi}
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+// Modal Panel Guru / Admin Rekap Nilai Siswa
+window.openIhsaniyahAdminPanel = function() {
+  const records = window.getAllIhsaniyahRecords();
+  const avgScore = records.length ? Math.round(records.reduce((acc, r) => acc + (r.score || 0), 0) / records.length) : 0;
+  const highestScore = records.length ? Math.max(...records.map(r => r.score || 0)) : 0;
+
+  let modalEl = document.getElementById("ihs-admin-modal-wrap");
+  if (!modalEl) {
+    modalEl = document.createElement("div");
+    modalEl.id = "ihs-admin-modal-wrap";
+    modalEl.className = "modal-overlay active";
+    document.body.appendChild(modalEl);
+  } else {
+    modalEl.className = "modal-overlay active";
+  }
+
+  modalEl.innerHTML = `
+    <div class="modal-content" style="max-width: 850px; width: 95%;">
+      <div class="modal-header">
+        <div style="display: flex; align-items: center; gap: 10px;">
+          <span style="font-size: 1.8rem;">👩‍🏫</span>
+          <div>
+            <h2 style="margin: 0; font-size: 1.25rem; color: #fff;">Panel Guru: Rekap Data Siswa & Nilai Ujian</h2>
+            <div style="font-size: 0.8rem; color: var(--accent-cyan);">SD Ihsaniyah Gajahmada Tegal (Kampus Al Hafidz)</div>
+          </div>
+        </div>
+        <button class="btn-close-modal" onclick="closeIhsaniyahAdminPanel()">✕</button>
+      </div>
+
+      <div class="modal-body" style="padding: 20px;">
+        <!-- Statistik Ringkas -->
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 14px; margin-bottom: 20px;">
+          <div style="background: rgba(30, 41, 59, 0.7); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; padding: 14px; text-align: center;">
+            <div style="font-size: 0.8rem; color: #94a3b8;">Total Siswa Mengerjakan</div>
+            <div style="font-size: 1.5rem; font-weight: 800; color: #fff; margin-top: 4px;">${records.length} Siswa</div>
+          </div>
+          <div style="background: rgba(30, 41, 59, 0.7); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; padding: 14px; text-align: center;">
+            <div style="font-size: 0.8rem; color: #94a3b8;">Rata-rata Nilai</div>
+            <div style="font-size: 1.5rem; font-weight: 800; color: #38bdf8; margin-top: 4px;">${avgScore} / 100</div>
+          </div>
+          <div style="background: rgba(30, 41, 59, 0.7); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; padding: 14px; text-align: center;">
+            <div style="font-size: 0.8rem; color: #94a3b8;">Nilai Tertinggi</div>
+            <div style="font-size: 1.5rem; font-weight: 800; color: #4ade80; margin-top: 4px;">${highestScore} / 100</div>
+          </div>
+        </div>
+
+        <!-- Tombol Aksi Download -->
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; margin-bottom: 14px;">
+          <button class="btn-primary" style="padding: 10px 18px; font-weight: 800; background: linear-gradient(135deg, #059669, #10b981); border: none; border-radius: 8px;" onclick="window.downloadIhsaniyahCSV()">
+            📥 Download Rekap Nilai Siswa (Excel / CSV)
+          </button>
+          <button class="btn-secondary" style="padding: 8px 14px; font-size: 0.8rem; color: #fca5a5;" onclick="clearIhsaniyahRecordsHandler()">
+            🗑️ Reset / Hapus Data
+          </button>
+        </div>
+
+        <!-- Tabel Rekap Nilai -->
+        <div style="overflow-x: auto; max-height: 380px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.1);">
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th>No</th>
+                <th>Tanggal/Jam</th>
+                <th>Nama Siswa</th>
+                <th>Kelas</th>
+                <th>Absen</th>
+                <th>Skor</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              ${records.length ? records.map((r, idx) => `
+                <tr>
+                  <td>${idx + 1}</td>
+                  <td>${r.date || '-'} ${r.time || ''}</td>
+                  <td style="font-weight: 700; color: #fff;">${r.studentName}</td>
+                  <td>${r.studentClass}</td>
+                  <td>#${r.studentNumber}</td>
+                  <td style="font-weight: 800; color: ${r.score >= 70 ? '#4ade80' : '#f59e0b'};">${r.score}</td>
+                  <td><span style="font-size: 0.75rem; padding: 3px 8px; border-radius: 12px; background: ${r.score >= 70 ? 'rgba(16, 185, 129, 0.2)' : 'rgba(245, 158, 11, 0.2)'}; color: ${r.score >= 70 ? '#86efac' : '#fde68a'};">${r.status}</span></td>
+                </tr>
+              `).join('') : `
+                <tr>
+                  <td colspan="7" style="text-align: center; padding: 30px; color: #94a3b8;">
+                    Belum ada siswa yang menyelesaikan ujian. Data akan muncul otomatis setelah siswa selesai mengerjakan soal.
+                  </td>
+                </tr>
+              `}
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="modal-footer" style="padding: 14px 20px;">
+        <button class="btn-secondary" onclick="closeIhsaniyahAdminPanel()">Tutup</button>
+      </div>
+    </div>
+  `;
+};
+
+window.closeIhsaniyahAdminPanel = function() {
+  const modalEl = document.getElementById("ihs-admin-modal-wrap");
+  if (modalEl) modalEl.className = "modal-overlay";
+};
+
+window.clearIhsaniyahRecordsHandler = function() {
+  if (confirm("Apakah Bapak/Ibu Guru yakin ingin menghapus seluruh data rekap siswa?")) {
+    window.clearIhsaniyahRecords();
+    openIhsaniyahAdminPanel();
+  }
+};
