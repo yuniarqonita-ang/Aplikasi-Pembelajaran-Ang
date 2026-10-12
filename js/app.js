@@ -1,15 +1,25 @@
-// Stacked Mathematical Fractions Formatter (Atas-Bawah Nyata & Math Axis Alignment)
+// Stacked Mathematical Fractions Formatter (Donald Knuth Math Axis & Collinear Operator Alignment)
 window.formatMathFractions = function(text) {
   if (!text || typeof text !== "string") return text || "";
-  var formatted = text.replace(/(^|[^a-zA-Z0-9_\/])(-?\d+)\/(\d+)(?![a-zA-Z0-9_\/])/g, function(match, prefix, num, den) {
+  
+  // 1. Mixed numbers (e.g., "2 1/2" or "3 3/4")
+  var formatted = text.replace(/(^|\s)(\d+)\s+(\d+)\/(\d+)(?=[^\d\/]|$)/g, function(match, prefix, whole, num, den) {
+    return prefix + '<span class="math-expr"><span class="math-whole">' + whole + '</span><span class="math-fraction"><span class="num">' + num + '</span><span class="den">' + den + '</span></span></span>';
+  });
+
+  // 2. Standalone fractions (e.g., "3/4" or "-5/8")
+  formatted = formatted.replace(/(^|[^a-zA-Z0-9_\/])(-?\d+)\/(\d+)(?![a-zA-Z0-9_\/])/g, function(match, prefix, num, den) {
     return prefix + '<span class="math-fraction"><span class="num">' + num + '</span><span class="den">' + den + '</span></span>';
   });
+
+  // 3. Mathematical operators & relations collinear on the Math Axis
   var tokens = formatted.split(/(<[^>]+>)/g);
   for (var i = 0; i < tokens.length; i++) {
     if (!tokens[i].startsWith('<')) {
       tokens[i] = tokens[i].replace(/(\s*)([\+\=\u00D7\u00F7\u00B1\u2260\u2248])(\s*)/g, function(m, sp1, op, sp2) {
         return ' <span class="math-op">' + op + '</span> ';
       });
+      // True mathematical minus sign (Unicode U+2212)
       tokens[i] = tokens[i].replace(/(^|\s|\d)(\-)(\s|\d|$)/g, function(m, left, op, right) {
         return left + ' <span class="math-op">&minus;</span> ' + right;
       });

@@ -3819,51 +3819,105 @@ body.light-theme .matching-pin {
   border-color: #ffffff;
 }
 
-/* ================= STACKED MATHEMATICAL FRACTIONS (ATAS-BAWAH NYATA & MATH AXIS) ================= */
+/* ==============================================================================
+   📐 DONALD KNUTH MATHEMATICAL TYPOGRAPHY & MATH AXIS ALIGNMENT
+   Ref: The TeXbook (Donald Knuth, Chapter 17 & Appendix G Rule 15)
+        Handbook of Typography for Mathematical Sciences (Steven G. Krantz)
+        ISO 80000-2 (Quantities and Units - Mathematics) & AMS Mathematics into Type
+   ============================================================================== */
+
+/* Wrapper for mathematical expressions: locks all tokens along the exact Math Axis */
+.math-expr {
+  display: inline-flex;
+  align-items: center;
+  vertical-align: middle;
+  gap: 1px;
+  font-family: 'Cambria Math', 'STIX Two Math', 'Segoe UI', system-ui, -apple-system, sans-serif;
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+  padding: 2px 0;
+}
+
+/* Symmetrical Stacked Fraction: Vinculum (Fraction Bar) placed exactly at 50% */
 .math-fraction {
   display: inline-flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
   vertical-align: middle;
   text-align: center;
-  padding: 0 4px;
-  font-family: inherit;
+  padding: 0 3px;
+  margin: 0 3px;
+  font-family: 'Cambria Math', 'STIX Two Math', 'Segoe UI', system-ui, sans-serif;
   font-weight: 800;
   line-height: 1;
   font-size: 0.95em;
-  margin: 0 3px;
+  box-sizing: border-box;
 }
 
+/* Numerator (Top half) */
 .math-fraction .num {
-  padding-bottom: 3px;
+  display: block;
+  font-size: 0.86em;
+  line-height: 1.15;
+  padding: 0 2px 3px 2px;
   border-bottom: 2px solid currentColor;
-  display: block;
-  font-size: 0.88em;
-  line-height: 1;
+  width: 100%;
+  text-align: center;
+  box-sizing: border-box;
 }
 
+/* Denominator (Bottom half - padded symmetrically to balance the 2px border of .num) */
 .math-fraction .den {
-  padding-top: 3px;
   display: block;
-  font-size: 0.88em;
-  line-height: 1;
+  font-size: 0.86em;
+  line-height: 1.15;
+  padding: 5px 2px 0 2px;
+  width: 100%;
+  text-align: center;
+  box-sizing: border-box;
 }
 
+/* Binary Operators & Relational Symbols Centered on the Math Axis */
 .math-op {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   vertical-align: middle;
-  font-size: 1.22em;
+  font-size: 1.16em;
   font-weight: 800;
-  margin: 0 6px;
+  margin: 0 5px;
   line-height: 1;
   color: #38bdf8;
+  user-select: none;
+}
+
+/* Whole numbers in mixed fractions (e.g. 2 in 2 1/2) */
+.math-whole {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+  font-size: 1.12em;
+  font-weight: 800;
+  margin-right: 3px;
+  line-height: 1;
 }
 
 body.light-theme .math-fraction .num {
-  border-bottom-color: #0f172a;
+  border-bottom-color: #0f172a !important;
+}
+
+body.light-theme .math-fraction {
+  color: #0f172a !important;
 }
 
 body.light-theme .math-op {
-  color: #0284c7;
+  color: #0284c7 !important;
+}
+
+body.light-theme .math-whole {
+  color: #0f172a !important;
 }
 
 /* ==============================================================================
