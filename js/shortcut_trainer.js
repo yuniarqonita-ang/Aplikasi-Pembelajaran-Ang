@@ -3050,6 +3050,16 @@
     const isExcelActive = tabExcel && tabExcel.classList.contains('active');
     const isWordActive = tabWord && tabWord.classList.contains('active');
 
+    // CEK JUGA APAKAH TAB RUMUS EXCEL SEDANG AKTIF
+    const tabFormulaExcel = document.getElementById('tab-excel');
+    const isFormulaExcelActive = tabFormulaExcel && tabFormulaExcel.classList.contains('active');
+    if (isFormulaExcelActive) {
+      if (window.handleFormulaExcelPhysicalKey) {
+        window.handleFormulaExcelPhysicalKey(e);
+      }
+      return;
+    }
+
     if (!isExcelActive && !isWordActive) return;
     const mode = isExcelActive ? 'excel' : 'word';
 

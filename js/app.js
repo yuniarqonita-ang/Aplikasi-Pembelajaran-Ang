@@ -3244,6 +3244,169 @@ window.checkToeflIbtAnswer = function(idx) {
   renderToeflIbtBuildingSkills();
 };
 
+// ===================================================================
+// EXCEL_TRAINER.JS — REALISTIC MICROSOFT EXCEL SUITE & FORMULA LAB
+// Antarmuka Realistis Office: Title Bar, Ribbon, Bilah Rumus di Atas,
+// Active Cell Bounded Fill Handle, Syntax Intellisense & F4/Alt+= Shortcuts
+// ===================================================================
+
+const EXCEL_SYNTAX_GUIDES = {
+  'IF': '=IF(logical_test, value_if_true, [value_if_false])',
+  'IFS': '=IFS(logical_test1, value1, [logical_test2, value2], ...)',
+  'SUM': '=SUM(number1, [number2], ...)',
+  'AVERAGE': '=AVERAGE(number1, [number2], ...)',
+  'COUNT': '=COUNT(value1, [value2], ...)',
+  'COUNTA': '=COUNTA(value1, [value2], ...)',
+  'COUNTIF': '=COUNTIF(range, criteria)',
+  'COUNTIFS': '=COUNTIFS(criteria_range1, criteria1, ...)',
+  'SUMIF': '=SUMIF(range, criteria, [sum_range])',
+  'SUMIFS': '=SUMIFS(sum_range, criteria_range1, criteria1, ...)',
+  'AVERAGEIF': '=AVERAGEIF(range, criteria, [average_range])',
+  'VLOOKUP': '=VLOOKUP(lookup_value, table_array, col_index_num, [range_lookup])',
+  'HLOOKUP': '=HLOOKUP(lookup_value, table_array, row_index_num, [range_lookup])',
+  'INDEX': '=INDEX(array, row_num, [column_num])',
+  'MATCH': '=MATCH(lookup_value, lookup_array, [match_type])',
+  'XLOOKUP': '=XLOOKUP(lookup_value, lookup_array, return_array, [if_not_found], [match_mode])',
+  'MAX': '=MAX(number1, [number2], ...)',
+  'MIN': '=MIN(number1, [number2], ...)',
+  'MEDIAN': '=MEDIAN(number1, [number2], ...)',
+  'MODE': '=MODE.SNGL(number1, [number2], ...)',
+  'STDEV': '=STDEV.S(number1, [number2], ...)',
+  'STDEVP': '=STDEV.P(number1, [number2], ...)',
+  'VAR': '=VAR.S(number1, [number2], ...)',
+  'CONCATENATE': '=CONCATENATE(text1, [text2], ...)',
+  'TEXT': '=TEXT(value, format_text)',
+  'LEFT': '=LEFT(text, [num_chars])',
+  'RIGHT': '=RIGHT(text, [num_chars])',
+  'MID': '=MID(text, start_num, num_chars)',
+  'LEN': '=LEN(text)',
+  'TRIM': '=TRIM(text)',
+  'UPPER': '=UPPER(text)',
+  'LOWER': '=LOWER(text)',
+  'PROPER': '=PROPER(text)',
+  'ROUND': '=ROUND(number, num_digits)',
+  'ROUNDUP': '=ROUNDUP(number, num_digits)',
+  'ROUNDDOWN': '=ROUNDDOWN(number, num_digits)',
+  'INT': '=INT(number)',
+  'ABS': '=ABS(number)',
+  'POWER': '=POWER(number, power)',
+  'SQRT': '=SQRT(number)',
+  'PMT': '=PMT(rate, nper, pv, [fv], [type])',
+  'NPV': '=NPV(rate, value1, [value2], ...)',
+  'IRR': '=IRR(values, [guess])',
+  'CORREL': '=CORREL(array1, array2)',
+  'FORECAST': '=FORECAST(x, known_y\'s, known_x\'s)',
+  'TREND': '=TREND(known_y\'s, [known_x\'s], [new_x\'s])',
+  'SLOPE': '=SLOPE(known_y\'s, known_x\'s)',
+  'INTERCEPT': '=INTERCEPT(known_y\'s, known_x\'s)',
+  'PERCENTILE': '=PERCENTILE.INC(array, k)',
+  'QUARTILE': '=QUARTILE.INC(array, quart)',
+  'RANK': '=RANK.EQ(number, ref, [order])'
+};
+
+// ===================================================================
+// PINTASAN SAKTI F4: SIKLUS KUNCI SEL ABSOLUT $ (EXCEL ASLI)
+// B2 -> $B$2 -> B$2 -> $B2 -> B2
+// ===================================================================
+window.cycleAbsoluteRefF4 = function() {
+  const input = document.getElementById("excel-formula-input");
+  if (!input) return;
+  const val = input.value;
+  if (!val) return;
+
+  const start = input.selectionStart || val.length;
+  const regex = /(\$?)([A-Za-z]+)(\$?)([0-9]+)/g;
+  const matches = [];
+  let m;
+  while ((m = regex.exec(val)) !== null) {
+    matches.push({
+      full: m[0],
+      hasColLock: m[1] === '$',
+      col: m[2].toUpperCase(),
+      hasRowLock: m[3] === '$',
+      row: m[4],
+      start: m.index,
+      end: m.index + m[0].length
+    });
+  }
+
+  if (matches.length === 0) {
+    setKodiSpeech("💡 Tips Kunci F4:", "Ketik referensi sel dulu (misal: B2) lalu tekan F4 untuk mengunci $B$2!");
+    return;
+  }
+
+  // Cari match terdekat sebelum kursor atau match terakhir
+  let target = matches.find(item => start >= item.start && start <= item.end);
+  if (!target) target = matches[matches.length - 1];
+
+  let replacement = '';
+  if (!target.hasColLock && !target.hasRowLock) {
+    // Relatif -> Kunci Kolom & Baris: $B$2
+    replacement = `$${target.col}$${target.row}`;
+  } else if (target.hasColLock && target.hasRowLock) {
+    // Kunci Keduanya -> Kunci Baris Saja: B$2
+    replacement = `${target.col}$${target.row}`;
+  } else if (!target.hasColLock && target.hasRowLock) {
+    // Kunci Baris Saja -> Kunci Kolom Saja: $B2
+    replacement = `$${target.col}${target.row}`;
+  } else {
+    // Kunci Kolom Saja -> Kembali Relatif: B2
+    replacement = `${target.col}${target.row}`;
+  }
+
+  input.value = val.substring(0, target.start) + replacement + val.substring(target.end);
+  input.focus();
+  const newPos = target.start + replacement.length;
+  input.setSelectionRange(newPos, newPos);
+
+  if (window.sfx) sfx.playClick();
+  window.onExcelFormulaTyping(input.value);
+  setKodiSpeech(
+    "🔒 Kunci Sel Excel (F4) Aktif!",
+    `Referensi sel berhasil diubah: ${target.full} ➡️ ${replacement}`
+  );
+};
+
+// ===================================================================
+// LIVE TYPING & INTELLISENSE FORMULA HELPER
+// ===================================================================
+window.onExcelFormulaTyping = function(val) {
+  const chal = excelChallenges[appState.currentExcelIndex] || excelChallenges[0];
+  appState.excelUserFormulas[chal.id] = val;
+
+  // Update tampilan sel target secara realtime di lembar kerja
+  const targetCellEl = document.querySelector(`.excel-sheet-table td[data-coord='${chal.targetCell.toUpperCase()}'] .cell-content`);
+  if (targetCellEl && !appState.excelCompleted.includes(chal.id)) {
+    targetCellEl.textContent = val || `[ ${chal.targetCell} ]`;
+  }
+
+  // Cek tooltip sintaks resmi Excel
+  const tooltipEl = document.getElementById("excel-syntax-tooltip");
+  if (!tooltipEl) return;
+
+  const upper = val.toUpperCase().trim();
+  let matchedFunc = null;
+  for (const [fnName, syntax] of Object.entries(EXCEL_SYNTAX_GUIDES)) {
+    if (upper.startsWith(`=${fnName}`) || upper.startsWith(`=${fnName}(`)) {
+      matchedFunc = syntax;
+      break;
+    }
+  }
+
+  if (matchedFunc) {
+    tooltipEl.style.display = "block";
+    tooltipEl.innerHTML = `💡 <b>Sintaks Resmi Excel:</b> <code>${matchedFunc}</code>`;
+  } else if (upper.startsWith("=")) {
+    tooltipEl.style.display = "block";
+    tooltipEl.innerHTML = `💡 <i>Ketik nama rumus (IF, SUM, AVERAGE, VLOOKUP) atau referensi sel (B2)...</i>`;
+  } else {
+    tooltipEl.style.display = "none";
+  }
+};
+
+// ===================================================================
+// RENDER UTAMA STUDIO RUMUS EXCEL DENGAN JENDELA OFFICE ASLI
+// ===================================================================
 function renderExcelTrainer() {
   const container = document.getElementById("excel-content-area");
   if (!container) return;
@@ -3257,6 +3420,7 @@ function renderExcelTrainer() {
   appState.currentExcelIndex = appState.currentExcelIndex || 0;
   appState.excelCompleted = appState.excelCompleted || [];
   appState.excelUserFormulas = appState.excelUserFormulas || {};
+  appState.excelActiveRibbonTab = appState.excelActiveRibbonTab || "home";
 
   const allCategories = [
     "all",
@@ -3292,115 +3456,41 @@ function renderExcelTrainer() {
   const isCompleted = appState.excelCompleted.includes(chal.id);
   const currentFormula = appState.excelUserFormulas[chal.id] || chal.starterFormula || "=";
 
-  // Active cell state (default to targetCell)
+  // Active cell state (default ke targetCell)
   appState.excelActiveCell = appState.excelActiveCell || chal.targetCell.toUpperCase();
+  const activeCoord = appState.excelActiveCell;
+  const activeCol = activeCoord.replace(/[0-9]/g, '').toUpperCase();
+  const activeRow = parseInt(activeCoord.replace(/[^0-9]/g, ''), 10);
 
-  // Render Table HTML
+  // Render Table Grid HTML
   const colHeaders = chal.tableHeaders || ["A", "B", "C", "D"];
   const tableRows = chal.tableRows || [];
 
-  let tableHtml = `
-    <!-- PITA MENU EXCEL NYATA (REAL EXCEL RIBBON TOOLBAR) -->
-    <div class="excel-ribbon-wrap">
-      <div class="excel-ribbon-topbar">
-        <div style="display: flex; align-items: center; gap: 8px;">
-          <span>📗 AutoSave: ON 🟢</span>
-          <span style="opacity: 0.6;">|</span>
-          <span>BukuKerja_Latihan_Kantor.xlsx - Excel Studio</span>
-        </div>
-        <div style="display: flex; align-items: center; gap: 10px;">
-          <span style="font-size: 0.75rem; background: rgba(255,255,255,0.18); padding: 3px 10px; border-radius: 12px; font-weight: 700;">
-            🖱️ Fitur Fill Handle Aktif (Bisa Di-tarik ke Bawah)
-          </span>
-        </div>
-      </div>
+  // Hitung statistik untuk Status Bar Excel
+  const numList = [];
+  tableRows.forEach(r => {
+    colHeaders.forEach(c => {
+      if (typeof r[c] === 'number') numList.push(r[c]);
+    });
+  });
+  const statCount = numList.length;
+  const statSum = numList.reduce((acc, v) => acc + v, 0);
+  const statAvg = statCount ? (statSum / statCount).toLocaleString('id-ID', { maximumFractionDigits: 1 }) : '—';
+  const statSumFormatted = statCount ? statSum.toLocaleString('id-ID') : '—';
 
-      <div class="excel-ribbon-tabs">
-        <button class="excel-ribbon-tab-btn active">Beranda (Home)</button>
-        <button class="excel-ribbon-tab-btn" onclick="excelToolAction('tab-rumus')">Rumus (Formulas)</button>
-        <button class="excel-ribbon-tab-btn" onclick="excelToolAction('tab-data')">Data</button>
-      </div>
-
-      <div class="excel-ribbon-toolbar">
-        <div class="excel-ribbon-group" title="Clipboard">
-          <button type="button" class="excel-ribbon-btn" onclick="excelToolAction('paste')" title="Tempel (Ctrl+V)">
-            <span class="icon">📋</span>
-            <span>Tempel</span>
-          </button>
-          <button type="button" class="excel-ribbon-btn" onclick="excelToolAction('copy')" title="Salin (Ctrl+C)">
-            <span class="icon">📄</span>
-            <span>Salin</span>
-          </button>
-        </div>
-
-        <div class="excel-ribbon-group" title="Format Font">
-          <button type="button" class="excel-ribbon-btn" onclick="excelToolAction('bold')" title="Tebal (Ctrl+B)">
-            <span class="icon" style="font-weight: 900;">𝐁</span>
-            <span>Tebal</span>
-          </button>
-          <button type="button" class="excel-ribbon-btn" onclick="excelToolAction('italic')" title="Miring (Ctrl+I)">
-            <span class="icon" style="font-style: italic;">𝐼</span>
-            <span>Miring</span>
-          </button>
-          <button type="button" class="excel-ribbon-btn" onclick="excelToolAction('underline')" title="Garis Bawah (Ctrl+U)">
-            <span class="icon" style="text-decoration: underline;">U</span>
-            <span>Garis</span>
-          </button>
-        </div>
-
-        <div class="excel-ribbon-group" title="Perataan Sel">
-          <button type="button" class="excel-ribbon-btn" onclick="excelToolAction('align-left')" title="Rata Kiri">
-            <span class="icon">⇤</span>
-            <span>Kiri</span>
-          </button>
-          <button type="button" class="excel-ribbon-btn" onclick="excelToolAction('align-center')" title="Rata Tengah">
-            <span class="icon">⇥⇤</span>
-            <span>Tengah</span>
-          </button>
-          <button type="button" class="excel-ribbon-btn" onclick="excelToolAction('align-right')" title="Rata Kanan">
-            <span class="icon">⇥</span>
-            <span>Kanan</span>
-          </button>
-        </div>
-
-        <div class="excel-ribbon-group" title="Operasi Rumus & Auto-Fill">
-          <button type="button" class="excel-ribbon-btn" style="background: rgba(16, 124, 65, 0.2); border-color: #10b981; color: #10b981;" onclick="excelToolAction('autosum')" title="AutoSum Otomatis (Alt+=)">
-            <span class="icon" style="font-size: 1.1rem; font-weight: 900;">∑</span>
-            <span>AutoSum</span>
-          </button>
-          <button type="button" class="excel-ribbon-btn" style="background: rgba(56, 189, 248, 0.15); border-color: #38bdf8; color: #38bdf8;" onclick="excelToolAction('draginfo')" title="Cara Menarik Rumus">
-            <span class="icon">↕️</span>
-            <span>Tarik Rumus</span>
-          </button>
-          <button type="button" class="excel-ribbon-btn" onclick="excelToolAction('filter')" title="Nyalakan Filter (Ctrl+Shift+L)">
-            <span class="icon">🔻</span>
-            <span>Filter</span>
-          </button>
-        </div>
-      </div>
-    </div>
-
-    <!-- SPREADSHEET GRID DENGAN ACTIVE CELL & DRAGGABLE FILL HANDLE -->
-    <div class="excel-grid-wrapper" style="border-radius: 0 0 10px 10px; border-top: none;">
-      <table class="excel-sheet-table" id="excel-main-sheet">
-        <thead>
-          <tr>
-            <th class="col-header" style="width: 45px;">#</th>
-            ${colHeaders.map(col => `<th class="col-header">${col}</th>`).join('')}
-          </tr>
-        </thead>
-        <tbody>
-  `;
-
+  let gridBodyHtml = '';
   tableRows.forEach(rowObj => {
     const rowNum = rowObj.row;
     const isHeaderRow = (rowNum === 1);
-    tableHtml += `<tr class="${isHeaderRow ? 'header-row' : ''}">`;
-    tableHtml += `<td class="row-header">${rowNum}</td>`;
+    const isRowHighlighted = (rowNum === activeRow);
+
+    gridBodyHtml += `<tr class="${isHeaderRow ? 'excel-header-data-row' : 'excel-data-row'}">`;
+    gridBodyHtml += `<td class="excel-row-num ${isRowHighlighted ? 'row-highlight' : ''}">${rowNum}</td>`;
+
     colHeaders.forEach(col => {
       const cellCoord = `${col.toUpperCase()}${rowNum}`;
       const isTarget = (cellCoord === chal.targetCell.toUpperCase());
-      const isActive = (cellCoord === appState.excelActiveCell);
+      const isActive = (cellCoord === activeCoord);
       const cellVal = rowObj[col] !== undefined ? rowObj[col] : "";
 
       let displayVal = cellVal;
@@ -3408,12 +3498,17 @@ function renderExcelTrainer() {
         if (isCompleted) {
           displayVal = chal.expectedValue;
         } else {
-          displayVal = `<span style="color: #107c41; font-style: italic; opacity: 0.85;">[ ${chal.targetCell} ]</span>`;
+          displayVal = `<span class="target-placeholder-text">[ ${chal.targetCell} ]</span>`;
         }
       }
 
-      tableHtml += `
-        <td class="${isTarget ? 'excel-target-cell' + (isCompleted ? ' solved' : '') : ''} ${isActive ? 'excel-cell-active' : ''}"
+      let extraCellClasses = [];
+      if (isTarget) extraCellClasses.push('excel-target-cell' + (isCompleted ? ' solved' : ''));
+      if (isActive) extraCellClasses.push('excel-cell-active');
+      if (isHeaderRow) extraCellClasses.push('head-cell');
+
+      gridBodyHtml += `
+        <td class="excel-cell ${extraCellClasses.join(' ')}"
             id="cell-${cellCoord}"
             data-coord="${cellCoord}"
             data-col="${col.toUpperCase()}"
@@ -3434,24 +3529,18 @@ function renderExcelTrainer() {
         </td>
       `;
     });
-    tableHtml += `</tr>`;
+    gridBodyHtml += `</tr>`;
   });
 
-  tableHtml += `
-        </tbody>
-      </table>
-    </div>
-  `;
-
-  // Render HTML container
+  // RENDER COMPLETE AUTHENTIC MICROSOFT EXCEL WINDOW & SCENARIO BRIEF
   container.innerHTML = `
     <div class="excel-container">
-      <!-- Navigasi & Filter Soal Excel 1 - 105 -->
-      <div class="challenge-nav-bar">
-        <div class="challenge-nav-controls">
-          <label style="font-size: 0.8rem; font-weight: 700; color: #10b981;">📂 Kategori:</label>
+      <!-- 1. BARIS NAVIGASI SOAL 1-105 & KATEGORI -->
+      <div class="challenge-nav-bar" style="margin-bottom: 14px;">
+        <div class="challenge-nav-controls" style="flex: 1; min-width: 240px;">
+          <label style="font-size: 0.8rem; font-weight: 700; color: #10b981;">📂 Kategori Modul:</label>
           <select class="challenge-page-select" onchange="filterExcelCategory(this.value)">
-            <option value="all" ${appState.excelCategoryFilter === 'all' ? 'selected' : ''}>Semua Kategori (105 Soal)</option>
+            <option value="all" ${appState.excelCategoryFilter === 'all' ? 'selected' : ''}>Semua Kategori (105 Soal Rumus)</option>
             ${allCategories.filter(cat => cat !== 'all').map(cat => `
               <option value="${cat}" ${appState.excelCategoryFilter === cat ? 'selected' : ''}>${cat}</option>
             `).join('')}
@@ -3475,9 +3564,9 @@ function renderExcelTrainer() {
         </div>
       </div>
 
-      <!-- WORKED EXAMPLE CARD (CONTOH SOAL & JAWABAN BENAR DULU) -->
+      <!-- 2. WORKED EXAMPLE CARD (CONTOH DENGAN JAWABAN BENAR DULU) -->
       ${chal.workedExample ? `
-        <div class="excel-worked-example-card" style="border-left: 5px solid #107c41;">
+        <div class="excel-worked-example-card" style="border-left: 5px solid #107c41; margin-bottom: 14px;">
           <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
             <div style="font-weight: 800; font-size: 0.95rem; color: #10b981; display: flex; align-items: center; gap: 6px;">
               <span>💡</span> <span>${chal.workedExample.title || 'CONTOH SOAL & JAWABAN BENAR DULU'}</span>
@@ -3498,79 +3587,234 @@ function renderExcelTrainer() {
         </div>
       ` : ''}
 
-      <!-- KODI EXCEL 3D MASCOT & QUESTION CARD (TILES 07-12) -->
-      <div class="card" style="padding: 18px 20px; border-left: 5px solid #107c41;">
-        <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 12px;">
+      <!-- 3. KODI EXCEL 3D MASCOT & QUESTION BRIEF -->
+      <div class="card" style="padding: 16px 20px; border-left: 5px solid #107c41; margin-bottom: 16px;">
+        <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 10px;">
           <img src="assets/illustrations/3d_tiles/tile_3d_${String(7 + (appState.currentExcelIndex % 6)).padStart(2, '0')}.png"
-               style="width: 60px; height: 60px; border-radius: 12px; object-fit: cover; border: 2px solid #10b981; flex-shrink: 0; box-shadow: 0 4px 12px rgba(16, 185, 129, 0.25);"
+               style="width: 54px; height: 54px; border-radius: 12px; object-fit: cover; border: 2px solid #10b981; flex-shrink: 0; box-shadow: 0 4px 12px rgba(16, 124, 65, 0.25);"
                alt="Pahlawan Excel 3D #${String(7 + (appState.currentExcelIndex % 6)).padStart(2, '0')}">
           <div style="flex: 1;">
             <div style="display: flex; justify-content: space-between; align-items: flex-start;">
               <span style="font-size: 0.75rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; color: #10b981; background: rgba(16, 185, 129, 0.15); padding: 2px 8px; border-radius: 4px;">
-                ${chal.category} • Pahlawan Excel #${String(7 + (appState.currentExcelIndex % 6)).padStart(2, '0')}
+                ${chal.category} • Soal #${appState.currentExcelIndex + 1}
               </span>
-              ${isCompleted ? '<span style="font-size: 0.85rem; font-weight: 700; color: #10b981; background: rgba(16, 185, 129, 0.15); padding: 4px 10px; border-radius: 12px;">✅ Selesai</span>' : ''}
+              ${isCompleted ? '<span style="font-size: 0.82rem; font-weight: 700; color: #10b981; background: rgba(16, 185, 129, 0.15); padding: 3px 10px; border-radius: 12px;">✅ Selesai Dikuasai</span>' : ''}
             </div>
             <h3 style="margin: 4px 0 2px 0; font-size: 1.15rem; color: var(--text-main);">${chal.title}</h3>
           </div>
         </div>
-        <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 10px; line-height: 1.5;">
+        <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 8px; line-height: 1.5;">
           ${chal.scenario}
         </p>
-        <div style="background: var(--bg-secondary); border-left: 4px solid var(--accent-yellow); padding: 10px 14px; border-radius: 4px; font-size: 0.88rem; color: var(--text-main);">
-          <strong>🎯 Target Tugas:</strong> ${chal.instruction}
+        <div style="background: var(--bg-secondary); border-left: 4px solid var(--accent-yellow); padding: 8px 12px; border-radius: 4px; font-size: 0.86rem; color: var(--text-main);">
+          <strong>🎯 Target Tugas:</strong> Tulis rumus di sel <b>${chal.targetCell}</b> (${chal.instruction})
         </div>
       </div>
 
-      <!-- SPREADSHEET TABLE GRID & RIBBON WRAPPER -->
-      <div>
-        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; flex-wrap: wrap; gap: 6px;">
-          <span style="font-size: 0.82rem; font-weight: 700; color: var(--text-muted);">
-            📊 Lembar Kerja Spreadsheet (Sel Target: <strong style="color: #10b981;">${chal.targetCell}</strong>)
-          </span>
-          <span style="font-size: 0.78rem; color: #10b981; font-weight: 700;">
-            💡 Tarik kotak hijau (■) di pojok sel ke bawah untuk Auto-Fill! Atau klik ganda 2x!
-          </span>
+      <!-- 4. JENDELA RESMI MICROSOFT EXCEL SUITE MOCKUP (TAMPILAN NYATA EXCEL) -->
+      <div class="office-window-mockup excel-window" style="margin-bottom: 20px;">
+        <!-- TITLE BAR ASLI EXCEL -->
+        <div class="office-title-bar excel-title-bar">
+          <div class="office-title-left">
+            <span class="office-app-badge excel-badge">X</span>
+            <span class="office-autosave-badge saved">🟢 AutoSave: ON</span>
+            <span class="office-filename">BukuKerja_Latihan_Kantor.xlsx — Microsoft Excel</span>
+          </div>
+          <div class="office-window-controls">
+            <span>🗕</span>
+            <span>🗖</span>
+            <span>✕</span>
+          </div>
         </div>
-        ${tableHtml}
-      </div>
 
-      <!-- FORMULA BAR (FX) -->
-      <div class="excel-formula-bar-wrap">
-        <span class="excel-cell-badge" id="excel-active-coord">${appState.excelActiveCell || chal.targetCell}</span>
-        <span class="excel-fx-icon">fx</span>
-        <input type="text"
-               id="excel-formula-input"
-               class="excel-formula-input"
-               value="${currentFormula}"
-               placeholder="Ketik rumus di sini... contoh: =IF(B2>=75, 'LULUS', 'REMIDI')"
-               onkeydown="if(event.key==='Enter') checkExcelCurrentChallenge()" />
-        <button class="btn-primary" style="background: #107c41; border: none; padding: 8px 16px;" onclick="checkExcelCurrentChallenge()">
-          ▶️ Periksa Rumus
-        </button>
+        <!-- RIBBON TABS ASLI EXCEL -->
+        <div class="office-ribbon-tabs excel-ribbon-tabs">
+          <button type="button" class="ribbon-tab-item ${appState.excelActiveRibbonTab === 'home' ? 'active' : ''}" onclick="switchExcelRibbonTab('home')">Beranda (Home)</button>
+          <button type="button" class="ribbon-tab-item ${appState.excelActiveRibbonTab === 'formulas' ? 'active' : ''}" onclick="switchExcelRibbonTab('formulas')">Rumus (Formulas)</button>
+          <button type="button" class="ribbon-tab-item ${appState.excelActiveRibbonTab === 'data' ? 'active' : ''}" onclick="switchExcelRibbonTab('data')">Data</button>
+          <button type="button" class="ribbon-tab-item" onclick="switchExcelRibbonTab('review')">Tinjau (Review)</button>
+          <button type="button" class="ribbon-tab-item" onclick="switchExcelRibbonTab('view')">Tampilan (View)</button>
+        </div>
 
-        <button class="btn-secondary" style="padding: 8px 12px; font-size: 0.82rem;" onclick="resetExcelFormula()" title="Kembalikan Rumus Awal">
-          🔄 Reset
-        </button>
+        <!-- RIBBON COMMAND TOOLBAR ASLI EXCEL -->
+        <div class="office-ribbon-toolbar">
+          <div class="ribbon-group" title="Clipboard">
+            <div class="ribbon-tools-row">
+              <button type="button" class="office-tool-btn" onclick="excelToolAction('paste')" title="Tempel (Ctrl+V)">📋 Tempel</button>
+              <button type="button" class="office-tool-btn" onclick="excelToolAction('copy')" title="Salin (Ctrl+C)">📄 Salin</button>
+              <button type="button" class="office-tool-btn" onclick="excelToolAction('fill-down')" title="Isi ke Bawah (Ctrl+D)">⬇️ Isi (Ctrl+D)</button>
+            </div>
+            <div class="ribbon-group-label">Clipboard</div>
+          </div>
+
+          <div class="ribbon-group" title="Font">
+            <div class="ribbon-tools-row">
+              <span class="office-tool-select">Aptos (Body)</span>
+              <span class="office-tool-select" style="width: 44px;">11 pt</span>
+              <button type="button" class="office-tool-btn" onclick="excelToolAction('bold')" title="Tebal (Ctrl+B)"><b>B</b></button>
+              <button type="button" class="office-tool-btn" onclick="excelToolAction('italic')" title="Miring (Ctrl+I)"><i>I</i></button>
+              <button type="button" class="office-tool-btn" onclick="excelToolAction('underline')" title="Garis Bawah (Ctrl+U)"><u>U</u></button>
+            </div>
+            <div class="ribbon-group-label">Font</div>
+          </div>
+
+          <div class="ribbon-group" title="Perataan">
+            <div class="ribbon-tools-row">
+              <button type="button" class="office-tool-btn" onclick="excelToolAction('align-left')" title="Rata Kiri">⇤</button>
+              <button type="button" class="office-tool-btn" onclick="excelToolAction('align-center')" title="Rata Tengah">⇥⇤</button>
+              <button type="button" class="office-tool-btn" onclick="excelToolAction('align-right')" title="Rata Kanan">⇥</button>
+            </div>
+            <div class="ribbon-group-label">Perataan</div>
+          </div>
+
+          <div class="ribbon-group" title="Format Angka">
+            <div class="ribbon-tools-row">
+              <button type="button" class="office-tool-btn" onclick="excelToolAction('format-currency')" title="Mata Uang (Ctrl+Shift+$)"><b>$</b> Rp</button>
+              <button type="button" class="office-tool-btn" onclick="excelToolAction('format-percent')" title="Persen (Ctrl+Shift+%)"><b>%</b></button>
+              <button type="button" class="office-tool-btn" onclick="excelToolAction('format-comma')" title="Koma"><b>,</b></button>
+            </div>
+            <div class="ribbon-group-label">Angka</div>
+          </div>
+
+          <div class="ribbon-group" title="Pengeditan & Rumus">
+            <div class="ribbon-tools-row">
+              <button type="button" class="office-tool-btn" style="background: rgba(16, 124, 65, 0.15); color: #107c41; font-weight: 800;" onclick="excelToolAction('autosum')" title="AutoSum (Alt+=)"><b>∑ AutoSum (Alt+=)</b></button>
+              <button type="button" class="office-tool-btn" onclick="cycleAbsoluteRefF4()" title="Kunci Sel Absolut $ (Tekan F4)">🔒 Kunci $ (F4)</button>
+              <button type="button" class="office-tool-btn" onclick="excelToolAction('filter')" title="Filter (Ctrl+Shift+L)">🔻 Filter</button>
+            </div>
+            <div class="ribbon-group-label">Pengeditan & Rumus</div>
+          </div>
+        </div>
+
+        <!-- 5. BILAH FORMULA EXCEL ASLI (DI ATAS SPREADSHEET!) -->
+        <div class="excel-formula-bar" style="background: #ffffff; border-bottom: 1px solid #cbd5e1; padding: 6px 14px; display: flex; align-items: center; gap: 8px;">
+          <!-- Name Box: Koordinat Sel Aktif -->
+          <div class="formula-name-box" id="excel-active-coord" title="Kotak Nama Sel Aktif (Tekan F2 untuk Edit)">
+            ${activeCoord}
+          </div>
+
+          <!-- Tombol Aksi Formula: Batal ✕, Enter ✓, Simbol fx -->
+          <div class="formula-fx-icon" style="display: flex; gap: 6px; align-items: center;">
+            <button type="button" class="btn-formula-tool btn-fx-cancel" onclick="resetExcelFormula()" title="Batal Pengeditan (Esc)">✕</button>
+            <button type="button" class="btn-formula-tool btn-fx-enter" onclick="checkExcelCurrentChallenge()" title="Masukkan / Hitung Rumus (Enter / Ctrl+Enter)">✓</button>
+            <span class="excel-fx-symbol" style="font-weight: 800; font-style: italic; color: #107c41; font-size: 1.05rem; margin-left: 2px;">fx</span>
+          </div>
+
+          <!-- Input Formula Text Field: Di Bilah Formula Langsung -->
+          <div style="flex: 1; position: relative;">
+            <input type="text"
+                   id="excel-formula-input"
+                   class="formula-input-line"
+                   style="width: 100%; border: 1px solid #cbd5e1; border-radius: 4px; padding: 6px 12px; font-family: 'Consolas', monospace; font-size: 0.94rem; font-weight: 600;"
+                   value="${currentFormula}"
+                   placeholder="Ketik rumus diawali '=' (contoh: =IF(B2>=75, 'LULUS', 'REMIDI')) — Tekan F2 untuk fokus!"
+                   oninput="onExcelFormulaTyping(this.value)"
+                   onkeydown="if(event.key==='Enter') checkExcelCurrentChallenge()" />
+          </div>
+
+          <!-- Tombol Periksa & Reset -->
+          <button class="btn-primary" style="background: #107c41; border: none; padding: 7px 18px; font-size: 0.86rem; font-weight: 800;" onclick="checkExcelCurrentChallenge()">
+            ▶️ Periksa Rumus
+          </button>
+          <button class="btn-secondary" style="padding: 7px 12px; font-size: 0.82rem;" onclick="resetExcelFormula()" title="Kembalikan Rumus Awal (Esc)">
+            🔄 Reset
+          </button>
+        </div>
+
+        <!-- TOOLTIP SINTAKS FORMULA INTELLISENSE -->
+        <div id="excel-syntax-tooltip" class="excel-syntax-tooltip" style="display: none;"></div>
+
+        <!-- 6. CHIPS CEPAT & PINTASAN TOMBOL SAKTI -->
+        <div class="excel-quick-chips-bar">
+          <span style="font-size: 0.78rem; font-weight: 800; color: #107c41; margin-right: 4px;">⚡ Bantuan Cepat:</span>
+          ${chal.quickChips.map(chip => `
+            <button type="button" class="excel-chip-tag" onclick="insertExcelChip('${chip.replace(/'/g, "\'")}')">${chip}</button>
+          `).join('')}
+          <span style="color: #cbd5e1; margin: 0 4px;">|</span>
+          <button type="button" class="excel-chip-tag keycap-style" onclick="cycleAbsoluteRefF4()" title="Tekan F4 di keyboard untuk mengunci sel $">F4 ($ Kunci)</button>
+          <button type="button" class="excel-chip-tag keycap-style" onclick="excelToolAction('autosum')" title="Tekan Alt+= untuk AutoSum">Alt+= (AutoSum)</button>
+          <button type="button" class="excel-chip-tag keycap-style" onclick="excelAutoFillDoubleClicked('${chal.targetCell}')" title="Klik ganda fill handle">Tarik Rumus ⬇️</button>
+        </div>
+
+        <!-- 7. KISI SPREADSHEET ASLI EXCEL DENGAN FILL HANDLE -->
+        <div class="office-canvas-viewport" style="background: #cbd5e1; padding: 18px 14px;">
+          <div class="excel-spreadsheet-sheet" style="max-width: 100%; width: 100%; background: #ffffff;">
+            <table class="excel-table-grid excel-sheet-table" id="excel-main-sheet">
+              <thead>
+                <tr class="excel-header-row">
+                  <th class="excel-corner-cell">◢</th>
+                  ${colHeaders.map(col => `
+                    <th class="excel-col-head ${col.toUpperCase() === activeCol ? 'col-highlight' : ''}" data-col="${col}">${col}</th>
+                  `).join('')}
+                </tr>
+              </thead>
+              <tbody>
+                ${gridBodyHtml}
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- 8. SHEET TABS & STATUS BAR ASLI EXCEL -->
+        <div class="office-status-bar excel-status-bar">
+          <div class="status-left">
+            <span class="excel-sheet-pill active">Sheet1</span>
+            <span class="excel-sheet-pill">+</span>
+            <span style="margin-left: 14px; font-weight: 700;">SIAP</span>
+            <span style="opacity: 0.8; font-size: 0.75rem;">| Sel Target: <b>${chal.targetCell}</b></span>
+          </div>
+          <div class="status-right">
+            <span>Rata-rata: ${statAvg}</span>
+            <span>Jumlah Data: ${statCount}</span>
+            <span>Total: ${statSumFormatted}</span>
+            <span>100% ➖ 🎚️ ➕</span>
+          </div>
+        </div>
       </div>
 
       <!-- FEEDBACK / ALERT CONTAINER -->
-      <div id="excel-feedback-box" style="display: none;"></div>
+      <div id="excel-feedback-box" style="display: none; margin-top: 14px;"></div>
     </div>
   `;
 }
 
-// Interaktivitas Sel Excel & Fill Handle ("Bisa Di-tarik")
+// ===================================================================
+// INTERAKTIVITAS SEL EXCEL & SELEKSI
+// ===================================================================
+window.switchExcelRibbonTab = function(tabName) {
+  if (window.sfx) sfx.playClick();
+  appState.excelActiveRibbonTab = tabName;
+  if (tabName === 'formulas') {
+    setKodiSpeech("Tab Rumus (Formulas)", "Tab ini berisi pustaka fungsi logika (IF), teks (LEFT, MID), statistik (SUM, AVERAGE), dan pencarian (VLOOKUP)!");
+  } else if (tabName === 'data') {
+    setKodiSpeech("Tab Data", "Tab Data menyediakan alat penyortiran (Sort), filter (Ctrl+Shift+L), dan validasi tabel!");
+  } else {
+    setKodiSpeech("Tab Beranda (Home)", "Tab utama untuk pemformatan huruf, perataan sel, format angka, dan AutoSum!");
+  }
+  renderExcelTrainer();
+};
+
 window.selectExcelCell = function(coord) {
   if (window.sfx) sfx.playClick();
   appState.excelActiveCell = coord.toUpperCase();
 
-  // Update badge koordinat
+  const colLetter = coord.replace(/[0-9]/g, '').toUpperCase();
+  const rowNum = parseInt(coord.replace(/[^0-9]/g, ''), 10);
+
+  // Update badge kotak nama di bilah formula
   const badge = document.getElementById("excel-active-coord");
   if (badge) badge.textContent = coord;
 
+  // Update highlight kolom dan baris
+  document.querySelectorAll(".excel-col-head").forEach(th => {
+    th.classList.toggle("col-highlight", th.getAttribute("data-col") === colLetter);
+  });
+  document.querySelectorAll(".excel-row-num").forEach(td => {
+    td.classList.toggle("row-highlight", parseInt(td.textContent.trim(), 10) === rowNum);
+  });
+
   // Re-render highlight cell & pindahkan fill handle
-  document.querySelectorAll(".excel-sheet-table td").forEach(td => {
+  document.querySelectorAll(".excel-sheet-table td.excel-cell").forEach(td => {
     td.classList.remove("excel-cell-active");
     const oldHandle = td.querySelector(".excel-fill-handle");
     if (oldHandle) oldHandle.remove();
@@ -3602,7 +3846,6 @@ window.startExcelFillDrag = function(e, startCoord) {
   let maxRow = startRow;
   let draggedCells = [];
 
-  // Buat tooltip melayang
   let tooltip = document.getElementById("excel-drag-tooltip");
   if (!tooltip) {
     tooltip = document.createElement("div");
@@ -3620,21 +3863,17 @@ window.startExcelFillDrag = function(e, startCoord) {
     tooltip.style.left = `${clientX + 14}px`;
     tooltip.style.top = `${clientY + 14}px`;
 
-    // Cek elemen sel di bawah kursor
     const elemBelow = document.elementFromPoint(clientX, clientY);
     const targetTd = elemBelow ? elemBelow.closest("td[data-coord]") : null;
 
     if (targetTd) {
-      const hoverCoord = targetTd.getAttribute("data-coord");
       const hoverCol = targetTd.getAttribute("data-col");
       const hoverRow = parseInt(targetTd.getAttribute("data-row"), 10);
 
-      // Hanya izinkan tarikan di kolom yang sama ke bawah
       if (hoverCol === colLetter && hoverRow >= startRow) {
         maxRow = hoverRow;
         tooltip.textContent = `⬇️ Auto-Fill ke ${colLetter}${maxRow}`;
 
-        // Tandai sel-sel yang dilewati
         draggedCells = [];
         document.querySelectorAll(".excel-sheet-table td[data-col='" + colLetter + "']").forEach(td => {
           const r = parseInt(td.getAttribute("data-row"), 10);
@@ -3658,11 +3897,8 @@ window.startExcelFillDrag = function(e, startCoord) {
     if (tooltip) tooltip.style.display = "none";
     document.querySelectorAll(".excel-drag-selecting").forEach(td => td.classList.remove("excel-drag-selecting"));
 
-    // Jika berhasil ditarik minimal 1 baris ke bawah
     if (maxRow > startRow) {
       if (window.sfx) sfx.playSuccess();
-
-      // Isi rumus ke sel target jika berada dalam cakupan tarikan
       const targetRow = parseInt(chal.targetCell.replace(/[^0-9]/g, ''), 10);
       const targetCol = chal.targetCell.replace(/[0-9]/g, '').toUpperCase();
 
@@ -3670,6 +3906,7 @@ window.startExcelFillDrag = function(e, startCoord) {
         const input = document.getElementById("excel-formula-input");
         if (input && (!input.value || input.value === "=")) {
           input.value = chal.acceptedFormulas[0] || chal.starterFormula || "=";
+          window.onExcelFormulaTyping(input.value);
         }
         checkExcelCurrentChallenge();
       }
@@ -3687,7 +3924,7 @@ window.startExcelFillDrag = function(e, startCoord) {
   window.addEventListener("touchend", onMouseUp);
 };
 
-// Double click pada fill handle -> Auto-fill sampai baris terakhir
+// Double-click Auto-Fill Handle
 window.excelAutoFillDoubleClicked = function(coord) {
   const chal = excelChallenges[appState.currentExcelIndex] || excelChallenges[0];
   if (window.sfx) sfx.playSuccess();
@@ -3695,6 +3932,7 @@ window.excelAutoFillDoubleClicked = function(coord) {
   const input = document.getElementById("excel-formula-input");
   if (input && (!input.value || input.value === "=")) {
     input.value = chal.acceptedFormulas[0] || chal.starterFormula || "=";
+    window.onExcelFormulaTyping(input.value);
   }
   checkExcelCurrentChallenge();
 
@@ -3704,7 +3942,9 @@ window.excelAutoFillDoubleClicked = function(coord) {
   );
 };
 
-// Ribbon Toolbar Actions
+// ===================================================================
+// TOOLBAR ACTIONS LENGKAP
+// ===================================================================
 window.excelToolAction = function(action) {
   if (window.sfx) sfx.playClick();
   const chal = excelChallenges[appState.currentExcelIndex] || excelChallenges[0];
@@ -3716,19 +3956,19 @@ window.excelToolAction = function(action) {
       const isBold = activeTd.style.fontWeight === 'bold' || activeTd.style.fontWeight === '800';
       activeTd.style.fontWeight = isBold ? 'normal' : '800';
     }
-    setKodiSpeech("Pintasan Keyboard: Ctrl+B", "Format tebal (Bold) diterapkan ke sel " + activeCoord + "!");
+    setKodiSpeech("Pintasan: Ctrl+B (Bold)", `Format huruf tebal diterapkan ke sel ${activeCoord}!`);
   } else if (action === 'italic') {
     if (activeTd) {
       const isItalic = activeTd.style.fontStyle === 'italic';
       activeTd.style.fontStyle = isItalic ? 'normal' : 'italic';
     }
-    setKodiSpeech("Pintasan Keyboard: Ctrl+I", "Format miring (Italic) diterapkan ke sel " + activeCoord + "!");
+    setKodiSpeech("Pintasan: Ctrl+I (Italic)", `Format huruf miring diterapkan ke sel ${activeCoord}!`);
   } else if (action === 'underline') {
     if (activeTd) {
       const isU = activeTd.style.textDecoration === 'underline';
       activeTd.style.textDecoration = isU ? 'none' : 'underline';
     }
-    setKodiSpeech("Pintasan Keyboard: Ctrl+U", "Garis bawah (Underline) diterapkan ke sel " + activeCoord + "!");
+    setKodiSpeech("Pintasan: Ctrl+U (Underline)", `Garis bawah diterapkan ke sel ${activeCoord}!`);
   } else if (action === 'align-left') {
     if (activeTd) activeTd.style.textAlign = 'left';
   } else if (action === 'align-center') {
@@ -3738,18 +3978,44 @@ window.excelToolAction = function(action) {
   } else if (action === 'autosum') {
     const input = document.getElementById("excel-formula-input");
     if (input) {
-      input.value = `=SUM(A1:A5)`;
+      let detectedRange = "A1:A5";
+      const colHeaders = chal.tableHeaders || ["A", "B", "C", "D"];
+      const tableRows = chal.tableRows || [];
+      for (const col of colHeaders) {
+        const numRows = tableRows.filter(r => r.row > 1 && typeof r[col] === 'number');
+        if (numRows.length >= 2) {
+          detectedRange = `${col}2:${col}${tableRows.length}`;
+          break;
+        }
+      }
+      input.value = `=SUM(${detectedRange})`;
       input.focus();
+      window.onExcelFormulaTyping(input.value);
     }
     setKodiSpeech(
       "⚡ Pintasan Rahasia: Alt + = (AutoSum)",
       "AutoSum otomatis memasukkan rumus =SUM(...) ke bilah rumus! Tekan Enter untuk menghitung hasilnya!"
     );
-  } else if (action === 'draginfo') {
-    setKodiSpeech(
-      "💡 Cara Menarik Rumus (Auto-Fill Handle):",
-      "Perhatikan kotak hijau kecil di sudut kanan bawah sel target! Klik dan tahan (mouse down) lalu seret ke bawah, atau klik ganda 2x pada kotak hijau itu untuk auto-fill kilat!"
-    );
+  } else if (action === 'fill-down') {
+    const input = document.getElementById("excel-formula-input");
+    if (input && (!input.value || input.value === "=")) {
+      input.value = chal.acceptedFormulas[0] || chal.starterFormula || "=";
+      window.onExcelFormulaTyping(input.value);
+    }
+    excelAutoFillDoubleClicked(chal.targetCell);
+    setKodiSpeech("⬇️ Pintasan: Ctrl+D (Fill Down)", `Rumus disalin ke bawah pada sel ${activeCoord}!`);
+  } else if (action === 'format-currency') {
+    if (activeTd) {
+      const num = parseFloat(activeTd.innerText.replace(/[^0-9.-]/g, ''));
+      if (!isNaN(num)) activeTd.innerText = 'Rp ' + num.toLocaleString('id-ID');
+    }
+    setKodiSpeech("Pintasan: Ctrl+Shift+$", `Format mata uang Rupiah diterapkan ke sel ${activeCoord}!`);
+  } else if (action === 'format-percent') {
+    if (activeTd) {
+      const num = parseFloat(activeTd.innerText.replace(/[^0-9.-]/g, ''));
+      if (!isNaN(num)) activeTd.innerText = (num * 100).toFixed(0) + '%';
+    }
+    setKodiSpeech("Pintasan: Ctrl+Shift+%", `Format persentase diterapkan ke sel ${activeCoord}!`);
   } else if (action === 'copy') {
     if (activeTd) {
       window._excelCopiedValue = activeTd.innerText;
@@ -3759,18 +4025,17 @@ window.excelToolAction = function(action) {
     const input = document.getElementById("excel-formula-input");
     if (input && window._excelCopiedValue) {
       input.value += window._excelCopiedValue;
+      window.onExcelFormulaTyping(input.value);
       setKodiSpeech("Pintasan: Ctrl+V", `Konten '${window._excelCopiedValue}' berhasil ditempel ke bilah formula!`);
     }
   } else if (action === 'filter') {
-    setKodiSpeech("Pintasan: Ctrl+Shift+L", "Filter otomatis pada judul tabel berhasil diaktifkan!");
-  } else if (action === 'tab-rumus') {
-    setKodiSpeech("Tab Rumus (Alt+M)", "Di tab ini kamu bisa mengakses pustaka fungsi: SUM, AVERAGE, IF, VLOOKUP, INDEX, dan STDEV!");
-  } else if (action === 'tab-data') {
-    setKodiSpeech("Tab Data (Alt+A)", "Tab Data digunakan untuk mengurutkan (Sort), menyaring (Filter), dan validasi data sel!");
+    setKodiSpeech("Pintasan: Ctrl+Shift+L", "Filter otomatis pada judul kolom tabel berhasil diaktifkan!");
   }
 };
 
-// Keyboard Navigation di Grid
+// ===================================================================
+// NAVIGASI KEYBOARD PADA GRID EXCEL (Arrow Keys, Tab, Enter, F2)
+// ===================================================================
 window.handleExcelGridKey = function(e, coord) {
   const chal = excelChallenges[appState.currentExcelIndex] || excelChallenges[0];
   const colLetter = coord.replace(/[0-9]/g, '').toUpperCase();
@@ -3799,10 +4064,116 @@ window.handleExcelGridKey = function(e, coord) {
   } else if (e.key === 'F2') {
     e.preventDefault();
     const input = document.getElementById("excel-formula-input");
-    if (input) input.focus();
+    if (input) {
+      input.focus();
+      input.setSelectionRange(input.value.length, input.value.length);
+    }
   }
 };
 
+// ===================================================================
+// GLOBAL PHYSICAL KEYBOARD EVENT HANDLER KHUSUS TAB RUMUS EXCEL
+// Mengaktifkan F2, F4, Alt+=, Enter, Ctrl+D, Ctrl+B, dll secara native!
+// ===================================================================
+window.handleFormulaExcelPhysicalKey = function(e) {
+  const chal = excelChallenges[appState.currentExcelIndex] || excelChallenges[0];
+  const input = document.getElementById("excel-formula-input");
+  const isInputFocused = (document.activeElement === input);
+
+  // 1. F2: Mode Edit Sel / Fokus Bilah Rumus
+  if (e.key === 'F2') {
+    e.preventDefault();
+    if (input) {
+      input.focus();
+      input.setSelectionRange(input.value.length, input.value.length);
+      setKodiSpeech("Mode Edit Aktif (F2)", "Kursor sudah masuk ke bilah rumus Excel!");
+    }
+    return;
+  }
+
+  // 2. F4: Siklus Kunci Sel Absolut $ (B2 -> $B$2 -> B$2 -> $B2 -> B2)
+  if (e.key === 'F4') {
+    e.preventDefault();
+    cycleAbsoluteRefF4();
+    return;
+  }
+
+  // 3. Alt + = : AutoSum Otomatis
+  if (e.altKey && (e.key === '=' || e.key === '+' || e.code === 'Equal')) {
+    e.preventDefault();
+    excelToolAction('autosum');
+    return;
+  }
+
+  // 4. Ctrl + Enter atau Enter di luar input textarea: Periksa Rumus
+  if ((e.ctrlKey && e.key === 'Enter') || (e.key === 'Enter' && isInputFocused)) {
+    e.preventDefault();
+    checkExcelCurrentChallenge();
+    return;
+  }
+
+  // 5. Escape: Reset Rumus
+  if (e.key === 'Escape') {
+    e.preventDefault();
+    resetExcelFormula();
+    return;
+  }
+
+  // 6. Ctrl + D: Fill Down
+  if (e.ctrlKey && e.key.toLowerCase() === 'd') {
+    e.preventDefault();
+    excelToolAction('fill-down');
+    return;
+  }
+
+  // 7. Ctrl + B, I, U
+  if (e.ctrlKey && e.key.toLowerCase() === 'b') {
+    e.preventDefault();
+    excelToolAction('bold');
+    return;
+  }
+  if (e.ctrlKey && e.key.toLowerCase() === 'i') {
+    e.preventDefault();
+    excelToolAction('italic');
+    return;
+  }
+  if (e.ctrlKey && e.key.toLowerCase() === 'u') {
+    e.preventDefault();
+    excelToolAction('underline');
+    return;
+  }
+
+  // 8. Ctrl + Shift + $ atau 4: Format Currency
+  if (e.ctrlKey && e.shiftKey && (e.key === '$' || e.key === '4' || e.code === 'Digit4')) {
+    e.preventDefault();
+    excelToolAction('format-currency');
+    return;
+  }
+
+  // 9. Ctrl + Shift + % atau 5: Format Percent
+  if (e.ctrlKey && e.shiftKey && (e.key === '%' || e.key === '5' || e.code === 'Digit5')) {
+    e.preventDefault();
+    excelToolAction('format-percent');
+    return;
+  }
+
+  // 10. Ctrl + Shift + L: Filter
+  if (e.ctrlKey && e.shiftKey && e.key.toLowerCase() === 'l') {
+    e.preventDefault();
+    excelToolAction('filter');
+    return;
+  }
+
+  // 11. Navigasi Grid dengan Tombol Panah (Jika Input Tidak Sedang Fokus Mengetik)
+  if (!isInputFocused && ['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'Tab'].includes(e.key)) {
+    handleExcelGridKey(e, appState.excelActiveCell || chal.targetCell);
+    return;
+  }
+};
+
+// ===================================================================
+// NAVIGASI, FILTER & EKSEKUSI SOAL
+// ===================================================================
 window.filterExcelCategory = function(cat) {
   sfx.playClick();
   appState.excelCategoryFilter = cat;
@@ -3838,6 +4209,7 @@ window.insertExcelChip = function(snippet) {
   if (input) {
     input.value += snippet;
     input.focus();
+    window.onExcelFormulaTyping(input.value);
   }
 };
 
@@ -3848,6 +4220,7 @@ window.resetExcelFormula = function() {
   if (input) {
     input.value = chal.starterFormula || "=";
     input.focus();
+    window.onExcelFormulaTyping(input.value);
   }
   delete appState.excelUserFormulas[chal.id];
   const feedbackBox = document.getElementById("excel-feedback-box");
@@ -3880,7 +4253,7 @@ window.checkExcelCurrentChallenge = function() {
         <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px;">
           <div>
             <strong>${result.feedback}</strong><br>
-            <span>Hasil di sel <strong>${chal.targetCell}</strong>: <strong style="color: #10b981;">${chal.expectedValue}</strong></span>
+            <span>Hasil perhitungan di sel <strong>${chal.targetCell}</strong>: <strong style="color: #10b981; font-size: 1.05rem;">${chal.expectedValue}</strong></span>
           </div>
           <button class="btn-primary" style="background: #107c41; border: none; padding: 8px 16px;" onclick="navExcelChallenge(1)">
             Tantangan Berikutnya ➡️
@@ -3890,10 +4263,13 @@ window.checkExcelCurrentChallenge = function() {
     }
 
     // Update target cell in table immediately
-    const targetCellEl = document.getElementById(`cell-${chal.targetCell.toUpperCase()}`);
+    const targetCellEl = document.querySelector(`#cell-${chal.targetCell.toUpperCase()} .cell-content`);
     if (targetCellEl) {
       targetCellEl.textContent = chal.expectedValue;
-      targetCellEl.classList.add("solved");
+    }
+    const targetTd = document.getElementById(`cell-${chal.targetCell.toUpperCase()}`);
+    if (targetTd) {
+      targetTd.classList.add("solved");
     }
 
     setKodiSpeech(

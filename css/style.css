@@ -7156,3 +7156,138 @@ body.light-theme .project-keycap {
   color: #0f172a;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
+
+/* ==============================================================================
+   📊 ENHANCED MICROSOFT EXCEL FORMULA STUDIO & AUTHENTIC GRID STYLES
+   ============================================================================== */
+.excel-syntax-tooltip {
+  background: #ffffff;
+  border: 1.5px solid #107c41;
+  color: #0f172a;
+  padding: 6px 14px;
+  font-family: 'Consolas', 'Courier New', monospace;
+  font-size: 0.84rem;
+  font-weight: 700;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+  margin: 6px 14px;
+  display: inline-block;
+  animation: fadeIn 0.2s ease;
+}
+
+.excel-syntax-tooltip code {
+  color: #107c41;
+  background: #f0fdf4;
+  padding: 2px 6px;
+  border-radius: 3px;
+  font-size: 0.88rem;
+}
+
+.excel-quick-chips-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  align-items: center;
+  padding: 8px 14px;
+  background: #f8fafc;
+  border-bottom: 1px solid #cbd5e1;
+}
+
+.excel-chip-tag {
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
+  color: #0f172a;
+  padding: 3px 8px;
+  border-radius: 4px;
+  font-size: 0.78rem;
+  font-family: monospace;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.excel-chip-tag:hover {
+  background: #e2e8f0;
+  border-color: #107c41;
+  color: #107c41;
+}
+
+.excel-chip-tag.keycap-style {
+  background: linear-gradient(180deg, #f8fafc, #e2e8f0);
+  border-bottom: 2px solid #94a3b8;
+  color: #047857;
+}
+
+.btn-formula-tool {
+  width: 22px;
+  height: 22px;
+  border-radius: 3px;
+  border: 1px solid #cbd5e1;
+  background: #f8fafc;
+  color: #475569;
+  font-weight: 800;
+  font-size: 0.78rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.btn-fx-cancel:hover {
+  background: #fee2e2;
+  color: #ef4444;
+  border-color: #fca5a5;
+}
+
+.btn-fx-enter:hover {
+  background: #dcfce7;
+  color: #15803d;
+  border-color: #86efac;
+}
+
+.excel-col-head.col-highlight {
+  background: #dcfce7 !important;
+  color: #15803d !important;
+  border-bottom: 2px solid #107c41 !important;
+  font-weight: 900 !important;
+}
+
+.excel-row-num.row-highlight {
+  background: #dcfce7 !important;
+  color: #15803d !important;
+  border-right: 2px solid #107c41 !important;
+  font-weight: 900 !important;
+}
+
+.excel-header-data-row .excel-cell {
+  background: #f8fafc !important;
+  color: #334155 !important;
+  font-weight: 800 !important;
+  border-bottom: 2px solid #cbd5e1 !important;
+}
+
+.target-placeholder-text {
+  color: #107c41;
+  font-style: italic;
+  font-weight: 700;
+  opacity: 0.85;
+}
+
+/* Light theme overrides for quick chips & tooltip */
+body.light-theme .excel-quick-chips-bar {
+  background: #f8fafc;
+  border-color: #cbd5e1;
+}
+
+body.light-theme .excel-chip-tag {
+  background: #ffffff;
+  color: #0f172a;
+  border-color: #cbd5e1;
+}
+
+body.light-theme .excel-syntax-tooltip {
+  background: #ffffff;
+  color: #0f172a;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
