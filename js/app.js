@@ -91,28 +91,33 @@ function setKodiSpeech(text, subTip = "") {
 // Backward compatibility alias
 const setBotiSpeech = setKodiSpeech;
 
-// Render Level Quests on Home Map
+// Render Level Quests on Home Map (Lengkap dengan Karakter Clay 3D Asli dari PDF)
 function renderQuestGrid() {
   const container = document.getElementById("quest-grid-container");
   if (!container) return;
 
   container.innerHTML = "";
 
-  levelsData.forEach(lvl => {
+  levelsData.forEach((lvl, idx) => {
     const isCompleted = appState.completedLevels.includes(lvl.id);
     const card = document.createElement("div");
     card.className = `quest-card ${isCompleted ? 'completed' : ''}`;
 
     let starsDisplay = "⭐".repeat(lvl.starsReward);
+    const tileNum = String((idx % 31) + 1).padStart(2, '0');
+    const avatarUrl = `assets/illustrations/3d_tiles/tile_3d_${tileNum}.png`;
 
     card.innerHTML = `
       <div>
         <div class="quest-header">
-          <div class="quest-icon">${lvl.icon}</div>
-          <div class="quest-meta">
-            <span class="quest-level-tag">${lvl.tag}</span>
-            <h3>${lvl.shortTitle}</h3>
+          <div style="display: flex; align-items: center; gap: 12px;">
+            <img src="${avatarUrl}" class="quest-tile-img" alt="${lvl.shortTitle}" title="Pahlawan Misi: Karakter Clay 3D #${tileNum}">
+            <div class="quest-meta">
+              <span class="quest-level-tag">${lvl.tag}</span>
+              <h3>${lvl.shortTitle}</h3>
+            </div>
           </div>
+          <div class="quest-icon" style="font-size: 1.4rem;">${lvl.icon}</div>
         </div>
         <div class="quest-analogy">
           <strong>🍼 Bahasa Bayi:</strong> ${lvl.analogy}
@@ -3645,9 +3650,106 @@ window.prevItTechChallenge = function() {
   renderItTechTrainer();
 };
 
+// ================= LIGHT / DARK THEME MANAGEMENT (ICON ONLY) =================
+function applyTheme(theme) {
+  const btn = document.getElementById("theme-toggle-btn");
+  if (theme === "light") {
+    document.body.classList.add("light-theme");
+    if (btn) {
+      btn.innerHTML = "🌙";
+      btn.setAttribute("title", "Mode Terang Aktif. Klik ikon bulan sabit untuk beralih ke Mode Gelap.");
+    }
+  } else {
+    document.body.classList.remove("light-theme");
+    if (btn) {
+      btn.innerHTML = "☀️";
+      btn.setAttribute("title", "Mode Gelap Aktif. Klik ikon matahari untuk beralih ke Mode Terang.");
+    }
+  }
+}
+
+function initTheme() {
+  const saved = localStorage.getItem("kodi_theme") || "dark";
+  applyTheme(saved);
+}
+
+window.toggleTheme = function() {
+  if (window.sfx && typeof sfx.playClick === "function") sfx.playClick();
+  const isLight = document.body.classList.contains("light-theme");
+  const next = isLight ? "dark" : "light";
+  localStorage.setItem("kodi_theme", next);
+  applyTheme(next);
+  setKodiSpeech(
+    next === "light" 
+      ? "Mode Terang aktif! Tampilan putih bersih berlatar kontras tinggi siap digunakan!" 
+      : "Mode Gelap aktif! Tampilan ramah mata buat sesi belajar malam hari!",
+    "Kamu bisa ganti mode kapan saja lewat tombol ikon matahari/bulan di atas."
+  );
+};
+
+// ================= CONTROLLER AKSEN BAHASA INGGRIS (US vs BRITISH) =================
+window.toggleAccent = function() {
+  if (window.sfx && typeof sfx.playClick === "function") sfx.playClick();
+  const newAccent = speechEngine.toggleEnglishAccent();
+  const isGb = newAccent === 'en-GB';
+  const label = isGb ? 'British (UK) 🇬🇧' : 'American (US) 🇺🇸';
+
+  setKodiSpeech(
+    `Aksen bahasa Inggris berhasil diubah ke ${label}! Sekarang semua audio listening dan soal dibacakan dengan logat ini.`,
+    "Dengarkan pelafalan suaranya langsung!"
+  );
+
+  // Live spoken sample in British or American pronunciation
+  const previewText = isGb 
+    ? "Right then! British pronunciation has been activated. Cheers!" 
+    : "Awesome! American pronunciation is now active. Let's practice!";
+  speechEngine.speakText(previewText, 0.9, null, newAccent);
+
+  const engTab = document.getElementById("tab-english-trainer");
+  if (engTab && engTab.classList.contains("active")) {
+    renderEnglishTrainer();
+  }
+};
+
+// ================= 3D CLAY MASCOT AVATAR CYCLER (31 KARAKTER DARI REFERENSI) =================
+const KODI_AVATAR_LIST = Array.from({ length: 31 }, (_, i) => {
+  const num = String(i + 1).padStart(2, '0');
+  return `assets/illustrations/3d_tiles/tile_3d_${num}.png`;
+});
+
+function initKodiAvatar() {
+  const currentIdx = parseInt(localStorage.getItem("kodi_selected_avatar_idx") || "0", 10);
+  const imgEl = document.getElementById("kodi-avatar-img");
+  if (imgEl && KODI_AVATAR_LIST[currentIdx]) {
+    imgEl.src = KODI_AVATAR_LIST[currentIdx];
+  }
+}
+
+window.cycleKodiAvatar = function() {
+  if (window.sfx && typeof sfx.playSuccess === "function") sfx.playSuccess();
+  let currentIdx = parseInt(localStorage.getItem("kodi_selected_avatar_idx") || "0", 10);
+  currentIdx = (currentIdx + 1) % KODI_AVATAR_LIST.length;
+  localStorage.setItem("kodi_selected_avatar_idx", currentIdx);
+
+  const imgEl = document.getElementById("kodi-avatar-img");
+  if (imgEl) {
+    imgEl.src = KODI_AVATAR_LIST[currentIdx];
+    imgEl.classList.remove("spring-bump");
+    void imgEl.offsetWidth;
+    imgEl.classList.add("spring-bump");
+  }
+
+  const avatarNumber = currentIdx + 1;
+  setKodiSpeech(
+    `Karakter Clay 3D berhasil diganti ke Pahlawan #${avatarNumber}! 🎉`,
+    `Tersedia 31 karakter 3D unik dari buku referensi! Klik terus avatar Kodi untuk mencoba karakter lainnya!`
+  );
+};
+
 // ================= APP INITIALIZATION =================
 window.addEventListener("DOMContentLoaded", () => {
   initTheme();
+  initKodiAvatar();
   loadProgress();
   renderQuestGrid();
   initDictionarySearch();
@@ -5175,8 +5277,117 @@ function renderIhsaniyahExplanation(q, userIsCorrect = true) {
   `;
 }
 
-// Modal Panel Guru / Admin Rekap Nilai Siswa
+// ================= AUTENTIKASI & PANEL GURU SD IHSANIYAH =================
+function isTeacherLoggedIn() {
+  return sessionStorage.getItem("ihs_teacher_auth") === "true";
+}
+
 window.openIhsaniyahAdminPanel = function() {
+  if (window.sfx && typeof sfx.playClick === "function") sfx.playClick();
+
+  // Jika guru belum login: buka Halaman Login Khusus Guru
+  if (!isTeacherLoggedIn()) {
+    renderTeacherLoginModal();
+    return;
+  }
+
+  // Jika sudah login: tampilkan panel admin rekap nilai
+  renderTeacherAdminModal();
+};
+
+function renderTeacherLoginModal() {
+  let modalEl = document.getElementById("ihs-admin-modal-wrap");
+  if (!modalEl) {
+    modalEl = document.createElement("div");
+    modalEl.id = "ihs-admin-modal-wrap";
+    modalEl.className = "modal-overlay active";
+    document.body.appendChild(modalEl);
+  } else {
+    modalEl.className = "modal-overlay active";
+  }
+
+  modalEl.innerHTML = `
+    <div class="modal-content" style="max-width: 460px; width: 95%; text-align: center; border: 2px solid #38bdf8; border-radius: 18px; padding: 26px; background: linear-gradient(145deg, rgba(30, 41, 59, 0.98), rgba(15, 23, 42, 0.99));">
+      <div style="font-size: 2.8rem; margin-bottom: 8px;">🔐</div>
+      <div style="font-size: 0.78rem; font-weight: 800; color: #38bdf8; letter-spacing: 0.5px; text-transform: uppercase;">
+        SD IHSANIYAH GAJAHMADA TEGAL
+      </div>
+      <h3 style="margin: 4px 0 8px; color: #fff; font-size: 1.3rem;">
+        Login Khusus Guru & Admin
+      </h3>
+      <p style="font-size: 0.82rem; color: #94a3b8; margin: 0 0 18px; line-height: 1.4;">
+        Halaman rekap nilai dan unduh berkas spreadsheet siswa hanya dapat diakses oleh Bapak/Ibu Guru pengajar.
+      </p>
+
+      <div style="background: rgba(0,0,0,0.3); border-radius: 12px; padding: 16px; margin-bottom: 18px; text-align: left; border: 1px solid rgba(255,255,255,0.08);">
+        <div style="margin-bottom: 12px;">
+          <label style="display: block; font-size: 0.8rem; font-weight: 700; color: #38bdf8; margin-bottom: 4px;">Username Guru:</label>
+          <input type="text" id="teacher-username-input" placeholder="Masukkan username (contoh: guru)" style="width: 100%; padding: 10px 12px; font-size: 0.9rem; border-radius: 8px; border: 1.5px solid #64748b; background: #0f172a; color: #fff; box-sizing: border-box;">
+        </div>
+
+        <div style="margin-bottom: 12px;">
+          <label style="display: block; font-size: 0.8rem; font-weight: 700; color: #38bdf8; margin-bottom: 4px;">Password Guru:</label>
+          <div style="position: relative;">
+            <input type="password" id="teacher-password-input" placeholder="Masukkan password guru" style="width: 100%; padding: 10px 12px; font-size: 0.9rem; border-radius: 8px; border: 1.5px solid #64748b; background: #0f172a; color: #fff; box-sizing: border-box;">
+            <button type="button" onclick="togglePasswordVisibility()" style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); background: none; border: none; color: #94a3b8; cursor: pointer; font-size: 1.1rem;" title="Lihat/Sembunyikan Password">👁️</button>
+          </div>
+        </div>
+
+        <div id="teacher-login-error" style="display: none; color: #f87171; font-size: 0.8rem; font-weight: 700; margin-top: 6px;"></div>
+
+        <div style="margin-top: 10px; padding: 8px; background: rgba(56, 189, 248, 0.1); border-radius: 6px; font-size: 0.75rem; color: #cbd5e1; border: 1px dashed rgba(56, 189, 248, 0.3);">
+          💡 <strong>Akun Guru Standar:</strong><br>
+          Username: <code style="color: #38bdf8; font-weight: 700;">guru</code> | Password: <code style="color: #4ade80; font-weight: 700;">sdihsaniyah2026</code>
+        </div>
+      </div>
+
+      <div style="display: flex; gap: 10px; justify-content: center;">
+        <button class="btn-primary" style="flex: 1; padding: 11px; font-weight: 800; background: linear-gradient(135deg, #0284c7, #2563eb);" onclick="handleTeacherLoginSubmit()">
+          🔑 Masuk ke Panel Guru
+        </button>
+        <button class="btn-secondary" style="padding: 11px 18px;" onclick="closeIhsaniyahAdminPanel()">
+          Batal
+        </button>
+      </div>
+    </div>
+  `;
+}
+
+window.togglePasswordVisibility = function() {
+  const passEl = document.getElementById("teacher-password-input");
+  if (passEl) {
+    passEl.type = passEl.type === "password" ? "text" : "password";
+  }
+};
+
+window.handleTeacherLoginSubmit = function() {
+  const userEl = document.getElementById("teacher-username-input");
+  const passEl = document.getElementById("teacher-password-input");
+  const errEl = document.getElementById("teacher-login-error");
+
+  const u = userEl ? userEl.value.trim().toLowerCase() : "";
+  const p = passEl ? passEl.value.trim() : "";
+
+  if (u === "guru" && p === "sdihsaniyah2026") {
+    sessionStorage.setItem("ihs_teacher_auth", "true");
+    if (window.sfx && typeof sfx.playSuccess === "function") sfx.playSuccess();
+    renderTeacherAdminModal();
+  } else {
+    if (errEl) {
+      errEl.style.display = "block";
+      errEl.textContent = "⚠️ Username atau Password guru salah! Periksa kembali.";
+    }
+    if (window.sfx && typeof sfx.playWrong === "function") sfx.playWrong();
+  }
+};
+
+window.logoutTeacherHandler = function() {
+  sessionStorage.removeItem("ihs_teacher_auth");
+  if (window.sfx && typeof sfx.playClick === "function") sfx.playClick();
+  renderTeacherLoginModal();
+};
+
+function renderTeacherAdminModal() {
   const records = window.getAllIhsaniyahRecords();
   const avgScore = records.length ? Math.round(records.reduce((acc, r) => acc + (r.score || 0), 0) / records.length) : 0;
   const highestScore = records.length ? Math.max(...records.map(r => r.score || 0)) : 0;
@@ -5221,14 +5432,19 @@ window.openIhsaniyahAdminPanel = function() {
           </div>
         </div>
 
-        <!-- Tombol Aksi Download -->
+        <!-- Tombol Aksi Download & Logout Guru -->
         <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; margin-bottom: 14px;">
           <button class="btn-primary" style="padding: 10px 18px; font-weight: 800; background: linear-gradient(135deg, #059669, #10b981); border: none; border-radius: 8px;" onclick="window.downloadIhsaniyahCSV()">
             📥 Download Rekap Nilai Siswa (Excel / CSV)
           </button>
-          <button class="btn-secondary" style="padding: 8px 14px; font-size: 0.8rem; color: #fca5a5;" onclick="clearIhsaniyahRecordsHandler()">
-            🗑️ Reset / Hapus Data
-          </button>
+          <div style="display: flex; gap: 8px;">
+            <button class="btn-secondary" style="padding: 8px 14px; font-size: 0.8rem; color: #fca5a5;" onclick="clearIhsaniyahRecordsHandler()">
+              🗑️ Reset Data
+            </button>
+            <button class="btn-secondary" style="padding: 8px 14px; font-size: 0.8rem; color: #f59e0b;" onclick="logoutTeacherHandler()">
+              🔒 Logout Guru
+            </button>
+          </div>
         </div>
 
         <!-- Tabel Rekap Nilai -->
@@ -5273,7 +5489,7 @@ window.openIhsaniyahAdminPanel = function() {
       </div>
     </div>
   `;
-};
+}
 
 window.closeIhsaniyahAdminPanel = function() {
   const modalEl = document.getElementById("ihs-admin-modal-wrap");

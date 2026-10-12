@@ -128,17 +128,30 @@ class SpeechEngine {
 
       if (accent === 'en-GB') {
         // Prioritas British / UK
-        const gbVoice = this.voices.find(v => 
-          (v.lang && (v.lang === 'en-GB' || v.lang === 'en_GB')) ||
-          (v.name && (v.name.toLowerCase().includes('united kingdom') || v.name.toLowerCase().includes('uk') || v.name.toLowerCase().includes('british') || v.name.toLowerCase().includes('george') || v.name.toLowerCase().includes('hazel') || v.name.toLowerCase().includes('oliver') || v.name.toLowerCase().includes('daniel') || v.name.toLowerCase().includes('serena') || v.name.toLowerCase().includes('stephanie')))
-        );
+        const gbVoice = this.voices.find(v => {
+          const l = (v.lang || '').toLowerCase().replace('_', '-');
+          const n = (v.name || '').toLowerCase();
+          return l === 'en-gb' || l.startsWith('en-gb') ||
+                 n.includes('united kingdom') || n.includes('uk') || n.includes('british') ||
+                 n.includes('england') || n.includes('london') || n.includes('george') ||
+                 n.includes('hazel') || n.includes('susan') || n.includes('oliver') ||
+                 n.includes('daniel') || n.includes('arthur') || n.includes('kate') ||
+                 n.includes('serena') || n.includes('stephanie');
+        });
         if (gbVoice) return gbVoice;
       } else {
         // Prioritas American / US
-        const usVoice = this.voices.find(v => 
-          (v.lang && (v.lang === 'en-US' || v.lang === 'en_US')) ||
-          (v.name && (v.name.toLowerCase().includes('united states') || v.name.toLowerCase().includes('us') || v.name.toLowerCase().includes('samantha') || v.name.toLowerCase().includes('zira') || v.name.toLowerCase().includes('jenny') || v.name.toLowerCase().includes('david') || v.name.toLowerCase().includes('aria')))
-        );
+        const usVoice = this.voices.find(v => {
+          const l = (v.lang || '').toLowerCase().replace('_', '-');
+          const n = (v.name || '').toLowerCase();
+          const isNotGb = !l.includes('gb') && !n.includes('uk') && !n.includes('united kingdom') && !n.includes('british');
+          return isNotGb && (
+            l === 'en-us' || l.startsWith('en-us') ||
+            n.includes('united states') || n.includes('us') || n.includes('samantha') ||
+            n.includes('zira') || n.includes('david') || n.includes('jenny') ||
+            n.includes('guy') || n.includes('aria')
+          );
+        });
         if (usVoice) return usVoice;
       }
 
@@ -222,8 +235,20 @@ class SpeechEngine {
 
     const utterance = new SpeechSynthesisUtterance(text);
     utterance.lang = targetLang;
-    utterance.rate = rate;
-    utterance.pitch = 1.0;
+    
+    // Pemodelan akustik aksen British vs American
+    if (targetLang === 'en-GB' || (targetLang.startsWith('en') && this.englishAccent === 'en-GB')) {
+      utterance.lang = 'en-GB';
+      utterance.pitch = 1.08;
+      utterance.rate = rate * 0.94;
+    } else if (targetLang.startsWith('en')) {
+      utterance.lang = 'en-US';
+      utterance.pitch = 0.98;
+      utterance.rate = rate * 1.02;
+    } else {
+      utterance.rate = rate;
+      utterance.pitch = 1.0;
+    }
 
     const chosenVoice = this.getBestVoice(targetLang);
     if (chosenVoice) {

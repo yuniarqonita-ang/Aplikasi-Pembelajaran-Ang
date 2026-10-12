@@ -52,11 +52,11 @@
         <button id="accent-toggle-btn" class="accent-toggle-btn" onclick="toggleAccent()" title="Ganti Aksen Bahasa Inggris (Amerika / British)">
           🇺🇸 US
         </button>
-        <button id="theme-toggle-btn" class="theme-toggle-btn" onclick="toggleTheme()" title="Ganti Mode Tampilan (Terang / Gelap)">
-          ☀️ Terang
+        <button id="theme-toggle-btn" class="theme-toggle-btn" onclick="toggleTheme()" title="Ganti Mode Tampilan (Terang / Gelap)" style="font-size: 1.15rem; padding: 7px 12px;">
+          ☀️
         </button>
-        <button id="btn-force-update" class="theme-toggle-btn" onclick="forceAppUpdate()" title="Bersihkan Cache & Perbarui Aplikasi ke Versi Terbaru (v16)" style="background: rgba(16, 185, 129, 0.25); border-color: var(--accent-green); color: #34d399; font-weight: 800;">
-          🔄 Update v16
+        <button id="btn-force-update" class="theme-toggle-btn" onclick="forceAppUpdate()" title="Bersihkan Cache & Perbarui Aplikasi ke Versi Terbaru (v17)" style="background: rgba(16, 185, 129, 0.25); border-color: var(--accent-green); color: #34d399; font-weight: 800;">
+          🔄 Update v17
         </button>
         <div class="stat-badge star-count">
           <span>⭐</span>
@@ -80,98 +80,91 @@
       </div>
     </div>
 
-    <!-- Main Navigation Bar -->
-    <nav class="main-nav">
-      <button class="nav-tab active" data-tab="adventure" onclick="switchTab('adventure')" title="Peta Petualangan Belajar">
-        <span class="nav-icon">🗺️</span>
-        <span class="nav-label">Petualangan</span>
-      </button>
-      <button class="nav-tab" data-tab="ihsaniyah-test" onclick="switchTab('ihsaniyah-test')" title="Ujian Formatif Matematika SD Ihsaniyah Gajahmada Tegal (Kampus Al Hafidz)">
-        <span class="nav-icon">🎒</span>
-        <span class="nav-label">SD Ihsaniyah</span>
-      </button>
-      <button class="nav-tab" data-tab="code-trainer" onclick="switchTab('code-trainer')" title="Studio Koding Manual: HTML, JS, Python, Java, C# (100 Tantangan)">
-        <span class="nav-icon">💻</span>
-        <span class="nav-label">Koding (100)</span>
-      </button>
-      <button class="nav-tab" data-tab="sql-trainer" onclick="switchTab('sql-trainer')" title="Tes Kueri SQL & Output Koding (100 Tantangan)">
-        <span class="nav-icon">🗄️</span>
-        <span class="nav-label">SQL (100)</span>
-      </button>
-      <button class="nav-tab" data-tab="excel-trainer" onclick="switchTab('excel-trainer')" title="Studio Rumus Excel & Statistik Realtime (105 Tantangan)">
-        <span class="nav-icon">📊</span>
-        <span class="nav-label">Excel (105)</span>
-      </button>
-      <button class="nav-tab" data-tab="it-tech-trainer" onclick="switchTab('it-tech-trainer')" title="Laboratorium IT Tech, Jaringan, Hardware & Security (100 Tantangan)">
-        <span class="nav-icon">🛠️</span>
-        <span class="nav-label">IT Lab (100)</span>
-      </button>
-      <button class="nav-tab" data-tab="math-trainer" onclick="switchTab('math-trainer')" title="Studio Cambridge Bilingual Mathematics (100 Tantangan)">
-        <span class="nav-icon">📐</span>
-        <span class="nav-label">Math (100)</span>
-      </button>
-      <button class="nav-tab" data-tab="english-trainer" onclick="switchTab('english-trainer')" title="Studio English Speaking, Dikte & Tes (1.300 Tantangan)">
-        <span class="nav-icon">🗣️</span>
-        <span class="nav-label">English (1.3k)</span>
-      </button>
-      <button class="nav-tab" data-tab="dictionary" onclick="switchTab('dictionary')" title="Kamus Bayi IT: 1.000 Istilah Mudah Dipahami">
-        <span class="nav-icon">📖</span>
-        <span class="nav-label">Kamus (1.000)</span>
-      </button>
-      <button class="nav-tab" data-tab="sandbox" onclick="switchTab('sandbox')" title="Terminal Praktik Perintah Komputer">
-        <span class="nav-icon">📟</span>
-        <span class="nav-label">Terminal</span>
-      </button>
-      <button class="nav-tab" data-tab="certificate" onclick="switchTab('certificate')" title="Lihat Sertifikat Kelulusan">
-        <span class="nav-icon">🎓</span>
-        <span class="nav-label">Sertifikat</span>
-      </button>
+    <!-- Main Categorized Navigation Hub -->
+    <nav class="main-nav-wrapper">
+      <div class="nav-category-group">
+        <div class="nav-group-header">
+          <span class="nav-group-badge">🎒 KURIKULUM & UJIAN</span>
+        </div>
+        <div class="nav-group-tabs">
+          <button class="nav-tab active" data-tab="adventure" onclick="switchTab('adventure')" title="Peta Petualangan Belajar">
+            <span class="nav-icon">🗺️</span>
+            <span class="nav-label">Petualangan</span>
+          </button>
+          <button class="nav-tab" data-tab="ihsaniyah-test" onclick="switchTab('ihsaniyah-test')" title="Ujian Formatif Matematika SD Ihsaniyah Gajahmada Tegal (Kampus Al Hafidz)">
+            <span class="nav-icon">🎒</span>
+            <span class="nav-label">SD Ihsaniyah</span>
+          </button>
+          <button class="nav-tab" data-tab="math-trainer" onclick="switchTab('math-trainer')" title="Studio Cambridge Bilingual Mathematics (100 Tantangan)">
+            <span class="nav-icon">📐</span>
+            <span class="nav-label">Math (100)</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="nav-category-group">
+        <div class="nav-group-header">
+          <span class="nav-group-badge">💻 STUDIO PRAKTIK & LAB</span>
+        </div>
+        <div class="nav-group-tabs">
+          <button class="nav-tab" data-tab="code-trainer" onclick="switchTab('code-trainer')" title="Studio Koding Manual: HTML, JS, Python, Java, C# (100 Tantangan)">
+            <span class="nav-icon">💻</span>
+            <span class="nav-label">Koding (100)</span>
+          </button>
+          <button class="nav-tab" data-tab="sql-trainer" onclick="switchTab('sql-trainer')" title="Tes Kueri SQL & Output Koding (100 Tantangan)">
+            <span class="nav-icon">🗄️</span>
+            <span class="nav-label">SQL (100)</span>
+          </button>
+          <button class="nav-tab" data-tab="excel-trainer" onclick="switchTab('excel-trainer')" title="Studio Rumus Excel & Statistik Realtime (105 Tantangan)">
+            <span class="nav-icon">📊</span>
+            <span class="nav-label">Excel (105)</span>
+          </button>
+          <button class="nav-tab" data-tab="it-tech-trainer" onclick="switchTab('it-tech-trainer')" title="Laboratorium IT Tech, Jaringan, Hardware & Security (100 Tantangan)">
+            <span class="nav-icon">🛠️</span>
+            <span class="nav-label">IT Lab (100)</span>
+          </button>
+          <button class="nav-tab" data-tab="english-trainer" onclick="switchTab('english-trainer')" title="Studio English Speaking, Dikte & Tes (1.300 Tantangan)">
+            <span class="nav-icon">🗣️</span>
+            <span class="nav-label">English (1.3k)</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="nav-category-group">
+        <div class="nav-group-header">
+          <span class="nav-group-badge">🛠️ ALAT & SERTIFIKAT</span>
+        </div>
+        <div class="nav-group-tabs">
+          <button class="nav-tab" data-tab="dictionary" onclick="switchTab('dictionary')" title="Kamus Bayi IT: 1.000 Istilah Mudah Dipahami">
+            <span class="nav-icon">📖</span>
+            <span class="nav-label">Kamus (1k)</span>
+          </button>
+          <button class="nav-tab" data-tab="sandbox" onclick="switchTab('sandbox')" title="Terminal Praktik Perintah Komputer">
+            <span class="nav-icon">📟</span>
+            <span class="nav-label">Terminal</span>
+          </button>
+          <button class="nav-tab" data-tab="certificate" onclick="switchTab('certificate')" title="Lihat Sertifikat Kelulusan">
+            <span class="nav-icon">🎓</span>
+            <span class="nav-label">Sertifikat</span>
+          </button>
+        </div>
+      </div>
     </nav>
 
-    <!-- Kodi Mascot Hero Banner -->
+    <!-- Kodi 3D Clay Mascot Hero Banner (Dari 31 Karakter Referensi PDF) -->
     <section class="kodi-hero-card">
-      <div class="kodi-character-wrap" title="Klik Kodi buat dengerin lelucon IT!">
-        <svg class="kodi-character-svg" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <!-- Antena -->
-          <rect x="47" y="6" width="6" height="18" rx="3" fill="#facc15"/>
-          <circle cx="50" cy="6" r="7" fill="#f472b6"/>
-          <!-- Telinga headphone -->
-          <rect x="12" y="38" width="8" height="24" rx="4" fill="#818cf8"/>
-          <rect x="80" y="38" width="8" height="24" rx="4" fill="#818cf8"/>
-          <!-- Kepala -->
-          <rect x="18" y="24" width="64" height="52" rx="16" fill="url(#kodiGrad)"/>
-          <!-- Pipi Merona Kawaii -->
-          <circle cx="30" cy="58" r="4" fill="#fb7185" opacity="0.6"/>
-          <circle cx="70" cy="58" r="4" fill="#fb7185" opacity="0.6"/>
-          <!-- Layar Mata -->
-          <rect x="26" y="34" width="48" height="26" rx="8" fill="#0f172a"/>
-          <!-- Mata Binar -->
-          <circle cx="38" cy="46" r="6" fill="#38bdf8"/>
-          <circle cx="40" cy="44" r="2.5" fill="#fff"/>
-          <circle cx="62" cy="46" r="6" fill="#38bdf8"/>
-          <circle cx="64" cy="44" r="2.5" fill="#fff"/>
-          <!-- Senyum Lucu -->
-          <path d="M 44 54 Q 50 59 56 54" stroke="#4ade80" stroke-width="2.5" stroke-linecap="round" fill="none"/>
-          <!-- Badan Mini -->
-          <rect x="30" y="76" width="40" height="20" rx="8" fill="#38bdf8"/>
-          <circle cx="50" cy="85" r="4" fill="#facc15"/>
-
-          <defs>
-            <linearGradient id="kodiGrad" x1="18" y1="24" x2="82" y2="76" gradientUnits="userSpaceOnUse">
-              <stop stop-color="#38bdf8"/>
-              <stop offset="1" stop-color="#6366f1"/>
-            </linearGradient>
-          </defs>
-        </svg>
+      <div class="kodi-character-wrap" title="Klik Karakter untuk Berganti Avatar & Dengerin Lelucon IT!" onclick="cycleKodiAvatar()">
+        <img id="kodi-avatar-img" src="assets/illustrations/3d_tiles/tile_3d_01.png" class="kodi-character-3d" alt="Kodi 3D Clay Mascot" />
+        <span class="avatar-change-hint">🔄 Ganti Karakter</span>
       </div>
 
       <div class="kodi-speech-bubble">
-        <div class="kodi-speaker-name">🤖 Kodi - Sahabat Koding & IT Kamu</div>
+        <div class="kodi-speaker-name" id="kodi-speaker-name">🤖 Kodi - Sahabat Koding & IT Kamu</div>
         <div id="kodi-msg" class="kodi-message-text">
           Halo temanku! Kenalin, namaku Kodi! Tenang, jangan panik ya! Di sini ga ada rumus rumit. Bersama aku, kita pelajari Koding, IT Support, kueri SQL tabel, dan English Speaking buat persiapan tes kerja!
         </div>
         <div id="kodi-subtip" class="kodi-subtip">
-          💡 <span>Klik pada badan Kodi untuk mendengarkan lelucon & tips seru!</span>
+          💡 <span>Klik pada avatar 3D Kodi untuk berganti dari 31 karakter clay unik & mendengarkan tips seru!</span>
         </div>
       </div>
     </section>
