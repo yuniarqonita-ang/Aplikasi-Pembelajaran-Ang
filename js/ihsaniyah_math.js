@@ -1,22 +1,30 @@
 // ==============================================================================
-// 🎒 SD IHSANIYAH GAJAHMADA TEGAL - KAMPUS AL HAFIDZ
-// MATH FORMATIVE TEST 2 & DIVISION QUEST (KURIKULUM BILINGUAL MATEMATIKA SD)
-// Lengkap dengan Game Hubungkan Garis (Matching), Nalar Bayi Kodi, & Panel Guru
+// 🎒 YAYASAN PERGURUAN IHSANIYAH - SD IHSANIYAH GAJAHMADA TEGAL
+// Kampus Al Hafidz • MATH FORMATIVE TEST 2 & DIVISION QUEST
+// Full English Curriculum Questions with Bilingual Kodi's Baby Logic
 // ==============================================================================
 
 (function() {
   'use strict';
 
-  // Bank Data Soal Berdasarkan PDF 3 (Halaman 1 - 10)
+  // Stacked Fractions Formatter Helper
+  window.formatMathFractions = function(text) {
+    if (!text || typeof text !== "string") return text || "";
+    return text.replace(/(^|[^a-zA-Z0-9_\/])(-?\d+)\/(\d+)(?![a-zA-Z0-9_\/])/g, function(match, prefix, num, den) {
+      return prefix + '<span class="math-fraction"><span class="num">' + num + '</span><span class="den">' + den + '</span></span>';
+    });
+  };
+
+  // Bank Data Soal Berdasarkan PDF 3 (Halaman 1 - 10) - FULL ENGLISH
   window.IHSANIYAH_QUESTIONS = [
     {
       id: "ihs-1",
       number: 1,
-      page: "Halaman 1",
+      page: "Page 1",
       type: "multi_select",
-      title: "Pola Bilangan Loncat & Operasi Hitung",
-      badge: "Bagian I: Checklist Pilihan Ganda",
-      instruction: "Perhatikan barisan bilangan loncat 10 berikut! Pilih satu atau lebih pernyataan yang BENAR dengan mencentang kotak.",
+      title: "Number Sequences & Jump Patterns (Skip Counting by 10)",
+      badge: "Part I: Multiple-Choice Checklist (✓)",
+      instruction: "Look at these numbers! Choose one or more correct statements by putting a check mark (✓) in the boxes next to A, B, or C.",
       diagram: `
         <div style="display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; margin: 12px 0;">
           <span style="background: rgba(30, 41, 59, 0.9); padding: 8px 14px; border-radius: 8px; font-weight: 800; font-size: 1.1rem; border: 1.5px solid #38bdf8;">237</span>
@@ -28,27 +36,27 @@
         </div>
       `,
       options: [
-        { key: "A", text: "A. 237 + 40 = 267", isCorrect: false, reasonWrong: "Salah, karena 237 + 40 itu hasilnya 277 (maju 4 langkah loncatan 10), bukan 267!" },
-        { key: "B", text: "B. 267 – 20 = 247", isCorrect: true, reasonCorrect: "Tepat sekali! Dari 267 jika mundur 2 langkah loncatan 10 (267 - 20) pas mendarat di 247!" },
-        { key: "C", text: "C. 257 + 30 = 287", isCorrect: true, reasonCorrect: "Luar biasa! Dari 257 jika maju 3 langkah loncatan 10 (257 + 30) tepat mendarat di 287!" }
+        { key: "A", text: "A. 237 + 40 = 267", isCorrect: false, reasonWrong: "Incorrect! 237 + 40 = 277 (counting 4 jumps of 10 forward), not 267." },
+        { key: "B", text: "B. 267 – 20 = 247", isCorrect: true, reasonCorrect: "Correct! Counting back 2 jumps of 10 from 267 (267 – 20) lands exactly on 247." },
+        { key: "C", text: "C. 257 + 30 = 287", isCorrect: true, reasonCorrect: "Correct! Counting forward 3 jumps of 10 from 257 (257 + 30) lands exactly on 287." }
       ],
-      nalarBayiKodi: "Barisan ini adalah jalan setapak katak yang melompat 10 angka tiap langkah! Kalau melompat mundur 2 kali dari 267, sampainya di 247. Kalau melompat maju 3 kali dari 257, sampainya di 287!"
+      nalarBayiKodi: "👶 Kodi's Baby Logic: Imagine a cute frog hopping along a number line in jumps of 10! Jumping backward twice from 267 lands on 247. Jumping forward 3 times from 257 lands on 287! (Katak melompat 10 angka tiap langkah!)"
     },
     {
       id: "ihs-2",
       number: 2,
-      page: "Halaman 1",
+      page: "Page 1",
       type: "multi_select",
-      title: "Penjumlahan Kolom Bersusun H T O (Ratusan, Puluhan, Satuan)",
-      badge: "Bagian I: Nilai Huruf yang Hilang",
-      instruction: "Perhatikan penjumlahan bersusun di bawah! Manakah pernyataan yang BENAR mengenai nilai kotak a, b, dan c?",
+      title: "Vertical Column Addition H T O (Hundreds, Tens, Ones)",
+      badge: "Part I: Missing Grid Box Values",
+      instruction: "Look at the vertical addition below! Choose the correct statement(s) regarding the values of boxes a, b, and c.",
       diagram: `
         <div style="display: flex; justify-content: center; margin: 14px 0;">
           <table style="border-collapse: collapse; text-align: center; font-family: monospace; font-size: 1.25rem; font-weight: 800; background: rgba(0,0,0,0.3); padding: 10px; border-radius: 10px;">
             <tr style="color: var(--accent-cyan); border-bottom: 1px solid rgba(255,255,255,0.2);">
-              <th style="padding: 6px 14px;">H (Ratusan)</th>
-              <th style="padding: 6px 14px;">T (Puluhan)</th>
-              <th style="padding: 6px 14px;">O (Satuan)</th>
+              <th style="padding: 6px 14px;">H (Hundreds)</th>
+              <th style="padding: 6px 14px;">T (Tens)</th>
+              <th style="padding: 6px 14px;">O (Ones)</th>
             </tr>
             <tr>
               <td style="padding: 6px 14px;">2</td>
@@ -70,57 +78,57 @@
         </div>
       `,
       options: [
-        { key: "A", text: "A. The value of box a is 6", isCorrect: false, reasonWrong: "Salah, karena 7 + a = 9, maka a harus bernilai 2 (bukan 6)!" },
-        { key: "B", text: "B. The value of box b is 4", isCorrect: true, reasonCorrect: "Tepat sekali! Pada puluhan: b + 2 = 6, maka b = 6 - 2 = 4!" },
-        { key: "C", text: "C. The value of box c is 9", isCorrect: true, reasonCorrect: "Benar! Pada ratusan: 2 + 7 = 9, maka nilai c adalah 9!" }
+        { key: "A", text: "A. The value of box a is 6", isCorrect: false, reasonWrong: "Incorrect! In the ones column: 7 + a = 9, so a must be 2 (9 – 7 = 2), not 6." },
+        { key: "B", text: "B. The value of box b is 4", isCorrect: true, reasonCorrect: "Correct! In the tens column: b + 2 = 6, so b = 6 – 2 = 4." },
+        { key: "C", text: "C. The value of box c is 9", isCorrect: true, reasonCorrect: "Correct! In the hundreds column: 2 + 7 = 9, so box c = 9." }
       ],
-      nalarBayiKodi: "Hitung dari kamar satuan di sebelah kanan: 7 tambah berapa supaya jadi 9? Jawabannya a = 2! Lalu ke kamar puluhan: berapa tambah 2 supaya jadi 6? b = 4! Terakhir kamar ratusan: 2 + 7 = c = 9!"
+      nalarBayiKodi: "👶 Kodi's Baby Logic: Work room by room starting from the right (Ones room): 7 plus what equals 9? a = 2! Tens room: what plus 2 equals 6? b = 4! Hundreds room: 2 + 7 = 9, so c = 9!"
     },
     {
       id: "ihs-3",
       number: 3,
-      page: "Halaman 1",
+      page: "Page 1",
       type: "true_false_table",
-      title: "Diagram Pengurangan Teknik 'Making 10' (462 - 8)",
-      badge: "Bagian II: Benar / Salah (True / False)",
-      instruction: "Perhatikan diagram teknik meminjam 10 di bawah untuk menghitung 462 - 8. Tentukan apakah tiap pernyataan Benar (True) atau Salah (False)!",
+      title: "Subtraction Diagram Using the 'Making 10' Technique (462 – 8)",
+      badge: "Part II: True or False Statements",
+      instruction: "Look at the subtraction diagram using the 'making 10' technique below! Put a check mark (✓) in the True or False column for each statement.",
       diagram: `
         <div style="background: rgba(15, 23, 42, 0.7); border-radius: 12px; padding: 16px; margin: 12px 0; border: 1px solid rgba(255,255,255,0.1); text-align: center;">
           <div style="font-size: 1.15rem; font-weight: 800; color: #fff; margin-bottom: 8px;">
-            462 - 8 = c
+            462 – 8 = c
           </div>
           <div style="font-size: 0.95rem; color: #cbd5e1; line-height: 1.6;">
-            462 dipecah menjadi <strong style="color: #fbbf24;">[ b ]</strong> dan <strong style="color: #38bdf8;">[ 10 ]</strong>.<br>
-            Lalu 10 dikurangi 8 menghasilkan <strong style="color: #4ade80;">[ a ] = 2</strong>.<br>
-            Hasil akhir: <strong style="color: #fbbf24;">b</strong> + <strong style="color: #4ade80;">a</strong> = <strong style="color: #fff;">c</strong>.
+            462 is partitioned into <strong style="color: #fbbf24;">[ b ]</strong> and <strong style="color: #38bdf8;">[ 10 ]</strong>.<br>
+            Then 10 is subtracted by 8 to give <strong style="color: #4ade80;">[ a ] = 2</strong>.<br>
+            Final result: <strong style="color: #fbbf24;">b</strong> + <strong style="color: #4ade80;">a</strong> = <strong style="color: #fff;">c</strong>.
           </div>
         </div>
       `,
       statements: [
-        { id: "s3_a", text: "(a) The value of 'a' is 2 (10 - 8 = 2)", correctAnswer: true, reason: "Benar! Dari 10 diambil 8 menyisakan 2." },
-        { id: "s3_b", text: "(b) The value of 'b' is 452 (462 - 10 = 452)", correctAnswer: true, reason: "Benar! Karena 10 dipisahkan dari 462, maka sisanya adalah 452." },
-        { id: "s3_c", text: "(c) The value of 'c' is 454 (452 + 2 = 454)", correctAnswer: true, reason: "Benar! 452 digabungkan dengan sisa 2 menjadi 454." }
+        { id: "s3_a", text: "(a) The value of 'a' is 2 (10 – 8 = 2)", correctAnswer: true, reason: "True! Subtracting 8 from 10 leaves exactly 2." },
+        { id: "s3_b", text: "(b) The value of 'b' is 452 (462 – 10 = 452)", correctAnswer: true, reason: "True! When 10 is taken out of 462, 452 remains." },
+        { id: "s3_c", text: "(c) The value of 'c' is 454 (452 + 2 = 454)", correctAnswer: true, reason: "True! Adding 452 and 2 gives 454." }
       ],
-      nalarBayiKodi: "Bayangkan kamu punya 462 permen dan mau membagikan 8 permen ke teman. Supaya mudah, keluarkan 10 permen dulu dari kantong (kantong tersisa 452). Ambil 8 permen dari 10 tadi, sisa 2 permen kita masukkan lagi ke kantong 452, jadinya 454 permen!"
+      nalarBayiKodi: "👶 Kodi's Baby Logic: You have 462 candies. Take out 10 candies first (452 left in the jar). Give 8 to your friend from the 10 candies, leaving 2 candies. Put the 2 back into the jar: 452 + 2 = 454!"
     },
     {
       id: "ihs-4",
       number: 4,
-      page: "Halaman 1-2",
+      page: "Page 1 - 2",
       type: "true_false_table",
-      title: "Membetulkan Analisis Kesalahan Hitung Pengurangan Yuri",
-      badge: "Bagian II: Detektif Hitung (Error Analysis)",
-      instruction: "Yuri menghitung 527 - 158 bersusun, tetapi jawabannya tertulis 431. Periksa pernyataan untuk membetulkan cara hitung Yuri!",
+      title: "Yuri's Subtraction Error Analysis (527 – 158)",
+      badge: "Part II: Math Detective & Error Correction",
+      instruction: "Yuri is subtracting numbers. Her work is shown below: 527 – 158 = 431. Determine whether each correction statement is True or False!",
       diagram: `
         <div style="display: flex; gap: 20px; justify-content: center; align-items: center; flex-wrap: wrap; margin: 14px 0;">
           <div style="background: rgba(239, 68, 68, 0.15); border: 2px dashed #ef4444; border-radius: 10px; padding: 12px 18px; text-align: center;">
-            <div style="font-size: 0.8rem; font-weight: 800; color: #fca5a5; margin-bottom: 4px;">Pekerjaan Yuri (SALAH):</div>
+            <div style="font-size: 0.8rem; font-weight: 800; color: #fca5a5; margin-bottom: 4px;">Yuri's Work (INCORRECT):</div>
             <div style="font-family: monospace; font-size: 1.2rem; font-weight: 800; color: #fff;">
               5 2 7<br>1 5 8 -<br>------<br><span style="color: #f87171;">4 3 1</span>
             </div>
           </div>
           <div style="background: rgba(16, 185, 129, 0.15); border: 2px solid #10b981; border-radius: 10px; padding: 12px 18px; text-align: center;">
-            <div style="font-size: 0.8rem; font-weight: 800; color: #86efac; margin-bottom: 4px;">Jawaban yang Benar:</div>
+            <div style="font-size: 0.8rem; font-weight: 800; color: #86efac; margin-bottom: 4px;">Correct Working:</div>
             <div style="font-family: monospace; font-size: 1.2rem; font-weight: 800; color: #fff;">
               5 2 7<br>1 5 8 -<br>------<br><span style="color: #4ade80;">3 6 9</span>
             </div>
@@ -128,20 +136,20 @@
         </div>
       `,
       statements: [
-        { id: "s4_a", text: "(a) Yuri salah karena lupa meminjam (regrouping) puluhan dan malah membalik angka (8 - 7 = 1)", correctAnswer: true, reason: "Benar! 7 tidak cukup dikurangi 8, jadi harus pinjam 1 puluhan menjadi 17 - 8 = 9." },
-        { id: "s4_b", text: "(b) Digit satuan yang benar adalah 9 (bukan 1)", correctAnswer: true, reason: "Benar! 17 - 8 = 9." },
-        { id: "s4_c", text: "(c) Hasil pengurangan yang benar adalah 369", correctAnswer: true, reason: "Benar! 527 - 158 = 369." }
+        { id: "s4_a", text: "(a) Yuri made a mistake because she forgot to regroup (borrow) and flipped digits (8 – 7 = 1)", correctAnswer: true, reason: "True! Since 7 is smaller than 8, she cannot subtract 8 from 7 without regrouping." },
+        { id: "s4_b", text: "(b) The correct ones digit is 9 (17 – 8 = 9)", correctAnswer: true, reason: "True! Regrouping 1 ten gives 17 ones; 17 – 8 = 9." },
+        { id: "s4_c", text: "(c) The correct answer is 369", correctAnswer: true, reason: "True! 527 – 158 = 369." }
       ],
-      nalarBayiKodi: "Yuri terjebak! Karena 7 kurang dari 8, Yuri malah mengurangi 8 - 7. Itu tidak boleh ya! Harus pinjam 1 koin dari puluhan sebelah, jadi 17 - 8 = 9!"
+      nalarBayiKodi: "👶 Kodi's Baby Logic: Yuri fell into the subtraction trap! 7 is not enough to take 8 away, so she flipped it to 8 - 7. No! You must borrow 1 ten from next door to make 17 - 8 = 9!"
     },
     {
       id: "ihs-5",
       number: 5,
-      page: "Halaman 2",
+      page: "Page 2",
       type: "fill_blank",
-      title: "Pengurangan Bersusun Angka Hilang (500 - 14_ = 3_4)",
-      badge: "Bagian III: Isian Singkat Digit Hilang",
-      instruction: "Tentukan digit satuan pengurang dan digit puluhan hasil yang hilang pada operasi pengurangan berikut:",
+      title: "Incomplete Vertical Subtraction with Missing Digits",
+      badge: "Part III: Fill in the Blank",
+      instruction: "Look at the incomplete vertical subtraction below: 500 – 14_ = 3_4. Find the missing digits that complete the operation!",
       diagram: `
         <div style="display: flex; justify-content: center; margin: 14px 0;">
           <div style="font-family: monospace; font-size: 1.3rem; font-weight: 800; background: rgba(0,0,0,0.3); padding: 14px 20px; border-radius: 10px; border: 1.5px solid #38bdf8; text-align: right;">
@@ -153,148 +161,189 @@
         </div>
       `,
       expected: { x: "6", y: "5" },
-      questionPrompt: "Berapakah angka pengganti tanda tanya di baris kedua (digit satuan pengurang) dan baris hasil (digit puluhan)?",
-      placeholder: "Contoh: 6 dan 5",
-      acceptedInputs: ["6 dan 5", "6, 5", "6,5", "6 5", "146 dan 354", "6", "54"],
-      explanation: "500 - 146 = 354. Digit satuan pengurang adalah 6 (karena 10 - 6 = 4) dan digit puluhan hasil adalah 5 (karena 9 - 4 = 5).",
-      nalarBayiKodi: "Angka 0 paling belakang pinjam ke tetangga jadi 10. 10 dikurangi berapa supaya jadi 4? Ya dikurangi 6! Lalu angka 0 di tengah jadi 9. 9 dikurangi 4 hasilnya 5!"
+      questionPrompt: "What are the missing digits in the second row (subtrahend ones) and the answer row (difference tens)?",
+      placeholder: "e.g., 6 and 5",
+      acceptedInputs: ["6 and 5", "6, 5", "6,5", "6 5", "6 dan 5", "146 and 354", "6", "54"],
+      explanation: "500 – 146 = 354. The missing ones digit in the subtrahend is 6 (10 – 6 = 4) and the missing tens digit in the difference is 5 (9 – 4 = 5).",
+      nalarBayiKodi: "👶 Kodi's Baby Logic: Regroup across zeros! The last 0 becomes 10 (10 – 6 = 4). The middle 0 becomes 9 (9 – 4 = 5). So the missing numbers are 6 and 5!"
     },
     {
       id: "ihs-6",
       number: 6,
-      page: "Halaman 2",
+      page: "Page 2",
       type: "fill_blank",
-      title: "Strategi Penjumlahan 'Making 10' (678 + 8)",
-      badge: "Bagian III: Melengkapi Operasi",
-      instruction: "Lengkapi operasi penjumlahan dengan teknik membulatkan ke puluhan terdekat:",
+      title: "Mental Math Addition Strategy (Making 10)",
+      badge: "Part III: Complete the Operation",
+      instruction: "Look at the incomplete operation below: 678 + 8 = .... Partition 678 into 676 and 2, then combine 2 + 8 = 10.",
       diagram: `
         <div style="background: rgba(15, 23, 42, 0.7); border-radius: 12px; padding: 16px; margin: 12px 0; border: 1px solid rgba(255,255,255,0.1); text-align: center;">
           <div style="font-size: 1.15rem; font-weight: 800; color: #fff; margin-bottom: 8px;">
             678 + 8 = ....
           </div>
           <div style="font-size: 0.95rem; color: #cbd5e1; line-height: 1.6;">
-            678 dipecah menjadi 676 dan 2.<br>
-            Lalu 2 + 8 digabung menjadi 10.<br>
-            Sehingga: <strong>676 + 10 = [ .... ]</strong>.<br>
-            Jadi hasil dari 678 + 8 adalah [ .... ].
+            678 is split into 676 and 2.<br>
+            Then 2 + 8 = 10.<br>
+            Therefore: <strong>676 + 10 = [ .... ]</strong>.<br>
+            So, 678 + 8 = [ .... ].
           </div>
         </div>
       `,
       expected: "686",
       acceptedInputs: ["686"],
-      explanation: "676 + 10 = 686. Jadi 678 + 8 = 686.",
-      nalarBayiKodi: "678 butuh 2 kelereng supaya bulat jadi 680. Kita pinjam 2 dari angka 8, jadi angka 8 tersisa 6. 680 + 6 = 686!"
+      explanation: "676 + 10 = 686. Therefore, 678 + 8 = 686.",
+      nalarBayiKodi: "👶 Kodi's Baby Logic: 678 gives 2 marbles to 8 to turn it into a nice round 10! Now add 676 + 10 = 686!"
     },
     {
       id: "ihs-7",
       number: 7,
-      page: "Halaman 2",
+      page: "Page 2",
       type: "column_math",
-      title: "Trio Latihan Hitung Bersusun (Addition & Subtraction)",
-      badge: "Bagian IV: Latihan Bersusun",
-      instruction: "Hitunglah hasil dari operasi hitung bersusun berikut: (1) 297 + 358, (2) 800 - 697, dan (3) 749 - 70.",
+      title: "Multi-digit Column Operations Practice",
+      badge: "Part IV: Vertical Addition & Subtraction",
+      instruction: "Calculate the exact answers to the following arithmetic operations: (1) 297 + 358, (2) 800 – 697, and (3) 749 – 70.",
       subQuestions: [
         { label: "297 + 358 =", expected: "655", accepted: ["655"] },
-        { label: "800 - 697 =", expected: "103", accepted: ["103"] },
-        { label: "749 - 70 =", expected: "679", accepted: ["679"] }
+        { label: "800 – 697 =", expected: "103", accepted: ["103"] },
+        { label: "749 – 70 =", expected: "679", accepted: ["679"] }
       ],
-      explanation: "297 + 358 = 655. 800 - 697 = 103. 749 - 70 = 679.",
-      nalarBayiKodi: "Hitung satu demi satu dari belakang! Simpan angka puluhan di atas kepala angka berikutnya kalau hasilnya lebih dari 9!"
+      explanation: "297 + 358 = 655. 800 – 697 = 103. 749 – 70 = 679.",
+      nalarBayiKodi: "👶 Kodi's Baby Logic: Work from right to left! Remember to carry over when adding, and borrow when subtracting!"
     },
     {
       id: "ihs-8",
       number: 8,
-      page: "Halaman 5",
+      page: "Page 5",
       type: "matching_game",
-      title: "👕 GAME HUBUNGKAN GARIS: Pasangkan Kaos Perkalian ke Gantungan Pembagian! 🪝",
-      badge: "Bagian V: Match Sentence (Garis Hubung)",
-      instruction: "Klik salah satu KAOS di sebelah kiri, lalu klik GANTUNGAN BAJU pasangannya di sebelah kanan untuk menghubungkan perkalian dengan keluarga pembagiannya!",
+      title: "👕 CONNECTING LINES GAME: Match Multiplication T-Shirts to Division Clothes Hangers! 🪝",
+      badge: "Part V: Match Multiplication to Division Family",
+      instruction: "Click a T-Shirt on the left, then click the matching Clothes Hanger on the right to draw a connecting line linking the multiplication fact to its division fact family!",
       pairs: [
-        { leftId: "t1", leftText: "👕 9 × 3 = 27", rightId: "h1", rightText: "🪝 27 ÷ 3 = 9", reason: "9 kali 3 adalah 27, maka 27 dibagi 3 sama dengan 9!" },
-        { leftId: "t2", leftText: "👕 7 × 4 = 28", rightId: "h2", rightText: "🪝 28 ÷ 4 = 7", reason: "7 kali 4 adalah 28, maka 28 dibagi 4 sama dengan 7!" },
-        { leftId: "t3", leftText: "👕 4 × 5 = 20", rightId: "h3", rightText: "🪝 20 ÷ 5 = 4", reason: "4 kali 5 adalah 20, maka 20 dibagi 5 sama dengan 4!" },
-        { leftId: "t4", leftText: "👕 10 × 2 = 20", rightId: "h4", rightText: "🪝 20 ÷ 2 = 10", reason: "10 kali 2 adalah 20, maka 20 dibagi 2 sama dengan 10!" },
-        { leftId: "t5", leftText: "👕 8 × 4 = 32", rightId: "h5", rightText: "🪝 32 ÷ 4 = 8", reason: "8 kali 4 adalah 32, maka 32 dibagi 4 sama dengan 8!" }
+        { leftId: "t1", leftText: "👕 9 × 3 = 27", rightId: "h1", rightText: "🪝 27 ÷ 3 = 9", color: "#38bdf8", reason: "9 × 3 = 27, therefore 27 ÷ 3 = 9!" },
+        { leftId: "t2", leftText: "👕 7 × 4 = 28", rightId: "h2", rightText: "🪝 28 ÷ 4 = 7", color: "#10b981", reason: "7 × 4 = 28, therefore 28 ÷ 4 = 7!" },
+        { leftId: "t3", leftText: "👕 4 × 5 = 20", rightId: "h3", rightText: "🪝 20 ÷ 5 = 4", color: "#f59e0b", reason: "4 × 5 = 20, therefore 20 ÷ 5 = 4!" },
+        { leftId: "t4", leftText: "👕 10 × 2 = 20", rightId: "h4", rightText: "🪝 20 ÷ 2 = 10", color: "#a855f7", reason: "10 × 2 = 20, therefore 20 ÷ 2 = 10!" },
+        { leftId: "t5", leftText: "👕 8 × 4 = 32", rightId: "h5", rightText: "🪝 32 ÷ 4 = 8", color: "#f43f5e", reason: "8 × 4 = 32, therefore 32 ÷ 4 = 8!" }
       ],
-      nalarBayiKodi: "Perkalian dan pembagian itu seperti saudara kembar bolak-balik! Kalau 9 × 3 = 27, maka 27 dibagi 3 pasti kembali lagi jadi 9!"
+      // Shuffled right order so lines draw across non-straight (e.g. top-left to middle-right)
+      shuffledRight: ["h3", "h1", "h5", "h2", "h4"],
+      nalarBayiKodi: "👶 Kodi's Baby Logic: Multiplication and division are twin fact families! If 9 × 3 = 27, dividing 27 by 3 brings you right back to 9!"
     },
     {
       id: "ihs-9",
       number: 9,
-      page: "Halaman 3, 4, 6, 7, 8, 9",
+      page: "Pages 3, 4, 6, 7, 8, 9",
       type: "division_stories",
-      title: "Petualangan Cerita Pembagian Bergambar (Division Stories)",
-      badge: "Bagian VI: Visual Division Stories",
-      instruction: "Pecahkan teka-teki cerita pembagian nyata berikut ini:",
+      title: "Cambridge Primary Division Stories (Real-world Word Problems)",
+      badge: "Part VI: Visual Division Stories",
+      instruction: "Solve each real-world division story by completing the division sentence:",
       stories: [
         {
           id: "st1",
           icon: "🥛",
-          title: "Gelas Siska di Atas Baki (Halaman 3)",
-          prompt: "Siska mempunyai 12 gelas. Ia menaruh gelas-gelas itu sama rata ke dalam 4 baki. Berapa gelas di setiap baki?",
+          title: "Siska's Drinking Glasses on Trays (Page 3)",
+          prompt: "Siska has 12 glasses. She places them equally onto 4 trays. How many glasses are on each tray?",
           sentence: "12 ÷ 4 = [ ? ]",
           expected: "3",
-          unit: "gelas",
-          explanation: "12 dibagi rata ke 4 baki = 3 gelas per baki."
+          unit: "glasses",
+          explanation: "12 divided equally among 4 trays = 3 glasses per tray."
         },
         {
           id: "st2",
           icon: "🍒",
-          title: "Buah Rambutan Ida (Halaman 3)",
-          prompt: "Ada 15 buah rambutan. Ida memasukkan rambutan itu sama rata ke dalam 3 mangkuk. Berapa rambutan di tiap mangkuk?",
-          sentence: "15 ÷ 3 = [ ? ]",
-          expected: "5",
-          unit: "rambutan",
-          explanation: "15 dibagi 3 = 5 buah rambutan per mangkuk."
+          title: "Budi's Fresh Rambutans in Bags (Page 4)",
+          prompt: "Budi has 18 rambutans. He packs them into bags of 3 rambutans each. How many bags does he need?",
+          sentence: "18 ÷ 3 = [ ? ]",
+          expected: "6",
+          unit: "bags",
+          explanation: "18 rambutans partitioned into groups of 3 = 6 bags."
         },
         {
           id: "st3",
           icon: "🖍️",
-          title: "Kotak Krayon Warna (Halaman 4)",
-          prompt: "Ada 24 krayon seluruhnya. Setiap kotak berisi 6 krayon. Berapa kotak krayon yang ada?",
-          sentence: "24 ÷ 6 = [ ? ]",
-          expected: "4",
-          unit: "kotak",
-          explanation: "24 dibagi 6 = 4 kotak krayon."
+          title: "Art Class Crayons in Pencil Cases (Page 6)",
+          prompt: "A teacher puts 24 crayons equally into 4 pencil cases. How many crayons are in each case?",
+          sentence: "24 ÷ 4 = [ ? ]",
+          expected: "6",
+          unit: "crayons",
+          explanation: "24 ÷ 4 = 6 crayons in each pencil case."
         },
         {
           id: "st4",
-          icon: "⛵",
-          title: "Turis Naik Perahu Danau (Halaman 6)",
-          prompt: "Ada 20 turis ingin berkeliling danau. Setiap perahu hanya bisa dinaiki 4 turis. Berapa perahu yang dibutuhkan?",
-          sentence: "20 ÷ 4 = [ ? ]",
-          expected: "5",
-          unit: "perahu",
-          explanation: "20 dibagi 4 = 5 perahu."
+          icon: "🪴",
+          title: "Mother's Flower Pots in Rows (Page 7)",
+          prompt: "Mother arranges 30 flower pots equally into 5 rows in the garden. How many pots are in each row?",
+          sentence: "30 ÷ 5 = [ ? ]",
+          expected: "6",
+          unit: "pots",
+          explanation: "30 ÷ 5 = 6 flower pots per row."
         },
         {
           id: "st5",
+          icon: "🚐",
+          title: "Tourists Boarding Tour Vans (Page 8)",
+          prompt: "There are 35 tourists boarding 5 tour vans equally. How many tourists are in each van?",
+          sentence: "35 ÷ 5 = [ ? ]",
+          expected: "7",
+          unit: "tourists",
+          explanation: "35 ÷ 5 = 7 tourists per van."
+        },
+        {
+          id: "st6",
           icon: "🍪",
-          title: "Biskuit Enak Ivan (Halaman 6)",
-          prompt: "Ivan membeli 30 biskuit. Ia memasukkan 5 biskuit ke dalam tiap toples. Berapa toples yang Ivan gunakan?",
-          sentence: "30 ÷ 5 = [ ? ]",
-          expected: "6",
-          unit: "toples",
-          explanation: "30 dibagi 5 = 6 toples."
+          title: "Grandma's Fresh Biscuits in Jars (Page 9)",
+          prompt: "Grandma bakes 40 biscuits and puts 5 biscuits into each jar. How many jars are needed?",
+          sentence: "40 ÷ 5 = [ ? ]",
+          expected: "8",
+          unit: "jars",
+          explanation: "40 ÷ 5 = 8 jars needed."
+        },
+        {
+          id: "st7",
+          icon: "🚲",
+          title: "Two-Wheeled Bicycles Assembly",
+          prompt: "A bicycle rental workshop has 20 wheels. How many 2-wheeled bicycles can they assemble?",
+          sentence: "20 ÷ 2 = [ ? ]",
+          expected: "10",
+          unit: "bicycles",
+          explanation: "20 wheels ÷ 2 wheels per bicycle = 10 bicycles."
+        },
+        {
+          id: "st8",
+          icon: "🐥",
+          title: "Chicks Divided into Coops",
+          prompt: "A farmer divides 16 baby chicks equally into 4 small coops. How many chicks in each coop?",
+          sentence: "16 ÷ 4 = [ ? ]",
+          expected: "4",
+          unit: "chicks",
+          explanation: "16 ÷ 4 = 4 chicks in each coop."
         }
       ],
-      nalarBayiKodi: "Pembagian itu seperti membagikan kue tart sama rata ke teman-temanmu sampai piringnya habis tanpa ada yang iri!"
+      nalarBayiKodi: "👶 Kodi's Baby Logic: Division simply means sharing treats fairly so every friend gets the exact same amount! (Pembagian adalah berbagi kue sama rata tanpa berebut!)"
     },
     {
       id: "ihs-10",
       number: 10,
-      page: "Halaman 10",
-      type: "table_100",
-      title: "Eksplorasi Tabel Angka 1-100: Fakta Kelipatan 2, 5, dan 10",
-      badge: "Bagian VII: Tabel 100",
-      instruction: "Berdasarkan tabel angka 1 sampai 100, angka manakah yang merupakan kelipatan 2 DAN kelipatan 5 DAN kelipatan 10 sekaligus?",
-      prompt: "Pilih kelompok angka yang tepat:",
+      page: "Page 10",
+      type: "multi_select",
+      title: "100-Number Square Facts (Multiples of 2, 5, and 10)",
+      badge: "Part VII: Number Grid Patterns",
+      instruction: "Look at the 100-number square grid patterns! Choose all statements that are TRUE about multiples of 2, 5, and 10:",
+      diagram: `
+        <div style="background: rgba(15, 23, 42, 0.7); border-radius: 12px; padding: 14px; margin: 12px 0; border: 1px solid rgba(255,255,255,0.1); text-align: center;">
+          <div style="font-size: 0.9rem; color: #cbd5e1; line-height: 1.5;">
+            <strong>Patterns on 1-100 Grid:</strong><br>
+            • Multiples of 10 always end in: <strong style="color: #38bdf8;">0</strong><br>
+            • Multiples of 5 always end in: <strong style="color: #4ade80;">0 or 5</strong><br>
+            • Multiples of 2 are always even numbers ending in: <strong style="color: #fbbf24;">0, 2, 4, 6, 8</strong>
+          </div>
+        </div>
+      `,
       options: [
-        { key: "A", text: "A. 10, 20, 30, 40, 50, 60, 70, 80, 90, 100", isCorrect: true, reasonCorrect: "Tepat sekali! Angka-angka ini berakhiran 0, sehingga habis dibagi 2, habis dibagi 5, dan habis dibagi 10!" },
-        { key: "B", text: "B. 5, 15, 25, 35, 45, 55, 65, 75, 85, 95", isCorrect: false, reasonWrong: "Salah! Angka-angka ini ganjil (tidak habis dibagi 2) dan tidak habis dibagi 10." },
-        { key: "C", text: "C. 2, 4, 6, 8, 12, 14, 16, 18, 22, 24", isCorrect: false, reasonWrong: "Salah! Angka-angka ini memang kelipatan 2, tapi bukan kelipatan 5 atau 10." }
+        { key: "A", text: "A. Every multiple of 10 is also a multiple of 2 and a multiple of 5", isCorrect: true, reasonCorrect: "Correct! Numbers ending in 0 (10, 20, 30...) are divisible by 10, 5, and 2." },
+        { key: "B", text: "B. 35 is a multiple of 5, but NOT a multiple of 10", isCorrect: true, reasonCorrect: "Correct! 35 ends in 5, so it is divisible by 5, but cannot be divided evenly by 10." },
+        { key: "C", text: "C. 42 is an odd number and a multiple of 5", isCorrect: false, reasonWrong: "Incorrect! 42 is an even number (ends in 2) and is NOT a multiple of 5." }
       ],
-      nalarBayiKodi: "Angka yang genap (kelipatan 2) dan punya ekor angka nol (kelipatan 5) adalah bilangan puluhan kelipatan 10!"
+      nalarBayiKodi: "👶 Kodi's Baby Logic: Multiples of 10 have happy zeros at the end! Multiples of 5 love ending in 5 or 0. Multiples of 2 are polite pairs ending in 0, 2, 4, 6, 8!"
     }
   ];
 
@@ -351,7 +400,7 @@
       return;
     }
 
-    let csv = "No,Tanggal,Waktu,Nama Lengkap,Kelas,Nomor Absen,Nilai Akhir (0-100),Status,Benar,Total Soal\n";
+    let csv = "No,Date,Time,Student Full Name,Class,Roll Number,Final Score (0-100),Status,Correct Answers,Total Questions\n";
     records.forEach((r, idx) => {
       const row = [
         idx + 1,
@@ -378,5 +427,5 @@
     document.body.removeChild(link);
   };
 
-  console.log("Modul SD Ihsaniyah Gajahmada Tegal Math Test berhasil dimuat!");
+  console.log("Modul SD Ihsaniyah Gajahmada Tegal Math Test (Full English) berhasil dimuat!");
 })();

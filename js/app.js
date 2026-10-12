@@ -1,3 +1,11 @@
+// Stacked Mathematical Fractions Formatter (Atas-Bawah Nyata)
+window.formatMathFractions = function(text) {
+  if (!text || typeof text !== "string") return text || "";
+  return text.replace(/(^|[^a-zA-Z0-9_\/])(-?\d+)\/(\d+)(?![a-zA-Z0-9_\/])/g, function(match, prefix, num, den) {
+    return prefix + '<span class="math-fraction"><span class="num">' + num + '</span><span class="den">' + den + '</span></span>';
+  });
+};
+
 /* ===================================================================
    APP.JS - LOGIKA UTAMA APLIKASI PEMBELAJARAN
    State, UI Render, Game Interactivity, SQL Trainer, English Studio,
@@ -4348,11 +4356,11 @@ function renderMathTrainer() {
         <div style="background: rgba(0, 0, 0, 0.35); border-radius: 10px; padding: 14px; margin-bottom: 12px; border-left: 3px solid #a78bfa;">
           <div style="font-size: 0.82rem; font-weight: 700; color: #c4b5fd; margin-bottom: 4px;">🇬🇧 Worked Example Statement:</div>
           <div style="font-size: 0.95rem; color: #f8fafc; font-weight: 600; line-height: 1.4; margin-bottom: 8px;">
-            ${chal.workedExample ? chal.workedExample.kasusSerupaEN : '-'}
+            ${chal.workedExample ? formatMathFractions(chal.workedExample.kasusSerupaEN) : '-'}
           </div>
           <div style="font-size: 0.82rem; font-weight: 700; color: #a5b4fc; margin-bottom: 4px;">🇮🇩 Arti & Soal Bahasa Indonesia:</div>
           <div style="font-size: 0.88rem; color: #cbd5e1; line-height: 1.4;">
-            ${chal.workedExample ? chal.workedExample.kasusSerupaID : '-'}
+            ${chal.workedExample ? formatMathFractions(chal.workedExample.kasusSerupaID) : '-'}
           </div>
         </div>
 
@@ -4360,14 +4368,14 @@ function renderMathTrainer() {
         <div style="background: rgba(15, 23, 42, 0.7); border-radius: 10px; padding: 12px 14px; margin-bottom: 12px; border: 1px solid rgba(255,255,255,0.06);">
           <div style="font-size: 0.8rem; font-weight: 700; color: #86efac; margin-bottom: 4px;">📝 Langkah Kerja (Working Out):</div>
           <div style="font-family: monospace; font-size: 0.88rem; color: #e2e8f0; line-height: 1.5; white-space: pre-wrap;">
-            ${chal.workedExample ? chal.workedExample.langkahPenyelesaian : '-'}
+            ${chal.workedExample ? formatMathFractions(chal.workedExample.langkahPenyelesaian) : '-'}
           </div>
         </div>
 
         <!-- Jawaban Benar Contoh Kasus A -->
         <div style="display: flex; align-items: center; justify-content: space-between; background: rgba(34, 197, 94, 0.12); border: 1px dashed rgba(34, 197, 94, 0.4); border-radius: 8px; padding: 10px 14px; margin-bottom: 12px;">
           <span style="font-size: 0.82rem; font-weight: 700; color: #86efac;">Jawaban Benar Contoh Kasus A:</span>
-          <span style="font-size: 1.05rem; font-weight: 800; color: #4ade80; font-family: monospace;">${chal.workedExample ? chal.workedExample.jawabanBenarContoh : '-'}</span>
+          <span style="font-size: 1.05rem; font-weight: 800; color: #4ade80; font-family: monospace;">${chal.workedExample ? formatMathFractions(chal.workedExample.jawabanBenarContoh) : '-'}</span>
         </div>
 
         <!-- Nalar Bayi Kodi -->
@@ -4377,7 +4385,7 @@ function renderMathTrainer() {
             <strong style="font-size: 0.82rem; color: #facc15;">Nalar Bayi Kodi:</strong>
           </div>
           <div style="font-size: 0.85rem; color: #fef08a; line-height: 1.45;">
-            ${chal.workedExample ? chal.workedExample.nalarBayiKodi : '-'}
+            ${chal.workedExample ? formatMathFractions(chal.workedExample.nalarBayiKodi) : '-'}
           </div>
         </div>
       </div>
@@ -4401,11 +4409,11 @@ function renderMathTrainer() {
         <div style="background: rgba(0, 0, 0, 0.4); border-radius: 10px; padding: 14px; margin-bottom: 14px; border-left: 3px solid #38bdf8;">
           <div style="font-size: 0.82rem; font-weight: 700; color: #38bdf8; margin-bottom: 4px;">🇬🇧 Cambridge Exam Question:</div>
           <div style="font-size: 1rem; color: #f8fafc; font-weight: 600; line-height: 1.45; margin-bottom: 10px;">
-            ${chal.questionEN}
+            ${formatMathFractions(chal.questionEN)}
           </div>
           <div style="font-size: 0.82rem; font-weight: 700; color: #7dd3fc; margin-bottom: 4px;">🇮🇩 Terjemahan Soal:</div>
           <div style="font-size: 0.9rem; color: #cbd5e1; line-height: 1.45;">
-            ${chal.questionID}
+            ${formatMathFractions(chal.questionID)}
           </div>
         </div>
 
@@ -4988,45 +4996,62 @@ function renderIhsaniyahInteractiveBody(q) {
   if (q.type === "matching_game") {
     const matched = currentAnswer.matchedPairs || {};
     const matchedCount = Object.keys(matched).length;
+    const shuffledHangerIds = q.shuffledRight || ["h3", "h1", "h5", "h2", "h4"];
+    const rightCards = shuffledHangerIds.map(hId => q.pairs.find(p => p.rightId === hId)).filter(Boolean);
+
+    // Call draw lines after render
+    setTimeout(() => {
+      window.drawAllMatchingLines && window.drawAllMatchingLines(q, matched);
+    }, 60);
 
     return `
       <div style="margin: 10px 0;">
-        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; flex-wrap: wrap; gap: 8px;">
           <span style="font-size: 0.85rem; color: #38bdf8; font-weight: 700;">
-            👕 Klik Kaos di kiri, lalu klik Gantungan pasangannya di kanan!
+            👕 Click a T-shirt on the left, then click the matching Hanger on the right to draw a connecting line!
           </span>
-          <span style="font-size: 0.85rem; font-weight: 800; color: #4ade80;">
-            Terhubung: ${matchedCount} / ${q.pairs.length} Pasang
-          </span>
+          <div style="display: flex; align-items: center; gap: 10px;">
+            <span style="font-size: 0.85rem; font-weight: 800; color: #4ade80;">
+              Connected: ${matchedCount} / ${q.pairs.length}
+            </span>
+            <button class="btn-secondary" style="padding: 4px 10px; font-size: 0.75rem;" onclick="resetIhsMatchingLines('${q.id}')">
+              🔄 Reset Lines
+            </button>
+          </div>
         </div>
 
-        <div class="matching-game-container">
-          <!-- Kolom Kiri: Kaos Perkalian -->
-          <div class="matching-col">
-            ${q.pairs.map(p => {
-              const isCardMatched = !!matched[p.leftId];
-              const isCardSelected = (appState.matchingSelectedShirt === p.leftId);
-              return `
-                <div class="matching-card ${isCardMatched ? 'matched' : ''} ${isCardSelected ? 'selected' : ''}" onclick="selectIhsShirt('${p.leftId}')">
-                  <span style="font-size: 1.05rem; font-weight: 800; color: #fff;">${p.leftText}</span>
-                  <span>${isCardMatched ? '✅' : '👉'}</span>
-                </div>
-              `;
-            }).join('')}
-          </div>
+        <div class="matching-canvas-wrapper" id="matching-canvas-wrapper">
+          <!-- Dynamic SVG Canvas for Real Curved Connecting Lines -->
+          <svg id="matching-svg-canvas" class="matching-svg-canvas"></svg>
 
-          <!-- Kolom Kanan: Gantungan Pembagian (Shuffled) -->
-          <div class="matching-col">
-            ${q.pairs.map(p => {
-              const matchedShirt = Object.keys(matched).find(k => matched[k] === p.rightId);
-              const isHangerMatched = !!matchedShirt;
-              return `
-                <div class="matching-card ${isHangerMatched ? 'matched' : ''}" onclick="connectIhsHanger('${p.rightId}')">
-                  <span style="font-size: 1.05rem; font-weight: 800; color: #fff;">${p.rightText}</span>
-                  <span>${isHangerMatched ? '🔗' : '👈'}</span>
-                </div>
-              `;
-            }).join('')}
+          <div class="matching-game-container">
+            <!-- Left Column: Multiplication T-Shirts -->
+            <div class="matching-col left-col">
+              ${q.pairs.map(p => {
+                const isCardMatched = !!matched[p.leftId];
+                const isCardSelected = (appState.matchingSelectedShirt === p.leftId);
+                return `
+                  <div id="card-left-${p.leftId}" class="matching-card ${isCardMatched ? 'matched' : ''} ${isCardSelected ? 'selected' : ''}" onclick="selectIhsShirt('${p.leftId}')">
+                    <span style="font-size: 1.05rem; font-weight: 800; color: #fff;">${p.leftText}</span>
+                    <span class="matching-pin pin-right" id="pin-left-${p.leftId}"></span>
+                  </div>
+                `;
+              }).join('')}
+            </div>
+
+            <!-- Right Column: Division Clothes Hangers (Shuffled order so lines cross nicely!) -->
+            <div class="matching-col right-col">
+              ${rightCards.map(p => {
+                const matchedShirt = Object.keys(matched).find(k => matched[k] === p.rightId);
+                const isHangerMatched = !!matchedShirt;
+                return `
+                  <div id="card-right-${p.rightId}" class="matching-card ${isHangerMatched ? 'matched' : ''}" onclick="connectIhsHanger('${p.rightId}')">
+                    <span class="matching-pin pin-left" id="pin-right-${p.rightId}"></span>
+                    <span style="font-size: 1.05rem; font-weight: 800; color: #fff;">${p.rightText}</span>
+                  </div>
+                `;
+              }).join('')}
+            </div>
           </div>
         </div>
       </div>
@@ -5502,3 +5527,86 @@ window.clearIhsaniyahRecordsHandler = function() {
     openIhsaniyahAdminPanel();
   }
 };
+
+// ================= SVG MATCHING LINES DRAWING ENGINE =================
+window.drawAllMatchingLines = function(q, matched) {
+  const svgEl = document.getElementById("matching-svg-canvas");
+  const wrapperEl = document.getElementById("matching-canvas-wrapper");
+  if (!svgEl || !wrapperEl || !q || !q.pairs) return;
+
+  svgEl.innerHTML = "";
+  const wrapRect = wrapperEl.getBoundingClientRect();
+
+  const colorPalette = {
+    t1: "#38bdf8", // Sky Blue
+    t2: "#10b981", // Emerald
+    t3: "#f59e0b", // Amber
+    t4: "#a855f7", // Violet
+    t5: "#f43f5e"  // Rose
+  };
+
+  Object.keys(matched).forEach(leftId => {
+    const rightId = matched[leftId];
+    const pinLeft = document.getElementById("pin-left-" + leftId);
+    const pinRight = document.getElementById("pin-right-" + rightId);
+
+    if (pinLeft && pinRight) {
+      const rectL = pinLeft.getBoundingClientRect();
+      const rectR = pinRight.getBoundingClientRect();
+
+      const x1 = rectL.right - wrapRect.left;
+      const y1 = rectL.top + (rectL.height / 2) - wrapRect.top;
+      const x2 = rectR.left - wrapRect.left;
+      const y2 = rectR.top + (rectR.height / 2) - wrapRect.top;
+
+      const dx = x2 - x1;
+      const cx1 = x1 + (dx * 0.45);
+      const cy1 = y1;
+      const cx2 = x2 - (dx * 0.45);
+      const cy2 = y2;
+
+      const lineColor = colorPalette[leftId] || "#10b981";
+
+      // SVG Path for Smooth Cubic Bezier S-Curve
+      const pathEl = document.createElementNS("http://www.w3.org/2000/svg", "path");
+      pathEl.setAttribute("d", `M ${x1} ${y1} C ${cx1} ${cy1}, ${cx2} ${cy2}, ${x2} ${y2}`);
+      pathEl.setAttribute("stroke", lineColor);
+      pathEl.setAttribute("class", "matching-curve-line");
+      svgEl.appendChild(pathEl);
+
+      // Start circle marker
+      const circ1 = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+      circ1.setAttribute("cx", x1);
+      circ1.setAttribute("cy", y1);
+      circ1.setAttribute("r", "5");
+      circ1.setAttribute("fill", lineColor);
+      svgEl.appendChild(circ1);
+
+      // End circle marker
+      const circ2 = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+      circ2.setAttribute("cx", x2);
+      circ2.setAttribute("cy", y2);
+      circ2.setAttribute("r", "5");
+      circ2.setAttribute("fill", lineColor);
+      svgEl.appendChild(circ2);
+    }
+  });
+};
+
+window.resetIhsMatchingLines = function(qid) {
+  if (window.sfx && typeof sfx.playClick === "function") sfx.playClick();
+  if (appState.ihsUserAnswers[qid]) {
+    appState.ihsUserAnswers[qid].matchedPairs = {};
+  }
+  appState.matchingSelectedShirt = null;
+  renderIhsaniyahTest();
+};
+
+// Redraw lines on window resize
+window.addEventListener("resize", () => {
+  const q = window.IHSANIYAH_QUESTIONS && window.IHSANIYAH_QUESTIONS[appState.currentIhsIndex];
+  if (q && q.type === "matching_game") {
+    const ans = appState.ihsUserAnswers[q.id] || {};
+    window.drawAllMatchingLines && window.drawAllMatchingLines(q, ans.matchedPairs || {});
+  }
+});
