@@ -112,14 +112,25 @@ function renderQuestGrid() {
     card.className = `quest-card ${isCompleted ? 'completed' : ''}`;
 
     let starsDisplay = "⭐".repeat(lvl.starsReward);
-    const tileNum = String((idx % 31) + 1).padStart(2, '0');
-    const avatarUrl = `assets/illustrations/3d_tiles/tile_3d_${tileNum}.png`;
+    // Topic-matched IT & Hardware characters for Petualangan (Levels 1-8: ZERO Excel tiles!)
+    const PETUALANGAN_AVATARS = [
+      { num: "01", name: "Kodi Organ PC", role: "Arsitektur & Hardware Komputer" },
+      { num: "02", name: "Kodi Logika", role: "Logika Boolean & CPU Processing" },
+      { num: "03", name: "Kodi OS & UI", role: "Sistem Operasi Komputer & GUI" },
+      { num: "04", name: "Kodi Jaringan", role: "Jaringan Komputer & Protokol IP" },
+      { num: "05", name: "Kodi Algoritma", role: "Dasar Pemrograman & Logika Koding" },
+      { num: "06", name: "Kodi Web App", role: "Aplikasi Modern & Scripting" },
+      { num: "27", name: "Kodi Database & Inovasi", role: "Solusi Basis Data & Logika IT" },
+      { num: "28", name: "Kodi Bintang Juara", role: "PBL Troubleshooting IT Support" }
+    ];
+    const petAvatar = PETUALANGAN_AVATARS[idx] || PETUALANGAN_AVATARS[0];
+    const avatarUrl = `assets/illustrations/3d_tiles/tile_3d_${petAvatar.num}.png`;
 
     card.innerHTML = `
       <div>
         <div class="quest-header">
           <div style="display: flex; align-items: center; gap: 12px;">
-            <img src="${avatarUrl}" class="quest-tile-img" alt="${lvl.shortTitle}" title="Pahlawan Misi: Karakter Clay 3D #${tileNum}">
+            <img src="${avatarUrl}" class="quest-tile-img" alt="${petAvatar.name}" title="Pahlawan Misi IT #${petAvatar.num}: ${petAvatar.name} (${petAvatar.role})">
             <div class="quest-meta">
               <span class="quest-level-tag">${lvl.tag}</span>
               <h3>${lvl.shortTitle}</h3>
@@ -1757,7 +1768,7 @@ function renderEnglishTrainer() {
     <div id="submode-speaking">
       <!-- Badge Profil Kandidat -->
       <div style="background: linear-gradient(135deg, rgba(30, 41, 59, 0.9), rgba(15, 23, 42, 0.95)); border: 1.5px solid var(--accent-cyan); border-radius: 12px; padding: 14px 18px; margin-bottom: 18px; display: flex; align-items: center; gap: 14px;">
-        <div style="font-size: 2.2rem;">👩‍💼</div>
+        <img src="assets/illustrations/3d_tiles/tile_3d_21.png" style="width: 60px; height: 60px; border-radius: 12px; object-fit: cover; border: 2px solid var(--accent-cyan); flex-shrink: 0; box-shadow: 0 4px 12px rgba(56, 189, 248, 0.25);" alt="Kodi Fluency Trainer" title="Kodi Fluency Trainer #21">
         <div>
           <div style="font-size: 0.75rem; color: var(--accent-cyan); font-weight: 800; text-transform: uppercase;">Profil Kandidat Talenta IT Unggulan:</div>
           <h4 style="color: #fff; margin: 2px 0;">Calon Profesional IT & Software</h4>
@@ -2485,10 +2496,10 @@ function renderIeltsAcademicStudio() {
   container.innerHTML = `
     <!-- Banner Acuan Buku Cambridge Grammar for IELTS -->
     <div style="background: linear-gradient(135deg, rgba(15, 23, 42, 0.95), rgba(6, 78, 59, 0.45)); border: 1.5px solid var(--accent-green); border-radius: 12px; padding: 14px 18px; margin-bottom: 16px; display: flex; align-items: center; gap: 14px;">
-      <div style="font-size: 2.2rem;">🇬🇧</div>
+      <img src="assets/illustrations/3d_tiles/tile_3d_16.png" style="width: 60px; height: 60px; border-radius: 12px; object-fit: cover; border: 2px solid var(--accent-green); flex-shrink: 0; box-shadow: 0 4px 12px rgba(16, 185, 129, 0.25);" alt="Kodi IELTS Examiner" title="Kodi IELTS Examiner #16">
       <div>
         <div style="font-size: 0.75rem; color: var(--accent-green); font-weight: 800; text-transform: uppercase;">
-          Kurikulum Standar Beasiswa Cambridge:
+          Kurikulum Standar Beasiswa Cambridge • Kodi IELTS Examiner:
         </div>
         <h4 style="color: #fff; margin: 2px 0;">Cambridge Grammar for IELTS (Hopkins & Cullen)</h4>
         <p style="font-size: 0.8rem; color: #cbd5e1; margin: 0;">
@@ -2769,10 +2780,10 @@ function renderToeflIbtBuildingSkills() {
   container.innerHTML = `
     <!-- Banner Acuan Buku TOEFL iBT Building Skills -->
     <div style="background: linear-gradient(135deg, rgba(15, 23, 42, 0.95), rgba(30, 58, 138, 0.45)); border: 1.5px solid var(--accent-cyan); border-radius: 12px; padding: 14px 18px; margin-bottom: 16px; display: flex; align-items: center; gap: 14px;">
-      <div style="font-size: 2.2rem;">🎓</div>
+      <img src="assets/illustrations/3d_tiles/tile_3d_17.png" style="width: 60px; height: 60px; border-radius: 12px; object-fit: cover; border: 2px solid var(--accent-cyan); flex-shrink: 0; box-shadow: 0 4px 12px rgba(56, 189, 248, 0.25);" alt="Kodi TOEFL American Speaker" title="Kodi TOEFL American Speaker #17">
       <div>
         <div style="font-size: 0.75rem; color: var(--accent-cyan); font-weight: 800; text-transform: uppercase;">
-          Kurikulum Standar Beasiswa S2 Dunia:
+          Kurikulum Standar Beasiswa S2 Dunia • Kodi TOEFL American Speaker:
         </div>
         <h4 style="color: #fff; margin: 2px 0;">Building Skills for the TOEFL iBT (Paul Edmunds & N. McKinnon)</h4>
         <p style="font-size: 0.8rem; color: #cbd5e1; margin: 0;">
@@ -3132,16 +3143,21 @@ function renderExcelTrainer() {
         </div>
       ` : ''}
 
-      <!-- KODI SCENARIO & QUESTION CARD -->
-      <div class="card" style="padding: 16px 20px; border-left: 5px solid var(--accent-cyan);">
-        <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 8px;">
-          <div>
-            <span style="font-size: 0.75rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; color: var(--accent-cyan); background: rgba(56, 189, 248, 0.15); padding: 2px 8px; border-radius: 4px;">
-              ${chal.category}
-            </span>
-            <h3 style="margin: 6px 0 4px 0; font-size: 1.1rem; color: var(--text-main);">${chal.title}</h3>
+      <!-- KODI EXCEL 3D MASCOT & QUESTION CARD (TILES 07-12) -->
+      <div class="card" style="padding: 18px 20px; border-left: 5px solid #107c41;">
+        <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 12px;">
+          <img src="assets/illustrations/3d_tiles/tile_3d_${String(7 + (appState.currentExcelIndex % 6)).padStart(2, '0')}.png"
+               style="width: 60px; height: 60px; border-radius: 12px; object-fit: cover; border: 2px solid #10b981; flex-shrink: 0; box-shadow: 0 4px 12px rgba(16, 185, 129, 0.25);"
+               alt="Pahlawan Excel 3D #${String(7 + (appState.currentExcelIndex % 6)).padStart(2, '0')}">
+          <div style="flex: 1;">
+            <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+              <span style="font-size: 0.75rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; color: #10b981; background: rgba(16, 185, 129, 0.15); padding: 2px 8px; border-radius: 4px;">
+                ${chal.category} • Pahlawan Excel #${String(7 + (appState.currentExcelIndex % 6)).padStart(2, '0')}
+              </span>
+              ${isCompleted ? '<span style="font-size: 0.85rem; font-weight: 700; color: #10b981; background: rgba(16, 185, 129, 0.15); padding: 4px 10px; border-radius: 12px;">✅ Selesai</span>' : ''}
+            </div>
+            <h3 style="margin: 4px 0 2px 0; font-size: 1.15rem; color: var(--text-main);">${chal.title}</h3>
           </div>
-          ${isCompleted ? '<span style="font-size: 0.85rem; font-weight: 700; color: #10b981; background: rgba(16, 185, 129, 0.15); padding: 4px 10px; border-radius: 12px;">✅ Selesai</span>' : ''}
         </div>
         <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 10px; line-height: 1.5;">
           ${chal.scenario}
@@ -3719,40 +3735,197 @@ window.toggleAccent = function() {
   }
 };
 
-// ================= 3D CLAY MASCOT AVATAR CYCLER (31 KARAKTER DARI REFERENSI) =================
-const KODI_AVATAR_LIST = Array.from({ length: 31 }, (_, i) => {
-  const num = String(i + 1).padStart(2, '0');
-  return `assets/illustrations/3d_tiles/tile_3d_${num}.png`;
-});
+// ================= 3D CLAY MASCOT AVATAR SYSTEM (31 KARAKTER LENGKAP) =================
+const KODI_AVATAR_CATALOG = [
+  // 01-06: Koding & Rekayasa Perangkat Lunak
+  { num: "01", name: "Kodi Web & Coder Pro", topic: "HTML, CSS & Dasar Koding", category: "koding", catLabel: "Koding & Software", desc: "Pahlawan Web & Struktur Program", icon: "💻" },
+  { num: "02", name: "Kodi Pythonista", topic: "Python Logic & Data Scripting", category: "koding", catLabel: "Koding & Software", desc: "Ahli Sintaks Python & Automasi", icon: "🐍" },
+  { num: "03", name: "Kodi Frontend Designer", topic: "HTML5 & CSS3 Styling", category: "koding", catLabel: "Koding & Software", desc: "Spesialis Desain Web Responsif", icon: "🎨" },
+  { num: "04", name: "Kodi Java Architect", topic: "Java OOP & Backend Engineering", category: "koding", catLabel: "Koding & Software", desc: "Ahli Logika Berorientasi Objek", icon: "☕" },
+  { num: "05", name: "Kodi C# Systems Engineer", topic: "C# .NET & Algorithms", category: "koding", catLabel: "Koding & Software", desc: "Arsitek Sistem & Rekayasa Software", icon: "⚙️" },
+  { num: "06", name: "Kodi Mobile & Script App", topic: "JavaScript Fullstack & Mobile", category: "koding", catLabel: "Koding & Software", desc: "Pengembang Aplikasi Modern", icon: "📱" },
+
+  // 07-12: Microsoft Excel & Spreadsheet Analytics
+  { num: "07", name: "Kodi Excel Analyst", topic: "Formula Dasar & Tabel Excel", category: "excel", catLabel: "Excel & Data Analytics", desc: "Spesialis Pengolahan Data Excel", icon: "📊" },
+  { num: "08", name: "Kodi Chart Master", topic: "Visualisasi Grafik Pie & Bar", category: "excel", catLabel: "Excel & Data Analytics", desc: "Ahli Grafik Statistik & Presentasi", icon: "📈" },
+  { num: "09", name: "Kodi Grid Master", topic: "Struktur Sel, Baris & Kolom", category: "excel", catLabel: "Excel & Data Analytics", desc: "Spesialis Lembar Kerja & Matriks", icon: "📐" },
+  { num: "10", name: "Kodi Financial Calc", topic: "Kalkulasi Finansial & Kalkulator", category: "excel", catLabel: "Excel & Data Analytics", desc: "Master Rumus Finansial & Bisnis", icon: "🧮" },
+  { num: "11", name: "Kodi =SUM() Wizard", topic: "SUM, AVERAGE & Agregasi", category: "excel", catLabel: "Excel & Data Analytics", desc: "Ahli Fungsi Agregasi & Statistika", icon: "➕" },
+  { num: "12", name: "Kodi Growth Analytics", topic: "Trendline & Lookup Excel", category: "excel", catLabel: "Excel & Data Analytics", desc: "Analisis Pertumbuhan Data Bisnis", icon: "🚀" },
+
+  // 13-22: English Studio & International Exams
+  { num: "13", name: "Kodi British Linguist", topic: "UK Accent, Big Ben & Idioms", category: "english", catLabel: "English & International Exams", desc: "Spesialis Aksen & Kosakata British", icon: "🇬🇧" },
+  { num: "14", name: "Kodi Academic TOEFL/IELTS", topic: "Persiapan Ujian IELTS & TOEFL", category: "english", catLabel: "English & International Exams", desc: "Master Standar Skor Internasional", icon: "📚" },
+  { num: "15", name: "Kodi Active Listener", topic: "Listening & Dictation Comprehension", category: "english", catLabel: "English & International Exams", desc: "Latihan Menyimak & Dikte Suara", icon: "🎧" },
+  { num: "16", name: "Kodi IELTS Examiner", topic: "Lembar Soal Ujian IELTS", category: "english", catLabel: "English & International Exams", desc: "Evaluasi Komprehensif IELTS Band", icon: "📋" },
+  { num: "17", name: "Kodi TOEFL American Speaker", topic: "American Accent & Speaking Fluency", category: "english", catLabel: "English & International Exams", desc: "Praktik Berbicara Aksen US", icon: "🇺🇸" },
+  { num: "18", name: "Kodi Global Voyager", topic: "London Bus & Global Communication", category: "english", catLabel: "English & International Exams", desc: "Petualangan Bahasa Inggris Dunia", icon: "🌍" },
+  { num: "19", name: "Kodi 4 Skills Master", topic: "Listening, Reading, Writing, Speaking", category: "english", catLabel: "English & International Exams", desc: "Penguasaan 4 Keterampilan Bahasa", icon: "🎯" },
+  { num: "20", name: "Kodi 1000 Vocab Builder", topic: "Kamus 1.000 Kosakata Bahasa Inggris", category: "english", catLabel: "English & International Exams", desc: "Pengayaan Kosakata Bergambar", icon: "📖" },
+  { num: "21", name: "Kodi Fluency Trainer", topic: "Practice Makes Progress & Fluency", category: "english", catLabel: "English & International Exams", desc: "Simulasi Percakapan Percaya Diri", icon: "🗣️" },
+  { num: "22", name: "Kodi Exam Checklist Pro", topic: "Checklist Kelulusan Ujian", category: "english", catLabel: "English & International Exams", desc: "Panduan Sukses Ujian Internasional", icon: "✅" },
+
+  // 23-26: Cambridge Mathematics & SD Ihsaniyah
+  { num: "23", name: "Kodi Pythagoras & Geometry", topic: "Teorema Pythagoras, Sudut & Segitiga", category: "math", catLabel: "Cambridge Math & SD Ihsaniyah", desc: "Penjelajah Geometri & Sudut", icon: "📐" },
+  { num: "24", name: "Kodi Arithmetic Calculator", topic: "Operasi Hitung (+ - × ÷) & Rasio Pi", category: "math", catLabel: "Cambridge Math & SD Ihsaniyah", desc: "Ahli Hitung Cepat & Pembagian", icon: "🧮" },
+  { num: "25", name: "Kodi Cambridge Math Kit", topic: "Pecahan, Buku Matematika & Penggaris", category: "math", catLabel: "Cambridge Math & SD Ihsaniyah", desc: "Penguasaan Pecahan & Pengukuran", icon: "📏" },
+  { num: "26", name: "Kodi Problem Solving Detective", topic: "Detektif Soal Cerita Ujian", category: "math", catLabel: "Cambridge Math & SD Ihsaniyah", desc: "Detektif Analisis Soal Ujian", icon: "✏️" },
+
+  // 27-31: IT Lab, Troubleshooting & Wisuda Prestasi
+  { num: "27", name: "Kodi Logic Innovator", topic: "Logika Algoritma & Solusi IT", category: "it_tech", catLabel: "IT Lab & Troubleshooting", desc: "Inovator Solusi Teknologi & Sistem", icon: "💡" },
+  { num: "28", name: "Kodi Bintang Juara", topic: "Pencapaian Misi IT Support", category: "petualangan", catLabel: "IT Lab & Troubleshooting", desc: "Pahlawan Penakluk Level IT", icon: "⭐" },
+  { num: "29", name: "Kodi Wisudawan Berprestasi", topic: "Ijazah & Gelar Akademik", category: "sertifikat", catLabel: "Sertifikat & Kelulusan", desc: "Peraih Predikat Kelulusan Terbaik", icon: "🎓" },
+  { num: "30", name: "Kodi Trofi Emas Sukses", topic: "Piala Kemenangan & Nilai 100", category: "sertifikat", catLabel: "Sertifikat & Kelulusan", desc: "Penghargaan Prestasi Tertinggi", icon: "🏆" },
+  { num: "31", name: "Kodi You Can Do It!", topic: "Duta Masa Depan & Kelulusan", category: "sertifikat", catLabel: "Sertifikat & Kelulusan", desc: "Simbol Kelulusan Akademik Global", icon: "🎉" }
+];
+
+const KODI_AVATAR_LIST = KODI_AVATAR_CATALOG.map(c => `assets/illustrations/3d_tiles/tile_3d_${c.num}.png`);
 
 function initKodiAvatar() {
   const currentIdx = parseInt(localStorage.getItem("kodi_selected_avatar_idx") || "0", 10);
+  const activeChar = KODI_AVATAR_CATALOG[currentIdx] || KODI_AVATAR_CATALOG[0];
   const imgEl = document.getElementById("kodi-avatar-img");
-  if (imgEl && KODI_AVATAR_LIST[currentIdx]) {
-    imgEl.src = KODI_AVATAR_LIST[currentIdx];
+  if (imgEl) {
+    imgEl.src = `assets/illustrations/3d_tiles/tile_3d_${activeChar.num}.png`;
+    imgEl.alt = activeChar.name;
+    imgEl.title = `${activeChar.name} - ${activeChar.desc}`;
+  }
+  const speakerNameEl = document.getElementById("kodi-speaker-name");
+  if (speakerNameEl) {
+    speakerNameEl.innerHTML = `${activeChar.icon} ${activeChar.name} <span style="font-size: 0.75rem; font-weight: normal; opacity: 0.85;">(${activeChar.catLabel})</span>`;
   }
 }
 
-window.cycleKodiAvatar = function() {
-  if (window.sfx && typeof sfx.playSuccess === "function") sfx.playSuccess();
-  let currentIdx = parseInt(localStorage.getItem("kodi_selected_avatar_idx") || "0", 10);
-  currentIdx = (currentIdx + 1) % KODI_AVATAR_LIST.length;
-  localStorage.setItem("kodi_selected_avatar_idx", currentIdx);
+window.selectKodiAvatarByIdx = function(idx) {
+  if (idx < 0 || idx >= KODI_AVATAR_CATALOG.length) return;
+  localStorage.setItem("kodi_selected_avatar_idx", idx);
+  const activeChar = KODI_AVATAR_CATALOG[idx];
 
   const imgEl = document.getElementById("kodi-avatar-img");
   if (imgEl) {
-    imgEl.src = KODI_AVATAR_LIST[currentIdx];
+    imgEl.src = `assets/illustrations/3d_tiles/tile_3d_${activeChar.num}.png`;
     imgEl.classList.remove("spring-bump");
     void imgEl.offsetWidth;
     imgEl.classList.add("spring-bump");
   }
 
-  const avatarNumber = currentIdx + 1;
+  const speakerNameEl = document.getElementById("kodi-speaker-name");
+  if (speakerNameEl) {
+    speakerNameEl.innerHTML = `${activeChar.icon} ${activeChar.name} <span style="font-size: 0.75rem; font-weight: normal; opacity: 0.85;">(${activeChar.catLabel})</span>`;
+  }
+
+  if (window.sfx && typeof sfx.playSuccess === "function") sfx.playSuccess();
+  closeKodiAvatarGallery();
+
   setKodiSpeech(
-    `Karakter Clay 3D berhasil diganti ke Pahlawan #${avatarNumber}! 🎉`,
-    `Tersedia 31 karakter 3D unik dari buku referensi! Klik terus avatar Kodi untuk mencoba karakter lainnya!`
+    `Halo temanku! Sekarang kamu ditemani oleh ${activeChar.name}! ${activeChar.icon}`,
+    `Spesialisasi: ${activeChar.topic} — ${activeChar.desc}. Semangat belajarnya yaa!`
   );
 };
+
+window.cycleKodiAvatar = function() {
+  let currentIdx = parseInt(localStorage.getItem("kodi_selected_avatar_idx") || "0", 10);
+  currentIdx = (currentIdx + 1) % KODI_AVATAR_CATALOG.length;
+  window.selectKodiAvatarByIdx(currentIdx);
+};
+
+window.openKodiAvatarGallery = function(categoryFilter = "all") {
+  if (window.sfx && typeof sfx.playClick === "function") sfx.playClick();
+  let modalEl = document.getElementById("kodi-avatar-gallery-modal");
+  if (!modalEl) {
+    modalEl = document.createElement("div");
+    modalEl.id = "kodi-avatar-gallery-modal";
+    modalEl.className = "modal-overlay active";
+    document.body.appendChild(modalEl);
+  } else {
+    modalEl.className = "modal-overlay active";
+  }
+
+  const currentIdx = parseInt(localStorage.getItem("kodi_selected_avatar_idx") || "0", 10);
+
+  const categories = [
+    { key: "all", label: "🌟 Semua (31)" },
+    { key: "koding", label: "💻 Koding (6)" },
+    { key: "excel", label: "📊 Excel (6)" },
+    { key: "english", label: "🇬🇧 English (10)" },
+    { key: "math", label: "📐 Cambridge Math (4)" },
+    { key: "it_tech", label: "💡 IT Lab (2)" },
+    { key: "sertifikat", label: "🏆 Wisuda (3)" }
+  ];
+
+  const filteredChars = categoryFilter === "all" 
+    ? KODI_AVATAR_CATALOG.map((c, i) => ({ ...c, originalIdx: i }))
+    : KODI_AVATAR_CATALOG.map((c, i) => ({ ...c, originalIdx: i })).filter(c => c.category === categoryFilter || (categoryFilter === "it_tech" && (c.category === "it_tech" || c.category === "petualangan")));
+
+  modalEl.innerHTML = `
+    <div class="modal-content" style="max-width: 920px; width: 95%; max-height: 90vh; overflow-y: auto; border: 2px solid #38bdf8; border-radius: 20px; padding: 24px; background: linear-gradient(145deg, rgba(15, 23, 42, 0.98), rgba(30, 41, 59, 0.99));">
+      <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 12px; margin-bottom: 16px;">
+        <div style="display: flex; align-items: center; gap: 10px;">
+          <span style="font-size: 2rem;">🎨</span>
+          <div>
+            <h3 style="margin: 0; color: #fff; font-size: 1.25rem;">Galeri Pahlawan Clay 3D Kodi</h3>
+            <p style="margin: 2px 0 0; font-size: 0.8rem; color: #94a3b8;">
+              Pilih karakter clay 3D favoritmu dari 31 karya seni asli yang disesuaikan dengan topik belajar!
+            </p>
+          </div>
+        </div>
+        <button class="btn-secondary" style="padding: 6px 12px;" onclick="closeKodiAvatarGallery()">✕ Tutup</button>
+      </div>
+
+      <!-- Kategori Filter -->
+      <div style="display: flex; gap: 6px; overflow-x: auto; padding-bottom: 10px; margin-bottom: 16px;">
+        ${categories.map(c => `
+          <button class="btn-secondary ${categoryFilter === c.key ? 'active' : ''}" 
+                  style="padding: 6px 12px; font-size: 0.8rem; font-weight: 700; white-space: nowrap; ${categoryFilter === c.key ? 'background: #0284c7; color: #fff; border-color: #38bdf8;' : ''}"
+                  onclick="openKodiAvatarGallery('${c.key}')">
+            ${c.label}
+          </button>
+        `).join('')}
+      </div>
+
+      <!-- Grid Karakter -->
+      <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 14px;">
+        ${filteredChars.map(c => {
+          const isSelected = c.originalIdx === currentIdx;
+          return `
+            <div style="background: rgba(30, 41, 59, 0.7); border: 2px solid ${isSelected ? '#38bdf8' : 'rgba(255,255,255,0.08)'}; border-radius: 14px; padding: 12px; text-align: center; cursor: pointer; transition: all 0.2s;"
+                 onmouseover="this.style.transform='translateY(-3px)'; this.style.borderColor='#38bdf8';"
+                 onmouseout="this.style.transform='none'; this.style.borderColor='${isSelected ? '#38bdf8' : 'rgba(255,255,255,0.08)'}';"
+                 onclick="selectKodiAvatarByIdx(${c.originalIdx})">
+              <div style="position: relative; margin-bottom: 8px;">
+                <img src="assets/illustrations/3d_tiles/tile_3d_${c.num}.png" 
+                     style="width: 100%; height: 130px; object-fit: cover; border-radius: 10px;" 
+                     alt="${c.name}">
+                <span style="position: absolute; top: 6px; left: 6px; font-size: 0.7rem; font-weight: 800; background: rgba(0,0,0,0.7); color: #38bdf8; padding: 2px 6px; border-radius: 6px;">
+                  #${c.num}
+                </span>
+                ${isSelected ? '<span style="position: absolute; top: 6px; right: 6px; font-size: 0.7rem; font-weight: 800; background: #10b981; color: #fff; padding: 2px 6px; border-radius: 6px;">Aktif ✅</span>' : ''}
+              </div>
+              <div style="font-weight: 800; font-size: 0.88rem; color: #fff; margin-bottom: 2px;">
+                ${c.name}
+              </div>
+              <div style="font-size: 0.74rem; color: #38bdf8; font-weight: 700; margin-bottom: 4px;">
+                ${c.catLabel}
+              </div>
+              <div style="font-size: 0.72rem; color: #94a3b8; line-height: 1.3; margin-bottom: 10px;">
+                ${c.desc}
+              </div>
+              <button class="btn-primary" style="width: 100%; padding: 6px; font-size: 0.78rem; font-weight: 700; ${isSelected ? 'background: #10b981;' : ''}">
+                ${isSelected ? 'Dipilih' : 'Gunakan Avatar Ini'}
+              </button>
+            </div>
+          `;
+        }).join('')}
+      </div>
+    </div>
+  `;
+};
+
+window.closeKodiAvatarGallery = function() {
+  const modalEl = document.getElementById("kodi-avatar-gallery-modal");
+  if (modalEl) modalEl.className = "modal-overlay";
+};
+
 
 // ================= APP INITIALIZATION =================
 window.addEventListener("DOMContentLoaded", () => {
@@ -3928,20 +4101,25 @@ function renderCodeTrainer() {
     <!-- Main Challenge Card -->
     <div style="background: var(--bg-card); border-radius: var(--radius-lg); border: 1px solid var(--border-glow); padding: 24px; margin-bottom: 24px; box-shadow: var(--shadow-card);">
       
-      <!-- Meta Information Row -->
-      <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; margin-bottom: 12px;">
-        <span style="font-size: 0.8rem; color: var(--accent-cyan); font-weight: 800; text-transform: uppercase;">
-          ${chal.category} • Soal ${appState.currentCodeIndex + 1} dari ${codeChallenges.length}
-        </span>
-        <span style="font-size: 0.85rem; font-weight: 700; ${isDone ? 'color: var(--accent-green);' : 'color: var(--text-muted);'}">
-          ${isDone ? '✅ Selesai (+1 Bintang)' : '⏳ Sedang Dikerjakan'}
-        </span>
+      <!-- Meta Information Row with Matching 3D Clay Coding Mascots (Tiles 01-06) -->
+      <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 14px;">
+        <img src="assets/illustrations/3d_tiles/tile_3d_${(chal.language === 'HTML/CSS' ? '03' : chal.language === 'JavaScript' ? '06' : chal.language === 'Python' ? '02' : chal.language === 'Java' ? '04' : chal.language === 'C#' ? '05' : '01')}.png"
+             style="width: 60px; height: 60px; border-radius: 12px; object-fit: cover; border: 2px solid var(--accent-cyan); flex-shrink: 0; box-shadow: 0 4px 12px rgba(56, 189, 248, 0.25);"
+             alt="Pahlawan Koding ${chal.language}">
+        <div style="flex: 1;">
+          <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px;">
+            <span style="font-size: 0.78rem; color: var(--accent-cyan); font-weight: 800; text-transform: uppercase;">
+              ${chal.category} • Pahlawan Koding: ${chal.language} • Soal ${appState.currentCodeIndex + 1} dari ${codeChallenges.length}
+            </span>
+            <span style="font-size: 0.85rem; font-weight: 700; ${isDone ? 'color: var(--accent-green);' : 'color: var(--text-muted);'}">
+              ${isDone ? '✅ Selesai (+1 Bintang)' : '⏳ Sedang Dikerjakan'}
+            </span>
+          </div>
+          <h3 style="color: var(--text-main); margin: 4px 0 0; font-size: 1.25rem;">
+            ${chal.title}
+          </h3>
+        </div>
       </div>
-
-      <!-- Title -->
-      <h3 style="color: #fff; margin: 0 0 12px; font-size: 1.25rem;">
-        ${chal.title}
-      </h3>
 
       <!-- WORKED EXAMPLE CARD (KASUS SERUPA A & SINTAKS CONTOH DULU) -->
       ${chal.workedExample ? `
@@ -4399,10 +4577,15 @@ function renderMathTrainer() {
           <span style="font-size: 0.75rem; color: var(--accent-cyan); font-weight: 600;">${chal.unit}</span>
         </div>
 
-        <!-- Judul & Topik Soal -->
-        <div style="margin-bottom: 10px;">
-          <h4 style="margin: 0 0 4px; font-size: 1.05rem; color: #fff;">${chal.title}</h4>
-          <span style="font-size: 0.78rem; color: #94a3b8; background: rgba(255,255,255,0.06); padding: 2px 8px; border-radius: 4px;">Topik: ${chal.topic}</span>
+        <!-- Judul & Topik Soal dengan 3D Clay Math Mascot (Tiles 23-26) -->
+        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px;">
+          <img src="assets/illustrations/3d_tiles/tile_3d_${String(23 + (appState.currentMathIndex % 4)).padStart(2, '0')}.png"
+               style="width: 54px; height: 54px; border-radius: 10px; object-fit: cover; border: 2px solid #f59e0b; flex-shrink: 0;"
+               alt="Cambridge Math Hero #${String(23 + (appState.currentMathIndex % 4)).padStart(2, '0')}">
+          <div>
+            <h4 style="margin: 0 0 2px; font-size: 1.08rem; color: var(--text-main);">${chal.title}</h4>
+            <span style="font-size: 0.78rem; color: var(--text-muted); background: rgba(255,255,255,0.06); padding: 2px 8px; border-radius: 4px;">Topik: ${chal.topic}</span>
+          </div>
         </div>
 
         <!-- Problem Statement Bilingual -->
@@ -4723,8 +4906,8 @@ function renderIhsaniyahTest() {
     <!-- Header Siswa & Sekolah -->
     <div style="background: linear-gradient(135deg, rgba(30, 41, 59, 0.95), rgba(15, 23, 42, 0.98)); border: 1.5px solid #38bdf8; border-radius: 16px; padding: 18px 22px; margin-bottom: 20px; box-shadow: var(--card-shadow);">
       <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 14px;">
-        <div style="display: flex; align-items: center; gap: 12px;">
-          <span style="font-size: 2.2rem;">🎒</span>
+        <div style="display: flex; align-items: center; gap: 14px;">
+          <img src="assets/illustrations/3d_tiles/tile_3d_25.png" style="width: 58px; height: 58px; border-radius: 12px; object-fit: cover; border: 2px solid #38bdf8; flex-shrink: 0; box-shadow: 0 4px 12px rgba(56, 189, 248, 0.2);" alt="SD Ihsaniyah Math Mascot">
           <div>
             <div style="font-size: 0.78rem; text-transform: uppercase; font-weight: 800; color: #38bdf8; letter-spacing: 0.5px;">
               YAYASAN PERGURUAN IHSANIYAH • SD IHSANIYAH GAJAHMADA TEGAL
@@ -4830,7 +5013,10 @@ function renderIhsaniyahTest() {
 function renderIhsaniyahStudentGate(container) {
   container.innerHTML = `
     <div style="max-width: 600px; margin: 30px auto; background: linear-gradient(145deg, rgba(30, 41, 59, 0.95), rgba(15, 23, 42, 0.98)); border: 2px solid #38bdf8; border-radius: 20px; padding: 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.4); text-align: center;">
-      <div style="font-size: 3rem; margin-bottom: 8px;">🎒</div>
+      <div style="display: flex; justify-content: center; gap: 14px; margin-bottom: 12px;">
+        <img src="assets/illustrations/3d_tiles/tile_3d_26.png" style="width: 76px; height: 76px; border-radius: 14px; object-fit: cover; border: 2.5px solid #38bdf8; box-shadow: 0 4px 15px rgba(56, 189, 248, 0.25);" alt="Siswa Ujian SD Ihsaniyah">
+        <img src="assets/illustrations/3d_tiles/tile_3d_25.png" style="width: 76px; height: 76px; border-radius: 14px; object-fit: cover; border: 2.5px solid #10b981; box-shadow: 0 4px 15px rgba(16, 185, 129, 0.25);" alt="Peralatan Ujian Matematika">
+      </div>
       <div style="font-size: 0.85rem; font-weight: 800; text-transform: uppercase; color: #38bdf8; letter-spacing: 0.8px;">
         YAYASAN PERGURUAN IHSANIYAH
       </div>
@@ -5347,22 +5533,21 @@ function renderTeacherLoginModal() {
       <div style="background: rgba(0,0,0,0.3); border-radius: 12px; padding: 16px; margin-bottom: 18px; text-align: left; border: 1px solid rgba(255,255,255,0.08);">
         <div style="margin-bottom: 12px;">
           <label style="display: block; font-size: 0.8rem; font-weight: 700; color: #38bdf8; margin-bottom: 4px;">Username Guru:</label>
-          <input type="text" id="teacher-username-input" placeholder="Masukkan username (contoh: guru)" style="width: 100%; padding: 10px 12px; font-size: 0.9rem; border-radius: 8px; border: 1.5px solid #64748b; background: #0f172a; color: #fff; box-sizing: border-box;">
+          <input type="text" id="teacher-username-input" placeholder="Masukkan username guru" onkeydown="if(event.key==='Enter') handleTeacherLoginSubmit()" style="width: 100%; padding: 10px 12px; font-size: 0.9rem; border-radius: 8px; border: 1.5px solid #64748b; background: #0f172a; color: #fff; box-sizing: border-box;">
         </div>
 
         <div style="margin-bottom: 12px;">
           <label style="display: block; font-size: 0.8rem; font-weight: 700; color: #38bdf8; margin-bottom: 4px;">Password Guru:</label>
           <div style="position: relative;">
-            <input type="password" id="teacher-password-input" placeholder="Masukkan password guru" style="width: 100%; padding: 10px 12px; font-size: 0.9rem; border-radius: 8px; border: 1.5px solid #64748b; background: #0f172a; color: #fff; box-sizing: border-box;">
+            <input type="password" id="teacher-password-input" placeholder="Masukkan password guru" onkeydown="if(event.key==='Enter') handleTeacherLoginSubmit()" style="width: 100%; padding: 10px 12px; font-size: 0.9rem; border-radius: 8px; border: 1.5px solid #64748b; background: #0f172a; color: #fff; box-sizing: border-box;">
             <button type="button" onclick="togglePasswordVisibility()" style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); background: none; border: none; color: #94a3b8; cursor: pointer; font-size: 1.1rem;" title="Lihat/Sembunyikan Password">👁️</button>
           </div>
         </div>
 
         <div id="teacher-login-error" style="display: none; color: #f87171; font-size: 0.8rem; font-weight: 700; margin-top: 6px;"></div>
 
-        <div style="margin-top: 10px; padding: 8px; background: rgba(56, 189, 248, 0.1); border-radius: 6px; font-size: 0.75rem; color: #cbd5e1; border: 1px dashed rgba(56, 189, 248, 0.3);">
-          💡 <strong>Akun Guru Standar:</strong><br>
-          Username: <code style="color: #38bdf8; font-weight: 700;">guru</code> | Password: <code style="color: #4ade80; font-weight: 700;">sdihsaniyah2026</code>
+        <div style="margin-top: 10px; padding: 8px 12px; background: rgba(56, 189, 248, 0.08); border-radius: 6px; font-size: 0.76rem; color: var(--text-muted); border: 1px solid rgba(56, 189, 248, 0.2); text-align: center;">
+          🔒 Akses khusus dan terbatas untuk Bapak/Ibu Dewan Guru SD Ihsaniyah Gajahmada Tegal.
         </div>
       </div>
 

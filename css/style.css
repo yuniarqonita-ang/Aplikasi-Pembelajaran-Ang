@@ -3996,3 +3996,283 @@ body.light-theme .modal-footer {
 }
 
 
+
+/* ==============================================================================
+   ☀️ EXHAUSTIVE HIGH-CONTRAST LIGHT THEME OVERHAUL (v17-patch3)
+   Fixes all font clashes, pale yellow text, white text on white backgrounds,
+   and unreadable translucent dark containers in light mode.
+   ============================================================================== */
+
+body.light-theme {
+  --text-main: #0f172a !important;
+  --text-muted: #334155 !important;
+  --text-dim: #475569 !important;
+  --bg-primary: #f8fafc !important;
+  --bg-secondary: #f1f5f9 !important;
+  --bg-card: #ffffff !important;
+  --bg-card-hover: #f8fafc !important;
+  --border-glow: rgba(99, 102, 241, 0.25) !important;
+  --border-active: #2563eb !important;
+  color: #0f172a !important;
+}
+
+/* Enforce dark typography across ALL cards, wrappers, sections, and modals */
+body.light-theme h1,
+body.light-theme h2,
+body.light-theme h3,
+body.light-theme h4,
+body.light-theme h5,
+body.light-theme h6 {
+  color: #0f172a !important;
+}
+
+body.light-theme p,
+body.light-theme label,
+body.light-theme li {
+  color: #1e293b !important;
+}
+
+/* High-specificity overrides for any inline light colors */
+body.light-theme [style*="color: #fff"],
+body.light-theme [style*="color:#fff"],
+body.light-theme [style*="color: #ffffff"],
+body.light-theme [style*="color:#ffffff"],
+body.light-theme [style*="color: white"],
+body.light-theme [style*="color:white"],
+body.light-theme [style*="color: #f8fafc"],
+body.light-theme [style*="color:#f8fafc"],
+body.light-theme [style*="color: #f1f5f9"],
+body.light-theme [style*="color:#f1f5f9"],
+body.light-theme [style*="color: #e2e8f0"],
+body.light-theme [style*="color:#e2e8f0"] {
+  color: #0f172a !important;
+}
+
+body.light-theme [style*="color: #cbd5e1"],
+body.light-theme [style*="color:#cbd5e1"],
+body.light-theme [style*="color: #94a3b8"],
+body.light-theme [style*="color:#94a3b8"],
+body.light-theme [style*="color: #64748b"],
+body.light-theme [style*="color:#64748b"] {
+  color: #334155 !important;
+}
+
+/* Convert washed-out light blues into crisp deep ocean blues */
+body.light-theme [style*="color: #38bdf8"],
+body.light-theme [style*="color:#38bdf8"],
+body.light-theme [style*="color: #7dd3fc"],
+body.light-theme [style*="color:#7dd3fc"],
+body.light-theme [style*="color: #00f2fe"],
+body.light-theme [style*="color: #a5f3fc"],
+body.light-theme [style*="color: #bae6fd"] {
+  color: #0369a1 !important;
+}
+
+/* Convert washed-out pale greens into crisp dark emerald */
+body.light-theme [style*="color: #86efac"],
+body.light-theme [style*="color:#86efac"],
+body.light-theme [style*="color: #4ade80"],
+body.light-theme [style*="color:#4ade80"],
+body.light-theme [style*="color: #34d399"],
+body.light-theme [style*="color:#34d399"] {
+  color: #15803d !important;
+}
+
+/* NALAR BAYI KODI: Transform bright/pale yellows into rich dark amber on soft yellow cards */
+body.light-theme [style*="color: #facc15"],
+body.light-theme [style*="color:#facc15"],
+body.light-theme [style*="color: #fef08a"],
+body.light-theme [style*="color:#fef08a"],
+body.light-theme [style*="color: #fde047"],
+body.light-theme [style*="color:#fde047"] {
+  color: #92400e !important;
+}
+
+body.light-theme [style*="background: rgba(250, 204, 21"],
+body.light-theme [style*="background:rgba(250, 204, 21"],
+body.light-theme [style*="background: rgba(254, 240, 138"],
+body.light-theme [style*="background:rgba(254, 240, 138"] {
+  background: #fef9c3 !important;
+  border: 1.5px solid #f59e0b !important;
+  border-left: 4px solid #d97706 !important;
+  color: #78350f !important;
+}
+
+body.light-theme [style*="background: rgba(250, 204, 21"] *,
+body.light-theme [style*="background:rgba(250, 204, 21"] *,
+body.light-theme [style*="background: rgba(254, 240, 138"] *,
+body.light-theme [style*="background:rgba(254, 240, 138"] * {
+  color: #78350f !important;
+}
+
+body.light-theme [style*="background: rgba(250, 204, 21"] strong,
+body.light-theme [style*="background:rgba(250, 204, 21"] strong {
+  color: #92400e !important;
+}
+
+/* Convert all dark translucent inline background containers into clean light cards */
+body.light-theme [style*="background: rgba(15, 23, 42"],
+body.light-theme [style*="background:rgba(15, 23, 42"],
+body.light-theme [style*="background: rgba(30, 41, 59"],
+body.light-theme [style*="background:rgba(30, 41, 59"],
+body.light-theme [style*="background: rgba(0, 0, 0"],
+body.light-theme [style*="background:rgba(0, 0, 0"],
+body.light-theme [style*="background: rgba(0,0,0"],
+body.light-theme [style*="background:rgba(0,0,0"],
+body.light-theme [style*="background: #060911"],
+body.light-theme [style*="background:#060911"],
+body.light-theme [style*="background: #090d16"],
+body.light-theme [style*="background:#090d16"],
+body.light-theme [style*="background: #0b1120"],
+body.light-theme [style*="background:#0b1120"] {
+  background: #ffffff !important;
+  border-color: #cbd5e1 !important;
+  color: #0f172a !important;
+}
+
+body.light-theme [style*="background: linear-gradient(145deg, rgba(15, 23, 42"],
+body.light-theme [style*="background:linear-gradient(145deg, rgba(15, 23, 42"],
+body.light-theme [style*="background: linear-gradient(135deg, rgba(15, 23, 42"],
+body.light-theme [style*="background:linear-gradient(135deg, rgba(15, 23, 42"],
+body.light-theme [style*="background: linear-gradient(145deg, rgba(30, 41, 59"],
+body.light-theme [style*="background:linear-gradient(145deg, rgba(30, 41, 59"] {
+  background: #ffffff !important;
+  border: 1.5px solid #cbd5e1 !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05) !important;
+}
+
+/* Success / Green alert boxes in light mode */
+body.light-theme [style*="background: rgba(34, 197, 94"],
+body.light-theme [style*="background:rgba(34, 197, 94"],
+body.light-theme [style*="background: rgba(16, 185, 129"],
+body.light-theme [style*="background:rgba(16, 185, 129"],
+body.light-theme [style*="background: rgba(74, 222, 128"],
+body.light-theme [style*="background:rgba(74, 222, 128"] {
+  background: #dcfce7 !important;
+  border-color: #16a34a !important;
+  color: #14532d !important;
+}
+
+body.light-theme [style*="background: rgba(34, 197, 94"] *,
+body.light-theme [style*="background:rgba(34, 197, 94"] *,
+body.light-theme [style*="background: rgba(16, 185, 129"] *,
+body.light-theme [style*="background:rgba(16, 185, 129"] * {
+  color: #14532d !important;
+}
+
+/* Info / Cyan alert boxes in light mode */
+body.light-theme [style*="background: rgba(56, 189, 248"],
+body.light-theme [style*="background:rgba(56, 189, 248"],
+body.light-theme [style*="background: rgba(6, 182, 212"],
+body.light-theme [style*="background:rgba(6, 182, 212"] {
+  background: #f0f9ff !important;
+  border-color: #0284c7 !important;
+  color: #0c4a6e !important;
+}
+
+/* Input, select, textarea high contrast */
+body.light-theme input,
+body.light-theme select,
+body.light-theme textarea {
+  background: #ffffff !important;
+  color: #0f172a !important;
+  border: 1.5px solid #cbd5e1 !important;
+}
+
+body.light-theme input:focus,
+body.light-theme select:focus,
+body.light-theme textarea:focus {
+  border-color: #0284c7 !important;
+  box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.15) !important;
+}
+
+/* Specific module rules */
+body.light-theme #ihsaniyah-content-area,
+body.light-theme #math-content-area,
+body.light-theme #code-trainer-content-area,
+body.light-theme #excel-content-area,
+body.light-theme #english-content-area,
+body.light-theme #sql-content-area {
+  color: #0f172a !important;
+}
+
+body.light-theme #ihsaniyah-content-area *,
+body.light-theme #math-content-area * {
+  text-shadow: none !important;
+}
+
+body.light-theme .matching-card {
+  background: #ffffff !important;
+  border: 2px solid #cbd5e1 !important;
+  color: #0f172a !important;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04) !important;
+}
+
+body.light-theme .matching-card span,
+body.light-theme .matching-card div {
+  color: #0f172a !important;
+}
+
+body.light-theme .matching-card.selected {
+  background: #fef3c7 !important;
+  border-color: #d97706 !important;
+}
+
+body.light-theme .matching-card.matched {
+  background: #dcfce7 !important;
+  border-color: #15803d !important;
+}
+
+/* Teacher Admin & Login Modal */
+body.light-theme #ihs-admin-modal-wrap .modal-content {
+  background: #ffffff !important;
+  color: #0f172a !important;
+  border: 2px solid #0284c7 !important;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12) !important;
+}
+
+body.light-theme #ihs-admin-modal-wrap h2,
+body.light-theme #ihs-admin-modal-wrap h3 {
+  color: #0f172a !important;
+}
+
+body.light-theme #ihs-admin-modal-wrap p,
+body.light-theme #ihs-admin-modal-wrap label {
+  color: #334155 !important;
+}
+
+body.light-theme #ihs-admin-modal-wrap input {
+  background: #ffffff !important;
+  color: #0f172a !important;
+  border: 1.5px solid #cbd5e1 !important;
+}
+
+body.light-theme .admin-table {
+  background: #ffffff !important;
+  color: #0f172a !important;
+}
+
+body.light-theme .admin-table th {
+  background: #f1f5f9 !important;
+  color: #0284c7 !important;
+  border-bottom: 2px solid #cbd5e1 !important;
+}
+
+body.light-theme .admin-table td {
+  background: #ffffff !important;
+  color: #1e293b !important;
+  border-bottom: 1px solid #e2e8f0 !important;
+}
+
+/* Cambridge Math input & keypad */
+body.light-theme #math-answer-input {
+  background: #ffffff !important;
+  color: #0f172a !important;
+  border: 2px solid #0284c7 !important;
+}
+
+body.light-theme #code-studio-editor {
+  background: #ffffff !important;
+  color: #0f172a !important;
+  border: 1.5px solid #cbd5e1 !important;
+}

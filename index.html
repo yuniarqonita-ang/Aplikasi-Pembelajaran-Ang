@@ -12,7 +12,7 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <link rel="apple-touch-icon" href="assets/icon-192.png">
 
-  <link rel="stylesheet" href="css/style.css?v=20261009-v13">
+  <link rel="stylesheet" href="css/style.css?v=20261012-v17-patch3">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🤖</text></svg>">
 </head>
 <body>
@@ -159,7 +159,12 @@
       </div>
 
       <div class="kodi-speech-bubble">
-        <div class="kodi-speaker-name" id="kodi-speaker-name">🤖 Kodi - Sahabat Koding & IT Kamu</div>
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; margin-bottom: 6px;">
+          <div class="kodi-speaker-name" id="kodi-speaker-name">🤖 Kodi - Sahabat Koding & IT Kamu</div>
+          <button class="btn-secondary" style="font-size: 0.75rem; padding: 4px 10px; border-radius: 20px; font-weight: 700; border: 1.5px solid var(--accent-cyan); color: var(--accent-cyan); background: rgba(56, 189, 248, 0.1);" onclick="openKodiAvatarGallery()">
+            🎨 Galeri 31 Karakter Clay
+          </button>
+        </div>
         <div id="kodi-msg" class="kodi-message-text">
           Halo temanku! Kenalin, namaku Kodi! Tenang, jangan panik ya! Di sini ga ada rumus rumit. Bersama aku, kita pelajari Koding, IT Support, kueri SQL tabel, dan English Speaking buat persiapan tes kerja!
         </div>
@@ -341,6 +346,25 @@
         </div>
       </div>
 
+      <!-- Koleksi Lencana Kelulusan 3D Clay (Tiles 29, 30, 31) -->
+      <div style="max-width: 700px; margin: 20px auto; display: flex; justify-content: center; gap: 16px; flex-wrap: wrap;">
+        <div style="background: rgba(30, 41, 59, 0.7); border: 1.5px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 12px 16px; text-align: center; flex: 1; min-width: 180px;">
+          <img src="assets/illustrations/3d_tiles/tile_3d_29.png" style="width: 72px; height: 72px; border-radius: 10px; object-fit: cover; margin-bottom: 6px;" alt="Wisudawan Berprestasi">
+          <div style="font-size: 0.82rem; font-weight: 800; color: #fff;">Wisudawan Prestasi</div>
+          <div style="font-size: 0.72rem; color: #38bdf8;">Ijazah & Gelar Akademik</div>
+        </div>
+        <div style="background: rgba(30, 41, 59, 0.7); border: 1.5px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 12px 16px; text-align: center; flex: 1; min-width: 180px;">
+          <img src="assets/illustrations/3d_tiles/tile_3d_30.png" style="width: 72px; height: 72px; border-radius: 10px; object-fit: cover; margin-bottom: 6px;" alt="Piala Trofi Sukses">
+          <div style="font-size: 0.82rem; font-weight: 800; color: #fff;">Trofi Kemenangan</div>
+          <div style="font-size: 0.72rem; color: #facc15;">Nilai Sempurna 100</div>
+        </div>
+        <div style="background: rgba(30, 41, 59, 0.7); border: 1.5px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 12px 16px; text-align: center; flex: 1; min-width: 180px;">
+          <img src="assets/illustrations/3d_tiles/tile_3d_31.png" style="width: 72px; height: 72px; border-radius: 10px; object-fit: cover; margin-bottom: 6px;" alt="You Can Do It">
+          <div style="font-size: 0.82rem; font-weight: 800; color: #fff;">You Can Do It!</div>
+          <div style="font-size: 0.72rem; color: #4ade80;">Duta Masa Depan</div>
+        </div>
+      </div>
+
       <div style="text-align: center;">
         <button class="btn-primary" onclick="printCertificate()">
           🖨️ Cetak / Simpan sebagai PDF
@@ -366,18 +390,18 @@
   </div>
 
   <!-- Scripts with Cache Buster v17 -->
-  <script src="js/sfx.js?v=20261012-v17"></script>
-  <script src="js/speech.js?v=20261012-v17"></script>
-  <script src="js/dictionary.js?v=20261012-v17"></script>
-  <script src="js/levels.js?v=20261012-v17"></script>
-  <script src="js/sql_trainer.js?v=20261012-v17"></script>
-  <script src="js/code_trainer.js?v=20261012-v17"></script>
-  <script src="js/english_trainer.js?v=20261012-v17"></script>
-  <script src="js/excel_trainer.js?v=20261012-v17"></script>
-  <script src="js/it_tech_trainer.js?v=20261012-v17"></script>
-  <script src="js/math_trainer.js?v=20261012-v17"></script>
-  <script src="js/ihsaniyah_math.js?v=20261012-v17"></script>
-  <script src="js/ai_tutor.js?v=20261012-v17"></script>
-  <script src="js/app.js?v=20261012-v17"></script>
+  <script src="js/sfx.js?v=20261012-v17-patch3"></script>
+  <script src="js/speech.js?v=20261012-v17-patch3"></script>
+  <script src="js/dictionary.js?v=20261012-v17-patch3"></script>
+  <script src="js/levels.js?v=20261012-v17-patch3"></script>
+  <script src="js/sql_trainer.js?v=20261012-v17-patch3"></script>
+  <script src="js/code_trainer.js?v=20261012-v17-patch3"></script>
+  <script src="js/english_trainer.js?v=20261012-v17-patch3"></script>
+  <script src="js/excel_trainer.js?v=20261012-v17-patch3"></script>
+  <script src="js/it_tech_trainer.js?v=20261012-v17-patch3"></script>
+  <script src="js/math_trainer.js?v=20261012-v17-patch3"></script>
+  <script src="js/ihsaniyah_math.js?v=20261012-v17-patch3"></script>
+  <script src="js/ai_tutor.js?v=20261012-v17-patch3"></script>
+  <script src="js/app.js?v=20261012-v17-patch3"></script>
 </body>
 </html>
