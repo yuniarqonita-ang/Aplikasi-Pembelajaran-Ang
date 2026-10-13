@@ -3065,19 +3065,39 @@
           </div>
         </div>
 
-        <!-- 3. MOCKUP JENDELA OFFICE NYATA (DOKUMEN DITAMPILKAN & BERTRAFOSMASI LANGSUNG) -->
-        <div style="margin-bottom: 24px;">
-          ${isWord ? renderWordOfficeMockup(project, docState, completed) : renderExcelOfficeMockup(project, docState, completed)}
-        </div>
+        <!-- WIDESCREEN 2-COLUMN STAGE: DOKUMEN & ASSEMBLY (KIRI) vs BRIEF & CHECKLIST (KANAN) -->
+        <div class="game-widescreen-stage" style="align-items: start; margin-top: 18px;">
+          <!-- PANEL KIRI: MOCKUP DOKUMEN OFFICE & PAPAN RAKIT PINTASAN -->
+          <div class="stage-left-panel">
+            <div style="margin-bottom: 20px;">
+              ${isWord ? renderWordOfficeMockup(project, docState, completed) : renderExcelOfficeMockup(project, docState, completed)}
+            </div>
+            <div>
+              ${renderProjectVirtualAssemblyPad(mode)}
+            </div>
+          </div>
 
-        <!-- 4. PAPAN RAKIT PINTASAN INTERAKTIF (BAGI LAYAR SENTUH / HP / MOUSE) -->
-        <div style="margin-bottom: 24px;">
-          ${renderProjectVirtualAssemblyPad(mode)}
-        </div>
+          <!-- PANEL KANAN: BRIEF KLIEN & CHECKLIST MISI BOS + ARROW NAVIGATION -->
+          <div class="stage-right-panel">
+            <div>
+              ${renderProjectTasksChecklist(mode, project, completed)}
+            </div>
 
-        <!-- 5. BRIEF KLIEN & CHECKLIST MISI PERMINTAAN BOS -->
-        <div>
-          ${renderProjectTasksChecklist(mode, project, completed)}
+            <!-- Glowing Directional Arrow Navigation Bar -->
+            <div class="arrow-nav-bar" style="margin-top: 20px;">
+              <button class="btn-arrow-nav" onclick="switchProject('${mode}', ${Math.max(0, currentIdx - 1)})" ${currentIdx <= 0 ? 'disabled' : ''}>
+                <span>◀</span>
+                <span>Proyek Sebelumnya</span>
+              </button>
+              <span style="font-size: 0.82rem; font-weight: 700; color: var(--accent-cyan);">
+                Proyek #${currentIdx + 1} dari ${projList.length}
+              </span>
+              <button class="btn-arrow-nav primary" onclick="switchProject('${mode}', ${Math.min(projList.length - 1, currentIdx + 1)})" ${currentIdx >= projList.length - 1 ? 'disabled' : ''}>
+                <span>Proyek Berikutnya</span>
+                <span>▶</span>
+              </button>
+            </div>
+          </div>
         </div>
 
         <!-- 6. MODAL RAPOR EVALUASI HASIL PRAKTIK KERJA (JIKA SUDAH SELESAI) -->
@@ -3284,67 +3304,107 @@
           </div>
         </div>
 
-        <div class="shortcut-quest-card" style="border-left: 5px solid ${themeColor};">
-          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; flex-wrap: wrap; gap: 8px;">
-            <span style="font-size: 0.78rem; font-weight: 800; background: rgba(56, 189, 248, 0.15); color: var(--accent-cyan); padding: 4px 10px; border-radius: 12px; border: 1px solid rgba(56, 189, 248, 0.3);">
-              🏷️ Kategori: ${currentItem.category}
-            </span>
-            ${isCompleted ? '<span style="font-size: 0.85rem; font-weight: 800; color: #10b981; background: rgba(16, 185, 129, 0.15); padding: 4px 12px; border-radius: 20px;">✅ Sudah Dikuasai</span>' : '<span style="font-size: 0.82rem; font-weight: 700; color: var(--accent-yellow); background: rgba(250, 204, 21, 0.12); padding: 4px 10px; border-radius: 12px;">🎯 Tekan Tombol di Keyboard!</span>'}
+        <!-- WIDESCREEN 2-COLUMN STAGE: SKENARIO & NALAR (KIRI) vs SIMULATOR KEYBOARD (KANAN) -->
+        <div class="game-widescreen-stage equal" style="margin-top: 14px;">
+          <!-- PANEL KIRI: SKENARIO KANTOR, KEYCAPS & NALAR KODI -->
+          <div class="stage-left-panel">
+            <div class="shortcut-quest-card" style="border-left: 5px solid ${themeColor}; margin-bottom: 0;">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; flex-wrap: wrap; gap: 8px;">
+                <span style="font-size: 0.78rem; font-weight: 800; background: rgba(56, 189, 248, 0.15); color: var(--accent-cyan); padding: 4px 10px; border-radius: 12px; border: 1px solid rgba(56, 189, 248, 0.3);">
+                  🏷️ Kategori: ${currentItem.category}
+                </span>
+                ${isCompleted ? '<span style="font-size: 0.85rem; font-weight: 800; color: #10b981; background: rgba(16, 185, 129, 0.15); padding: 4px 12px; border-radius: 20px;">✅ Sudah Dikuasai</span>' : '<span style="font-size: 0.82rem; font-weight: 700; color: var(--accent-yellow); background: rgba(250, 204, 21, 0.12); padding: 4px 10px; border-radius: 12px;">🎯 Tekan Tombol di Keyboard!</span>'}
+              </div>
+
+              <div style="background: rgba(0,0,0,0.25); border-radius: 10px; padding: 14px; margin-bottom: 14px; border-left: 3px solid ${themeLight};">
+                <div style="font-size: 0.82rem; font-weight: 700; color: ${themeLight}; margin-bottom: 4px;">💼 Skenario Nyata di Kantor:</div>
+                <div style="font-size: 0.95rem; color: var(--text-main); font-weight: 600; line-height: 1.45;">
+                  "${currentItem.scenario}"
+                </div>
+                <div style="margin-top: 8px; font-size: 0.85rem; color: var(--text-muted);">
+                  <strong>🎯 Tugasmu:</strong> ${currentItem.action}
+                </div>
+              </div>
+
+              <div style="text-align: center; margin: 18px 0;">
+                <div style="font-size: 0.82rem; font-weight: 700; color: var(--text-muted); margin-bottom: 8px;">
+                  ⌨️ KOMBINASI TOMBOL TARGET:
+                </div>
+                <div class="shortcut-keys-display" id="shortcut-keys-display-${mode}">
+                  ${keyParts.map((part, i) => `
+                    <div class="shortcut-key-cap" data-key="${part.toLowerCase()}">${part}</div>
+                    ${i < keyParts.length - 1 ? '<span class="shortcut-key-plus">+</span>' : ''}
+                  `).join('')}
+                </div>
+              </div>
+
+              <div style="background: rgba(250, 204, 21, 0.08); border-left: 4px solid #facc15; border-radius: 8px; padding: 12px 14px; margin-bottom: 14px;">
+                <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 4px;">
+                  <span style="font-size: 1.1rem;">🍼</span>
+                  <strong style="font-size: 0.85rem; color: #facc15;">Nalar Bayi Kodi:</strong>
+                </div>
+                <p style="margin: 0; font-size: 0.86rem; color: #fef08a; line-height: 1.45;">
+                  ${currentItem.nalarBayiKodi}
+                </p>
+              </div>
+
+              <!-- Visual Shortcut Mission Flow -->
+              <div class="visual-mission-flow">
+                <div class="flow-step-item">
+                  <span class="flow-step-badge">1</span>
+                  <span>Baca Kasus</span>
+                </div>
+                <span class="flow-arrow-sep">➔</span>
+                <div class="flow-step-item">
+                  <span class="flow-step-badge">2</span>
+                  <span>Rangkai Tombol</span>
+                </div>
+                <span class="flow-arrow-sep">➔</span>
+                <div class="flow-step-item">
+                  <span class="flow-step-badge">3</span>
+                  <span>Eksekusi Pintasan</span>
+                </div>
+              </div>
+            </div>
           </div>
 
-          <div style="background: rgba(0,0,0,0.25); border-radius: 10px; padding: 14px; margin-bottom: 14px; border-left: 3px solid ${themeLight};">
-            <div style="font-size: 0.82rem; font-weight: 700; color: ${themeLight}; margin-bottom: 4px;">💼 Skenario Nyata di Kantor:</div>
-            <div style="font-size: 0.95rem; color: var(--text-main); font-weight: 600; line-height: 1.45;">
-              "${currentItem.scenario}"
-            </div>
-            <div style="margin-top: 8px; font-size: 0.85rem; color: var(--text-muted);">
-              <strong>🎯 Tugasmu:</strong> ${currentItem.action}
-            </div>
-          </div>
+          <!-- PANEL KANAN: KEYBOARD SIMULATOR & KONTROL UJI -->
+          <div class="stage-right-panel">
+            <div style="background: var(--bg-card); padding: 20px; border-radius: var(--radius-md); border: 1px solid var(--border-glow);">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                <span style="font-size: 0.82rem; font-weight: 700; color: var(--text-muted);">
+                  🕹️ Simulator Papan Ketik Interaktif:
+                </span>
+                <button class="btn-secondary" style="font-size: 0.75rem; padding: 3px 8px;" onclick="resetVirtualKeys('${mode}')">
+                  Bersihkan Tombol
+                </button>
+              </div>
 
-          <div style="text-align: center; margin: 20px 0;">
-            <div style="font-size: 0.82rem; font-weight: 700; color: var(--text-muted); margin-bottom: 8px;">
-              ⌨️ KOMBINASI TOMBOL YANG HARUS DITEKAN:
-            </div>
-            <div class="shortcut-keys-display" id="shortcut-keys-display-${mode}">
-              ${keyParts.map((part, i) => `
-                <div class="shortcut-key-cap" data-key="${part.toLowerCase()}">${part}</div>
-                ${i < keyParts.length - 1 ? '<span class="shortcut-key-plus">+</span>' : ''}
-              `).join('')}
-            </div>
-          </div>
+              ${renderVirtualKeyboardHtml(mode)}
 
-          <div style="background: rgba(250, 204, 21, 0.08); border-left: 4px solid #facc15; border-radius: 8px; padding: 12px 16px; margin-bottom: 16px;">
-            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 4px;">
-              <span style="font-size: 1.1rem;">🍼</span>
-              <strong style="font-size: 0.88rem; color: #facc15;">Nalar Bayi Kodi:</strong>
+              <div id="shortcut-feedback-${mode}" style="display: none; margin: 12px 0;"></div>
+
+              <div style="display: flex; gap: 10px; justify-content: flex-end; margin-top: 14px; flex-wrap: wrap;">
+                <button class="btn-secondary" style="font-size: 0.82rem; padding: 8px 14px;" onclick="testShortcutCombinationManually('${mode}')">
+                  ⚡ Uji Kombinasi Tombol Sekarang
+                </button>
+              </div>
+
+              <!-- Glowing Directional Arrow Navigation Bar -->
+              <div class="arrow-nav-bar" style="margin-top: 20px;">
+                <button class="btn-arrow-nav" onclick="switchShortcutQuest('${mode}', -1)" ${currentPos <= 0 ? 'disabled' : ''}>
+                  <span>◀</span>
+                  <span>Pintasan Sebelumnya</span>
+                </button>
+                <span style="font-size: 0.82rem; font-weight: 700; color: ${themeLight};">
+                  Pintasan #${appState.currentShortcutIdx[mode] + 1} dari ${list.length}
+                </span>
+                <button class="btn-arrow-nav primary" onclick="switchShortcutQuest('${mode}', 1)" ${currentPos >= filtered.length - 1 ? 'disabled' : ''}>
+                  <span>Pintasan Berikutnya</span>
+                  <span>▶</span>
+                </button>
+              </div>
             </div>
-            <p style="margin: 0; font-size: 0.88rem; color: #fef08a; line-height: 1.5;">
-              ${currentItem.nalarBayiKodi}
-            </p>
-          </div>
-
-          <div id="shortcut-feedback-${mode}" style="display: none; margin-bottom: 14px;"></div>
-
-          <div>
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
-              <span style="font-size: 0.82rem; font-weight: 700; color: var(--text-muted);">
-                🕹️ Simulator Papan Ketik Interaktif:
-              </span>
-              <button class="btn-secondary" style="font-size: 0.75rem; padding: 3px 8px;" onclick="resetVirtualKeys('${mode}')">
-                Bersihkan Tombol
-              </button>
-            </div>
-            ${renderVirtualKeyboardHtml(mode)}
-          </div>
-
-          <div style="display: flex; gap: 10px; justify-content: flex-end; margin-top: 14px; flex-wrap: wrap;">
-            <button class="btn-secondary" style="font-size: 0.82rem; padding: 8px 14px;" onclick="testShortcutCombinationManually('${mode}')">
-              ⚡ Uji Kombinasi Tombol Sekarang
-            </button>
-            <button class="btn-primary" style="background: ${themeColor}; border: none; font-size: 0.85rem; padding: 8px 18px;" onclick="switchShortcutQuest('${mode}', 1)">
-              Lanjut Tantangan Berikutnya ➡️
-            </button>
           </div>
         </div>
       `;

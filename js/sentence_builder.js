@@ -880,203 +880,250 @@ function renderSentenceTrainGame() {
       </div>
     </div>
 
-    <!-- AREA PERMAINAN KERETA API KALIMAT (TRAIN SIMULATOR) -->
-    <div class="train-simulator-card">
-      <div class="train-sim-mission-bar">
-        <div>
-          <div style="font-size: 0.78rem; font-weight: 800; color: var(--accent-cyan); text-transform: uppercase;">Misi Rangkai Kalimat:</div>
-          <h3 style="color: #fff; margin: 4px 0 2px; font-size: 1.15rem;">"${chal.translation}"</h3>
-          <div style="font-size: 0.82rem; color: var(--text-muted);">Pola Target: <span style="color: var(--accent-yellow); font-weight: 700;">${chal.pattern}</span></div>
-        </div>
-        <div style="text-align: right;">
-          <span style="font-size: 0.78rem; color: var(--text-muted);">Status Rangkaian:</span>
-          <div style="font-size: 1.1rem; font-weight: 800; color: ${isAllAssembled ? 'var(--accent-green)' : 'var(--accent-yellow)'};">
-            ${curChalState.assembled.length} / ${chal.correctSentence.length} Gerbong
+    <!-- WIDESCREEN 2-COLUMN STAGE: MISI & POLA (KIRI) vs REL KERETA & STASIUN BALOK (KANAN) -->
+    <div class="game-widescreen-stage">
+      <!-- PANEL KIRI: MISI RANGKAI KALIMAT & ATURAN POLA -->
+      <div class="stage-left-panel">
+        <div style="background: var(--bg-card); padding: 20px; border-radius: var(--radius-md); border: 1px solid var(--border-glow); margin-bottom: 16px;">
+          <div style="font-size: 0.75rem; font-weight: 800; color: var(--accent-cyan); text-transform: uppercase; margin-bottom: 4px;">
+            🚂 Misi Rangkai Kalimat:
+          </div>
+          <h3 style="color: #fff; margin: 0 0 8px; font-size: 1.15rem; line-height: 1.45;">
+            "${chal.translation}"
+          </h3>
+          <div style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 14px;">
+            Pola Target: <span style="color: var(--accent-yellow); font-weight: 700;">${chal.pattern}</span>
+          </div>
+
+          <div style="background: rgba(15, 23, 42, 0.85); border-radius: 8px; padding: 12px 14px; margin-bottom: 16px; border: 1px solid rgba(255,255,255,0.08);">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <span style="font-size: 0.8rem; color: var(--text-muted);">Status Rangkaian:</span>
+              <div style="font-size: 1.05rem; font-weight: 800; color: ${isAllAssembled ? 'var(--accent-green)' : 'var(--accent-yellow)'};">
+                ${curChalState.assembled.length} / ${chal.correctSentence.length} Gerbong
+              </div>
+            </div>
+          </div>
+
+          <!-- KOTAK CONTOH & NALAR POLA -->
+          <div style="background: rgba(250, 204, 21, 0.08); border-left: 3px solid var(--accent-yellow); border-radius: 6px; padding: 12px 14px; margin-bottom: 14px; font-size: 0.86rem; color: #fef08a;">
+            <strong>🍼 Nalar Kodi Pola ${chal.pattern}:</strong>
+            <p style="margin: 4px 0 0; line-height: 1.45;">${chal.babyLogic}</p>
+          </div>
+
+          <!-- Visual Train Mission Flow -->
+          <div class="visual-mission-flow">
+            <div class="flow-step-item">
+              <span class="flow-step-badge">1</span>
+              <span>Pilih Balok</span>
+            </div>
+            <span class="flow-arrow-sep">➔</span>
+            <div class="flow-step-item">
+              <span class="flow-step-badge">2</span>
+              <span>Pasang Rel</span>
+            </div>
+            <span class="flow-arrow-sep">➔</span>
+            <div class="flow-step-item">
+              <span class="flow-step-badge">3</span>
+              <span>Jalankan Kereta</span>
+            </div>
           </div>
         </div>
       </div>
 
-      <!-- REL KERETA API DENGAN GERBONG BERURUTAN -->
-      <div class="railway-track-stage">
-        <div class="train-engine-head">
-          <span class="engine-smoke">💨</span>
-          <span class="engine-body">🚂</span>
-          <span class="engine-label">Lokomotif</span>
-        </div>
+      <!-- PANEL KANAN: AREA PERMAINAN KERETA API (TRAIN SIMULATOR) -->
+      <div class="stage-right-panel">
+        <div class="train-simulator-card" style="margin: 0;">
+          <!-- REL KERETA API DENGAN GERBONG BERURUTAN -->
+          <div class="railway-track-stage">
+            <div class="train-engine-head">
+              <span class="engine-smoke">💨</span>
+              <span class="engine-body">🚂</span>
+              <span class="engine-label">Lokomotif</span>
+            </div>
 
-        <div class="train-cars-row" id="train-assembled-row">
-          ${chal.correctSentence.map((_, slotIdx) => {
-            const assembledWord = curChalState.assembled[slotIdx];
-            const roleInfo = assembledWord ? chal.wordRoles[assembledWord] : null;
+            <div class="train-cars-row" id="train-assembled-row">
+              ${chal.correctSentence.map((_, slotIdx) => {
+                const assembledWord = curChalState.assembled[slotIdx];
+                const roleInfo = assembledWord ? chal.wordRoles[assembledWord] : null;
 
-            if (assembledWord) {
-              return `
-                <div class="train-car is-occupied animate-dock" 
-                     onclick="detachWordFromTrain(${slotIdx})"
-                     title="Klik untuk turunkan balok '${assembledWord}' kembali ke stasiun">
-                  <div class="car-coupler-left">🔗</div>
-                  <div class="car-body" style="border-color: ${roleInfo ? roleInfo.color : 'var(--accent-cyan)'}; background: ${roleInfo ? roleInfo.color + '22' : 'rgba(56, 189, 248, 0.15)'};">
-                    <span class="car-word-text">${assembledWord}</span>
-                    <span class="car-role-pill" style="color: ${roleInfo ? roleInfo.color : '#fff'};">
+                if (assembledWord) {
+                  return `
+                    <div class="train-car is-occupied animate-dock" 
+                         onclick="detachWordFromTrain(${slotIdx})"
+                         title="Klik untuk turunkan balok '${assembledWord}' kembali ke stasiun">
+                      <div class="car-coupler-left">🔗</div>
+                      <div class="car-body" style="border-color: ${roleInfo ? roleInfo.color : 'var(--accent-cyan)'}; background: ${roleInfo ? roleInfo.color + '22' : 'rgba(56, 189, 248, 0.15)'};">
+                        <span class="car-word-text">${assembledWord}</span>
+                        <span class="car-role-pill" style="color: ${roleInfo ? roleInfo.color : '#fff'};">
+                          ${roleInfo ? roleInfo.icon + ' ' + roleInfo.role : 'Kata'}
+                        </span>
+                        <span class="car-detach-hint">✕ Lepas</span>
+                      </div>
+                      <div class="car-wheel-base">
+                        <span class="car-wheel">⚙️</span>
+                        <span class="car-wheel">⚙️</span>
+                      </div>
+                      <div class="car-coupler-right">🔗</div>
+                    </div>
+                  `;
+                } else {
+                  return `
+                    <div class="train-car is-empty">
+                      <div class="car-coupler-left">🔗</div>
+                      <div class="car-body empty-placeholder">
+                        <span class="car-slot-number">Gerbong #${slotIdx + 1}</span>
+                        <span class="car-drop-hint">🧲 Gandengkan Balok</span>
+                      </div>
+                      <div class="car-wheel-base">
+                        <span class="car-wheel empty-wheel">⚙️</span>
+                        <span class="car-wheel empty-wheel">⚙️</span>
+                      </div>
+                      <div class="car-coupler-right">🔗</div>
+                    </div>
+                  `;
+                }
+              }).join('')}
+            </div>
+          </div>
+
+          <!-- KETERANGAN LENGKAP BALOK TERPILIH (LIVE INSIGHT) -->
+          ${curChalState.assembled.length > 0 ? `
+            <div class="assembled-sentence-preview">
+              <span style="font-size: 0.8rem; color: var(--accent-cyan); font-weight: 700;">Kalimat yang sedang dirangkai:</span>
+              <div style="font-size: 1.15rem; font-weight: 800; color: #fff; margin: 4px 0;">
+                "${curChalState.assembled.join(' ')}"
+              </div>
+            </div>
+          ` : ''}
+
+          <!-- STASIUN BALOK KATA MAGNETIK (STATION WORD POOL) -->
+          <div class="station-pool-section">
+            <div class="station-pool-header">
+              <span style="font-size: 0.82rem; font-weight: 800; color: var(--accent-yellow);">
+                🚉 Stasiun Balok Kata Magnetik:
+              </span>
+              <span style="font-size: 0.78rem; color: var(--text-muted);">
+                Klik balok di bawah untuk menggandengkannya ke gerbong!
+              </span>
+            </div>
+
+            <div class="station-blocks-grid">
+              ${remainingInStation.length === 0 ? `
+                <div style="padding: 12px; color: var(--accent-green); font-size: 0.9rem; font-weight: 700;">
+                  ✨ Semua balok kata sudah digandengkan! Tekan tombol 'Jalankan Kereta' di bawah!
+                </div>
+              ` : remainingInStation.map((word, bIdx) => {
+                const roleInfo = chal.wordRoles[word];
+                return `
+                  <button class="station-word-block animate-hover" 
+                          onclick="attachWordToTrain('${word.replace(/'/g, "\\'")}')"
+                          style="border-color: ${roleInfo ? roleInfo.color : 'rgba(255,255,255,0.2)'};">
+                    <span class="station-block-text">${word}</span>
+                    <span class="station-block-role" style="color: ${roleInfo ? roleInfo.color : 'var(--text-muted)'};">
                       ${roleInfo ? roleInfo.icon + ' ' + roleInfo.role : 'Kata'}
                     </span>
-                    <span class="car-detach-hint">✕ Lepas</span>
-                  </div>
-                  <div class="car-wheel-base">
-                    <span class="car-wheel">⚙️</span>
-                    <span class="car-wheel">⚙️</span>
-                  </div>
-                  <div class="car-coupler-right">🔗</div>
-                </div>
-              `;
-            } else {
-              return `
-                <div class="train-car is-empty">
-                  <div class="car-coupler-left">🔗</div>
-                  <div class="car-body empty-placeholder">
-                    <span class="car-slot-number">Gerbong #${slotIdx + 1}</span>
-                    <span class="car-drop-hint">🧲 Gandengkan Balok</span>
-                  </div>
-                  <div class="car-wheel-base">
-                    <span class="car-wheel empty-wheel">⚙️</span>
-                    <span class="car-wheel empty-wheel">⚙️</span>
-                  </div>
-                  <div class="car-coupler-right">🔗</div>
-                </div>
-              `;
-            }
-          }).join('')}
-        </div>
-      </div>
-
-      <!-- KETERANGAN LENGKAP BALOK TERPILIH (LIVE INSIGHT) -->
-      ${curChalState.assembled.length > 0 ? `
-        <div class="assembled-sentence-preview">
-          <span style="font-size: 0.8rem; color: var(--accent-cyan); font-weight: 700;">Kalimat yang sedang dirangkai:</span>
-          <div style="font-size: 1.15rem; font-weight: 800; color: #fff; margin: 4px 0;">
-            "${curChalState.assembled.join(' ')}"
-          </div>
-        </div>
-      ` : ''}
-
-      <!-- STASIUN BALOK KATA MAGNETIK (STATION WORD POOL) -->
-      <div class="station-pool-section">
-        <div class="station-pool-header">
-          <span style="font-size: 0.82rem; font-weight: 800; color: var(--accent-yellow);">
-            🚉 Stasiun Balok Kata Magnetik:
-          </span>
-          <span style="font-size: 0.78rem; color: var(--text-muted);">
-            Klik balok di bawah untuk menggandengkannya ke gerbong kereta!
-          </span>
-        </div>
-
-        <div class="station-blocks-grid">
-          ${remainingInStation.length === 0 ? `
-            <div style="padding: 12px; color: var(--accent-green); font-size: 0.9rem; font-weight: 700;">
-              ✨ Semua balok kata sudah digandengkan ke gerbong! Tekan tombol 'Jalankan Kereta' di bawah ya!
-            </div>
-          ` : remainingInStation.map((word, bIdx) => {
-            const roleInfo = chal.wordRoles[word];
-            return `
-              <button class="station-word-block animate-hover" 
-                      onclick="attachWordToTrain('${word.replace(/'/g, "\\'")}')"
-                      style="border-color: ${roleInfo ? roleInfo.color : 'rgba(255,255,255,0.2)'};">
-                <span class="station-block-text">${word}</span>
-                <span class="station-block-role" style="color: ${roleInfo ? roleInfo.color : 'var(--text-muted)'};">
-                  ${roleInfo ? roleInfo.icon + ' ' + roleInfo.role : 'Kata'}
-                </span>
-                <span class="station-block-tap">👆 Pasang</span>
-              </button>
-            `;
-          }).join('')}
-        </div>
-      </div>
-
-      <!-- KONTROL UTAMA CEK GERBONG, AUDIO, & RESET -->
-      <div class="train-action-controls-row">
-        <button class="btn-primary train-check-btn" 
-                style="background: linear-gradient(135deg, #10b981, #059669); border: none; font-size: 0.95rem; font-weight: 800; padding: 12px 24px; box-shadow: 0 4px 16px rgba(16, 185, 129, 0.4);"
-                onclick="checkTrainSentence()">
-          🚂 Jalankan Kereta & Cek Pola Kalimat!
-        </button>
-
-        <button class="btn-secondary" style="padding: 8px 14px; font-size: 0.82rem; display: flex; align-items: center; gap: 6px;"
-                onclick="speakCurrentTrainSentence()">
-          🔊 Dengarkan Kalimat (${speechEngine.englishAccent === 'en-GB' ? 'UK' : 'US'})
-        </button>
-
-        <button class="btn-secondary" style="padding: 8px 14px; font-size: 0.82rem;"
-                onclick="resetCurrentTrainSentence()">
-          🔄 Kosongkan Semua Gerbong
-        </button>
-
-        ${curChalState.isCorrect && state.currentChallengeIndex < sentenceTrainChallenges.length - 1 ? `
-          <button class="btn-primary" style="background: linear-gradient(135deg, #38bdf8, #0284c7); padding: 8px 18px; font-size: 0.85rem;"
-                  onclick="setTrainChallengeIndex(${state.currentChallengeIndex + 1})">
-            🚀 Lanjut ke Kalimat #${state.currentChallengeIndex + 2} ➡️
-          </button>
-        ` : ''}
-      </div>
-
-      <!-- FEEDBACK DAN PEMBAHASAN MENDALAM NALAR BAYI KODI -->
-      <div id="train-feedback-box" style="margin-top: 20px; display: ${curChalState.checked ? 'block' : 'none'};">
-        ${curChalState.checked ? `
-          <div class="train-result-card ${curChalState.isCorrect ? 'is-correct-card' : 'is-wrong-card'}">
-            <div class="train-result-header">
-              <span class="train-result-icon">${curChalState.isCorrect ? '🎉🚂💨' : '⚠️🚂💥'}</span>
-              <div>
-                <h4 style="margin: 0; color: ${curChalState.isCorrect ? '#4ade80' : '#f87171'};">
-                  ${curChalState.isCorrect ? 'LUAR BIASA! RANGKAIAN KERETA MELUNCUR SEMPURNA!' : 'OOPS! RANGKAIAN GERBONG BELUM SEIMBANG!'}
-                </h4>
-                <p style="margin: 2px 0 0; font-size: 0.85rem; color: #cbd5e1;">
-                  ${curChalState.isCorrect ? 'Susunan kata dan pola tata bahasamu 100% tepat sesuai standar bahasa Inggris!' : 'Tenang saja, kita tata ulang baloknya pelan-pelan ya!'}
-                </p>
-              </div>
-            </div>
-
-            <div class="train-result-body">
-              <div class="result-comparison-row">
-                <div class="result-col">
-                  <span class="result-label">Susunan Gerbong Kamu:</span>
-                  <div class="result-value ${curChalState.isCorrect ? 'text-green' : 'text-red'}">
-                    "${curChalState.assembled.join(' ')}"
-                  </div>
-                </div>
-                <div class="result-col">
-                  <span class="result-label">Susunan Standar yang Benar:</span>
-                  <div class="result-value text-green">
-                    "${chal.correctSentence.join(' ')}"
-                  </div>
-                </div>
-              </div>
-
-              <!-- NALAR BAYI KODI PEMBAHASAN -->
-              <div class="train-baby-logic-box">
-                <div style="font-weight: 800; color: var(--accent-yellow); margin-bottom: 6px;">
-                  🍼 Penjelasan Nalar Bayi Kodi:
-                </div>
-                <p style="margin: 0 0 6px; color: #fef08a; font-size: 0.92rem; line-height: 1.5;">
-                  ${chal.babyLogic}
-                </p>
-                <div style="font-size: 0.82rem; color: #e2e8f0; font-style: italic;">
-                  Arti Kalimat: "${chal.translation}" • Pola: ${chal.pattern}
-                </div>
-              </div>
-
-              <!-- TOMBOL BANTUAN SAAT SALAH -->
-              ${!curChalState.isCorrect ? `
-                <div style="display: flex; gap: 10px; margin-top: 14px; flex-wrap: wrap;">
-                  <button class="btn-primary" style="background: linear-gradient(135deg, #f59e0b, #d97706); border: none; font-size: 0.85rem; padding: 8px 16px;" onclick="resetCurrentTrainSentence()">
-                    🔄 Bongkar & Rangkai Ulang
+                    <span class="station-block-tap">👆 Pasang</span>
                   </button>
-                  <button class="btn-secondary" style="font-size: 0.85rem; padding: 8px 16px;" onclick="revealTrainCorrectOrder()">
-                    💡 Pasangkan Otomatis Susunan yang Benar
-                  </button>
-                </div>
-              ` : ''}
+                `;
+              }).join('')}
             </div>
           </div>
-        ` : ''}
+
+          <!-- KONTROL UTAMA CEK GERBONG, AUDIO, & RESET -->
+          <div class="train-action-controls-row">
+            <button class="btn-primary train-check-btn" 
+                    style="background: linear-gradient(135deg, #10b981, #059669); border: none; font-size: 0.95rem; font-weight: 800; padding: 12px 24px; box-shadow: 0 4px 16px rgba(16, 185, 129, 0.4);"
+                    onclick="checkTrainSentence()">
+              🚂 Jalankan Kereta & Cek Pola Kalimat!
+            </button>
+
+            <button class="btn-secondary" style="padding: 8px 14px; font-size: 0.82rem; display: flex; align-items: center; gap: 6px;"
+                    onclick="speakCurrentTrainSentence()">
+              🔊 Dengarkan Kalimat (${speechEngine.englishAccent === 'en-GB' ? 'UK' : 'US'})
+            </button>
+
+            <button class="btn-secondary" style="padding: 8px 14px; font-size: 0.82rem;"
+                    onclick="resetCurrentTrainSentence()">
+              🔄 Kosongkan Gerbong
+            </button>
+          </div>
+
+          <!-- FEEDBACK DAN PEMBAHASAN MENDALAM NALAR BAYI KODI -->
+          <div id="train-feedback-box" style="margin-top: 16px; display: ${curChalState.checked ? 'block' : 'none'};">
+            ${curChalState.checked ? `
+              <div class="train-result-card ${curChalState.isCorrect ? 'is-correct-card' : 'is-wrong-card'}">
+                <div class="train-result-header">
+                  <span class="train-result-icon">${curChalState.isCorrect ? '🎉🚂💨' : '⚠️🚂💥'}</span>
+                  <div>
+                    <h4 style="margin: 0; color: ${curChalState.isCorrect ? '#4ade80' : '#f87171'};">
+                      ${curChalState.isCorrect ? 'LUAR BIASA! RANGKAIAN KERETA MELUNCUR SEMPURNA!' : 'OOPS! RANGKAIAN GERBONG BELUM SEIMBANG!'}
+                    </h4>
+                    <p style="margin: 2px 0 0; font-size: 0.85rem; color: #cbd5e1;">
+                      ${curChalState.isCorrect ? 'Susunan kata dan pola tata bahasamu 100% tepat sesuai kaidah!' : 'Tenang saja, kita tata ulang baloknya pelan-pelan ya!'}
+                    </p>
+                  </div>
+                </div>
+
+                <div class="train-result-body">
+                  <div class="result-comparison-row">
+                    <div class="result-col">
+                      <span class="result-label">Susunan Gerbong Kamu:</span>
+                      <div class="result-value ${curChalState.isCorrect ? 'text-green' : 'text-red'}">
+                        "${curChalState.assembled.join(' ')}"
+                      </div>
+                    </div>
+                    <div class="result-col">
+                      <span class="result-label">Susunan Standar yang Benar:</span>
+                      <div class="result-value text-green">
+                        "${chal.correctSentence.join(' ')}"
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- NALAR BAYI KODI PEMBAHASAN -->
+                  <div class="train-baby-logic-box">
+                    <div style="font-weight: 800; color: var(--accent-yellow); margin-bottom: 6px;">
+                      🍼 Penjelasan Nalar Bayi Kodi:
+                    </div>
+                    <p style="margin: 0 0 6px; color: #fef08a; font-size: 0.92rem; line-height: 1.5;">
+                      ${chal.babyLogic}
+                    </p>
+                    <div style="font-size: 0.82rem; color: #e2e8f0; font-style: italic;">
+                      Arti Kalimat: "${chal.translation}" • Pola: ${chal.pattern}
+                    </div>
+                  </div>
+
+                  <!-- TOMBOL BANTUAN SAAT SALAH -->
+                  ${!curChalState.isCorrect ? `
+                    <div style="display: flex; gap: 10px; margin-top: 14px; flex-wrap: wrap;">
+                      <button class="btn-primary" style="background: linear-gradient(135deg, #f59e0b, #d97706); border: none; font-size: 0.85rem; padding: 8px 16px;" onclick="resetCurrentTrainSentence()">
+                        🔄 Bongkar & Rangkai Ulang
+                      </button>
+                      <button class="btn-secondary" style="font-size: 0.85rem; padding: 8px 16px;" onclick="revealTrainCorrectOrder()">
+                        💡 Pasangkan Otomatis Susunan yang Benar
+                      </button>
+                    </div>
+                  ` : ''}
+                </div>
+              </div>
+            ` : ''}
+          </div>
+
+          <!-- Glowing Directional Arrow Navigation Bar -->
+          <div class="arrow-nav-bar" style="margin-top: 20px;">
+            <button class="btn-arrow-nav" onclick="navTrainChallenge(-1)" ${currentPos <= 0 ? 'disabled' : ''}>
+              <span>◀</span>
+              <span>Kalimat Sebelumnya</span>
+            </button>
+            <span style="font-size: 0.82rem; font-weight: 700; color: var(--accent-yellow);">
+              Kalimat #${state.currentChallengeIndex + 1} dari ${sentenceTrainChallenges.length}
+            </span>
+            <button class="btn-arrow-nav primary" onclick="navTrainChallenge(1)" ${currentPos >= filteredChallenges.length - 1 ? 'disabled' : ''}>
+              <span>Kalimat Berikutnya</span>
+              <span>▶</span>
+            </button>
+          </div>
+        </div>
       </div>
     </div>
   `;

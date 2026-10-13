@@ -164,11 +164,18 @@ function renderQuestGrid() {
           <strong>🍼 Bahasa Bayi:</strong> ${lvl.analogy}
         </div>
         <p class="quest-desc">${lvl.description}</p>
+        <div class="step-flow-row" style="margin: 10px 0 14px;">
+          <span class="step-chip">1. Konsep</span>
+          <span class="step-arrow">➔</span>
+          <span class="step-chip">2. Simulasi</span>
+          <span class="step-arrow">➔</span>
+          <span class="step-chip">3. Tantangan</span>
+        </div>
       </div>
       <div class="quest-footer">
         <span class="quest-stars">${starsDisplay}</span>
         <button class="btn-start-quest" onclick="openLevelModal(${lvl.id})">
-          ${isCompleted ? 'Main Ulang 🔁' : 'Mulai Misi 🚀'}
+          ${isCompleted ? 'Main Ulang 🔁 ➔' : 'Mulai Misi 🚀 ➔'}
         </button>
       </div>
     `;
@@ -342,36 +349,65 @@ function renderModalStep() {
 
   const bodyContainer = document.getElementById("modal-step-body");
   bodyContainer.innerHTML = `
-    <h3 style="margin-bottom: 14px; color: var(--accent-cyan);">${step.stepTitle}</h3>
-    ${step.concept}
+    <!-- WIDESCREEN 2-COLUMN STAGE: KONSEP & CONTOH (KIRI) vs WORKSPACE PRAKTIK (KANAN) -->
+    <div class="game-widescreen-stage equal">
+      <!-- PANEL KIRI: MATERI KONSEP, CONTOH KASUS & ALUR LANGKAH -->
+      <div class="stage-left-panel">
+        <h3 style="margin-bottom: 12px; color: var(--accent-cyan); font-size: 1.15rem;">${step.stepTitle}</h3>
+        <div style="font-size: 0.9rem; line-height: 1.5; color: #cbd5e1; margin-bottom: 14px;">
+          ${step.concept}
+        </div>
 
-    <!-- KOTAK CONTOH SOAL & JAWABAN BENAR DULU -->
-    ${step.workedExample ? `
-      <div class="worked-example-card" style="margin: 18px 0;">
-        <div class="worked-example-header">
-          <span class="we-badge">💡 CONTOH SOAL & JAWABAN BENAR DULU</span>
-          <span class="we-sub">Pahami pola penyelesaian kasus serupa ini sebelum memulai tantangan!</span>
+        <!-- KOTAK CONTOH SOAL & JAWABAN BENAR DULU -->
+        ${step.workedExample ? `
+          <div class="worked-example-card" style="margin-bottom: 14px;">
+            <div class="worked-example-header">
+              <span class="we-badge">💡 CONTOH SOAL & JAWABAN BENAR DULU</span>
+              <span class="we-sub">Pahami pola penyelesaian kasus serupa ini:</span>
+            </div>
+            <div class="we-body">
+              <div class="we-row">
+                <span class="we-label">📝 Contoh Kasus / Soal Serupa:</span>
+                <span class="we-text">${step.workedExample.sampleProblem}</span>
+              </div>
+              <div class="we-row">
+                <span class="we-label">✅ Contoh Jawaban yang 100% Benar:</span>
+                <code class="we-code">${step.workedExample.sampleAnswer}</code>
+              </div>
+              <div class="we-row">
+                <span class="we-label">🍼 Analogi & Nalar Bahasa Bayi Kodi:</span>
+                <span class="we-text">${step.workedExample.babyLogic}</span>
+              </div>
+            </div>
+            <div class="we-divider">🎯 SEKARANG GILIRAN TANTANGAN ASLI DI KANAN ➔</div>
+          </div>
+        ` : ''}
+
+        <!-- Visual Adventure Mission Flow -->
+        <div class="visual-mission-flow">
+          <div class="flow-step-item">
+            <span class="flow-step-badge">1</span>
+            <span>Konsep & Contoh</span>
+          </div>
+          <span class="flow-arrow-sep">➔</span>
+          <div class="flow-step-item">
+            <span class="flow-step-badge">2</span>
+            <span>Eksperimen Interaktif</span>
+          </div>
+          <span class="flow-arrow-sep">➔</span>
+          <div class="flow-step-item">
+            <span class="flow-step-badge">3</span>
+            <span>Selesaikan Target</span>
+          </div>
         </div>
-        <div class="we-body">
-          <div class="we-row">
-            <span class="we-label">📝 Contoh Kasus / Soal Serupa:</span>
-            <span class="we-text">${step.workedExample.sampleProblem}</span>
-          </div>
-          <div class="we-row">
-            <span class="we-label">✅ Contoh Jawaban yang 100% Benar:</span>
-            <code class="we-code">${step.workedExample.sampleAnswer}</code>
-          </div>
-          <div class="we-row">
-            <span class="we-label">🍼 Analogi & Nalar Bahasa Bayi Kodi:</span>
-            <span class="we-text">${step.workedExample.babyLogic}</span>
-          </div>
-        </div>
-        <div class="we-divider">🎯 SEKARANG GILIRAN TANTANGAN ASLI UNTUK KAMU:</div>
       </div>
-    ` : ''}
 
-    <div id="interactive-workspace" class="interactive-game-area"></div>
-    <div id="step-feedback-box" style="margin-top: 14px;"></div>
+      <!-- PANEL KANAN: WORKSPACE INTERAKTIF & LIVE FEEDBACK -->
+      <div class="stage-right-panel">
+        <div id="interactive-workspace" class="interactive-game-area"></div>
+        <div id="step-feedback-box" style="margin-top: 14px;"></div>
+      </div>
+    </div>
   `;
 
   const workspace = document.getElementById("interactive-workspace");
@@ -410,7 +446,7 @@ function renderModalStep() {
     <div style="display: flex; gap: 10px;">
       <button class="btn-secondary" onclick="closeLevelModal()">Tutup</button>
       <button id="btn-next-step" class="btn-primary" style="display: none;" onclick="goToNextStep()">
-        ${appState.currentStepIndex + 1 >= totalSteps ? 'Selesaikan Misi! 🏆' : 'Lanjut Langkah Berikutnya ➡️'}
+        ${appState.currentStepIndex + 1 >= totalSteps ? 'Selesaikan Misi! 🏆 ➔' : 'Lanjut Langkah Berikutnya ➔'}
       </button>
     </div>
   `;
@@ -1439,78 +1475,108 @@ function renderSqlTrainer() {
         `).join('')}
       </div>
 
-      <!-- Detail Soal & Tabel Database -->
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 18px; margin-bottom: 20px;">
-        <div style="background: var(--bg-card); padding: 18px; border-radius: var(--radius-md); border: 1px solid var(--border-glow);">
-          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
-            <h4 style="color: var(--accent-cyan);">📋 Database: Tabel '${currentChal.tableName}'</h4>
-            <span style="font-size: 0.72rem; color: var(--accent-yellow); font-weight: 700;">${tableData.length} Baris Data</span>
+      <!-- GAME WIDESCREEN STAGE: KIRI = TABEL DATA & WORKED EXAMPLE, KANAN = QUERY EDITOR & HASIL -->
+      <div class="game-widescreen-stage" style="margin-top: 14px;">
+        <!-- PANEL KIRI: SKEMA TABEL & CONTOH SOAL -->
+        <div class="stage-left-panel">
+          <div class="step-flow-row" style="margin-top: 0; margin-bottom: 14px;">
+            <span class="step-pill">ALUR SQL</span>
+            <span>1. Skema Tabel</span>
+            <span class="flow-arrow-sep">➔</span>
+            <span>2. Kasus A (Contoh)</span>
+            <span class="flow-arrow-sep">➔</span>
+            <span>3. Tulis Kueri Kanan</span>
+            <span class="flow-arrow-sep">➔</span>
+            <span>4. Cek Grid Output</span>
           </div>
-          ${renderHTMLTable(tableData, 'preview-source-table')}
-        </div>
 
-        <div style="background: var(--bg-card); padding: 18px; border-radius: var(--radius-md); border: 1px solid var(--border-glow);">
-          <span style="font-size: 0.72rem; color: var(--accent-pink); font-weight: 700; text-transform: uppercase;">Pertanyaan Tes Tertulis (English)</span>
-          <p style="font-weight: 700; color: #fff; margin: 8px 0; font-size: 0.95rem;">"${currentChal.questionEn}"</p>
-          <div style="background: rgba(250, 204, 21, 0.1); border-left: 3px solid var(--accent-yellow); padding: 10px 14px; border-radius: 4px; font-size: 0.85rem; color: #fef08a; margin-top: 10px;">
-            ${currentChal.babyHint}
-          </div>
-        </div>
-      </div>
-
-      <!-- KOTAK CONTOH SOAL & JAWABAN BENAR DULU -->
-      ${currentChal.workedExample ? `
-        <div class="worked-example-card">
-          <div class="worked-example-header">
-            <span class="we-badge">💡 CONTOH SOAL & JAWABAN BENAR DULU</span>
-            <span class="we-sub">Pahami polanya dulu sebelum mengisi kueri di bawah!</span>
-          </div>
-          <div class="we-body">
-            <div class="we-row">
-              <span class="we-label">📝 Contoh Kasus Serupa:</span>
-              <span class="we-text">${currentChal.workedExample.problemEn}</span>
+          <div style="background: var(--bg-card); padding: 18px; border-radius: var(--radius-md); border: 1px solid var(--border-glow); margin-bottom: 16px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+              <h4 style="color: var(--accent-cyan); margin: 0;">📋 Database: Tabel '${currentChal.tableName}'</h4>
+              <span style="font-size: 0.72rem; color: var(--accent-yellow); font-weight: 700;">${tableData.length} Baris Data</span>
             </div>
-            <div class="we-row">
-              <span class="we-label">✅ Kueri Contoh yang 100% Benar:</span>
-              <code class="we-code">${currentChal.workedExample.correctQuery}</code>
+            ${renderHTMLTable(tableData, 'preview-source-table')}
+          </div>
+
+          <!-- KOTAK CONTOH SOAL & JAWABAN BENAR DULU -->
+          ${currentChal.workedExample ? `
+            <div class="worked-example-card" style="margin-bottom: 16px;">
+              <div class="worked-example-header">
+                <span class="we-badge">💡 CONTOH SOAL & JAWABAN BENAR DULU</span>
+                <span class="we-sub">Pahami polanya dulu sebelum mengisi kueri di samping!</span>
+              </div>
+              <div class="we-body">
+                <div class="we-row">
+                  <span class="we-label">📝 Contoh Kasus Serupa:</span>
+                  <span class="we-text">${currentChal.workedExample.problemEn}</span>
+                </div>
+                <div class="we-row">
+                  <span class="we-label">✅ Kueri Contoh yang 100% Benar:</span>
+                  <code class="we-code">${currentChal.workedExample.correctQuery}</code>
+                </div>
+                <div class="we-row">
+                  <span class="we-label">🍼 Analogi & Nalar Bahasa Bayi:</span>
+                  <span class="we-text">${currentChal.workedExample.babyLogic.replace(/\\n/g, '<br>')}</span>
+                </div>
+              </div>
+              <div class="we-divider">🎯 SEKARANG TULIS KUERI TANTANGAN DI KANAN ➡️</div>
             </div>
-            <div class="we-row">
-              <span class="we-label">🍼 Analogi & Nalar Bahasa Bayi:</span>
-              <span class="we-text">${currentChal.workedExample.babyLogic.replace(/\\n/g, '<br>')}</span>
+          ` : ''}
+        </div>
+
+        <!-- PANEL KANAN: PERTANYAAN SOAL, EDITOR SQL, & OUTPUT RESULT -->
+        <div class="stage-right-panel">
+          <div style="background: var(--bg-card); padding: 18px; border-radius: var(--radius-md); border: 1px solid var(--border-glow); margin-bottom: 16px;">
+            <span style="font-size: 0.72rem; color: var(--accent-pink); font-weight: 700; text-transform: uppercase;">Pertanyaan Tes Tertulis (English)</span>
+            <p style="font-weight: 700; color: #fff; margin: 8px 0; font-size: 0.95rem;">"${currentChal.questionEn}"</p>
+            <div style="background: rgba(250, 204, 21, 0.1); border-left: 3px solid var(--accent-yellow); padding: 10px 14px; border-radius: 4px; font-size: 0.85rem; color: #fef08a; margin-top: 10px;">
+              ${currentChal.babyHint}
             </div>
           </div>
-          <div class="we-divider">🎯 SEKARANG GILIRAN TANTANGAN ASLI UNTUK KAMU:</div>
+
+          <!-- SQL Console & Builder -->
+          <div style="background: #060911; border: 1.5px solid #1e293b; border-radius: var(--radius-md); padding: 16px; margin-bottom: 16px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+              <span style="font-family: var(--font-code); font-size: 0.85rem; color: var(--accent-cyan); font-weight: 700;">MSSQL Query Editor:</span>
+              <span style="font-size: 0.75rem; color: var(--text-muted);">Tekan balok atau ketik langsung</span>
+            </div>
+
+            <textarea id="sql-input-area" class="term-input" style="width: 100%; min-height: 80px; background: rgba(15, 23, 42, 0.7); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 6px; padding: 10px; font-size: 0.9rem; color: #a7f3d0;" placeholder="Ketik kueri SQL di sini...">${currentChal.starterCode}</textarea>
+
+            <div class="quick-commands" style="margin-top: 10px;">
+              <span style="font-size: 0.75rem; color: var(--text-muted); align-self: center;">Bantuan Balok SQL:</span>
+              ${currentChal.suggestedTokens.map(tok => `
+                <button class="quick-cmd-btn" onclick="appendSqlToken('${tok}')">${tok}</button>
+              `).join('')}
+            </div>
+
+            <div style="margin-top: 14px; text-align: right;">
+              <button class="btn-primary" style="display: inline-flex; align-items: center; gap: 8px;" onclick="runSqlTestQuery()">
+                🚀 Jalankan Kueri SQL (Run Query)
+              </button>
+            </div>
+          </div>
+
+          <!-- Hasil Kueri SQL -->
+          <div id="sql-result-wrap" style="display: none; background: var(--bg-card); padding: 18px; border-radius: var(--radius-md); border: 1px solid var(--accent-green); margin-bottom: 16px;">
+            <h4 style="color: var(--accent-green); margin-bottom: 10px;">✓ Output Tabel Hasil Kueri:</h4>
+            <div id="sql-result-table-box"></div>
+            <div id="sql-ai-feedback-box" style="margin-top: 14px;"></div>
+          </div>
+
+          <!-- Navigasi Panah Bawah -->
+          <div class="arrow-nav-bar" style="margin-top: 10px;">
+            <button class="btn-arrow-nav" onclick="navSqlChallenge(-1)" ${currentPos <= 0 ? 'disabled' : ''}>
+              ◀ Soal Sebelumnya
+            </button>
+            <span style="font-size: 0.82rem; font-weight: 800; color: var(--accent-cyan);">
+              Soal #${appState.currentSqlIndex + 1} dari ${sqlChallenges.length}
+            </span>
+            <button class="btn-arrow-nav" onclick="navSqlChallenge(1)" ${currentPos >= filteredList.length - 1 ? 'disabled' : ''}>
+              Soal Berikutnya ▶
+            </button>
+          </div>
         </div>
-      ` : ''}
-
-      <!-- SQL Console & Builder -->
-      <div style="background: #060911; border: 1.5px solid #1e293b; border-radius: var(--radius-md); padding: 16px; margin-bottom: 20px;">
-        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
-          <span style="font-family: var(--font-code); font-size: 0.85rem; color: var(--accent-cyan); font-weight: 700;">MSSQL Query Editor:</span>
-          <span style="font-size: 0.75rem; color: var(--text-muted);">Tekan tombol balok atau ketik langsung</span>
-        </div>
-
-        <textarea id="sql-input-area" class="term-input" style="width: 100%; min-height: 70px; background: rgba(15, 23, 42, 0.7); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 6px; padding: 10px; font-size: 0.9rem; color: #a7f3d0;" placeholder="Ketik kueri SQL di sini...">${currentChal.starterCode}</textarea>
-
-        <div class="quick-commands" style="margin-top: 10px;">
-          <span style="font-size: 0.75rem; color: var(--text-muted); align-self: center;">Bantuan Balok SQL:</span>
-          ${currentChal.suggestedTokens.map(tok => `
-            <button class="quick-cmd-btn" onclick="appendSqlToken('${tok}')">${tok}</button>
-          `).join('')}
-        </div>
-
-        <div style="margin-top: 14px; text-align: right;">
-          <button class="btn-primary" onclick="runSqlTestQuery()">
-            🚀 Jalankan Kueri SQL (Run Query)
-          </button>
-        </div>
-      </div>
-
-      <!-- Hasil Kueri SQL -->
-      <div id="sql-result-wrap" style="display: none; background: var(--bg-card); padding: 18px; border-radius: var(--radius-md); border: 1px solid var(--accent-green);">
-        <h4 style="color: var(--accent-green); margin-bottom: 10px;">✓ Output Tabel Hasil Kueri:</h4>
-        <div id="sql-result-table-box"></div>
-        <div id="sql-ai-feedback-box" style="margin-top: 14px;"></div>
       </div>
     </div>
 
@@ -1693,45 +1759,87 @@ function renderOutputDrill() {
         <span style="font-size: 0.75rem; color: var(--accent-yellow); font-weight: 700;">Soal ${appState.currentOutputIndex + 1} dari ${outputPredictionQuestions.length}</span>
       </div>
 
-      <!-- KOTAK CONTOH TEBAK OUTPUT DULU -->
-      ${q.workedExample ? `
-        <div class="worked-example-card" style="margin-bottom: 16px;">
-          <div class="worked-example-header">
-            <span class="we-badge">💡 CONTOH SOAL & CARA NALAR DULU</span>
-            <span class="we-sub">Pahami pola eksekusi kode serupa di bawah ini:</span>
+      <!-- GAME WIDESCREEN STAGE: KIRI = CONTOH & KODE, KANAN = PERTANYAAN & PILIHAN -->
+      <div class="game-widescreen-stage equal" style="margin-top: 10px;">
+        <!-- PANEL KIRI: CONTOH KODE & ANALISIS -->
+        <div class="stage-left-panel">
+          <div class="step-flow-row" style="margin-top: 0; margin-bottom: 14px;">
+            <span class="step-pill">ALUR NALAR</span>
+            <span>1. Analisis Kode</span>
+            <span class="flow-arrow-sep">➔</span>
+            <span>2. Trace Variabel</span>
+            <span class="flow-arrow-sep">➔</span>
+            <span>3. Prediksi Output di Kanan</span>
           </div>
-          <div class="we-body">
-            <div class="we-row">
-              <span class="we-label">📝 Kode Contoh Serupa:</span>
-              <pre class="we-code-pre"><code>${q.workedExample.sampleCode.replace(/\\n/g, '\n')}</code></pre>
+
+          <!-- KOTAK CONTOH TEBAK OUTPUT DULU -->
+          ${q.workedExample ? `
+            <div class="worked-example-card" style="margin-bottom: 14px;">
+              <div class="worked-example-header">
+                <span class="we-badge">💡 CONTOH SOAL & CARA NALAR DULU</span>
+                <span class="we-sub">Pahami pola eksekusi kode serupa di bawah ini:</span>
+              </div>
+              <div class="we-body">
+                <div class="we-row">
+                  <span class="we-label">📝 Kode Contoh Serupa:</span>
+                  <pre class="we-code-pre"><code>${q.workedExample.sampleCode.replace(/\\n/g, '\n')}</code></pre>
+                </div>
+                <div class="we-row">
+                  <span class="we-label">✅ Output yang Benar:</span>
+                  <code class="we-code">${q.workedExample.sampleAnswer}</code>
+                </div>
+                <div class="we-row">
+                  <span class="we-label">🍼 Langkah Nalar Eksekusi:</span>
+                  <span class="we-text">${q.workedExample.sampleLogic}</span>
+                </div>
+              </div>
+              <div class="we-divider">🎯 SEKARANG TEBAK OUTPUT KODE TANTANGAN DI KANAN ➡️</div>
             </div>
-            <div class="we-row">
-              <span class="we-label">✅ Output yang Benar:</span>
-              <code class="we-code">${q.workedExample.sampleAnswer}</code>
-            </div>
-            <div class="we-row">
-              <span class="we-label">🍼 Langkah Nalar Eksekusi:</span>
-              <span class="we-text">${q.workedExample.sampleLogic}</span>
-            </div>
+          ` : ''}
+
+          <!-- Kode Snippet Tantangan -->
+          <div style="font-size: 0.8rem; font-weight: 800; color: #38bdf8; margin-bottom: 6px;">
+            💻 Kode Program yang Harus Ditebak:
           </div>
-          <div class="we-divider">🎯 SEKARANG TEBAK OUTPUT KODE TANTANGAN INI:</div>
+          <pre style="background: #060911; border: 1px solid #1e293b; border-radius: 8px; padding: 14px; color: #38bdf8; font-family: var(--font-code); font-size: 0.92rem; overflow-x: auto; margin-bottom: 10px;"><code>${q.code}</code></pre>
         </div>
-      ` : ''}
 
-      <!-- Kode Snippet -->
-      <pre style="background: #060911; border: 1px solid #1e293b; border-radius: 8px; padding: 14px; color: #38bdf8; font-family: var(--font-code); font-size: 0.92rem; overflow-x: auto; margin-bottom: 16px;"><code>${q.code}</code></pre>
+        <!-- PANEL KANAN: PERTANYAAN, TOMBOL PILIHAN, & FEEDBACK -->
+        <div class="stage-right-panel">
+          <div style="background: rgba(15, 23, 42, 0.85); border: 1px solid rgba(56, 189, 248, 0.25); border-radius: 12px; padding: 16px; margin-bottom: 16px;">
+            <div style="font-size: 0.78rem; font-weight: 800; color: #facc15; margin-bottom: 6px;">
+              🎯 PERTANYAAN OUTPUT KODING:
+            </div>
+            <h4 style="color: #fff; margin: 0 0 14px; font-size: 1.1rem; line-height: 1.5;">"${q.questionEn}"</h4>
 
-      <h4 style="color: #fff; margin-bottom: 14px;">"${q.questionEn}"</h4>
+            <div style="font-size: 0.78rem; font-weight: 700; color: var(--text-muted); margin-bottom: 8px;">
+              Pilih hasil cetak konsol yang tepat:
+            </div>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 10px; margin-bottom: 16px;">
+              ${q.options.map((opt, idx) => `
+                <button class="choice-card-btn" style="justify-content: center; font-weight: 700; font-family: var(--font-code); font-size: 0.9rem;" onclick="checkOutputAnswer(${idx})">
+                  ${opt.text}
+                </button>
+              `).join('')}
+            </div>
 
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px; margin-bottom: 16px;">
-        ${q.options.map((opt, idx) => `
-          <button class="choice-card-btn" style="justify-content: center; font-weight: 700; font-family: var(--font-code);" onclick="checkOutputAnswer(${idx})">
-            ${opt.text}
-          </button>
-        `).join('')}
+            <div id="output-feedback-box" style="display: none;"></div>
+          </div>
+
+          <!-- Navigasi Panah Bawah -->
+          <div class="arrow-nav-bar" style="margin-top: 6px;">
+            <button class="btn-arrow-nav" onclick="navOutputChallenge(-1)" ${currentPos <= 0 ? 'disabled' : ''}>
+              ◀ Soal Sebelumnya
+            </button>
+            <span style="font-size: 0.82rem; font-weight: 800; color: var(--accent-cyan);">
+              Soal #${appState.currentOutputIndex + 1} dari ${outputPredictionQuestions.length}
+            </span>
+            <button class="btn-arrow-nav" onclick="navOutputChallenge(1)" ${currentPos >= filteredList.length - 1 ? 'disabled' : ''}>
+              Soal Berikutnya ▶
+            </button>
+          </div>
+        </div>
       </div>
-
-      <div id="output-feedback-box" style="display: none;"></div>
     </div>
   `;
 
@@ -1832,30 +1940,18 @@ function renderEnglishTrainer() {
 
     <!-- SUBMODE 1: SPEAKING & WAWANCARA KERJA BERBASIS CV -->
     <div id="submode-speaking">
-      <!-- Badge Profil Kandidat -->
-      <div style="background: linear-gradient(135deg, rgba(30, 41, 59, 0.9), rgba(15, 23, 42, 0.95)); border: 1.5px solid var(--accent-cyan); border-radius: 12px; padding: 14px 18px; margin-bottom: 18px; display: flex; align-items: center; gap: 14px;">
-        <img src="assets/illustrations/3d_tiles/tile_3d_21.png" style="width: 60px; height: 60px; border-radius: 12px; object-fit: cover; border: 2px solid var(--accent-cyan); flex-shrink: 0; box-shadow: 0 4px 12px rgba(56, 189, 248, 0.25);" alt="Kodi Fluency Trainer" title="Kodi Fluency Trainer #21">
-        <div>
-          <div style="font-size: 0.75rem; color: var(--accent-cyan); font-weight: 800; text-transform: uppercase;">Profil Kandidat Talenta IT Unggulan:</div>
-          <h4 style="color: #fff; margin: 2px 0;">Calon Profesional IT & Software</h4>
-          <p style="font-size: 0.8rem; color: var(--text-muted);">
-            Sarjana Pendidikan & MIPA (IPK 3.64) • Pengalaman Tata Kelola Web & TI • Desainer Grafis Bersertifikat BNSP
-          </p>
-        </div>
-      </div>
-
       <!-- Filter Kategori Wawancara (100 Tantangan Berbobot) -->
-      <div style="margin-bottom: 12px;">
+      <div style="margin-bottom: 14px;">
         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
-          <span style="font-size: 0.82rem; color: var(--accent-cyan); font-weight: 700;">
+          <span style="font-size: 0.85rem; color: var(--accent-cyan); font-weight: 800;">
             📂 Kategori Soal Wawancara (${cvInterviewSpeakingDrills.length} Soal Praktik):
           </span>
-          <span style="font-size: 0.8rem; color: var(--text-muted);">
+          <span style="font-size: 0.82rem; color: var(--text-muted);">
             Soal <strong>${appState.currentEnglishDrillIndex + 1}</strong> dari <strong>${cvInterviewSpeakingDrills.length}</strong>
           </span>
         </div>
         <div style="margin-bottom: 8px;">
-          <select class="challenge-page-select" style="width: 100%; font-weight: 700; padding: 6px 10px;" onchange="setSpeakingCategoryFilter(this.value)">
+          <select class="challenge-page-select" style="width: 100%; font-weight: 700; padding: 7px 12px;" onchange="setSpeakingCategoryFilter(this.value)">
             <option value="all" ${(appState.speakingCategoryFilter || 'all') === 'all' ? 'selected' : ''}>📂 Semua Topik (${cvInterviewSpeakingDrills.length} Soal Wawancara)</option>
             ${Array.from(new Set(cvInterviewSpeakingDrills.map(d => d.category))).map(catName => {
               const count = cvInterviewSpeakingDrills.filter(d => d.category === catName).length;
@@ -1883,10 +1979,10 @@ function renderEnglishTrainer() {
         </div>
       </div>
 
-      <!-- Pilihan Pertanyaan Wawancara dalam Kategori -->
+      <!-- Quick Selector Bar -->
       <div style="display: flex; gap: 8px; margin-bottom: 16px; overflow-x: auto; padding-bottom: 6px; align-items: center;">
         <button class="btn-outline" style="padding: 6px 12px; font-size: 0.8rem;" onclick="prevSpeakingDrill()">◀ Prev</button>
-        <select class="challenge-page-select" onchange="setEnglishDrillIndex(Number(this.value))">
+        <select class="challenge-page-select" style="flex: 1;" onchange="setEnglishDrillIndex(Number(this.value))">
           ${cvInterviewSpeakingDrills
             .map((d, idx) => ({ d, idx }))
             .filter(item => (appState.speakingCategoryFilter || 'all') === 'all' || item.d.category === appState.speakingCategoryFilter || item.d.category.startsWith(appState.speakingCategoryFilter))
@@ -1899,81 +1995,141 @@ function renderEnglishTrainer() {
         <button class="btn-outline" style="padding: 6px 12px; font-size: 0.8rem;" onclick="nextSpeakingDrill()">Next ▶</button>
       </div>
 
-      <div style="background: var(--bg-card); padding: 24px; border-radius: var(--radius-md); border: 1px solid var(--border-glow); margin-bottom: 20px;">
-        <span style="font-size: 0.75rem; color: var(--accent-cyan); font-weight: 700; text-transform: uppercase;">
-          ${drill.category}
-        </span>
-        <!-- KOTAK CONTOH SOAL & JAWABAN BENAR DULU -->
-        ${drill.workedExample ? `
-          <div class="worked-example-card" style="margin-bottom: 20px;">
-            <div class="worked-example-header">
-              <span class="we-badge">💡 CONTOH KASUS SERUPA & JAWABAN BENAR DULU</span>
-              <span class="we-sub">Pelajari pola dan contoh jawaban untuk kasus serupa ini sebelum berbicara:</span>
+      <!-- WIDESCREEN 2-COLUMN STAGE: PROFIL & CONTOH (KIRI) vs WORKSPACE INTERVIEW (KANAN) -->
+      <div class="game-widescreen-stage">
+        <!-- PANEL KIRI: PROFIL KANDIDAT, WORKED EXAMPLE & MISSION FLOW -->
+        <div class="stage-left-panel">
+          <!-- Badge Profil Kandidat -->
+          <div style="background: linear-gradient(135deg, rgba(30, 41, 59, 0.9), rgba(15, 23, 42, 0.95)); border: 1.5px solid var(--accent-cyan); border-radius: 12px; padding: 14px 18px; margin-bottom: 16px; display: flex; align-items: center; gap: 14px;">
+            <img src="assets/illustrations/3d_tiles/tile_3d_21.png" style="width: 58px; height: 58px; border-radius: 12px; object-fit: cover; border: 2px solid var(--accent-cyan); flex-shrink: 0; box-shadow: 0 4px 12px rgba(56, 189, 248, 0.25);" alt="Kodi Fluency Trainer" title="Kodi Fluency Trainer #21">
+            <div>
+              <div style="font-size: 0.72rem; color: var(--accent-cyan); font-weight: 800; text-transform: uppercase;">Profil Kandidat Talenta IT Unggulan:</div>
+              <h4 style="color: #fff; margin: 2px 0; font-size: 0.98rem;">Calon Profesional IT & Software</h4>
+              <p style="font-size: 0.78rem; color: var(--text-muted); margin: 0;">
+                Sarjana Pendidikan & MIPA (IPK 3.64) • Tata Kelola Web & TI • Desainer Grafis BNSP
+              </p>
             </div>
-            <div class="we-body">
-              <div class="we-row">
-                <span class="we-label">📝 Contoh Pertanyaan Serupa (Kasus Lain):</span>
-                <span class="we-text">"${drill.workedExample.analogousQuestion || drill.workedExample.sampleProblem || drill.questionEn}"</span>
+          </div>
+
+          <!-- KOTAK CONTOH SOAL & JAWABAN BENAR DULU -->
+          ${drill.workedExample ? `
+            <div class="worked-example-card" style="margin-bottom: 16px;">
+              <div class="worked-example-header">
+                <span class="we-badge">💡 CONTOH KASUS SERUPA & JAWABAN BENAR</span>
+                <span class="we-sub">Pelajari pola sebelum berbicara:</span>
               </div>
-              <div class="we-row">
-                <span class="we-label">✅ Contoh Jawaban Kasus Lain Tersebut:</span>
-                <code class="we-code">${drill.workedExample.sampleAnswer || drill.workedExample.sampleSentence || drill.targetSentence}</code>
+              <div class="we-body">
+                <div class="we-row">
+                  <span class="we-label">📝 Contoh Pertanyaan Serupa:</span>
+                  <span class="we-text">"${drill.workedExample.analogousQuestion || drill.workedExample.sampleProblem || drill.questionEn}"</span>
+                </div>
+                <div class="we-row">
+                  <span class="we-label">✅ Contoh Jawaban Kasus Lain:</span>
+                  <code class="we-code">${drill.workedExample.sampleAnswer || drill.workedExample.sampleSentence || drill.targetSentence}</code>
+                </div>
+                <div class="we-row">
+                  <span class="we-label">📐 Rumus Alur 3 Langkah:</span>
+                  <span class="we-text">${drill.workedExample.modelStructure}</span>
+                </div>
+                <div class="we-row">
+                  <span class="we-label">🍼 Trik Bicara Kodi:</span>
+                  <span class="we-text">${drill.workedExample.keyPhraseTip}</span>
+                </div>
               </div>
-              <div class="we-row">
-                <span class="we-label">📐 Rumus Alur Jawaban 3 Langkah:</span>
-                <span class="we-text">${drill.workedExample.modelStructure}</span>
-              </div>
-              <div class="we-row">
-                <span class="we-label">🍼 Nalar & Trik Bicara Kodi:</span>
-                <span class="we-text">${drill.workedExample.keyPhraseTip}</span>
-              </div>
+              <div class="we-divider">🎯 SEKARANG JAWAB TANTANGAN ANDA DI SEBELAH KANAN ➔</div>
             </div>
-            <div class="we-divider">🎯 SEKARANG JAWAB TANTANGAN WAWANCARA ANDA DI BAWAH:</div>
+          ` : ''}
+
+          <!-- Visual Speaking Flow -->
+          <div class="visual-mission-flow" style="margin-bottom: 14px;">
+            <div class="flow-step-item">
+              <span class="flow-step-badge">1</span>
+              <span>Dengarkan Model</span>
+            </div>
+            <span class="flow-arrow-sep">➔</span>
+            <div class="flow-step-item">
+              <span class="flow-step-badge">2</span>
+              <span>Tirukan Pelafalan</span>
+            </div>
+            <span class="flow-arrow-sep">➔</span>
+            <div class="flow-step-item">
+              <span class="flow-step-badge">3</span>
+              <span>Evaluasi Mic AI</span>
+            </div>
           </div>
-        ` : ''}
 
-        <!-- Kotak Pertanyaan Wawancara Anda -->
-        <div style="background: rgba(30, 41, 59, 0.7); border: 1px solid rgba(255,255,255,0.12); border-radius: 10px; padding: 14px 18px; margin-bottom: 16px;">
-          <div style="font-size: 0.75rem; color: var(--accent-cyan); font-weight: 800; text-transform: uppercase; margin-bottom: 4px;">
-            🎙️ Pertanyaan Wawancara Anda:
+          <div style="background: rgba(250, 204, 21, 0.1); border-left: 3px solid var(--accent-yellow); padding: 10px 14px; border-radius: 6px; font-size: 0.85rem; color: #fef08a;">
+            🍼 <strong>Tips Kodi:</strong> ${drill.babyTips}
           </div>
-          <h3 style="color: #fff; margin: 0; font-size: 1.15rem; line-height: 1.5;">
-            Interviewer: "${drill.questionEn}"
-          </h3>
         </div>
 
-        <!-- Kalimat Sasaran untuk Ditirukan -->
-        <div style="background: rgba(15, 23, 42, 0.9); border: 1.5px solid rgba(56, 189, 248, 0.3); border-radius: 12px; padding: 18px; margin-bottom: 16px;">
-          <div style="font-size: 0.75rem; color: var(--accent-yellow); font-weight: 800; margin-bottom: 6px;">
-            TARGET JAWABAN ANDA (DENGARKAN & TIRUKAN):
+        <!-- PANEL KANAN: PERTANYAAN WAWANCARA, AUDIO, MIC & EVALUASI -->
+        <div class="stage-right-panel">
+          <div style="background: var(--bg-card); padding: 22px; border-radius: var(--radius-md); border: 1px solid var(--border-glow);">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+              <span style="font-size: 0.75rem; color: var(--accent-cyan); font-weight: 800; text-transform: uppercase;">
+                ${drill.category}
+              </span>
+              <span style="font-size: 0.78rem; color: var(--text-muted);">
+                Tantangan #${appState.currentEnglishDrillIndex + 1}
+              </span>
+            </div>
+
+            <!-- Kotak Pertanyaan Wawancara Anda -->
+            <div style="background: rgba(30, 41, 59, 0.7); border: 1px solid rgba(255,255,255,0.12); border-radius: 10px; padding: 14px 18px; margin-bottom: 16px;">
+              <div style="font-size: 0.75rem; color: var(--accent-cyan); font-weight: 800; text-transform: uppercase; margin-bottom: 4px;">
+                🎙️ Pertanyaan Wawancara Anda:
+              </div>
+              <h3 style="color: #fff; margin: 0; font-size: 1.15rem; line-height: 1.5;">
+                Interviewer: "${drill.questionEn}"
+              </h3>
+            </div>
+
+            <!-- Kalimat Sasaran untuk Ditirukan -->
+            <div style="background: rgba(15, 23, 42, 0.9); border: 1.5px solid rgba(56, 189, 248, 0.3); border-radius: 12px; padding: 18px; margin-bottom: 16px;">
+              <div style="font-size: 0.75rem; color: var(--accent-yellow); font-weight: 800; margin-bottom: 6px;">
+                TARGET JAWABAN ANDA (DENGARKAN & TIRUKAN):
+              </div>
+              <p id="target-sentence-text" style="font-size: 1.1rem; font-weight: 700; color: #f8fafc; line-height: 1.5; margin-bottom: 8px;">
+                "${drill.targetSentence}"
+              </p>
+              <p style="font-size: 0.85rem; color: var(--text-muted); font-style: italic; margin: 0;">
+                Arti Bahasa Indonesia: ${drill.translationId}
+              </p>
+            </div>
+
+            <!-- Tombol Audio & Rekam Suara -->
+            <div style="display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 18px;">
+              <button class="btn-secondary" style="display: flex; align-items: center; gap: 8px;" onclick="listenTargetSentence(false, this)">
+                🔊 Dengarkan (Normal)
+              </button>
+              <button class="btn-secondary" style="display: flex; align-items: center; gap: 8px;" onclick="listenTargetSentence(true, this)">
+                🐢 Dengarkan (Lambat / Slow)
+              </button>
+              <button id="btn-start-mic" class="btn-primary" style="display: flex; align-items: center; gap: 8px; background: linear-gradient(135deg, #f43f5e, #e11d48);" onclick="startSpeakingPractice()">
+                🎙️ Mulai Bicara (Ucapkan Kalimat Ini)
+              </button>
+            </div>
+
+            <!-- Hasil Evaluasi Suara -->
+            <div id="speech-eval-result" style="display: none; margin-top: 14px; padding: 16px; border-radius: 12px; background: rgba(15, 23, 42, 0.95); border: 1.5px solid var(--accent-cyan);">
+            </div>
+
+            <!-- Glowing Directional Arrow Navigation Bar -->
+            <div class="arrow-nav-bar" style="margin-top: 20px;">
+              <button class="btn-arrow-nav" onclick="prevSpeakingDrill()">
+                <span>◀</span>
+                <span>Soal Sebelumnya</span>
+              </button>
+              <span style="font-size: 0.82rem; font-weight: 700; color: var(--accent-cyan);">
+                Wawancara #${appState.currentEnglishDrillIndex + 1} dari ${cvInterviewSpeakingDrills.length}
+              </span>
+              <button class="btn-arrow-nav primary" onclick="nextSpeakingDrill()">
+                <span>Soal Berikutnya</span>
+                <span>▶</span>
+              </button>
+            </div>
           </div>
-          <p id="target-sentence-text" style="font-size: 1.1rem; font-weight: 700; color: #f8fafc; line-height: 1.5; margin-bottom: 8px;">
-            "${drill.targetSentence}"
-          </p>
-          <p style="font-size: 0.85rem; color: var(--text-muted); font-style: italic;">
-            Arti Bahasa Indonesia: ${drill.translationId}
-          </p>
-        </div>
-
-        <!-- Tombol Audio & Rekam Suara -->
-        <div style="display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 18px;">
-          <button class="btn-secondary" style="display: flex; align-items: center; gap: 8px;" onclick="listenTargetSentence(false, this)">
-            🔊 Dengarkan (Normal)
-          </button>
-          <button class="btn-secondary" style="display: flex; align-items: center; gap: 8px;" onclick="listenTargetSentence(true, this)">
-            🐢 Dengarkan (Lambat / Slow)
-          </button>
-          <button id="btn-start-mic" class="btn-primary" style="display: flex; align-items: center; gap: 8px; background: linear-gradient(135deg, #f43f5e, #e11d48);" onclick="startSpeakingPractice()">
-            🎙️ Mulai Bicara (Ucapkan Kalimat Ini)
-          </button>
-        </div>
-
-        <div style="background: rgba(250, 204, 21, 0.1); border-left: 3px solid var(--accent-yellow); padding: 10px 14px; border-radius: 4px; font-size: 0.85rem; color: #fef08a;">
-          🍼 <strong>Tips Kodi:</strong> ${drill.babyTips}
-        </div>
-
-        <!-- Hasil Evaluasi Suara -->
-        <div id="speech-eval-result" style="display: none; margin-top: 20px; padding: 18px; border-radius: 12px; background: rgba(15, 23, 42, 0.95); border: 1.5px solid var(--accent-cyan);">
         </div>
       </div>
     </div>
@@ -2343,199 +2499,237 @@ function renderMissingLettersGame() {
       }).join('')}
     </div>
 
-    <div style="background: var(--bg-card); padding: 24px 18px; border-radius: var(--radius-md); border: 1px solid var(--border-glow); margin-bottom: 20px; text-align: center;">
-      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; flex-wrap: wrap; gap: 6px;">
-        <span style="font-size: 0.78rem; font-weight: 700; color: var(--accent-pink); background: rgba(244, 114, 182, 0.15); padding: 4px 10px; border-radius: 12px;">
-          🏷️ ${puzzle.category}
-        </span>
-        <span style="font-size: 0.78rem; color: var(--accent-yellow); font-weight: 700;">
-          Kosakata #${appState.currentPuzzleIndex + 1} dari ${missingLetterPuzzles.length}
-        </span>
-      </div>
-
-      <!-- KOTAK CONTOH KATA & HURUF PENGISI BENAR DULU -->
-      ${puzzle.workedExample ? `
-        <div class="worked-example-card" style="margin: 0 auto 18px; max-width: 650px; text-align: left;">
-          <div class="worked-example-header">
-            <span class="we-badge">💡 CONTOH SOAL & JAWABAN BENAR DULU</span>
-            <span class="we-sub">Pahami pola teka-teki huruf ini sebelum mengisi:</span>
+    <!-- WIDESCREEN 2-COLUMN STAGE: CONTOH & NALAR (KIRI) vs WORKSPACE TEKA-TEKI HURUF (KANAN) -->
+    <div class="game-widescreen-stage">
+      <!-- PANEL KIRI: CONTOH KASUS, PETUNJUK BAYI & ALUR LANGKAH -->
+      <div class="stage-left-panel">
+        <div style="background: var(--bg-card); padding: 20px; border-radius: var(--radius-md); border: 1px solid var(--border-glow); margin-bottom: 16px;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; flex-wrap: wrap; gap: 6px;">
+            <span style="font-size: 0.78rem; font-weight: 700; color: var(--accent-pink); background: rgba(244, 114, 182, 0.15); padding: 4px 10px; border-radius: 12px;">
+              🏷️ ${puzzle.category}
+            </span>
+            <span style="font-size: 0.78rem; color: var(--accent-yellow); font-weight: 700;">
+              Kosakata #${appState.currentPuzzleIndex + 1} dari ${missingLetterPuzzles.length}
+            </span>
           </div>
-          <div class="we-body">
-            <div class="we-row">
-              <span class="we-label">📝 Contoh Kata Serupa:</span>
-              <span class="we-text"><strong>${puzzle.workedExample.sampleWord}</strong> (bagian kosong: <code>${puzzle.workedExample.sampleMasked}</code>)</span>
+
+          <!-- KOTAK CONTOH KATA & HURUF PENGISI BENAR DULU -->
+          ${puzzle.workedExample ? `
+            <div class="worked-example-card" style="margin-bottom: 14px; text-align: left;">
+              <div class="worked-example-header">
+                <span class="we-badge">💡 CONTOH SOAL & JAWABAN BENAR DULU</span>
+                <span class="we-sub">Pahami pola teka-teki huruf ini sebelum mengisi:</span>
+              </div>
+              <div class="we-body">
+                <div class="we-row">
+                  <span class="we-label">📝 Contoh Kata Serupa:</span>
+                  <span class="we-text"><strong>${puzzle.workedExample.sampleWord}</strong> (bagian kosong: <code>${puzzle.workedExample.sampleMasked}</code>)</span>
+                </div>
+                <div class="we-row">
+                  <span class="we-label">✅ Kunci Huruf Pengisi yang Benar:</span>
+                  <code class="we-code">${puzzle.workedExample.sampleMissing}</code>
+                </div>
+                <div class="we-row">
+                  <span class="we-label">🍼 Nalar & Penjelasan Ejaan:</span>
+                  <span class="we-text">${puzzle.workedExample.sampleExplanation}</span>
+                </div>
+              </div>
+              <div class="we-divider">🎯 SEKARANG LENGKAPI HURUF KATA TANTANGAN DI KANAN ➔</div>
             </div>
-            <div class="we-row">
-              <span class="we-label">✅ Kunci Huruf Pengisi yang 100% Benar:</span>
-              <code class="we-code">${puzzle.workedExample.sampleMissing}</code>
-            </div>
-            <div class="we-row">
-              <span class="we-label">🍼 Nalar & Penjelasan Ejaan:</span>
-              <span class="we-text">${puzzle.workedExample.sampleExplanation}</span>
+          ` : ''}
+
+          <!-- Petunjuk Bahasa Bayi & Arti Kata -->
+          <div style="background: rgba(250, 204, 21, 0.1); border-left: 3px solid var(--accent-yellow); padding: 12px 14px; border-radius: 8px; font-size: 0.9rem; color: #fef08a; margin-bottom: 14px; text-align: left;">
+            <strong>🍼 Petunjuk Nalar Bayi Kodi:</strong>
+            <p style="margin: 4px 0 6px;">${puzzle.babyClue}</p>
+            <div style="font-size: 0.82rem; color: #cbd5e1; font-style: italic;">
+              Arti resmi: "${puzzle.meaning}"
             </div>
           </div>
-          <div class="we-divider">🎯 SEKARANG LENGKAPI HURUF KATA TANTANGAN INI:</div>
-        </div>
-      ` : ''}
 
-      <!-- Petunjuk Bahasa Bayi & Arti Kata -->
-      <div style="background: rgba(250, 204, 21, 0.1); border-left: 3px solid var(--accent-yellow); padding: 12px 16px; border-radius: 8px; font-size: 0.95rem; color: #fef08a; margin: 14px auto; max-width: 600px; text-align: left;">
-        <strong>🍼 Petunjuk Bahasa Bayi Kodi:</strong>
-        <p style="margin: 4px 0 6px;">${puzzle.babyClue}</p>
-        <div style="font-size: 0.82rem; color: #cbd5e1; font-style: italic;">
-          Arti resmi: "${puzzle.meaning}"
-        </div>
-      </div>
-
-      <!-- TAMPILAN INTERAKTIF KOTAK HURUF KATA (TILES BISA DIKLIK BEBAS) -->
-      <div class="vocab-tiles-container ${curState.completed ? 'is-all-completed' : ''}" id="puzzle-tiles-row">
-        ${slots.map((s) => {
-          const isBlank = s.isBlank;
-          const val = s.filled;
-          const isSelected = isBlank && (s.index === curState.activeSlotIndex);
-          
-          let checkClass = "";
-          if (curState.checked && isBlank) {
-            if (val === s.expected) {
-              checkClass = "is-correct-slot";
-            } else {
-              checkClass = "is-error-slot";
-            }
-          }
-
-          return `
-            <div class="vocab-letter-tile ${isBlank ? 'is-blank' : 'is-fixed'} ${val ? 'is-filled' : 'is-empty'} ${isSelected ? 'is-selected-slot' : ''} ${checkClass}" 
-                 ${isBlank ? `onclick="selectOrClearPuzzleSlot(${s.index})" title="${val ? 'Klik untuk membatalkan/menghapus huruf ' + val : 'Klik untuk memilih kotak ini'}"` : ''} 
-                 style="${isBlank ? 'cursor: pointer; position: relative;' : ''}">
-              ${val ? val : '_'}
-              ${isSelected ? '<span class="tile-active-marker">🎯</span>' : ''}
+          <!-- Visual Puzzle Flow -->
+          <div class="visual-mission-flow">
+            <div class="flow-step-item">
+              <span class="flow-step-badge">1</span>
+              <span>Pilih Kotak</span>
             </div>
-          `;
-        }).join('')}
+            <span class="flow-arrow-sep">➔</span>
+            <div class="flow-step-item">
+              <span class="flow-step-badge">2</span>
+              <span>Ketuk Huruf</span>
+            </div>
+            <span class="flow-arrow-sep">➔</span>
+            <div class="flow-step-item">
+              <span class="flow-step-badge">3</span>
+              <span>Cek Jawaban</span>
+            </div>
+          </div>
+        </div>
       </div>
 
-      <!-- Petunjuk Ramah Cara Klik Kotak -->
-      <div style="font-size: 0.8rem; color: var(--accent-cyan); margin-top: -6px; margin-bottom: 12px; display: flex; align-items: center; justify-content: center; gap: 6px;">
-        <span>👆 <em>Klik kotak rumpang untuk memilih tempat huruf, atau klik kotak yang sudah terisi untuk membatalkan/menghapus huruf!</em></span>
-      </div>
+      <!-- PANEL KANAN: WORKSPACE INTERAKTIF KOTAK HURUF, KEYBOARD & KONTROL -->
+      <div class="stage-right-panel">
+        <div style="background: var(--bg-card); padding: 22px; border-radius: var(--radius-md); border: 1px solid var(--border-glow); text-align: center;">
+          <!-- TAMPILAN INTERAKTIF KOTAK HURUF KATA (TILES BISA DIKLIK BEBAS) -->
+          <div class="vocab-tiles-container ${curState.completed ? 'is-all-completed' : ''}" id="puzzle-tiles-row">
+            ${slots.map((s) => {
+              const isBlank = s.isBlank;
+              const val = s.filled;
+              const isSelected = isBlank && (s.index === curState.activeSlotIndex);
+              
+              let checkClass = "";
+              if (curState.checked && isBlank) {
+                if (val === s.expected) {
+                  checkClass = "is-correct-slot";
+                } else {
+                  checkClass = "is-error-slot";
+                }
+              }
 
-      <!-- Status Bar Pengisian Huruf -->
-      <div class="puzzle-progress-bar">
-        <span>Huruf terisi: <strong>${filledCount} / ${totalBlanks}</strong></span>
-        <span id="puzzle-live-hint" style="color: ${filledCount === totalBlanks ? 'var(--accent-green)' : 'var(--accent-cyan)'}; font-weight: 700;">
-          ${filledCount === totalBlanks 
-            ? '✨ Semua kotak sudah terisi! Tekan tombol "⚡ Cek Jawaban / Selesai" di bawah untuk memeriksa!' 
-            : `Pilih huruf di bawah untuk mengisi bagian kosong (${totalBlanks - filledCount} huruf tersisa):`}
-        </span>
-      </div>
+              return `
+                <div class="vocab-letter-tile ${isBlank ? 'is-blank' : 'is-fixed'} ${val ? 'is-filled' : 'is-empty'} ${isSelected ? 'is-selected-slot' : ''} ${checkClass}" 
+                     ${isBlank ? `onclick="selectOrClearPuzzleSlot(${s.index})" title="${val ? 'Klik untuk membatalkan/menghapus huruf ' + val : 'Klik untuk memilih kotak ini'}"` : ''} 
+                     style="${isBlank ? 'cursor: pointer; position: relative;' : ''}">
+                  ${val ? val : '_'}
+                  ${isSelected ? '<span class="tile-active-marker">🎯</span>' : ''}
+                </div>
+              `;
+            }).join('')}
+          </div>
 
-      <!-- Tombol Keyboard Pilihan Huruf Lengkap -->
-      <div class="puzzle-keyboard-pool" id="puzzle-keyboard-box">
-        ${curState.pool.map((letter, btnIdx) => {
-          const totalInPool = curState.pool.filter(l => l === letter).length;
-          const usedInSlots = missingIndices.filter(idx => curState.filled[idx] === letter).length;
-          const isExhausted = (usedInSlots >= totalInPool);
+          <!-- Petunjuk Ramah Cara Klik Kotak -->
+          <div style="font-size: 0.8rem; color: var(--accent-cyan); margin-top: -6px; margin-bottom: 12px; display: flex; align-items: center; justify-content: center; gap: 6px;">
+            <span>👆 <em>Klik kotak rumpang untuk memilih tempat huruf, atau klik kotak yang sudah terisi untuk membatalkan/menghapus huruf!</em></span>
+          </div>
 
-          return `
-            <button class="puzzle-letter-btn ${isExhausted ? 'is-used-letter' : ''}" 
-                    id="puzzle-key-${btnIdx}" 
-                    ${isExhausted || curState.completed ? 'disabled' : ''} 
-                    onclick="insertLetterIntoActiveSlot('${letter}')"
-                    title="Tempatkan huruf ${letter} ke kotak terpilih">
-              ${letter}
+          <!-- Status Bar Pengisian Huruf -->
+          <div class="puzzle-progress-bar">
+            <span>Huruf terisi: <strong>${filledCount} / ${totalBlanks}</strong></span>
+            <span id="puzzle-live-hint" style="color: ${filledCount === totalBlanks ? 'var(--accent-green)' : 'var(--accent-cyan)'}; font-weight: 700;">
+              ${filledCount === totalBlanks 
+                ? '✨ Semua kotak sudah terisi! Tekan tombol "⚡ Cek Jawaban / Selesai" di bawah!' 
+                : `Pilih huruf di bawah untuk mengisi kotak (${totalBlanks - filledCount} huruf tersisa):`}
+            </span>
+          </div>
+
+          <!-- Tombol Keyboard Pilihan Huruf Lengkap -->
+          <div class="puzzle-keyboard-pool" id="puzzle-keyboard-box">
+            ${curState.pool.map((letter, btnIdx) => {
+              const totalInPool = curState.pool.filter(l => l === letter).length;
+              const usedInSlots = missingIndices.filter(idx => curState.filled[idx] === letter).length;
+              const isExhausted = (usedInSlots >= totalInPool);
+
+              return `
+                <button class="puzzle-letter-btn ${isExhausted ? 'is-used-letter' : ''}" 
+                        id="puzzle-key-${btnIdx}" 
+                        ${isExhausted || curState.completed ? 'disabled' : ''} 
+                        onclick="insertLetterIntoActiveSlot('${letter}')"
+                        title="Tempatkan huruf ${letter} ke kotak terpilih">
+                  ${letter}
+                </button>
+              `;
+            }).join('')}
+          </div>
+
+          <!-- Kontrol Aksi: CEK JAWABAN (UTAMA), AUDIO, HAPUS, & RESET -->
+          <div class="puzzle-action-buttons-row" style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-bottom: 18px;">
+            <button class="btn-primary" style="font-size: 0.92rem; font-weight: 800; padding: 10px 22px; background: linear-gradient(135deg, #10b981, #059669); border: none; box-shadow: 0 4px 14px rgba(16, 185, 129, 0.4);" onclick="submitCheckPuzzle()">
+              ⚡ Cek Jawaban / Selesai
             </button>
-          `;
-        }).join('')}
-      </div>
 
-      <!-- Kontrol Aksi: CEK JAWABAN (UTAMA), AUDIO, HAPUS, & RESET -->
-      <div class="puzzle-action-buttons-row" style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-bottom: 18px;">
-        <button class="btn-primary" style="font-size: 0.92rem; font-weight: 800; padding: 10px 22px; background: linear-gradient(135deg, #10b981, #059669); border: none; box-shadow: 0 4px 14px rgba(16, 185, 129, 0.4);" onclick="submitCheckPuzzle()">
-          ⚡ Cek Jawaban / Selesai
-        </button>
+            <button class="btn-secondary" style="font-size: 0.82rem; padding: 8px 14px; display: flex; align-items: center; gap: 6px;" onclick="speechEngine.speakText('${puzzle.word}', 0.75, this, speechEngine.englishAccent)">
+              🔊 Dengarkan Pelafalan (${speechEngine.englishAccent === 'en-GB' ? 'Aksen UK' : 'Aksen US'})
+            </button>
 
-        <button class="btn-secondary" style="font-size: 0.82rem; padding: 8px 14px; display: flex; align-items: center; gap: 6px;" onclick="speechEngine.speakText('${puzzle.word}', 0.75, this, speechEngine.englishAccent)">
-          🔊 Dengarkan Pelafalan (${speechEngine.englishAccent === 'en-GB' ? 'Aksen UK' : 'Aksen US'})
-        </button>
+            <button class="btn-secondary" style="font-size: 0.82rem; padding: 8px 14px;" onclick="undoActiveSlot()">
+              ⌫ Hapus Huruf
+            </button>
 
-        <button class="btn-secondary" style="font-size: 0.82rem; padding: 8px 14px;" onclick="undoActiveSlot()">
-          ⌫ Hapus Huruf Terpilih
-        </button>
-
-        <button class="btn-secondary" style="font-size: 0.82rem; padding: 8px 14px;" onclick="resetCurrentPuzzle()">
-          🔄 Kosongkan Semua Kotak
-        </button>
-
-        ${curState.completed && appState.currentPuzzleIndex < missingLetterPuzzles.length - 1 ? `
-          <button class="btn-primary" style="font-size: 0.85rem; padding: 8px 18px; background: linear-gradient(135deg, #38bdf8, #0284c7);" onclick="setPuzzleIndex(${appState.currentPuzzleIndex + 1})">
-            🚀 Lanjut ke Kata #${appState.currentPuzzleIndex + 2} ➡️
-          </button>
-        ` : ''}
-      </div>
-
-      <!-- FEEDBACK PEMBAHASAN MENDALAM NALAR BAYI KODI (MUNCUL SETELAH CEK JAWABAN) -->
-      <div id="puzzle-feedback" style="display: ${curState.checked ? 'block' : 'none'}; max-width: 650px; margin: 0 auto; text-align: left;">
-        ${curState.checked ? `
-          <div class="train-result-card ${curState.isCorrect ? 'is-correct-card' : 'is-wrong-card'}" style="padding: 18px; border-radius: 12px; border: 1.5px solid ${curState.isCorrect ? '#10b981' : '#f43f5e'}; background: ${curState.isCorrect ? 'rgba(16, 185, 129, 0.12)' : 'rgba(244, 63, 94, 0.12)'};">
-            <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 12px;">
-              <span style="font-size: 1.6rem;">${curState.isCorrect ? '🎉' : '💡'}</span>
-              <div>
-                <h4 style="margin: 0; color: ${curState.isCorrect ? '#34d399' : '#f87171'}; font-size: 1.05rem;">
-                  ${curState.isCorrect ? 'SEMPURNA! EJAAN KOSAKATA 100% TEPAT!' : 'BELUM PAS! YUK KITA CEK LETAK KESALAHAN EJAANNYA!'}
-                </h4>
-                <p style="margin: 2px 0 0; font-size: 0.85rem; color: #cbd5e1;">
-                  ${curState.isCorrect ? `Kamu berhasil melengkapi ejaan kata '${puzzle.word}' dengan benar.` : 'Jangan khawatir, di bawah ini ada bedah ejaan kata agar kamu makin paham.'}
-                </p>
-              </div>
-            </div>
-
-            <div style="background: rgba(15, 23, 42, 0.85); padding: 12px 14px; border-radius: 8px; margin-bottom: 12px; border: 1px solid rgba(255,255,255,0.1);">
-              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; font-size: 0.88rem; margin-bottom: 8px;">
-                <div>
-                  <span style="color: var(--text-muted); font-size: 0.78rem;">Ejaan yang kamu buat:</span>
-                  <div style="font-weight: 800; color: ${curState.isCorrect ? '#34d399' : '#f87171'}; font-family: monospace; font-size: 1.05rem;">
-                    ${constructedWord}
-                  </div>
-                </div>
-                <div>
-                  <span style="color: var(--text-muted); font-size: 0.78rem;">Ejaan standar yang benar:</span>
-                  <div style="font-weight: 800; color: #34d399; font-family: monospace; font-size: 1.05rem;">
-                    ${puzzle.word}
-                  </div>
-                </div>
-              </div>
-
-              <!-- Nalar Bayi Kodi Pembahasan Ejaan -->
-              <div style="border-top: 1px solid rgba(255,255,255,0.1); padding-top: 8px; margin-top: 6px;">
-                <strong style="color: var(--accent-yellow); font-size: 0.85rem;">🍼 Penjelasan Nalar Bayi Kodi:</strong>
-                <p style="margin: 4px 0 6px; font-size: 0.88rem; color: #fef08a; line-height: 1.45;">
-                  ${getSpellingBabyExplanation(puzzle, constructedWord)}
-                </p>
-                <div style="font-size: 0.8rem; color: #94a3b8; font-style: italic;">
-                  Arti: "${puzzle.meaning}" • Huruf pengisi: ${puzzle.missingLetters.join(', ')}
-                </div>
-              </div>
-            </div>
-
-            <!-- Tombol Coba Lagi & Intip Kunci Saat Salah -->
-            ${!curState.isCorrect ? `
-              <div style="display: flex; gap: 10px; flex-wrap: wrap;">
-                <button class="btn-primary" style="background: linear-gradient(135deg, #f59e0b, #d97706); border: none; font-size: 0.82rem; padding: 8px 16px;" onclick="retryIncorrectSlots()">
-                  🔄 Coba Lagi / Kosongkan Kotak yang Salah
-                </button>
-                <button class="btn-secondary" style="font-size: 0.82rem; padding: 8px 14px;" onclick="revealPuzzleAnswer()">
-                  💡 Pasang Kunci Jawaban yang Benar
-                </button>
-              </div>
-            ` : `
-              <div style="display: flex; gap: 10px; flex-wrap: wrap;">
-                <button class="btn-primary" style="background: linear-gradient(135deg, #10b981, #059669); border: none; font-size: 0.85rem; padding: 8px 18px;" onclick="setPuzzleIndex(${appState.currentPuzzleIndex + 1 < missingLetterPuzzles.length ? appState.currentPuzzleIndex + 1 : 0})">
-                  🚀 Lanjut ke Kata Berikutnya ➡️
-                </button>
-              </div>
-            `}
+            <button class="btn-secondary" style="font-size: 0.82rem; padding: 8px 14px;" onclick="resetCurrentPuzzle()">
+              🔄 Kosongkan Kotak
+            </button>
           </div>
-        ` : ''}
+
+          <!-- FEEDBACK PEMBAHASAN MENDALAM NALAR BAYI KODI -->
+          <div id="puzzle-feedback" style="display: ${curState.checked ? 'block' : 'none'}; margin: 0 auto 16px; text-align: left;">
+            ${curState.checked ? `
+              <div class="train-result-card ${curState.isCorrect ? 'is-correct-card' : 'is-wrong-card'}" style="padding: 18px; border-radius: 12px; border: 1.5px solid ${curState.isCorrect ? '#10b981' : '#f43f5e'}; background: ${curState.isCorrect ? 'rgba(16, 185, 129, 0.12)' : 'rgba(244, 63, 94, 0.12)'};">
+                <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 12px;">
+                  <span style="font-size: 1.6rem;">${curState.isCorrect ? '🎉' : '💡'}</span>
+                  <div>
+                    <h4 style="margin: 0; color: ${curState.isCorrect ? '#34d399' : '#f87171'}; font-size: 1.05rem;">
+                      ${curState.isCorrect ? 'SEMPURNA! EJAAN KOSAKATA 100% TEPAT!' : 'BELUM PAS! YUK KITA CEK LETAK KESALAHAN EJAANNYA!'}
+                    </h4>
+                    <p style="margin: 2px 0 0; font-size: 0.85rem; color: #cbd5e1;">
+                      ${curState.isCorrect ? `Kamu berhasil melengkapi ejaan kata '${puzzle.word}' dengan benar.` : 'Jangan khawatir, di bawah ini ada bedah ejaan kata agar kamu makin paham.'}
+                    </p>
+                  </div>
+                </div>
+
+                <div style="background: rgba(15, 23, 42, 0.85); padding: 12px 14px; border-radius: 8px; margin-bottom: 12px; border: 1px solid rgba(255,255,255,0.1);">
+                  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; font-size: 0.88rem; margin-bottom: 8px;">
+                    <div>
+                      <span style="color: var(--text-muted); font-size: 0.78rem;">Ejaan yang kamu buat:</span>
+                      <div style="font-weight: 800; color: ${curState.isCorrect ? '#34d399' : '#f87171'}; font-family: monospace; font-size: 1.05rem;">
+                        ${constructedWord}
+                      </div>
+                    </div>
+                    <div>
+                      <span style="color: var(--text-muted); font-size: 0.78rem;">Ejaan standar yang benar:</span>
+                      <div style="font-weight: 800; color: #34d399; font-family: monospace; font-size: 1.05rem;">
+                        ${puzzle.word}
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Nalar Bayi Kodi Pembahasan Ejaan -->
+                  <div style="border-top: 1px solid rgba(255,255,255,0.1); padding-top: 8px; margin-top: 6px;">
+                    <strong style="color: var(--accent-yellow); font-size: 0.85rem;">🍼 Penjelasan Nalar Bayi Kodi:</strong>
+                    <p style="margin: 4px 0 6px; font-size: 0.88rem; color: #fef08a; line-height: 1.45;">
+                      ${getSpellingBabyExplanation(puzzle, constructedWord)}
+                    </p>
+                    <div style="font-size: 0.8rem; color: #94a3b8; font-style: italic;">
+                      Arti: "${puzzle.meaning}" • Huruf pengisi: ${puzzle.missingLetters.join(', ')}
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Tombol Coba Lagi & Intip Kunci Saat Salah -->
+                ${!curState.isCorrect ? `
+                  <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                    <button class="btn-primary" style="background: linear-gradient(135deg, #f59e0b, #d97706); border: none; font-size: 0.82rem; padding: 8px 16px;" onclick="retryIncorrectSlots()">
+                      🔄 Coba Lagi / Kosongkan Kotak yang Salah
+                    </button>
+                    <button class="btn-secondary" style="font-size: 0.82rem; padding: 8px 14px;" onclick="revealPuzzleAnswer()">
+                      💡 Pasang Kunci Jawaban yang Benar
+                    </button>
+                  </div>
+                ` : `
+                  <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                    <button class="btn-primary" style="background: linear-gradient(135deg, #10b981, #059669); border: none; font-size: 0.85rem; padding: 8px 18px;" onclick="setPuzzleIndex(${appState.currentPuzzleIndex + 1 < missingLetterPuzzles.length ? appState.currentPuzzleIndex + 1 : 0})">
+                      🚀 Lanjut ke Kata Berikutnya ➡️
+                    </button>
+                  </div>
+                `}
+              </div>
+            ` : ''}
+          </div>
+
+          <!-- Glowing Directional Arrow Navigation Bar -->
+          <div class="arrow-nav-bar" style="margin-top: 18px;">
+            <button class="btn-arrow-nav" onclick="navPuzzle(-1)" ${currentPos <= 0 ? 'disabled' : ''}>
+              <span>◀</span>
+              <span>Kata Sebelumnya</span>
+            </button>
+            <span style="font-size: 0.82rem; font-weight: 700; color: var(--accent-pink);">
+              Kosakata #${appState.currentPuzzleIndex + 1} dari ${missingLetterPuzzles.length}
+            </span>
+            <button class="btn-arrow-nav primary" onclick="navPuzzle(1)" ${currentPos >= filteredList.length - 1 ? 'disabled' : ''}>
+              <span>Kata Berikutnya</span>
+              <span>▶</span>
+            </button>
+          </div>
+        </div>
       </div>
     </div>
   `;
@@ -2822,85 +3016,133 @@ function renderIeltsAcademicStudio() {
       </div>
     </div>
 
-    <div style="background: var(--bg-card); padding: 24px; border-radius: var(--radius-md); border: 1px solid var(--border-glow); margin-bottom: 20px;">
-      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; flex-wrap: wrap; gap: 6px;">
-        <span style="font-size: 0.78rem; font-weight: 800; color: var(--accent-green); background: rgba(74, 222, 128, 0.15); padding: 4px 10px; border-radius: 12px;">
-          📌 ${q.cambridgeUnit}
-        </span>
-        <span style="font-size: 0.75rem; color: var(--accent-yellow); font-weight: 700;">
-          Soal ${appState.currentIeltsIndex + 1} dari ${ieltsAcademicBank.length} (${q.ieltsFocus}) ${isDone ? '✅ Selesai' : ''}
-        </span>
-      </div>
+    <!-- WIDESCREEN 2-COLUMN STAGE: CONTOH & ACUAN (KIRI) vs SOAL & JAWABAN (KANAN) -->
+    <div class="game-widescreen-stage equal">
+      <!-- PANEL KIRI: CONTOH KASUS CAMBRIDGE & POLA TATA BAHASA -->
+      <div class="stage-left-panel">
+        <div style="background: var(--bg-card); padding: 20px; border-radius: var(--radius-md); border: 1px solid var(--border-glow); margin-bottom: 16px;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; flex-wrap: wrap; gap: 6px;">
+            <span style="font-size: 0.78rem; font-weight: 800; color: var(--accent-green); background: rgba(74, 222, 128, 0.15); padding: 4px 10px; border-radius: 12px;">
+              📌 ${q.cambridgeUnit}
+            </span>
+            <span style="font-size: 0.75rem; color: var(--accent-yellow); font-weight: 700;">
+              Soal ${appState.currentIeltsIndex + 1} dari ${ieltsAcademicBank.length} (${q.ieltsFocus}) ${isDone ? '✅ Selesai' : ''}
+            </span>
+          </div>
 
-      <!-- KOTAK CONTOH SOAL & JAWABAN CAMBRIDGE DULU (KASUS A) -->
-      ${q.workedExample ? `
-        <div class="worked-example-card">
-          <div class="worked-example-header">
-            <span class="we-badge">💡 CONTOH SOAL & JAWABAN CAMBRIDGE DULU</span>
-            <span class="we-sub">Pahami pola tata bahasa kasus serupa ini sebelum menjawab tantangan!</span>
+          <!-- KOTAK CONTOH SOAL & JAWABAN CAMBRIDGE DULU (KASUS A) -->
+          ${q.workedExample ? `
+            <div class="worked-example-card" style="margin-bottom: 14px;">
+              <div class="worked-example-header">
+                <span class="we-badge">💡 CONTOH SOAL & JAWABAN CAMBRIDGE DULU</span>
+                <span class="we-sub">Pahami pola tata bahasa kasus serupa ini:</span>
+              </div>
+              <div class="we-body">
+                <div class="we-row">
+                  <span class="we-label">📝 Contoh Kasus Serupa:</span>
+                  <span class="we-text">"${q.workedExample.sampleQuestion}"</span>
+                </div>
+                <div class="we-row">
+                  <span class="we-label">✅ Kunci Jawaban Benar Contoh:</span>
+                  <code class="we-code">${q.workedExample.sampleAnswer}</code>
+                </div>
+                <div class="we-row">
+                  <span class="we-label">🍼 Analogi & Nalar Bahasa Bayi:</span>
+                  <span class="we-text">${q.workedExample.sampleLogic}</span>
+                </div>
+              </div>
+              <div class="we-divider">🎯 SEKARANG GILIRAN TANTANGAN SOAL DI KANAN ➔</div>
+            </div>
+          ` : ''}
+
+          <!-- Visual Cambridge Mission Flow -->
+          <div class="visual-mission-flow">
+            <div class="flow-step-item">
+              <span class="flow-step-badge">1</span>
+              <span>Pahami Kaidah</span>
+            </div>
+            <span class="flow-arrow-sep">➔</span>
+            <div class="flow-step-item">
+              <span class="flow-step-badge">2</span>
+              <span>Dengar Kalimat</span>
+            </div>
+            <span class="flow-arrow-sep">➔</span>
+            <div class="flow-step-item">
+              <span class="flow-step-badge">3</span>
+              <span>Pilih Opsi</span>
+            </div>
           </div>
-          <div class="we-body">
-            <div class="we-row">
-              <span class="we-label">📝 Contoh Kasus Serupa:</span>
-              <span class="we-text">"${q.workedExample.sampleQuestion}"</span>
-            </div>
-            <div class="we-row">
-              <span class="we-label">✅ Kunci Jawaban Benar Contoh:</span>
-              <code class="we-code">${q.workedExample.sampleAnswer}</code>
-            </div>
-            <div class="we-row">
-              <span class="we-label">🍼 Analogi & Nalar Bahasa Bayi:</span>
-              <span class="we-text">${q.workedExample.sampleLogic}</span>
-            </div>
-          </div>
-          <div class="we-divider">🎯 SEKARANG GILIRAN TANTANGAN SOAL CAMBRIDGE INI:</div>
         </div>
-      ` : ''}
-
-      <!-- Teks Kalimat Soal (Bisa Diisi Dinamis Saat Dijawab) -->
-      <h3 id="ielts-question-sentence" style="color: #fff; margin-bottom: 16px; font-size: 1.15rem; line-height: 1.6;">
-        "${displaySentence}"
-      </h3>
-
-      <!-- Tombol Audio Aman -->
-      <div style="margin-bottom: 14px; display: flex; gap: 8px; flex-wrap: wrap;">
-        <button class="btn-secondary" style="font-size: 0.8rem; padding: 6px 12px;" onclick="playIeltsAudio(${appState.currentIeltsIndex}, this)">
-          🔊 Dengarkan Kalimat Soal (${speechEngine.englishAccent === 'en-GB' ? 'Aksen UK 🇬🇧' : 'Aksen US 🇺🇸'})
-        </button>
       </div>
 
-      <!-- Pilihan Jawaban A, B, C, D -->
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 10px; margin-bottom: 16px;">
-        ${(q.options || []).map((opt, idx) => {
-          let btnStyle = "justify-content: center; font-weight: 700; padding: 12px;";
-          if (selectedAnswer === opt) {
-            if (opt === correctAnswer) {
-              btnStyle += " border-color: var(--accent-green); background: rgba(16, 185, 129, 0.25); color: #34d399;";
-            } else {
-              btnStyle += " border-color: var(--accent-pink); background: rgba(244, 63, 94, 0.25); color: #fda4af;";
-            }
-          }
-          return `
-            <button class="choice-card-btn" style="${btnStyle}" onclick="checkIeltsAnswer(${idx})">
-              ${opt}
+      <!-- PANEL KANAN: TEKS KALIMAT, AUDIO, PILIHAN & FEEDBACK -->
+      <div class="stage-right-panel">
+        <div style="background: var(--bg-card); padding: 22px; border-radius: var(--radius-md); border: 1px solid var(--border-glow);">
+          <div style="font-size: 0.75rem; color: var(--accent-cyan); font-weight: 800; text-transform: uppercase; margin-bottom: 6px;">
+            Kalimat Soal Tantangan Cambridge:
+          </div>
+
+          <!-- Teks Kalimat Soal (Bisa Diisi Dinamis Saat Dijawab) -->
+          <h3 id="ielts-question-sentence" style="color: #fff; margin-bottom: 16px; font-size: 1.15rem; line-height: 1.6;">
+            "${displaySentence}"
+          </h3>
+
+          <!-- Tombol Audio Aman -->
+          <div style="margin-bottom: 16px; display: flex; gap: 8px; flex-wrap: wrap;">
+            <button class="btn-secondary" style="font-size: 0.8rem; padding: 6px 14px;" onclick="playIeltsAudio(${appState.currentIeltsIndex}, this)">
+              🔊 Dengarkan Kalimat Soal (${speechEngine.englishAccent === 'en-GB' ? 'Aksen UK 🇬🇧' : 'Aksen US 🇺🇸'})
             </button>
-          `;
-        }).join('')}
-      </div>
+          </div>
 
-      <!-- Feedback Alert Box -->
-      <div id="ielts-feedback-box">
-        ${selectedAnswer ? (selectedAnswer === correctAnswer ? `
-          <div class="alert-box success">
-            <strong>🎉 Benar Sekali! (+1 Poin IELTS)</strong><br>
-            <span>${q.babyExplanation || 'Jawaban Anda tepat sesuai kaidah tata bahasa akademik Cambridge!'}</span>
+          <!-- Pilihan Jawaban A, B, C, D -->
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px; margin-bottom: 16px;">
+            ${(q.options || []).map((opt, idx) => {
+              let btnStyle = "justify-content: center; font-weight: 700; padding: 12px;";
+              if (selectedAnswer === opt) {
+                if (opt === correctAnswer) {
+                  btnStyle += " border-color: var(--accent-green); background: rgba(16, 185, 129, 0.25); color: #34d399;";
+                } else {
+                  btnStyle += " border-color: var(--accent-pink); background: rgba(244, 63, 94, 0.25); color: #fda4af;";
+                }
+              }
+              return `
+                <button class="choice-card-btn" style="${btnStyle}" onclick="checkIeltsAnswer(${idx})">
+                  ${opt}
+                </button>
+              `;
+            }).join('')}
           </div>
-        ` : `
-          <div class="alert-box warning">
-            <strong>⚠️ Belum Tepat!</strong><br>
-            <span>Kata <em>"${selectedAnswer}"</em> belum pas untuk melengkapi kalimat ini. Coba pilih opsi lainnya!</span>
+
+          <!-- Feedback Alert Box -->
+          <div id="ielts-feedback-box">
+            ${selectedAnswer ? (selectedAnswer === correctAnswer ? `
+              <div class="alert-box success">
+                <strong>🎉 Benar Sekali! (+1 Poin IELTS)</strong><br>
+                <span>${q.babyExplanation || 'Jawaban Anda tepat sesuai kaidah tata bahasa akademik Cambridge!'}</span>
+              </div>
+            ` : `
+              <div class="alert-box warning">
+                <strong>⚠️ Belum Tepat!</strong><br>
+                <span>Kata <em>"${selectedAnswer}"</em> belum pas untuk melengkapi kalimat ini. Coba pilih opsi lainnya!</span>
+              </div>
+            `) : ''}
           </div>
-        `) : ''}
+
+          <!-- Glowing Directional Arrow Navigation Bar -->
+          <div class="arrow-nav-bar" style="margin-top: 18px;">
+            <button class="btn-arrow-nav" onclick="navIeltsChallenge(-1)" ${currentPos <= 0 ? 'disabled' : ''}>
+              <span>◀</span>
+              <span>Soal Sebelumnya</span>
+            </button>
+            <span style="font-size: 0.82rem; font-weight: 700; color: var(--accent-green);">
+              Soal #${appState.currentIeltsIndex + 1} dari ${ieltsAcademicBank.length}
+            </span>
+            <button class="btn-arrow-nav primary" onclick="navIeltsChallenge(1)" ${currentPos >= filteredList.length - 1 ? 'disabled' : ''}>
+              <span>Soal Berikutnya</span>
+              <span>▶</span>
+            </button>
+          </div>
+        </div>
       </div>
     </div>
   `;
@@ -3106,98 +3348,143 @@ function renderToeflIbtBuildingSkills() {
       </div>
     </div>
 
-    <div style="background: var(--bg-card); padding: 24px; border-radius: var(--radius-md); border: 1px solid var(--border-glow); margin-bottom: 20px;">
-      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; flex-wrap: wrap; gap: 6px;">
-        <span style="font-size: 0.78rem; font-weight: 800; color: var(--accent-cyan); background: rgba(56, 189, 248, 0.15); padding: 4px 10px; border-radius: 12px;">
-          📌 ${currentItem.bookChapter}
-        </span>
-        <span style="font-size: 0.75rem; color: var(--accent-yellow); font-weight: 700;">
-          Soal ${appState.currentIbtIndex + 1} dari ${toeflIbtBuildingSkills.length} (${currentItem.academicTopic || 'Umum'}) ${isDone ? '✅ Selesai' : ''}
-        </span>
-      </div>
-
-      <!-- KOTAK CONTOH STRATEGI & JAWABAN BENAR DULU (KASUS A) -->
-      ${workedEx ? `
-        <div class="worked-example-card" style="margin-bottom: 18px;">
-          <div class="worked-example-header">
-            <span class="we-badge">💡 STRATEGI & CONTOH JAWABAN BENAR DULU</span>
-            <span class="we-sub">${currentItem.bookChapter} • ${currentItem.academicTopic || ''}</span>
+    <!-- WIDESCREEN 2-COLUMN STAGE: BACAAN & CONTOH (KIRI) vs SOAL & OPSI (KANAN) -->
+    <div class="game-widescreen-stage equal">
+      <!-- PANEL KIRI: ACUAN BUKU, CONTOH STRATEGI & BACAAN ILMIAH -->
+      <div class="stage-left-panel">
+        <div style="background: var(--bg-card); padding: 20px; border-radius: var(--radius-md); border: 1px solid var(--border-glow); margin-bottom: 16px;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; flex-wrap: wrap; gap: 6px;">
+            <span style="font-size: 0.78rem; font-weight: 800; color: var(--accent-cyan); background: rgba(56, 189, 248, 0.15); padding: 4px 10px; border-radius: 12px;">
+              📌 ${currentItem.bookChapter}
+            </span>
+            <span style="font-size: 0.75rem; color: var(--accent-yellow); font-weight: 700;">
+              Soal ${appState.currentIbtIndex + 1} dari ${toeflIbtBuildingSkills.length} (${currentItem.academicTopic || 'Umum'}) ${isDone ? '✅ Selesai' : ''}
+            </span>
           </div>
-          <div class="we-body">
-            <div class="we-row">
-              <span class="we-label">📝 Model Kasus Serupa:</span>
-              <span class="we-text">"${wePrompt}"</span>
-            </div>
-            <div class="we-row">
-              <span class="we-label">✅ Contoh Jawaban Benar:</span>
-              <code class="we-code">${weAns}</code>
-            </div>
-            <div class="we-row">
-              <span class="we-label">🍼 Trik & Nalar Detektif Kodi:</span>
-              <span class="we-text">${weLogic.replace(/\n/g, '<br>')}</span>
-            </div>
-          </div>
-          <div class="we-divider">🎯 SEKARANG PECAHKAN TANTANGAN ASLI DI BAWAH INI:</div>
-        </div>
-      ` : ''}
 
-      <!-- Academic Reading Passage or Speaking Scenario -->
-      <div class="ibt-passage-card" style="margin-bottom: 18px;">
-        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; flex-wrap: wrap; gap: 6px;">
-          <span style="font-size: 0.75rem; color: var(--accent-cyan); font-weight: 800; text-transform: uppercase;">
-            ${isSpeaking ? '🎙️ Skenario Kampus & Audio Percakapan' : '📖 Teks Bacaan Ilmiah (Academic Reading Excerpt)'}
-          </span>
-          <button class="btn-secondary" style="font-size: 0.78rem; padding: 4px 10px;" onclick="playToeflAudio(${appState.currentIbtIndex}, this)">
-            🔊 Dengarkan Audio Teks
-          </button>
-        </div>
-        <p style="margin: 0; line-height: 1.6; color: #cbd5e1;">${passageText}</p>
-        ${insertNotice}
-      </div>
+          <!-- KOTAK CONTOH STRATEGI & JAWABAN BENAR DULU (KASUS A) -->
+          ${workedEx ? `
+            <div class="worked-example-card" style="margin-bottom: 14px;">
+              <div class="worked-example-header">
+                <span class="we-badge">💡 STRATEGI & CONTOH JAWABAN BENAR DULU</span>
+                <span class="we-sub">${currentItem.bookChapter} • ${currentItem.academicTopic || ''}</span>
+              </div>
+              <div class="we-body">
+                <div class="we-row">
+                  <span class="we-label">📝 Model Kasus Serupa:</span>
+                  <span class="we-text">"${wePrompt}"</span>
+                </div>
+                <div class="we-row">
+                  <span class="we-label">✅ Contoh Jawaban Benar:</span>
+                  <code class="we-code">${weAns}</code>
+                </div>
+                <div class="we-row">
+                  <span class="we-label">🍼 Trik Nalar Kodi:</span>
+                  <span class="we-text">${weLogic.replace(/\n/g, '<br>')}</span>
+                </div>
+              </div>
+              <div class="we-divider">🎯 SEKARANG PECAHKAN TANTANGAN ASLI DI KANAN ➔</div>
+            </div>
+          ` : ''}
 
-      <!-- Pertanyaan Tantangan -->
-      <div style="margin-bottom: 18px;">
-        <h3 style="color: #fff; font-size: 1.15rem; line-height: 1.5; margin-bottom: 14px;">
-          "${currentItem.questionPrompt}"
-        </h3>
-
-        <!-- Pilihan Opsi A, B, C, D -->
-        <div style="display: flex; flex-direction: column; gap: 10px;">
-          ${(currentItem.options || []).map((opt, idx) => {
-            let btnStyle = "padding: 14px 18px; text-align: left; font-size: 0.92rem; border-radius: 8px; justify-content: flex-start; line-height: 1.45;";
-            let icon = String.fromCharCode(65 + idx);
-            if (selectedAnswer === opt) {
-              if (opt === currentItem.correctAnswer) {
-                btnStyle += " border-color: var(--accent-green); background: rgba(16, 185, 129, 0.25); color: #fff; font-weight: 700;";
-                icon = "✓";
-              } else {
-                btnStyle += " border-color: var(--accent-pink); background: rgba(244, 63, 94, 0.25); color: #fca5a5;";
-                icon = "✕";
-              }
-            }
-            return `
-              <button class="choice-card-btn" style="${btnStyle}" onclick="checkToeflIbtAnswer(${idx})">
-                <span style="font-weight: 800; min-width: 24px; display: inline-block;">${icon}.</span>
-                <span>${opt}</span>
+          <!-- Academic Reading Passage or Speaking Scenario -->
+          <div class="ibt-passage-card" style="margin-bottom: 14px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; flex-wrap: wrap; gap: 6px;">
+              <span style="font-size: 0.75rem; color: var(--accent-cyan); font-weight: 800; text-transform: uppercase;">
+                ${isSpeaking ? '🎙️ Skenario Kampus & Audio' : '📖 Teks Bacaan Ilmiah (Academic Excerpt)'}
+              </span>
+              <button class="btn-secondary" style="font-size: 0.78rem; padding: 4px 10px;" onclick="playToeflAudio(${appState.currentIbtIndex}, this)">
+                🔊 Dengarkan Teks
               </button>
-            `;
-          }).join('')}
+            </div>
+            <p style="margin: 0; line-height: 1.6; color: #cbd5e1;">${passageText}</p>
+            ${insertNotice}
+          </div>
+
+          <!-- Visual TOEFL Mission Flow -->
+          <div class="visual-mission-flow">
+            <div class="flow-step-item">
+              <span class="flow-step-badge">1</span>
+              <span>Pahami Bacaan</span>
+            </div>
+            <span class="flow-arrow-sep">➔</span>
+            <div class="flow-step-item">
+              <span class="flow-step-badge">2</span>
+              <span>Bedah Soal</span>
+            </div>
+            <span class="flow-arrow-sep">➔</span>
+            <div class="flow-step-item">
+              <span class="flow-step-badge">3</span>
+              <span>Pilih Opsi</span>
+            </div>
+          </div>
         </div>
       </div>
 
-      <!-- Feedback Box -->
-      <div id="ibt-feedback-box">
-        ${selectedAnswer ? (selectedAnswer === currentItem.correctAnswer ? `
-          <div class="alert-box success">
-            <strong>🎉 Jawaban Kamu 100% Tepat! (+1 Poin TOEFL iBT)</strong><br>
-            <span>${currentItem.babyExplanation || 'Analisis teks dan penalaran kamu sangat akurat!'}</span>
+      <!-- PANEL KANAN: PERTANYAAN, OPSI & FEEDBACK -->
+      <div class="stage-right-panel">
+        <div style="background: var(--bg-card); padding: 22px; border-radius: var(--radius-md); border: 1px solid var(--border-glow);">
+          <div style="font-size: 0.75rem; color: var(--accent-cyan); font-weight: 800; text-transform: uppercase; margin-bottom: 6px;">
+            Pertanyaan Tantangan TOEFL iBT:
           </div>
-        ` : `
-          <div class="alert-box warning">
-            <strong>⚠️ Belum Tepat!</strong><br>
-            <span>Pilihan kamu belum sesuai dengan bukti eksplisit di bacaan. Coba baca ulang paragraf acuan dan pilih opsi lain!</span>
+
+          <h3 style="color: #fff; font-size: 1.12rem; line-height: 1.5; margin-bottom: 16px;">
+            "${currentItem.questionPrompt}"
+          </h3>
+
+          <!-- Pilihan Opsi A, B, C, D -->
+          <div style="display: flex; flex-direction: column; gap: 10px; margin-bottom: 16px;">
+            ${(currentItem.options || []).map((opt, idx) => {
+              let btnStyle = "padding: 14px 18px; text-align: left; font-size: 0.92rem; border-radius: 8px; justify-content: flex-start; line-height: 1.45;";
+              let icon = String.fromCharCode(65 + idx);
+              if (selectedAnswer === opt) {
+                if (opt === currentItem.correctAnswer) {
+                  btnStyle += " border-color: var(--accent-green); background: rgba(16, 185, 129, 0.25); color: #fff; font-weight: 700;";
+                  icon = "✓";
+                } else {
+                  btnStyle += " border-color: var(--accent-pink); background: rgba(244, 63, 94, 0.25); color: #fca5a5;";
+                  icon = "✕";
+                }
+              }
+              return `
+                <button class="choice-card-btn" style="${btnStyle}" onclick="checkToeflIbtAnswer(${idx})">
+                  <span style="font-weight: 800; min-width: 24px; display: inline-block;">${icon}.</span>
+                  <span>${opt}</span>
+                </button>
+              `;
+            }).join('')}
           </div>
-        `) : ''}
+
+          <!-- Feedback Box -->
+          <div id="ibt-feedback-box">
+            ${selectedAnswer ? (selectedAnswer === currentItem.correctAnswer ? `
+              <div class="alert-box success">
+                <strong>🎉 Jawaban Kamu 100% Tepat! (+1 Poin TOEFL iBT)</strong><br>
+                <span>${currentItem.babyExplanation || 'Analisis teks dan penalaran kamu sangat akurat!'}</span>
+              </div>
+            ` : `
+              <div class="alert-box warning">
+                <strong>⚠️ Belum Tepat!</strong><br>
+                <span>Pilihan kamu belum sesuai dengan bukti eksplisit di bacaan. Coba baca ulang paragraf acuan dan pilih opsi lain!</span>
+              </div>
+            `) : ''}
+          </div>
+
+          <!-- Glowing Directional Arrow Navigation Bar -->
+          <div class="arrow-nav-bar" style="margin-top: 18px;">
+            <button class="btn-arrow-nav" onclick="navIbtChallenge(-1)" ${currentPos <= 0 ? 'disabled' : ''}>
+              <span>◀</span>
+              <span>Soal Sebelumnya</span>
+            </button>
+            <span style="font-size: 0.82rem; font-weight: 700; color: var(--accent-cyan);">
+              Soal #${appState.currentIbtIndex + 1} dari ${toeflIbtBuildingSkills.length}
+            </span>
+            <button class="btn-arrow-nav primary" onclick="navIbtChallenge(1)" ${currentPos >= filteredList.length - 1 ? 'disabled' : ''}>
+              <span>Soal Berikutnya</span>
+              <span>▶</span>
+            </button>
+          </div>
+        </div>
       </div>
     </div>
   `;
@@ -3271,6 +3558,333 @@ window.checkToeflIbtAnswer = function(idx) {
   }
 
   renderToeflIbtBuildingSkills();
+};
+
+// ===================================================================
+// PROGRESSIVE DICTATION STUDIO (EVC ESL LIBRETEXTS)
+// Latihan Menyimak, Transkripsi Audio & Dikte Bahasa Inggris Terstruktur
+// ===================================================================
+function renderEvcDictationStudio() {
+  const container = document.getElementById("submode-dictation");
+  if (!container) return;
+
+  if (typeof evcDictationChallenges === "undefined" || !evcDictationChallenges.length) {
+    container.innerHTML = `<div class="info-box">Data EVC Dictation sedang dimuat...</div>`;
+    return;
+  }
+
+  appState.currentDictationIndex = appState.currentDictationIndex || 0;
+  appState.currentDictationLevelFilter = appState.currentDictationLevelFilter || 'all';
+  appState.dictationCompleted = appState.dictationCompleted || [];
+  appState.dictationUserInputs = appState.dictationUserInputs || {};
+  appState.dictationChecked = appState.dictationChecked || {};
+
+  const levels = [
+    { key: 'all', label: `📂 Semua Level (${evcDictationChallenges.length} Tantangan)` },
+    { key: '1', label: 'Level 1: Eja Singkatan & Istilah' },
+    { key: '2', label: 'Level 2: Frasa Kata Kerja' },
+    { key: '3', label: 'Level 3: Kalimat Operasional' },
+    { key: '4', label: 'Level 4: Percakapan Kantor' }
+  ];
+
+  const filteredList = (appState.currentDictationLevelFilter === 'all')
+    ? evcDictationChallenges.map((item, idx) => ({ item, originalIndex: idx }))
+    : evcDictationChallenges
+        .map((item, idx) => ({ item, originalIndex: idx }))
+        .filter(x => String(x.item.level) === String(appState.currentDictationLevelFilter));
+
+  if (appState.currentDictationIndex < 0 || appState.currentDictationIndex >= evcDictationChallenges.length) {
+    appState.currentDictationIndex = 0;
+  }
+
+  let currentPos = filteredList.findIndex(x => x.originalIndex === appState.currentDictationIndex);
+  if (currentPos === -1 && filteredList.length > 0) {
+    appState.currentDictationIndex = filteredList[0].originalIndex;
+    currentPos = 0;
+  }
+
+  const curItem = evcDictationChallenges[appState.currentDictationIndex] || evcDictationChallenges[0];
+  const isDone = appState.dictationCompleted.includes(curItem.id);
+  const userTyped = appState.dictationUserInputs[curItem.id] || '';
+  const isChecked = !!appState.dictationChecked[curItem.id];
+  const isMatch = userTyped.trim().toLowerCase() === curItem.targetText.trim().toLowerCase();
+
+  container.innerHTML = `
+    <!-- Banner Acuan Kurikulum EVC Dictation -->
+    <div style="background: linear-gradient(135deg, rgba(15, 23, 42, 0.95), rgba(159, 18, 57, 0.45)); border: 1.5px solid var(--accent-pink); border-radius: 12px; padding: 14px 18px; margin-bottom: 16px; display: flex; align-items: center; gap: 14px;">
+      <img src="assets/illustrations/3d_tiles/tile_3d_18.png" style="width: 60px; height: 60px; border-radius: 12px; object-fit: cover; border: 2px solid var(--accent-pink); flex-shrink: 0; box-shadow: 0 4px 12px rgba(244, 63, 94, 0.25);" alt="Kodi Dictation Master" title="Kodi Dictation Master #18">
+      <div>
+        <div style="font-size: 0.75rem; color: var(--accent-pink); font-weight: 800; text-transform: uppercase;">
+          Progressive Dictation Studio • EVC ESL LibreTexts Curriculum:
+        </div>
+        <h4 style="color: #fff; margin: 2px 0;">Studio Dikte Suara & Menyimak Ejaan Bahasa Inggris</h4>
+        <p style="font-size: 0.8rem; color: #cbd5e1; margin: 0;">
+          Latihan mendengar teliti dari singkatan istilah IT, ejaan huruf, frasa kerja teknis, hingga transkripsi kalimat utuh!
+        </p>
+      </div>
+    </div>
+
+    <!-- Filter & Navigation Bar -->
+    <div class="challenge-nav-bar">
+      <div class="challenge-nav-controls">
+        <label style="font-size: 0.8rem; font-weight: 700; color: var(--accent-pink);">Level Dikte:</label>
+        <select class="challenge-page-select" onchange="filterDictationLevel(this.value)">
+          ${levels.map(l => `
+            <option value="${l.key}" ${String(appState.currentDictationLevelFilter) === String(l.key) ? 'selected' : ''}>${l.label}</option>
+          `).join('')}
+        </select>
+      </div>
+
+      <div class="challenge-nav-controls">
+        <button class="btn-secondary" style="padding: 6px 12px; font-size: 0.82rem;" onclick="navDictationChallenge(-1)" ${currentPos <= 0 ? 'disabled' : ''}>
+          ⬅️ Prev
+        </button>
+        <select class="challenge-page-select" onchange="setDictationIndex(Number(this.value))">
+          ${filteredList.map((x) => `
+            <option value="${x.originalIndex}" ${x.originalIndex === appState.currentDictationIndex ? 'selected' : ''}>
+              #${x.originalIndex + 1}: ${x.item.levelName} (${x.item.targetText.substring(0, 20)}...) ${appState.dictationCompleted.includes(x.item.id) ? '✅' : ''}
+            </option>
+          `).join('')}
+        </select>
+        <button class="btn-secondary" style="padding: 6px 12px; font-size: 0.82rem;" onclick="navDictationChallenge(1)" ${currentPos >= filteredList.length - 1 ? 'disabled' : ''}>
+          Next ➡️
+        </button>
+      </div>
+    </div>
+
+    <!-- WIDESCREEN 2-COLUMN STAGE: PANDUAN & CONTOH (KIRI) vs AUDIO & INPUT DIKTE (KANAN) -->
+    <div class="game-widescreen-stage equal">
+      <!-- PANEL KIRI: CONTOH SOAL, PETUNJUK ARTI & FLOW -->
+      <div class="stage-left-panel">
+        <div style="background: var(--bg-card); padding: 20px; border-radius: var(--radius-md); border: 1px solid var(--border-glow); margin-bottom: 16px;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; flex-wrap: wrap; gap: 6px;">
+            <span style="font-size: 0.78rem; font-weight: 800; color: var(--accent-pink); background: rgba(244, 63, 94, 0.15); padding: 4px 10px; border-radius: 12px;">
+              📌 ${curItem.levelName}
+            </span>
+            <span style="font-size: 0.75rem; color: var(--accent-yellow); font-weight: 700;">
+              Tantangan #${appState.currentDictationIndex + 1} dari ${evcDictationChallenges.length} ${isDone ? '✅ Selesai' : ''}
+            </span>
+          </div>
+
+          <!-- KOTAK CONTOH DIKTE & PENJELASAN -->
+          ${curItem.workedExample ? `
+            <div class="worked-example-card" style="margin-bottom: 14px;">
+              <div class="worked-example-header">
+                <span class="we-badge">💡 CONTOH POLA DIKTE BENAR DULU</span>
+                <span class="we-sub">${curItem.chapterRef || 'Panduan EVC'}</span>
+              </div>
+              <div class="we-body">
+                <div class="we-row">
+                  <span class="we-label">🔊 Contoh Audio yang Diperdengarkan:</span>
+                  <span class="we-text">"${curItem.workedExample.sampleAudio}"</span>
+                </div>
+                <div class="we-row">
+                  <span class="we-label">✅ Teks Ketikan yang Benar:</span>
+                  <code class="we-code">${curItem.workedExample.sampleTarget}</code>
+                </div>
+                <div class="we-row">
+                  <span class="we-label">🍼 Trik Menyimak Kodi:</span>
+                  <span class="we-text">${curItem.workedExample.sampleExplanation}</span>
+                </div>
+              </div>
+              <div class="we-divider">🎯 SEKARANG DENGARKAN AUDIO TANTANGAN DI KANAN ➔</div>
+            </div>
+          ` : ''}
+
+          <!-- Petunjuk Arti & Nalar Bayi -->
+          <div style="background: rgba(250, 204, 21, 0.1); border-left: 3px solid var(--accent-yellow); padding: 12px 14px; border-radius: 8px; font-size: 0.88rem; color: #fef08a; margin-bottom: 14px;">
+            <strong>🍼 Petunjuk Nalar Bayi Kodi:</strong>
+            <p style="margin: 4px 0 6px;">${curItem.babyClue || 'Dengarkan ritme huruf atau kata dan ketik dengan teliti!'}</p>
+            <div style="font-size: 0.8rem; color: #cbd5e1; font-style: italic;">
+              Arti resmi: "${curItem.meaning}"
+            </div>
+          </div>
+
+          <!-- Visual Dictation Flow -->
+          <div class="visual-mission-flow">
+            <div class="flow-step-item">
+              <span class="flow-step-badge">1</span>
+              <span>Putar Audio</span>
+            </div>
+            <span class="flow-arrow-sep">➔</span>
+            <div class="flow-step-item">
+              <span class="flow-step-badge">2</span>
+              <span>Ketik Ejaan</span>
+            </div>
+            <span class="flow-arrow-sep">➔</span>
+            <div class="flow-step-item">
+              <span class="flow-step-badge">3</span>
+              <span>Periksa Teks</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PANEL KANAN: AUDIO PLAYER, INPUT AREA & FEEDBACK -->
+      <div class="stage-right-panel">
+        <div style="background: var(--bg-card); padding: 22px; border-radius: var(--radius-md); border: 1px solid var(--border-glow);">
+          <div style="font-size: 0.75rem; color: var(--accent-pink); font-weight: 800; text-transform: uppercase; margin-bottom: 8px;">
+            🎧 Putar Audio & Ketik Apa yang Kamu Dengar:
+          </div>
+
+          <!-- Audio Controls -->
+          <div style="display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 16px;">
+            <button class="btn-primary" style="display: flex; align-items: center; gap: 8px; background: linear-gradient(135deg, #f43f5e, #e11d48); padding: 10px 18px;" onclick="playDictationAudio(false, this)">
+              🔊 Putar Audio Normal
+            </button>
+            <button class="btn-secondary" style="display: flex; align-items: center; gap: 8px; padding: 10px 16px;" onclick="playDictationAudio(true, this)">
+              🐢 Putar Audio Lambat (Slow)
+            </button>
+          </div>
+
+          <!-- Input Area -->
+          <div style="margin-bottom: 16px;">
+            <label style="font-size: 0.8rem; font-weight: 700; color: var(--text-muted); display: block; margin-bottom: 6px;">
+              Ketik teks hasil pendengaranmu di bawah:
+            </label>
+            <textarea id="dictation-user-input"
+                      rows="3"
+                      style="width: 100%; box-sizing: border-box; background: rgba(15, 23, 42, 0.9); border: 1.5px solid var(--border-glow); border-radius: 8px; padding: 12px; color: #fff; font-family: 'Consolas', monospace; font-size: 1rem; line-height: 1.5; resize: vertical;"
+                      placeholder="Ketik di sini apa yang diucapkan oleh Kodi..."
+                      oninput="onDictationInputChanged(this.value)">${userTyped}</textarea>
+          </div>
+
+          <!-- Action Buttons -->
+          <div style="display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 16px;">
+            <button class="btn-primary" style="background: linear-gradient(135deg, #10b981, #059669); border: none; font-size: 0.92rem; font-weight: 800; padding: 10px 20px; box-shadow: 0 4px 14px rgba(16, 185, 129, 0.4);" onclick="checkDictationAnswer()">
+              ⚡ Periksa Hasil Dikte
+            </button>
+            <button class="btn-secondary" style="font-size: 0.82rem; padding: 8px 14px;" onclick="showDictationHint()">
+              💡 Petunjuk Huruf
+            </button>
+            <button class="btn-secondary" style="font-size: 0.82rem; padding: 8px 14px;" onclick="resetDictationInput()">
+              🔄 Bersihkan Ketikan
+            </button>
+          </div>
+
+          <!-- Feedback Box -->
+          <div id="dictation-feedback-box">
+            ${isChecked ? `
+              <div class="train-result-card ${isMatch ? 'is-correct-card' : 'is-wrong-card'}" style="padding: 16px; border-radius: 12px; border: 1.5px solid ${isMatch ? '#10b981' : '#f43f5e'}; background: ${isMatch ? 'rgba(16, 185, 129, 0.12)' : 'rgba(244, 63, 94, 0.12)'};">
+                <h4 style="margin: 0 0 6px; color: ${isMatch ? '#34d399' : '#f87171'}; font-size: 1.05rem;">
+                  ${isMatch ? '🎉 Tepat Sekali! Transkripsi Audio Sempurna!' : '⚠️ Masih Ada Perbedaan Ejaan!'}
+                </h4>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; font-size: 0.85rem; margin-top: 8px;">
+                  <div>
+                    <span style="color: var(--text-muted); font-size: 0.75rem;">Ketikanmu:</span>
+                    <div style="font-weight: 700; color: ${isMatch ? '#34d399' : '#f87171'}; font-family: monospace;">"${userTyped}"</div>
+                  </div>
+                  <div>
+                    <span style="color: var(--text-muted); font-size: 0.75rem;">Kunci Sebenarnya:</span>
+                    <div style="font-weight: 700; color: #34d399; font-family: monospace;">"${curItem.targetText}"</div>
+                  </div>
+                </div>
+              </div>
+            ` : ''}
+          </div>
+
+          <!-- Glowing Directional Arrow Navigation Bar -->
+          <div class="arrow-nav-bar" style="margin-top: 20px;">
+            <button class="btn-arrow-nav" onclick="navDictationChallenge(-1)" ${currentPos <= 0 ? 'disabled' : ''}>
+              <span>◀</span>
+              <span>Dikte Sebelumnya</span>
+            </button>
+            <span style="font-size: 0.82rem; font-weight: 700; color: var(--accent-pink);">
+              Dikte #${appState.currentDictationIndex + 1} dari ${evcDictationChallenges.length}
+            </span>
+            <button class="btn-arrow-nav primary" onclick="navDictationChallenge(1)" ${currentPos >= filteredList.length - 1 ? 'disabled' : ''}>
+              <span>Dikte Berikutnya</span>
+              <span>▶</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+window.filterDictationLevel = function(lvl) {
+  sfx.playClick();
+  appState.currentDictationLevelFilter = lvl;
+  renderEvcDictationStudio();
+};
+
+window.navDictationChallenge = function(delta) {
+  sfx.playClick();
+  const filteredList = (appState.currentDictationLevelFilter === 'all')
+    ? evcDictationChallenges.map((item, idx) => ({ item, originalIndex: idx }))
+    : evcDictationChallenges
+        .map((item, idx) => ({ item, originalIndex: idx }))
+        .filter(x => String(x.item.level) === String(appState.currentDictationLevelFilter));
+
+  let currentPos = filteredList.findIndex(x => x.originalIndex === appState.currentDictationIndex);
+  let newPos = currentPos + delta;
+  if (newPos >= 0 && newPos < filteredList.length) {
+    appState.currentDictationIndex = filteredList[newPos].originalIndex;
+    renderEvcDictationStudio();
+  }
+};
+
+window.setDictationIndex = function(idx) {
+  sfx.playClick();
+  appState.currentDictationIndex = idx;
+  renderEvcDictationStudio();
+};
+
+window.playDictationAudio = function(isSlow, btn) {
+  sfx.playClick();
+  const curItem = evcDictationChallenges[appState.currentDictationIndex];
+  if (!curItem) return;
+  const text = curItem.audioText || curItem.targetText;
+  const rate = isSlow ? 0.65 : 0.85;
+  speechEngine.speakText(text, rate, btn, speechEngine.englishAccent || 'en-US');
+};
+
+window.onDictationInputChanged = function(val) {
+  const curItem = evcDictationChallenges[appState.currentDictationIndex];
+  if (!curItem) return;
+  appState.dictationUserInputs[curItem.id] = val;
+};
+
+window.checkDictationAnswer = function() {
+  const curItem = evcDictationChallenges[appState.currentDictationIndex];
+  if (!curItem) return;
+  const userTyped = (appState.dictationUserInputs[curItem.id] || '').trim();
+  const isMatch = userTyped.toLowerCase() === curItem.targetText.trim().toLowerCase();
+
+  appState.dictationChecked[curItem.id] = true;
+  if (isMatch) {
+    sfx.playSuccess();
+    if (!appState.dictationCompleted.includes(curItem.id)) {
+      appState.dictationCompleted.push(curItem.id);
+      appState.stars = (appState.stars || 0) + 1;
+      saveProgress();
+      const starEl = document.getElementById("header-stars");
+      if (starEl) starEl.textContent = `${appState.stars} Bintang`;
+    }
+  } else {
+    sfx.playWrong();
+  }
+  renderEvcDictationStudio();
+};
+
+window.showDictationHint = function() {
+  sfx.playClick();
+  const curItem = evcDictationChallenges[appState.currentDictationIndex];
+  if (!curItem) return;
+  const hint = curItem.targetText.length > 2 
+    ? `Huruf pertama: '${curItem.targetText[0]}', panjang: ${curItem.targetText.length} karakter.` 
+    : `Panjang: ${curItem.targetText.length} karakter.`;
+  alert(`💡 Petunjuk Dikte: ${hint}`);
+};
+
+window.resetDictationInput = function() {
+  sfx.playClick();
+  const curItem = evcDictationChallenges[appState.currentDictationIndex];
+  if (!curItem) return;
+  appState.dictationUserInputs[curItem.id] = '';
+  delete appState.dictationChecked[curItem.id];
+  renderEvcDictationStudio();
 };
 
 // ===================================================================
@@ -3686,8 +4300,23 @@ function renderExcelTrainer() {
         </div>
       </div>
 
-      <!-- 2. WORKED EXAMPLE CARD (1 CONTOH SOAL & CONTOH JAWABAN BENAR PER RUMUS) -->
-      ${chal.workedExample ? `
+      <!-- GAME WIDESCREEN STAGE: KIRI = CONTOH & 5 KASUS NYATA, KANAN = WINDOW EXCEL ASLI & GRID -->
+      <div class="game-widescreen-stage" style="margin-top: 14px;">
+        <!-- PANEL KIRI: CONTOH RUMUS & 5 PERSOALAN DUNIA NYATA -->
+        <div class="stage-left-panel">
+          <div class="step-flow-row" style="margin-top: 0; margin-bottom: 12px;">
+            <span class="step-pill">ALUR EXCEL</span>
+            <span>1. Pelajari Contoh</span>
+            <span class="flow-arrow-sep">➔</span>
+            <span>2. Pilih Kasus 1-5</span>
+            <span class="flow-arrow-sep">➔</span>
+            <span>3. Ketik di fx Kanan</span>
+            <span class="flow-arrow-sep">➔</span>
+            <span>4. Tekan Enter</span>
+          </div>
+
+          <!-- 2. WORKED EXAMPLE CARD (1 CONTOH SOAL & CONTOH JAWABAN BENAR PER RUMUS) -->
+          ${chal.workedExample ? `
         <div class="excel-worked-example-card" style="border-left: 5px solid #107c41; margin-bottom: 14px;">
           <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
             <div style="font-weight: 800; font-size: 0.95rem; color: #10b981; display: flex; align-items: center; gap: 6px;">
@@ -3756,12 +4385,15 @@ function renderExcelTrainer() {
         `}
 
         <div style="background: var(--bg-secondary); border-left: 4px solid var(--accent-yellow); padding: 8px 12px; border-radius: 4px; font-size: 0.86rem; color: var(--text-main);">
-          <strong>🎯 Tugas Tes Simulator Tabel di Bawah:</strong> Ketik rumus jawabanmu di sel <b>${chal.targetCell}</b> (${chal.instruction})
+          <strong>🎯 Tugas Tes Simulator:</strong> Ketik rumus jawabanmu di sel <b>${chal.targetCell}</b> pada tabel Excel di sebelah kanan ➡️
         </div>
       </div>
+    </div>
 
+    <!-- PANEL KANAN: JENDELA RESMI MICROSOFT EXCEL SUITE MOCKUP -->
+    <div class="stage-right-panel">
       <!-- 4. JENDELA RESMI MICROSOFT EXCEL SUITE MOCKUP (TAMPILAN NYATA EXCEL) -->
-      <div class="office-window-mockup excel-window" style="margin-bottom: 20px;">
+      <div class="office-window-mockup excel-window" style="margin-bottom: 14px;">
         <!-- TITLE BAR ASLI EXCEL -->
         <div class="office-title-bar excel-title-bar">
           <div class="office-title-left">
@@ -3921,9 +4553,24 @@ function renderExcelTrainer() {
         </div>
       </div>
 
+      <!-- Navigasi Panah Bawah -->
+      <div class="arrow-nav-bar" style="margin-top: 10px;">
+        <button class="btn-arrow-nav" onclick="navExcelChallenge(-1)" ${currentPos <= 0 ? 'disabled' : ''}>
+          ◀ Rumus Sebelumnya
+        </button>
+        <span style="font-size: 0.82rem; font-weight: 800; color: #10b981;">
+          Rumus #${appState.currentExcelIndex + 1} dari ${excelChallenges.length}
+        </span>
+        <button class="btn-arrow-nav" onclick="navExcelChallenge(1)" ${currentPos >= filteredList.length - 1 ? 'disabled' : ''}>
+          Rumus Berikutnya ▶
+        </button>
+      </div>
+
       <!-- FEEDBACK / ALERT CONTAINER -->
       <div id="excel-feedback-box" style="display: none; margin-top: 14px;"></div>
     </div>
+  </div>
+</div>
   `;
 }
 
@@ -4577,36 +5224,54 @@ function renderItTechTrainer() {
         ${chal.title}
       </h3>
 
-      <!-- Scenario Box -->
-      <div style="background: rgba(15, 23, 42, 0.85); border-left: 4px solid var(--accent-cyan); padding: 14px 18px; border-radius: 6px; margin-bottom: 18px; font-size: 0.95rem; line-height: 1.6; color: #e2e8f0;">
-        <strong>Skenario Kasus Nyata:</strong><br>
-        ${chal.scenario}
-      </div>
+      <!-- GAME WIDESCREEN STAGE: KIRI = SKENARIO & CONTOH, KANAN = PERTANYAAN & PILIHAN -->
+      <div class="game-widescreen-stage equal" style="margin-top: 10px;">
+        <!-- PANEL KIRI: SKENARIO KASUS NYATA & CONTOH SERUPA -->
+        <div class="stage-left-panel">
+          <div class="step-flow-row" style="margin-top: 0; margin-bottom: 12px;">
+            <span class="step-pill">ALUR LAB</span>
+            <span>1. Skenario Kasus</span>
+            <span class="flow-arrow-sep">➔</span>
+            <span>2. Kasus A (Contoh)</span>
+            <span class="flow-arrow-sep">➔</span>
+            <span>3. Pilih Solusi Kanan</span>
+            <span class="flow-arrow-sep">➔</span>
+            <span>4. Standar Industri</span>
+          </div>
 
-      <!-- KOTAK CONTOH SOAL & JAWABAN BENAR DULU -->
-      <div class="worked-example-card" style="margin-bottom: 22px;">
-        <div class="worked-example-header">
-          <span class="we-badge">💡 CONTOH KASUS SERUPA & JAWABAN BENAR DULU</span>
-          <span class="we-sub">Pelajari pola penyelesaian kasus serupa ini sebelum memilih jawaban tantanganmu:</span>
-        </div>
-        <div class="we-body">
-          <div class="we-row">
-            <span class="we-label">📝 Contoh Kasus Serupa:</span>
-            <span class="we-text">${chal.workedExample.kasusSerupa}</span>
+          <!-- Scenario Box -->
+          <div style="background: rgba(15, 23, 42, 0.85); border-left: 4px solid var(--accent-cyan); padding: 14px 18px; border-radius: 6px; margin-bottom: 14px; font-size: 0.95rem; line-height: 1.6; color: #e2e8f0;">
+            <strong style="color: var(--accent-cyan);">🌐 Skenario Kasus Nyata:</strong><br>
+            ${chal.scenario}
           </div>
-          <div class="we-row">
-            <span class="we-label">✅ Contoh Jawaban yang 100% Benar:</span>
-            <code class="we-code">${chal.workedExample.jawabanBenarContoh}</code>
-          </div>
-          <div class="we-row">
-            <span class="we-label">🍼 Nalar & Logika Bahasa Bayi Kodi:</span>
-            <span class="we-text">${chal.workedExample.nalarBayi}</span>
-          </div>
-        </div>
-        <div class="we-divider">🎯 SEKARANG PECAHKAN TANTANGAN ASLI DI BAWAH INI:</div>
-      </div>
 
-      <!-- Question Prompt -->
+          <!-- KOTAK CONTOH SOAL & JAWABAN BENAR DULU -->
+          <div class="worked-example-card" style="margin-bottom: 14px;">
+            <div class="worked-example-header">
+              <span class="we-badge">💡 CONTOH KASUS SERUPA & JAWABAN BENAR DULU</span>
+              <span class="we-sub">Pelajari pola penyelesaian kasus serupa ini sebelum memilih jawaban tantanganmu:</span>
+            </div>
+            <div class="we-body">
+              <div class="we-row">
+                <span class="we-label">📝 Contoh Kasus Serupa:</span>
+                <span class="we-text">${chal.workedExample.kasusSerupa}</span>
+              </div>
+              <div class="we-row">
+                <span class="we-label">✅ Contoh Jawaban yang 100% Benar:</span>
+                <code class="we-code">${chal.workedExample.jawabanBenarContoh}</code>
+              </div>
+              <div class="we-row">
+                <span class="we-label">🍼 Nalar & Logika Bahasa Bayi Kodi:</span>
+                <span class="we-text">${chal.workedExample.nalarBayi}</span>
+              </div>
+            </div>
+            <div class="we-divider">🎯 SEKARANG PECAHKAN TANTANGAN DI SEBELAH KANAN ➡️</div>
+          </div>
+        </div>
+
+        <!-- PANEL KANAN: PERTANYAAN PROMPT, OPSI PILIHAN, & HASIL -->
+        <div class="stage-right-panel">
+          <!-- Question Prompt -->
       <div style="background: rgba(30, 41, 59, 0.6); padding: 14px 18px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.08); margin-bottom: 18px;">
         <h4 style="margin: 0; color: #f8fafc; font-size: 1.05rem; line-height: 1.5;">
           ${chal.question}
@@ -4667,14 +5332,19 @@ function renderItTechTrainer() {
         ` : '')}
       </div>
 
-      <!-- Bottom Navigation Buttons -->
-      <div style="display: flex; justify-content: space-between; align-items: center; pt-3; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 16px;">
-        <button class="btn-outline" onclick="prevItTechChallenge()">
-          ◀ Soal Sebelumnya
-        </button>
-        <button class="btn-primary" onclick="nextItTechChallenge()">
-          Soal Berikutnya ▶
-        </button>
+          <!-- Bottom Navigation Buttons -->
+          <div class="arrow-nav-bar" style="margin-top: 14px;">
+            <button class="btn-arrow-nav" onclick="prevItTechChallenge()">
+              ◀ Soal Sebelumnya
+            </button>
+            <span style="font-size: 0.82rem; font-weight: 800; color: var(--accent-cyan);">
+              Lab #${appState.currentItTechIndex + 1} dari ${itTechChallenges.length}
+            </span>
+            <button class="btn-arrow-nav" onclick="nextItTechChallenge()">
+              Soal Berikutnya ▶
+            </button>
+          </div>
+        </div>
       </div>
 
     </div>
@@ -5217,15 +5887,17 @@ window.renderDictionary = function() {
           `}
         </div>
         ${totalPages > 1 ? `
-          <div style="display: flex; align-items: center; gap: 8px;">
-            <button class="btn-secondary" style="padding: 4px 10px; font-size: 0.78rem;" onclick="changeDictionaryPage(-1)" ${state.page <= 1 ? 'disabled' : ''}>
-              ⬅️ Hal Sebelumnya
+          <div class="arrow-nav-bar" style="margin: 0; padding: 2px 6px; border: none; background: transparent;">
+            <button class="btn-arrow-nav" style="padding: 5px 12px; font-size: 0.78rem;" onclick="changeDictionaryPage(-1)" ${state.page <= 1 ? 'disabled' : ''}>
+              <span>◀</span>
+              <span>Hal Sebelumnya</span>
             </button>
-            <span style="font-size: 0.8rem; font-weight: 700; color: var(--text-muted);">
-              Hal ${state.page} / ${totalPages}
+            <span style="font-size: 0.82rem; font-weight: 800; color: var(--accent-yellow); padding: 0 4px;">
+              ${state.page} / ${totalPages}
             </span>
-            <button class="btn-secondary" style="padding: 4px 10px; font-size: 0.78rem;" onclick="changeDictionaryPage(1)" ${state.page >= totalPages ? 'disabled' : ''}>
-              Hal Berikutnya ➡️
+            <button class="btn-arrow-nav primary" style="padding: 5px 12px; font-size: 0.78rem;" onclick="changeDictionaryPage(1)" ${state.page >= totalPages ? 'disabled' : ''}>
+              <span>Hal Berikutnya</span>
+              <span>▶</span>
             </button>
           </div>
         ` : ''}
@@ -5309,17 +5981,19 @@ window.renderDictionary = function() {
         </div>
       `}
 
-      <!-- BOTTOM PAGINATION -->
+      <!-- BOTTOM PAGINATION DENGAN GLOWING ARROW NAV BAR -->
       ${totalPages > 1 ? `
-        <div style="display: flex; justify-content: center; align-items: center; gap: 10px; margin-top: 24px;">
-          <button class="btn-secondary" style="padding: 6px 14px;" onclick="changeDictionaryPage(-1)" ${state.page <= 1 ? 'disabled' : ''}>
-            ⬅️ Halaman Sebelumnya
+        <div class="arrow-nav-bar" style="margin-top: 24px;">
+          <button class="btn-arrow-nav" onclick="changeDictionaryPage(-1)" ${state.page <= 1 ? 'disabled' : ''}>
+            <span>◀</span>
+            <span>Halaman Sebelumnya</span>
           </button>
-          <span style="font-weight: 700; font-size: 0.85rem; color: var(--text-muted);">
-            Halaman ${state.page} dari ${totalPages}
+          <span style="font-weight: 800; font-size: 0.88rem; color: var(--accent-yellow);">
+            Halaman ${state.page} dari ${totalPages} (${filtered.length} Kosakata)
           </span>
-          <button class="btn-secondary" style="padding: 6px 14px;" onclick="changeDictionaryPage(1)" ${state.page >= totalPages ? 'disabled' : ''}>
-            Halaman Berikutnya ➡️
+          <button class="btn-arrow-nav primary" onclick="changeDictionaryPage(1)" ${state.page >= totalPages ? 'disabled' : ''}>
+            <span>Halaman Berikutnya</span>
+            <span>▶</span>
           </button>
         </div>
       ` : ''}
@@ -5580,85 +6254,118 @@ function renderCodeTrainer() {
         </div>
       </div>
 
-      <!-- WORKED EXAMPLE CARD (KASUS SERUPA A & SINTAKS CONTOH DULU) -->
-      ${chal.workedExample ? `
-        <div class="worked-example-card" style="margin-bottom: 20px;">
-          <div class="worked-example-header">
-            <span class="we-badge">💡 CONTOH SOAL & JAWABAN BENAR DULU (KASUS A)</span>
-            <span class="we-sub">Pelajari pola penulisan kode kasus serupa ini sebelum menulis kodemu sendiri:</span>
+      <!-- GAME WIDESCREEN STAGE: KIRI = CONTOH & SKENARIO, KANAN = EDITOR & CONSOLE -->
+      <div class="game-widescreen-stage" style="margin-top: 14px;">
+        <!-- PANEL KIRI: CONTOH SOAL KASUS A & SKENARIO TANTANGAN B -->
+        <div class="stage-left-panel">
+          <div class="step-flow-row" style="margin-top: 0; margin-bottom: 14px;">
+            <span class="step-pill">ALUR KODING</span>
+            <span>1. Pahami Contoh A</span>
+            <span class="flow-arrow-sep">➔</span>
+            <span>2. Nalar Bayi</span>
+            <span class="flow-arrow-sep">➔</span>
+            <span>3. Ketik di Editor Kanan</span>
+            <span class="flow-arrow-sep">➔</span>
+            <span>4. Cek Output</span>
           </div>
-          <div class="we-body">
-            <div class="we-row">
-              <span class="we-label">📝 Contoh Kasus Serupa:</span>
-              <span class="we-text">${chal.workedExample.kasusSerupa}</span>
+
+          <!-- WORKED EXAMPLE CARD (KASUS SERUPA A & SINTAKS CONTOH DULU) -->
+          ${chal.workedExample ? `
+            <div class="worked-example-card" style="margin-bottom: 16px;">
+              <div class="worked-example-header">
+                <span class="we-badge">💡 CONTOH SOAL & JAWABAN BENAR DULU (KASUS A)</span>
+                <span class="we-sub">Pelajari pola penulisan kode kasus serupa ini sebelum menulis kodemu sendiri:</span>
+              </div>
+              <div class="we-body">
+                <div class="we-row">
+                  <span class="we-label">📝 Contoh Kasus Serupa:</span>
+                  <span class="we-text">${chal.workedExample.kasusSerupa}</span>
+                </div>
+                <div class="we-row" style="flex-direction: column; align-items: flex-start; gap: 6px;">
+                  <span class="we-label">✅ Contoh Kode yang 100% Benar:</span>
+                  <pre style="background: #060911; border: 1px dashed rgba(16, 185, 129, 0.4); border-radius: 6px; padding: 10px 14px; font-family: monospace; font-size: 0.88rem; color: #34d399; margin: 0; width: 100%; overflow-x: auto; white-space: pre-wrap;">${escapeCodeHtml(chal.workedExample.jawabanBenarContoh)}</pre>
+                </div>
+                <div class="we-row">
+                  <span class="we-label">🍼 Analogi & Nalar Bayi Kodi:</span>
+                  <span class="we-text">${chal.workedExample.nalarBayi}</span>
+                </div>
+              </div>
+              <div class="we-divider">🎯 SEKARANG TULIS KODE TANTANGAN (KASUS B) DI SEBELAH KANAN ➡️</div>
             </div>
-            <div class="we-row" style="flex-direction: column; align-items: flex-start; gap: 6px;">
-              <span class="we-label">✅ Contoh Kode yang 100% Benar:</span>
-              <pre style="background: #060911; border: 1px dashed rgba(16, 185, 129, 0.4); border-radius: 6px; padding: 10px 14px; font-family: monospace; font-size: 0.88rem; color: #34d399; margin: 0; width: 100%; overflow-x: auto; white-space: pre-wrap;">${escapeCodeHtml(chal.workedExample.jawabanBenarContoh)}</pre>
+          ` : ''}
+
+          <!-- Skenario & Instruksi Tugas B -->
+          <div style="background: rgba(15, 23, 42, 0.85); border-left: 4px solid var(--accent-cyan); padding: 14px 18px; border-radius: 6px; margin-bottom: 14px; font-size: 0.95rem; line-height: 1.6; color: #e2e8f0;">
+            <strong style="color: var(--accent-cyan);">🎯 Skenario Tugas Koding (Kasus B):</strong><br>
+            ${chal.description}
+          </div>
+        </div>
+
+        <!-- PANEL KANAN: EDITOR MONOSPACE, SHORTCUT, & TERMINAL RUN -->
+        <div class="stage-right-panel">
+          <!-- Bilah Shortcut Cepat Ngetik Simbol (Bantu Pengguna HP/Keyboard) -->
+          <div style="margin-bottom: 10px;">
+            <div style="font-size: 0.78rem; font-weight: 700; color: var(--text-muted); margin-bottom: 6px; display: flex; align-items: center; gap: 6px;">
+              <span>⚡ Shortcut Ketik Cepat:</span>
+              <span style="font-weight: normal; font-size: 0.72rem;">(Klik untuk menyisipkan simbol langsung ke kursor)</span>
             </div>
-            <div class="we-row">
-              <span class="we-label">🍼 Analogi & Nalar Bayi Kodi:</span>
-              <span class="we-text">${chal.workedExample.nalarBayi}</span>
+            <div style="display: flex; gap: 6px; flex-wrap: wrap;">
+              ${(chal.quickShortcuts || ["{", "}", "(", ")", "[", "]", ";", '"', "'", "="]).map(sc => `
+                <button class="btn-secondary" 
+                        style="padding: 4px 10px; font-size: 0.82rem; font-family: monospace; font-weight: 700; background: rgba(15, 23, 42, 0.9); border: 1px solid rgba(255,255,255,0.18);" 
+                        onclick="insertCodeShortcut('${escapeJsAttr(sc)}')">
+                  ${escapeCodeHtml(sc)}
+                </button>
+              `).join('')}
             </div>
           </div>
-          <div class="we-divider">🎯 SEKARANG TULIS KODE TANTANGAN (KASUS B) DI BAWAH INI:</div>
-        </div>
-      ` : ''}
 
-      <!-- Skenario & Instruksi Tugas B -->
-      <div style="background: rgba(15, 23, 42, 0.85); border-left: 4px solid var(--accent-cyan); padding: 14px 18px; border-radius: 6px; margin-bottom: 18px; font-size: 0.95rem; line-height: 1.6; color: #e2e8f0;">
-        <strong>🎯 Skenario Tugas Koding:</strong><br>
-        ${chal.description}
-      </div>
+          <!-- Live Code Editor (Textarea Monospace IDE Style) -->
+          <div style="position: relative; margin-bottom: 16px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; background: #0b1120; border: 1px solid rgba(255,255,255,0.1); border-bottom: none; border-radius: 8px 8px 0 0; padding: 8px 14px; font-size: 0.78rem; color: #94a3b8;">
+              <span style="font-family: monospace; font-weight: 700; color: var(--accent-cyan);">Editor: ${chal.language}</span>
+              <span>Tab / Spasi Otomatis</span>
+            </div>
+            <textarea id="code-studio-editor"
+                      style="width: 100%; min-height: 220px; background: #060911; color: #f8fafc; font-family: 'Consolas', 'Fira Code', 'Monaco', monospace; font-size: 0.92rem; line-height: 1.5; padding: 14px; border: 1px solid rgba(255,255,255,0.15); border-radius: 0 0 8px 8px; resize: vertical; box-sizing: border-box; outline: none;"
+                      placeholder="Tulis kode solusimu di sini..."
+                      spellcheck="false"
+                      oninput="handleCodeInput('${chal.id}', this.value)">${escapeCodeHtml(currentCode)}</textarea>
+          </div>
 
-      <!-- Bilah Shortcut Cepat Ngetik Simbol (Bantu Pengguna HP/Keyboard) -->
-      <div style="margin-bottom: 10px;">
-        <div style="font-size: 0.78rem; font-weight: 700; color: var(--text-muted); margin-bottom: 6px; display: flex; align-items: center; gap: 6px;">
-          <span>⚡ Shortcut Ketik Cepat:</span>
-          <span style="font-weight: normal; font-size: 0.72rem;">(Klik untuk menyisipkan simbol langsung ke kursor)</span>
-        </div>
-        <div style="display: flex; gap: 6px; flex-wrap: wrap;">
-          ${(chal.quickShortcuts || ["{", "}", "(", ")", "[", "]", ";", '"', "'", "="]).map(sc => `
-            <button class="btn-secondary" 
-                    style="padding: 4px 10px; font-size: 0.82rem; font-family: monospace; font-weight: 700; background: rgba(15, 23, 42, 0.9); border: 1px solid rgba(255,255,255,0.18);" 
-                    onclick="insertCodeShortcut('${escapeJsAttr(sc)}')">
-              ${escapeCodeHtml(sc)}
+          <!-- Tombol Aksi Eksekusi & Reset -->
+          <div style="display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 14px;">
+            <button class="btn-primary" style="padding: 10px 22px; font-weight: 800; font-size: 0.95rem; background: var(--accent-cyan); color: #0b1120; border: none; display: inline-flex; align-items: center; gap: 8px;" onclick="runCodeChallengeTest()">
+              ▶️ Uji & Jalankan Kode
             </button>
-          `).join('')}
-        </div>
-      </div>
+            <button class="btn-secondary" style="padding: 10px 18px; font-size: 0.88rem;" onclick="resetCodeChallengeToStarter()">
+              🔄 Reset Kode Awal
+            </button>
+          </div>
 
-      <!-- Live Code Editor (Textarea Monospace IDE Style) -->
-      <div style="position: relative; margin-bottom: 16px;">
-        <div style="display: flex; justify-content: space-between; align-items: center; background: #0b1120; border: 1px solid rgba(255,255,255,0.1); border-bottom: none; border-radius: 8px 8px 0 0; padding: 8px 14px; font-size: 0.78rem; color: #94a3b8;">
-          <span style="font-family: monospace; font-weight: 700; color: var(--accent-cyan);">Editor: ${chal.language}</span>
-          <span>Tab / Spasi Otomatis</span>
-        </div>
-        <textarea id="code-studio-editor"
-                  style="width: 100%; min-height: 190px; background: #060911; color: #f8fafc; font-family: 'Consolas', 'Fira Code', 'Monaco', monospace; font-size: 0.92rem; line-height: 1.5; padding: 14px; border: 1px solid rgba(255,255,255,0.15); border-radius: 0 0 8px 8px; resize: vertical; box-sizing: border-box; outline: none;"
-                  placeholder="Tulis kode solusimu di sini..."
-                  spellcheck="false"
-                  oninput="handleCodeInput('${chal.id}', this.value)">${escapeCodeHtml(currentCode)}</textarea>
-      </div>
+          <!-- Output Console & Test Results Box -->
+          <div id="code-test-console" style="display: none;"></div>
 
-      <!-- Tombol Aksi Eksekusi & Reset -->
-      <div style="display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 18px;">
-        <button class="btn-primary" style="padding: 10px 22px; font-weight: 800; font-size: 0.95rem; background: var(--accent-cyan); color: #0b1120; border: none;" onclick="runCodeChallengeTest()">
-          ▶️ Uji & Jalankan Kode
-        </button>
-        <button class="btn-secondary" style="padding: 10px 18px; font-size: 0.88rem;" onclick="resetCodeChallengeToStarter()">
-          🔄 Reset Kode Awal
-        </button>
-      </div>
+          <!-- Penjelasan Konsep Setelah Sukses -->
+          <div id="code-concept-explanation" style="${isDone ? 'display: block;' : 'display: none;'} margin-top: 14px;">
+            <div class="alert-box info" style="background: rgba(15, 23, 42, 0.9); border-left: 4px solid var(--accent-cyan);">
+              <strong style="color: var(--accent-cyan);">📚 Rangkuman Pembelajaran:</strong><br>
+              <p style="margin: 6px 0 0; font-size: 0.88rem; line-height: 1.5; color: #cbd5e1;">${chal.explanation}</p>
+            </div>
+          </div>
 
-      <!-- Output Console & Test Results Box -->
-      <div id="code-test-console" style="display: none;"></div>
-
-      <!-- Penjelasan Konsep Setelah Sukses -->
-      <div id="code-concept-explanation" style="${isDone ? 'display: block;' : 'display: none;'} margin-top: 14px;">
-        <div class="alert-box info" style="background: rgba(15, 23, 42, 0.9); border-left: 4px solid var(--accent-cyan);">
-          <strong style="color: var(--accent-cyan);">📚 Rangkuman Pembelajaran:</strong><br>
-          <p style="margin: 6px 0 0; font-size: 0.88rem; line-height: 1.5; color: #cbd5e1;">${chal.explanation}</p>
+          <!-- Navigasi Panah Bawah -->
+          <div class="arrow-nav-bar" style="margin-top: 16px;">
+            <button class="btn-arrow-nav" onclick="navCodeChallenge(-1)" ${currentPos <= 0 ? 'disabled' : ''}>
+              ◀ Soal Sebelumnya
+            </button>
+            <span style="font-size: 0.82rem; font-weight: 800; color: var(--accent-cyan);">
+              Tantangan #${appState.currentCodeIndex + 1} dari ${codeChallenges.length}
+            </span>
+            <button class="btn-arrow-nav" onclick="navCodeChallenge(1)" ${currentPos >= filteredList.length - 1 ? 'disabled' : ''}>
+              Soal Berikutnya ▶
+            </button>
+          </div>
         </div>
       </div>
 
@@ -6002,8 +6709,8 @@ function renderMathTrainer() {
       </div>
     </div>
 
-    <!-- MAIN GRID: Worked Example (Left/Top) & Student Challenge (Right/Bottom) -->
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px; margin-bottom: 24px;">
+    <!-- MAIN WIDESCREEN STAGE: Worked Example (Left) & Student Challenge (Right) -->
+    <div class="game-widescreen-stage equal" style="margin-top: 14px; margin-bottom: 24px;">
 
       <!-- ================= KOTAK CONTOH SOAL SERUPA (KASUS A) ================= -->
       <div class="math-worked-card">
@@ -6012,6 +6719,15 @@ function renderMathTrainer() {
             📖 CONTOH SOAL & PEMBAHASAN TERPISAH (KASUS A)
           </span>
           <span style="font-size: 0.75rem; color: var(--text-muted); font-weight: 600;">Pelajari Polanya 💡</span>
+        </div>
+
+        <div class="step-flow-row" style="margin: 0 0 12px 0;">
+          <span class="step-pill">ALUR NALAR</span>
+          <span>1. Amati Kasus A</span>
+          <span class="flow-arrow-sep">➔</span>
+          <span>2. Pahami Working Out</span>
+          <span class="flow-arrow-sep">➔</span>
+          <span>3. Hitung Kasus B di Kanan</span>
         </div>
 
         <!-- Soal Contoh Bilingual -->
@@ -6128,7 +6844,7 @@ function renderMathTrainer() {
         </div>
 
         <!-- Submit Button -->
-        <div style="margin-top: auto; display: flex; gap: 10px; align-items: center;">
+        <div style="margin-top: 14px; display: flex; gap: 10px; align-items: center;">
           <button class="btn-primary"
                   style="flex: 1; padding: 12px; font-size: 0.95rem; font-weight: 800; display: flex; align-items: center; justify-content: center; gap: 8px;"
                   onclick="submitMathAnswer()">
@@ -6153,6 +6869,19 @@ function renderMathTrainer() {
               </div>
             </div>
           ` : ''}
+        </div>
+
+        <!-- Navigasi Panah Bawah -->
+        <div class="arrow-nav-bar" style="margin-top: 14px;">
+          <button class="btn-arrow-nav" onclick="navMathChallenge(-1)" ${currentPos <= 0 ? 'disabled' : ''}>
+            ◀ Soal Sebelumnya
+          </button>
+          <span style="font-size: 0.82rem; font-weight: 800; color: var(--accent-cyan);">
+            Soal #${appState.currentMathIndex + 1} dari ${allChallenges.length}
+          </span>
+          <button class="btn-arrow-nav" onclick="navMathChallenge(1)" ${currentPos >= filteredList.length - 1 ? 'disabled' : ''}>
+            Soal Berikutnya ▶
+          </button>
         </div>
 
       </div>
@@ -6488,26 +7217,56 @@ function renderIhsaniyahTest() {
         </span>
       </div>
 
-      <h3 style="margin: 0 0 8px; font-size: 1.2rem; color: #fff;">${q.number}. ${q.title}</h3>
-      <p style="margin: 0 0 14px; font-size: 0.95rem; color: #e2e8f0; line-height: 1.55; white-space: pre-line;">${q.instruction}</p>
+      <!-- GAME WIDESCREEN STAGE: KIRI = MANIPULATIF SVG & STEP FLOW, KANAN = SOAL & INPUT INTERAKTIF -->
+      <div class="game-widescreen-stage" style="margin-top: 10px;">
+        <!-- PANEL KIRI: VISUAL MANIPULATIF SVG BESAR & DIAGRAM ALUR NALAR -->
+        <div class="stage-left-panel">
+          <div class="visual-diagram-card" style="margin-bottom: 12px; padding: 14px 18px;">
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
+              <span style="font-size: 0.8rem; font-weight: 800; color: #38bdf8;">🎨 1. AMATI GAMBAR MANIPULATIF:</span>
+              <span style="font-size: 0.74rem; color: var(--text-muted);">Hitung objek atau kelompokkan!</span>
+            </div>
+            <!-- Visual Interaktif & Manipulatif Buatan Sendiri (100% Tanpa Gambar Crop PDF!) -->
+            <div id="ihs-custom-visual-container">
+              ${typeof window.renderIhsaniyahCustomVisual === 'function' ? window.renderIhsaniyahCustomVisual(q) : ''}
+            </div>
+          </div>
+          
+          <div class="step-flow-row" style="margin: 0 0 10px 0;">
+            <span class="step-pill">ALUR JAWAB</span>
+            <span>1. Amati Objek / Relasi</span>
+            <span class="flow-arrow-sep">➔</span>
+            <span>2. Tentukan Pola Matematika</span>
+            <span class="flow-arrow-sep">➔</span>
+            <span>3. Isi Kotak Jawaban di Kanan</span>
+          </div>
+        </div>
 
-      <!-- Visual Interaktif & Manipulatif Buatan Sendiri (100% Tanpa Gambar Crop PDF!) -->
-      <div id="ihs-custom-visual-container">
-        ${typeof window.renderIhsaniyahCustomVisual === 'function' ? window.renderIhsaniyahCustomVisual(q) : ''}
-      </div>
+        <!-- PANEL KANAN: INSTRUKSI SOAL & AREA INPUT JAWABAN SISWA -->
+        <div class="stage-right-panel">
+          <div style="background: rgba(15, 23, 42, 0.85); border: 1.5px solid rgba(56, 189, 248, 0.35); border-radius: 14px; padding: 18px; margin-bottom: 14px;">
+            <h3 style="margin: 0 0 8px; font-size: 1.22rem; color: #fff;">${q.number}. ${q.title}</h3>
+            <p style="margin: 0 0 14px; font-size: 0.95rem; color: #e2e8f0; line-height: 1.55; white-space: pre-line;">${q.instruction}</p>
 
-      <!-- Area Input Jawaban Siswa Interaktif -->
-      <div id="ihs-question-interactive-body" style="margin: 18px 0;">
-        ${renderIhsaniyahInteractiveBody(q)}
+            <div style="font-size: 0.8rem; font-weight: 800; color: #fde68a; margin-bottom: 10px; display: flex; align-items: center; gap: 6px;">
+              <span>✍️ 2. KERJAKAN JAWABAN ANDA:</span>
+            </div>
+
+            <!-- Area Input Jawaban Siswa Interaktif -->
+            <div id="ihs-question-interactive-body">
+              ${renderIhsaniyahInteractiveBody(q)}
+            </div>
+          </div>
+        </div>
       </div>
 
       <!-- Tombol Navigasi & Simpan Ujian (Tanpa Bocoran Pembahasan untuk Siswa) -->
-      <div style="display: flex; justify-content: space-between; align-items: center; gap: 10px; flex-wrap: wrap; margin-top: 20px; padding-top: 16px; border-top: 1px solid rgba(255,255,255,0.1);">
+      <div style="display: flex; justify-content: space-between; align-items: center; gap: 10px; flex-wrap: wrap; margin-top: 16px; padding-top: 16px; border-top: 1px solid rgba(255,255,255,0.1);">
         <div style="display: flex; gap: 10px; flex-wrap: wrap;">
-          <button class="btn-secondary" style="padding: 11px 18px; font-size: 0.88rem; font-weight: 700; border-radius: 8px;" onclick="navIhsaniyahQuestion(-1)" ${appState.currentIhsIndex <= 0 ? 'disabled' : ''}>
+          <button class="btn-arrow-nav" onclick="navIhsaniyahQuestion(-1)" ${appState.currentIhsIndex <= 0 ? 'disabled' : ''}>
             ◀ Soal Sebelumnya
           </button>
-          <button class="btn-primary" style="padding: 11px 22px; font-size: 0.92rem; font-weight: 800; background: linear-gradient(135deg, #0284c7, #2563eb); border: none; border-radius: 8px;" onclick="saveAndNextIhsaniyahQuestion()">
+          <button class="btn-primary" style="padding: 11px 22px; font-size: 0.92rem; font-weight: 800; background: linear-gradient(135deg, #0284c7, #2563eb); border: none; border-radius: 8px; display: inline-flex; align-items: center; gap: 8px;" onclick="saveAndNextIhsaniyahQuestion()">
             💾 Simpan Jawaban & Soal Berikutnya ▶
           </button>
         </div>
