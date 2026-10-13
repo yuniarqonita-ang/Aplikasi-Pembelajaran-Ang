@@ -1,7 +1,8 @@
 // ==============================================================================
 // 🎒 YAYASAN PERGURUAN IHSANIYAH - SD IHSANIYAH GAJAHMADA TEGAL
 // Kampus Al Hafidz • MATH FORMATIVE TEST 2 & CAMBRIDGE PRIMARY DIVISION
-// 27 Soal Lengkap dengan Visual Interaktif Buatan Sendiri (100% Tanpa Spoiler/Bocoran Jawaban!)
+// 27 Soal Lengkap dengan Ilustrasi SVG Kustom & Manipulatif Interaktif Unik
+// 100% Sesuai Buku Asli & 100% Tanpa Spoiler/Bocoran Jawaban!
 // Auto-Save Realtime ke Panel Guru (Rekap)
 // ==============================================================================
 
@@ -74,16 +75,16 @@
         op: '+',
         row1: [
           { val: '2', isMystery: false },
-          { val: 'b', isMystery: true, color: '#f43f5e' },
+          { val: 'b', isMystery: true, key: 'b', color: '#f43f5e' },
           { val: '7', isMystery: false }
         ],
         row2: [
           { val: '7', isMystery: false },
           { val: '2', isMystery: false },
-          { val: 'a', isMystery: true, color: '#38bdf8' }
+          { val: 'a', isMystery: true, key: 'a', color: '#38bdf8' }
         ],
         row3: [
-          { val: 'c', isMystery: true, color: '#10b981' },
+          { val: 'c', isMystery: true, key: 'c', color: '#10b981' },
           { val: '6', isMystery: false },
           { val: '9', isMystery: false }
         ]
@@ -103,14 +104,14 @@
       type: 'true_false_table',
       title: 'Part II — Question 3',
       badge: 'Part II • True or False (✓)',
-      instruction: 'II. Put a check mark (✓) in the "True" column if the statement is true, or in the "False" column if the statement is false!\nLook at the subtraction diagram using the "making 10" technique:',
+      instruction: 'II. Put a check mark (✓) in the "True" column if the statement is true, or in the "False" column if the statement is false!\nLook at the subtraction diagram below:',
       visualConfig: {
         kind: 'number_bond_making10_sub'
       },
       statements: [
-        { id: 's3_a', text: 'The value of "a" is 2', correctAnswer: true },
-        { id: 's3_b', text: 'The value of "b" is 452', correctAnswer: true },
-        { id: 's3_c', text: 'The value of "c" is 454', correctAnswer: true }
+        { id: 's3_a', text: '(a) The value of "a" is 2', correctAnswer: true },
+        { id: 's3_b', text: '(b) The value of "b" is 452', correctAnswer: true },
+        { id: 's3_c', text: '(c) The value of "c" is 454', correctAnswer: true }
       ],
       answerKeySummary: '(a) True, (b) True, (c) True (462 = 452 + 10; 10 - 8 = 2; 452 + 2 = 454)'
     },
@@ -122,15 +123,15 @@
       type: 'multi_box_fill',
       title: 'Part II — Question 4',
       badge: 'Part II • Check & Correct Work',
-      instruction: 'Yuri is subtracting numbers. Her work is shown below.\nNow, you need to see her job and write the correct calculation in the H T O boxes below:',
+      instruction: 'Yuri is subtracting numbers. Her work is shown below.\nNow, you need to see her job and write the correct calculation in the H T O box below:',
       visualConfig: {
         kind: 'yuri_detective_card'
       },
       boxes: [
-        { id: 'b4_h', label: 'Correct digit in Column H (Hundreds):', placeholder: '...', expected: ['3'] },
-        { id: 'b4_t', label: 'Correct digit in Column T (Tens):', placeholder: '...', expected: ['6'] },
-        { id: 'b4_o', label: 'Correct digit in Column O (Ones):', placeholder: '...', expected: ['9'] },
-        { id: 'b4_total', label: 'Correct Result of 527 – 158:', placeholder: '...', expected: ['369'] }
+        { id: 'b4_h', label: 'Column H (Hundreds):', placeholder: '...', expected: ['3'] },
+        { id: 'b4_t', label: 'Column T (Tens):', placeholder: '...', expected: ['6'] },
+        { id: 'b4_o', label: 'Column O (Ones):', placeholder: '...', expected: ['9'] },
+        { id: 'b4_total', label: '527 – 158 = ….', placeholder: '...', expected: ['369'] }
       ],
       answerKeySummary: '527 – 158 = 369 (H = 3, T = 6, O = 9)'
     },
@@ -268,12 +269,9 @@
       badge: 'Unit 5 • Book Page 55 • No. 1(a)',
       instruction: '1. Find the number of objects in each group. Then, write the division sentences.\n(a) Divide 16 keys equally into 2 bundles.',
       visualConfig: {
-        kind: 'equal_sharing_containers',
-        groupCount: 2,
-        itemsPerGroup: 8,
-        itemEmoji: '🔑',
-        containerIcon: '⭕',
-        accentColor: '#f59e0b'
+        kind: 'svg_key_bundles',
+        bundles: 2,
+        keysPerBundle: 8
       },
       divA: '16',
       divB: '2',
@@ -293,11 +291,10 @@
       badge: 'Unit 5 • Book Page 55 • No. 1(b)',
       instruction: '1(b) Divide 18 mice equally into 3 groups.',
       visualConfig: {
-        kind: 'equal_sharing_containers',
+        kind: 'svg_animal_trays',
+        animalType: 'mouse',
         groupCount: 3,
         itemsPerGroup: 6,
-        itemEmoji: '🐭',
-        containerIcon: '🧀',
         accentColor: '#38bdf8'
       },
       divA: '18',
@@ -318,11 +315,10 @@
       badge: 'Unit 5 • Book Page 55 • No. 1(c)',
       instruction: '1(c) Divide 25 chicks equally into 5 groups.',
       visualConfig: {
-        kind: 'equal_sharing_containers',
+        kind: 'svg_animal_trays',
+        animalType: 'chick',
         groupCount: 5,
         itemsPerGroup: 5,
-        itemEmoji: '🐥',
-        containerIcon: '🪺',
         accentColor: '#eab308'
       },
       divA: '25',
@@ -346,12 +342,11 @@
       instruction: '2. Draw / place the objects to solve the division stories below. Then, write the division sentences.\n(a) Siska has 12 glasses. She puts the glasses equally onto 4 trays.',
       visualConfig: {
         kind: 'manual_tray_distributor',
+        itemType: 'glass',
         totalItems: 12,
         groupCount: 4,
-        itemEmoji: '🍹',
-        containerIcon: '🍽️',
         containerName: 'Tray',
-        accentColor: '#f97316'
+        accentColor: '#38bdf8'
       },
       divA: '12',
       divB: '4',
@@ -372,12 +367,11 @@
       instruction: '2(b) There are 15 rambutans. Ida puts the rambutans equally into 3 bowls.',
       visualConfig: {
         kind: 'manual_tray_distributor',
+        itemType: 'rambutan',
         totalItems: 15,
         groupCount: 3,
-        itemEmoji: '🍓',
-        containerIcon: '🥣',
         containerName: 'Bowl',
-        accentColor: '#ef4444'
+        accentColor: '#f43f5e'
       },
       divA: '15',
       divB: '3',
@@ -399,9 +393,9 @@
       badge: 'Unit 5 • Book Page 57 • No. 1(a)',
       instruction: '1. Circle on the pictures to divide. Then, write the division sentences.\n(a) Divide 24 matches into some groups. Each group has 3 matches.',
       visualConfig: {
-        kind: 'individual_items_grid',
+        kind: 'svg_equal_grouping',
+        itemType: 'matchstick',
         totalItems: 24,
-        itemEmoji: '🔥',
         accentColor: '#f59e0b'
       },
       divA: '24',
@@ -422,9 +416,9 @@
       badge: 'Unit 5 • Book Page 57 • No. 1(b)',
       instruction: '1(b) Put 18 pears into some bags. Each bag has 2 pears.',
       visualConfig: {
-        kind: 'individual_items_grid',
+        kind: 'svg_equal_grouping',
+        itemType: 'pear',
         totalItems: 18,
-        itemEmoji: '🍐',
         accentColor: '#10b981'
       },
       divA: '18',
@@ -445,9 +439,9 @@
       badge: 'Unit 5 • Book Page 57 • No. 1(c)',
       instruction: '1(c) Put 9 packs of chips into some boxes. Each box has 3 packs of chips.',
       visualConfig: {
-        kind: 'individual_items_grid',
+        kind: 'svg_equal_grouping',
+        itemType: 'chips',
         totalItems: 9,
-        itemEmoji: '🍟',
         accentColor: '#ec4899'
       },
       divA: '9',
@@ -470,9 +464,9 @@
       badge: 'Unit 5 • Book Page 58 • No. 2(a)',
       instruction: '2. Circle on the pictures to divide. Then, write the division sentences.\n(a) 20 tourists get on the boats to go around the lake. Each boat can carry 4 tourists. How many boats are needed?',
       visualConfig: {
-        kind: 'individual_items_grid',
+        kind: 'svg_equal_grouping',
+        itemType: 'tourist_lake',
         totalItems: 20,
-        itemEmoji: '🧑‍🌾',
         accentColor: '#06b6d4'
       },
       divA: '20',
@@ -493,9 +487,9 @@
       badge: 'Unit 5 • Book Page 58 • No. 2(b)',
       instruction: '2(b) Ivan buys 30 biscuits. He puts 5 biscuits in each box. How many boxes does Ivan use?',
       visualConfig: {
-        kind: 'individual_items_grid',
+        kind: 'svg_equal_grouping',
+        itemType: 'biscuit',
         totalItems: 30,
-        itemEmoji: '🍪',
         accentColor: '#d97706'
       },
       divA: '30',
@@ -516,14 +510,11 @@
       type: 'division_story_full',
       title: 'Book Page 59 — No. 1',
       badge: 'Unit 5 • Book Page 59 • No. 1',
-      instruction: 'Make division stories based on the picture below:',
+      instruction: 'Complete the division stories based on the picture below:',
       visualConfig: {
-        kind: 'story_diorama_containers',
-        groupCount: 4,
-        itemsPerGroup: 3,
-        itemEmoji: '🍒',
-        containerIcon: '🍽️',
-        accentColor: '#f43f5e'
+        kind: 'svg_story_cherries',
+        plates: 4,
+        cherriesPerPlate: 3
       },
       line1Prefix: 'There are',
       line1Suffix: 'cherries altogether.',
@@ -547,7 +538,7 @@
       type: 'division_story_full',
       title: 'Book Page 59 — No. 2',
       badge: 'Unit 5 • Book Page 59 • No. 2',
-      instruction: 'Make division stories based on the picture below:',
+      instruction: 'Complete the division stories based on the picture below:',
       visualConfig: {
         kind: 'story_diorama_bicycles',
         bicycleCount: 5
@@ -578,14 +569,11 @@
       type: 'division_story_full',
       title: 'Book Page 60 — No. 3',
       badge: 'Unit 5 • Book Page 60 • No. 3',
-      instruction: 'Make division stories based on the picture below:',
+      instruction: 'Complete the division stories based on the picture below:',
       visualConfig: {
-        kind: 'story_diorama_containers',
-        groupCount: 4,
-        itemsPerGroup: 10,
-        itemEmoji: '🖍️',
-        containerIcon: '🎨',
-        accentColor: '#a855f7'
+        kind: 'svg_story_crayon_boxes',
+        boxes: 4,
+        crayonsPerBox: 10
       },
       line1Prefix: 'There are',
       line1Suffix: 'crayons altogether.',
@@ -611,14 +599,11 @@
       type: 'division_story_full',
       title: 'Book Page 60 — No. 4',
       badge: 'Unit 5 • Book Page 60 • No. 4',
-      instruction: 'Make division stories based on the picture below:',
+      instruction: 'Complete the division stories based on the picture below:',
       visualConfig: {
-        kind: 'story_diorama_containers',
-        groupCount: 6,
-        itemsPerGroup: 5,
-        itemEmoji: '🌸',
-        containerIcon: '🪴',
-        accentColor: '#ec4899'
+        kind: 'svg_story_flower_pots',
+        pots: 6,
+        flowersPerPot: 5
       },
       line1Prefix: 'There are',
       line1Suffix: 'flowers altogether.',
@@ -644,14 +629,11 @@
       type: 'division_story_full',
       title: 'Book Page 60 — No. 5',
       badge: 'Unit 5 • Book Page 60 • No. 5',
-      instruction: 'Make division stories based on the picture below:',
+      instruction: 'Complete the division stories based on the picture below:',
       visualConfig: {
-        kind: 'story_diorama_containers',
-        groupCount: 5,
-        itemsPerGroup: 6,
-        itemEmoji: '🥚',
-        containerIcon: '🧺',
-        accentColor: '#eab308'
+        kind: 'svg_story_egg_cartons',
+        cartons: 5,
+        eggsPerCarton: 6
       },
       line1Prefix: 'There are',
       line1Suffix: 'eggs altogether.',
@@ -728,25 +710,110 @@
   ];
 
   // ==============================================================================
-  // ENGINE VISUAL INTERAKTIF BUATAN SENDIRI (100% TANPA BOCORAN JAWABAN!)
+  // STATE & INTERAKSI VISUAL KUSTOM (100% TANPA BOCORAN JAWABAN!)
   // ==============================================================================
   window.ihsVisualState = window.ihsVisualState || {
-    frogIndex: 0,
-    trayCounts: {},       // qid -> [countTray0, countTray1, ...]
-    itemMarks: {},        // qid -> { itemIdx: colorIndex }
+    frogStartIdx: 0,
+    frogEndIdx: 0,
+    q2Trial: { a: '?', b: '?', c: '?' },
+    yuriBorrowTens: false,
+    yuriBorrowHundreds: false,
+    carryMarks: {},        // qid -> { h: bool, t: bool }
+    countedItems: {},      // qid -> { itemKey: orderNumber }
+    trayCounts: {},        // qid -> [countTray0, countTray1, ...]
+    itemMarks: {},         // qid -> { itemIdx: colorIndex }
     activeMarkerColor: 0,
     grid100Tool: 'circle2',
-    grid100Marks: {}      // num -> { c2: bool, b5: bool, t10: bool }
+    grid100Marks: {}       // num -> { c2: bool, b5: bool, t10: bool }
   };
 
   var MARKER_COLORS = ['#38bdf8', '#10b981', '#f59e0b', '#a855f7', '#f43f5e', '#ec4899', '#eab308', '#06b6d4', '#84cc16'];
 
-  window.ihsSetFrogStone = function(idx) {
-    window.ihsVisualState.frogIndex = idx;
+  // Handler No. 1: Katak Lompat Garis Bilangan Interaktif
+  window.ihsSetFrogStart = function(idx) {
+    var st = window.ihsVisualState;
+    st.frogStartIdx = idx;
+    st.frogEndIdx = idx;
     if (window.sfx && sfx.playClick) sfx.playClick();
     if (typeof window.renderIhsaniyahTest === 'function') window.renderIhsaniyahTest();
   };
 
+  window.ihsStepFrog = function(delta, maxLen) {
+    var st = window.ihsVisualState;
+    var next = (st.frogEndIdx || 0) + delta;
+    if (next >= 0 && next < maxLen) {
+      st.frogEndIdx = next;
+      if (window.sfx && sfx.playClick) sfx.playClick();
+      if (typeof window.renderIhsaniyahTest === 'function') window.renderIhsaniyahTest();
+    }
+  };
+
+  window.ihsClickFrogStone = function(idx) {
+    var st = window.ihsVisualState;
+    st.frogEndIdx = idx;
+    if (window.sfx && sfx.playClick) sfx.playClick();
+    if (typeof window.renderIhsaniyahTest === 'function') window.renderIhsaniyahTest();
+  };
+
+  window.ihsResetFrog = function() {
+    var st = window.ihsVisualState;
+    st.frogStartIdx = 0;
+    st.frogEndIdx = 0;
+    if (window.sfx && sfx.playClick) sfx.playClick();
+    if (typeof window.renderIhsaniyahTest === 'function') window.renderIhsaniyahTest();
+  };
+
+  // Handler No. 2: Roda Uji Angka Misteri a, b, c
+  window.ihsCycleQ2Trial = function(key, delta) {
+    var st = window.ihsVisualState;
+    st.q2Trial = st.q2Trial || { a: '?', b: '?', c: '?' };
+    var cur = st.q2Trial[key];
+    var num = (cur === '?' || isNaN(parseInt(cur, 10))) ? (delta > 0 ? 0 : 9) : (parseInt(cur, 10) + delta + 10) % 10;
+    st.q2Trial[key] = String(num);
+    if (window.sfx && sfx.playClick) sfx.playClick();
+    if (typeof window.renderIhsaniyahTest === 'function') window.renderIhsaniyahTest();
+  };
+
+  window.ihsResetQ2Trial = function() {
+    window.ihsVisualState.q2Trial = { a: '?', b: '?', c: '?' };
+    if (window.sfx && sfx.playClick) sfx.playClick();
+    if (typeof window.renderIhsaniyahTest === 'function') window.renderIhsaniyahTest();
+  };
+
+  // Handler No. 7 & 9: Tombol Coretan Simpanan / Pinjaman (Carry / Borrow)
+  window.ihsToggleCarryMark = function(qid, colKey) {
+    var st = window.ihsVisualState;
+    st.carryMarks[qid] = st.carryMarks[qid] || {};
+    st.carryMarks[qid][colKey] = !st.carryMarks[qid][colKey];
+    if (window.sfx && sfx.playClick) sfx.playClick();
+    if (typeof window.renderIhsaniyahTest === 'function') window.renderIhsaniyahTest();
+  };
+
+  // Handler Hitung Objek Satu per Satu dengan Klik (No. 11-13 & No. 21-25)
+  window.ihsToggleCountItem = function(qid, itemKey) {
+    var st = window.ihsVisualState;
+    st.countedItems[qid] = st.countedItems[qid] || {};
+    var map = st.countedItems[qid];
+    if (map[itemKey]) {
+      delete map[itemKey];
+      // Rapikan ulang urutan angka hitung
+      var keys = Object.keys(map).sort(function(a, b) { return map[a] - map[b]; });
+      keys.forEach(function(k, i) { map[k] = i + 1; });
+    } else {
+      var currentCount = Object.keys(map).length;
+      map[itemKey] = currentCount + 1;
+    }
+    if (window.sfx && sfx.playClick) sfx.playClick();
+    if (typeof window.renderIhsaniyahTest === 'function') window.renderIhsaniyahTest();
+  };
+
+  window.ihsResetCountItems = function(qid) {
+    window.ihsVisualState.countedItems[qid] = {};
+    if (window.sfx && sfx.playClick) sfx.playClick();
+    if (typeof window.renderIhsaniyahTest === 'function') window.renderIhsaniyahTest();
+  };
+
+  // Handler No. 14 & 15: Distribusi Gelas ke Nampan / Rambutan ke Mangkuk
   window.ihsAddToTray = function(qid, trayIdx, totalItems, groupCount) {
     var st = window.ihsVisualState;
     if (!st.trayCounts[qid]) {
@@ -755,6 +822,26 @@
     var used = st.trayCounts[qid].reduce(function(a, b) { return a + b; }, 0);
     if (used < totalItems) {
       st.trayCounts[qid][trayIdx]++;
+      if (window.sfx && sfx.playClick) sfx.playClick();
+      if (typeof window.renderIhsaniyahTest === 'function') window.renderIhsaniyahTest();
+    }
+  };
+
+  window.ihsDistributeNextItem = function(qid, totalItems, groupCount) {
+    var st = window.ihsVisualState;
+    if (!st.trayCounts[qid]) {
+      st.trayCounts[qid] = new Array(groupCount).fill(0);
+    }
+    var used = st.trayCounts[qid].reduce(function(a, b) { return a + b; }, 0);
+    if (used < totalItems) {
+      // Taruh ke wadah yang isinya paling sedikit (merata berurutan)
+      var minTrayIdx = 0;
+      for (var i = 1; i < groupCount; i++) {
+        if (st.trayCounts[qid][i] < st.trayCounts[qid][minTrayIdx]) {
+          minTrayIdx = i;
+        }
+      }
+      st.trayCounts[qid][minTrayIdx]++;
       if (window.sfx && sfx.playClick) sfx.playClick();
       if (typeof window.renderIhsaniyahTest === 'function') window.renderIhsaniyahTest();
     }
@@ -776,6 +863,7 @@
     if (typeof window.renderIhsaniyahTest === 'function') window.renderIhsaniyahTest();
   };
 
+  // Handler No. 16 - 20: Melingkari Kelompok (Circle on the pictures to divide)
   window.ihsSetMarkerColor = function(colIdx) {
     window.ihsVisualState.activeMarkerColor = colIdx;
     if (window.sfx && sfx.playClick) sfx.playClick();
@@ -802,6 +890,7 @@
     if (typeof window.renderIhsaniyahTest === 'function') window.renderIhsaniyahTest();
   };
 
+  // Handler No. 27: Papan 1 - 100
   window.ihsSetGrid100Tool = function(toolName) {
     window.ihsVisualState.grid100Tool = toolName;
     if (window.sfx && sfx.playClick) sfx.playClick();
@@ -828,164 +917,450 @@
     if (typeof window.renderIhsaniyahTest === 'function') window.renderIhsaniyahTest();
   };
 
-  // Renderer Utama Visual Kustom Unik (Tanpa Bocoran Jawaban!)
+  // ==============================================================================
+  // HELPER PENGGAMBAR OBJEK SVG VEKTOR KUSTOM (Gelas, Rambutan, Korek Api, Pir, Keripik, Turis, Biskuit, Tikus, Anak Ayam)
+  // ==============================================================================
+  function drawCustomItemSVG(type, index) {
+    if (type === 'glass') {
+      return `
+        <svg viewBox="0 0 44 58" style="width: 34px; height: 46px; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.35));">
+          <polygon points="8,6 36,6 31,52 13,52" fill="rgba(56, 189, 248, 0.25)" stroke="#bae6fd" stroke-width="2.5" stroke-linejoin="round"/>
+          <polygon points="10,20 34,20 30,50 14,50" fill="rgba(251, 146, 60, 0.78)"/>
+          <ellipse cx="22" cy="6" rx="14" ry="3.5" fill="rgba(224, 242, 254, 0.45)" stroke="#ffffff" stroke-width="2"/>
+          <line x1="15" y1="12" x2="17" y2="44" stroke="rgba(255,255,255,0.65)" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      `;
+    }
+    if (type === 'rambutan') {
+      return `
+        <svg viewBox="0 0 54 54" style="width: 38px; height: 38px; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.35));">
+          <!-- Rambut Duri Hijau-Merah Khas Buah Rambutan -->
+          <g stroke="#fb7185" stroke-width="2.2" stroke-linecap="round">
+            <line x1="27" y1="4" x2="27" y2="12"/><line x1="27" y1="42" x2="27" y2="50"/>
+            <line x1="4" y1="27" x2="12" y2="27"/><line x1="42" y1="27" x2="50" y2="27"/>
+            <line x1="10" y1="10" x2="17" y2="17"/><line x1="37" y1="37" x2="44" y2="44"/>
+            <line x1="44" y1="10" x2="37" y2="17"/><line x1="17" y1="37" x2="10" y2="44"/>
+            <line x1="18" y1="6" x2="21" y2="13"/><line x1="36" y1="6" x2="33" y2="13"/>
+            <line x1="6" y1="18" x2="13" y2="21"/><line x1="48" y1="18" x2="41" y2="21"/>
+            <line x1="6" y1="36" x2="13" y2="33"/><line x1="48" y1="36" x2="41" y2="33"/>
+            <line x1="18" y1="48" x2="21" y2="41"/><line x1="36" y1="48" x2="33" y2="41"/>
+          </g>
+          <ellipse cx="27" cy="27" rx="14" ry="12.5" fill="#e11d48" stroke="#be123c" stroke-width="2"/>
+          <ellipse cx="23" cy="23" rx="5" ry="3.5" fill="#fda4af" opacity="0.6"/>
+        </svg>
+      `;
+    }
+    if (type === 'matchstick') {
+      return `
+        <svg viewBox="0 0 48 48" style="width: 38px; height: 38px;">
+          <line x1="10" y1="40" x2="35" y2="13" stroke="#fde68a" stroke-width="5" stroke-linecap="round"/>
+          <line x1="10" y1="40" x2="35" y2="13" stroke="#d97706" stroke-width="1.5" stroke-linecap="round"/>
+          <ellipse cx="37" cy="11" rx="5.5" ry="4" transform="rotate(-45 37 11)" fill="#dc2626" stroke="#7f1d1d" stroke-width="1.5"/>
+          <circle cx="36" cy="10" r="1.5" fill="#fca5a5"/>
+        </svg>
+      `;
+    }
+    if (type === 'pear') {
+      return `
+        <svg viewBox="0 0 48 54" style="width: 38px; height: 42px;">
+          <path d="M24 10 C24 5, 28 3, 30 3" fill="none" stroke="#78350f" stroke-width="2.8" stroke-linecap="round"/>
+          <path d="M25 8 C31 5, 36 8, 32 12 C28 14, 25 11, 25 8 Z" fill="#15803d"/>
+          <path d="M24 11 C18 11, 16 18, 14 24 C10 31, 11 45, 24 46 C37 45, 38 31, 34 24 C32 18, 30 11, 24 11 Z" fill="#84cc16" stroke="#3f6212" stroke-width="2"/>
+          <ellipse cx="19" cy="32" rx="3.5" ry="6" fill="#bef264" opacity="0.65"/>
+        </svg>
+      `;
+    }
+    if (type === 'chips') {
+      return `
+        <svg viewBox="0 0 56 64" style="width: 44px; height: 50px;">
+          <!-- Kemasan Keripik "Chips" bergerigi seperti di Buku Hal 57 -->
+          <path d="M10 8 L15 11 L20 8 L25 11 L30 8 L35 11 L40 8 L46 11 L43 54 L38 57 L33 54 L28 57 L23 54 L18 57 L13 54 L8 57 Z" fill="#f43f5e" stroke="#ffffff" stroke-width="2" stroke-linejoin="round"/>
+          <rect x="11" y="20" width="32" height="20" rx="5" fill="#fef08a" stroke="#ca8a04" stroke-width="1.5"/>
+          <text x="27" y="34" fill="#be123c" font-size="10" font-weight="900" font-family="sans-serif" text-anchor="middle">Chips</text>
+          <circle cx="34" cy="46" r="4.5" fill="#fde047" stroke="#ca8a04" stroke-width="1.2"/>
+        </svg>
+      `;
+    }
+    if (type === 'tourist_lake') {
+      var shirtCols = ['#38bdf8', '#f43f5e', '#10b981', '#f59e0b', '#a855f7'];
+      var sCol = shirtCols[(index || 0) % shirtCols.length];
+      return `
+        <svg viewBox="0 0 44 60" style="width: 36px; height: 48px;">
+          <!-- Topi & Kepala Turis -->
+          <path d="M12 13 Q22 5 32 13 Z" fill="#fde047" stroke="#ca8a04" stroke-width="1.5"/>
+          <circle cx="22" cy="18" r="6.5" fill="#fed7aa" stroke="#9a3412" stroke-width="1.5"/>
+          <!-- Badan & Tas Ransel -->
+          <rect x="14" y="25" width="16" height="17" rx="4" fill="${sCol}" stroke="#ffffff" stroke-width="1.5"/>
+          <!-- Kaki -->
+          <line x1="18" y1="42" x2="18" y2="55" stroke="#cbd5e1" stroke-width="3.5" stroke-linecap="round"/>
+          <line x1="26" y1="42" x2="26" y2="55" stroke="#cbd5e1" stroke-width="3.5" stroke-linecap="round"/>
+        </svg>
+      `;
+    }
+    if (type === 'biscuit') {
+      var bKind = (index || 0) % 5;
+      if (bKind === 0) {
+        // Biskuit Kotak Cracker
+        return `
+          <svg viewBox="0 0 48 48" style="width: 38px; height: 38px;">
+            <rect x="6" y="6" width="36" height="36" rx="5" fill="#f59e0b" stroke="#92400e" stroke-width="2.2"/>
+            <circle cx="16" cy="16" r="2" fill="#78350f"/><circle cx="24" cy="16" r="2" fill="#78350f"/><circle cx="32" cy="16" r="2" fill="#78350f"/>
+            <circle cx="16" cy="24" r="2" fill="#78350f"/><circle cx="24" cy="24" r="2" fill="#78350f"/><circle cx="32" cy="24" r="2" fill="#78350f"/>
+            <circle cx="16" cy="32" r="2" fill="#78350f"/><circle cx="24" cy="32" r="2" fill="#78350f"/><circle cx="32" cy="32" r="2" fill="#78350f"/>
+          </svg>
+        `;
+      }
+      if (bKind === 1 || bKind === 2) {
+        // Biskuit Bundar Cincin
+        return `
+          <svg viewBox="0 0 48 48" style="width: 38px; height: 38px;">
+            <circle cx="24" cy="24" r="18" fill="#fbbf24" stroke="#92400e" stroke-width="2.2"/>
+            <circle cx="24" cy="24" r="7" fill="#1e293b" stroke="#92400e" stroke-width="1.8"/>
+            <circle cx="24" cy="11" r="1.5" fill="#78350f"/><circle cx="24" cy="37" r="1.5" fill="#78350f"/>
+            <circle cx="11" cy="24" r="1.5" fill="#78350f"/><circle cx="37" cy="24" r="1.5" fill="#78350f"/>
+          </svg>
+        `;
+      }
+      if (bKind === 3) {
+        // Biskuit Persegi Panjang
+        return `
+          <svg viewBox="0 0 48 48" style="width: 38px; height: 38px;">
+            <rect x="11" y="5" width="26" height="38" rx="4" fill="#fcd34d" stroke="#92400e" stroke-width="2.2"/>
+            <circle cx="19" cy="13" r="1.8" fill="#78350f"/><circle cx="29" cy="13" r="1.8" fill="#78350f"/>
+            <circle cx="19" cy="24" r="1.8" fill="#78350f"/><circle cx="29" cy="24" r="1.8" fill="#78350f"/>
+            <circle cx="19" cy="35" r="1.8" fill="#78350f"/><circle cx="29" cy="35" r="1.8" fill="#78350f"/>
+          </svg>
+        `;
+      }
+      // Biskuit Bunga Bergerigi
+      return `
+        <svg viewBox="0 0 48 48" style="width: 38px; height: 38px;">
+          <circle cx="24" cy="24" r="17" fill="#d97706" stroke="#fef08a" stroke-width="2.5" stroke-dasharray="6,3"/>
+          <circle cx="24" cy="24" r="10" fill="#fde68a" stroke="#92400e" stroke-width="1.5"/>
+          <circle cx="24" cy="24" r="3" fill="#b45309"/>
+        </svg>
+      `;
+    }
+    return '';
+  }
+
+  // ==============================================================================
+  // RENDERER UTAMA VISUAL KUSTOM UNIK (100% TANPA BOCORAN JAWABAN!)
+  // ==============================================================================
   window.renderIhsaniyahCustomVisual = function(q) {
     if (!q || !q.visualConfig) return '';
     var vc = q.visualConfig;
     var st = window.ihsVisualState;
 
-    // 1. NUMBER LINE STEPPING STONES (No. 1 — Tanpa Petunjuk +10 / -20!)
+    // -------------------------------------------------------------------------
+    // 1. INTERACTIVE FROG STEPPING STONES (No. 1 — Tanpa Bocoran Jawaban!)
+    // -------------------------------------------------------------------------
     if (vc.kind === 'number_line_jumps') {
-      var activeIdx = st.frogIndex || 0;
-      return `
-        <div style="background: linear-gradient(135deg, rgba(16, 185, 129, 0.14), rgba(15, 23, 42, 0.95)); border: 2px solid #10b981; border-radius: 16px; padding: 18px; margin: 14px 0;">
-          <div style="display: flex; align-items: center; justify-content: space-between; gap: 8px; overflow-x: auto; padding: 16px 10px; background: rgba(15, 23, 42, 0.85); border-radius: 14px; border: 1px solid rgba(52, 211, 153, 0.3);">
-            ${vc.numbers.map(function(num, idx) {
-              var isFrogHere = (idx === activeIdx);
-              return `
-                <div style="display: flex; align-items: center; flex: 1; min-width: 78px;">
-                  <div onclick="ihsSetFrogStone(${idx})" style="flex: 1; text-align: center; padding: 14px 8px; border-radius: 14px; cursor: pointer; transition: all 0.2s; background: ${isFrogHere ? 'linear-gradient(135deg, #10b981, #059669)' : 'rgba(30, 41, 59, 0.95)'}; border: 2.5px solid ${isFrogHere ? '#fde047' : '#38bdf8'};">
-                    <div style="font-size: 1.25rem; font-weight: 900; color: #ffffff; font-family: monospace;">${num}</div>
-                  </div>
-                  ${idx < vc.numbers.length - 1 ? `
-                    <div style="padding: 0 6px; color: #38bdf8; font-weight: 900; font-size: 1.1rem;">➔</div>
-                  ` : ''}
-                </div>
-              `;
-            }).join('')}
-          </div>
-        </div>
-      `;
-    }
+      var nums = vc.numbers || [237, 247, 257, 267, 277, 287];
+      var sIdx = (st.frogStartIdx !== undefined) ? st.frogStartIdx : 0;
+      var eIdx = (st.frogEndIdx !== undefined) ? st.frogEndIdx : 0;
+      var startNum = nums[sIdx];
+      var endNum = nums[eIdx];
+      var diffVal = endNum - startNum;
+      var diffLabel = diffVal === 0 ? '0 (Belum Melompat)' : (diffVal > 0 ? '+' + diffVal : String(diffVal));
 
-    // 2. H-T-O MYSTERY ADDITION GRID (No. 2 — Tanpa Bocoran Rumus!)
-    if (vc.kind === 'hto_mystery_grid') {
-      var renderCell = function(c) {
-        if (c.isMystery) {
-          return `<td style="width: 76px; height: 60px; text-align: center; font-size: 1.45rem; font-weight: 900; font-family: monospace; background: rgba(255,255,255,0.08); border: 2.5px dashed ${c.color}; color: ${c.color}; border-radius: 10px;">${c.val}</td>`;
+      // Koordinat X tiap batu teratai pada SVG (viewBox 660 x 195)
+      var xs = [65, 171, 277, 383, 489, 595];
+      var hopsSvg = '';
+
+      if (sIdx !== eIdx) {
+        var stepDir = eIdx > sIdx ? 1 : -1;
+        for (var k = sIdx; k !== eIdx; k += stepDir) {
+          var x1 = xs[k];
+          var x2 = xs[k + stepDir];
+          var midX = (x1 + x2) / 2;
+          var arcColor = stepDir > 0 ? '#fde047' : '#f43f5e';
+          var stepText = stepDir > 0 ? '+10' : '–10';
+          hopsSvg += `
+            <path d="M ${x1} 112 Q ${midX} 42 ${x2} 112" fill="none" stroke="${arcColor}" stroke-width="4" stroke-dasharray="6,4"/>
+            <circle cx="${x2}" cy="112" r="5" fill="${arcColor}"/>
+            <rect x="${midX - 22}" y="52" width="44" height="22" rx="6" fill="#0f172a" stroke="${arcColor}" stroke-width="1.8"/>
+            <text x="${midX}" y="67" fill="${arcColor}" font-size="12" font-weight="900" font-family="monospace" text-anchor="middle">${stepText}</text>
+          `;
         }
-        return `<td style="width: 76px; height: 60px; text-align: center; font-size: 1.45rem; font-weight: 900; font-family: monospace; background: rgba(15, 23, 42, 0.9); border: 2px solid rgba(148, 163, 184, 0.35); color: #ffffff; border-radius: 10px;">${c.val}</td>`;
-      };
+      }
+
+      var stonesSvg = nums.map(function(n, idx) {
+        var cx = xs[idx];
+        var isStart = (idx === sIdx);
+        var isEnd = (idx === eIdx);
+        var padFill = isEnd ? '#10b981' : (isStart ? '#0284c7' : '#1e293b');
+        var padStroke = isEnd ? '#fde047' : (isStart ? '#38bdf8' : '#475569');
+
+        return `
+          <g style="cursor: pointer;" onclick="ihsClickFrogStone(${idx})">
+            <!-- Daun Teratai / Batu Pijakan -->
+            <ellipse cx="${cx}" cy="138" rx="44" ry="20" fill="rgba(16, 185, 129, 0.18)" stroke="rgba(52, 211, 153, 0.35)" stroke-width="2"/>
+            <rect x="${cx - 38}" y="114" width="76" height="40" rx="12" fill="${padFill}" stroke="${padStroke}" stroke-width="3"/>
+            <text x="${cx}" y="140" fill="#ffffff" font-size="19" font-weight="900" font-family="monospace" text-anchor="middle">${n}</text>
+            ${isStart && sIdx !== eIdx ? `<text x="${cx}" y="176" fill="#38bdf8" font-size="11" font-weight="800" text-anchor="middle">AWAL</text>` : ''}
+            ${isEnd ? `
+              <!-- Maskot Katak di Atas Batu Tujuan -->
+              <g transform="translate(${cx - 18}, 74)">
+                <ellipse cx="18" cy="22" rx="14" ry="10" fill="#22c55e" stroke="#14532d" stroke-width="2"/>
+                <circle cx="11" cy="12" r="5" fill="#22c55e" stroke="#14532d" stroke-width="1.5"/>
+                <circle cx="25" cy="12" r="5" fill="#22c55e" stroke="#14532d" stroke-width="1.5"/>
+                <circle cx="11" cy="12" r="2.2" fill="#0f172a"/>
+                <circle cx="25" cy="12" r="2.2" fill="#0f172a"/>
+                <path d="M 12 24 Q 18 29 24 24" fill="none" stroke="#14532d" stroke-width="2" stroke-linecap="round"/>
+              </g>
+            ` : ''}
+          </g>
+        `;
+      }).join('');
+
       return `
-        <div style="background: linear-gradient(135deg, rgba(56, 189, 248, 0.12), rgba(15, 23, 42, 0.95)); border: 2px solid #38bdf8; border-radius: 16px; padding: 20px; margin: 14px 0; text-align: center;">
-          <div style="display: inline-block; background: rgba(2, 6, 23, 0.75); padding: 18px 24px; border-radius: 16px; border: 2px solid rgba(56, 189, 248, 0.4);">
-            <table style="border-collapse: separate; border-spacing: 8px;">
-              <thead>
-                <tr>
-                  <th style="background: #7c3aed; color: #fff; padding: 6px 14px; border-radius: 8px; font-size: 0.85rem;">H</th>
-                  <th style="background: #0284c7; color: #fff; padding: 6px 14px; border-radius: 8px; font-size: 0.85rem;">T</th>
-                  <th style="background: #d97706; color: #fff; padding: 6px 14px; border-radius: 8px; font-size: 0.85rem;">O</th>
-                  <th></th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  ${vc.row1.map(renderCell).join('')}
-                  <td></td>
-                </tr>
-                <tr>
-                  ${vc.row2.map(renderCell).join('')}
-                  <td style="font-size: 1.8rem; font-weight: 900; color: #4ade80; padding-left: 6px;">+</td>
-                </tr>
-                <tr>
-                  <td colspan="4" style="border-bottom: 3px solid #38bdf8; height: 4px;"></td>
-                </tr>
-                <tr>
-                  ${vc.row3.map(renderCell).join('')}
-                  <td></td>
-                </tr>
-              </tbody>
-            </table>
+        <div style="background: linear-gradient(135deg, rgba(16, 185, 129, 0.16), rgba(15, 23, 42, 0.96)); border: 2px solid #10b981; border-radius: 18px; padding: 18px; margin: 14px 0;">
+          <!-- Header Kontrol Simulator Lompatan Katak -->
+          <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; margin-bottom: 12px;">
+            <div>
+              <div style="font-size: 0.9rem; font-weight: 800; color: #4ade80;">
+                🐸 Simulator Garis Bilangan Batu Lompatan (Interactive Number Line)
+              </div>
+              <div style="font-size: 0.78rem; color: #cbd5e1;">
+                Pilih <strong>Titik Awal</strong>, lalu klik batu tujuan atau tombol <strong>Lompat –10 / +10</strong> untuk menguji pernyataan A, B, dan C!
+              </div>
+            </div>
+            <div style="display: flex; gap: 6px; align-items: center; flex-wrap: wrap;">
+              <button type="button" onclick="ihsStepFrog(-1, ${nums.length})" style="background: rgba(244, 63, 94, 0.2); color: #fda4af; border: 1.5px solid #f43f5e; border-radius: 8px; padding: 6px 12px; font-size: 0.78rem; font-weight: 800; cursor: pointer;">
+                ⏪ Lompat Mundur (–10)
+              </button>
+              <button type="button" onclick="ihsStepFrog(1, ${nums.length})" style="background: rgba(16, 185, 129, 0.25); color: #86efac; border: 1.5px solid #10b981; border-radius: 8px; padding: 6px 12px; font-size: 0.78rem; font-weight: 800; cursor: pointer;">
+                Lompat Maju (+10) ⏩
+              </button>
+              <button type="button" onclick="ihsResetFrog()" style="background: rgba(148, 163, 184, 0.2); color: #e2e8f0; border: 1px solid rgba(148,163,184,0.4); border-radius: 8px; padding: 6px 10px; font-size: 0.75rem; font-weight: 700; cursor: pointer;">
+                🔄 Reset
+              </button>
+            </div>
           </div>
-        </div>
-      `;
-    }
 
-    // 3. MAKING 10 SUBTRACTION DIAGRAM (No. 3: 462 - 8 = c)
-    if (vc.kind === 'number_bond_making10_sub') {
-      return `
-        <div style="background: linear-gradient(135deg, rgba(168, 85, 247, 0.14), rgba(15, 23, 42, 0.96)); border: 2px solid #a855f7; border-radius: 16px; padding: 20px; margin: 14px 0; text-align: center;">
-          <svg viewBox="0 0 560 220" style="max-width: 540px; width: 100%; height: auto; background: rgba(2, 6, 23, 0.65); border-radius: 14px; border: 1px solid rgba(168, 85, 247, 0.35);">
-            <line x1="170" y1="55" x2="105" y2="135" stroke="#38bdf8" stroke-width="3.5" />
-            <line x1="190" y1="55" x2="255" y2="135" stroke="#f59e0b" stroke-width="3.5" />
-            <path d="M 292 145 L 340 60" fill="none" stroke="#10b981" stroke-width="2.5" stroke-dasharray="5,4" />
-            <line x1="355" y1="60" x2="420" y2="135" stroke="#10b981" stroke-width="3" />
+          <!-- Pilihan Cepat Batu Awal -->
+          <div style="display: flex; align-items: center; gap: 6px; flex-wrap: wrap; margin-bottom: 10px; padding: 8px 12px; background: rgba(2, 6, 23, 0.65); border-radius: 10px;">
+            <span style="font-size: 0.76rem; font-weight: 800; color: #38bdf8;">📍 Mulai Lompat dari Angka:</span>
+            ${nums.map(function(n, idx) {
+              var active = (idx === sIdx);
+              return `<button type="button" onclick="ihsSetFrogStart(${idx})" style="padding: 4px 10px; border-radius: 6px; font-family: monospace; font-size: 0.82rem; font-weight: 900; cursor: pointer; background: ${active ? '#0284c7' : 'rgba(30,41,59,0.9)'}; color: #fff; border: 1.5px solid ${active ? '#fde047' : 'rgba(148,163,184,0.3)'};">${n}</button>`;
+            }).join('')}
+            <span style="margin-left: auto; font-size: 0.8rem; font-weight: 800; color: #fde047; font-family: monospace;">
+              Posisi: ${startNum} ➔ ${endNum} (${diffLabel})
+            </span>
+          </div>
 
-            <rect x="115" y="18" width="130" height="42" rx="10" fill="#1e293b" stroke="#38bdf8" stroke-width="2.5"/>
-            <text x="180" y="45" fill="#ffffff" font-size="20" font-weight="900" font-family="monospace" text-anchor="middle">462</text>
-
-            <text x="275" y="45" fill="#f87171" font-size="22" font-weight="900" font-family="monospace" text-anchor="middle">–</text>
-
-            <rect x="305" y="18" width="65" height="42" rx="10" fill="#1e293b" stroke="#f87171" stroke-width="2.5"/>
-            <text x="337" y="45" fill="#ffffff" font-size="20" font-weight="900" font-family="monospace" text-anchor="middle">8</text>
-
-            <text x="395" y="45" fill="#38bdf8" font-size="22" font-weight="900" font-family="monospace" text-anchor="middle">=</text>
-
-            <rect x="420" y="18" width="75" height="42" rx="10" fill="#064e3b" stroke="#10b981" stroke-width="2.5"/>
-            <text x="457" y="45" fill="#4ade80" font-size="20" font-weight="900" font-family="monospace" text-anchor="middle">c</text>
-
-            <circle cx="100" cy="155" r="32" fill="#1e1b4b" stroke="#38bdf8" stroke-width="3"/>
-            <text x="100" y="162" fill="#38bdf8" font-size="20" font-weight="900" font-family="monospace" text-anchor="middle">b</text>
-
-            <circle cx="260" cy="155" r="32" fill="#451a03" stroke="#f59e0b" stroke-width="3"/>
-            <text x="260" y="162" fill="#fde047" font-size="20" font-weight="900" font-family="monospace" text-anchor="middle">10</text>
-
-            <circle cx="430" cy="155" r="30" fill="#064e3b" stroke="#10b981" stroke-width="3"/>
-            <text x="430" y="162" fill="#4ade80" font-size="20" font-weight="900" font-family="monospace" text-anchor="middle">a</text>
+          <!-- Kanvas SVG Sungai & Batu Teratai -->
+          <svg viewBox="0 0 660 190" style="width: 100%; height: auto; background: linear-gradient(180deg, #091526 0%, #0c2d48 100%); border-radius: 14px; border: 1.5px solid rgba(56, 189, 248, 0.35); display: block;">
+            <!-- Garis Penghubung Antar Batu -->
+            <line x1="65" y1="134" x2="595" y2="134" stroke="rgba(56, 189, 248, 0.35)" stroke-width="5" stroke-dasharray="8,6"/>
+            ${hopsSvg}
+            ${stonesSvg}
           </svg>
         </div>
       `;
     }
 
-    // 4. YURI'S SUBTRACTION WORK CARD (No. 4 — Tanpa Bocoran Jawaban!)
-    if (vc.kind === 'yuri_detective_card') {
+    // -------------------------------------------------------------------------
+    // 2. H-T-O MYSTERY ADDITION SAFE (No. 2 — Dengan Roda Uji Coba Angka a, b, c!)
+    // -------------------------------------------------------------------------
+    if (vc.kind === 'hto_mystery_grid') {
+      var trial = st.q2Trial || { a: '?', b: '?', c: '?' };
+      var renderCell = function(c) {
+        if (c.isMystery) {
+          var tVal = trial[c.key] || '?';
+          var displayStr = (tVal !== '?') ? `${c.val}=${tVal}` : c.val;
+          return `
+            <td style="width: 86px; height: 64px; text-align: center; background: rgba(255,255,255,0.08); border: 2.5px dashed ${c.color}; color: ${c.color}; border-radius: 12px; position: relative;">
+              <div style="font-size: 1.4rem; font-weight: 900; font-family: monospace;">${displayStr}</div>
+              <div style="font-size: 0.65rem; color: #cbd5e1; font-weight: 700;">Kotak ${c.val}</div>
+            </td>
+          `;
+        }
+        return `<td style="width: 86px; height: 64px; text-align: center; font-size: 1.55rem; font-weight: 900; font-family: monospace; background: rgba(15, 23, 42, 0.92); border: 2px solid rgba(148, 163, 184, 0.35); color: #ffffff; border-radius: 12px;">${c.val}</td>`;
+      };
+
       return `
-        <div style="background: linear-gradient(135deg, rgba(244, 63, 94, 0.12), rgba(15, 23, 42, 0.96)); border: 2px solid #f43f5e; border-radius: 16px; padding: 20px; margin: 14px 0; display: flex; flex-wrap: wrap; justify-content: center; gap: 28px; align-items: center;">
-          <!-- Catatan Yuri -->
-          <div style="background: #fffbeb; color: #1e293b; padding: 16px 24px; border-radius: 14px; border: 3px dashed #f43f5e; text-align: center;">
-            <div style="font-size: 0.78rem; font-weight: 900; color: #e11d48; text-transform: uppercase; margin-bottom: 8px;">
-              📓 Yuri's Work:
+        <div style="background: linear-gradient(135deg, rgba(56, 189, 248, 0.14), rgba(15, 23, 42, 0.96)); border: 2px solid #38bdf8; border-radius: 18px; padding: 20px; margin: 14px 0;">
+          <div style="display: flex; flex-wrap: wrap; gap: 24px; justify-content: center; align-items: center;">
+            <!-- Tabel H-T-O Utama -->
+            <div style="background: rgba(2, 6, 23, 0.82); padding: 18px 24px; border-radius: 16px; border: 2px solid rgba(56, 189, 248, 0.4);">
+              <table style="border-collapse: separate; border-spacing: 8px;">
+                <thead>
+                  <tr>
+                    <th style="background: #7c3aed; color: #fff; padding: 6px 14px; border-radius: 8px; font-size: 0.85rem;">H (Hundreds)</th>
+                    <th style="background: #0284c7; color: #fff; padding: 6px 14px; border-radius: 8px; font-size: 0.85rem;">T (Tens)</th>
+                    <th style="background: #d97706; color: #fff; padding: 6px 14px; border-radius: 8px; font-size: 0.85rem;">O (Ones)</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    ${vc.row1.map(renderCell).join('')}
+                    <td></td>
+                  </tr>
+                  <tr>
+                    ${vc.row2.map(renderCell).join('')}
+                    <td style="font-size: 1.9rem; font-weight: 900; color: #4ade80; padding-left: 6px;">+</td>
+                  </tr>
+                  <tr>
+                    <td colspan="4" style="border-bottom: 3.5px solid #38bdf8; height: 4px;"></td>
+                  </tr>
+                  <tr>
+                    ${vc.row3.map(renderCell).join('')}
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
-            <div style="display: inline-block; font-family: monospace; font-size: 1.55rem; font-weight: 900; text-align: right; line-height: 1.4; padding: 8px 18px; background: #ffffff; border-radius: 10px; border: 1.5px solid #cbd5e1;">
-              <div style="letter-spacing: 12px; color: #64748b; font-size: 0.9rem; border-bottom: 1px solid #e2e8f0; margin-bottom: 4px;">H T O</div>
+
+            <!-- Alat Coretan / Roda Uji Angka Misteri a, b, c -->
+            <div style="background: rgba(15, 23, 42, 0.9); border: 1.5px solid rgba(255,255,255,0.15); border-radius: 16px; padding: 16px 20px; max-width: 310px;">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                <span style="font-size: 0.82rem; font-weight: 800; color: #fde047;">🔢 Alat Uji Coba Angka (a, b, c)</span>
+                <button type="button" onclick="ihsResetQ2Trial()" style="background: rgba(148,163,184,0.2); color: #cbd5e1; border: none; border-radius: 6px; padding: 3px 8px; font-size: 0.72rem; cursor: pointer;">Reset</button>
+              </div>
+              <p style="font-size: 0.76rem; color: #94a3b8; margin: 0 0 12px; line-height: 1.4;">
+                Putar angka 0–9 di bawah untuk menguji nilai <strong>a</strong>, <strong>b</strong>, dan <strong>c</strong> pada tabel di samping:
+              </p>
+              <div style="display: flex; gap: 10px; justify-content: space-between;">
+                ${[
+                  { k: 'a', col: '#38bdf8', lbl: 'Kotak a' },
+                  { k: 'b', col: '#f43f5e', lbl: 'Kotak b' },
+                  { k: 'c', col: '#10b981', lbl: 'Kotak c' }
+                ].map(function(item) {
+                  return `
+                    <div style="flex: 1; text-align: center; background: rgba(0,0,0,0.35); padding: 8px 6px; border-radius: 10px; border: 1.5px solid ${item.col};">
+                      <div style="font-size: 0.74rem; font-weight: 800; color: ${item.col}; margin-bottom: 4px;">${item.lbl}</div>
+                      <button type="button" onclick="ihsCycleQ2Trial('${item.k}', 1)" style="width: 100%; background: rgba(255,255,255,0.08); color: #fff; border: none; border-radius: 4px; cursor: pointer; font-size: 0.75rem;">▲</button>
+                      <div style="font-size: 1.3rem; font-weight: 900; font-family: monospace; color: #fff; margin: 4px 0;">${trial[item.k]}</div>
+                      <button type="button" onclick="ihsCycleQ2Trial('${item.k}', -1)" style="width: 100%; background: rgba(255,255,255,0.08); color: #fff; border: none; border-radius: 4px; cursor: pointer; font-size: 0.75rem;">▼</button>
+                    </div>
+                  `;
+                }).join('')}
+              </div>
+            </div>
+          </div>
+        </div>
+      `;
+    }
+
+    // -------------------------------------------------------------------------
+    // 3. MAKING 10 SUBTRACTION DIAGRAM (No. 3: 462 - 8, dengan Kapsul Miring & b + a = c!)
+    // -------------------------------------------------------------------------
+    if (vc.kind === 'number_bond_making10_sub') {
+      return `
+        <div style="background: linear-gradient(135deg, rgba(168, 85, 247, 0.15), rgba(15, 23, 42, 0.96)); border: 2px solid #a855f7; border-radius: 18px; padding: 20px; margin: 14px 0; text-align: center;">
+          <svg viewBox="0 0 560 275" style="max-width: 540px; width: 100%; height: auto; background: rgba(2, 6, 23, 0.75); border-radius: 14px; border: 1.5px solid rgba(168, 85, 247, 0.4);">
+            <!-- Garis Cabang dari 462 ke b dan 10 -->
+            <line x1="175" y1="62" x2="115" y2="140" stroke="#38bdf8" stroke-width="3.5" />
+            <line x1="205" y1="62" x2="265" y2="140" stroke="#f59e0b" stroke-width="3.5" />
+
+            <!-- Kapsul Putus-Putus Miring Mengelompokkan 10 dan - 8 (Persis Lembar Asli!) -->
+            <g transform="rotate(-35 305 102)">
+              <rect x="220" y="74" width="170" height="56" rx="28" fill="rgba(16, 185, 129, 0.12)" stroke="#4ade80" stroke-width="2.5" stroke-dasharray="7,5"/>
+            </g>
+
+            <!-- Kotak 462 - 8 -->
+            <rect x="130" y="20" width="120" height="44" rx="10" fill="#1e293b" stroke="#38bdf8" stroke-width="2.5"/>
+            <text x="190" y="49" fill="#ffffff" font-size="24" font-weight="900" font-family="monospace" text-anchor="middle">462</text>
+
+            <text x="285" y="49" fill="#f87171" font-size="26" font-weight="900" font-family="monospace" text-anchor="middle">–</text>
+
+            <rect x="315" y="20" width="66" height="44" rx="10" fill="#1e293b" stroke="#f87171" stroke-width="2.5"/>
+            <text x="348" y="49" fill="#ffffff" font-size="24" font-weight="900" font-family="monospace" text-anchor="middle">8</text>
+
+            <!-- Lingkaran b (Kiri) dan 10 (Kanan) -->
+            <circle cx="110" cy="162" r="34" fill="#1e1b4b" stroke="#38bdf8" stroke-width="3"/>
+            <text x="110" y="169" fill="#38bdf8" font-size="22" font-weight="900" font-family="monospace" text-anchor="middle">b</text>
+
+            <circle cx="265" cy="142" r="28" fill="#451a03" stroke="#f59e0b" stroke-width="3"/>
+            <text x="265" y="149" fill="#fde047" font-size="20" font-weight="900" font-family="monospace" text-anchor="middle">10</text>
+
+            <!-- Lingkaran a di samping kapsul (10 - 8 = a) -->
+            <path d="M 355 110 L 405 125" stroke="#4ade80" stroke-width="2.5" marker-end="url(#arrowG)"/>
+            <circle cx="435" cy="132" r="28" fill="#064e3b" stroke="#10b981" stroke-width="3"/>
+            <text x="435" y="139" fill="#4ade80" font-size="22" font-weight="900" font-family="monospace" text-anchor="middle">a</text>
+
+            <!-- Persamaan Bawah: b + a = c (Persis di Bawah Diagram pada PDF!) -->
+            <rect x="145" y="212" width="270" height="46" rx="12" fill="rgba(30, 41, 59, 0.95)" stroke="#a855f7" stroke-width="2.5"/>
+            <text x="280" y="242" fill="#ffffff" font-size="23" font-weight="900" font-family="monospace" text-anchor="middle">
+              <tspan fill="#38bdf8">b</tspan> + <tspan fill="#4ade80">a</tspan> = <tspan fill="#fde047">c</tspan>
+            </text>
+          </svg>
+        </div>
+      `;
+    }
+
+    // -------------------------------------------------------------------------
+    // 4. YURI'S SUBTRACTION WORK CARD (No. 4 — Ilustrasi Buku Catatan Yuri & Papan Koreksi H-T-O)
+    // -------------------------------------------------------------------------
+    if (vc.kind === 'yuri_detective_card') {
+      var ans4 = (window.appState && window.appState.ihsUserAnswers && window.appState.ihsUserAnswers['ihs-4'] && window.appState.ihsUserAnswers['ihs-4'].boxes) || {};
+      var hVal = ans4.b4_h || '?';
+      var tVal = ans4.b4_t || '?';
+      var oVal = ans4.b4_o || '?';
+
+      return `
+        <div style="background: linear-gradient(135deg, rgba(244, 63, 94, 0.14), rgba(15, 23, 42, 0.96)); border: 2px solid #f43f5e; border-radius: 18px; padding: 20px; margin: 14px 0; display: flex; flex-wrap: wrap; justify-content: center; gap: 28px; align-items: center;">
+          <!-- Ilustrasi Karakter Yuri & Buku Catatannya -->
+          <div style="background: #fffbeb; color: #1e293b; padding: 18px 24px; border-radius: 16px; border: 3px dashed #f43f5e; text-align: center; box-shadow: 0 8px 20px rgba(0,0,0,0.3);">
+            <div style="display: flex; align-items: center; justify-content: center; gap: 10px; margin-bottom: 10px;">
+              <svg viewBox="0 0 50 50" style="width: 42px; height: 42px;">
+                <circle cx="25" cy="25" r="22" fill="#fce7f3" stroke="#f43f5e" stroke-width="2"/>
+                <path d="M12 22 C12 10, 38 10, 38 22" fill="#1e293b"/>
+                <circle cx="25" cy="26" r="11" fill="#fed7aa"/>
+                <circle cx="21" cy="25" r="1.8" fill="#0f172a"/><circle cx="29" cy="25" r="1.8" fill="#0f172a"/>
+                <path d="M21 31 Q25 34 29 31" fill="none" stroke="#e11d48" stroke-width="1.8" stroke-linecap="round"/>
+              </svg>
+              <div style="text-align: left;">
+                <div style="font-size: 0.76rem; font-weight: 900; color: #e11d48; text-transform: uppercase;">📓 Yuri's Notebook</div>
+                <div style="font-size: 0.72rem; color: #64748b; font-weight: 700;">Periksa hasil hitungan Yuri ini:</div>
+              </div>
+            </div>
+            <div style="display: inline-block; font-family: monospace; font-size: 1.55rem; font-weight: 900; text-align: right; line-height: 1.45; padding: 10px 22px; background: #ffffff; border-radius: 12px; border: 2px solid #cbd5e1;">
+              <div style="letter-spacing: 12px; color: #64748b; font-size: 0.92rem; border-bottom: 1.5px solid #e2e8f0; margin-bottom: 4px;">H T O</div>
               <div style="letter-spacing: 10px; color: #0f172a;">5 2 7</div>
               <div style="letter-spacing: 10px; color: #0f172a; border-bottom: 3px solid #0f172a;">1 5 8 –</div>
               <div style="letter-spacing: 10px; color: #e11d48;">4 3 1</div>
             </div>
           </div>
 
-          <!-- Papan Kosong untuk Perbaikan Siswa -->
-          <div style="background: rgba(2, 6, 23, 0.85); padding: 16px 24px; border-radius: 16px; border: 2px solid #38bdf8; text-align: center;">
-            <div style="font-size: 0.78rem; font-weight: 900; color: #38bdf8; text-transform: uppercase; margin-bottom: 8px;">
-              ✏️ Your Job (Correction):
+          <div style="font-size: 2rem; color: #38bdf8; font-weight: 900;">➔</div>
+
+          <!-- Papan Perbaikan Siswa (Tersinkronisasi dengan Kotak Input H, T, O) -->
+          <div style="background: rgba(2, 6, 23, 0.88); padding: 18px 24px; border-radius: 16px; border: 2px solid #38bdf8; text-align: center;">
+            <div style="font-size: 0.8rem; font-weight: 900; color: #38bdf8; text-transform: uppercase; margin-bottom: 10px;">
+              ✏️ Your Job (Write in the Box Below):
             </div>
-            <table style="border-collapse: separate; border-spacing: 6px; font-family: monospace; font-size: 1.4rem; font-weight: 900;">
+            <table style="border-collapse: separate; border-spacing: 6px; font-family: monospace; font-size: 1.45rem; font-weight: 900; margin: 0 auto;">
               <thead>
                 <tr>
-                  <th style="background: #7c3aed; color: #fff; padding: 4px 12px; border-radius: 6px; font-size: 0.8rem;">H</th>
-                  <th style="background: #0284c7; color: #fff; padding: 4px 12px; border-radius: 6px; font-size: 0.8rem;">T</th>
-                  <th style="background: #d97706; color: #fff; padding: 4px 12px; border-radius: 6px; font-size: 0.8rem;">O</th>
+                  <th style="background: #7c3aed; color: #fff; padding: 5px 14px; border-radius: 6px; font-size: 0.82rem;">H</th>
+                  <th style="background: #0284c7; color: #fff; padding: 5px 14px; border-radius: 6px; font-size: 0.82rem;">T</th>
+                  <th style="background: #d97706; color: #fff; padding: 5px 14px; border-radius: 6px; font-size: 0.82rem;">O</th>
                   <th></th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
-                  <td style="width: 52px; height: 44px; background: #1e293b; color: #fff; border-radius: 8px;">5</td>
-                  <td style="width: 52px; height: 44px; background: #1e293b; color: #fff; border-radius: 8px;">2</td>
-                  <td style="width: 52px; height: 44px; background: #1e293b; color: #fff; border-radius: 8px;">7</td>
+                  <td style="width: 56px; height: 46px; background: #1e293b; color: #fff; border-radius: 8px;">5</td>
+                  <td style="width: 56px; height: 46px; background: #1e293b; color: #fff; border-radius: 8px;">2</td>
+                  <td style="width: 56px; height: 46px; background: #1e293b; color: #fff; border-radius: 8px;">7</td>
                   <td></td>
                 </tr>
                 <tr>
-                  <td style="width: 52px; height: 44px; background: #1e293b; color: #fff; border-radius: 8px;">1</td>
-                  <td style="width: 52px; height: 44px; background: #1e293b; color: #fff; border-radius: 8px;">5</td>
-                  <td style="width: 52px; height: 44px; background: #1e293b; color: #fff; border-radius: 8px;">8</td>
-                  <td style="color: #f87171; padding-left: 4px;">–</td>
+                  <td style="width: 56px; height: 46px; background: #1e293b; color: #fff; border-radius: 8px;">1</td>
+                  <td style="width: 56px; height: 46px; background: #1e293b; color: #fff; border-radius: 8px;">5</td>
+                  <td style="width: 56px; height: 46px; background: #1e293b; color: #fff; border-radius: 8px;">8</td>
+                  <td style="color: #f87171; padding-left: 6px;">–</td>
                 </tr>
-                <tr><td colspan="4" style="border-bottom: 2.5px solid #38bdf8;"></td></tr>
+                <tr><td colspan="4" style="border-bottom: 3px solid #38bdf8;"></td></tr>
                 <tr>
-                  <td style="width: 52px; height: 44px; border: 2px dashed #a855f7; color: #d8b4fe; border-radius: 8px;">?</td>
-                  <td style="width: 52px; height: 44px; border: 2px dashed #38bdf8; color: #7dd3fc; border-radius: 8px;">?</td>
-                  <td style="width: 52px; height: 44px; border: 2px dashed #f59e0b; color: #fde047; border-radius: 8px;">?</td>
+                  <td style="width: 56px; height: 48px; background: rgba(124, 58, 237, 0.2); border: 2px dashed #a855f7; color: #d8b4fe; border-radius: 8px;">${hVal}</td>
+                  <td style="width: 56px; height: 48px; background: rgba(2, 132, 199, 0.2); border: 2px dashed #38bdf8; color: #7dd3fc; border-radius: 8px;">${tVal}</td>
+                  <td style="width: 56px; height: 48px; background: rgba(217, 119, 6, 0.2); border: 2px dashed #f59e0b; color: #fde047; border-radius: 8px;">${oVal}</td>
                   <td></td>
                 </tr>
               </tbody>
@@ -995,40 +1370,46 @@
       `;
     }
 
+    // -------------------------------------------------------------------------
     // 5. INCOMPLETE SUBTRACTION 500 - 14[?] = 3[?]4 (No. 5)
+    // -------------------------------------------------------------------------
     if (vc.kind === 'hto_puzzle_500') {
+      var ans5 = (window.appState && window.appState.ihsUserAnswers && window.appState.ihsUserAnswers['ihs-5'] && window.appState.ihsUserAnswers['ihs-5'].boxes) || {};
+      var r2o = ans5.b5_1 || '…';
+      var r3t = ans5.b5_2 || '…';
+
       return `
-        <div style="background: linear-gradient(135deg, rgba(245, 158, 11, 0.14), rgba(15, 23, 42, 0.96)); border: 2px solid #f59e0b; border-radius: 16px; padding: 20px; margin: 14px 0; text-align: center;">
-          <div style="display: inline-block; background: rgba(2, 6, 23, 0.85); padding: 16px 26px; border-radius: 16px; border: 2px solid rgba(245, 158, 11, 0.45);">
-            <table style="border-collapse: separate; border-spacing: 8px; font-family: monospace; font-size: 1.45rem; font-weight: 900;">
+        <div style="background: linear-gradient(135deg, rgba(245, 158, 11, 0.15), rgba(15, 23, 42, 0.96)); border: 2px solid #f59e0b; border-radius: 18px; padding: 20px; margin: 14px 0; text-align: center;">
+          <div style="display: inline-block; background: rgba(2, 6, 23, 0.85); padding: 18px 28px; border-radius: 16px; border: 2px solid rgba(245, 158, 11, 0.45);">
+            <table style="border-collapse: separate; border-spacing: 8px; font-family: monospace; font-size: 1.5rem; font-weight: 900;">
               <thead>
                 <tr>
-                  <th style="background: #7c3aed; color: #fff; padding: 6px 14px; border-radius: 8px; font-size: 0.82rem;">H</th>
-                  <th style="background: #0284c7; color: #fff; padding: 6px 14px; border-radius: 8px; font-size: 0.82rem;">T</th>
-                  <th style="background: #d97706; color: #fff; padding: 6px 14px; border-radius: 8px; font-size: 0.82rem;">O</th>
+                  <th style="background: #7c3aed; color: #fff; padding: 6px 16px; border-radius: 8px; font-size: 0.84rem;">H</th>
+                  <th style="background: #0284c7; color: #fff; padding: 6px 16px; border-radius: 8px; font-size: 0.84rem;">T</th>
+                  <th style="background: #d97706; color: #fff; padding: 6px 16px; border-radius: 8px; font-size: 0.84rem;">O</th>
                   <th></th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
-                  <td style="width: 64px; height: 54px; background: #1e293b; color: #fff; border-radius: 10px;">5</td>
-                  <td style="width: 64px; height: 54px; background: #1e293b; color: #fff; border-radius: 10px;">0</td>
-                  <td style="width: 64px; height: 54px; background: #1e293b; color: #fff; border-radius: 10px;">0</td>
+                  <td style="width: 68px; height: 56px; background: #1e293b; color: #fff; border-radius: 10px;">5</td>
+                  <td style="width: 68px; height: 56px; background: #1e293b; color: #fff; border-radius: 10px;">0</td>
+                  <td style="width: 68px; height: 56px; background: #1e293b; color: #fff; border-radius: 10px;">0</td>
                   <td></td>
                 </tr>
                 <tr>
-                  <td style="width: 64px; height: 54px; background: #1e293b; color: #fff; border-radius: 10px;">1</td>
-                  <td style="width: 64px; height: 54px; background: #1e293b; color: #fff; border-radius: 10px;">4</td>
-                  <td style="width: 64px; height: 54px; background: rgba(56, 189, 248, 0.2); border: 2.5px dashed #38bdf8; color: #38bdf8; border-radius: 10px;">[ … ]</td>
-                  <td style="color: #f87171; font-size: 1.7rem; padding-left: 6px;">–</td>
+                  <td style="width: 68px; height: 56px; background: #1e293b; color: #fff; border-radius: 10px;">1</td>
+                  <td style="width: 68px; height: 56px; background: #1e293b; color: #fff; border-radius: 10px;">4</td>
+                  <td style="width: 68px; height: 56px; background: rgba(56, 189, 248, 0.22); border: 2.5px dashed #38bdf8; color: #38bdf8; border-radius: 10px;">${r2o}</td>
+                  <td style="color: #f87171; font-size: 1.8rem; padding-left: 6px;">–</td>
                 </tr>
                 <tr>
-                  <td colspan="4" style="border-bottom: 3px solid #fde047; height: 4px;"></td>
+                  <td colspan="4" style="border-bottom: 3.5px solid #fde047; height: 4px;"></td>
                 </tr>
                 <tr>
-                  <td style="width: 64px; height: 54px; background: #1e293b; color: #fff; border-radius: 10px;">3</td>
-                  <td style="width: 64px; height: 54px; background: rgba(16, 185, 129, 0.2); border: 2.5px dashed #10b981; color: #4ade80; border-radius: 10px;">[ … ]</td>
-                  <td style="width: 64px; height: 54px; background: #1e293b; color: #fff; border-radius: 10px;">4</td>
+                  <td style="width: 68px; height: 56px; background: #1e293b; color: #fff; border-radius: 10px;">3</td>
+                  <td style="width: 68px; height: 56px; background: rgba(16, 185, 129, 0.22); border: 2.5px dashed #10b981; color: #4ade80; border-radius: 10px;">${r3t}</td>
+                  <td style="width: 68px; height: 56px; background: #1e293b; color: #fff; border-radius: 10px;">4</td>
                   <td></td>
                 </tr>
               </tbody>
@@ -1038,47 +1419,91 @@
       `;
     }
 
-    // 6. NUMBER BOND 678 + 8 (No. 6)
+    // -------------------------------------------------------------------------
+    // 6. NUMBER BOND 678 + 8 (No. 6 — Dengan Kapsul Putus-Putus Miring Mengelompokkan 2 & 8 = 10!)
+    // -------------------------------------------------------------------------
     if (vc.kind === 'number_bond_678') {
       return `
-        <div style="background: linear-gradient(135deg, rgba(16, 185, 129, 0.14), rgba(15, 23, 42, 0.96)); border: 2px solid #10b981; border-radius: 16px; padding: 18px; margin: 14px 0; text-align: center;">
-          <svg viewBox="0 0 520 200" style="max-width: 500px; width: 100%; height: auto; background: rgba(2, 6, 23, 0.7); border-radius: 14px; border: 1px solid rgba(16, 185, 129, 0.35);">
-            <line x1="175" y1="55" x2="115" y2="130" stroke="#38bdf8" stroke-width="3.5"/>
-            <line x1="195" y1="55" x2="250" y2="130" stroke="#10b981" stroke-width="3.5"/>
-            <line x1="340" y1="55" x2="275" y2="130" stroke="#10b981" stroke-width="3.5" stroke-dasharray="5,4"/>
+        <div style="background: linear-gradient(135deg, rgba(16, 185, 129, 0.14), rgba(15, 23, 42, 0.96)); border: 2px solid #10b981; border-radius: 18px; padding: 18px; margin: 14px 0; text-align: center;">
+          <svg viewBox="0 0 600 220" style="max-width: 580px; width: 100%; height: auto; background: rgba(2, 6, 23, 0.75); border-radius: 14px; border: 1.5px solid rgba(16, 185, 129, 0.4);">
+            <!-- Cabang 678 ke 676 dan 2 -->
+            <line x1="145" y1="62" x2="90" y2="145" stroke="#38bdf8" stroke-width="3.5"/>
+            <line x1="175" y1="62" x2="225" y2="145" stroke="#10b981" stroke-width="3.5"/>
 
-            <rect x="130" y="18" width="110" height="42" rx="10" fill="#1e293b" stroke="#38bdf8" stroke-width="2.5"/>
-            <text x="185" y="45" fill="#fff" font-size="22" font-weight="900" font-family="monospace" text-anchor="middle">678</text>
+            <!-- Kapsul Putus-Putus Miring Mengelompokkan 2 dan 8 Menjadi 10 -->
+            <g transform="rotate(-35 268 102)">
+              <rect x="182" y="74" width="172" height="54" rx="27" fill="rgba(16, 185, 129, 0.14)" stroke="#4ade80" stroke-width="2.5" stroke-dasharray="7,5"/>
+            </g>
 
-            <text x="275" y="45" fill="#4ade80" font-size="24" font-weight="900" text-anchor="middle">+</text>
+            <rect x="105" y="20" width="110" height="44" rx="10" fill="#1e293b" stroke="#38bdf8" stroke-width="2.5"/>
+            <text x="160" y="49" fill="#fff" font-size="23" font-weight="900" font-family="monospace" text-anchor="middle">678</text>
 
-            <rect x="310" y="18" width="70" height="42" rx="10" fill="#1e293b" stroke="#10b981" stroke-width="2.5"/>
-            <text x="345" y="45" fill="#fff" font-size="22" font-weight="900" font-family="monospace" text-anchor="middle">8</text>
+            <text x="248" y="49" fill="#4ade80" font-size="25" font-weight="900" text-anchor="middle">+</text>
 
-            <circle cx="110" cy="150" r="32" fill="#0f172a" stroke="#38bdf8" stroke-width="3"/>
-            <text x="110" y="157" fill="#38bdf8" font-size="19" font-weight="900" font-family="monospace" text-anchor="middle">676</text>
+            <rect x="276" y="20" width="64" height="44" rx="10" fill="#1e293b" stroke="#10b981" stroke-width="2.5"/>
+            <text x="308" y="49" fill="#fff" font-size="23" font-weight="900" font-family="monospace" text-anchor="middle">8</text>
 
-            <circle cx="255" cy="150" r="28" fill="#064e3b" stroke="#10b981" stroke-width="3"/>
-            <text x="255" y="157" fill="#4ade80" font-size="19" font-weight="900" font-family="monospace" text-anchor="middle">2</text>
+            <text x="362" y="49" fill="#38bdf8" font-size="24" font-weight="900" text-anchor="middle">=</text>
 
-            <circle cx="370" cy="150" r="28" fill="#064e3b" stroke="#fde047" stroke-width="3"/>
-            <text x="370" y="157" fill="#fde047" font-size="19" font-weight="900" font-family="monospace" text-anchor="middle">10</text>
+            <!-- Lingkaran 676 dan 2 -->
+            <circle cx="85" cy="162" r="32" fill="#0f172a" stroke="#38bdf8" stroke-width="3"/>
+            <text x="85" y="169" fill="#38bdf8" font-size="19" font-weight="900" font-family="monospace" text-anchor="middle">676</text>
+
+            <circle cx="228" cy="142" r="26" fill="#064e3b" stroke="#10b981" stroke-width="3"/>
+            <text x="228" y="149" fill="#4ade80" font-size="19" font-weight="900" font-family="monospace" text-anchor="middle">2</text>
+
+            <!-- Lingkaran 10 di Luar Kapsul -->
+            <circle cx="332" cy="135" r="24" fill="#451a03" stroke="#fde047" stroke-width="2.5"/>
+            <text x="332" y="142" fill="#fde047" font-size="18" font-weight="900" font-family="monospace" text-anchor="middle">10</text>
+
+            <!-- Kotak Langkah Kanan Persis Buku: 676 + 10 = .... & So, 678 + 8 = .... -->
+            <rect x="385" y="38" width="198" height="125" rx="12" fill="rgba(15, 23, 42, 0.92)" stroke="#38bdf8" stroke-width="2"/>
+            <text x="484" y="78" fill="#ffffff" font-size="17" font-weight="900" font-family="monospace" text-anchor="middle">676 + 10 = ….</text>
+            <line x1="405" y1="98" x2="565" y2="98" stroke="rgba(148,163,184,0.25)" stroke-width="1.5"/>
+            <text x="484" y="134" fill="#fde047" font-size="16" font-weight="900" font-family="monospace" text-anchor="middle">So, 678 + 8 = ….</text>
           </svg>
         </div>
       `;
     }
 
-    // 7. H-T-O WORKOUT CARD (No. 7: 297 + 358 & No. 9: 800 - 697)
+    // -------------------------------------------------------------------------
+    // 7. H-T-O WORKOUT CARD (No. 7: 297 + 358 & No. 9: 800 - 697 — Dengan Baris Coretan Carry/Borrow!)
+    // -------------------------------------------------------------------------
     if (vc.kind === 'hto_workout_card') {
+      var ansW = (window.appState && window.appState.ihsUserAnswers && window.appState.ihsUserAnswers[q.id] && window.appState.ihsUserAnswers[q.id].boxes) || {};
+      var prefixKey = q.id === 'ihs-7' ? 'b7' : 'b9';
+      var hDigit = ansW[prefixKey + '_h'] || '…';
+      var tDigit = ansW[prefixKey + '_t'] || '…';
+      var oDigit = ansW[prefixKey + '_o'] || '…';
+      var cMarks = (st.carryMarks && st.carryMarks[q.id]) || {};
+
       return `
-        <div style="background: linear-gradient(135deg, rgba(56, 189, 248, 0.14), rgba(15, 23, 42, 0.96)); border: 2px solid #38bdf8; border-radius: 16px; padding: 20px; margin: 14px 0; text-align: center;">
-          <div style="display: inline-block; background: rgba(2, 6, 23, 0.85); padding: 16px 28px; border-radius: 16px; border: 2px solid rgba(56, 189, 248, 0.4);">
+        <div style="background: linear-gradient(135deg, rgba(56, 189, 248, 0.14), rgba(15, 23, 42, 0.96)); border: 2px solid #38bdf8; border-radius: 18px; padding: 20px; margin: 14px 0; text-align: center;">
+          <div style="font-size: 0.78rem; color: #cbd5e1; margin-bottom: 10px;">
+            💡 Klik kotak kecil di atas kolom <strong>H</strong> atau <strong>T</strong> jika kamu ingin menandai simpanan/pinjaman (coretan), lalu isi jawaban di bawah!
+          </div>
+          <div style="display: inline-block; background: rgba(2, 6, 23, 0.88); padding: 18px 28px; border-radius: 16px; border: 2px solid rgba(56, 189, 248, 0.4);">
             <table style="border-collapse: separate; border-spacing: 8px; font-family: monospace; font-size: 1.5rem; font-weight: 900;">
               <thead>
                 <tr>
                   <th style="background: #7c3aed; color: #fff; padding: 6px 16px; border-radius: 8px; font-size: 0.85rem;">H</th>
                   <th style="background: #0284c7; color: #fff; padding: 6px 16px; border-radius: 8px; font-size: 0.85rem;">T</th>
                   <th style="background: #d97706; color: #fff; padding: 6px 16px; border-radius: 8px; font-size: 0.85rem;">O</th>
+                  <th></th>
+                </tr>
+                <!-- Baris Coretan Simpanan / Pinjaman Siswa -->
+                <tr>
+                  <th>
+                    <button type="button" onclick="ihsToggleCarryMark('${q.id}', 'h')" style="width: 100%; height: 26px; border-radius: 6px; font-size: 0.72rem; font-weight: 800; cursor: pointer; background: ${cMarks.h ? 'rgba(250, 204, 21, 0.25)' : 'rgba(255,255,255,0.05)'}; border: 1px dashed ${cMarks.h ? '#fde047' : 'rgba(148,163,184,0.35)'}; color: #fde047;">
+                      ${cMarks.h ? '✎ 1' : '✎ Coretan'}
+                    </button>
+                  </th>
+                  <th>
+                    <button type="button" onclick="ihsToggleCarryMark('${q.id}', 't')" style="width: 100%; height: 26px; border-radius: 6px; font-size: 0.72rem; font-weight: 800; cursor: pointer; background: ${cMarks.t ? 'rgba(250, 204, 21, 0.25)' : 'rgba(255,255,255,0.05)'}; border: 1px dashed ${cMarks.t ? '#fde047' : 'rgba(148,163,184,0.35)'}; color: #fde047;">
+                      ${cMarks.t ? '✎ 1' : '✎ Coretan'}
+                    </button>
+                  </th>
+                  <th></th>
                   <th></th>
                 </tr>
               </thead>
@@ -1096,12 +1521,12 @@
                   <td style="color: #4ade80; font-size: 1.8rem; padding-left: 8px;">${vc.op}</td>
                 </tr>
                 <tr>
-                  <td colspan="4" style="border-bottom: 3px solid #38bdf8; height: 4px;"></td>
+                  <td colspan="4" style="border-bottom: 3.5px solid #38bdf8; height: 4px;"></td>
                 </tr>
                 <tr>
-                  <td style="width: 72px; height: 54px; background: rgba(124, 58, 237, 0.2); border: 2px dashed #a855f7; color: #d8b4fe; border-radius: 10px;">…</td>
-                  <td style="width: 72px; height: 54px; background: rgba(2, 132, 199, 0.2); border: 2px dashed #38bdf8; color: #7dd3fc; border-radius: 10px;">…</td>
-                  <td style="width: 72px; height: 54px; background: rgba(217, 119, 6, 0.2); border: 2px dashed #f59e0b; color: #fde047; border-radius: 10px;">…</td>
+                  <td style="width: 72px; height: 54px; background: rgba(124, 58, 237, 0.22); border: 2px dashed #a855f7; color: #d8b4fe; border-radius: 10px;">${hDigit}</td>
+                  <td style="width: 72px; height: 54px; background: rgba(2, 132, 199, 0.22); border: 2px dashed #38bdf8; color: #7dd3fc; border-radius: 10px;">${tDigit}</td>
+                  <td style="width: 72px; height: 54px; background: rgba(217, 119, 6, 0.22); border: 2px dashed #f59e0b; color: #fde047; border-radius: 10px;">${oDigit}</td>
                   <td></td>
                 </tr>
               </tbody>
@@ -1111,98 +1536,243 @@
       `;
     }
 
-    // 8. NUMBER BOND 597 + 98 (No. 8 — Tanpa Bocoran!)
+    // -------------------------------------------------------------------------
+    // 8. NUMBER BOND 597 + 98 (No. 8 — Dengan Kapsul Putus-Putus Miring & .... + 100 = ....)
+    // -------------------------------------------------------------------------
     if (vc.kind === 'number_bond_597') {
+      var ans8 = (window.appState && window.appState.ihsUserAnswers && window.appState.ihsUserAnswers['ihs-8'] && window.appState.ihsUserAnswers['ihs-8'].boxes) || {};
+      var c1Val = ans8.b8_left || '①';
+      var c2Val = ans8.b8_right || '②';
+      var sum8Val = ans8.b8_sum || '….';
+
       return `
-        <div style="background: linear-gradient(135deg, rgba(245, 158, 11, 0.14), rgba(15, 23, 42, 0.96)); border: 2px solid #f59e0b; border-radius: 16px; padding: 18px; margin: 14px 0; text-align: center;">
-          <svg viewBox="0 0 520 200" style="max-width: 500px; width: 100%; height: auto; background: rgba(2, 6, 23, 0.7); border-radius: 14px; border: 1px solid rgba(245, 158, 11, 0.35);">
-            <line x1="175" y1="55" x2="110" y2="130" stroke="#38bdf8" stroke-width="3.5"/>
-            <line x1="195" y1="55" x2="255" y2="130" stroke="#f59e0b" stroke-width="3.5"/>
-            <line x1="345" y1="55" x2="275" y2="130" stroke="#f59e0b" stroke-width="3.5" stroke-dasharray="5,4"/>
+        <div style="background: linear-gradient(135deg, rgba(245, 158, 11, 0.14), rgba(15, 23, 42, 0.96)); border: 2px solid #f59e0b; border-radius: 18px; padding: 18px; margin: 14px 0; text-align: center;">
+          <svg viewBox="0 0 600 220" style="max-width: 580px; width: 100%; height: auto; background: rgba(2, 6, 23, 0.75); border-radius: 14px; border: 1.5px solid rgba(245, 158, 11, 0.4);">
+            <line x1="145" y1="62" x2="88" y2="145" stroke="#38bdf8" stroke-width="3.5"/>
+            <line x1="175" y1="62" x2="225" y2="145" stroke="#f59e0b" stroke-width="3.5"/>
 
-            <rect x="130" y="18" width="110" height="42" rx="10" fill="#1e293b" stroke="#38bdf8" stroke-width="2.5"/>
-            <text x="185" y="45" fill="#fff" font-size="22" font-weight="900" font-family="monospace" text-anchor="middle">597</text>
+            <!-- Kapsul Miring Mengelompokkan ② dan 98 Menjadi 100 -->
+            <g transform="rotate(-35 268 102)">
+              <rect x="180" y="74" width="176" height="54" rx="27" fill="rgba(245, 158, 11, 0.14)" stroke="#fde047" stroke-width="2.5" stroke-dasharray="7,5"/>
+            </g>
 
-            <text x="275" y="45" fill="#fde047" font-size="24" font-weight="900" text-anchor="middle">+</text>
+            <rect x="105" y="20" width="110" height="44" rx="10" fill="#1e293b" stroke="#38bdf8" stroke-width="2.5"/>
+            <text x="160" y="49" fill="#fff" font-size="23" font-weight="900" font-family="monospace" text-anchor="middle">597</text>
 
-            <rect x="305" y="18" width="80" height="42" rx="10" fill="#1e293b" stroke="#f59e0b" stroke-width="2.5"/>
-            <text x="345" y="45" fill="#fff" font-size="22" font-weight="900" font-family="monospace" text-anchor="middle">98</text>
+            <text x="248" y="49" fill="#fde047" font-size="25" font-weight="900" text-anchor="middle">+</text>
 
-            <circle cx="105" cy="152" r="34" fill="#0f172a" stroke="#38bdf8" stroke-width="3" stroke-dasharray="5,3"/>
-            <text x="105" y="158" fill="#38bdf8" font-size="18" font-weight="900" font-family="monospace" text-anchor="middle">①</text>
+            <rect x="275" y="20" width="70" height="44" rx="10" fill="#1e293b" stroke="#f59e0b" stroke-width="2.5"/>
+            <text x="310" y="49" fill="#fff" font-size="23" font-weight="900" font-family="monospace" text-anchor="middle">98</text>
 
-            <circle cx="255" cy="152" r="30" fill="#451a03" stroke="#f59e0b" stroke-width="3" stroke-dasharray="5,3"/>
-            <text x="255" y="158" fill="#fde047" font-size="18" font-weight="900" font-family="monospace" text-anchor="middle">②</text>
+            <!-- Lingkaran ① dan ② -->
+            <circle cx="85" cy="162" r="34" fill="#0f172a" stroke="#38bdf8" stroke-width="3" stroke-dasharray="5,3"/>
+            <text x="85" y="168" fill="#38bdf8" font-size="18" font-weight="900" font-family="monospace" text-anchor="middle">${c1Val}</text>
 
-            <circle cx="375" cy="152" r="30" fill="#451a03" stroke="#fde047" stroke-width="2.5"/>
-            <text x="375" y="158" fill="#ffffff" font-size="18" font-weight="900" font-family="monospace" text-anchor="middle">100</text>
+            <circle cx="228" cy="142" r="28" fill="#451a03" stroke="#f59e0b" stroke-width="3" stroke-dasharray="5,3"/>
+            <text x="228" y="148" fill="#fde047" font-size="18" font-weight="900" font-family="monospace" text-anchor="middle">${c2Val}</text>
+
+            <!-- Angka 100 di Samping Kapsul -->
+            <circle cx="336" cy="135" r="26" fill="#451a03" stroke="#fde047" stroke-width="2.5"/>
+            <text x="336" y="141" fill="#ffffff" font-size="17" font-weight="900" font-family="monospace" text-anchor="middle">100</text>
+
+            <!-- Kotak Persamaan Kanan Persis Buku: .... + 100 = .... -->
+            <rect x="385" y="55" width="198" height="90" rx="12" fill="rgba(15, 23, 42, 0.92)" stroke="#f59e0b" stroke-width="2"/>
+            <text x="484" y="106" fill="#ffffff" font-size="18" font-weight="900" font-family="monospace" text-anchor="middle">
+              <tspan fill="#38bdf8">${c1Val}</tspan> + 100 = <tspan fill="#4ade80">${sum8Val}</tspan>
+            </text>
           </svg>
         </div>
       `;
     }
 
-    // 9. NUMBER BOND 749 - 70 (No. 10 — Tanpa Bocoran!)
+    // -------------------------------------------------------------------------
+    // 9. NUMBER BOND 749 - 70 (No. 10 — Dengan Kapsul Putus-Putus Miring & .... + .... = ....)
+    // -------------------------------------------------------------------------
     if (vc.kind === 'number_bond_749') {
+      var ans10 = (window.appState && window.appState.ihsUserAnswers && window.appState.ihsUserAnswers['ihs-10'] && window.appState.ihsUserAnswers['ihs-10'].boxes) || {};
+      var l10Val = ans10.b10_left || '①';
+      var r10Val = ans10.b10_rem || '②';
+      var tot10Val = ans10.b10_total || '….';
+
       return `
-        <div style="background: linear-gradient(135deg, rgba(56, 189, 248, 0.14), rgba(15, 23, 42, 0.96)); border: 2px solid #38bdf8; border-radius: 16px; padding: 18px; margin: 14px 0; text-align: center;">
-          <svg viewBox="0 0 520 200" style="max-width: 500px; width: 100%; height: auto; background: rgba(2, 6, 23, 0.7); border-radius: 14px; border: 1px solid rgba(56, 189, 248, 0.35);">
-            <line x1="175" y1="55" x2="110" y2="130" stroke="#38bdf8" stroke-width="3.5"/>
-            <line x1="195" y1="55" x2="255" y2="130" stroke="#10b981" stroke-width="3.5"/>
-            <line x1="345" y1="55" x2="275" y2="130" stroke="#f43f5e" stroke-width="3.5" stroke-dasharray="5,4"/>
+        <div style="background: linear-gradient(135deg, rgba(56, 189, 248, 0.14), rgba(15, 23, 42, 0.96)); border: 2px solid #38bdf8; border-radius: 18px; padding: 18px; margin: 14px 0; text-align: center;">
+          <svg viewBox="0 0 600 220" style="max-width: 580px; width: 100%; height: auto; background: rgba(2, 6, 23, 0.75); border-radius: 14px; border: 1.5px solid rgba(56, 189, 248, 0.4);">
+            <line x1="145" y1="62" x2="88" y2="145" stroke="#38bdf8" stroke-width="3.5"/>
+            <line x1="175" y1="62" x2="225" y2="145" stroke="#10b981" stroke-width="3.5"/>
 
-            <rect x="130" y="18" width="110" height="42" rx="10" fill="#1e293b" stroke="#38bdf8" stroke-width="2.5"/>
-            <text x="185" y="45" fill="#fff" font-size="22" font-weight="900" font-family="monospace" text-anchor="middle">749</text>
+            <!-- Kapsul Miring Mengelompokkan 100 dan - 70 Menjadi ② -->
+            <g transform="rotate(-35 268 102)">
+              <rect x="180" y="74" width="176" height="54" rx="27" fill="rgba(244, 63, 94, 0.14)" stroke="#f43f5e" stroke-width="2.5" stroke-dasharray="7,5"/>
+            </g>
 
-            <text x="275" y="45" fill="#f87171" font-size="24" font-weight="900" text-anchor="middle">–</text>
+            <rect x="105" y="20" width="110" height="44" rx="10" fill="#1e293b" stroke="#38bdf8" stroke-width="2.5"/>
+            <text x="160" y="49" fill="#fff" font-size="23" font-weight="900" font-family="monospace" text-anchor="middle">749</text>
 
-            <rect x="305" y="18" width="80" height="42" rx="10" fill="#1e293b" stroke="#f43f5e" stroke-width="2.5"/>
-            <text x="345" y="45" fill="#fff" font-size="22" font-weight="900" font-family="monospace" text-anchor="middle">70</text>
+            <text x="248" y="49" fill="#f87171" font-size="25" font-weight="900" text-anchor="middle">–</text>
 
-            <circle cx="105" cy="152" r="34" fill="#0f172a" stroke="#38bdf8" stroke-width="3" stroke-dasharray="5,3"/>
-            <text x="105" y="158" fill="#38bdf8" font-size="18" font-weight="900" font-family="monospace" text-anchor="middle">①</text>
+            <rect x="275" y="20" width="70" height="44" rx="10" fill="#1e293b" stroke="#f43f5e" stroke-width="2.5"/>
+            <text x="310" y="49" fill="#fff" font-size="23" font-weight="900" font-family="monospace" text-anchor="middle">70</text>
 
-            <circle cx="255" cy="152" r="32" fill="#064e3b" stroke="#10b981" stroke-width="3"/>
-            <text x="255" y="158" fill="#4ade80" font-size="19" font-weight="900" font-family="monospace" text-anchor="middle">100</text>
+            <!-- Lingkaran ① (Kiri) dan 100 (Kanan) -->
+            <circle cx="85" cy="162" r="34" fill="#0f172a" stroke="#38bdf8" stroke-width="3" stroke-dasharray="5,3"/>
+            <text x="85" y="168" fill="#38bdf8" font-size="18" font-weight="900" font-family="monospace" text-anchor="middle">${l10Val}</text>
 
-            <circle cx="380" cy="152" r="32" fill="#064e3b" stroke="#fde047" stroke-width="3" stroke-dasharray="5,3"/>
-            <text x="380" y="158" fill="#fde047" font-size="18" font-weight="900" font-family="monospace" text-anchor="middle">②</text>
+            <circle cx="228" cy="142" r="28" fill="#064e3b" stroke="#10b981" stroke-width="3"/>
+            <text x="228" y="148" fill="#4ade80" font-size="18" font-weight="900" font-family="monospace" text-anchor="middle">100</text>
+
+            <!-- Lingkaran ② di Samping Kapsul -->
+            <circle cx="336" cy="135" r="26" fill="#451a03" stroke="#fde047" stroke-width="3" stroke-dasharray="5,3"/>
+            <text x="336" y="141" fill="#fde047" font-size="18" font-weight="900" font-family="monospace" text-anchor="middle">${r10Val}</text>
+
+            <!-- Kotak Persamaan Kanan Persis Buku: .... + .... = .... -->
+            <rect x="385" y="55" width="198" height="90" rx="12" fill="rgba(15, 23, 42, 0.92)" stroke="#38bdf8" stroke-width="2"/>
+            <text x="484" y="106" fill="#ffffff" font-size="18" font-weight="900" font-family="monospace" text-anchor="middle">
+              <tspan fill="#38bdf8">${l10Val}</tspan> + <tspan fill="#fde047">${r10Val}</tspan> = <tspan fill="#4ade80">${tot10Val}</tspan>
+            </text>
           </svg>
         </div>
       `;
     }
 
-    // 10. EQUAL SHARING & STORY DIORAMA CONTAINERS (No. 11-13 & No. 21, 23, 24, 25 — TANPA TULISAN JUMLAH DI WADAH!)
-    if (vc.kind === 'equal_sharing_containers' || vc.kind === 'story_diorama_containers') {
-      var groupsHtml = '';
-      for (var g = 0; g < vc.groupCount; g++) {
-        var itemsHtml = '';
-        for (var k = 0; k < vc.itemsPerGroup; k++) {
-          itemsHtml += `
-            <span style="display: inline-flex; align-items: center; justify-content: center; width: 38px; height: 38px; font-size: 1.45rem; background: rgba(255,255,255,0.08); border-radius: 10px; border: 1px solid rgba(255,255,255,0.14);">
-              ${vc.itemEmoji}
-            </span>
+    // -------------------------------------------------------------------------
+    // 10. BOOK PAGE 55 NO. 1(a): 2 BUNDEL GANTUNGAN KUNCI (16 KEYS IN 2 BUNDLES)
+    // -------------------------------------------------------------------------
+    if (vc.kind === 'svg_key_bundles') {
+      var cMap = (st.countedItems && st.countedItems[q.id]) || {};
+      var totalCounted = Object.keys(cMap).length;
+      var bundlesHtml = '';
+
+      for (var b = 0; b < vc.bundles; b++) {
+        var keysHtml = '';
+        for (var k = 0; k < vc.keysPerBundle; k++) {
+          var itemKey = 'b' + b + '_k' + k;
+          var badgeNum = cMap[itemKey];
+          keysHtml += `
+            <div onclick="ihsToggleCountItem('${q.id}', '${itemKey}')"
+                 title="Klik untuk menghitung kunci ini"
+                 style="position: relative; cursor: pointer; padding: 6px; border-radius: 12px; background: ${badgeNum ? 'rgba(245, 158, 11, 0.25)' : 'rgba(255,255,255,0.05)'}; border: 2px solid ${badgeNum ? '#fde047' : 'rgba(255,255,255,0.12)'}; transition: all 0.15s;">
+              <svg viewBox="0 0 36 64" style="width: 32px; height: 54px; display: block;">
+                <circle cx="18" cy="14" r="10" fill="none" stroke="#fbbf24" stroke-width="4"/>
+                <circle cx="18" cy="14" r="4" fill="#0f172a"/>
+                <rect x="15" y="24" width="6" height="32" rx="2" fill="#f59e0b"/>
+                <rect x="21" y="42" width="8" height="4" rx="1" fill="#fbbf24"/>
+                <rect x="21" y="50" width="10" height="4" rx="1" fill="#fbbf24"/>
+              </svg>
+              ${badgeNum ? `<span style="position: absolute; top: -6px; right: -6px; background: #10b981; color: #0f172a; font-size: 0.72rem; font-weight: 900; padding: 1px 6px; border-radius: 999px; border: 1.5px solid #fff;">${badgeNum}</span>` : ''}
+            </div>
           `;
         }
-        groupsHtml += `
-          <div style="background: rgba(15, 23, 42, 0.9); border: 2.5px solid ${vc.accentColor}; border-radius: 16px; padding: 14px; text-align: center;">
-            <div style="font-size: 1.2rem; margin-bottom: 6px;">${vc.containerIcon || '📦'}</div>
-            <div style="display: flex; flex-wrap: wrap; gap: 6px; justify-content: center; padding: 10px; background: rgba(0,0,0,0.35); border-radius: 12px;">
-              ${itemsHtml}
+
+        bundlesHtml += `
+          <div style="background: rgba(15, 23, 42, 0.92); border: 2.5px solid #f59e0b; border-radius: 18px; padding: 16px; text-align: center;">
+            <!-- Cincin Bundel Gantungan Kunci Besar -->
+            <div style="display: flex; flex-direction: column; align-items: center; margin-bottom: 8px;">
+              <svg viewBox="0 0 120 44" style="width: 110px; height: 40px;">
+                <ellipse cx="60" cy="22" rx="42" ry="16" fill="none" stroke="#cbd5e1" stroke-width="5"/>
+                <ellipse cx="60" cy="22" rx="38" ry="12" fill="none" stroke="#94a3b8" stroke-width="2"/>
+              </svg>
+            </div>
+            <div style="display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; padding: 12px; background: rgba(0,0,0,0.35); border-radius: 14px;">
+              ${keysHtml}
             </div>
           </div>
         `;
       }
 
       return `
-        <div style="background: linear-gradient(135deg, rgba(15, 23, 42, 0.95), rgba(30, 41, 59, 0.95)); border: 2px solid ${vc.accentColor}; border-radius: 16px; padding: 18px; margin: 14px 0;">
-          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(195px, 1fr)); gap: 14px;">
-            ${groupsHtml}
+        <div style="background: linear-gradient(135deg, rgba(245, 158, 11, 0.14), rgba(15, 23, 42, 0.96)); border: 2px solid #f59e0b; border-radius: 18px; padding: 18px; margin: 14px 0;">
+          <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; margin-bottom: 12px;">
+            <span style="font-size: 0.8rem; font-weight: 700; color: #fde68a;">
+              💡 Klik gambar kunci emas di bawah jika kamu ingin menghitungnya satu per satu!
+            </span>
+            ${totalCounted > 0 ? `<button type="button" onclick="ihsResetCountItems('${q.id}')" style="background: rgba(148,163,184,0.2); color: #e2e8f0; border: 1px solid rgba(148,163,184,0.4); border-radius: 8px; padding: 4px 10px; font-size: 0.74rem; cursor: pointer;">🔄 Reset Hitungan (${totalCounted})</button>` : ''}
+          </div>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px;">
+            ${bundlesHtml}
           </div>
         </div>
       `;
     }
 
-    // 11. MANUAL TRAY/BOWL DISTRIBUTOR (No. 14 & 15 — Siswa Klik Sendiri Wadah untuk Menaruh Benda Satu per Satu!)
+    // -------------------------------------------------------------------------
+    // 11. BOOK PAGE 55 NO. 1(b) & 1(c): KOTAK WADAH TIKUS (18 MICE) & ANAK AYAM (25 CHICKS)
+    // -------------------------------------------------------------------------
+    if (vc.kind === 'svg_animal_trays') {
+      var cMapA = (st.countedItems && st.countedItems[q.id]) || {};
+      var totalCountedA = Object.keys(cMapA).length;
+      var traysHtmlA = '';
+
+      for (var g = 0; g < vc.groupCount; g++) {
+        var animalsHtml = '';
+        for (var m = 0; m < vc.itemsPerGroup; m++) {
+          var aKey = 'g' + g + '_m' + m;
+          var aBadge = cMapA[aKey];
+          var svgAnimal = '';
+
+          if (vc.animalType === 'mouse') {
+            svgAnimal = `
+              <svg viewBox="0 0 54 46" style="width: 44px; height: 38px; display: block;">
+                <!-- Ekor & Badan Tikus Lucu -->
+                <path d="M8 34 Q2 25 8 18" fill="none" stroke="#f472b6" stroke-width="2.5" stroke-linecap="round"/>
+                <ellipse cx="26" cy="28" rx="14" ry="10" fill="#94a3b8" stroke="#475569" stroke-width="2"/>
+                <circle cx="18" cy="18" r="6" fill="#cbd5e1" stroke="#475569" stroke-width="1.8"/>
+                <circle cx="32" cy="16" r="6.5" fill="#cbd5e1" stroke="#475569" stroke-width="1.8"/>
+                <circle cx="32" cy="16" r="3.5" fill="#f472b6"/>
+                <circle cx="36" cy="25" r="2" fill="#0f172a"/>
+                <circle cx="42" cy="28" r="2.5" fill="#f43f5e"/>
+              </svg>
+            `;
+          } else {
+            svgAnimal = `
+              <svg viewBox="0 0 50 50" style="width: 42px; height: 42px; display: block;">
+                <!-- Anak Ayam Kuning -->
+                <line x1="20" y1="39" x2="18" y2="46" stroke="#f97316" stroke-width="2.5" stroke-linecap="round"/>
+                <line x1="30" y1="39" x2="32" y2="46" stroke="#f97316" stroke-width="2.5" stroke-linecap="round"/>
+                <ellipse cx="25" cy="30" rx="13" ry="11" fill="#fde047" stroke="#ca8a04" stroke-width="2"/>
+                <circle cx="25" cy="17" r="9.5" fill="#fef08a" stroke="#ca8a04" stroke-width="2"/>
+                <polygon points="33,15 41,18 33,21" fill="#f97316"/>
+                <circle cx="28" cy="15" r="2" fill="#0f172a"/>
+              </svg>
+            `;
+          }
+
+          animalsHtml += `
+            <div onclick="ihsToggleCountItem('${q.id}', '${aKey}')"
+                 style="position: relative; cursor: pointer; padding: 5px; border-radius: 12px; background: ${aBadge ? 'rgba(56, 189, 248, 0.25)' : 'rgba(255,255,255,0.06)'}; border: 2px solid ${aBadge ? '#fde047' : 'rgba(255,255,255,0.12)'}; transition: all 0.15s;">
+              ${svgAnimal}
+              ${aBadge ? `<span style="position: absolute; top: -6px; right: -6px; background: #10b981; color: #0f172a; font-size: 0.72rem; font-weight: 900; padding: 1px 6px; border-radius: 999px; border: 1.5px solid #fff;">${aBadge}</span>` : ''}
+            </div>
+          `;
+        }
+
+        // Kotak 3D Perspektif seperti di Buku Hal 55
+        traysHtmlA += `
+          <div style="background: linear-gradient(180deg, rgba(30, 41, 59, 0.95) 0%, rgba(15, 23, 42, 0.98) 100%); border: 2.5px solid ${vc.accentColor}; border-bottom: 8px solid ${vc.accentColor}; border-radius: 16px; padding: 14px; text-align: center; box-shadow: 0 6px 16px rgba(0,0,0,0.35);">
+            <div style="display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; padding: 10px; background: rgba(0,0,0,0.35); border-radius: 12px;">
+              ${animalsHtml}
+            </div>
+          </div>
+        `;
+      }
+
+      return `
+        <div style="background: linear-gradient(135deg, rgba(15, 23, 42, 0.95), rgba(30, 41, 59, 0.95)); border: 2px solid ${vc.accentColor}; border-radius: 18px; padding: 18px; margin: 14px 0;">
+          <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; margin-bottom: 12px;">
+            <span style="font-size: 0.8rem; font-weight: 700; color: #cbd5e1;">
+              💡 Klik gambar pada masing-masing kotak untuk menghitung jumlahnya!
+            </span>
+            ${totalCountedA > 0 ? `<button type="button" onclick="ihsResetCountItems('${q.id}')" style="background: rgba(148,163,184,0.2); color: #e2e8f0; border: 1px solid rgba(148,163,184,0.4); border-radius: 8px; padding: 4px 10px; font-size: 0.74rem; cursor: pointer;">🔄 Reset Hitungan (${totalCountedA})</button>` : ''}
+          </div>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(195px, 1fr)); gap: 14px;">
+            ${traysHtmlA}
+          </div>
+        </div>
+      `;
+    }
+
+    // -------------------------------------------------------------------------
+    // 12. MANUAL TRAY/BOWL DISTRIBUTOR (No. 14: 12 Gelas ke 4 Nampan & No. 15: 15 Rambutan ke 3 Mangkuk)
+    // -------------------------------------------------------------------------
     if (vc.kind === 'manual_tray_distributor') {
       var counts = st.trayCounts[q.id] || new Array(vc.groupCount).fill(0);
       var usedTotal = counts.reduce(function(a, b) { return a + b; }, 0);
@@ -1210,11 +1780,19 @@
 
       var topPoolHtml = '';
       for (var i = 0; i < vc.totalItems; i++) {
-        var isRemaining = i < remaining;
+        var isCrossedOut = i < usedTotal;
         topPoolHtml += `
-          <span style="display: inline-flex; align-items: center; justify-content: center; width: 38px; height: 38px; font-size: 1.45rem; background: ${isRemaining ? 'rgba(255,255,255,0.12)' : 'rgba(255,255,255,0.03)'}; opacity: ${isRemaining ? '1' : '0.22'}; border-radius: 10px; border: 1.5px solid ${vc.accentColor};">
-            ${vc.itemEmoji}
-          </span>
+          <div onclick="ihsDistributeNextItem('${q.id}', ${vc.totalItems}, ${vc.groupCount})"
+               title="${isCrossedOut ? 'Sudah dipindahkan ke wadah' : 'Klik untuk memindahkan ke wadah berikutnya'}"
+               style="position: relative; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; width: 48px; height: 54px; background: ${isCrossedOut ? 'rgba(15, 23, 42, 0.4)' : 'rgba(255,255,255,0.1)'}; opacity: ${isCrossedOut ? '0.42' : '1'}; border-radius: 12px; border: 2px solid ${isCrossedOut ? '#64748b' : vc.accentColor}; transition: all 0.15s;">
+            ${drawCustomItemSVG(vc.itemType, i)}
+            ${isCrossedOut ? `
+              <svg viewBox="0 0 40 40" style="position: absolute; inset: 4px; width: calc(100% - 8px); height: calc(100% - 8px); pointer-events: none;">
+                <line x1="4" y1="4" x2="36" y2="36" stroke="#ef4444" stroke-width="4" stroke-linecap="round"/>
+                <line x1="36" y1="4" x2="4" y2="36" stroke="#ef4444" stroke-width="4" stroke-linecap="round"/>
+              </svg>
+            ` : ''}
+          </div>
         `;
       }
 
@@ -1223,38 +1801,43 @@
         var cCount = counts[t] || 0;
         var trayItems = '';
         for (var m = 0; m < cCount; m++) {
-          trayItems += `<span style="font-size: 1.55rem;">${vc.itemEmoji}</span>`;
+          trayItems += `<span style="display: inline-flex;">${drawCustomItemSVG(vc.itemType, m)}</span>`;
         }
         if (cCount === 0) {
-          trayItems = `<span style="font-size: 0.78rem; color: #94a3b8;">Klik ${vc.containerName} ini untuk menaruh 1 ${vc.itemEmoji}</span>`;
+          trayItems = `<span style="font-size: 0.76rem; color: #94a3b8;">Klik ${vc.containerName} ini untuk menaruh 1 objek</span>`;
         }
+
+        var containerGraphic = vc.itemType === 'glass'
+          ? `<div style="height: 8px; background: linear-gradient(90deg, #38bdf8, #0284c7); border-radius: 999px; margin-top: 6px;"></div>`
+          : `<div style="height: 10px; background: linear-gradient(90deg, #f43f5e, #e11d48); border-radius: 0 0 24px 24px; margin-top: 6px;"></div>`;
 
         traysHtml += `
           <div onclick="ihsAddToTray('${q.id}', ${t}, ${vc.totalItems}, ${vc.groupCount})"
-               style="cursor: pointer; background: rgba(15, 23, 42, 0.92); border: 2.5px dashed ${vc.accentColor}; border-radius: 16px; padding: 14px; text-align: center; transition: all 0.2s;">
+               style="cursor: pointer; background: rgba(15, 23, 42, 0.94); border: 2.5px dashed ${vc.accentColor}; border-radius: 16px; padding: 14px; text-align: center; transition: all 0.2s;">
             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
-              <span style="font-size: 0.82rem; font-weight: 800; color: #fde047;">${vc.containerIcon} ${vc.containerName}</span>
+              <span style="font-size: 0.82rem; font-weight: 800; color: #fde047;">${vc.containerName} #${t + 1}</span>
               ${cCount > 0 ? `<button type="button" onclick="ihsRemoveFromTray(event, '${q.id}', ${t})" style="background: rgba(239,68,68,0.25); color: #fca5a5; border: 1px solid #ef4444; border-radius: 6px; padding: 2px 8px; font-size: 0.72rem; cursor: pointer;">–1</button>` : ''}
             </div>
-            <div style="min-height: 56px; display: flex; align-items: center; justify-content: center; gap: 6px; flex-wrap: wrap; background: rgba(0,0,0,0.35); border-radius: 12px; padding: 10px;">
+            <div style="min-height: 64px; display: flex; align-items: center; justify-content: center; gap: 6px; flex-wrap: wrap; background: rgba(0,0,0,0.38); border-radius: 12px; padding: 10px;">
               ${trayItems}
             </div>
+            ${containerGraphic}
           </div>
         `;
       }
 
       return `
-        <div style="background: linear-gradient(135deg, rgba(249, 115, 22, 0.14), rgba(15, 23, 42, 0.96)); border: 2px solid ${vc.accentColor}; border-radius: 16px; padding: 18px; margin: 14px 0;">
+        <div style="background: linear-gradient(135deg, rgba(15, 23, 42, 0.95), rgba(30, 41, 59, 0.96)); border: 2px solid ${vc.accentColor}; border-radius: 18px; padding: 18px; margin: 14px 0;">
           <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; margin-bottom: 10px;">
             <span style="font-size: 0.82rem; font-weight: 700; color: #cbd5e1;">
-              💡 Klik masing-masing ${vc.containerName} di bawah untuk memindahkan ${vc.itemEmoji} satu per satu secara merata:
+              💡 Klik gambar di baris atas (atau klik ${vc.containerName} di bawah) untuk mencoret (✕) dan membagikan satu per satu secara merata! (Sisa: <strong>${remaining}</strong>)
             </span>
             <button type="button" onclick="ihsResetTrays('${q.id}', ${vc.groupCount})" style="background: rgba(148,163,184,0.2); color: #e2e8f0; border: 1px solid rgba(148,163,184,0.4); border-radius: 8px; padding: 5px 12px; font-size: 0.76rem; font-weight: 700; cursor: pointer;">
               🔄 Ulangi Susunan
             </button>
           </div>
 
-          <div style="display: flex; flex-wrap: wrap; gap: 6px; justify-content: center; padding: 10px; background: rgba(0,0,0,0.3); border-radius: 12px; margin-bottom: 14px;">
+          <div style="display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; padding: 12px; background: rgba(0,0,0,0.35); border-radius: 14px; margin-bottom: 14px;">
             ${topPoolHtml}
           </div>
 
@@ -1265,8 +1848,10 @@
       `;
     }
 
-    // 12. INDIVIDUAL ITEMS GRID (No. 16 - 20 — Siswa Mengelompokkan Sendiri dengan Warna Lingkaran, Tanpa Spoiler Jumlah Kelompok!)
-    if (vc.kind === 'individual_items_grid') {
+    // -------------------------------------------------------------------------
+    // 13. SVG EQUAL GROUPING CANVAS (No. 16 - 20: Korek Api, Pir, Keripik "Chips", Turis & Danau, Biskuit)
+    // -------------------------------------------------------------------------
+    if (vc.kind === 'svg_equal_grouping') {
       var marksMap = (st.itemMarks && st.itemMarks[q.id]) || {};
       var activeColIdx = st.activeMarkerColor || 0;
 
@@ -1274,10 +1859,33 @@
         var isSel = (cIdx === activeColIdx);
         return `
           <button type="button" onclick="ihsSetMarkerColor(${cIdx})"
+                  title="Pilih Warna Lingkaran Kelompok #${cIdx + 1}"
                   style="width: 28px; height: 28px; border-radius: 999px; background: ${cHex}; border: ${isSel ? '3px solid #ffffff' : '1px solid rgba(255,255,255,0.3)'}; cursor: pointer; transform: ${isSel ? 'scale(1.15)' : 'scale(1)'};">
           </button>
         `;
       }).join('');
+
+      var lakeHeaderSvg = '';
+      if (vc.itemType === 'tourist_lake') {
+        lakeHeaderSvg = `
+          <svg viewBox="0 0 640 85" style="width: 100%; height: auto; border-radius: 12px; margin-bottom: 10px; background: linear-gradient(180deg, #0c4a6e 0%, #0284c7 100%); border: 1.5px solid rgba(56, 189, 248, 0.4);">
+            <!-- Pegunungan & Danau seperti di Buku Hal 58 -->
+            <polygon points="0,55 95,18 190,55" fill="#1e293b" opacity="0.6"/>
+            <polygon points="150,55 260,12 370,55" fill="#334155" opacity="0.6"/>
+            <polygon points="340,55 460,20 580,55" fill="#1e293b" opacity="0.6"/>
+            <rect x="0" y="52" width="640" height="33" fill="#0369a1"/>
+            <!-- Perahu-Perahu Kayu di Danau -->
+            ${[110, 230, 350, 470, 575].map(function(bx) {
+              return `
+                <g transform="translate(${bx}, 48)">
+                  <polygon points="-32,8 32,8 22,24 -22,24" fill="#b45309" stroke="#fde68a" stroke-width="1.8"/>
+                  <line x1="-24" y1="14" x2="24" y2="14" stroke="#78350f" stroke-width="2"/>
+                </g>
+              `;
+            }).join('')}
+          </svg>
+        `;
+      }
 
       var itemsGridHtml = '';
       for (var idx = 0; idx < vc.totalItems; idx++) {
@@ -1286,17 +1894,17 @@
         var mColor = isMarked ? MARKER_COLORS[mColIdx % MARKER_COLORS.length] : 'rgba(148, 163, 184, 0.3)';
         itemsGridHtml += `
           <div onclick="ihsToggleItemMark('${q.id}', ${idx})"
-               style="cursor: pointer; height: 58px; display: flex; align-items: center; justify-content: center; font-size: 1.75rem; border-radius: ${isMarked ? '999px' : '12px'}; background: ${isMarked ? mColor + '33' : 'rgba(15, 23, 42, 0.9)'}; border: 3px ${isMarked ? 'solid ' + mColor : 'dashed rgba(148, 163, 184, 0.35)'}; user-select: none; transition: all 0.15s;">
-            ${vc.itemEmoji}
+               style="cursor: pointer; height: 64px; display: flex; align-items: center; justify-content: center; border-radius: ${isMarked ? '999px' : '12px'}; background: ${isMarked ? mColor + '33' : 'rgba(15, 23, 42, 0.92)'}; border: 3px ${isMarked ? 'solid ' + mColor : 'dashed rgba(148, 163, 184, 0.32)'}; user-select: none; transition: all 0.15s;">
+            ${drawCustomItemSVG(vc.itemType, idx)}
           </div>
         `;
       }
 
       return `
-        <div style="background: linear-gradient(135deg, rgba(15, 23, 42, 0.95), rgba(30, 41, 59, 0.95)); border: 2px solid ${vc.accentColor}; border-radius: 16px; padding: 18px; margin: 14px 0;">
-          <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; margin-bottom: 14px;">
+        <div style="background: linear-gradient(135deg, rgba(15, 23, 42, 0.95), rgba(30, 41, 59, 0.95)); border: 2px solid ${vc.accentColor}; border-radius: 18px; padding: 18px; margin: 14px 0;">
+          <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; margin-bottom: 12px;">
             <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
-              <span style="font-size: 0.8rem; font-weight: 700; color: #cbd5e1;">🎨 Pilih Warna Lingkaran Kelompok:</span>
+              <span style="font-size: 0.8rem; font-weight: 700; color: #cbd5e1;">🎨 Pilih Warna Spidol & Klik Objek untuk Melingkari Kelompok:</span>
               ${colorPaletteHtml}
             </div>
             <button type="button" onclick="ihsResetItemMarks('${q.id}')" style="background: rgba(148,163,184,0.2); color: #e2e8f0; border: 1px solid rgba(148,163,184,0.4); border-radius: 8px; padding: 5px 12px; font-size: 0.76rem; font-weight: 700; cursor: pointer;">
@@ -1304,43 +1912,293 @@
             </button>
           </div>
 
-          <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(64px, 1fr)); gap: 10px; padding: 14px; background: rgba(0,0,0,0.35); border-radius: 14px;">
+          ${lakeHeaderSvg}
+
+          <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(66px, 1fr)); gap: 10px; padding: 14px; background: rgba(0,0,0,0.35); border-radius: 14px;">
             ${itemsGridHtml}
           </div>
         </div>
       `;
     }
 
-    // 13. BICYCLES & WHEELS DIORAMA (No. 22 — Tanpa Tulisan "5 Sepeda • 10 Roda"!)
-    if (vc.kind === 'story_diorama_bicycles') {
-      var bikesHtml = '';
-      var bikeColors = ['#38bdf8', '#10b981', '#f59e0b', '#a855f7', '#f43f5e'];
-      for (var b = 0; b < vc.bicycleCount; b++) {
-        var col = bikeColors[b % bikeColors.length];
-        bikesHtml += `
-          <div style="background: rgba(15, 23, 42, 0.92); border: 2px solid ${col}; border-radius: 16px; padding: 14px; text-align: center;">
-            <svg viewBox="0 0 120 75" style="width: 110px; height: 68px;">
-              <!-- Roda Kiri & Roda Kanan -->
-              <circle cx="28" cy="50" r="18" fill="none" stroke="#38bdf8" stroke-width="4"/>
-              <circle cx="28" cy="50" r="4" fill="#fde047"/>
-              <circle cx="92" cy="50" r="18" fill="none" stroke="#38bdf8" stroke-width="4"/>
-              <circle cx="92" cy="50" r="4" fill="#fde047"/>
-              <!-- Rangka Sepeda -->
-              <polyline points="28,50 52,24 82,24 56,50 28,50" fill="none" stroke="${col}" stroke-width="4" stroke-linejoin="round"/>
-              <line x1="82" y1="24" x2="92" y2="50" stroke="${col}" stroke-width="4"/>
-              <!-- Stang & Sadel -->
-              <line x1="76" y1="14" x2="88" y2="14" stroke="#ffffff" stroke-width="4" stroke-linecap="round"/>
-              <line x1="82" y1="14" x2="82" y2="24" stroke="#ffffff" stroke-width="3.5"/>
-              <line x1="44" y1="17" x2="58" y2="17" stroke="#ffffff" stroke-width="4" stroke-linecap="round"/>
-              <line x1="52" y1="17" x2="52" y2="24" stroke="#ffffff" stroke-width="3.5"/>
+    // -------------------------------------------------------------------------
+    // 14. BOOK PAGE 59 NO. 1: 4 PIRING CERI (4 PLATES OF 3 CHERRIES)
+    // -------------------------------------------------------------------------
+    if (vc.kind === 'svg_story_cherries') {
+      var cMapC = (st.countedItems && st.countedItems[q.id]) || {};
+      var totalCountedC = Object.keys(cMapC).length;
+      var platesHtml = '';
+
+      for (var p = 0; p < vc.plates; p++) {
+        var cherriesHtml = '';
+        for (var c = 0; c < vc.cherriesPerPlate; c++) {
+          var cKey = 'p' + p + '_c' + c;
+          var cBadge = cMapC[cKey];
+          cherriesHtml += `
+            <div onclick="ihsToggleCountItem('${q.id}', '${cKey}')"
+                 style="position: relative; cursor: pointer; padding: 4px; border-radius: 12px; background: ${cBadge ? 'rgba(244, 63, 94, 0.25)' : 'transparent'}; border: 2px solid ${cBadge ? '#fde047' : 'transparent'};">
+              <svg viewBox="0 0 42 56" style="width: 40px; height: 52px; display: block;">
+                <path d="M21 34 C19 20, 24 10, 14 4" fill="none" stroke="#4ade80" stroke-width="2.5" stroke-linecap="round"/>
+                <circle cx="21" cy="39" r="11" fill="#e11d48" stroke="#881337" stroke-width="2"/>
+                <ellipse cx="17" cy="35" rx="3.5" ry="2.2" fill="#fda4af" opacity="0.7"/>
+              </svg>
+              ${cBadge ? `<span style="position: absolute; top: -4px; right: -4px; background: #10b981; color: #0f172a; font-size: 0.72rem; font-weight: 900; padding: 1px 6px; border-radius: 999px; border: 1.5px solid #fff;">${cBadge}</span>` : ''}
+            </div>
+          `;
+        }
+
+        platesHtml += `
+          <div style="background: rgba(15, 23, 42, 0.92); border: 2.5px solid #f43f5e; border-radius: 18px; padding: 14px; text-align: center;">
+            <div style="display: flex; justify-content: center; gap: 6px; padding-bottom: 4px;">
+              ${cherriesHtml}
+            </div>
+            <!-- Ilustrasi Piring Keramik Oval seperti di Buku Hal 59 -->
+            <svg viewBox="0 0 160 28" style="width: 145px; height: 26px; margin: -6px auto 0; display: block;">
+              <ellipse cx="80" cy="14" rx="74" ry="11" fill="#e2e8f0" stroke="#64748b" stroke-width="2.5"/>
+              <ellipse cx="80" cy="13" rx="54" ry="6.5" fill="#cbd5e1" stroke="#94a3b8" stroke-width="1.5"/>
             </svg>
           </div>
         `;
       }
+
       return `
-        <div style="background: linear-gradient(135deg, rgba(56, 189, 248, 0.14), rgba(15, 23, 42, 0.96)); border: 2px solid #38bdf8; border-radius: 16px; padding: 18px; margin: 14px 0;">
-          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(145px, 1fr)); gap: 12px;">
+        <div style="background: linear-gradient(135deg, rgba(244, 63, 94, 0.14), rgba(15, 23, 42, 0.96)); border: 2px solid #f43f5e; border-radius: 18px; padding: 18px; margin: 14px 0;">
+          <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; margin-bottom: 12px;">
+            <span style="font-size: 0.8rem; font-weight: 700; color: #fda4af;">
+              💡 Klik buah ceri pada piring untuk menghitungnya satu per satu!
+            </span>
+            ${totalCountedC > 0 ? `<button type="button" onclick="ihsResetCountItems('${q.id}')" style="background: rgba(148,163,184,0.2); color: #e2e8f0; border: 1px solid rgba(148,163,184,0.4); border-radius: 8px; padding: 4px 10px; font-size: 0.74rem; cursor: pointer;">🔄 Reset Hitungan (${totalCountedC})</button>` : ''}
+          </div>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(185px, 1fr)); gap: 14px;">
+            ${platesHtml}
+          </div>
+        </div>
+      `;
+    }
+
+    // -------------------------------------------------------------------------
+    // 15. BOOK PAGE 59 NO. 2: 5 SEPEDA & RODA JARI-JARI (BICYCLES & WHEELS DIORAMA)
+    // -------------------------------------------------------------------------
+    if (vc.kind === 'story_diorama_bicycles') {
+      var cMapB = (st.countedItems && st.countedItems[q.id]) || {};
+      var totalCountedB = Object.keys(cMapB).length;
+      var bikesHtml = '';
+      var bikeColors = ['#38bdf8', '#10b981', '#f59e0b', '#a855f7', '#f43f5e'];
+
+      for (var bIdx = 0; bIdx < vc.bicycleCount; bIdx++) {
+        var col = bikeColors[bIdx % bikeColors.length];
+        var wLeftKey = 'bike_' + bIdx + '_wL';
+        var wRightKey = 'bike_' + bIdx + '_wR';
+        var bL = cMapB[wLeftKey];
+        var bR = cMapB[wRightKey];
+
+        bikesHtml += `
+          <div style="background: rgba(15, 23, 42, 0.92); border: 2.5px solid ${col}; border-radius: 16px; padding: 14px; text-align: center; position: relative;">
+            <svg viewBox="0 0 140 86" style="width: 132px; height: 80px;">
+              <!-- Roda Kiri (Bisa Diklik untuk Menghitung Roda!) -->
+              <g style="cursor: pointer;" onclick="ihsToggleCountItem('${q.id}', '${wLeftKey}')">
+                <circle cx="32" cy="56" r="21" fill="${bL ? 'rgba(16, 185, 129, 0.35)' : 'rgba(15,23,42,0.8)'}" stroke="${bL ? '#fde047' : '#e2e8f0'}" stroke-width="4.5"/>
+                <line x1="32" y1="35" x2="32" y2="77" stroke="#64748b" stroke-width="1.5"/>
+                <line x1="11" y1="56" x2="53" y2="56" stroke="#64748b" stroke-width="1.5"/>
+                <circle cx="32" cy="56" r="4.5" fill="#fde047"/>
+                ${bL ? `<text x="32" y="61" fill="#fde047" font-size="14" font-weight="900" font-family="monospace" text-anchor="middle">${bL}</text>` : ''}
+              </g>
+
+              <!-- Roda Kanan (Bisa Diklik untuk Menghitung Roda!) -->
+              <g style="cursor: pointer;" onclick="ihsToggleCountItem('${q.id}', '${wRightKey}')">
+                <circle cx="108" cy="56" r="21" fill="${bR ? 'rgba(16, 185, 129, 0.35)' : 'rgba(15,23,42,0.8)'}" stroke="${bR ? '#fde047' : '#e2e8f0'}" stroke-width="4.5"/>
+                <line x1="108" y1="35" x2="108" y2="77" stroke="#64748b" stroke-width="1.5"/>
+                <line x1="87" y1="56" x2="129" y2="56" stroke="#64748b" stroke-width="1.5"/>
+                <circle cx="108" cy="56" r="4.5" fill="#fde047"/>
+                ${bR ? `<text x="108" y="61" fill="#fde047" font-size="14" font-weight="900" font-family="monospace" text-anchor="middle">${bR}</text>` : ''}
+              </g>
+
+              <!-- Rangka Sepeda -->
+              <polyline points="32,56 58,26 94,26 66,56 32,56" fill="none" stroke="${col}" stroke-width="4.5" stroke-linejoin="round"/>
+              <line x1="94" y1="26" x2="108" y2="56" stroke="${col}" stroke-width="4.5"/>
+              <!-- Stang & Sadel -->
+              <line x1="86" y1="15" x2="100" y2="15" stroke="#ffffff" stroke-width="4" stroke-linecap="round"/>
+              <line x1="94" y1="15" x2="94" y2="26" stroke="#ffffff" stroke-width="3.5"/>
+              <line x1="49" y1="18" x2="65" y2="18" stroke="#ffffff" stroke-width="4.5" stroke-linecap="round"/>
+              <line x1="58" y1="18" x2="58" y2="26" stroke="#ffffff" stroke-width="3.5"/>
+            </svg>
+          </div>
+        `;
+      }
+
+      return `
+        <div style="background: linear-gradient(135deg, rgba(56, 189, 248, 0.14), rgba(15, 23, 42, 0.96)); border: 2px solid #38bdf8; border-radius: 18px; padding: 18px; margin: 14px 0;">
+          <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; margin-bottom: 12px;">
+            <span style="font-size: 0.8rem; font-weight: 700; color: #7dd3fc;">
+              💡 Klik roda-roda sepeda di bawah untuk menghitung jumlah roda secara interaktif!
+            </span>
+            ${totalCountedB > 0 ? `<button type="button" onclick="ihsResetCountItems('${q.id}')" style="background: rgba(148,163,184,0.2); color: #e2e8f0; border: 1px solid rgba(148,163,184,0.4); border-radius: 8px; padding: 4px 10px; font-size: 0.74rem; cursor: pointer;">🔄 Reset Hitungan Roda (${totalCountedB})</button>` : ''}
+          </div>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(165px, 1fr)); gap: 14px;">
             ${bikesHtml}
+          </div>
+        </div>
+      `;
+    }
+
+    // -------------------------------------------------------------------------
+    // 16. BOOK PAGE 60 NO. 3: 4 KOTAK KRAYON BERISI 10 KRAYON WARNA-WARNI (40 CRAYONS)
+    // -------------------------------------------------------------------------
+    if (vc.kind === 'svg_story_crayon_boxes') {
+      var crayonPalette = ['#ef4444', '#f97316', '#eab308', '#22c55e', '#10b981', '#06b6d4', '#3b82f6', '#6366f1', '#a855f7', '#ec4899'];
+      var cBoxesHtml = '';
+
+      for (var bx = 0; bx < vc.boxes; bx++) {
+        var crayonsSvg = '';
+        for (var cr = 0; cr < vc.crayonsPerBox; cr++) {
+          var xPos = 16 + cr * 16;
+          var cCol = crayonPalette[cr % crayonPalette.length];
+          crayonsSvg += `
+            <g>
+              <!-- Ujung Runcing & Batang Krayon -->
+              <polygon points="${xPos + 6},12 ${xPos + 1},26 ${xPos + 11},26" fill="${cCol}"/>
+              <rect x="${xPos + 1}" y="26" width="10" height="44" fill="${cCol}" stroke="#0f172a" stroke-width="1"/>
+              <rect x="${xPos + 1}" y="32" width="10" height="6" fill="rgba(255,255,255,0.45)"/>
+            </g>
+          `;
+        }
+
+        cBoxesHtml += `
+          <div style="background: rgba(15, 23, 42, 0.92); border: 2.5px solid #a855f7; border-radius: 18px; padding: 14px; text-align: center;">
+            <svg viewBox="0 0 184 115" style="width: 100%; max-width: 210px; height: auto;">
+              <!-- Tutup Belakang Kotak Krayon -->
+              <rect x="10" y="6" width="164" height="70" rx="6" fill="#1e1b4b" stroke="#a855f7" stroke-width="2"/>
+              <!-- 10 Krayon Berjajar Rapi di Dalam Kotak -->
+              ${crayonsSvg}
+              <!-- Badan Depan Kotak Krayon -->
+              <rect x="8" y="54" width="168" height="54" rx="8" fill="#fef08a" stroke="#ca8a04" stroke-width="2.5"/>
+              <path d="M8 70 Q92 88 176 70" fill="none" stroke="#e11d48" stroke-width="4"/>
+              <text x="92" y="96" fill="#1e293b" font-size="14" font-weight="900" font-family="sans-serif" text-anchor="middle">CRAYONS</text>
+            </svg>
+          </div>
+        `;
+      }
+
+      return `
+        <div style="background: linear-gradient(135deg, rgba(168, 85, 247, 0.14), rgba(15, 23, 42, 0.96)); border: 2px solid #a855f7; border-radius: 18px; padding: 18px; margin: 14px 0;">
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 16px;">
+            ${cBoxesHtml}
+          </div>
+        </div>
+      `;
+    }
+
+    // -------------------------------------------------------------------------
+    // 17. BOOK PAGE 60 NO. 4: 6 POT BUNGA DENGAN 5 BUNGA MEKAR PER POT (30 FLOWERS)
+    // -------------------------------------------------------------------------
+    if (vc.kind === 'svg_story_flower_pots') {
+      var cMapF = (st.countedItems && st.countedItems[q.id]) || {};
+      var totalCountedF = Object.keys(cMapF).length;
+      var flowerCoords = [
+        { x: 35, y: 42 },
+        { x: 62, y: 24 },
+        { x: 90, y: 18 },
+        { x: 118, y: 26 },
+        { x: 142, y: 44 }
+      ];
+      var potsHtml = '';
+
+      for (var pt = 0; pt < vc.pots; pt++) {
+        var bloomsSvg = '';
+        for (var fl = 0; fl < vc.flowersPerPot; fl++) {
+          var fc = flowerCoords[fl];
+          var fKey = 'pot' + pt + '_fl' + fl;
+          var fBadge = cMapF[fKey];
+          bloomsSvg += `
+            <g style="cursor: pointer;" onclick="ihsToggleCountItem('${q.id}', '${fKey}')">
+              <!-- Tangkai Hijau ke Pot -->
+              <path d="M 90 95 Q ${fc.x} 70 ${fc.x} ${fc.y}" fill="none" stroke="#22c55e" stroke-width="3.5" stroke-linecap="round"/>
+              <!-- Kelopak Bunga -->
+              <circle cx="${fc.x}" cy="${fc.y - 8}" r="6" fill="#f472b6"/>
+              <circle cx="${fc.x + 8}" cy="${fc.y - 2}" r="6" fill="#f472b6"/>
+              <circle cx="${fc.x + 5}" cy="${fc.y + 7}" r="6" fill="#f472b6"/>
+              <circle cx="${fc.x - 5}" cy="${fc.y + 7}" r="6" fill="#f472b6"/>
+              <circle cx="${fc.x - 8}" cy="${fc.y - 2}" r="6" fill="#f472b6"/>
+              <circle cx="${fc.x}" cy="${fc.y}" r="5.5" fill="${fBadge ? '#10b981' : '#fde047'}" stroke="#0f172a" stroke-width="1.5"/>
+              ${fBadge ? `<text x="${fc.x}" y="${fc.y + 4}" fill="#0f172a" font-size="10" font-weight="900" font-family="monospace" text-anchor="middle">${fBadge}</text>` : ''}
+            </g>
+          `;
+        }
+
+        potsHtml += `
+          <div style="background: rgba(15, 23, 42, 0.92); border: 2.5px solid #ec4899; border-radius: 18px; padding: 12px; text-align: center;">
+            <svg viewBox="0 0 180 150" style="width: 100%; max-width: 175px; height: auto;">
+              ${bloomsSvg}
+              <!-- Daun Hijau -->
+              <ellipse cx="68" cy="82" rx="14" ry="6" transform="rotate(-25 68 82)" fill="#16a34a"/>
+              <ellipse cx="112" cy="82" rx="14" ry="6" transform="rotate(25 112 82)" fill="#16a34a"/>
+              <!-- Pot Terakota Cokelat-Oranye -->
+              <rect x="46" y="92" width="88" height="12" rx="4" fill="#ea580c" stroke="#9a3412" stroke-width="2"/>
+              <polygon points="52,104 128,104 116,144 64,144" fill="#c2410c" stroke="#9a3412" stroke-width="2"/>
+            </svg>
+          </div>
+        `;
+      }
+
+      return `
+        <div style="background: linear-gradient(135deg, rgba(236, 72, 153, 0.14), rgba(15, 23, 42, 0.96)); border: 2px solid #ec4899; border-radius: 18px; padding: 18px; margin: 14px 0;">
+          <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; margin-bottom: 12px;">
+            <span style="font-size: 0.8rem; font-weight: 700; color: #fbcfe8;">
+              💡 Klik kuntum bunga pada pot untuk menghitung jumlah bunga satu per satu!
+            </span>
+            ${totalCountedF > 0 ? `<button type="button" onclick="ihsResetCountItems('${q.id}')" style="background: rgba(148,163,184,0.2); color: #e2e8f0; border: 1px solid rgba(148,163,184,0.4); border-radius: 8px; padding: 4px 10px; font-size: 0.74rem; cursor: pointer;">🔄 Reset Hitungan (${totalCountedF})</button>` : ''}
+          </div>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(175px, 1fr)); gap: 14px;">
+            ${potsHtml}
+          </div>
+        </div>
+      `;
+    }
+
+    // -------------------------------------------------------------------------
+    // 18. BOOK PAGE 60 NO. 5: 5 KARTON TELUR 2x3 BERISI 6 TELUR PER KARTON (30 EGGS)
+    // -------------------------------------------------------------------------
+    if (vc.kind === 'svg_story_egg_cartons') {
+      var cMapE = (st.countedItems && st.countedItems[q.id]) || {};
+      var totalCountedE = Object.keys(cMapE).length;
+      var cartonsHtml = '';
+
+      for (var ct = 0; ct < vc.cartons; ct++) {
+        var eggsHtml = '';
+        for (var eg = 0; eg < vc.eggsPerCarton; eg++) {
+          var eKey = 'ct' + ct + '_eg' + eg;
+          var eBadge = cMapE[eKey];
+          eggsHtml += `
+            <div onclick="ihsToggleCountItem('${q.id}', '${eKey}')"
+                 style="position: relative; cursor: pointer; display: flex; align-items: center; justify-content: center; padding: 4px; background: rgba(0,0,0,0.3); border-radius: 10px; border: 1.5px solid ${eBadge ? '#fde047' : 'rgba(255,255,255,0.12)'};">
+              <svg viewBox="0 0 38 46" style="width: 34px; height: 42px;">
+                <ellipse cx="19" cy="25" rx="13" ry="16" fill="#fef3c7" stroke="#d97706" stroke-width="2"/>
+                <ellipse cx="15" cy="19" rx="4" ry="6" fill="#ffffff" opacity="0.7"/>
+              </svg>
+              ${eBadge ? `<span style="position: absolute; top: -5px; right: -5px; background: #10b981; color: #0f172a; font-size: 0.72rem; font-weight: 900; padding: 1px 6px; border-radius: 999px; border: 1.5px solid #fff;">${eBadge}</span>` : ''}
+            </div>
+          `;
+        }
+
+        cartonsHtml += `
+          <div style="background: linear-gradient(180deg, rgba(30, 41, 59, 0.95), rgba(15, 23, 42, 0.98)); border: 2.5px solid #eab308; border-bottom: 7px solid #ca8a04; border-radius: 16px; padding: 14px; text-align: center;">
+            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; padding: 8px; background: rgba(234, 179, 8, 0.12); border-radius: 12px; border: 1.5px solid rgba(234, 179, 8, 0.35);">
+              ${eggsHtml}
+            </div>
+          </div>
+        `;
+      }
+
+      return `
+        <div style="background: linear-gradient(135deg, rgba(234, 179, 8, 0.14), rgba(15, 23, 42, 0.96)); border: 2px solid #eab308; border-radius: 18px; padding: 18px; margin: 14px 0;">
+          <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; margin-bottom: 12px;">
+            <span style="font-size: 0.8rem; font-weight: 700; color: #fef08a;">
+              💡 Klik butir telur di dalam wadah karton untuk menghitungnya satu per satu!
+            </span>
+            ${totalCountedE > 0 ? `<button type="button" onclick="ihsResetCountItems('${q.id}')" style="background: rgba(148,163,184,0.2); color: #e2e8f0; border: 1px solid rgba(148,163,184,0.4); border-radius: 8px; padding: 4px 10px; font-size: 0.74rem; cursor: pointer;">🔄 Reset Hitungan (${totalCountedE})</button>` : ''}
+          </div>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(185px, 1fr)); gap: 14px;">
+            ${cartonsHtml}
           </div>
         </div>
       `;

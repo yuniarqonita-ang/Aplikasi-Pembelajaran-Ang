@@ -6451,7 +6451,9 @@ function renderIhsaniyahTest() {
       <p style="margin: 0 0 14px; font-size: 0.95rem; color: #e2e8f0; line-height: 1.55; white-space: pre-line;">${q.instruction}</p>
 
       <!-- Visual Interaktif & Manipulatif Buatan Sendiri (100% Tanpa Gambar Crop PDF!) -->
-      ${typeof window.renderIhsaniyahCustomVisual === 'function' ? window.renderIhsaniyahCustomVisual(q) : ''}
+      <div id="ihs-custom-visual-container">
+        ${typeof window.renderIhsaniyahCustomVisual === 'function' ? window.renderIhsaniyahCustomVisual(q) : ''}
+      </div>
 
       <!-- Area Input Jawaban Siswa Interaktif -->
       <div id="ihs-question-interactive-body" style="margin: 18px 0;">
@@ -6908,6 +6910,11 @@ window.saveIhsMultiBox = function(qid, boxId, val) {
   appState.ihsUserAnswers[qid].boxes = appState.ihsUserAnswers[qid].boxes || {};
   appState.ihsUserAnswers[qid].boxes[boxId] = val;
   syncIhsaniyahProgressToRecords(true);
+  const visContainer = document.getElementById("ihs-custom-visual-container");
+  const curQ = window.IHSANIYAH_QUESTIONS && window.IHSANIYAH_QUESTIONS[appState.currentIhsIndex];
+  if (visContainer && curQ && curQ.id === qid && typeof window.renderIhsaniyahCustomVisual === "function") {
+    visContainer.innerHTML = window.renderIhsaniyahCustomVisual(curQ);
+  }
 };
 
 window.saveIhsDivisionSentence = function(qid, field, val) {
