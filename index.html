@@ -12,7 +12,7 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <link rel="apple-touch-icon" href="assets/icon-192.png">
 
-  <link rel="stylesheet" href="css/style.css?v=20261012-v18.6">
+  <link rel="stylesheet" href="css/style.css?v=20261013-v19.0">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🤖</text></svg>">
 </head>
 <body>
@@ -55,8 +55,8 @@
         <button id="theme-toggle-btn" class="theme-toggle-btn" onclick="toggleTheme()" title="Ganti Mode Tampilan (Terang / Gelap)" style="font-size: 1.15rem; padding: 7px 12px;">
           ☀️
         </button>
-        <button id="btn-force-update" class="theme-toggle-btn" onclick="forceAppUpdate()" title="Bersihkan Cache & Perbarui Aplikasi ke Versi Terbaru (v18.5)" style="background: rgba(16, 185, 129, 0.25); border-color: var(--accent-green); color: #34d399; font-weight: 800;">
-          🔄 Update v18.5
+        <button id="btn-force-update" class="theme-toggle-btn" onclick="forceAppUpdate()" title="Bersihkan Cache & Perbarui Aplikasi ke Versi Terbaru (v19.0)" style="background: rgba(16, 185, 129, 0.25); border-color: var(--accent-green); color: #34d399; font-weight: 800;">
+          🔄 Update v19.0
         </button>
         <div class="stat-badge star-count">
           <span>⭐</span>
@@ -74,7 +74,7 @@
     <div id="app-update-banner" class="app-update-banner" style="display: none;">
       <div style="display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-wrap: wrap;">
         <span class="update-banner-text">
-          🚀 <strong>Versi Baru (v18.5) Tersedia!</strong> Studio Rumus Excel Resmi dengan Tampilan Jendela Office Asli, Bilah Rumus di Atas Grid, Pintasan Keyboard Lengkap (F2, F4, Alt+=, Ctrl+Enter, Ctrl+D), dan Simulator Proyek Kantor Realtime siap dimuat!
+          🚀 <strong>Versi Baru (v19.0) Tersedia!</strong> Workbook Excel 200 Sheet (1.000 Persoalan Dunia Nyata), File Pelatihan Pintasan Word & Excel (.docx & .xlsx), serta 27 Soal Lengkap SD Ihsaniyah siap dimuat!
         </span>
         <button class="btn-update-now" onclick="forceAppUpdate()">Perbarui Sekarang ⚡</button>
       </div>
@@ -91,9 +91,9 @@
             <span class="nav-icon">🗺️</span>
             <span class="nav-label">Petualangan</span>
           </button>
-          <button class="nav-tab" data-tab="ihsaniyah-test" onclick="switchTab('ihsaniyah-test')" title="Ujian Formatif Matematika SD Ihsaniyah Gajahmada Tegal (Kampus Al Hafidz)">
+          <button class="nav-tab" data-tab="ihsaniyah-test" onclick="switchTab('ihsaniyah-test')" title="Ujian Formatif Matematika & Division Stories SD Ihsaniyah Gajahmada Tegal (27 Soal Lengkap Urut)">
             <span class="nav-icon">🎒</span>
-            <span class="nav-label">SD Ihsaniyah</span>
+            <span class="nav-label">SD Ihsaniyah (27)</span>
           </button>
           <button class="nav-tab" data-tab="math-trainer" onclick="switchTab('math-trainer')" title="Studio Cambridge Bilingual Mathematics (100 Tantangan)">
             <span class="nav-icon">📐</span>
@@ -115,15 +115,15 @@
             <span class="nav-icon">🗄️</span>
             <span class="nav-label">SQL (100)</span>
           </button>
-          <button class="nav-tab" data-tab="excel-trainer" onclick="switchTab('excel-trainer')" title="Studio Rumus Excel & Statistik Realtime (105 Tantangan)">
+          <button class="nav-tab" data-tab="excel-trainer" onclick="switchTab('excel-trainer')" title="Studio Rumus Excel Dunia Nyata (155 Simulator + Download Workbook 200 Sheet / 1.000 Persoalan)">
             <span class="nav-icon">📊</span>
-            <span class="nav-label">Excel (105)</span>
+            <span class="nav-label">Excel (200 Sheet)</span>
           </button>
-          <button class="nav-tab" data-tab="shortcut-excel" onclick="switchTab('shortcut-excel')" title="Game Pintasan Keyboard Excel Windows (53 Pintasan dari Buku Panduan)">
+          <button class="nav-tab" data-tab="shortcut-excel" onclick="switchTab('shortcut-excel')" title="Game Pintasan Keyboard Excel Windows (53 Pintasan + Download File .xlsx Latihan)">
             <span class="nav-icon">⌨️</span>
             <span class="nav-label">Pintasan Excel (53)</span>
           </button>
-          <button class="nav-tab" data-tab="shortcut-word" onclick="switchTab('shortcut-word')" title="Game Pintasan Keyboard Word Windows (55 Pintasan dari Buku Panduan)">
+          <button class="nav-tab" data-tab="shortcut-word" onclick="switchTab('shortcut-word')" title="Game Pintasan Keyboard Word Windows (55 Pintasan + Download File .docx Latihan)">
             <span class="nav-icon">📝</span>
             <span class="nav-label">Pintasan Word (55)</span>
           </button>
@@ -214,9 +214,9 @@
     <!-- ================= TAB: EXCEL FORMULA TRAINER ================= -->
     <section id="tab-excel-trainer" class="tab-content">
       <div class="section-title-wrap">
-        <h2 class="section-title">📊 Studio Game Rumus Excel & Statistik Realtime (105 Tantangan)</h2>
+        <h2 class="section-title">📊 Studio Rumus Excel Dunia Nyata (Download Workbook 200 Sheet & 155 Simulator)</h2>
         <p class="section-subtitle">
-          Praktik rumus Excel langsung di tabel kerja nyata (Penjualan Kasir, HRD Karyawan, Inventaris Gudang, Nilai Mahasiswa, Forecast Bisnis, & Statistik Dosen) lengkap dengan Nalar Bayi Kodi!
+          Download langsung Workbook Excel Asli (<code>.xlsx</code>) berisi 200 Sheet Rumus (1 Rumus = 1 Sheet, lengkap dengan fungsi, contoh, & 5 persoalan dunia nyata per rumus = 1.000 persoalan), atau latihan langsung di simulator tabel interaktif!
         </p>
       </div>
 
@@ -226,9 +226,9 @@
     <!-- ================= TAB: SHORTCUT EXCEL STUDIO (53 PINTASAN) ================= -->
     <section id="tab-shortcut-excel" class="tab-content">
       <div class="section-title-wrap">
-        <h2 class="section-title">⌨️ Game Pintasan Keyboard Excel Windows (53 Pintasan)</h2>
+        <h2 class="section-title">⌨️ Studio & File Pelatihan Pintasan Keyboard Excel Windows (53 Pintasan)</h2>
         <p class="section-subtitle">
-          Kuasai 53 pintasan keyboard Excel resmi berdasarkan dokumen panduan kantor! Dilengkapi simulator tombol interaktif, keyboard fisik listener, dan Nalar Bayi Kodi!
+          Download file latihan Excel asli (<code>.xlsx</code>) untuk dipraktikkan langsung di aplikasi Microsoft Excel kamu secara realtime, atau mainkan misi proyek di simulator interaktif!
         </p>
       </div>
       <div id="shortcut-excel-content-area"></div>
@@ -237,9 +237,9 @@
     <!-- ================= TAB: SHORTCUT WORD STUDIO (55 PINTASAN) ================= -->
     <section id="tab-shortcut-word" class="tab-content">
       <div class="section-title-wrap">
-        <h2 class="section-title">📝 Game Pintasan Keyboard Word Windows (55 Pintasan)</h2>
+        <h2 class="section-title">📝 Studio & File Pelatihan Pintasan Keyboard Word Windows (55 Pintasan)</h2>
         <p class="section-subtitle">
-          Kuasai 55 pintasan keyboard Microsoft Word resmi! Dari format heading daftar isi, spasi paragraf, perataan, hingga simbol hak cipta © ® ™ dengan Nalar Bayi Kodi!
+          Download file latihan dokumen Word asli (<code>.docx</code>) untuk dipraktikkan langsung di aplikasi Microsoft Word kamu secara realtime, atau mainkan misi proyek di simulator interaktif!
         </p>
       </div>
       <div id="shortcut-word-content-area"></div>
@@ -315,21 +315,21 @@
     </div>
   </div>
 
-  <!-- Scripts with Cache Buster v18.5 -->
-  <script src="js/sfx.js?v=20261012-v18.5"></script>
-  <script src="js/speech.js?v=20261012-v18.6"></script>
-  <script src="js/dictionary.js?v=20261012-v18.6"></script>
-  <script src="js/levels.js?v=20261012-v18.6"></script>
-  <script src="js/sql_trainer.js?v=20261012-v18.6"></script>
-  <script src="js/code_trainer.js?v=20261012-v18.6"></script>
-  <script src="js/english_trainer.js?v=20261012-v18.6"></script>
-  <script src="js/sentence_builder.js?v=20261012-v18.6"></script>
-  <script src="js/excel_trainer.js?v=20261012-v18.6"></script>
-  <script src="js/shortcut_trainer.js?v=20261012-v18.6"></script>
-  <script src="js/it_tech_trainer.js?v=20261012-v18.6"></script>
-  <script src="js/math_trainer.js?v=20261012-v18.6"></script>
-  <script src="js/ihsaniyah_math.js?v=20261012-v18.6"></script>
-  <script src="js/ai_tutor.js?v=20261012-v18.6"></script>
-  <script src="js/app.js?v=20261012-v18.6"></script>
+  <!-- Scripts with Cache Buster v19.0 -->
+  <script src="js/sfx.js?v=20261013-v19.0"></script>
+  <script src="js/speech.js?v=20261013-v19.0"></script>
+  <script src="js/dictionary.js?v=20261013-v19.0"></script>
+  <script src="js/levels.js?v=20261013-v19.0"></script>
+  <script src="js/sql_trainer.js?v=20261013-v19.0"></script>
+  <script src="js/code_trainer.js?v=20261013-v19.0"></script>
+  <script src="js/english_trainer.js?v=20261013-v19.0"></script>
+  <script src="js/sentence_builder.js?v=20261013-v19.0"></script>
+  <script src="js/excel_trainer.js?v=20261013-v19.0"></script>
+  <script src="js/shortcut_trainer.js?v=20261013-v19.0"></script>
+  <script src="js/it_tech_trainer.js?v=20261013-v19.0"></script>
+  <script src="js/math_trainer.js?v=20261013-v19.0"></script>
+  <script src="js/ihsaniyah_math.js?v=20261013-v19.0"></script>
+  <script src="js/ai_tutor.js?v=20261013-v19.0"></script>
+  <script src="js/app.js?v=20261013-v19.0"></script>
 </body>
 </html>

@@ -3532,15 +3532,96 @@ function renderExcelTrainer() {
     gridBodyHtml += `</tr>`;
   });
 
+  const fiveCases = (typeof window.getExcelFiveCasesForChallenge === 'function')
+    ? window.getExcelFiveCasesForChallenge(chal)
+    : [];
+  const activeCaseNum = appState.excelActiveCaseNum || 1;
+  const currentCaseObj = fiveCases.find(c => c.caseNum === activeCaseNum) || fiveCases[0] || {
+    caseNum: 1,
+    badge: 'Persoalan #1 (Utama)',
+    scenario: chal.scenario,
+    instruction: chal.instruction,
+    targetCell: chal.targetCell,
+    sampleFormula: (chal.acceptedFormulas && chal.acceptedFormulas[0]) || '=SUM(B2:B4)'
+  };
+
   // RENDER COMPLETE AUTHENTIC MICROSOFT EXCEL WINDOW & SCENARIO BRIEF
   container.innerHTML = `
     <div class="excel-container">
-      <!-- 1. BARIS NAVIGASI SOAL 1-105 & KATEGORI -->
+      <!-- 0. PUSAT DOWNLOAD WORKBOOK EXCEL PRAKTIK ASLI (.XLSX - 200 SHEET RUMUS & 1.000 PERSOALAN DUNIA NYATA) -->
+      <div class="card" style="margin-bottom: 16px; padding: 18px 20px; border: 2px solid #107c41; background: linear-gradient(135deg, rgba(16, 124, 65, 0.14), rgba(15, 23, 42, 0.94)); border-radius: 16px; box-shadow: 0 8px 24px rgba(16, 124, 65, 0.18);">
+        <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 14px; margin-bottom: 12px;">
+          <div>
+            <div style="display: inline-flex; align-items: center; gap: 8px; background: #107c41; color: #ffffff; padding: 4px 12px; border-radius: 999px; font-size: 0.76rem; font-weight: 800; margin-bottom: 6px;">
+              <span>📥 REALTIME DOWNLOAD FILE EXCEL ASLI (.XLSX)</span>
+              <span>•</span>
+              <span>200 SHEET RUMUS (1 RUMUS = 1 SHEET)</span>
+            </div>
+            <h3 style="margin: 0; font-size: 1.18rem; color: var(--text-main);">
+              Workbook Praktik 200 Rumus Excel Dunia Nyata (1.000 Persoalan Kerja + Koreksi Otomatis)
+            </h3>
+            <p style="margin: 4px 0 0; font-size: 0.85rem; color: var(--text-muted); line-height: 1.5;">
+              Mau langsung praktek bebas di aplikasi <strong>Microsoft Excel Desktop / WPS / Google Sheets</strong> seperti file referensi? Download workbook <code>.xlsx</code> di bawah ini! Setiap rumus punya <strong>1 Sheet khusus</strong> berisi: <em>Penjelasan Fungsi Bahasa Bayi</em>, <em>Contoh Rumus Aktif</em>, dan <strong>5 Persoalan Dunia Nyata</strong> lengkap dengan kotak jawaban kuning & penilai otomatis!
+            </p>
+          </div>
+          <a href="assets/downloads/Master_160_Rumus_Excel_Dunia_Nyata.xlsx" download="Master_200_Rumus_Excel_Dunia_Nyata_Lengkap.xlsx"
+             style="display: inline-flex; align-items: center; gap: 10px; background: linear-gradient(135deg, #10b981, #059669); color: #ffffff; text-decoration: none; font-weight: 900; font-size: 0.92rem; padding: 12px 20px; border-radius: 12px; box-shadow: 0 6px 18px rgba(16, 185, 129, 0.35); border: 2px solid #34d399; white-space: nowrap;">
+            <span>⬇️ DOWNLOAD MASTER 200 SHEET RUMUS (.XLSX)</span>
+          </a>
+        </div>
+
+        <!-- Pilihan Paket Workbook Per Kategori -->
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 10px; margin-bottom: 12px;">
+          <a href="assets/downloads/Paket_1_Rumus_Matematika_Akuntansi_Logika.xlsx" download
+             style="display: flex; align-items: center; justify-content: space-between; gap: 8px; padding: 10px 14px; border-radius: 10px; background: rgba(16, 185, 129, 0.12); border: 1px solid rgba(16, 185, 129, 0.35); color: var(--text-main); text-decoration: none; font-size: 0.82rem; font-weight: 700;">
+            <span>📗 <strong>Paket 1:</strong> Matematika, Akuntansi & Logika (39 Sheet)</span>
+            <span style="color: #10b981; font-weight: 900;">⬇️ .xlsx</span>
+          </a>
+          <a href="assets/downloads/Paket_2_Rumus_Lookup_Teks_Tanggal_HRD.xlsx" download
+             style="display: flex; align-items: center; justify-content: space-between; gap: 8px; padding: 10px 14px; border-radius: 10px; background: rgba(59, 130, 246, 0.12); border: 1px solid rgba(59, 130, 246, 0.35); color: var(--text-main); text-decoration: none; font-size: 0.82rem; font-weight: 700;">
+            <span>📘 <strong>Paket 2:</strong> Lookup, Teks, Tanggal & HRD (46 Sheet)</span>
+            <span style="color: #3b82f6; font-weight: 900;">⬇️ .xlsx</span>
+          </a>
+          <a href="assets/downloads/Paket_3_Rumus_Keuangan_Audit_Statistika_Lengkap.xlsx" download
+             style="display: flex; align-items: center; justify-content: space-between; gap: 8px; padding: 10px 14px; border-radius: 10px; background: rgba(245, 158, 11, 0.12); border: 1px solid rgba(245, 158, 11, 0.35); color: var(--text-main); text-decoration: none; font-size: 0.82rem; font-weight: 700;">
+            <span>📙 <strong>Paket 3:</strong> Keuangan, Audit & Statistika (118 Sheet)</span>
+            <span style="color: #f59e0b; font-weight: 900;">⬇️ .xlsx</span>
+          </a>
+          <a href="Referensi/Function Statistics in Excel.xlsx" download
+             style="display: flex; align-items: center; justify-content: space-between; gap: 8px; padding: 10px 14px; border-radius: 10px; background: rgba(168, 85, 247, 0.12); border: 1px solid rgba(168, 85, 247, 0.35); color: var(--text-main); text-decoration: none; font-size: 0.82rem; font-weight: 700;">
+            <span>📓 <strong>Referensi Asli:</strong> Function Statistics in Excel (95 Sheet)</span>
+            <span style="color: #a855f7; font-weight: 900;">⬇️ .xlsx</span>
+          </a>
+        </div>
+
+        <!-- PANDUAN CARA MAIN / CARA PRAKTEK YANG JELAS -->
+        <div style="background: rgba(15, 23, 42, 0.65); border: 1px solid rgba(148, 163, 184, 0.25); border-radius: 10px; padding: 12px 14px;">
+          <div style="font-weight: 800; font-size: 0.88rem; color: #38bdf8; margin-bottom: 6px;">
+            🎮 CARA MAIN & CARA PRAKTEK BIAR CEPAT JAGO RUMUS EXCEL:
+          </div>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 10px; font-size: 0.81rem; color: var(--text-main); line-height: 1.45;">
+            <div style="background: rgba(255,255,255,0.04); padding: 8px 10px; border-radius: 8px; border-left: 3px solid #10b981;">
+              <strong>Cara 1: Praktek di File Excel Asli (.xlsx)</strong><br>
+              1. Klik tombol <b>Download Master 200 Sheet (.xlsx)</b> di atas lalu buka di Excel.<br>
+              2. Pilih nama rumus di <code>00_DAFTAR_ISI</code> atau tab sheet bawah.<br>
+              3. Baca fungsi & contohnya, lalu ketik rumus di <b>Kotak Kuning</b> pada <b>5 Persoalan Dunia Nyata</b> sampai muncul <code>✅ BENAR! LUAR BIASA!</code>
+            </div>
+            <div style="background: rgba(255,255,255,0.04); padding: 8px 10px; border-radius: 8px; border-left: 3px solid #f59e0b;">
+              <strong>Cara 2: Main Simulator di Website Ini</strong><br>
+              1. Pilih rumus dari menu <b>Soal #1 – #155</b> di bawah.<br>
+              2. Baca kartu <b>💡 Contoh Soal & Nalar Bayi</b>.<br>
+              3. Ketik rumus di kotak <code>fx</code> (awali dengan <code>=</code>), lalu tekan <b>Enter</b> atau klik <b>✅ Eksekusi Rumus</b>. Kamu juga bisa eksplor <b>5 Persoalan Dunia Nyata</b> di tiap rumus!
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 1. BARIS NAVIGASI SOAL 1-155 & KATEGORI -->
       <div class="challenge-nav-bar" style="margin-bottom: 14px;">
         <div class="challenge-nav-controls" style="flex: 1; min-width: 240px;">
           <label style="font-size: 0.8rem; font-weight: 700; color: #10b981;">📂 Kategori Modul:</label>
           <select class="challenge-page-select" onchange="filterExcelCategory(this.value)">
-            <option value="all" ${appState.excelCategoryFilter === 'all' ? 'selected' : ''}>Semua Kategori (105 Soal Rumus)</option>
+            <option value="all" ${appState.excelCategoryFilter === 'all' ? 'selected' : ''}>Semua Kategori (${excelChallenges.length} Rumus Dunia Nyata)</option>
             ${allCategories.filter(cat => cat !== 'all').map(cat => `
               <option value="${cat}" ${appState.excelCategoryFilter === cat ? 'selected' : ''}>${cat}</option>
             `).join('')}
@@ -3569,7 +3650,7 @@ function renderExcelTrainer() {
         <div class="excel-worked-example-card" style="border-left: 5px solid #107c41; margin-bottom: 14px;">
           <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
             <div style="font-weight: 800; font-size: 0.95rem; color: #10b981; display: flex; align-items: center; gap: 6px;">
-              <span>💡</span> <span>${chal.workedExample.title || 'CONTOH SOAL & JAWABAN BENAR DULU'}</span>
+              <span>💡</span> <span>${chal.workedExample.title || 'FUNGSI RUMUS & CONTOH PENGGUNAAN'}</span>
             </div>
             <span style="font-size: 0.75rem; background: rgba(16, 124, 65, 0.2); color: #10b981; padding: 2px 8px; border-radius: 12px; font-weight: 700;">
               Dipahami Dulu Ya! 🍼
@@ -3582,12 +3663,12 @@ function renderExcelTrainer() {
             ${chal.workedExample.rumusContoh}
           </div>
           <div style="font-size: 0.83rem; color: var(--text-main); line-height: 1.45;">
-            <strong>🍼 Nalar Bayi Kodi:</strong> ${chal.workedExample.nalarBayi}
+            <strong>🍼 Fungsi Buat Apa (Nalar Bayi Kodi):</strong> ${chal.workedExample.nalarBayi}
           </div>
         </div>
       ` : ''}
 
-      <!-- 3. KODI EXCEL 3D MASCOT & QUESTION BRIEF -->
+      <!-- 3. KODI EXCEL 3D MASCOT & 5 PERSOALAN DUNIA NYATA PER RUMUS -->
       <div class="card" style="padding: 16px 20px; border-left: 5px solid #107c41; margin-bottom: 16px;">
         <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 10px;">
           <img src="assets/illustrations/3d_tiles/tile_3d_${String(7 + (appState.currentExcelIndex % 6)).padStart(2, '0')}.png"
@@ -3596,18 +3677,46 @@ function renderExcelTrainer() {
           <div style="flex: 1;">
             <div style="display: flex; justify-content: space-between; align-items: flex-start;">
               <span style="font-size: 0.75rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; color: #10b981; background: rgba(16, 185, 129, 0.15); padding: 2px 8px; border-radius: 4px;">
-                ${chal.category} • Soal #${appState.currentExcelIndex + 1}
+                ${chal.category} • Rumus #${appState.currentExcelIndex + 1} dari ${excelChallenges.length}
               </span>
               ${isCompleted ? '<span style="font-size: 0.82rem; font-weight: 700; color: #10b981; background: rgba(16, 185, 129, 0.15); padding: 3px 10px; border-radius: 12px;">✅ Selesai Dikuasai</span>' : ''}
             </div>
             <h3 style="margin: 4px 0 2px 0; font-size: 1.15rem; color: var(--text-main);">${chal.title}</h3>
           </div>
         </div>
-        <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 8px; line-height: 1.5;">
-          ${chal.scenario}
-        </p>
+
+        <!-- TAB 5 PERSOALAN DUNIA NYATA UNTUK RUMUS INI -->
+        ${fiveCases.length > 0 ? `
+          <div style="margin: 10px 0 12px; padding: 10px 12px; background: rgba(16, 185, 129, 0.08); border: 1px solid rgba(16, 185, 129, 0.28); border-radius: 10px;">
+            <div style="font-size: 0.78rem; font-weight: 800; color: #10b981; margin-bottom: 8px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 6px;">
+              <span>🌍 PILIH 5 PERSOALAN DUNIA NYATA UNTUK RUMUS INI:</span>
+              <span style="font-size: 0.74rem; color: var(--text-muted);">Semua 5 persoalan ini juga tersedia lengkap dengan tabel terpisah di file <code>.xlsx</code>!</span>
+            </div>
+            <div style="display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 10px;">
+              ${fiveCases.map(c => `
+                <button type="button"
+                        onclick="selectExcelCaseNumber(${c.caseNum})"
+                        style="padding: 6px 12px; border-radius: 8px; font-size: 0.78rem; font-weight: 800; cursor: pointer; border: ${c.caseNum === activeCaseNum ? '2px solid #10b981' : '1px solid rgba(148,163,184,0.3)'}; background: ${c.caseNum === activeCaseNum ? '#107c41' : 'var(--bg-secondary)'}; color: ${c.caseNum === activeCaseNum ? '#ffffff' : 'var(--text-main)'};">
+                  ${c.badge}
+                </button>
+              `).join('')}
+            </div>
+            <div style="font-size: 0.86rem; color: var(--text-main); line-height: 1.5; margin-bottom: 6px;">
+              <strong>📌 Kasus Kerja (${currentCaseObj.badge}):</strong> ${currentCaseObj.scenario}
+            </div>
+            <div style="font-size: 0.83rem; color: var(--text-muted);">
+              <strong>📋 Tugas Praktik:</strong> ${currentCaseObj.instruction}
+              ${activeCaseNum > 1 ? `<div style="margin-top:6px; padding:6px 10px; background:rgba(16,185,129,0.12); border-radius:6px; font-family:monospace; color:#10b981; font-weight:700;">💡 Pola Rumus Kasus #${activeCaseNum}: ${currentCaseObj.sampleFormula}</div>` : ''}
+            </div>
+          </div>
+        ` : `
+          <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 8px; line-height: 1.5;">
+            ${chal.scenario}
+          </p>
+        `}
+
         <div style="background: var(--bg-secondary); border-left: 4px solid var(--accent-yellow); padding: 8px 12px; border-radius: 4px; font-size: 0.86rem; color: var(--text-main);">
-          <strong>🎯 Target Tugas:</strong> Tulis rumus di sel <b>${chal.targetCell}</b> (${chal.instruction})
+          <strong>🎯 Target Tugas Simulator Tabel di Bawah:</strong> Tulis rumus di sel <b>${chal.targetCell}</b> (${chal.instruction})
         </div>
       </div>
 
@@ -4193,6 +4302,7 @@ window.navExcelChallenge = function(delta) {
   let newPos = currentPos + delta;
   if (newPos >= 0 && newPos < filteredList.length) {
     appState.currentExcelIndex = filteredList[newPos];
+    appState.excelActiveCaseNum = 1;
     renderExcelTrainer();
   }
 };
@@ -4200,6 +4310,13 @@ window.navExcelChallenge = function(delta) {
 window.setExcelChallenge = function(idx) {
   sfx.playClick();
   appState.currentExcelIndex = idx;
+  appState.excelActiveCaseNum = 1;
+  renderExcelTrainer();
+};
+
+window.selectExcelCaseNumber = function(caseNum) {
+  if (window.sfx) sfx.playClick();
+  appState.excelActiveCaseNum = caseNum;
   renderExcelTrainer();
 };
 
@@ -6174,7 +6291,7 @@ window.submitMathAnswer = function() {
 
 // ==============================================================================
 // 🎒 SD IHSANIYAH GAJAHMADA TEGAL: MATH FORMATIVE TEST 2 & DIVISION QUEST
-// Interaktif: Game Hubungkan Garis, Form Registrasi Siswa, & Panel Guru (CSV)
+// 27 Soal Lengkap Sesuai Urutan PDF + Auto-Save Realtime ke Panel Guru
 // ==============================================================================
 
 function renderIhsaniyahTest() {
@@ -6188,9 +6305,7 @@ function renderIhsaniyahTest() {
 
   const student = window.getIhsaniyahStudent();
   appState.currentIhsIndex = appState.currentIhsIndex || 0;
-  appState.ihsUserAnswers = appState.ihsUserAnswers || {};
-  appState.ihsCompletedList = appState.ihsCompletedList || [];
-  appState.matchingSelectedShirt = null;
+  appState.matchingSelectedShirt = appState.matchingSelectedShirt || null;
 
   // Jika siswa belum login / mendaftar: tampilkan Identity Gate
   if (!student) {
@@ -6198,18 +6313,26 @@ function renderIhsaniyahTest() {
     return;
   }
 
+  // Muat jawaban tersimpan milik siswa aktif
+  if (!appState.ihsUserAnswers || Object.keys(appState.ihsUserAnswers).length === 0) {
+    appState.ihsUserAnswers = window.getIhsaniyahStudentAnswersStore() || {};
+  }
+
+  // Pastikan record siswa langsung tersinkronisasi di Panel Guru
+  syncIhsaniyahProgressToRecords(false);
+
   const questions = window.IHSANIYAH_QUESTIONS;
   if (appState.currentIhsIndex < 0 || appState.currentIhsIndex >= questions.length) {
     appState.currentIhsIndex = 0;
   }
 
   const q = questions[appState.currentIhsIndex];
-  const isDone = appState.ihsCompletedList.includes(q.id);
-  const totalScore = calculateIhsaniyahScore();
+  const stats = getIhsaniyahLiveStats();
+  const isCurrentAnswered = window.isIhsaniyahQuestionAnswered(q, appState.ihsUserAnswers[q.id]);
 
   container.innerHTML = `
     <!-- Header Siswa & Sekolah -->
-    <div style="background: linear-gradient(135deg, rgba(30, 41, 59, 0.95), rgba(15, 23, 42, 0.98)); border: 1.5px solid #38bdf8; border-radius: 16px; padding: 18px 22px; margin-bottom: 20px; box-shadow: var(--card-shadow);">
+    <div style="background: linear-gradient(135deg, rgba(30, 41, 59, 0.95), rgba(15, 23, 42, 0.98)); border: 1.5px solid #38bdf8; border-radius: 16px; padding: 18px 22px; margin-bottom: 18px; box-shadow: var(--card-shadow);">
       <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 14px;">
         <div style="display: flex; align-items: center; gap: 14px;">
           <img src="assets/illustrations/3d_tiles/tile_3d_25.png" style="width: 58px; height: 58px; border-radius: 12px; object-fit: cover; border: 2px solid #38bdf8; flex-shrink: 0; box-shadow: 0 4px 12px rgba(56, 189, 248, 0.2);" alt="SD Ihsaniyah Math Mascot">
@@ -6217,27 +6340,27 @@ function renderIhsaniyahTest() {
             <div style="font-size: 0.78rem; text-transform: uppercase; font-weight: 800; color: #38bdf8; letter-spacing: 0.5px;">
               YAYASAN PERGURUAN IHSANIYAH • SD IHSANIYAH GAJAHMADA TEGAL
             </div>
-            <h3 style="margin: 2px 0 0; color: #fff; font-size: 1.25rem;">
-              Math Formative Test 2 & Division Quest
+            <h3 style="margin: 2px 0 0; color: #fff; font-size: 1.2rem;">
+              Math Formative Test 2 & Cambridge Primary Division (27 Nomor Urut)
             </h3>
-            <div style="font-size: 0.82rem; color: #cbd5e1; margin-top: 2px;">
-              Kampus Al Hafidz • Kurikulum Matematika Bilingual SD
+            <div style="font-size: 0.8rem; color: #cbd5e1; margin-top: 2px;">
+              Kampus Al Hafidz • Semua jawaban otomatis tersimpan ke Rekap Nilai Guru
             </div>
           </div>
         </div>
 
         <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
           <div style="background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.1); padding: 8px 14px; border-radius: 10px; text-align: right;">
-            <div style="font-size: 0.74rem; color: var(--text-muted);">Siswa Aktif:</div>
+            <div style="font-size: 0.72rem; color: #94a3b8;">Siswa Aktif:</div>
             <div style="font-size: 0.92rem; font-weight: 800; color: #4ade80;">
               ${student.name} (${student.className} / #${student.number})
             </div>
           </div>
 
-          <div style="background: rgba(16, 185, 129, 0.15); border: 1px solid #10b981; padding: 8px 14px; border-radius: 10px; text-align: center;">
-            <div style="font-size: 0.74rem; color: #86efac;">Skor Sementara:</div>
-            <div style="font-size: 1.15rem; font-weight: 800; color: #4ade80;">
-              ${totalScore} / 100
+          <div style="background: rgba(56, 189, 248, 0.14); border: 1px solid #38bdf8; padding: 8px 14px; border-radius: 10px; text-align: center;">
+            <div style="font-size: 0.72rem; color: #bae6fd;">Progres Terisi:</div>
+            <div id="ihs-live-answered-badge" style="font-size: 1.05rem; font-weight: 800; color: #38bdf8;">
+              ${stats.answeredCount} / ${questions.length} Soal
             </div>
           </div>
 
@@ -6245,29 +6368,63 @@ function renderIhsaniyahTest() {
             👩‍🏫 Panel Guru (Rekap)
           </button>
           <button class="btn-secondary" style="padding: 8px 12px; font-size: 0.8rem; border-radius: 8px; color: #fca5a5;" onclick="logoutIhsaniyahStudentHandler()">
-            🚪 Keluar / Ganti Siswa
+            🚪 Ganti Siswa
           </button>
         </div>
       </div>
     </div>
 
+    <!-- Peta Nomor Soal Cepat (1 - 27) -->
+    <div style="background: rgba(15, 23, 42, 0.75); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 12px 16px; margin-bottom: 16px;">
+      <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; margin-bottom: 8px;">
+        <span style="font-size: 0.8rem; font-weight: 800; color: #38bdf8;">📌 Daftar Urut 27 Soal (Formative Test No. 1–10 & Buku Paket Hal. 55–75):</span>
+        <span id="ihs-autosave-indicator" style="font-size: 0.76rem; color: #4ade80; font-weight: 700;">
+          ✅ Tersimpan Otomatis ke Panel Guru
+        </span>
+      </div>
+      <div style="display: flex; flex-wrap: wrap; gap: 6px;">
+        ${questions.map((item, idx) => {
+          const answered = window.isIhsaniyahQuestionAnswered(item, appState.ihsUserAnswers[item.id]);
+          const isCurrent = (idx === appState.currentIhsIndex);
+          const bg = isCurrent
+            ? 'linear-gradient(135deg, #0284c7, #2563eb)'
+            : answered
+              ? 'rgba(16, 185, 129, 0.25)'
+              : 'rgba(30, 41, 59, 0.9)';
+          const border = isCurrent
+            ? '2px solid #fff'
+            : answered
+              ? '1.5px solid #10b981'
+              : '1px solid rgba(255,255,255,0.15)';
+          return `
+            <button onclick="setIhsaniyahIndex(${idx})" style="min-width: 38px; height: 34px; border-radius: 8px; background: ${bg}; border: ${border}; color: #fff; font-weight: 800; font-size: 0.8rem; cursor: pointer;" title="#${item.number}: ${item.title}">
+              ${item.number}${answered ? '✓' : ''}
+            </button>
+          `;
+        }).join('')}
+      </div>
+    </div>
+
     <!-- Navigation Bar Soal -->
-    <div class="challenge-nav-bar" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; margin-bottom: 20px; background: rgba(15, 23, 42, 0.6); padding: 12px 16px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.08);">
+    <div class="challenge-nav-bar" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; margin-bottom: 18px; background: rgba(15, 23, 42, 0.65); padding: 10px 16px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.08);">
       <div style="display: flex; align-items: center; gap: 8px;">
-        <span style="font-size: 0.82rem; font-weight: 800; color: var(--accent-cyan);">Navigasi Soal Ujian:</span>
-        <span style="font-size: 0.82rem; color: #fff; font-weight: 700;">Soal #${appState.currentIhsIndex + 1} dari ${questions.length}</span>
+        <span style="font-size: 0.82rem; font-weight: 800; color: var(--accent-cyan);">Navigasi Soal:</span>
+        <span style="font-size: 0.85rem; color: #fff; font-weight: 800;">Nomor ${q.number} dari ${questions.length}</span>
       </div>
 
-      <div style="display: flex; align-items: center; gap: 8px; flex: 1; max-width: 620px; justify-content: flex-end;">
+      <div style="display: flex; align-items: center; gap: 8px; flex: 1; max-width: 660px; justify-content: flex-end;">
         <button class="btn-secondary" style="padding: 6px 12px; font-size: 0.82rem;" onclick="navIhsaniyahQuestion(-1)" ${appState.currentIhsIndex <= 0 ? 'disabled' : ''}>
           ◀ Sebelumnya
         </button>
         <select class="challenge-page-select" style="flex: 1; padding: 6px 10px; font-size: 0.82rem; border-radius: 8px; background: #0f172a; color: #fff; border: 1px solid var(--border-glow);" onchange="setIhsaniyahIndex(Number(this.value))">
-          ${questions.map((item, idx) => `
-            <option value="${idx}" ${idx === appState.currentIhsIndex ? 'selected' : ''}>
-              #${idx + 1}: ${item.title} ${appState.ihsCompletedList.includes(item.id) ? '✓ Selesai' : ''}
-            </option>
-          `).join('')}
+          ${questions.map((item, idx) => {
+            const ans = window.isIhsaniyahQuestionAnswered(item, appState.ihsUserAnswers[item.id]);
+            return `
+              <option value="${idx}" ${idx === appState.currentIhsIndex ? 'selected' : ''}>
+                No. ${item.number} (${item.page}) — ${item.title} ${ans ? '[✓ Terisi]' : '[Belum Diisi]'}
+              </option>
+            `;
+          }).join('')}
         </select>
         <button class="btn-secondary" style="padding: 6px 12px; font-size: 0.82rem;" onclick="navIhsaniyahQuestion(1)" ${appState.currentIhsIndex >= questions.length - 1 ? 'disabled' : ''}>
           Berikutnya ▶
@@ -6276,43 +6433,77 @@ function renderIhsaniyahTest() {
     </div>
 
     <!-- Kotak Soal Aktif -->
-    <div style="background: linear-gradient(145deg, rgba(15, 23, 42, 0.95), rgba(17, 24, 39, 0.98)); border: 1.5px solid rgba(56, 189, 248, 0.4); border-radius: 16px; padding: 22px; box-shadow: 0 4px 20px rgba(0,0,0,0.3); margin-bottom: 24px;">
+    <div style="background: linear-gradient(145deg, rgba(15, 23, 42, 0.96), rgba(17, 24, 39, 0.99)); border: 1.5px solid rgba(56, 189, 248, 0.45); border-radius: 16px; padding: 22px; box-shadow: 0 4px 20px rgba(0,0,0,0.3); margin-bottom: 24px;">
       <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; margin-bottom: 12px;">
-        <span style="font-size: 0.78rem; font-weight: 800; background: rgba(56, 189, 248, 0.2); color: #38bdf8; padding: 4px 12px; border-radius: 20px; border: 1px solid rgba(56, 189, 248, 0.35);">
-          ${q.badge}
-        </span>
-        <span style="font-size: 0.78rem; color: #94a3b8; font-weight: 600;">
-          ${q.page} (Ref: SD Ihsaniyah Math Test)
+        <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
+          <span style="font-size: 0.78rem; font-weight: 800; background: rgba(56, 189, 248, 0.2); color: #38bdf8; padding: 4px 12px; border-radius: 20px; border: 1px solid rgba(56, 189, 248, 0.35);">
+            ${q.badge}
+          </span>
+          <span style="font-size: 0.78rem; font-weight: 700; color: #fde68a; background: rgba(245, 158, 11, 0.15); padding: 4px 10px; border-radius: 20px;">
+            📄 ${q.page}
+          </span>
+        </div>
+        <span id="ihs-q-status-pill" style="font-size: 0.78rem; font-weight: 800; padding: 4px 12px; border-radius: 20px; background: ${isCurrentAnswered ? 'rgba(16, 185, 129, 0.2)' : 'rgba(148, 163, 184, 0.15)'}; color: ${isCurrentAnswered ? '#4ade80' : '#cbd5e1'};">
+          ${isCurrentAnswered ? '✓ Jawaban Nomor Ini Sudah Terisi' : '⏳ Silakan Isi Jawaban di Bawah'}
         </span>
       </div>
 
       <h3 style="margin: 0 0 8px; font-size: 1.2rem; color: #fff;">${q.number}. ${q.title}</h3>
-      <p style="margin: 0 0 14px; font-size: 0.95rem; color: #e2e8f0; line-height: 1.5;">${q.instruction}</p>
+      <p style="margin: 0 0 14px; font-size: 0.95rem; color: #e2e8f0; line-height: 1.55; white-space: pre-line;">${q.instruction}</p>
 
-      ${q.diagram ? q.diagram : ''}
+      <!-- Gambar Asli Soal dari Lembar PDF SD Ihsaniyah -->
+      ${q.cropImg ? `
+        <div style="background: #ffffff; border: 2px solid #38bdf8; border-radius: 12px; padding: 12px; margin: 14px 0; text-align: center; box-shadow: 0 4px 14px rgba(0,0,0,0.25);">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; padding-bottom: 6px; border-bottom: 1px solid #e2e8f0;">
+            <span style="font-size: 0.76rem; font-weight: 800; color: #0f172a;">📸 Gambar Soal Asli Lembar Ujian / Buku Paket (${q.page}):</span>
+            ${q.fullPageImg ? `
+              <button type="button" onclick="toggleFullWorksheetPage('${q.id}')" style="background: #0284c7; color: #fff; border: none; border-radius: 6px; padding: 4px 10px; font-size: 0.74rem; font-weight: 700; cursor: pointer;">
+                🔍 Lihat Halaman Penuh PDF
+              </button>
+            ` : ''}
+          </div>
+          <img src="${q.cropImg}" alt="Soal ${q.number}" style="max-width: 100%; max-height: 390px; height: auto; border-radius: 6px; object-fit: contain;">
+          ${q.fullPageImg ? `
+            <div id="full-page-wrap-${q.id}" style="display: none; margin-top: 12px; padding-top: 12px; border-top: 2px dashed #94a3b8;">
+              <div style="font-size: 0.75rem; font-weight: 800; color: #334155; margin-bottom: 6px;">Halaman Penuh Lembar PDF (${q.page}):</div>
+              <img src="${q.fullPageImg}" alt="Full Page ${q.number}" style="max-width: 100%; height: auto; border-radius: 8px; border: 1px solid #cbd5e1;">
+            </div>
+          ` : ''}
+        </div>
+      ` : ''}
 
-      <!-- Render Area Khusus Tipe Soal -->
+      <!-- Area Input Jawaban Siswa Sesuai Bentuk Kotak di PDF -->
       <div id="ihs-question-interactive-body" style="margin: 18px 0;">
         ${renderIhsaniyahInteractiveBody(q)}
       </div>
 
-      <!-- Action Buttons -->
-      <div style="display: flex; gap: 10px; flex-wrap: wrap; margin-top: 18px;">
-        <button class="btn-primary" style="padding: 12px 24px; font-size: 0.95rem; font-weight: 800; background: linear-gradient(135deg, #059669, #10b981); border: none; border-radius: 8px;" onclick="submitIhsaniyahAnswer()">
-          🚀 Periksa Jawaban & Buka Pembahasan
-        </button>
-        <button class="btn-secondary" style="padding: 12px 18px; font-size: 0.88rem; font-weight: 700; border-radius: 8px;" onclick="navIhsaniyahQuestion(1)">
-          ⏭️ Soal Berikutnya
+      <!-- Tombol Navigasi & Simpan Ujian (Tanpa Bocoran Pembahasan untuk Siswa) -->
+      <div style="display: flex; justify-content: space-between; align-items: center; gap: 10px; flex-wrap: wrap; margin-top: 20px; padding-top: 16px; border-top: 1px solid rgba(255,255,255,0.1);">
+        <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+          <button class="btn-secondary" style="padding: 11px 18px; font-size: 0.88rem; font-weight: 700; border-radius: 8px;" onclick="navIhsaniyahQuestion(-1)" ${appState.currentIhsIndex <= 0 ? 'disabled' : ''}>
+            ◀ Soal Sebelumnya
+          </button>
+          <button class="btn-primary" style="padding: 11px 22px; font-size: 0.92rem; font-weight: 800; background: linear-gradient(135deg, #0284c7, #2563eb); border: none; border-radius: 8px;" onclick="saveAndNextIhsaniyahQuestion()">
+            💾 Simpan Jawaban & Soal Berikutnya ▶
+          </button>
+        </div>
+
+        <button class="btn-primary" style="padding: 11px 22px; font-size: 0.92rem; font-weight: 800; background: linear-gradient(135deg, #059669, #10b981); border: none; border-radius: 8px;" onclick="finishIhsaniyahExamHandler()">
+          ✅ Kumpulkan & Selesaikan Ujian (${stats.answeredCount}/${questions.length})
         </button>
       </div>
 
-      <!-- Kotak Feedback & Nalar Bayi Kodi -->
-      <div id="ihs-feedback-box" style="margin-top: 16px; display: ${isDone ? 'block' : 'none'};">
-        ${isDone ? renderIhsaniyahExplanation(q) : ''}
-      </div>
+      <div id="ihs-save-toast" style="display: none; margin-top: 12px; padding: 10px 14px; border-radius: 8px; background: rgba(16, 185, 129, 0.2); border: 1px solid #10b981; color: #86efac; font-size: 0.85rem; font-weight: 700;"></div>
     </div>
   `;
 }
+
+window.toggleFullWorksheetPage = function(qid) {
+  const el = document.getElementById("full-page-wrap-" + qid);
+  if (el) {
+    el.style.display = el.style.display === "none" ? "block" : "none";
+  }
+};
 
 // Render Identity Gate (Form Siswa Sebelum Masuk)
 function renderIhsaniyahStudentGate(container) {
@@ -6329,12 +6520,12 @@ function renderIhsaniyahStudentGate(container) {
         SD IHSANIYAH GAJAHMADA TEGAL
       </h2>
       <div style="font-size: 0.9rem; color: #cbd5e1; margin-bottom: 20px;">
-        Kampus Al Hafidz • Math Formative Test 2 & Division Stories
+        Kampus Al Hafidz • Math Formative Test 2 & Division (27 Soal Lengkap)
       </div>
 
       <div style="background: rgba(0,0,0,0.3); border-radius: 12px; padding: 20px; margin-bottom: 24px; text-align: left; border: 1px solid rgba(255,255,255,0.08);">
         <p style="margin: 0 0 16px; font-size: 0.88rem; color: #e2e8f0; line-height: 1.5;">
-          Selamat datang di petualangan matematika! Sebelum mengerjakan soal, silakan tulis nama lengkap, kelas, dan nomor absenmu ya:
+          Selamat datang! Sebelum mengerjakan soal ujian, silakan isi Nama Lengkap, Kelas, dan Nomor Absenmu. Data pengerjaanmu akan otomatis tercatat di Panel Guru:
         </p>
 
         <div style="margin-bottom: 14px;">
@@ -6356,7 +6547,7 @@ function renderIhsaniyahStudentGate(container) {
           </div>
           <div style="width: 120px;">
             <label style="display: block; font-size: 0.82rem; font-weight: 700; color: #38bdf8; margin-bottom: 6px;">No Absen:</label>
-            <input type="number" id="ihs-input-number" min="1" max="50" placeholder="12" style="width: 100%; padding: 12px; font-size: 0.95rem; border-radius: 8px; border: 1.5px solid #cbd5e1; background: #0f172a; color: #fff; box-sizing: border-box;">
+            <input type="number" id="ihs-input-number" min="1" max="50" placeholder="1" style="width: 100%; padding: 12px; font-size: 0.95rem; border-radius: 8px; border: 1.5px solid #cbd5e1; background: #0f172a; color: #fff; box-sizing: border-box;">
           </div>
         </div>
 
@@ -6364,12 +6555,12 @@ function renderIhsaniyahStudentGate(container) {
       </div>
 
       <button class="btn-primary" style="width: 100%; padding: 14px; font-size: 1.05rem; font-weight: 800; background: linear-gradient(135deg, #059669, #10b981); border: none; border-radius: 10px; box-shadow: 0 4px 16px rgba(16, 185, 129, 0.4);" onclick="handleStudentGateSubmit()">
-        🚀 Masuk & Mulai Mengerjakan Ujian
+        🚀 Masuk & Mulai Mengerjakan Ujian (27 Soal)
       </button>
 
       <div style="margin-top: 16px;">
         <button class="btn-secondary teacher-panel-gate-btn" style="padding: 10px 18px; font-size: 0.88rem; font-weight: 700; border-radius: 8px; cursor: pointer;" onclick="openIhsaniyahAdminPanel()">
-          👩‍🏫 Panel Guru: Lihat Rekap Nilai & Unduh CSV
+          👩‍🏫 Panel Guru: Lihat Rekap Nilai Siswa & Unduh CSV
         </button>
       </div>
     </div>
@@ -6391,64 +6582,77 @@ window.handleStudentGateSubmit = function() {
       errEl.style.display = "block";
       errEl.textContent = "⚠️ Mohon lengkapi Nama Siswa dan Nomor Absen ya!";
     }
-    sfx.playWrong();
+    if (window.sfx && sfx.playWrong) sfx.playWrong();
     return;
   }
 
-  const student = { name, className, number, startTime: new Date().toISOString() };
+  const sessionId = `${name.toLowerCase()}_${className}_${number}`;
+  const student = { name, className, number, sessionId, startTime: new Date().toISOString() };
   window.setIhsaniyahStudent(student);
-  sfx.playSuccess();
+  appState.ihsUserAnswers = window.getIhsaniyahStudentAnswersStore() || {};
+  appState.currentIhsIndex = 0;
+
+  // Langsung daftarkan siswa ke Rekap Panel Guru
+  syncIhsaniyahProgressToRecords(false);
+
+  if (window.sfx && sfx.playSuccess) sfx.playSuccess();
   renderIhsaniyahTest();
 };
 
 window.logoutIhsaniyahStudentHandler = function() {
-  if (confirm("Apakah kamu yakin ingin keluar dan mengganti siswa?")) {
+  if (confirm("Simpan progres saat ini dan keluar / ganti siswa?")) {
+    syncIhsaniyahProgressToRecords(false);
     window.logoutIhsaniyahStudent();
     appState.ihsUserAnswers = {};
-    appState.ihsCompletedList = [];
+    appState.currentIhsIndex = 0;
     renderIhsaniyahTest();
   }
 };
 
-// Render Interaktif berdasarkan Tipe Soal
+// Render Interaktif berdasarkan Tipe Soal Sesuai Buku / Lembar Ujian
 function renderIhsaniyahInteractiveBody(q) {
   const currentAnswer = appState.ihsUserAnswers[q.id] || {};
 
+  // 1. MULTI SELECT CHECKBOXES (No. 1 & No. 2)
   if (q.type === "multi_select") {
     const selectedKeys = currentAnswer.selected || [];
     return `
       <div style="display: flex; flex-direction: column; gap: 10px;">
+        <div style="font-size: 0.84rem; font-weight: 700; color: #38bdf8;">
+          ☑️ Centang satu atau lebih kotak jawaban yang benar (A, B, atau C):
+        </div>
         ${q.options.map(opt => `
-          <label style="display: flex; align-items: center; gap: 12px; padding: 12px 16px; border-radius: 10px; background: rgba(30, 41, 59, 0.7); border: 1.5px solid rgba(255,255,255,0.1); cursor: pointer; transition: all 0.2s;" class="choice-card-btn">
-            <input type="checkbox" name="ihs_chk_${q.id}" value="${opt.key}" ${selectedKeys.includes(opt.key) ? 'checked' : ''} onchange="saveIhsMultiSelect('${q.id}')" style="width: 18px; height: 18px; accent-color: #38bdf8;">
-            <span style="font-size: 0.95rem; font-weight: 700; color: #fff;">${opt.text}</span>
+          <label style="display: flex; align-items: center; gap: 12px; padding: 12px 16px; border-radius: 10px; background: rgba(30, 41, 59, 0.85); border: 1.5px solid ${selectedKeys.includes(opt.key) ? '#38bdf8' : 'rgba(255,255,255,0.12)'}; cursor: pointer; transition: all 0.2s;" class="choice-card-btn">
+            <input type="checkbox" name="ihs_chk_${q.id}" value="${opt.key}" ${selectedKeys.includes(opt.key) ? 'checked' : ''} onchange="saveIhsMultiSelect('${q.id}')" style="width: 20px; height: 20px; accent-color: #38bdf8;">
+            <span style="font-size: 1rem; font-weight: 700; color: #fff;">${opt.text}</span>
           </label>
         `).join('')}
       </div>
     `;
   }
 
+  // 2. TRUE / FALSE TABLE (No. 3 & No. 4)
   if (q.type === "true_false_table") {
     const responses = currentAnswer.responses || {};
     return `
-      <div style="background: rgba(0,0,0,0.25); border-radius: 10px; padding: 12px; border: 1px solid rgba(255,255,255,0.1);">
-        <table style="width: 100%; border-collapse: collapse; font-size: 0.9rem;">
+      <div style="background: rgba(0,0,0,0.3); border-radius: 12px; padding: 14px; border: 1.5px solid rgba(56, 189, 248, 0.3);">
+        <table style="width: 100%; border-collapse: collapse; font-size: 0.95rem;">
           <thead>
-            <tr style="border-bottom: 2px solid rgba(255,255,255,0.2); color: var(--accent-cyan); text-align: left;">
-              <th style="padding: 8px;">Pernyataan (Statement)</th>
-              <th style="padding: 8px; text-align: center; width: 80px;">Benar (True)</th>
-              <th style="padding: 8px; text-align: center; width: 80px;">Salah (False)</th>
+            <tr style="border-bottom: 2px solid rgba(255,255,255,0.2); color: #38bdf8; text-align: left;">
+              <th style="padding: 10px 8px;">Statements</th>
+              <th style="padding: 10px 8px; text-align: center; width: 95px;">True (✓)</th>
+              <th style="padding: 10px 8px; text-align: center; width: 95px;">False (✓)</th>
             </tr>
           </thead>
           <tbody>
             ${q.statements.map(st => `
-              <tr style="border-bottom: 1px solid rgba(255,255,255,0.06);">
-                <td style="padding: 10px 8px; color: #fff; font-weight: 600;">${st.text}</td>
-                <td style="padding: 10px 8px; text-align: center;">
-                  <input type="radio" name="tf_${st.id}" value="true" ${responses[st.id] === true ? 'checked' : ''} onchange="saveIhsTrueFalse('${q.id}', '${st.id}', true)">
+              <tr style="border-bottom: 1px solid rgba(255,255,255,0.08);">
+                <td style="padding: 12px 8px; color: #fff; font-weight: 700;">${st.text}</td>
+                <td style="padding: 12px 8px; text-align: center;">
+                  <input type="radio" name="tf_${q.id}_${st.id}" value="true" ${responses[st.id] === true ? 'checked' : ''} onchange="saveIhsTrueFalse('${q.id}', '${st.id}', true)" style="width: 20px; height: 20px; accent-color: #10b981; cursor: pointer;">
                 </td>
-                <td style="padding: 10px 8px; text-align: center;">
-                  <input type="radio" name="tf_${st.id}" value="false" ${responses[st.id] === false ? 'checked' : ''} onchange="saveIhsTrueFalse('${q.id}', '${st.id}', false)">
+                <td style="padding: 12px 8px; text-align: center;">
+                  <input type="radio" name="tf_${q.id}_${st.id}" value="false" ${responses[st.id] === false ? 'checked' : ''} onchange="saveIhsTrueFalse('${q.id}', '${st.id}', false)" style="width: 20px; height: 20px; accent-color: #ef4444; cursor: pointer;">
                 </td>
               </tr>
             `).join('')}
@@ -6458,39 +6662,105 @@ function renderIhsaniyahInteractiveBody(q) {
     `;
   }
 
-  if (q.type === "fill_blank") {
-    const val = currentAnswer.text || "";
+  // 3. MULTI BOX FILL (No. 5 - No. 10)
+  if (q.type === "multi_box_fill") {
+    const boxesVal = currentAnswer.boxes || {};
     return `
-      <div style="margin: 12px 0;">
-        <label style="display: block; font-size: 0.85rem; font-weight: 700; color: #38bdf8; margin-bottom: 6px;">
-          ${q.questionPrompt || 'Tuliskan Jawabanmu:'}
-        </label>
-        <input type="text" id="ihs-text-input-${q.id}" value="${val.replace(/"/g, '&quot;')}" placeholder="${q.placeholder || 'Ketik jawabanmu...'}" oninput="saveIhsFillBlank('${q.id}', this.value)" style="width: 100%; max-width: 400px; padding: 12px; font-size: 1rem; font-weight: 700; font-family: monospace; border-radius: 8px; border: 1.5px solid #38bdf8; background: #0f172a; color: #fff;">
+      <div style="background: rgba(15, 23, 42, 0.85); border: 1.5px solid rgba(56, 189, 248, 0.35); border-radius: 12px; padding: 16px;">
+        <div style="font-size: 0.85rem; font-weight: 800; color: #38bdf8; margin-bottom: 12px;">
+          ✏️ Isi kotak-kotak titik-titik sesuai lembar soal di atas:
+        </div>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 14px;">
+          ${q.boxes.map(b => `
+            <div style="background: rgba(0,0,0,0.35); padding: 12px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.12);">
+              <label style="display: block; font-size: 0.84rem; font-weight: 700; color: #e2e8f0; margin-bottom: 8px;">
+                ${b.label}
+              </label>
+              <input type="text" value="${String(boxesVal[b.id] || '').replace(/"/g, '&quot;')}" placeholder="${b.placeholder || '...'}" oninput="saveIhsMultiBox('${q.id}', '${b.id}', this.value)" style="width: 100%; padding: 10px 12px; font-size: 1.1rem; font-weight: 800; font-family: monospace; text-align: center; border-radius: 8px; border: 2px solid #38bdf8; background: #0f172a; color: #4ade80; box-sizing: border-box;">
+            </div>
+          `).join('')}
+        </div>
       </div>
     `;
   }
 
-  if (q.type === "column_math") {
-    const vals = currentAnswer.subVals || {};
+  // 4. DIVISION SENTENCE BOXES (No. 11 - No. 20: [ ] ÷ [ ] = [ ] & There are [ ] ...)
+  if (q.type === "division_sentence") {
+    const divVal = currentAnswer.div || {};
     return `
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px;">
-        ${q.subQuestions.map((sq, idx) => `
-          <div style="background: rgba(0,0,0,0.3); padding: 12px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.1);">
-            <div style="font-size: 1rem; font-weight: 800; color: #fff; margin-bottom: 8px;">${sq.label}</div>
-            <input type="text" id="ihs-col-${idx}" value="${vals[idx] || ''}" placeholder="Hasil..." oninput="saveIhsColumnMath('${q.id}', ${idx}, this.value)" style="width: 100%; padding: 10px; font-size: 1rem; font-weight: 700; font-family: monospace; border-radius: 8px; border: 1.5px solid #38bdf8; background: #0f172a; color: #fff;">
-          </div>
-        `).join('')}
+      <div style="background: rgba(15, 23, 42, 0.9); border: 2px solid #10b981; border-radius: 14px; padding: 18px;">
+        <div style="font-size: 0.85rem; font-weight: 800; color: #86efac; margin-bottom: 14px;">
+          ✏️ Lengkapi kotak kalimat pembagian (Division Sentence) persis seperti di buku:
+        </div>
+
+        <!-- Baris 1: [ ] ÷ [ ] = [ ] -->
+        <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 16px; background: rgba(0,0,0,0.3); padding: 14px; border-radius: 12px;">
+          <input type="number" value="${divVal.a || ''}" placeholder="?" oninput="saveIhsDivisionSentence('${q.id}', 'a', this.value)" style="width: 78px; height: 52px; font-size: 1.35rem; font-weight: 900; text-align: center; border-radius: 10px; border: 2.5px solid #4ade80; background: #0f172a; color: #fff;">
+          <span style="font-size: 1.6rem; font-weight: 900; color: #38bdf8;">÷</span>
+          <input type="number" value="${divVal.b || ''}" placeholder="?" oninput="saveIhsDivisionSentence('${q.id}', 'b', this.value)" style="width: 78px; height: 52px; font-size: 1.35rem; font-weight: 900; text-align: center; border-radius: 10px; border: 2.5px solid #4ade80; background: #0f172a; color: #fff;">
+          <span style="font-size: 1.6rem; font-weight: 900; color: #38bdf8;">=</span>
+          <input type="number" value="${divVal.res || ''}" placeholder="?" oninput="saveIhsDivisionSentence('${q.id}', 'res', this.value)" style="width: 78px; height: 52px; font-size: 1.35rem; font-weight: 900; text-align: center; border-radius: 10px; border: 2.5px solid #fbbf24; background: #0f172a; color: #fbbf24;">
+        </div>
+
+        <!-- Baris 2: There are [ ] ... -->
+        <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap; font-size: 1.08rem; font-weight: 800; color: #fff; background: rgba(0,0,0,0.3); padding: 14px; border-radius: 12px;">
+          ${q.statementPrefix ? `<span>${q.statementPrefix}</span>` : ''}
+          <input type="number" value="${divVal.stmt || ''}" placeholder="?" oninput="saveIhsDivisionSentence('${q.id}', 'stmt', this.value)" style="width: 78px; height: 48px; font-size: 1.25rem; font-weight: 900; text-align: center; border-radius: 10px; border: 2.5px solid #38bdf8; background: #0f172a; color: #4ade80;">
+          <span>${q.statementSuffix}</span>
+        </div>
       </div>
     `;
   }
 
+  // 5. FULL MAKING DIVISION STORIES (No. 21 - No. 25: Book Pages 59 & 60)
+  if (q.type === "division_story_full") {
+    const st = currentAnswer.story || {};
+    return `
+      <div style="background: rgba(15, 23, 42, 0.9); border: 2px solid #38bdf8; border-radius: 14px; padding: 18px; display: flex; flex-direction: column; gap: 12px;">
+        <div style="font-size: 0.85rem; font-weight: 800; color: #38bdf8;">
+          ✏️ Lengkapi ke-4 baris cerita pembagian (Making Division Stories) sesuai gambar di atas:
+        </div>
+
+        <!-- Line 1 -->
+        <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap; font-size: 1.02rem; font-weight: 700; color: #fff; background: rgba(0,0,0,0.3); padding: 10px 14px; border-radius: 10px;">
+          <span>${q.line1Prefix}</span>
+          <input type="number" value="${st.l1 || ''}" placeholder="?" oninput="saveIhsStoryFull('${q.id}', 'l1', this.value)" style="width: 74px; height: 44px; font-size: 1.2rem; font-weight: 900; text-align: center; border-radius: 8px; border: 2px solid #4ade80; background: #0f172a; color: #fff;">
+          <span>${q.line1Suffix}</span>
+        </div>
+
+        <!-- Line 2 -->
+        <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap; font-size: 1.02rem; font-weight: 700; color: #fff; background: rgba(0,0,0,0.3); padding: 10px 14px; border-radius: 10px;">
+          <span>${q.line2Prefix}</span>
+          <input type="number" value="${st.l2 || ''}" placeholder="?" oninput="saveIhsStoryFull('${q.id}', 'l2', this.value)" style="width: 74px; height: 44px; font-size: 1.2rem; font-weight: 900; text-align: center; border-radius: 8px; border: 2px solid #4ade80; background: #0f172a; color: #fff;">
+          <span>${q.line2Suffix}</span>
+        </div>
+
+        <!-- Division Equation [ ] ÷ [ ] = [ ] -->
+        <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap; background: rgba(0,0,0,0.35); padding: 12px 14px; border-radius: 10px;">
+          <input type="number" value="${st.da || ''}" placeholder="?" oninput="saveIhsStoryFull('${q.id}', 'da', this.value)" style="width: 74px; height: 48px; font-size: 1.25rem; font-weight: 900; text-align: center; border-radius: 8px; border: 2px solid #38bdf8; background: #0f172a; color: #fff;">
+          <span style="font-size: 1.5rem; font-weight: 900; color: #38bdf8;">÷</span>
+          <input type="number" value="${st.db || ''}" placeholder="?" oninput="saveIhsStoryFull('${q.id}', 'db', this.value)" style="width: 74px; height: 48px; font-size: 1.25rem; font-weight: 900; text-align: center; border-radius: 8px; border: 2px solid #38bdf8; background: #0f172a; color: #fff;">
+          <span style="font-size: 1.5rem; font-weight: 900; color: #38bdf8;">=</span>
+          <input type="number" value="${st.dr || ''}" placeholder="?" oninput="saveIhsStoryFull('${q.id}', 'dr', this.value)" style="width: 74px; height: 48px; font-size: 1.25rem; font-weight: 900; text-align: center; border-radius: 8px; border: 2px solid #fbbf24; background: #0f172a; color: #fbbf24;">
+        </div>
+
+        <!-- Line 3 -->
+        <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap; font-size: 1.02rem; font-weight: 700; color: #fff; background: rgba(0,0,0,0.3); padding: 10px 14px; border-radius: 10px;">
+          <span>${q.line3Prefix}</span>
+          <input type="number" value="${st.l3 || ''}" placeholder="?" oninput="saveIhsStoryFull('${q.id}', 'l3', this.value)" style="width: 74px; height: 44px; font-size: 1.2rem; font-weight: 900; text-align: center; border-radius: 8px; border: 2px solid #4ade80; background: #0f172a; color: #4ade80;">
+          <span>${q.line3Suffix}</span>
+        </div>
+      </div>
+    `;
+  }
+
+  // 6. MATCHING GAME: T-SHIRTS TO CLOTHES HANGERS (No. 26: Book Page 62)
   if (q.type === "matching_game") {
     const matched = currentAnswer.matchedPairs || {};
     const matchedCount = Object.keys(matched).length;
-    const shuffledHangerIds = q.shuffledRight || ["h3", "h1", "h5", "h2", "h4"];
-    const rightCards = shuffledHangerIds.map(hId => q.pairs.find(p => p.rightId === hId)).filter(Boolean);
+    const rightIds = q.shuffledRight || ["h1", "h2", "h3", "h4", "h5"];
+    const rightCards = rightIds.map(hId => q.pairs.find(p => p.rightId === hId)).filter(Boolean);
 
-    // Call draw lines after render
     setTimeout(() => {
       window.drawAllMatchingLines && window.drawAllMatchingLines(q, matched);
     }, 60);
@@ -6498,25 +6768,23 @@ function renderIhsaniyahInteractiveBody(q) {
     return `
       <div style="margin: 10px 0;">
         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; flex-wrap: wrap; gap: 8px;">
-          <span style="font-size: 0.85rem; color: #38bdf8; font-weight: 700;">
-            👕 Click a T-shirt on the left, then click the matching Hanger on the right to draw a connecting line!
+          <span style="font-size: 0.88rem; color: #38bdf8; font-weight: 700;">
+            👕 Klik Kaos di sebelah kiri, lalu klik Gantungan Baju (Hanger) pasangannya di sebelah kanan untuk menarik garis!
           </span>
           <div style="display: flex; align-items: center; gap: 10px;">
             <span style="font-size: 0.85rem; font-weight: 800; color: #4ade80;">
-              Connected: ${matchedCount} / ${q.pairs.length}
+              Garis Terhubung: ${matchedCount} / ${q.pairs.length}
             </span>
-            <button class="btn-secondary" style="padding: 4px 10px; font-size: 0.75rem;" onclick="resetIhsMatchingLines('${q.id}')">
-              🔄 Reset Lines
+            <button class="btn-secondary" style="padding: 5px 12px; font-size: 0.78rem;" onclick="resetIhsMatchingLines('${q.id}')">
+              🔄 Hapus / Ulangi Garis
             </button>
           </div>
         </div>
 
         <div class="matching-canvas-wrapper" id="matching-canvas-wrapper">
-          <!-- Dynamic SVG Canvas for Real Curved Connecting Lines -->
           <svg id="matching-svg-canvas" class="matching-svg-canvas"></svg>
 
           <div class="matching-game-container">
-            <!-- Left Column: Multiplication T-Shirts -->
             <div class="matching-col left-col">
               ${q.pairs.map(p => {
                 const isCardMatched = !!matched[p.leftId];
@@ -6530,7 +6798,6 @@ function renderIhsaniyahInteractiveBody(q) {
               }).join('')}
             </div>
 
-            <!-- Right Column: Division Clothes Hangers (Shuffled order so lines cross nicely!) -->
             <div class="matching-col right-col">
               ${rightCards.map(p => {
                 const matchedShirt = Object.keys(matched).find(k => matched[k] === p.rightId);
@@ -6549,39 +6816,22 @@ function renderIhsaniyahInteractiveBody(q) {
     `;
   }
 
-  if (q.type === "division_stories") {
-    const storyAnswers = currentAnswer.storyAnswers || {};
+  // 7. PAGE 75: 1 TO 100 NUMBER GRID & 3 SUB-QUESTIONS (No. 27)
+  if (q.type === "grid_100_page75") {
+    const subAns = currentAnswer.subAnswers || {};
     return `
-      <div style="display: flex; flex-direction: column; gap: 14px;">
-        ${q.stories.map(st => `
-          <div style="background: rgba(0,0,0,0.3); border-radius: 12px; padding: 14px; border: 1px solid rgba(255,255,255,0.1);">
-            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 6px;">
-              <span style="font-size: 1.3rem;">${st.icon}</span>
-              <strong style="font-size: 0.95rem; color: #fff;">${st.title}</strong>
+      <div style="background: rgba(15, 23, 42, 0.9); border: 2px solid #38bdf8; border-radius: 14px; padding: 18px;">
+        <div style="font-size: 0.88rem; font-weight: 800; color: #38bdf8; margin-bottom: 12px;">
+          ✏️ Jawab ke-3 pertanyaan di bawah tabel 1–100 (Tuliskan angka-angkanya dipisahkan koma, contoh: 10, 20, 30, ...):
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 14px;">
+          ${q.subPrompts.map(sp => `
+            <div style="background: rgba(0,0,0,0.35); padding: 14px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.12);">
+              <label style="display: block; font-size: 0.92rem; font-weight: 700; color: #fff; margin-bottom: 8px;">
+                ${sp.label}
+              </label>
+              <input type="text" value="${String(subAns[sp.id] || '').replace(/"/g, '&quot;')}" placeholder="${sp.placeholder}" oninput="saveIhsPage75Sub('${q.id}', '${sp.id}', this.value)" style="width: 100%; padding: 12px; font-size: 1rem; font-weight: 800; font-family: monospace; border-radius: 8px; border: 2px solid #4ade80; background: #0f172a; color: #4ade80; box-sizing: border-box;">
             </div>
-            <p style="margin: 0 0 8px; font-size: 0.88rem; color: #cbd5e1; line-height: 1.4;">${st.prompt}</p>
-            <div style="display: flex; align-items: center; gap: 10px;">
-              <span style="font-family: monospace; font-size: 1.05rem; font-weight: 800; color: #38bdf8;">${st.sentence}</span>
-              <input type="number" id="ihs_story_${st.id}" value="${storyAnswers[st.id] || ''}" placeholder="Jawaban..." oninput="saveIhsStoryAnswer('${q.id}', '${st.id}', this.value)" style="width: 100px; padding: 8px 12px; font-size: 1rem; font-weight: 700; border-radius: 8px; border: 1.5px solid #38bdf8; background: #0f172a; color: #fff;">
-              <span style="font-size: 0.85rem; color: #94a3b8;">${st.unit}</span>
-            </div>
-          </div>
-        `).join('')}
-      </div>
-    `;
-  }
-
-  if (q.type === "table_100") {
-    const selectedKey = currentAnswer.selectedOption || "";
-    return `
-      <div>
-        <p style="margin: 0 0 10px; font-size: 0.95rem; color: #fff; font-weight: 700;">${q.prompt}</p>
-        <div style="display: flex; flex-direction: column; gap: 10px;">
-          ${q.options.map(opt => `
-            <label style="display: flex; align-items: center; gap: 12px; padding: 12px 16px; border-radius: 10px; background: rgba(30, 41, 59, 0.7); border: 1.5px solid rgba(255,255,255,0.1); cursor: pointer;" class="choice-card-btn">
-              <input type="radio" name="ihs_table100" value="${opt.key}" ${selectedKey === opt.key ? 'checked' : ''} onchange="saveIhsTableOption('${q.id}', '${opt.key}')" style="width: 18px; height: 18px; accent-color: #38bdf8;">
-              <span style="font-size: 0.95rem; font-weight: 700; color: #fff;">${opt.text}</span>
-            </label>
           `).join('')}
         </div>
       </div>
@@ -6591,89 +6841,93 @@ function renderIhsaniyahInteractiveBody(q) {
   return '';
 }
 
-// Handlers untuk menyimpan jawaban sementara
+// ==============================================================================
+// HANDLERS PENYIMPANAN JAWABAN SISWA + AUTO-SYNC KE PANEL GURU
+// ==============================================================================
 window.saveIhsMultiSelect = function(qid) {
   const checkboxes = document.querySelectorAll(`input[name="ihs_chk_${qid}"]:checked`);
   const selected = Array.from(checkboxes).map(c => c.value);
   appState.ihsUserAnswers[qid] = appState.ihsUserAnswers[qid] || {};
   appState.ihsUserAnswers[qid].selected = selected;
+  syncIhsaniyahProgressToRecords(true);
 };
 
 window.saveIhsTrueFalse = function(qid, stId, val) {
   appState.ihsUserAnswers[qid] = appState.ihsUserAnswers[qid] || {};
   appState.ihsUserAnswers[qid].responses = appState.ihsUserAnswers[qid].responses || {};
   appState.ihsUserAnswers[qid].responses[stId] = val;
+  syncIhsaniyahProgressToRecords(true);
 };
 
-window.saveIhsFillBlank = function(qid, val) {
+window.saveIhsMultiBox = function(qid, boxId, val) {
   appState.ihsUserAnswers[qid] = appState.ihsUserAnswers[qid] || {};
-  appState.ihsUserAnswers[qid].text = val;
+  appState.ihsUserAnswers[qid].boxes = appState.ihsUserAnswers[qid].boxes || {};
+  appState.ihsUserAnswers[qid].boxes[boxId] = val;
+  syncIhsaniyahProgressToRecords(true);
 };
 
-window.saveIhsColumnMath = function(qid, idx, val) {
+window.saveIhsDivisionSentence = function(qid, field, val) {
   appState.ihsUserAnswers[qid] = appState.ihsUserAnswers[qid] || {};
-  appState.ihsUserAnswers[qid].subVals = appState.ihsUserAnswers[qid].subVals || {};
-  appState.ihsUserAnswers[qid].subVals[idx] = val;
+  appState.ihsUserAnswers[qid].div = appState.ihsUserAnswers[qid].div || {};
+  appState.ihsUserAnswers[qid].div[field] = val;
+  syncIhsaniyahProgressToRecords(true);
 };
 
-window.saveIhsStoryAnswer = function(qid, stId, val) {
+window.saveIhsStoryFull = function(qid, field, val) {
   appState.ihsUserAnswers[qid] = appState.ihsUserAnswers[qid] || {};
-  appState.ihsUserAnswers[qid].storyAnswers = appState.ihsUserAnswers[qid].storyAnswers || {};
-  appState.ihsUserAnswers[qid].storyAnswers[stId] = val;
+  appState.ihsUserAnswers[qid].story = appState.ihsUserAnswers[qid].story || {};
+  appState.ihsUserAnswers[qid].story[field] = val;
+  syncIhsaniyahProgressToRecords(true);
 };
 
-window.saveIhsTableOption = function(qid, optKey) {
+window.saveIhsPage75Sub = function(qid, subId, val) {
   appState.ihsUserAnswers[qid] = appState.ihsUserAnswers[qid] || {};
-  appState.ihsUserAnswers[qid].selectedOption = optKey;
+  appState.ihsUserAnswers[qid].subAnswers = appState.ihsUserAnswers[qid].subAnswers || {};
+  appState.ihsUserAnswers[qid].subAnswers[subId] = val;
+  syncIhsaniyahProgressToRecords(true);
 };
 
-// Handlers Matching Game (Hubungkan Kaos ke Gantungan Baju)
+// Handlers Matching Game (Bebas menghubungkan kaos mana saja ke gantungan mana saja)
 window.selectIhsShirt = function(shirtId) {
-  const q = window.IHSANIYAH_QUESTIONS[appState.currentIhsIndex];
-  const ans = appState.ihsUserAnswers[q.id] || {};
-  ans.matchedPairs = ans.matchedPairs || {};
-
-  if (ans.matchedPairs[shirtId]) return; // sudah matched
-
   appState.matchingSelectedShirt = shirtId;
-  sfx.playClick();
+  if (window.sfx && sfx.playClick) sfx.playClick();
   renderIhsaniyahTest();
 };
 
 window.connectIhsHanger = function(hangerId) {
   const q = window.IHSANIYAH_QUESTIONS[appState.currentIhsIndex];
   if (!appState.matchingSelectedShirt) {
-    alert("Silakan klik salah satu KAOS di sebelah kiri terlebih dahulu!");
+    alert("Klik salah satu KAOS di sebelah kiri terlebih dahulu, lalu klik Gantungan Baju di sebelah kanan!");
     return;
   }
 
   const shirtId = appState.matchingSelectedShirt;
-  const pair = q.pairs.find(p => p.leftId === shirtId);
+  appState.ihsUserAnswers[q.id] = appState.ihsUserAnswers[q.id] || {};
+  appState.ihsUserAnswers[q.id].matchedPairs = appState.ihsUserAnswers[q.id].matchedPairs || {};
 
-  if (pair && pair.rightId === hangerId) {
-    // MATCHED!
-    sfx.playSuccess();
-    appState.ihsUserAnswers[q.id] = appState.ihsUserAnswers[q.id] || {};
-    appState.ihsUserAnswers[q.id].matchedPairs = appState.ihsUserAnswers[q.id].matchedPairs || {};
-    appState.ihsUserAnswers[q.id].matchedPairs[shirtId] = hangerId;
-    appState.matchingSelectedShirt = null;
-    renderIhsaniyahTest();
-  } else {
-    // MISMATCH
-    sfx.playWrong();
-    alert("Ups, pasangan belum cocok! Coba ingat kembali keluarga perkalian dan pembagiannya ya!");
-    appState.matchingSelectedShirt = null;
-    renderIhsaniyahTest();
-  }
+  // Hapus jika gantungan ini sebelumnya terhubung ke kaos lain
+  Object.keys(appState.ihsUserAnswers[q.id].matchedPairs).forEach(k => {
+    if (appState.ihsUserAnswers[q.id].matchedPairs[k] === hangerId) {
+      delete appState.ihsUserAnswers[q.id].matchedPairs[k];
+    }
+  });
+
+  appState.ihsUserAnswers[q.id].matchedPairs[shirtId] = hangerId;
+  appState.matchingSelectedShirt = null;
+  if (window.sfx && sfx.playClick) sfx.playClick();
+  syncIhsaniyahProgressToRecords(false);
+  renderIhsaniyahTest();
 };
 
 // Navigasi Soal
 window.setIhsaniyahIndex = function(idx) {
+  syncIhsaniyahProgressToRecords(false);
   appState.currentIhsIndex = idx;
   renderIhsaniyahTest();
 };
 
 window.navIhsaniyahQuestion = function(delta) {
+  syncIhsaniyahProgressToRecords(false);
   const questions = window.IHSANIYAH_QUESTIONS || [];
   const nextIdx = appState.currentIhsIndex + delta;
   if (nextIdx >= 0 && nextIdx < questions.length) {
@@ -6682,115 +6936,110 @@ window.navIhsaniyahQuestion = function(delta) {
   }
 };
 
-// Evaluasi & Pemeriksaan Jawaban
-window.submitIhsaniyahAnswer = function() {
-  const q = window.IHSANIYAH_QUESTIONS[appState.currentIhsIndex];
-  const ans = appState.ihsUserAnswers[q.id] || {};
-
-  let isCorrect = false;
-
-  if (q.type === "multi_select") {
-    const selected = ans.selected || [];
-    const correctKeys = q.options.filter(o => o.isCorrect).map(o => o.key);
-    isCorrect = (selected.length === correctKeys.length) && correctKeys.every(k => selected.includes(k));
-  } else if (q.type === "true_false_table") {
-    const res = ans.responses || {};
-    isCorrect = q.statements.every(st => res[st.id] === st.correctAnswer);
-  } else if (q.type === "fill_blank") {
-    const txt = (ans.text || "").trim().toLowerCase();
-    isCorrect = q.acceptedInputs.some(acc => txt.includes(acc.toLowerCase()));
-  } else if (q.type === "column_math") {
-    const vals = ans.subVals || {};
-    isCorrect = q.subQuestions.every((sq, idx) => (vals[idx] || "").trim() === sq.expected);
-  } else if (q.type === "matching_game") {
-    const matched = ans.matchedPairs || {};
-    isCorrect = (Object.keys(matched).length === q.pairs.length);
-  } else if (q.type === "division_stories") {
-    const sAns = ans.storyAnswers || {};
-    isCorrect = q.stories.every(st => (sAns[st.id] || "").trim() === st.expected);
-  } else if (q.type === "table_100") {
-    isCorrect = (ans.selectedOption === "A");
-  }
-
-  if (isCorrect) {
-    sfx.playSuccess();
-    if (!appState.ihsCompletedList.includes(q.id)) {
-      appState.ihsCompletedList.push(q.id);
-      saveCurrentStudentProgress();
-    }
+window.saveAndNextIhsaniyahQuestion = function() {
+  syncIhsaniyahProgressToRecords(false);
+  if (window.sfx && sfx.playSuccess) sfx.playSuccess();
+  const questions = window.IHSANIYAH_QUESTIONS || [];
+  if (appState.currentIhsIndex < questions.length - 1) {
+    appState.currentIhsIndex += 1;
+    renderIhsaniyahTest();
   } else {
-    sfx.playWrong();
-  }
-
-  // Tampilkan feedback box
-  const feedbackEl = document.getElementById("ihs-feedback-box");
-  if (feedbackEl) {
-    feedbackEl.style.display = "block";
-    feedbackEl.innerHTML = renderIhsaniyahExplanation(q, isCorrect);
+    const toast = document.getElementById("ihs-save-toast");
+    if (toast) {
+      toast.style.display = "block";
+      toast.textContent = "✅ Jawaban berhasil disimpan ke Panel Guru! Kamu berada di nomor terakhir, silakan klik 'Kumpulkan & Selesaikan Ujian'.";
+    }
   }
 };
 
-function calculateIhsaniyahScore() {
-  const completed = appState.ihsCompletedList || [];
-  return completed.length * 10; // 10 soal x 10 poin = 100 poin
-}
-
-function saveCurrentStudentProgress() {
+window.finishIhsaniyahExamHandler = function() {
+  syncIhsaniyahProgressToRecords(false);
+  const stats = getIhsaniyahLiveStats();
   const student = window.getIhsaniyahStudent();
   if (!student) return;
 
-  const score = calculateIhsaniyahScore();
+  // Tandai status selesai dikumpulkan
   const record = {
+    sessionId: student.sessionId || `${student.name.toLowerCase()}_${student.className}_${student.number}`,
     date: new Date().toLocaleDateString('id-ID'),
     time: new Date().toLocaleTimeString('id-ID'),
     studentName: student.name,
     studentClass: student.className,
     studentNumber: student.number,
-    score: score,
-    status: score >= 70 ? "Lulus / Tuntas" : "Perlu Bimbingan",
-    correctCount: appState.ihsCompletedList.length,
-    totalQuestions: window.IHSANIYAH_QUESTIONS.length
+    answeredCount: stats.answeredCount,
+    correctCount: stats.correctCount,
+    totalQuestions: stats.totalQuestions,
+    score: stats.score,
+    status: stats.score >= 70 ? "Selesai & Tuntas" : "Selesai (Perlu Bimbingan)"
   };
+  window.upsertIhsaniyahRecord(record);
+  if (window.sfx && sfx.playVictory) sfx.playVictory();
 
-  // Update record di localStorage
-  window.saveIhsaniyahRecord(record);
+  alert(`🎉 Alhamdulillah! Jawaban ujian atas nama ${student.name} (${student.className} / Absen #${student.number}) telah berhasil dikumpulkan ke Panel Guru!\n\n• Soal Terjawab: ${stats.answeredCount} dari ${stats.totalQuestions} Soal\n• Status: Tersimpan di Rekap Nilai Guru`);
+  renderIhsaniyahTest();
+};
+
+function getIhsaniyahLiveStats() {
+  const questions = window.IHSANIYAH_QUESTIONS || [];
+  const answers = appState.ihsUserAnswers || {};
+  let answeredCount = 0;
+  let correctCount = 0;
+
+  questions.forEach(q => {
+    const ans = answers[q.id];
+    if (window.isIhsaniyahQuestionAnswered(q, ans)) {
+      answeredCount++;
+    }
+    if (window.evaluateIhsaniyahQuestion(q, ans)) {
+      correctCount++;
+    }
+  });
+
+  const totalQuestions = questions.length || 27;
+  const score = Math.round((correctCount / totalQuestions) * 100);
+  return { answeredCount, correctCount, totalQuestions, score };
 }
 
-// Render Pembahasan Lengkap & Nalar Bayi Kodi
-function renderIhsaniyahExplanation(q, userIsCorrect = true) {
-  return `
-    <div class="alert-box ${userIsCorrect ? 'success' : 'warning'}" style="margin: 0; padding: 16px; border-radius: 12px;">
-      <div style="font-size: 1.05rem; font-weight: 800; margin-bottom: 6px;">
-        ${userIsCorrect ? '🎉 Luar Biasa! Jawabanmu Tepat!' : '⚠️ Masih Ada yang Belum Tepat, Pelajari Pembahasannya Yuk!'}
-      </div>
+function syncIhsaniyahProgressToRecords(updateBadgesOnly) {
+  const student = window.getIhsaniyahStudent();
+  if (!student) return;
 
-      <div style="font-size: 0.9rem; line-height: 1.5; color: #e2e8f0; margin-bottom: 12px;">
-        ${q.explanation || ''}
-      </div>
+  window.saveIhsaniyahStudentAnswersStore(appState.ihsUserAnswers || {});
+  const stats = getIhsaniyahLiveStats();
 
-      <!-- Detail Pembahasan Tiap Opsi -->
-      ${q.options ? `
-        <div style="background: rgba(0,0,0,0.25); padding: 10px 14px; border-radius: 8px; margin-bottom: 10px;">
-          <div style="font-size: 0.8rem; font-weight: 800; color: #fff; margin-bottom: 4px;">Detail Pilihan Jawaban:</div>
-          <ul style="margin: 0; padding-left: 20px; font-size: 0.85rem; line-height: 1.45;">
-            ${q.options.map(o => `
-              <li style="color: ${o.isCorrect ? '#86efac' : '#fca5a5'}; margin-bottom: 4px;">
-                <strong>${o.key}:</strong> ${o.isCorrect ? o.reasonCorrect : o.reasonWrong}
-              </li>
-            `).join('')}
-          </ul>
-        </div>
-      ` : ''}
+  let statusText = "Sedang Mengerjakan (" + stats.answeredCount + "/" + stats.totalQuestions + ")";
+  if (stats.answeredCount === stats.totalQuestions) {
+    statusText = stats.score >= 70 ? "Tuntas / Lulus" : "Perlu Bimbingan";
+  }
 
-      <!-- Nalar Bayi Kodi -->
-      <div style="background: rgba(250, 204, 21, 0.12); border-left: 4px solid #facc15; border-radius: 8px; padding: 10px 14px;">
-        <strong style="color: #facc15; font-size: 0.85rem;">👶 Nalar Bayi Kodi:</strong>
-        <div style="color: #fef08a; font-size: 0.88rem; line-height: 1.45; margin-top: 3px;">
-          ${q.nalarBayiKodi}
-        </div>
-      </div>
-    </div>
-  `;
+  const record = {
+    sessionId: student.sessionId || `${student.name.toLowerCase()}_${student.className}_${student.number}`,
+    date: new Date().toLocaleDateString('id-ID'),
+    time: new Date().toLocaleTimeString('id-ID'),
+    studentName: student.name,
+    studentClass: student.className,
+    studentNumber: student.number,
+    answeredCount: stats.answeredCount,
+    correctCount: stats.correctCount,
+    totalQuestions: stats.totalQuestions,
+    score: stats.score,
+    status: statusText
+  };
+
+  window.upsertIhsaniyahRecord(record);
+
+  if (updateBadgesOnly) {
+    const badgeEl = document.getElementById("ihs-live-answered-badge");
+    if (badgeEl) badgeEl.textContent = `${stats.answeredCount} / ${stats.totalQuestions} Soal`;
+    const q = window.IHSANIYAH_QUESTIONS[appState.currentIhsIndex];
+    const pillEl = document.getElementById("ihs-q-status-pill");
+    if (q && pillEl) {
+      const ansNow = window.isIhsaniyahQuestionAnswered(q, appState.ihsUserAnswers[q.id]);
+      pillEl.textContent = ansNow ? "✓ Jawaban Nomor Ini Sudah Terisi" : "⏳ Silakan Isi Jawaban di Bawah";
+      pillEl.style.background = ansNow ? "rgba(16, 185, 129, 0.2)" : "rgba(148, 163, 184, 0.15)";
+      pillEl.style.color = ansNow ? "#4ade80" : "#cbd5e1";
+    }
+  }
 }
 
 // ================= AUTENTIKASI & PANEL GURU SD IHSANIYAH =================
@@ -6800,14 +7049,13 @@ function isTeacherLoggedIn() {
 
 window.openIhsaniyahAdminPanel = function() {
   if (window.sfx && typeof sfx.playClick === "function") sfx.playClick();
+  syncIhsaniyahProgressToRecords(false);
 
-  // Jika guru belum login: buka Halaman Login Khusus Guru
   if (!isTeacherLoggedIn()) {
     renderTeacherLoginModal();
     return;
   }
 
-  // Jika sudah login: tampilkan panel admin rekap nilai
   renderTeacherAdminModal();
 };
 
@@ -6832,7 +7080,7 @@ function renderTeacherLoginModal() {
         Login Khusus Guru & Admin
       </h3>
       <p style="font-size: 0.82rem; color: #94a3b8; margin: 0 0 18px; line-height: 1.4;">
-        Halaman rekap nilai dan unduh berkas spreadsheet siswa hanya dapat diakses oleh Bapak/Ibu Guru pengajar.
+        Halaman rekap nilai siswa dan kunci jawaban hanya dapat diakses oleh Bapak/Ibu Guru pengajar.
       </p>
 
       <div style="background: rgba(0,0,0,0.3); border-radius: 12px; padding: 16px; margin-bottom: 18px; text-align: left; border: 1px solid rgba(255,255,255,0.08);">
@@ -6906,6 +7154,7 @@ function renderTeacherAdminModal() {
   const records = window.getAllIhsaniyahRecords();
   const avgScore = records.length ? Math.round(records.reduce((acc, r) => acc + (r.score || 0), 0) / records.length) : 0;
   const highestScore = records.length ? Math.max(...records.map(r => r.score || 0)) : 0;
+  const questions = window.IHSANIYAH_QUESTIONS || [];
 
   let modalEl = document.getElementById("ihs-admin-modal-wrap");
   if (!modalEl) {
@@ -6918,23 +7167,23 @@ function renderTeacherAdminModal() {
   }
 
   modalEl.innerHTML = `
-    <div class="modal-content" style="max-width: 850px; width: 95%;">
+    <div class="modal-content" style="max-width: 940px; width: 96%;">
       <div class="modal-header">
         <div style="display: flex; align-items: center; gap: 10px;">
           <span style="font-size: 1.8rem;">👩‍🏫</span>
           <div>
-            <h2 style="margin: 0; font-size: 1.25rem; color: #fff;">Panel Guru: Rekap Data Siswa & Nilai Ujian</h2>
+            <h2 style="margin: 0; font-size: 1.25rem; color: #fff;">Panel Guru: Rekap Realtime Nilai Siswa & Kunci Jawaban (27 Soal)</h2>
             <div style="font-size: 0.8rem; color: var(--accent-cyan);">SD Ihsaniyah Gajahmada Tegal (Kampus Al Hafidz)</div>
           </div>
         </div>
         <button class="btn-close-modal" onclick="closeIhsaniyahAdminPanel()">✕</button>
       </div>
 
-      <div class="modal-body" style="padding: 20px;">
+      <div class="modal-body" style="padding: 20px; max-height: 78vh; overflow-y: auto;">
         <!-- Statistik Ringkas -->
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 14px; margin-bottom: 20px;">
           <div style="background: rgba(30, 41, 59, 0.7); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; padding: 14px; text-align: center;">
-            <div style="font-size: 0.8rem; color: #94a3b8;">Total Siswa Mengerjakan</div>
+            <div style="font-size: 0.8rem; color: #94a3b8;">Total Siswa Tercatat</div>
             <div style="font-size: 1.5rem; font-weight: 800; color: #fff; margin-top: 4px;">${records.length} Siswa</div>
           </div>
           <div style="background: rgba(30, 41, 59, 0.7); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; padding: 14px; text-align: center;">
@@ -6947,11 +7196,16 @@ function renderTeacherAdminModal() {
           </div>
         </div>
 
-        <!-- Tombol Aksi Download & Logout Guru -->
+        <!-- Tombol Aksi Download & Kunci Jawaban Guru -->
         <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; margin-bottom: 14px;">
-          <button class="btn-primary" style="padding: 10px 18px; font-weight: 800; background: linear-gradient(135deg, #059669, #10b981); border: none; border-radius: 8px;" onclick="window.downloadIhsaniyahCSV()">
-            📥 Download Rekap Nilai Siswa (Excel / CSV)
-          </button>
+          <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+            <button class="btn-primary" style="padding: 10px 18px; font-weight: 800; background: linear-gradient(135deg, #059669, #10b981); border: none; border-radius: 8px;" onclick="window.downloadIhsaniyahCSV()">
+              📥 Download Rekap Nilai Siswa (Excel / CSV)
+            </button>
+            <button class="btn-secondary" style="padding: 10px 14px; font-size: 0.82rem; font-weight: 800; color: #38bdf8;" onclick="const el=document.getElementById('teacher-key-box'); if(el) el.style.display=el.style.display==='none'?'block':'none';">
+              📖 Tampilkan / Sembunyikan Kunci Jawaban 27 Soal (Khusus Guru)
+            </button>
+          </div>
           <div style="display: flex; gap: 8px;">
             <button class="btn-secondary" style="padding: 8px 14px; font-size: 0.8rem; color: #fca5a5;" onclick="clearIhsaniyahRecordsHandler()">
               🗑️ Reset Data
@@ -6962,17 +7216,19 @@ function renderTeacherAdminModal() {
           </div>
         </div>
 
-        <!-- Tabel Rekap Nilai -->
-        <div style="overflow-x: auto; max-height: 380px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.1);">
+        <!-- Tabel Rekap Nilai Realtime -->
+        <div style="overflow-x: auto; max-height: 340px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.1); margin-bottom: 16px;">
           <table class="admin-table">
             <thead>
               <tr>
                 <th>No</th>
-                <th>Tanggal/Jam</th>
+                <th>Waktu Update</th>
                 <th>Nama Siswa</th>
                 <th>Kelas</th>
                 <th>Absen</th>
-                <th>Skor</th>
+                <th>Terjawab</th>
+                <th>Benar</th>
+                <th>Skor (0-100)</th>
                 <th>Status</th>
               </tr>
             </thead>
@@ -6984,18 +7240,33 @@ function renderTeacherAdminModal() {
                   <td style="font-weight: 700; color: #fff;">${r.studentName}</td>
                   <td>${r.studentClass}</td>
                   <td>#${r.studentNumber}</td>
-                  <td style="font-weight: 800; color: ${r.score >= 70 ? '#4ade80' : '#f59e0b'};">${r.score}</td>
-                  <td><span style="font-size: 0.75rem; padding: 3px 8px; border-radius: 12px; background: ${r.score >= 70 ? 'rgba(16, 185, 129, 0.2)' : 'rgba(245, 158, 11, 0.2)'}; color: ${r.score >= 70 ? '#86efac' : '#fde68a'};">${r.status}</span></td>
+                  <td style="font-weight: 700; color: #38bdf8;">${r.answeredCount || 0} / ${r.totalQuestions || 27}</td>
+                  <td style="font-weight: 700; color: #4ade80;">${r.correctCount || 0} / ${r.totalQuestions || 27}</td>
+                  <td style="font-weight: 900; font-size: 1.05rem; color: ${r.score >= 70 ? '#4ade80' : '#f59e0b'};">${r.score || 0}</td>
+                  <td><span style="font-size: 0.75rem; padding: 3px 8px; border-radius: 12px; background: ${r.score >= 70 ? 'rgba(16, 185, 129, 0.2)' : 'rgba(245, 158, 11, 0.2)'}; color: ${r.score >= 70 ? '#86efac' : '#fde68a'};">${r.status || '-'}</span></td>
                 </tr>
               `).join('') : `
                 <tr>
-                  <td colspan="7" style="text-align: center; padding: 30px; color: #94a3b8;">
-                    Belum ada siswa yang menyelesaikan ujian. Data akan muncul otomatis setelah siswa selesai mengerjakan soal.
+                  <td colspan="9" style="text-align: center; padding: 30px; color: #94a3b8;">
+                    Belum ada siswa yang masuk. Begitu siswa mengisi nama dan mengerjakan soal, data nilai langsung masuk secara realtime ke tabel ini.
                   </td>
                 </tr>
               `}
             </tbody>
           </table>
+        </div>
+
+        <!-- Kotak Kunci Jawaban Khusus Guru -->
+        <div id="teacher-key-box" style="display: none; background: rgba(15, 23, 42, 0.9); border: 1.5px solid #38bdf8; border-radius: 12px; padding: 16px;">
+          <h4 style="margin: 0 0 10px; color: #38bdf8;">📖 Kunci Jawaban Resmi 27 Soal SD Ihsaniyah (Hanya Tampil di Panel Guru):</h4>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 10px;">
+            ${questions.map(q => `
+              <div style="background: rgba(0,0,0,0.35); padding: 10px 12px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.08); font-size: 0.82rem;">
+                <div style="font-weight: 800; color: #fff;">No. ${q.number} (${q.page})</div>
+                <div style="color: #86efac; font-weight: 700; margin-top: 3px;">🔑 ${q.answerKeySummary || '-'}</div>
+              </div>
+            `).join('')}
+          </div>
         </div>
       </div>
 
@@ -7028,11 +7299,11 @@ window.drawAllMatchingLines = function(q, matched) {
   const wrapRect = wrapperEl.getBoundingClientRect();
 
   const colorPalette = {
-    t1: "#38bdf8", // Sky Blue
-    t2: "#10b981", // Emerald
-    t3: "#f59e0b", // Amber
-    t4: "#a855f7", // Violet
-    t5: "#f43f5e"  // Rose
+    t1: "#38bdf8",
+    t2: "#10b981",
+    t3: "#f59e0b",
+    t4: "#a855f7",
+    t5: "#f43f5e"
   };
 
   Object.keys(matched).forEach(leftId => {
@@ -7057,14 +7328,12 @@ window.drawAllMatchingLines = function(q, matched) {
 
       const lineColor = colorPalette[leftId] || "#10b981";
 
-      // SVG Path for Smooth Cubic Bezier S-Curve
       const pathEl = document.createElementNS("http://www.w3.org/2000/svg", "path");
       pathEl.setAttribute("d", `M ${x1} ${y1} C ${cx1} ${cy1}, ${cx2} ${cy2}, ${x2} ${y2}`);
       pathEl.setAttribute("stroke", lineColor);
       pathEl.setAttribute("class", "matching-curve-line");
       svgEl.appendChild(pathEl);
 
-      // Start circle marker
       const circ1 = document.createElementNS("http://www.w3.org/2000/svg", "circle");
       circ1.setAttribute("cx", x1);
       circ1.setAttribute("cy", y1);
@@ -7072,7 +7341,6 @@ window.drawAllMatchingLines = function(q, matched) {
       circ1.setAttribute("fill", lineColor);
       svgEl.appendChild(circ1);
 
-      // End circle marker
       const circ2 = document.createElementNS("http://www.w3.org/2000/svg", "circle");
       circ2.setAttribute("cx", x2);
       circ2.setAttribute("cy", y2);
@@ -7089,10 +7357,10 @@ window.resetIhsMatchingLines = function(qid) {
     appState.ihsUserAnswers[qid].matchedPairs = {};
   }
   appState.matchingSelectedShirt = null;
+  syncIhsaniyahProgressToRecords(false);
   renderIhsaniyahTest();
 };
 
-// Redraw lines on window resize
 window.addEventListener("resize", () => {
   const q = window.IHSANIYAH_QUESTIONS && window.IHSANIYAH_QUESTIONS[appState.currentIhsIndex];
   if (q && q.type === "matching_game") {

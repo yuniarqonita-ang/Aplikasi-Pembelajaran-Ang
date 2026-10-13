@@ -3129,6 +3129,15 @@
     const appTitle = isWord ? 'Microsoft Word' : 'Microsoft Excel';
     const activeSubmode = appState.activeStudioMode[mode] || 'project';
 
+    const projListForDl = isWord ? window.WORD_PROJECTS : window.EXCEL_PROJECTS;
+    const activeProjForDl = projListForDl[appState.currentProjectIdx[mode] || 0] || projListForDl[0];
+    const masterDlFile = isWord
+      ? 'assets/downloads/Modul_Praktik_Pintasan_Word_Lengkap.docx'
+      : 'assets/downloads/Modul_Praktik_Pintasan_Excel_Lengkap.xlsx';
+    const masterDlLabel = isWord
+      ? '📥 Download Modul Lengkap Pintasan Word (.docx)'
+      : '📥 Download Modul Lengkap Pintasan Excel (.xlsx)';
+
     let html = `
       <div class="shortcut-studio-container">
         <!-- HERO BANNER DOKUMEN REFERENSI -->
@@ -3139,13 +3148,13 @@
                  alt="Pahlawan Pintasan ${appTitle}">
             <div>
               <div style="font-size: 0.75rem; font-weight: 800; color: ${themeLight}; text-transform: uppercase; letter-spacing: 0.5px;">
-                Sumber Resmi: Referensi/Pintasan_Keyboard_${isWord ? 'Word' : 'Excel'}.pdf
+                Sumber Resmi: Referensi/Pintasan_Keyboard_${isWord ? 'Word' : 'Excel'}.docx & .pdf
               </div>
               <h3 style="margin: 2px 0 4px 0; font-size: 1.25rem; color: var(--text-main);">
-                Game Praktik Nyata Pintasan ${appTitle}
+                Pelatihan & Game Praktik Nyata Pintasan ${appTitle}
               </h3>
               <p style="margin: 0; font-size: 0.85rem; color: var(--text-muted);">
-                Praktikkan langsung di keyboard fisikmu! Dilengkapi detektor tombol, skor kecepatan, combo streak, dan rapor hasil kerja!
+                Unduh file latihan asli (${isWord ? '.docx' : '.xlsx'}) untuk praktik langsung di aplikasi ${appTitle} desktop, atau mainkan simulator interaktif di bawah!
               </p>
             </div>
           </div>
@@ -3154,6 +3163,54 @@
               ⭐ ${appState.stars || 0} Bintang Terkumpul
             </span>
           </div>
+        </div>
+
+        <!-- 📥 PUSAT DOWNLOAD FILE PELATIHAN ASLI (.DOCX & .XLSX) -->
+        <div style="background: linear-gradient(135deg, rgba(15, 23, 42, 0.96), rgba(30, 41, 59, 0.96)); border: 2px solid ${themeLight}; border-radius: 14px; padding: 16px 20px; margin-bottom: 16px; box-shadow: 0 6px 20px rgba(0,0,0,0.3);">
+          <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; margin-bottom: 12px;">
+            <div>
+              <div style="font-size: 0.78rem; font-weight: 900; color: #facc15; text-transform: uppercase; letter-spacing: 0.6px;">
+                🚀 PRAKTEK BEBAS KAKU LANGSUNG DI APLIKASI ${appTitle.toUpperCase()} ASLI:
+              </div>
+              <h4 style="margin: 3px 0 0; font-size: 1.08rem; color: #ffffff;">
+                📥 Pusat Download File Latihan Pintasan ${appTitle} (${isWord ? '.docx' : '.xlsx'} Siap Pakai)
+              </h4>
+            </div>
+            <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+              <a href="${masterDlFile}" download style="text-decoration: none; background: linear-gradient(135deg, ${themeColor}, ${themeLight}); color: #fff; font-weight: 800; font-size: 0.88rem; padding: 10px 18px; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.3); display: inline-flex; align-items: center; gap: 8px;">
+                ${masterDlLabel}
+              </a>
+              <a href="assets/downloads/${activeProjForDl.docFilename}" download style="text-decoration: none; background: rgba(255,255,255,0.1); border: 1.5px solid #38bdf8; color: #38bdf8; font-weight: 800; font-size: 0.85rem; padding: 10px 16px; border-radius: 10px; display: inline-flex; align-items: center; gap: 6px;">
+                📄 Download Proyek Aktif (${activeProjForDl.docFilename})
+              </a>
+            </div>
+          </div>
+
+          <!-- Daftar Semua File Proyek yang Bisa Didownload Satu per Satu -->
+          <div style="display: flex; gap: 8px; flex-wrap: wrap; padding-top: 10px; border-top: 1px solid rgba(255,255,255,0.1); align-items: center;">
+            <span style="font-size: 0.78rem; font-weight: 700; color: #cbd5e1;">📂 Unduh File Masing-Masing Proyek:</span>
+            ${projListForDl.map((p, idx) => `
+              <a href="assets/downloads/${p.docFilename}" download style="text-decoration: none; font-size: 0.78rem; font-weight: 700; padding: 5px 12px; border-radius: 8px; background: rgba(0,0,0,0.35); border: 1px solid rgba(255,255,255,0.18); color: #e2e8f0;">
+                ⬇️ Proyek ${idx + 1}: ${p.docFilename}
+              </a>
+            `).join('')}
+            ${!isWord ? `
+              <a href="assets/downloads/Master_160_Rumus_Excel_Dunia_Nyata.xlsx" download style="text-decoration: none; font-size: 0.78rem; font-weight: 800; padding: 5px 12px; border-radius: 8px; background: rgba(245, 158, 11, 0.2); border: 1px solid #f59e0b; color: #fde68a;">
+                📊 Download 200 Sheet Rumus Excel Dunia Nyata (.xlsx)
+              </a>
+            ` : `
+              <a href="assets/downloads/Modul_Praktik_Pintasan_Excel_Lengkap.xlsx" download style="text-decoration: none; font-size: 0.78rem; font-weight: 800; padding: 5px 12px; border-radius: 8px; background: rgba(16, 185, 129, 0.2); border: 1px solid #10b981; color: #86efac;">
+                📊 Download Juga Modul Pintasan Excel (.xlsx)
+              </a>
+            `}
+          </div>
+        </div>
+
+        <!-- 🎮 PANDUAN CARA BERMAIN & CARA PRAKTEK -->
+        <div style="background: rgba(15, 23, 42, 0.8); border: 1px solid rgba(56, 189, 248, 0.35); border-radius: 12px; padding: 12px 16px; margin-bottom: 16px; font-size: 0.84rem; color: #e2e8f0; line-height: 1.55;">
+          <strong style="color: #38bdf8;">🎮 Cara Praktek / Cara Bermain (Pilih Sesuai Kenyamananmu!):</strong><br>
+          1️⃣ <b>Praktek di Aplikasi Asli (Paling Nyata & Bebas Kaku):</b> Klik tombol <b>Download (.docx / .xlsx)</b> di atas ➔ Buka filenya di aplikasi Microsoft Word / Excel laptopmu ➔ Ikuti daftar misi yang sudah tertulis di dalam file tersebut!<br>
+          2️⃣ <b>Main Game Cepat di Website Ini:</b> Lihat kotak <b>🎯 TARGET PINTASAN SEKARANG</b> di bawah (contoh: <code>Ctrl+B</code>) ➔ Tekan langsung tombol itu di keyboard fisikmu, <b>ATAU</b> klik tombol <code>[Ctrl]</code> lalu klik hurufnya pada <b>Papan Perakit Pintasan</b> di bawah dokumen!
         </div>
 
         <!-- DUAL MODE SWITCHER BAR -->
