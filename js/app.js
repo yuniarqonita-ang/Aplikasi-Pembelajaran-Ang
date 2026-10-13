@@ -3439,7 +3439,8 @@ function renderExcelTrainer() {
     "7. Varians, Deviasi & Korelasi",
     "8. Prediksi, Regresi & Tren",
     "9. Manipulasi Teks & Rapikan Data",
-    "10. Waktu, Finansial & Pembulatan"
+    "10. Waktu, Finansial & Pembulatan",
+    "11. Simulasi Akuntansi & Tes Kerja Kantor (PT Maju Bersama)"
   ];
 
   const filteredList = (appState.excelCategoryFilter === "all")
@@ -3570,14 +3571,25 @@ function renderExcelTrainer() {
               Mau langsung praktek bebas di aplikasi <strong>Microsoft Excel Desktop / WPS / Google Sheets</strong>? Download workbook <code>.xlsx</code> di bawah ini! Setiap rumus punya <strong>1 Sheet khusus</strong> berisi: <em>Penjelasan Fungsi Bahasa Bayi</em>, <em>1 Contoh Soal & Contoh Jawaban Benar</em>, diikuti <strong>5 Soal Tes Dunia Nyata (Tanpa Kunci di Soal)</strong>, serta <strong>1 Sheet Paling Terakhir (<code>99_KUNCI_JAWABAN</code>)</strong> berisi kunci rumus & hasil seluruh soal tes!
             </p>
           </div>
-          <a href="assets/downloads/Master_160_Rumus_Excel_Dunia_Nyata.xlsx" download="Master_200_Rumus_Excel_Dunia_Nyata_Lengkap.xlsx"
-             style="display: inline-flex; align-items: center; gap: 10px; background: linear-gradient(135deg, #10b981, #059669); color: #ffffff; text-decoration: none; font-weight: 900; font-size: 0.92rem; padding: 12px 20px; border-radius: 12px; box-shadow: 0 6px 18px rgba(16, 185, 129, 0.35); border: 2px solid #34d399; white-space: nowrap;">
-            <span>⬇️ DOWNLOAD MASTER 200 RUMUS + KUNCI (.XLSX)</span>
-          </a>
+          <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+            <a href="assets/downloads/Accounting_Work_Simulation_PT_Maju_Bersama.xlsx" download="Accounting_Work_Simulation_PT_Maju_Bersama.xlsx"
+               style="display: inline-flex; align-items: center; gap: 10px; background: linear-gradient(135deg, #0284c7, #0369a1); color: #ffffff; text-decoration: none; font-weight: 900; font-size: 0.92rem; padding: 12px 18px; border-radius: 12px; box-shadow: 0 6px 18px rgba(2, 132, 199, 0.35); border: 2px solid #38bdf8; white-space: nowrap;">
+              <span>💼 DOWNLOAD SIMULASI AKUNTANSI (.XLSX)</span>
+            </a>
+            <a href="assets/downloads/Master_160_Rumus_Excel_Dunia_Nyata.xlsx" download="Master_200_Rumus_Excel_Dunia_Nyata_Lengkap.xlsx"
+               style="display: inline-flex; align-items: center; gap: 10px; background: linear-gradient(135deg, #10b981, #059669); color: #ffffff; text-decoration: none; font-weight: 900; font-size: 0.92rem; padding: 12px 18px; border-radius: 12px; box-shadow: 0 6px 18px rgba(16, 185, 129, 0.35); border: 2px solid #34d399; white-space: nowrap;">
+              <span>⬇️ MASTER 200 RUMUS + KUNCI (.XLSX)</span>
+            </a>
+          </div>
         </div>
 
         <!-- Pilihan Paket Workbook Per Kategori -->
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 10px; margin-bottom: 12px;">
+          <a href="assets/downloads/Accounting_Work_Simulation_PT_Maju_Bersama.xlsx" download
+             style="display: flex; align-items: center; justify-content: space-between; gap: 8px; padding: 10px 14px; border-radius: 10px; background: rgba(14, 165, 233, 0.15); border: 1.5px solid rgba(56, 189, 248, 0.5); color: var(--text-main); text-decoration: none; font-size: 0.82rem; font-weight: 700; grid-column: 1 / -1;">
+            <span>💼 <strong>Simulasi Siklus Akuntansi & Tes Kerja Kantor PT Maju Bersama:</strong> 12 Sheet Lengkap (Cover, Soal Interview Akunting, Dokumen Transaksi, Jurnal Umum PPN 11%, Buku Besar 4 Kolom, Neraca Saldo, AJP Depresiasi SLN & Sewa, Kertas Kerja 10 Kolom, Lap Laba Rugi, Modal, Neraca + Sheet 99_KUNCI_JAWABAN di Akhir)</span>
+            <span style="color: #38bdf8; font-weight: 900; white-space: nowrap;">⬇️ Download .xlsx</span>
+          </a>
           <a href="assets/downloads/Paket_1_Rumus_Matematika_Akuntansi_Logika.xlsx" download
              style="display: flex; align-items: center; justify-content: space-between; gap: 8px; padding: 10px 14px; border-radius: 10px; background: rgba(16, 185, 129, 0.12); border: 1px solid rgba(16, 185, 129, 0.35); color: var(--text-main); text-decoration: none; font-size: 0.82rem; font-weight: 700;">
             <span>📗 <strong>Paket 1:</strong> Matematika, Akuntansi & Logika + Kunci Akhir</span>
@@ -8424,6 +8436,13 @@ function renderAdminPanelPage() {
         </p>
 
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(265px, 1fr)); gap: 14px; margin-bottom: 26px;">
+          <a href="assets/downloads/Accounting_Work_Simulation_PT_Maju_Bersama.xlsx" download style="text-decoration: none; background: rgba(2, 6, 23, 0.75); border: 2px solid #38bdf8; border-radius: 14px; padding: 16px; display: block; box-shadow: 0 4px 14px rgba(56, 189, 248, 0.2);">
+            <div style="font-size: 0.75rem; font-weight: 900; color: #38bdf8;">💼 SIMULASI KERJA AKUNTANSI & INTERVIEW</div>
+            <div style="font-size: 1rem; font-weight: 800; color: #fff; margin: 4px 0;">Siklus Akuntansi PT Maju Bersama (.xlsx)</div>
+            <div style="font-size: 0.78rem; color: #94a3b8; margin-bottom: 10px;">12 Sheet Lengkap: Faktur Pajak PPN 11%, Jurnal Umum, Buku Besar, AJP SLN Depresiasi, Kertas Kerja, Lap Keu & Kunci Akhir.</div>
+            <span style="display: inline-block; background: #38bdf8; color: #0f172a; font-weight: 900; font-size: 0.78rem; padding: 6px 12px; border-radius: 8px;">📥 Download Simulasi Akuntansi (.xlsx)</span>
+          </a>
+
           <a href="assets/downloads/Master_160_Rumus_Excel_Dunia_Nyata.xlsx" download style="text-decoration: none; background: rgba(2, 6, 23, 0.75); border: 2px solid #10b981; border-radius: 14px; padding: 16px; display: block;">
             <div style="font-size: 0.75rem; font-weight: 900; color: #4ade80;">📊 MASTER WORKBOOK LENGKAP</div>
             <div style="font-size: 1rem; font-weight: 800; color: #fff; margin: 4px 0;">Master 160+ Rumus Excel Dunia Nyata (.xlsx)</div>

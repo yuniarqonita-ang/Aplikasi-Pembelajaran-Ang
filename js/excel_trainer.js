@@ -12575,6 +12575,267 @@ const excelChallenges = [
       "nalarBayi": "Rumus SUBTOTAL sangat krusial di kantor! Cukup ketik fungsi SUBTOTAL (menggunakan parameter data 9, B2:B4) untuk menyelesaikannya secara otomatis.",
       "hasilContoh": "Terevaluasi otomatis oleh Excel sesuai data contoh"
     }
+  },
+  {
+    "id": "xl-acc-1",
+    "category": "11. Simulasi Akuntansi & Tes Kerja Kantor (PT Maju Bersama)",
+    "title": "Tantangan Akuntansi 1: Hitung Faktur PPN 11% Pembelian Kredit (CV Maju Bersama)",
+    "scenario": "CV Maju Bersama menerima Faktur Pajak FB-001 dari PT Sumber Jaya untuk pembelian perlengkapan toko sebesar Rp 15.000.000 (sel B2). Sesuai UU HPP, hitung nilai PPN Masukan 11% di sel C2.",
+    "tableHeaders": ["A", "B", "C", "D"],
+    "tableRows": [
+      { "row": 1, "A": "No Faktur", "B": "DPP (Harga Beli)", "C": "PPN Masukan (11%)", "D": "Total Tagihan" },
+      { "row": 2, "A": "FB-001 / Sumber Jaya", "B": 15000000, "C": "", "D": 16650000 },
+      { "row": 3, "A": "FB-002 / CV Sentosa", "B": 8000000, "C": "", "D": 8880000 }
+    ],
+    "targetCell": "C2",
+    "instruction": "Tulis rumus di sel C2 untuk menghitung PPN 11% dari DPP (B2): =B2*11% atau =B2*0.11",
+    "babyHint": "🍼 Bahasa Bayi: Tinggal kalikan sel harga beli dengan 11% -> =B2*11% atau =B2*0.11",
+    "starterFormula": "=",
+    "quickChips": ["=B2*11%", "=B2*0.11", "=ROUND(B2*0.11,0)", "B2", "*", "11%", "0.11"],
+    "acceptedFormulas": [
+      "=B2*11%",
+      "=B2*0.11",
+      "=B2 * 11%",
+      "=B2 * 0.11",
+      "=ROUND(B2*0.11,0)",
+      "=ROUND(B2*0.11, 0)",
+      "=ROUND(B2*0.11;0)",
+      "=ROUND(B2*0.11; 0)"
+    ],
+    "expectedValue": 1650000,
+    "workedExample": {
+      "title": "💡 CONTOH SERUPA: Faktur Pembelian Laptop Kantor",
+      "kasusSerupa": "Harga beli laptop (DPP) di sel B2 adalah Rp 10.000.000. Rumus PPN 11%: =B2*11% menghasilkan Rp 1.100.000.",
+      "rumusContoh": "=B2*11%",
+      "nalarBayi": "Pajak Pertambahan Nilai 11% dihitung langsung dari Dasar Pengenaan Pajak (DPP). Cukup kalikan sel DPP dengan 11%!",
+      "hasilContoh": "1100000"
+    }
+  },
+  {
+    "id": "xl-acc-2",
+    "category": "11. Simulasi Akuntansi & Tes Kerja Kantor (PT Maju Bersama)",
+    "title": "Tantangan Akuntansi 2: Saldo Berjalan Buku Besar Kas Bank (Running Balance)",
+    "scenario": "Staf Accounting PT Maju Bersama mencatat mutasi Buku Besar Kas Bank (Akun 111). Saldo awal di D2 = Rp 100.000.000. Tanggal 03 Jan terdapat pencairan pinjaman bank (Debet B3 = Rp 50.000.000) dan pembayaran sewa kantor (Kredit C3 = Rp 24.000.000). Hitung saldo akhir berjalan di sel D3.",
+    "tableHeaders": ["A", "B", "C", "D"],
+    "tableRows": [
+      { "row": 1, "A": "Keterangan", "B": "Debet (+)", "C": "Kredit (-)", "D": "Saldo Berjalan" },
+      { "row": 2, "A": "Saldo Awal Kas Bank", "B": 0, "C": 0, "D": 100000000 },
+      { "row": 3, "A": "Pinjaman KMK & Bayar Sewa", "B": 50000000, "C": 24000000, "D": "" },
+      { "row": 4, "A": "Beli Perlengkapan Kantor", "B": 0, "C": 6500000, "D": 119500000 }
+    ],
+    "targetCell": "D3",
+    "instruction": "Tulis rumus saldo berjalan di sel D3: Saldo Sebelumnya (D2) ditambah Debet (B3) dikurangi Kredit (C3).",
+    "babyHint": "🍼 Bahasa Bayi: Saldo bertambah kalau uang masuk (Debet) dan berkurang kalau uang keluar (Kredit)! Rumusnya: =D2+B3-C3",
+    "starterFormula": "=",
+    "quickChips": ["=D2+B3-C3", "D2", "+", "B3", "-", "C3"],
+    "acceptedFormulas": [
+      "=D2+B3-C3",
+      "=D2 + B3 - C3",
+      "=D2+(B3-C3)",
+      "=(D2+B3)-C3"
+    ],
+    "expectedValue": 126000000,
+    "workedExample": {
+      "title": "💡 CONTOH SERUPA: Buku Kas Kecil (Petty Cash)",
+      "kasusSerupa": "Saldo awal di D2 = Rp 5.000.000. Tambahan kas di B3 = Rp 2.000.000, bayar bensin di C3 = Rp 500.000. Rumus: =D2+B3-C3 -> Hasil: Rp 6.500.000.",
+      "rumusContoh": "=D2+B3-C3",
+      "nalarBayi": "Prinsip buku besar 4 kolom: saldo baru = saldo lama + penerimaan - pengeluaran.",
+      "hasilContoh": "6500000"
+    }
+  },
+  {
+    "id": "xl-acc-3",
+    "category": "11. Simulasi Akuntansi & Tes Kerja Kantor (PT Maju Bersama)",
+    "title": "Tantangan Akuntansi 3: Validasi Neraca Saldo Seimbang / Balance Check (IF)",
+    "scenario": "Saat tutup buku bulanan, Akuntan wajib memverifikasi apakah total Debet (sel B5) sama persis dengan total Kredit (sel C5). Jika seimbang tampilkan 'BALANCE', jika tidak tampilkan 'UNBALANCED'.",
+    "tableHeaders": ["A", "B", "C", "D"],
+    "tableRows": [
+      { "row": 1, "A": "Akun Neraca Saldo", "B": "Total Debet", "C": "Total Kredit", "D": "Status Tutup Buku" },
+      { "row": 2, "A": "Kas & Bank (111)", "B": 118000000, "C": 0, "D": "Aktiva" },
+      { "row": 3, "A": "Modal Pemilik (311)", "B": 0, "C": 100000000, "D": "Ekuitas" },
+      { "row": 4, "A": "Utang Bank KMK (211)", "B": 0, "C": 50000000, "D": "Kewajiban" },
+      { "row": 5, "A": "TOTAL AUDIT", "B": 243500000, "C": 243500000, "D": "" }
+    ],
+    "targetCell": "D5",
+    "instruction": "Tulis rumus di sel D5 untuk validasi balance antara Debet (B5) dan Kredit (C5): =IF(B5=C5, \"BALANCE\", \"UNBALANCED\")",
+    "babyHint": "🍼 Bahasa Bayi: Pakai =IF(B5=C5, \"BALANCE\", \"UNBALANCED\"). Kalau kedua kolom sama nominalnya, statusnya langsung BALANCE!",
+    "starterFormula": "=",
+    "quickChips": ["=IF(", "B5=C5", "\"BALANCE\"", "\"UNBALANCED\"", ")", ",", ";"],
+    "acceptedFormulas": [
+      "=IF(B5=C5,\"BALANCE\",\"UNBALANCED\")",
+      "=IF(B5=C5;\"BALANCE\";\"UNBALANCED\")",
+      "=IF(B5=C5, \"BALANCE\", \"UNBALANCED\")",
+      "=IF(B5=C5; \"BALANCE\"; \"UNBALANCED\")"
+    ],
+    "expectedValue": "BALANCE",
+    "workedExample": {
+      "title": "💡 CONTOH SERUPA: Cek Neraca Lajur 10 Kolom",
+      "kasusSerupa": "Kolom Debet di B10 bernilai 500jt dan Kredit di C10 bernilai 500jt. Rumus: =IF(B10=C10, \"BALANCE\", \"SELISIH\")",
+      "rumusContoh": "=IF(B10=C10, \"BALANCE\", \"SELISIH\")",
+      "nalarBayi": "Satpam Excel mengecek persamaan matematika B10=C10. Karena sama persis, outputnya adalah teks 'BALANCE'.",
+      "hasilContoh": "BALANCE"
+    }
+  },
+  {
+    "id": "xl-acc-4",
+    "category": "11. Simulasi Akuntansi & Tes Kerja Kantor (PT Maju Bersama)",
+    "title": "Tantangan Akuntansi 4: Beban Sewa Ruko Dibayar Dimuka / Amortisasi Bulanan",
+    "scenario": "PT Maju Bersama menyewa gedung ruko untuk masa operasional 3 tahun (36 bulan) sebesar Rp 24.000.000 (sel B2). Sesuai AJP per 31 Januari 2025 (terpakai 1 bulan), hitung alokasi beban sewa bulanan di sel C2 dengan membagi B2 dengan 36.",
+    "tableHeaders": ["A", "B", "C", "D"],
+    "tableRows": [
+      { "row": 1, "A": "Nama Kontrak Sewa", "B": "Total Sewa Dimuka", "C": "Beban Sewa 1 Bulan", "D": "Sisa Sewa Dimuka" },
+      { "row": 2, "A": "Ruko Kantor (36 Bulan)", "B": 24000000, "C": "", "D": 23333333 },
+      { "row": 3, "A": "Gudang Logistik (12 Bulan)", "B": 12000000, "C": "", "D": 11000000 }
+    ],
+    "targetCell": "C2",
+    "instruction": "Tulis rumus pembagian di sel C2: =B2/36 atau =ROUND(B2/36, 0)",
+    "babyHint": "🍼 Bahasa Bayi: Tinggal bagi total sewa 36 bulan dengan 36 -> =B2/36 atau =ROUND(B2/36, 0)",
+    "starterFormula": "=",
+    "quickChips": ["=B2/36", "=ROUND(B2/36, 0)", "B2", "/", "36", ", 0)"],
+    "acceptedFormulas": [
+      "=B2/36",
+      "=B2 / 36",
+      "=ROUND(B2/36,0)",
+      "=ROUND(B2/36, 0)",
+      "=ROUND(B2/36;0)",
+      "=ROUND(B2/36; 0)"
+    ],
+    "expectedValue": 666667,
+    "workedExample": {
+      "title": "💡 CONTOH SERUPA: Asuransi Gedung 12 Bulan",
+      "kasusSerupa": "Premi asuransi 1 tahun Rp 12.000.000 di B2. Beban per bulan di C2 dihitung dengan rumus =B2/12 -> Rp 1.000.000.",
+      "rumusContoh": "=B2/12",
+      "nalarBayi": "Prinsip akuntansi akrual: Biaya dibayar di muka diamortisasi proporsional sesuai periode manfaatnya.",
+      "hasilContoh": "1000000"
+    }
+  },
+  {
+    "id": "xl-acc-5",
+    "category": "11. Simulasi Akuntansi & Tes Kerja Kantor (PT Maju Bersama)",
+    "title": "Tantangan Akuntansi 5: Penyusutan Garis Lurus Peralatan Kantor (SLN)",
+    "scenario": "PT Maju Bersama membeli peralatan server & komputer seharga Rp 12.000.000 (Harga Perolehan di B2). Nilai residu/sisa di C2 = 0, dan masa manfaat di D2 = 60 bulan (5 tahun). Hitung beban penyusutan per bulan di sel E2 menggunakan rumus =SLN(B2, C2, D2).",
+    "tableHeaders": ["A", "B", "C", "D", "E"],
+    "tableRows": [
+      { "row": 1, "A": "Aset Tetap", "B": "Harga Beli", "C": "Nilai Sisa", "D": "Umur (Bulan)", "E": "Penyusutan/Bulan" },
+      { "row": 2, "A": "Server & PC Kantor", "B": 12000000, "C": 0, "D": 60, "E": "" },
+      { "row": 3, "A": "Kendaraan Operasional", "B": 180000000, "C": 36000000, "D": 96, "E": "" }
+    ],
+    "targetCell": "E2",
+    "instruction": "Tulis rumus di sel E2 menggunakan fungsi garis lurus: =SLN(B2, C2, D2)",
+    "babyHint": "🍼 Bahasa Bayi: Fungsi SLN (Straight-Line) langsung menghitung penyusutan: =SLN(harga_beli, nilai_sisa, umur_bulan). Tulis =SLN(B2, C2, D2)",
+    "starterFormula": "=",
+    "quickChips": ["=SLN(", "B2", "C2", "D2", ")", ",", ";"],
+    "acceptedFormulas": [
+      "=SLN(B2, C2, D2)",
+      "=SLN(B2,C2,D2)",
+      "=SLN(B2; C2; D2)",
+      "=SLN(B2;C2;D2)",
+      "=(B2-C2)/D2"
+    ],
+    "expectedValue": 200000,
+    "workedExample": {
+      "title": "💡 CONTOH SERUPA: Depresiasi Mesin Fotokopi",
+      "kasusSerupa": "Mesin seharga Rp 24.000.000 (B2), sisa Rp 0 (C2), masa pakai 48 bulan (D2). Rumus: =SLN(B2, C2, D2) menghasilkan Rp 500.000/bulan.",
+      "rumusContoh": "=SLN(B2, C2, D2)",
+      "nalarBayi": "SLN mengurangi nilai aset dari harga perolehan dikurangi nilai residu lalu dibagi total umur masa manfaat secara rata.",
+      "hasilContoh": "500000"
+    }
+  },
+  {
+    "id": "xl-acc-6",
+    "category": "11. Simulasi Akuntansi & Tes Kerja Kantor (PT Maju Bersama)",
+    "title": "Tantangan Akuntansi 6: Bunga Akrual Pinjaman Bank KMK (Accrued Interest)",
+    "scenario": "PT Maju Bersama memiliki kewajiban Pinjaman Kredit Modal Kerja (KMK) sebesar Rp 50.000.000 (sel B2). Suku bunga pinjaman adalah 1% per bulan (sel C2). Hitung beban bunga berjalan per 31 Januari yang masih harus dibayar di sel D2.",
+    "tableHeaders": ["A", "B", "C", "D"],
+    "tableRows": [
+      { "row": 1, "A": "Fasilitas Pinjaman", "B": "Pokok Pinjaman", "C": "Bunga/Bulan", "D": "Beban Bunga Akrual" },
+      { "row": 2, "A": "KMK Bank Mandiri", "B": 50000000, "C": 0.01, "D": "" },
+      { "row": 3, "A": "KUR BNI", "B": 25000000, "C": 0.005, "D": "" }
+    ],
+    "targetCell": "D2",
+    "instruction": "Tulis rumus di sel D2 untuk mengalikan pokok pinjaman dengan suku bunga bulanan: =B2*C2",
+    "babyHint": "🍼 Bahasa Bayi: Cukup kalikan sel pokok pinjaman dengan sel persen bunga: =B2*C2",
+    "starterFormula": "=",
+    "quickChips": ["=B2*C2", "=B2*1%", "B2", "*", "C2", "1%"],
+    "acceptedFormulas": [
+      "=B2*C2",
+      "=B2 * C2",
+      "=B2*1%",
+      "=B2 * 1%",
+      "=B2*0.01",
+      "=PRODUCT(B2, C2)"
+    ],
+    "expectedValue": 500000,
+    "workedExample": {
+      "title": "💡 CONTOH SERUPA: Bunga Giro Rekening Perusahaan",
+      "kasusSerupa": "Pokok simpanan giro di B2 = Rp 100.000.000, bunga per bulan di C2 = 0.5% (0.005). Rumus: =B2*C2 menghasilkan Rp 500.000.",
+      "rumusContoh": "=B2*C2",
+      "nalarBayi": "Perhitungan bunga akrual didapat dari saldo pokok dikalikan rate suku bunga per periode berjalan.",
+      "hasilContoh": "500000"
+    }
+  },
+  {
+    "id": "xl-acc-7",
+    "category": "11. Simulasi Akuntansi & Tes Kerja Kantor (PT Maju Bersama)",
+    "title": "Tantangan Akuntansi 7: Perhitungan Laba Bersih Usaha (Income Statement)",
+    "scenario": "Pada Laporan Laba Rugi PT Maju Bersama bulan Januari 2025, Total Pendapatan Jasa di sel B2 adalah Rp 65.000.000 dan Total Beban Operasional di sel B3 adalah Rp 41.366.667. Hitung Laba Bersih Usaha di sel B4 dengan rumus pengurangan =B2-B3.",
+    "tableHeaders": ["A", "B"],
+    "tableRows": [
+      { "row": 1, "A": "Komponen Laba Rugi", "B": "Nominal (Rp)" },
+      { "row": 2, "A": "Total Pendapatan Usaha", "B": 65000000 },
+      { "row": 3, "A": "Total Beban Operasional", "B": 41366667 },
+      { "row": 4, "A": "LABA BERSIH USAHA", "B": "" }
+    ],
+    "targetCell": "B4",
+    "instruction": "Tulis rumus di sel B4 untuk menghitung laba bersih (Pendapatan B2 - Beban B3): =B2-B3",
+    "babyHint": "🍼 Bahasa Bayi: Laba bersih adalah omzet pendapatan dikurangi seluruh pengeluaran beban: =B2-B3",
+    "starterFormula": "=",
+    "quickChips": ["=B2-B3", "B2", "-", "B3"],
+    "acceptedFormulas": [
+      "=B2-B3",
+      "=B2 - B3",
+      "=B2+(-B3)"
+    ],
+    "expectedValue": 23633333,
+    "workedExample": {
+      "title": "💡 CONTOH SERUPA: Laba Toko Retail",
+      "kasusSerupa": "Pendapatan di B2 = Rp 50.000.000, Total Beban di B3 = Rp 35.000.000. Rumus: =B2-B3 menghasilkan Laba Bersih Rp 15.000.000.",
+      "rumusContoh": "=B2-B3",
+      "nalarBayi": "Laba Bersih menunjukkan hasil akhir apakah perusahaan untung atau rugi setelah seluruh biaya dikurangkan.",
+      "hasilContoh": "15000000"
+    }
+  },
+  {
+    "id": "xl-acc-8",
+    "category": "11. Simulasi Akuntansi & Tes Kerja Kantor (PT Maju Bersama)",
+    "title": "Tantangan Akuntansi 8: Setoran PPh Final UMKM 0.5% (PP No. 55 Th 2022)",
+    "scenario": "CV Maju Bersama memiliki peredaran bruto (omzet) usaha bulan berjalan di sel B2 sebesar Rp 80.000.000. Berdasarkan tarif PPh Final UMKM 0.5%, hitung nominal pajak penghasilan yang wajib disetor ke kas negara di sel C2.",
+    "tableHeaders": ["A", "B", "C", "D"],
+    "tableRows": [
+      { "row": 1, "A": "Bulan Pajak", "B": "Omzet Bruto (Rp)", "C": "PPh Final 0.5%", "D": "Kode Billing" },
+      { "row": 2, "A": "Januari 2025", "B": 80000000, "C": "", "D": "411128-420" },
+      { "row": 3, "A": "Februari 2025", "B": 95000000, "C": "", "D": "411128-420" }
+    ],
+    "targetCell": "C2",
+    "instruction": "Tulis rumus di sel C2 untuk menghitung tarif PPh Final 0.5%: =B2*0.5% atau =B2*0.005",
+    "babyHint": "🍼 Bahasa Bayi: Tarif 0.5% sama dengan 0.005. Kalikan sel omzet dengan tarif: =B2*0.5% atau =B2*0.005",
+    "starterFormula": "=",
+    "quickChips": ["=B2*0.5%", "=B2*0.005", "B2", "*", "0.5%", "0.005"],
+    "acceptedFormulas": [
+      "=B2*0.5%",
+      "=B2*0.005",
+      "=B2 * 0.5%",
+      "=B2 * 0.005",
+      "=PRODUCT(B2, 0.005)"
+    ],
+    "expectedValue": 400000,
+    "workedExample": {
+      "title": "💡 CONTOH SERUPA: Pajak UMKM Restoran",
+      "kasusSerupa": "Omzet bulanan di B2 = Rp 20.000.000. Rumus PPh Final: =B2*0.5% menghasilkan pajak Rp 100.000.",
+      "rumusContoh": "=B2*0.5%",
+      "nalarBayi": "Pajak Final UMKM 0.5% langsung memotong peredaran bruto tanpa perlu menghitung pengurangan biaya.",
+      "hasilContoh": "100000"
+    }
   }
 ];
 
@@ -12847,6 +13108,43 @@ function evaluateExcelFormula(formulaStr, tableRows) {
     const num = parseFloat(cellMap[args[0].toUpperCase()] || args[0]);
     const dec = parseInt(args[1] || 0);
     return Number(Math.round(num + "e" + dec) + "e-" + dec);
+  }
+
+  // Basic SLN(cost, salvage, life)
+  if (upper.startsWith("SLN(") || upper.startsWith("SLN (")) {
+    const inner = raw.substring(raw.indexOf("(") + 1, raw.lastIndexOf(")"));
+    const args = splitArgs(inner);
+    const cost = parseFloat(cellMap[args[0].toUpperCase()] !== undefined ? cellMap[args[0].toUpperCase()] : args[0]);
+    const salvage = parseFloat(cellMap[args[1].toUpperCase()] !== undefined ? cellMap[args[1].toUpperCase()] : args[1]);
+    const life = parseFloat(cellMap[args[2].toUpperCase()] !== undefined ? cellMap[args[2].toUpperCase()] : args[2]);
+    if (!isNaN(cost) && !isNaN(salvage) && !isNaN(life) && life !== 0) {
+      return (cost - salvage) / life;
+    }
+  }
+
+  // Arithmetic fallback (e.g., =B2*11%, =D2+B3-C3, =B2-B3, =B2/36, =B2*C2)
+  try {
+    let expr = raw.startsWith("=") ? raw.substring(1).trim() : raw.trim();
+    // Replace % with /100
+    expr = expr.replace(/(\d+(?:\.\d+)?)%/g, '($1/100)');
+    // Replace cell references with numbers
+    expr = expr.replace(/\b([A-Z]+[0-9]+)\b/gi, (match) => {
+      const k = match.toUpperCase();
+      const val = cellMap[k];
+      if (val !== undefined && !isNaN(Number(val))) {
+        return Number(val);
+      }
+      return match;
+    });
+    // If expression only contains numbers, operators and parens
+    if (/^[0-9\.\s\+\-\*\/\(\)]+$/.test(expr)) {
+      const mathVal = Function('"use strict"; return (' + expr + ')')();
+      if (!isNaN(mathVal) && isFinite(mathVal)) {
+        return mathVal;
+      }
+    }
+  } catch (e) {
+    // Ignore arithmetic error
   }
 
   return null;
