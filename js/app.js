@@ -6831,18 +6831,15 @@ function renderIhsaniyahInteractiveBody(q) {
           <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; margin-bottom: 12px;">
             <div>
               <div style="font-size: 0.92rem; font-weight: 800; color: #38bdf8;">
-                🔢 Papan Interaktif Tabel Angka 1 sampai 100 (Klik Angka atau Gunakan Tombol Cepat!)
+                🔢 Papan Interaktif Tabel Angka 1 sampai 100
               </div>
               <div style="font-size: 0.78rem; color: #cbd5e1;">
-                Pilih alat kuas di bawah untuk melingkari (⭕ Kelipatan 2), mewarnai biru (🟦 Kelipatan 5), dan memberi centang (✅ Kelipatan 10).
+                Pilih alat kuas di bawah, lalu klik angka-angka pada tabel sesuai instruksi soal.
               </div>
             </div>
             <div style="display: flex; gap: 6px; flex-wrap: wrap;">
-              <button type="button" onclick="ihsAutoMarkGrid100('all')" style="background: linear-gradient(135deg, #10b981, #059669); color: #fff; border: none; border-radius: 8px; padding: 7px 12px; font-size: 0.76rem; font-weight: 900; cursor: pointer;">
-                ⚡ Tandai Otomatis Semua Kelipatan (2, 5, 10)
-              </button>
               <button type="button" onclick="ihsAutoMarkGrid100('reset')" style="background: rgba(239, 68, 68, 0.2); color: #fca5a5; border: 1px solid #ef4444; border-radius: 8px; padding: 7px 12px; font-size: 0.76rem; font-weight: 800; cursor: pointer;">
-                🔄 Reset Tabel
+                🔄 Bersihkan Tanda di Tabel
               </button>
             </div>
           </div>
@@ -6850,13 +6847,13 @@ function renderIhsaniyahInteractiveBody(q) {
           <!-- Baris Pilihan Kuas Interaktif -->
           <div style="display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 14px;">
             <button type="button" onclick="ihsSetGrid100Tool('circle2')" style="padding: 8px 14px; border-radius: 10px; font-size: 0.8rem; font-weight: 800; cursor: pointer; border: ${activeTool === 'circle2' ? '2.5px solid #f43f5e' : '1px solid rgba(255,255,255,0.15)'}; background: ${activeTool === 'circle2' ? 'rgba(244, 63, 94, 0.25)' : 'rgba(0,0,0,0.3)'}; color: #fff;">
-              ⭕ Kuas 1: Lingkari Merah (Kelipatan 2)
+              ⭕ Kuas 1: Circle (Lingkari)
             </button>
             <button type="button" onclick="ihsSetGrid100Tool('blue5')" style="padding: 8px 14px; border-radius: 10px; font-size: 0.8rem; font-weight: 800; cursor: pointer; border: ${activeTool === 'blue5' ? '2.5px solid #38bdf8' : '1px solid rgba(255,255,255,0.15)'}; background: ${activeTool === 'blue5' ? 'rgba(56, 189, 248, 0.25)' : 'rgba(0,0,0,0.3)'}; color: #fff;">
-              🟦 Kuas 2: Warnai Biru (Kelipatan 5)
+              🟦 Kuas 2: Colour Blue (Warnai Biru)
             </button>
             <button type="button" onclick="ihsSetGrid100Tool('tick10')" style="padding: 8px 14px; border-radius: 10px; font-size: 0.8rem; font-weight: 800; cursor: pointer; border: ${activeTool === 'tick10' ? '2.5px solid #10b981' : '1px solid rgba(255,255,255,0.15)'}; background: ${activeTool === 'tick10' ? 'rgba(16, 185, 129, 0.25)' : 'rgba(0,0,0,0.3)'}; color: #fff;">
-              ✅ Kuas 3: Beri Centang ✓ (Kelipatan 10)
+              ✅ Kuas 3: Tick ✓ (Beri Centang)
             </button>
           </div>
 
