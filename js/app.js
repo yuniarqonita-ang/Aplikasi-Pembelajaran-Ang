@@ -3558,15 +3558,15 @@ function renderExcelTrainer() {
               <span>200 SHEET RUMUS (1 RUMUS = 1 SHEET)</span>
             </div>
             <h3 style="margin: 0; font-size: 1.18rem; color: var(--text-main);">
-              Workbook Praktik 200 Rumus Excel Dunia Nyata (1.000 Persoalan Kerja + Koreksi Otomatis)
+              Workbook Praktik 200 Rumus Excel Dunia Nyata (1 Contoh + 5 Soal Tes Mandiri & Sheet Kunci Jawaban Akhir)
             </h3>
             <p style="margin: 4px 0 0; font-size: 0.85rem; color: var(--text-muted); line-height: 1.5;">
-              Mau langsung praktek bebas di aplikasi <strong>Microsoft Excel Desktop / WPS / Google Sheets</strong> seperti file referensi? Download workbook <code>.xlsx</code> di bawah ini! Setiap rumus punya <strong>1 Sheet khusus</strong> berisi: <em>Penjelasan Fungsi Bahasa Bayi</em>, <em>Contoh Rumus Aktif</em>, dan <strong>5 Persoalan Dunia Nyata</strong> lengkap dengan kotak jawaban kuning & penilai otomatis!
+              Mau langsung praktek bebas di aplikasi <strong>Microsoft Excel Desktop / WPS / Google Sheets</strong>? Download workbook <code>.xlsx</code> di bawah ini! Setiap rumus punya <strong>1 Sheet khusus</strong> berisi: <em>Penjelasan Fungsi Bahasa Bayi</em>, <em>1 Contoh Soal & Contoh Jawaban Benar</em>, diikuti <strong>5 Soal Tes Dunia Nyata (Tanpa Kunci di Soal)</strong>, serta <strong>1 Sheet Paling Terakhir (<code>99_KUNCI_JAWABAN</code>)</strong> berisi kunci rumus & hasil seluruh soal tes!
             </p>
           </div>
           <a href="assets/downloads/Master_160_Rumus_Excel_Dunia_Nyata.xlsx" download="Master_200_Rumus_Excel_Dunia_Nyata_Lengkap.xlsx"
              style="display: inline-flex; align-items: center; gap: 10px; background: linear-gradient(135deg, #10b981, #059669); color: #ffffff; text-decoration: none; font-weight: 900; font-size: 0.92rem; padding: 12px 20px; border-radius: 12px; box-shadow: 0 6px 18px rgba(16, 185, 129, 0.35); border: 2px solid #34d399; white-space: nowrap;">
-            <span>⬇️ DOWNLOAD MASTER 200 SHEET RUMUS (.XLSX)</span>
+            <span>⬇️ DOWNLOAD MASTER 200 RUMUS + KUNCI (.XLSX)</span>
           </a>
         </div>
 
@@ -3574,22 +3574,22 @@ function renderExcelTrainer() {
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 10px; margin-bottom: 12px;">
           <a href="assets/downloads/Paket_1_Rumus_Matematika_Akuntansi_Logika.xlsx" download
              style="display: flex; align-items: center; justify-content: space-between; gap: 8px; padding: 10px 14px; border-radius: 10px; background: rgba(16, 185, 129, 0.12); border: 1px solid rgba(16, 185, 129, 0.35); color: var(--text-main); text-decoration: none; font-size: 0.82rem; font-weight: 700;">
-            <span>📗 <strong>Paket 1:</strong> Matematika, Akuntansi & Logika (39 Sheet)</span>
+            <span>📗 <strong>Paket 1:</strong> Matematika, Akuntansi & Logika + Kunci Akhir</span>
             <span style="color: #10b981; font-weight: 900;">⬇️ .xlsx</span>
           </a>
           <a href="assets/downloads/Paket_2_Rumus_Lookup_Teks_Tanggal_HRD.xlsx" download
              style="display: flex; align-items: center; justify-content: space-between; gap: 8px; padding: 10px 14px; border-radius: 10px; background: rgba(59, 130, 246, 0.12); border: 1px solid rgba(59, 130, 246, 0.35); color: var(--text-main); text-decoration: none; font-size: 0.82rem; font-weight: 700;">
-            <span>📘 <strong>Paket 2:</strong> Lookup, Teks, Tanggal & HRD (46 Sheet)</span>
+            <span>📘 <strong>Paket 2:</strong> Lookup, Teks, Tanggal & HRD + Kunci Akhir</span>
             <span style="color: #3b82f6; font-weight: 900;">⬇️ .xlsx</span>
           </a>
           <a href="assets/downloads/Paket_3_Rumus_Keuangan_Audit_Statistika_Lengkap.xlsx" download
              style="display: flex; align-items: center; justify-content: space-between; gap: 8px; padding: 10px 14px; border-radius: 10px; background: rgba(245, 158, 11, 0.12); border: 1px solid rgba(245, 158, 11, 0.35); color: var(--text-main); text-decoration: none; font-size: 0.82rem; font-weight: 700;">
-            <span>📙 <strong>Paket 3:</strong> Keuangan, Audit & Statistika (118 Sheet)</span>
+            <span>📙 <strong>Paket 3:</strong> Keuangan, Audit & Statistika + Kunci Akhir</span>
             <span style="color: #f59e0b; font-weight: 900;">⬇️ .xlsx</span>
           </a>
-          <a href="Referensi/Function Statistics in Excel.xlsx" download
+          <a href="assets/downloads/Paket_4_Khusus_95_Rumus_Statistika_Lengkap.xlsx" download
              style="display: flex; align-items: center; justify-content: space-between; gap: 8px; padding: 10px 14px; border-radius: 10px; background: rgba(168, 85, 247, 0.12); border: 1px solid rgba(168, 85, 247, 0.35); color: var(--text-main); text-decoration: none; font-size: 0.82rem; font-weight: 700;">
-            <span>📓 <strong>Referensi Asli:</strong> Function Statistics in Excel (95 Sheet)</span>
+            <span>📓 <strong>Paket 4:</strong> Khusus 95 Rumus Statistika + Kunci Akhir</span>
             <span style="color: #a855f7; font-weight: 900;">⬇️ .xlsx</span>
           </a>
         </div>
@@ -3602,15 +3602,15 @@ function renderExcelTrainer() {
           <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 10px; font-size: 0.81rem; color: var(--text-main); line-height: 1.45;">
             <div style="background: rgba(255,255,255,0.04); padding: 8px 10px; border-radius: 8px; border-left: 3px solid #10b981;">
               <strong>Cara 1: Praktek di File Excel Asli (.xlsx)</strong><br>
-              1. Klik tombol <b>Download Master 200 Sheet (.xlsx)</b> di atas lalu buka di Excel.<br>
-              2. Pilih nama rumus di <code>00_DAFTAR_ISI</code> atau tab sheet bawah.<br>
-              3. Baca fungsi & contohnya, lalu ketik rumus di <b>Kotak Kuning</b> pada <b>5 Persoalan Dunia Nyata</b> sampai muncul <code>✅ BENAR! LUAR BIASA!</code>
+              1. Klik tombol <b>Download Workbook (.xlsx)</b> di atas lalu buka di aplikasi Excel.<br>
+              2. Di setiap sheet rumus, pelajari dulu <b>1 Contoh Soal & Jawaban Benar</b>.<br>
+              3. Kerjakan <b>5 Soal Tes Dunia Nyata</b> di kotak kuning (tanpa bocoran kunci di soal), lalu cek kunci jawaban lengkapnya di sheet paling terakhir (<code>99_KUNCI_JAWABAN</code>)!
             </div>
             <div style="background: rgba(255,255,255,0.04); padding: 8px 10px; border-radius: 8px; border-left: 3px solid #f59e0b;">
               <strong>Cara 2: Main Simulator di Website Ini</strong><br>
               1. Pilih rumus dari menu <b>Soal #1 – #155</b> di bawah.<br>
-              2. Baca kartu <b>💡 Contoh Soal & Nalar Bayi</b>.<br>
-              3. Ketik rumus di kotak <code>fx</code> (awali dengan <code>=</code>), lalu tekan <b>Enter</b> atau klik <b>✅ Eksekusi Rumus</b>. Kamu juga bisa eksplor <b>5 Persoalan Dunia Nyata</b> di tiap rumus!
+              2. Pelajari kartu <b>💡 1 Contoh Soal & Contoh Jawaban Benar</b>.<br>
+              3. Kerjakan <b>Soal Tes</b> di bawahnya dengan mengetik rumus di kotak <code>fx</code> (awali dengan <code>=</code>), lalu tekan <b>Enter</b> atau klik <b>▶️ Periksa Rumus</b>!
             </div>
           </div>
         </div>
@@ -3645,25 +3645,25 @@ function renderExcelTrainer() {
         </div>
       </div>
 
-      <!-- 2. WORKED EXAMPLE CARD (CONTOH DENGAN JAWABAN BENAR DULU) -->
+      <!-- 2. WORKED EXAMPLE CARD (1 CONTOH SOAL & CONTOH JAWABAN BENAR PER RUMUS) -->
       ${chal.workedExample ? `
         <div class="excel-worked-example-card" style="border-left: 5px solid #107c41; margin-bottom: 14px;">
           <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
             <div style="font-weight: 800; font-size: 0.95rem; color: #10b981; display: flex; align-items: center; gap: 6px;">
-              <span>💡</span> <span>${chal.workedExample.title || 'FUNGSI RUMUS & CONTOH PENGGUNAAN'}</span>
+              <span>💡</span> <span>1 CONTOH SOAL & CONTOH JAWABAN BENAR — ${chal.workedExample.title || 'CONTOH PENGGUNAAN RUMUS'}</span>
             </div>
             <span style="font-size: 0.75rem; background: rgba(16, 124, 65, 0.2); color: #10b981; padding: 2px 8px; border-radius: 12px; font-weight: 700;">
-              Dipahami Dulu Ya! 🍼
+              1 Contoh Lengkap + Jawaban 🍼
             </span>
           </div>
           <div style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 6px;">
-            <strong>Kasus Serupa:</strong> ${chal.workedExample.kasusSerupa}
+            <strong>Contoh Soal (Data Simulasi):</strong> ${chal.workedExample.kasusSerupa}
           </div>
           <div style="background: rgba(0,0,0,0.25); border: 1px dashed rgba(16, 185, 129, 0.4); padding: 8px 12px; border-radius: 6px; font-family: monospace; font-size: 0.9rem; color: #34d399; margin-bottom: 8px;">
-            ${chal.workedExample.rumusContoh}
+            <strong>Contoh Rumus Jawaban Benar:</strong> ${chal.workedExample.rumusContoh}
           </div>
           <div style="font-size: 0.83rem; color: var(--text-main); line-height: 1.45;">
-            <strong>🍼 Fungsi Buat Apa (Nalar Bayi Kodi):</strong> ${chal.workedExample.nalarBayi}
+            <strong>🍼 Penjelasan & Hasil Contoh:</strong> ${chal.workedExample.nalarBayi}
           </div>
         </div>
       ` : ''}
@@ -3685,12 +3685,12 @@ function renderExcelTrainer() {
           </div>
         </div>
 
-        <!-- TAB 5 PERSOALAN DUNIA NYATA UNTUK RUMUS INI -->
+        <!-- TAB 5 PERSOALAN TES DUNIA NYATA UNTUK RUMUS INI (TANPA KUNCI RUMUS / HASIL) -->
         ${fiveCases.length > 0 ? `
           <div style="margin: 10px 0 12px; padding: 10px 12px; background: rgba(16, 185, 129, 0.08); border: 1px solid rgba(16, 185, 129, 0.28); border-radius: 10px;">
             <div style="font-size: 0.78rem; font-weight: 800; color: #10b981; margin-bottom: 8px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 6px;">
-              <span>🌍 PILIH 5 PERSOALAN DUNIA NYATA UNTUK RUMUS INI:</span>
-              <span style="font-size: 0.74rem; color: var(--text-muted);">Semua 5 persoalan ini juga tersedia lengkap dengan tabel terpisah di file <code>.xlsx</code>!</span>
+              <span>📝 5 SOAL TES DUNIA NYATA (TANPA KUNCI JAWABAN DI SOAL):</span>
+              <span style="font-size: 0.74rem; color: var(--text-muted);">Di file <code>.xlsx</code>, ke-5 soal tes ini punya tabel masing-masing & kunci di sheet paling akhir!</span>
             </div>
             <div style="display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 10px;">
               ${fiveCases.map(c => `
@@ -3702,11 +3702,10 @@ function renderExcelTrainer() {
               `).join('')}
             </div>
             <div style="font-size: 0.86rem; color: var(--text-main); line-height: 1.5; margin-bottom: 6px;">
-              <strong>📌 Kasus Kerja (${currentCaseObj.badge}):</strong> ${currentCaseObj.scenario}
+              <strong>📌 Skenario Tes (${currentCaseObj.badge}):</strong> ${currentCaseObj.scenario}
             </div>
             <div style="font-size: 0.83rem; color: var(--text-muted);">
-              <strong>📋 Tugas Praktik:</strong> ${currentCaseObj.instruction}
-              ${activeCaseNum > 1 ? `<div style="margin-top:6px; padding:6px 10px; background:rgba(16,185,129,0.12); border-radius:6px; font-family:monospace; color:#10b981; font-weight:700;">💡 Pola Rumus Kasus #${activeCaseNum}: ${currentCaseObj.sampleFormula}</div>` : ''}
+              <strong>📋 Soal Tes:</strong> ${currentCaseObj.instruction}
             </div>
           </div>
         ` : `
@@ -3716,7 +3715,7 @@ function renderExcelTrainer() {
         `}
 
         <div style="background: var(--bg-secondary); border-left: 4px solid var(--accent-yellow); padding: 8px 12px; border-radius: 4px; font-size: 0.86rem; color: var(--text-main);">
-          <strong>🎯 Target Tugas Simulator Tabel di Bawah:</strong> Tulis rumus di sel <b>${chal.targetCell}</b> (${chal.instruction})
+          <strong>🎯 Tugas Tes Simulator Tabel di Bawah:</strong> Ketik rumus jawabanmu di sel <b>${chal.targetCell}</b> (${chal.instruction})
         </div>
       </div>
 
@@ -3816,7 +3815,7 @@ function renderExcelTrainer() {
                    class="formula-input-line"
                    style="width: 100%; border: 1px solid #cbd5e1; border-radius: 4px; padding: 6px 12px; font-family: 'Consolas', monospace; font-size: 0.94rem; font-weight: 600;"
                    value="${currentFormula}"
-                   placeholder="Ketik rumus diawali '=' (contoh: =IF(B2>=75, 'LULUS', 'REMIDI')) — Tekan F2 untuk fokus!"
+                   placeholder="Ketik rumus jawaban tes diawali tanda '=' — Tekan F2 untuk fokus atau Enter untuk periksa!"
                    oninput="onExcelFormulaTyping(this.value)"
                    onkeydown="if(event.key==='Enter') checkExcelCurrentChallenge()" />
           </div>

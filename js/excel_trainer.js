@@ -45,7 +45,7 @@ const excelChallenges = [
     "targetCell": "C2",
     "instruction": "Tulis rumus di sel C2 untuk menentukan status Budi Santoso (>=75 'LULUS', jika tidak 'REMIDI').",
     "babyHint": "🍼 Bahasa Bayi: Pakai =IF(B2>=75, \"LULUS\", \"REMIDI\"). Rumus IF seperti satpam penyeleksi!",
-    "starterFormula": "=IF(",
+    "starterFormula": "=",
     "quickChips": [
       "=IF(",
       "B2>=75",
@@ -66,7 +66,8 @@ const excelChallenges = [
       "title": "💡 CONTOH SERUPA: Syarat KKM Ujian Sekolah",
       "kasusSerupa": "Tabel Nilai Siswa: Sel B2 bernilai 78. Syarat KKM minimal 70. Jika nilai >= 70 tulis 'LULUS', jika tidak 'GAGAL'.",
       "rumusContoh": "=IF(B2>=70, \"LULUS\", \"GAGAL\")",
-      "nalarBayi": "Satpam Excel mengecek sel B2 (78). Karena 78 >= 70 itu BENAR (TRUE), Excel langsung memilih opsi pertama yaitu 'LULUS'!"
+      "nalarBayi": "Satpam Excel mengecek sel B2 (78). Karena 78 >= 70 itu BENAR (TRUE), Excel langsung memilih opsi pertama yaitu 'LULUS'!",
+      "hasilContoh": "Terevaluasi otomatis oleh Excel sesuai data contoh"
     }
   },
   {
@@ -108,7 +109,7 @@ const excelChallenges = [
     "targetCell": "C2",
     "instruction": "Tulis rumus di sel C2: Jika B2='VIP' maka 0, jika tidak maka 15000.",
     "babyHint": "🍼 Bahasa Bayi: =IF(B2=\"VIP\", 0, 15000). Teks VIP wajib dibungkus petik dua!",
-    "starterFormula": "=IF(",
+    "starterFormula": "=",
     "quickChips": [
       "=IF(",
       "B2=\"VIP\"",
@@ -129,7 +130,8 @@ const excelChallenges = [
       "title": "💡 CONTOH SERUPA: Diskon Khusus Mahasiswa",
       "kasusSerupa": "Tabel Tiket Kereta: Sel B2 berisi 'Mahasiswa'. Jika B2='Mahasiswa' dapat potongan 5000, jika bukan maka 0.",
       "rumusContoh": "=IF(B2=\"Mahasiswa\", 5000, 0)",
-      "nalarBayi": "Excel memeriksa apakah isi teks di B2 persis sama dengan 'Mahasiswa'. Jika cocok bernilai TRUE dan output 5000!"
+      "nalarBayi": "Excel memeriksa apakah isi teks di B2 persis sama dengan 'Mahasiswa'. Jika cocok bernilai TRUE dan output 5000!",
+      "hasilContoh": "Terevaluasi otomatis oleh Excel sesuai data contoh"
     }
   },
   {
@@ -176,7 +178,7 @@ const excelChallenges = [
     "targetCell": "D2",
     "instruction": "Hitung bonus Hendra di D2: Jika C2 > 10000000 maka dapat bonus C2*0.05, jika tidak maka 0.",
     "babyHint": "🍼 Bahasa Bayi: =IF(C2>10000000, C2*0.05, 0). Kalikan 0.05 untuk menghitung 5%!",
-    "starterFormula": "=IF(",
+    "starterFormula": "=",
     "quickChips": [
       "=IF(",
       "C2>10000000",
@@ -198,7 +200,8 @@ const excelChallenges = [
       "title": "💡 CONTOH SERUPA: Bonus Penjualan Target 5 Juta",
       "kasusSerupa": "Tabel Bonus Toko: Sel B2 bernilai 6.000.000. Jika B2 > 5000000 beri komisi B2*0.1 (10%), jika tidak beri 0.",
       "rumusContoh": "=IF(B2>5000000, B2*0.1, 0)",
-      "nalarBayi": "Karena omset 6 juta lebih besar dari 5 juta, Excel menghitung 6.000.000 * 0.1 = 600.000!"
+      "nalarBayi": "Karena omset 6 juta lebih besar dari 5 juta, Excel menghitung 6.000.000 * 0.1 = 600.000!",
+      "hasilContoh": "Terevaluasi otomatis oleh Excel sesuai data contoh"
     }
   },
   {
@@ -240,7 +243,7 @@ const excelChallenges = [
     "targetCell": "C2",
     "instruction": "Tulis rumus nested IF di sel C2 untuk menentukan grade Fajar (>=85 'A', >=70 'B', selain itu 'C').",
     "babyHint": "🍼 Bahasa Bayi: =IF(B2>=85, \"A\", IF(B2>=70, \"B\", \"C\")). IF di dalam IF seperti pintu gerbang berlapis!",
-    "starterFormula": "=IF(",
+    "starterFormula": "=",
     "quickChips": [
       "=IF(",
       "B2>=85",
@@ -263,7 +266,8 @@ const excelChallenges = [
       "title": "💡 CONTOH SERUPA: Kategori Berat Paket",
       "kasusSerupa": "Tabel Ekspedisi: Sel B2 bernilai 12 kg. Jika B2>20 'BERAT', jika B2>10 'SEDANG', jika tidak 'RINGAN'.",
       "rumusContoh": "=IF(B2>20, \"BERAT\", IF(B2>10, \"SEDANG\", \"RINGAN\"))",
-      "nalarBayi": "Pintu pertama cek >20 (SALAH). Masuk ke pintu kedua cek >10 (BENAR). Excel langsung memilih 'SEDANG'!"
+      "nalarBayi": "Pintu pertama cek >20 (SALAH). Masuk ke pintu kedua cek >10 (BENAR). Excel langsung memilih 'SEDANG'!",
+      "hasilContoh": "Terevaluasi otomatis oleh Excel sesuai data contoh"
     }
   },
   {
@@ -303,9 +307,9 @@ const excelChallenges = [
       }
     ],
     "targetCell": "C2",
-    "instruction": "Gunakan rumus =IFS(...) di C2: B2<=5 'KRITIS', B2<=15 'MENIPIS', B2>15 'AMAN'.",
+    "instruction": "Gunakan fungsi IFS di C2: B2<=5 'KRITIS', B2<=15 'MENIPIS', B2>15 'AMAN'.",
     "babyHint": "🍼 Bahasa Bayi: =IFS(B2<=5, \"KRITIS\", B2<=15, \"MENIPIS\", B2>15, \"AMAN\"). Fungsi IFS lebih rapi tanpa tumpukan tanda kurung!",
-    "starterFormula": "=IFS(",
+    "starterFormula": "=",
     "quickChips": [
       "=IFS(",
       "B2<=5",
@@ -328,7 +332,8 @@ const excelChallenges = [
       "title": "💡 CONTOH SERUPA: Kategori Umur Balita",
       "kasusSerupa": "Tabel Posyandu: Usia di B2 bernilai 2 tahun. Jika B2<=1 'BAYI', jika B2<=3 'BATITA', jika B2<=5 'BALITA'.",
       "rumusContoh": "=IFS(B2<=1, \"BAYI\", B2<=3, \"BATITA\", B2<=5, \"BALITA\")",
-      "nalarBayi": "Fungsi IFS memeriksa syarat secara berurutan. Karena 2 <= 3 terpenuhi, ia langsung mengambil 'BATITA'!"
+      "nalarBayi": "Fungsi IFS memeriksa syarat secara berurutan. Karena 2 <= 3 terpenuhi, ia langsung mengambil 'BATITA'!",
+      "hasilContoh": "Terevaluasi otomatis oleh Excel sesuai data contoh"
     }
   },
   {
@@ -375,7 +380,7 @@ const excelChallenges = [
     "targetCell": "D2",
     "instruction": "Tulis rumus di sel D2: Jika B2>50000000 DAN C2>=4.5 maka 2000000, jika tidak 500000.",
     "babyHint": "🍼 Bahasa Bayi: =IF(AND(B2>50000000, C2>=4.5), 2000000, 500000). AND artinya SEMUA syarat wajib lulus!",
-    "starterFormula": "=IF(AND(",
+    "starterFormula": "=",
     "quickChips": [
       "=IF(AND(",
       "B2>50000000",
@@ -396,7 +401,8 @@ const excelChallenges = [
       "title": "💡 CONTOH SERUPA: Syarat Beasiswa Kampus",
       "kasusSerupa": "Tabel Seleksi: IPK di B2 (3.8) dan Kehadiran di C2 (95%). Syarat lolos: IPK>=3.5 DAN Kehadiran>=90%.",
       "rumusContoh": "=IF(AND(B2>=3.5, C2>=90), \"LOLOS\", \"GAGAL\")",
-      "nalarBayi": "Karena kedua syarat sama-sama bernilai BENAR (TRUE), fungsi AND mengizinkan output 'LOLOS'!"
+      "nalarBayi": "Karena kedua syarat sama-sama bernilai BENAR (TRUE), fungsi AND mengizinkan output 'LOLOS'!",
+      "hasilContoh": "Terevaluasi otomatis oleh Excel sesuai data contoh"
     }
   },
   {
@@ -443,7 +449,7 @@ const excelChallenges = [
     "targetCell": "D2",
     "instruction": "Tulis rumus di sel D2: Jika B2='Ya' ATAU C2>=500000 maka 'DAPAT DISKON', jika tidak 'TIDAK DAPAT'.",
     "babyHint": "🍼 Bahasa Bayi: =IF(OR(B2=\"Ya\", C2>=500000), \"DAPAT DISKON\", \"TIDAK DAPAT\"). Cukup SALAH SATU syarat terpenuhi!",
-    "starterFormula": "=IF(OR(",
+    "starterFormula": "=",
     "quickChips": [
       "=IF(OR(",
       "B2=\"Ya\"",
@@ -464,14 +470,15 @@ const excelChallenges = [
       "title": "💡 CONTOH SERUPA: Akses Parkir Gratis",
       "kasusSerupa": "Tabel Mall: Punya Kupon di B2 ('Tidak') ATAU Belanja di C2 (300000). Syarat gratis parkir: Kupon='Ya' ATAU Belanja>=200000.",
       "rumusContoh": "=IF(OR(B2=\"Ya\", C2>=200000), \"GRATIS\", \"BAYAR\")",
-      "nalarBayi": "Meskipun kupon 'Tidak', karena belanja 300rb >= 200rb, gerbang OR langsung terbuka dan memberi 'GRATIS'!"
+      "nalarBayi": "Meskipun kupon 'Tidak', karena belanja 300rb >= 200rb, gerbang OR langsung terbuka dan memberi 'GRATIS'!",
+      "hasilContoh": "Terevaluasi otomatis oleh Excel sesuai data contoh"
     }
   },
   {
     "id": "xl-8",
     "category": "1. Logika Bisnis & Kondisional",
     "title": "Tantangan 8: Tangani Pembagian Nol dengan Aman (IFERROR)",
-    "scenario": "Analis Keuangan menghitung rasio laba per transaksi di sel D2 (=B2/C2). Jika terjadi pembagian angka nol (error #DIV/0!), tampilkan angka 0 bukan error jelek.",
+    "scenario": "Analis Keuangan menghitung rasio laba per transaksi di sel D2 (pembagian B2 dengan C2). Jika terjadi pembagian angka nol (error #DIV/0!), tampilkan angka 0 bukan error jelek.",
     "tableHeaders": [
       "A",
       "B",
@@ -511,7 +518,7 @@ const excelChallenges = [
     "targetCell": "D2",
     "instruction": "Tulis rumus di sel D2: Tangani pembagian B2/C2 dengan rumus IFERROR agar aman dari #DIV/0!.",
     "babyHint": "🍼 Bahasa Bayi: =IFERROR(B2/C2, 0). IFERROR adalah payung pelindung kalau rumusnya error!",
-    "starterFormula": "=IFERROR(",
+    "starterFormula": "=",
     "quickChips": [
       "=IFERROR(",
       "B2/C2",
@@ -531,7 +538,8 @@ const excelChallenges = [
       "title": "💡 CONTOH SERUPA: Menghitung Harga Rata-rata per Box",
       "kasusSerupa": "Tabel Gudang: Total biaya B2 (200000) dibagi jumlah box C2 (0). Rumus: =IFERROR(B2/C2, 0).",
       "rumusContoh": "=IFERROR(B2/C2, 0)",
-      "nalarBayi": "Jika C2 adalah 0 yang normalnya membuat Excel panik dan keluar #DIV/0!, IFERROR langsung menyulapnya jadi angka 0!"
+      "nalarBayi": "Jika C2 adalah 0 yang normalnya membuat Excel panik dan keluar #DIV/0!, IFERROR langsung menyulapnya jadi angka 0!",
+      "hasilContoh": "Terevaluasi otomatis oleh Excel sesuai data contoh"
     }
   },
   {
@@ -573,7 +581,7 @@ const excelChallenges = [
     "targetCell": "C2",
     "instruction": "Tulis rumus di sel C2: Gunakan fungsi NOT untuk mengecek apakah B2 bukan 'Retur' (jika ya 'PROSES', jika tidak 'TUNDA').",
     "babyHint": "🍼 Bahasa Bayi: =IF(NOT(B2=\"Retur\"), \"PROSES\", \"TUNDA\"). NOT artinya membalik logika!",
-    "starterFormula": "=IF(NOT(",
+    "starterFormula": "=",
     "quickChips": [
       "=IF(NOT(",
       "B2=\"Retur\"",
@@ -593,7 +601,8 @@ const excelChallenges = [
       "title": "💡 CONTOH SERUPA: Filter Karyawan Bukan Cuti",
       "kasusSerupa": "Tabel Kantor: Status di B2 adalah 'Hadir'. Jika NOT(B2='Cuti') maka 'Diberi Tugas', selain itu 'Libur'.",
       "rumusContoh": "=IF(NOT(B2=\"Cuti\"), \"Diberi Tugas\", \"Libur\")",
-      "nalarBayi": "Karena status B2 'Hadir' (bukan cuti), NOT mengubahnya jadi TRUE sehingga karyawan 'Diberi Tugas'!"
+      "nalarBayi": "Karena status B2 'Hadir' (bukan cuti), NOT mengubahnya jadi TRUE sehingga karyawan 'Diberi Tugas'!",
+      "hasilContoh": "Terevaluasi otomatis oleh Excel sesuai data contoh"
     }
   },
   {
@@ -640,7 +649,7 @@ const excelChallenges = [
     "targetCell": "D2",
     "instruction": "Tulis rumus di sel D2: Jika B2 <= C2 maka 'GARANSI AKTIF', jika tidak 'HABIS'.",
     "babyHint": "🍼 Bahasa Bayi: =IF(B2<=C2, \"GARANSI AKTIF\", \"HABIS\"). Tanggal di Excel bisa langsung dibandingkan!",
-    "starterFormula": "=IF(",
+    "starterFormula": "=",
     "quickChips": [
       "=IF(",
       "B2<=C2",
@@ -660,7 +669,8 @@ const excelChallenges = [
       "title": "💡 CONTOH SERUPA: Tanggal Kadaluarsa Roti",
       "kasusSerupa": "Tabel Toko Roti: Tgl Hari Ini di B2, Tgl Kadaluarsa di C2. Jika B2<=C2 'LAYAK JUAL', jika lewat 'BUANG'.",
       "rumusContoh": "=IF(B2<=C2, \"LAYAK JUAL\", \"BUANG\")",
-      "nalarBayi": "Karena tanggal penjualan masih sebelum tanggal kedaluwarsa, roti masih aman dan berstatus 'LAYAK JUAL'!"
+      "nalarBayi": "Karena tanggal penjualan masih sebelum tanggal kedaluwarsa, roti masih aman dan berstatus 'LAYAK JUAL'!",
+      "hasilContoh": "Terevaluasi otomatis oleh Excel sesuai data contoh"
     }
   },
   {
@@ -700,9 +710,9 @@ const excelChallenges = [
       }
     ],
     "targetCell": "C2",
-    "instruction": "Gunakan fungsi =SWITCH(B2, 1, 'Jakarta', 2, 'Surabaya', 3, 'Medan', 'Lainnya') di sel C2.",
+    "instruction": "Gunakan fungsi SWITCH (menggunakan parameter data B2, 1, 'Jakarta', 2, 'Surabaya', 3, 'Medan', 'Lainnya') di sel C2.",
     "babyHint": "🍼 Bahasa Bayi: =SWITCH(B2, 1, \"Jakarta\", 2, \"Surabaya\", 3, \"Medan\", \"Lainnya\"). Seperti saklar listrik!",
-    "starterFormula": "=SWITCH(",
+    "starterFormula": "=",
     "quickChips": [
       "=SWITCH(",
       "B2",
@@ -727,7 +737,8 @@ const excelChallenges = [
       "title": "💡 CONTOH SERUPA: Konversi Hari Kerja",
       "kasusSerupa": "Tabel Hari: Kode hari di B2 bernilai 1. Rumus: =SWITCH(B2, 1, 'Senin', 2, 'Selasa', 'Lainnya').",
       "rumusContoh": "=SWITCH(B2, 1, \"Senin\", 2, \"Selasa\", \"Lainnya\")",
-      "nalarBayi": "Excel mencocokkan angka 1 dengan label pertamanya yaitu 'Senin' tanpa perlu tumpukan IF berulang!"
+      "nalarBayi": "Excel mencocokkan angka 1 dengan label pertamanya yaitu 'Senin' tanpa perlu tumpukan IF berulang!",
+      "hasilContoh": "Terevaluasi otomatis oleh Excel sesuai data contoh"
     }
   },
   {
@@ -789,7 +800,7 @@ const excelChallenges = [
     "targetCell": "B9",
     "instruction": "Tulis rumus penjumlahan total omset dari sel B2 sampai B8 di sel B9.",
     "babyHint": "🍼 Bahasa Bayi: =SUM(B2:B8). SUM itu singkatan dari Summary atau penjumlahan total rentang!",
-    "starterFormula": "=SUM(",
+    "starterFormula": "=",
     "quickChips": [
       "=SUM(",
       "B2:B8",
@@ -806,7 +817,8 @@ const excelChallenges = [
       "title": "💡 CONTOH SERUPA: Menghitung Total Pengeluaran Uang Kas",
       "kasusSerupa": "Tabel Kas Kelas: Sel B2 berisi 50000, B3 berisi 75000, B4 berisi 100000. Rumus: =SUM(B2:B4).",
       "rumusContoh": "=SUM(B2:B4)",
-      "nalarBayi": "Excel menjumlahkan 50000 + 75000 + 100000 = 225000 secara otomatis dalam sekejap!"
+      "nalarBayi": "Excel menjumlahkan 50000 + 75000 + 100000 = 225000 secara otomatis dalam sekejap!",
+      "hasilContoh": "Terevaluasi otomatis oleh Excel sesuai data contoh"
     }
   },
   {
@@ -881,7 +893,7 @@ const excelChallenges = [
     "targetCell": "D8",
     "instruction": "Ketik rumus rata-rata dari sel A2 sampai A7 di sel D8 sesuai panduan dosen.",
     "babyHint": "🍼 Bahasa Bayi: =AVERAGE(A2:A7). Rata-rata adalah jumlah semua angka dibagi banyaknya angka!",
-    "starterFormula": "=AVERAGE(",
+    "starterFormula": "=",
     "quickChips": [
       "=AVERAGE(",
       "A2:A7",
@@ -898,7 +910,8 @@ const excelChallenges = [
       "title": "💡 CONTOH SERUPA: Rata-rata Tinggi Badan Balita",
       "kasusSerupa": "Tabel Posyandu: Sel A2 (80), A3 (90), A4 (85). Rumus: =AVERAGE(A2:A4).",
       "rumusContoh": "=AVERAGE(A2:A4)",
-      "nalarBayi": "Excel menjumlahkan (80+90+85)=255 lalu membaginya dengan 3 balita sehingga didapat hasil 85!"
+      "nalarBayi": "Excel menjumlahkan (80+90+85)=255 lalu membaginya dengan 3 balita sehingga didapat hasil 85!",
+      "hasilContoh": "Terevaluasi otomatis oleh Excel sesuai data contoh"
     }
   },
   {
@@ -971,9 +984,9 @@ const excelChallenges = [
       }
     ],
     "targetCell": "D8",
-    "instruction": "Tulis rumus =AVERAGEA(A2:A7) di sel D8 untuk menghitung rata-rata seluruh data termasuk teks.",
+    "instruction": "Gunakan fungsi AVERAGEA (menggunakan parameter data A2:A7) di sel D8 untuk menghitung rata-rata seluruh data termasuk teks.",
     "babyHint": "🍼 Bahasa Bayi: =AVERAGEA(A2:A7). Huruf 'A' di belakang artinya All (semua termasuk teks bernilai 0)!",
-    "starterFormula": "=AVERAGEA(",
+    "starterFormula": "=",
     "quickChips": [
       "=AVERAGEA(",
       "A2:A7",
@@ -990,7 +1003,8 @@ const excelChallenges = [
       "title": "💡 CONTOH SERUPA: Nilai Tugas yang Tidak Dikumpulkan",
       "kasusSerupa": "Tabel Kelas: Mahasiswa A (80), Mahasiswa B ('Alpa'). =AVERAGEA(A2:A3).",
       "rumusContoh": "=AVERAGEA(A2:A3)",
-      "nalarBayi": "'Alpa' dihitung sebagai 0, sehingga rata-rata adalah (80 + 0) / 2 = 40!"
+      "nalarBayi": "'Alpa' dihitung sebagai 0, sehingga rata-rata adalah (80 + 0) / 2 = 40!",
+      "hasilContoh": "Terevaluasi otomatis oleh Excel sesuai data contoh"
     }
   },
   {
@@ -1060,9 +1074,9 @@ const excelChallenges = [
       }
     ],
     "targetCell": "B11",
-    "instruction": "Ketik rumus =COUNT(A2:A10) di sel B11 untuk menghitung jumlah transaksi angka.",
+    "instruction": "Gunakan fungsi COUNT (menggunakan parameter data A2:A10) di sel B11 untuk menghitung jumlah transaksi angka.",
     "babyHint": "🍼 Bahasa Bayi: =COUNT(A2:A10). COUNT cuma mau menghitung sel yang ada angkanya, teks diabaikan!",
-    "starterFormula": "=COUNT(",
+    "starterFormula": "=",
     "quickChips": [
       "=COUNT(",
       "A2:A10",
@@ -1079,7 +1093,8 @@ const excelChallenges = [
       "title": "💡 CONTOH SERUPA: Menghitung Resi Pengiriman yang Sudah Ada Ongkir",
       "kasusSerupa": "Tabel Paket: Kolom ongkir berisi [15000, 'Belum Ditimbang', 20000]. Rumus: =COUNT(B2:B4).",
       "rumusContoh": "=COUNT(B2:B4)",
-      "nalarBayi": "Hanya angka 15000 dan 20000 yang dihitung. Teks diabaikan, jadi hasilnya tepat 2!"
+      "nalarBayi": "Hanya angka 15000 dan 20000 yang dihitung. Teks diabaikan, jadi hasilnya tepat 2!",
+      "hasilContoh": "Terevaluasi otomatis oleh Excel sesuai data contoh"
     }
   },
   {
@@ -1149,9 +1164,9 @@ const excelChallenges = [
       }
     ],
     "targetCell": "B11",
-    "instruction": "Ketik rumus =COUNTA(A2:A10) di sel B11 untuk menghitung seluruh sel yang tidak kosong.",
+    "instruction": "Gunakan fungsi COUNTA (menggunakan parameter data A2:A10) di sel B11 untuk menghitung seluruh sel yang tidak kosong.",
     "babyHint": "🍼 Bahasa Bayi: =COUNTA(A2:A10). COUNTA artinya Count Anything! Selama sel tidak kosong, pasti dihitung!",
-    "starterFormula": "=COUNTA(",
+    "starterFormula": "=",
     "quickChips": [
       "=COUNTA(",
       "A2:A10",
@@ -1168,7 +1183,8 @@ const excelChallenges = [
       "title": "💡 CONTOH SERUPA: Menghitung Barang yang Sudah Masuk Manifest Gudang",
       "kasusSerupa": "Tabel Muatan: Kolom barang berisi ['Beras', 'Gula', '', 'Minyak']. Rumus: =COUNTA(A2:A5).",
       "rumusContoh": "=COUNTA(A2:A5)",
-      "nalarBayi": "Karena sel kosong tidak dihitung, Excel langsung menghitung 3 barang yang ada isinya!"
+      "nalarBayi": "Karena sel kosong tidak dihitung, Excel langsung menghitung 3 barang yang ada isinya!",
+      "hasilContoh": "Terevaluasi otomatis oleh Excel sesuai data contoh"
     }
   },
   {
@@ -1213,9 +1229,9 @@ const excelChallenges = [
       }
     ],
     "targetCell": "B6",
-    "instruction": "Tulis rumus =COUNTBLANK(A2:B5) di sel B6 untuk menghitung berapa banyak kotak kosong.",
+    "instruction": "Gunakan fungsi COUNTBLANK (menggunakan parameter data A2:B5) di sel B6 untuk menghitung berapa banyak kotak kosong.",
     "babyHint": "🍼 Bahasa Bayi: =COUNTBLANK(A2:B5). Blank artinya kosong melompong. Pemburu kotak kosong!",
-    "starterFormula": "=COUNTBLANK(",
+    "starterFormula": "=",
     "quickChips": [
       "=COUNTBLANK(",
       "A2:B5",
@@ -1232,7 +1248,8 @@ const excelChallenges = [
       "title": "💡 CONTOH SERUPA: Menghitung Form Pendaftaran yang Belum Diisi",
       "kasusSerupa": "Tabel Formulir: Dari 10 kolom, 3 di antaranya masih kosong. Rumus: =COUNTBLANK(A2:J2).",
       "rumusContoh": "=COUNTBLANK(A2:J2)",
-      "nalarBayi": "Excel menyisir baris dan menemukan tepat 3 sel kosong yang butuh dilengkapi!"
+      "nalarBayi": "Excel menyisir baris dan menemukan tepat 3 sel kosong yang butuh dilengkapi!",
+      "hasilContoh": "Terevaluasi otomatis oleh Excel sesuai data contoh"
     }
   },
   {
@@ -1320,9 +1337,9 @@ const excelChallenges = [
       }
     ],
     "targetCell": "C12",
-    "instruction": "Tulis rumus =MAX(A2:A11) di sel C12 untuk menemukan angka paling besar.",
+    "instruction": "Gunakan fungsi MAX (menggunakan parameter data A2:A11) di sel C12 untuk menemukan angka paling besar.",
     "babyHint": "🍼 Bahasa Bayi: =MAX(A2:A11). MAX artinya Maksimum, cari sang juara dengan nilai terbesar!",
-    "starterFormula": "=MAX(",
+    "starterFormula": "=",
     "quickChips": [
       "=MAX(",
       "A2:A11",
@@ -1339,7 +1356,8 @@ const excelChallenges = [
       "title": "💡 CONTOH SERUPA: Rekor Suhu Terpanas Ruang Server",
       "kasusSerupa": "Tabel Sensor Suhu: Sensor mencatat [28, 31, 35, 29] derajat Celcius. Rumus: =MAX(A2:A5).",
       "rumusContoh": "=MAX(A2:A5)",
-      "nalarBayi": "Excel membandingkan semua angka dan langsung mengeluarkan suhu terpanas yaitu 35 derajat!"
+      "nalarBayi": "Excel membandingkan semua angka dan langsung mengeluarkan suhu terpanas yaitu 35 derajat!",
+      "hasilContoh": "Terevaluasi otomatis oleh Excel sesuai data contoh"
     }
   },
   {
@@ -1421,9 +1439,9 @@ const excelChallenges = [
       }
     ],
     "targetCell": "C11",
-    "instruction": "Ketik rumus =MAXA(A2:A10) di sel C11.",
+    "instruction": "Gunakan fungsi MAXA (menggunakan parameter data A2:A10) di sel C11.",
     "babyHint": "🍼 Bahasa Bayi: =MAXA(A2:A10). Mirip MAX tapi MAXA juga membaca nilai logika TRUE sebagai 1 dan FALSE sebagai 0!",
-    "starterFormula": "=MAXA(",
+    "starterFormula": "=",
     "quickChips": [
       "=MAXA(",
       "A2:A10",
@@ -1440,7 +1458,8 @@ const excelChallenges = [
       "title": "💡 CONTOH SERUPA: Skor Game Tertinggi",
       "kasusSerupa": "Tabel Game: Nilai peserta di A2:A4 adalah [12, 45, 30]. Rumus: =MAXA(A2:A4).",
       "rumusContoh": "=MAXA(A2:A4)",
-      "nalarBayi": "Nilai terbesar yang ditemukan adalah 45!"
+      "nalarBayi": "Nilai terbesar yang ditemukan adalah 45!",
+      "hasilContoh": "Terevaluasi otomatis oleh Excel sesuai data contoh"
     }
   },
   {
@@ -1528,9 +1547,9 @@ const excelChallenges = [
       }
     ],
     "targetCell": "C12",
-    "instruction": "Ketik rumus =MIN(A2:A11) di sel C12 untuk menemukan angka paling kecil.",
+    "instruction": "Gunakan fungsi MIN (menggunakan parameter data A2:A11) di sel C12 untuk menemukan angka paling kecil.",
     "babyHint": "🍼 Bahasa Bayi: =MIN(A2:A11). MIN artinya Minimum, angka paling imut dan paling rendah!",
-    "starterFormula": "=MIN(",
+    "starterFormula": "=",
     "quickChips": [
       "=MIN(",
       "A2:A11",
@@ -1547,7 +1566,8 @@ const excelChallenges = [
       "title": "💡 CONTOH SERUPA: Menemukan Harga Termurah di Marketplace",
       "kasusSerupa": "Tabel Produk: Harga barang di beberapa toko: [150000, 120000, 135000]. Rumus: =MIN(B2:B4).",
       "rumusContoh": "=MIN(B2:B4)",
-      "nalarBayi": "Excel menyaring harga dan langsung merekomendasikan harga termurah yaitu 120000!"
+      "nalarBayi": "Excel menyaring harga dan langsung merekomendasikan harga termurah yaitu 120000!",
+      "hasilContoh": "Terevaluasi otomatis oleh Excel sesuai data contoh"
     }
   },
   {
@@ -1629,9 +1649,9 @@ const excelChallenges = [
       }
     ],
     "targetCell": "C11",
-    "instruction": "Ketik rumus =MINA(A2:A10) di sel C11.",
+    "instruction": "Gunakan fungsi MINA (menggunakan parameter data A2:A10) di sel C11.",
     "babyHint": "🍼 Bahasa Bayi: =MINA(A2:A10). MINA mencari nilai paling kecil dari seluruh data yang ada!",
-    "starterFormula": "=MINA(",
+    "starterFormula": "=",
     "quickChips": [
       "=MINA(",
       "A2:A10",
@@ -1648,7 +1668,8 @@ const excelChallenges = [
       "title": "💡 CONTOH SERUPA: Mengetahui Waktu Tempuh Tercepat",
       "kasusSerupa": "Tabel Lari: Waktu tempuh [14, 18, 11] detik. Rumus: =MINA(A2:A4).",
       "rumusContoh": "=MINA(A2:A4)",
-      "nalarBayi": "Nilai terkecil adalah 11 detik!"
+      "nalarBayi": "Nilai terkecil adalah 11 detik!",
+      "hasilContoh": "Terevaluasi otomatis oleh Excel sesuai data contoh"
     }
   },
   {
@@ -1714,9 +1735,9 @@ const excelChallenges = [
       }
     ],
     "targetCell": "D7",
-    "instruction": "Ketik rumus =COUNTIF(A2:A6, 'Susu') di sel D7 sesuai file latihan dosen.",
+    "instruction": "Gunakan fungsi COUNTIF (menggunakan parameter data A2:A6, 'Susu') di sel D7 sesuai file latihan dosen.",
     "babyHint": "🍼 Bahasa Bayi: =COUNTIF(A2:A6, \"Susu\"). COUNTIF itu hitung cuma kalau syaratnya cocok!",
-    "starterFormula": "=COUNTIF(",
+    "starterFormula": "=",
     "quickChips": [
       "=COUNTIF(",
       "A2:A6",
@@ -1736,7 +1757,8 @@ const excelChallenges = [
       "title": "💡 CONTOH SERUPA: Menghitung Pegawai Divisi IT",
       "kasusSerupa": "Tabel HRD: Kolom Divisi berisi ['IT', 'HRD', 'IT', 'Marketing']. Rumus: =COUNTIF(B2:B5, 'IT').",
       "rumusContoh": "=COUNTIF(B2:B5, \"IT\")",
-      "nalarBayi": "Excel menghitung berapa kali kata 'IT' muncul di baris, hasilnya adalah 2!"
+      "nalarBayi": "Excel menghitung berapa kali kata 'IT' muncul di baris, hasilnya adalah 2!",
+      "hasilContoh": "Terevaluasi otomatis oleh Excel sesuai data contoh"
     }
   },
   {
@@ -1809,9 +1831,9 @@ const excelChallenges = [
       }
     ],
     "targetCell": "D8",
-    "instruction": "Ketik rumus =COUNTIF(B2:B6, '>50') di sel D8 sesuai file materi dosen.",
+    "instruction": "Gunakan fungsi COUNTIF (menggunakan parameter data B2:B6, '>50') di sel D8 sesuai file materi dosen.",
     "babyHint": "🍼 Bahasa Bayi: =COUNTIF(B2:B6, \">50\"). Tanda lebih besar >50 dibungkus tanda petik!",
-    "starterFormula": "=COUNTIF(",
+    "starterFormula": "=",
     "quickChips": [
       "=COUNTIF(",
       "B2:B6",
@@ -1831,7 +1853,8 @@ const excelChallenges = [
       "title": "💡 CONTOH SERUPA: Menghitung Siswa yang Nilainya di Atas KKM 75",
       "kasusSerupa": "Tabel Ujian: Nilai siswa di B2:B6 adalah [70, 80, 85, 65, 90]. Rumus: =COUNTIF(B2:B6, '>75').",
       "rumusContoh": "=COUNTIF(B2:B6, \">75\")",
-      "nalarBayi": "Nilai 80, 85, dan 90 lolos syarat, sehingga Excel menghitung total 3 siswa!"
+      "nalarBayi": "Nilai 80, 85, dan 90 lolos syarat, sehingga Excel menghitung total 3 siswa!",
+      "hasilContoh": "Terevaluasi otomatis oleh Excel sesuai data contoh"
     }
   },
   {
@@ -1901,9 +1924,9 @@ const excelChallenges = [
       }
     ],
     "targetCell": "B9",
-    "instruction": "Ketik rumus =COUNTIFS(A2:A8, 'Elektronik', B2:B8, '>1000000') di sel B9.",
+    "instruction": "Gunakan fungsi COUNTIFS (menggunakan parameter data A2:A8, 'Elektronik', B2:B8, '>1000000') di sel B9.",
     "babyHint": "🍼 Bahasa Bayi: =COUNTIFS(A2:A8, \"Elektronik\", B2:B8, \">1000000\"). COUNTIFS punya huruf 'S' di belakang untuk banyak syarat!",
-    "starterFormula": "=COUNTIFS(",
+    "starterFormula": "=",
     "quickChips": [
       "=COUNTIFS(",
       "A2:A8",
@@ -1924,7 +1947,8 @@ const excelChallenges = [
       "title": "💡 CONTOH SERUPA: Karyawan IT dengan Gaji di Atas 7 Juta",
       "kasusSerupa": "Tabel HRD: Divisi di A2:A6 dan Gaji di B2:B6. Rumus: =COUNTIFS(A2:A6, 'IT', B2:B6, '>7000000').",
       "rumusContoh": "=COUNTIFS(A2:A6, \"IT\", B2:B6, \">7000000\")",
-      "nalarBayi": "Hanya karyawan yang Divisinya 'IT' SEKALIGUS gajinya > 7jt yang dihitung!"
+      "nalarBayi": "Hanya karyawan yang Divisinya 'IT' SEKALIGUS gajinya > 7jt yang dihitung!",
+      "hasilContoh": "Terevaluasi otomatis oleh Excel sesuai data contoh"
     }
   },
   {
@@ -1984,9 +2008,9 @@ const excelChallenges = [
       }
     ],
     "targetCell": "B9",
-    "instruction": "Tulis rumus =SUMIF(A2:A8, 'Bandung', B2:B8) di sel B9.",
+    "instruction": "Gunakan fungsi SUMIF (menggunakan parameter data A2:A8, 'Bandung', B2:B8) di sel B9.",
     "babyHint": "🍼 Bahasa Bayi: =SUMIF(A2:A8, \"Bandung\", B2:B8). SUMIF artinya jumlahkan HANYA JIKA kotanya Bandung!",
-    "starterFormula": "=SUMIF(",
+    "starterFormula": "=",
     "quickChips": [
       "=SUMIF(",
       "A2:A8",
@@ -2006,7 +2030,8 @@ const excelChallenges = [
       "title": "💡 CONTOH SERUPA: Total Biaya Khusus Kategori 'Konsumsi'",
       "kasusSerupa": "Tabel Keuangan: Kategori di A2:A5 dan Biaya di B2:B5. Rumus: =SUMIF(A2:A5, 'Konsumsi', B2:B5).",
       "rumusContoh": "=SUMIF(A2:A5, \"Konsumsi\", B2:B5)",
-      "nalarBayi": "Excel menyaring baris berlabel 'Konsumsi' dan menjumlahkan biayanya saja!"
+      "nalarBayi": "Excel menyaring baris berlabel 'Konsumsi' dan menjumlahkan biayanya saja!",
+      "hasilContoh": "Terevaluasi otomatis oleh Excel sesuai data contoh"
     }
   },
   {
@@ -2066,9 +2091,9 @@ const excelChallenges = [
       }
     ],
     "targetCell": "B9",
-    "instruction": "Tulis rumus =SUMIF(B2:B8, '>500000') di sel B9.",
+    "instruction": "Gunakan fungsi SUMIF (menggunakan parameter data B2:B8, '>500000') di sel B9.",
     "babyHint": "🍼 Bahasa Bayi: =SUMIF(B2:B8, \">500000\"). Kalau kolom kriteria sama dengan kolom angka, cukup 2 argumen saja!",
-    "starterFormula": "=SUMIF(",
+    "starterFormula": "=",
     "quickChips": [
       "=SUMIF(",
       "B2:B8",
@@ -2087,7 +2112,8 @@ const excelChallenges = [
       "title": "💡 CONTOH SERUPA: Total Donasi di Atas 100 Ribu",
       "kasusSerupa": "Tabel Donasi: Daftar nominal di A2:A5 = [50000, 200000, 150000, 75000]. Rumus: =SUMIF(A2:A5, '>100000').",
       "rumusContoh": "=SUMIF(A2:A5, \">100000\")",
-      "nalarBayi": "Hanya 200rb dan 150rb yang dijumlahkan sehingga totalnya 350000!"
+      "nalarBayi": "Hanya 200rb dan 150rb yang dijumlahkan sehingga totalnya 350000!",
+      "hasilContoh": "Terevaluasi otomatis oleh Excel sesuai data contoh"
     }
   },
   {
@@ -2167,9 +2193,9 @@ const excelChallenges = [
       }
     ],
     "targetCell": "D9",
-    "instruction": "Tulis rumus =SUMIFS(C2:C8, A2:A8, 'Laptop', B2:B8, 'Andi') di sel D9.",
+    "instruction": "Gunakan fungsi SUMIFS (menggunakan parameter data C2:C8, A2:A8, 'Laptop', B2:B8, 'Andi') di sel D9.",
     "babyHint": "🍼 Bahasa Bayi: =SUMIFS(C2:C8, A2:A8, \"Laptop\", B2:B8, \"Andi\"). Pada SUMIFS, kolom angka yang dijumlah ditaruh paling depan!",
-    "starterFormula": "=SUMIFS(",
+    "starterFormula": "=",
     "quickChips": [
       "=SUMIFS(",
       "C2:C8",
@@ -2191,7 +2217,8 @@ const excelChallenges = [
       "title": "💡 CONTOH SERUPA: Total Gaji Karyawan IT Tetap",
       "kasusSerupa": "Tabel Payroll: Gaji di C2:C6, Divisi di A2:A6 ('IT'), Status di B2:B6 ('Tetap').",
       "rumusContoh": "=SUMIFS(C2:C6, A2:A6, \"IT\", B2:B6, \"Tetap\")",
-      "nalarBayi": "Excel mencari baris yang Divisi = 'IT' DAN Status = 'Tetap', lalu menjumlahkan gajinya!"
+      "nalarBayi": "Excel mencari baris yang Divisi = 'IT' DAN Status = 'Tetap', lalu menjumlahkan gajinya!",
+      "hasilContoh": "Terevaluasi otomatis oleh Excel sesuai data contoh"
     }
   },
   {
@@ -2264,9 +2291,9 @@ const excelChallenges = [
       }
     ],
     "targetCell": "D8",
-    "instruction": "Ketik rumus =AVERAGEIF(A2:A7, '>=10') di sel D8 sesuai panduan dosen.",
+    "instruction": "Gunakan fungsi AVERAGEIF (menggunakan parameter data A2:A7, '>=10') di sel D8 sesuai panduan dosen.",
     "babyHint": "🍼 Bahasa Bayi: =AVERAGEIF(A2:A7, \">=10\"). Cari yang masa kerjanya 10 tahun ke atas, lalu hitung rata-ratanya!",
-    "starterFormula": "=AVERAGEIF(",
+    "starterFormula": "=",
     "quickChips": [
       "=AVERAGEIF(",
       "A2:A7",
@@ -2285,7 +2312,8 @@ const excelChallenges = [
       "title": "💡 CONTOH SERUPA: Rata-rata Nilai Ujian Siswa Lulus (>=75)",
       "kasusSerupa": "Tabel Nilai: Kolom skor di A2:A5 = [60, 80, 90, 70]. Rumus: =AVERAGEIF(A2:A5, '>=75').",
       "rumusContoh": "=AVERAGEIF(A2:A5, \">=75\")",
-      "nalarBayi": "Hanya nilai 80 dan 90 yang dihitung, sehingga rata-ratanya adalah 85!"
+      "nalarBayi": "Hanya nilai 80 dan 90 yang dihitung, sehingga rata-ratanya adalah 85!",
+      "hasilContoh": "Terevaluasi otomatis oleh Excel sesuai data contoh"
     }
   },
   {
@@ -2365,9 +2393,9 @@ const excelChallenges = [
       }
     ],
     "targetCell": "D9",
-    "instruction": "Ketik rumus =AVERAGEIF(B2:B7, '>2', A2:A7) di sel D9 persis formula dosen.",
+    "instruction": "Gunakan fungsi AVERAGEIF (menggunakan parameter data B2:B7, '>2', A2:A7) di sel D9 persis formula dosen.",
     "babyHint": "🍼 Bahasa Bayi: =AVERAGEIF(B2:B7, \">2\", A2:A7). Kolom kriteria B2:B7 dicek dulu, baru angka rata-ratanya diambil dari A2:A7!",
-    "starterFormula": "=AVERAGEIF(",
+    "starterFormula": "=",
     "quickChips": [
       "=AVERAGEIF(",
       "B2:B7",
@@ -2387,7 +2415,8 @@ const excelChallenges = [
       "title": "💡 CONTOH SERUPA: Rata-rata Jam Kerja Shift Malam",
       "kasusSerupa": "Tabel Shift: Kolom Shift di A2:A5 dan Jam Kerja di B2:B5. Rumus: =AVERAGEIF(A2:A5, 'Malam', B2:B5).",
       "rumusContoh": "=AVERAGEIF(A2:A5, \"Malam\", B2:B5)",
-      "nalarBayi": "Excel mencari karyawan ber-shift 'Malam' lalu merata-ratakan jam kerja mereka!"
+      "nalarBayi": "Excel mencari karyawan ber-shift 'Malam' lalu merata-ratakan jam kerja mereka!",
+      "hasilContoh": "Terevaluasi otomatis oleh Excel sesuai data contoh"
     }
   },
   {
@@ -2467,9 +2496,9 @@ const excelChallenges = [
       }
     ],
     "targetCell": "D9",
-    "instruction": "Tulis rumus =AVERAGEIFS(C2:C8, A2:A8, 'IT', B2:B8, '>=3') di sel D9.",
+    "instruction": "Gunakan fungsi AVERAGEIFS (menggunakan parameter data C2:C8, A2:A8, 'IT', B2:B8, '>=3') di sel D9.",
     "babyHint": "🍼 Bahasa Bayi: =AVERAGEIFS(C2:C8, A2:A8, \"IT\", B2:B8, \">=3\"). Kolom rata-rata C2:C8 di depan, disusul syarat-syaratnya!",
-    "starterFormula": "=AVERAGEIFS(",
+    "starterFormula": "=",
     "quickChips": [
       "=AVERAGEIFS(",
       "C2:C8",
@@ -2491,7 +2520,8 @@ const excelChallenges = [
       "title": "💡 CONTOH SERUPA: Rata-rata Penjualan Sales Jakarta dengan Rating Bintang 5",
       "kasusSerupa": "Tabel Penjualan: Omset di C2:C5, Kota di A2:A5 ('Jakarta'), Rating di B2:B5 (5).",
       "rumusContoh": "=AVERAGEIFS(C2:C5, A2:A5, \"Jakarta\", B2:B5, 5)",
-      "nalarBayi": "Excel menghitung rata-rata omset hanya untuk toko di Jakarta yang ratingnya bintang 5!"
+      "nalarBayi": "Excel menghitung rata-rata omset hanya untuk toko di Jakarta yang ratingnya bintang 5!",
+      "hasilContoh": "Terevaluasi otomatis oleh Excel sesuai data contoh"
     }
   },
   {
@@ -2551,9 +2581,9 @@ const excelChallenges = [
       }
     ],
     "targetCell": "B9",
-    "instruction": "Tulis rumus =COUNTIF(A2:A8, 'BRG*') di sel B9.",
+    "instruction": "Gunakan fungsi COUNTIF (menggunakan parameter data A2:A8, 'BRG*') di sel B9.",
     "babyHint": "🍼 Bahasa Bayi: =COUNTIF(A2:A8, \"BRG*\"). Tanda bintang * artinya 'diikuti karakter apa saja'!",
-    "starterFormula": "=COUNTIF(",
+    "starterFormula": "=",
     "quickChips": [
       "=COUNTIF(",
       "A2:A8",
@@ -2572,7 +2602,8 @@ const excelChallenges = [
       "title": "💡 CONTOH SERUPA: Menghitung Email dengan Domain Kantor",
       "kasusSerupa": "Tabel Kontak: Daftar email di A2:A5. Rumus: =COUNTIF(A2:A5, '*@kantor.com').",
       "rumusContoh": "=COUNTIF(A2:A5, \"*@kantor.com\")",
-      "nalarBayi": "Tanda bintang di depan artinya kata apa saja asalkan diakhiri dengan @kantor.com!"
+      "nalarBayi": "Tanda bintang di depan artinya kata apa saja asalkan diakhiri dengan @kantor.com!",
+      "hasilContoh": "Terevaluasi otomatis oleh Excel sesuai data contoh"
     }
   },
   {
@@ -2654,9 +2685,9 @@ const excelChallenges = [
       }
     ],
     "targetCell": "F2",
-    "instruction": "Tulis rumus =VLOOKUP(E2, A2:C7, 3, FALSE) di sel F2 untuk mencari harga susu.",
+    "instruction": "Gunakan fungsi VLOOKUP (menggunakan parameter data E2, A2:C7, 3, FALSE) di sel F2 untuk mencari harga susu.",
     "babyHint": "🍼 Bahasa Bayi: =VLOOKUP(E2, A2:C7, 3, FALSE). VLOOKUP artinya Vertical Lookup, mencari dari atas ke bawah!",
-    "starterFormula": "=VLOOKUP(",
+    "starterFormula": "=",
     "quickChips": [
       "=VLOOKUP(",
       "E2",
@@ -2681,7 +2712,8 @@ const excelChallenges = [
       "title": "💡 CONTOH SERUPA: Mencari Nomor Telepon Karyawan",
       "kasusSerupa": "Tabel Kontak: ID di A2:C5. Cari ID di E2. Rumus: =VLOOKUP(E2, A2:C5, 3, FALSE).",
       "rumusContoh": "=VLOOKUP(E2, A2:C5, 3, FALSE)",
-      "nalarBayi": "Excel mencari ID di kolom 1, lalu saat ketemu langsung geser ke kolom 3 untuk mengambil nomor telepon!"
+      "nalarBayi": "Excel mencari ID di kolom 1, lalu saat ketemu langsung geser ke kolom 3 untuk mengambil nomor telepon!",
+      "hasilContoh": "Terevaluasi otomatis oleh Excel sesuai data contoh"
     }
   },
   {
@@ -2755,9 +2787,9 @@ const excelChallenges = [
       }
     ],
     "targetCell": "E2",
-    "instruction": "Tulis rumus =VLOOKUP(D2, A2:C7, 2, FALSE) di sel E2.",
+    "instruction": "Gunakan fungsi VLOOKUP (menggunakan parameter data D2, A2:C7, 2, FALSE) di sel E2.",
     "babyHint": "🍼 Bahasa Bayi: =VLOOKUP(D2, A2:C7, 2, FALSE). Ambil kolom ke-2 karena kolom Nama berada di urutan kedua!",
-    "starterFormula": "=VLOOKUP(",
+    "starterFormula": "=",
     "quickChips": [
       "=VLOOKUP(",
       "D2",
@@ -2782,7 +2814,8 @@ const excelChallenges = [
       "title": "💡 CONTOH SERUPA: Mencari Judul Buku dari Kode ISBN",
       "kasusSerupa": "Tabel Perpustakaan: ISBN di A2, Judul di B2. Rumus: =VLOOKUP(D2, A2:B6, 2, FALSE).",
       "rumusContoh": "=VLOOKUP(D2, A2:B6, 2, FALSE)",
-      "nalarBayi": "Excel mencocokkan kode ISBN di kolom A dan memberikan judul buku di kolom B!"
+      "nalarBayi": "Excel mencocokkan kode ISBN di kolom A dan memberikan judul buku di kolom B!",
+      "hasilContoh": "Terevaluasi otomatis oleh Excel sesuai data contoh"
     }
   },
   {
@@ -2855,9 +2888,9 @@ const excelChallenges = [
       }
     ],
     "targetCell": "C2",
-    "instruction": "Ketik rumus =VLOOKUP(B2, E2:F6, 2, TRUE) di sel C2 untuk mencari tarif komisi 15 Juta.",
+    "instruction": "Gunakan fungsi VLOOKUP (menggunakan parameter data B2, E2:F6, 2, TRUE) di sel C2 untuk mencari tarif komisi 15 Juta.",
     "babyHint": "🍼 Bahasa Bayi: =VLOOKUP(B2, E2:F6, 2, TRUE). TRUE artinya mencari nilai pendekatan terdekat di bawahnya!",
-    "starterFormula": "=VLOOKUP(",
+    "starterFormula": "=",
     "quickChips": [
       "=VLOOKUP(",
       "B2",
@@ -2882,7 +2915,8 @@ const excelChallenges = [
       "title": "💡 CONTOH SERUPA: Menentukan Nilai Huruf dari Skor Ujian",
       "kasusSerupa": "Tabel Skala: Skor 78 di B2 dicocokkan ke tabel skala [0='E', 60='D', 70='C', 80='B', 90='A'].",
       "rumusContoh": "=VLOOKUP(B2, E2:F6, 2, TRUE)",
-      "nalarBayi": "Karena 78 berada di antara 70 dan 80, Excel memilih batas bawahnya yaitu 70 dan menghasilkan 'C'!"
+      "nalarBayi": "Karena 78 berada di antara 70 dan 80, Excel memilih batas bawahnya yaitu 70 dan menghasilkan 'C'!",
+      "hasilContoh": "Terevaluasi otomatis oleh Excel sesuai data contoh"
     }
   },
   {
@@ -2937,9 +2971,9 @@ const excelChallenges = [
       }
     ],
     "targetCell": "C4",
-    "instruction": "Tulis rumus =HLOOKUP(B4, B1:F2, 2, FALSE) di sel C4 untuk mencari tarif golongan 3.",
+    "instruction": "Gunakan fungsi HLOOKUP (menggunakan parameter data B4, B1:F2, 2, FALSE) di sel C4 untuk mencari tarif golongan 3.",
     "babyHint": "🍼 Bahasa Bayi: =HLOOKUP(B4, B1:F2, 2, FALSE). HLOOKUP adalah Horizontal Lookup, mencari ke samping kanan lalu turun ke bawah!",
-    "starterFormula": "=HLOOKUP(",
+    "starterFormula": "=",
     "quickChips": [
       "=HLOOKUP(",
       "B4",
@@ -2964,7 +2998,8 @@ const excelChallenges = [
       "title": "💡 CONTOH SERUPA: Mencari Diskon Pembelian Grosir Mendatar",
       "kasusSerupa": "Tabel Grosir: Jumlah di B1:D1 [10, 50, 100], Diskon di B2:D2 [5%, 10%, 15%]. Rumus: =HLOOKUP(B4, B1:D2, 2, TRUE).",
       "rumusContoh": "=HLOOKUP(B4, B1:D2, 2, TRUE)",
-      "nalarBayi": "Excel mencari kolom yang sesuai di baris 1, lalu meluncur ke baris 2 untuk mengambil persen diskon!"
+      "nalarBayi": "Excel mencari kolom yang sesuai di baris 1, lalu meluncur ke baris 2 untuk mengambil persen diskon!",
+      "hasilContoh": "Terevaluasi otomatis oleh Excel sesuai data contoh"
     }
   },
   {
@@ -3038,9 +3073,9 @@ const excelChallenges = [
       }
     ],
     "targetCell": "E2",
-    "instruction": "Tulis rumus modern =XLOOKUP(D2, B2:B7, C2:C7) di sel E2.",
+    "instruction": "Tulis rumus modern fungsi XLOOKUP (menggunakan parameter data D2, B2:B7, C2:C7) di sel E2.",
     "babyHint": "🍼 Bahasa Bayi: =XLOOKUP(D2, B2:B7, C2:C7). XLOOKUP formula masa depan! Tinggal tunjuk kata yang dicari, kolom asal, dan kolom tujuan!",
-    "starterFormula": "=XLOOKUP(",
+    "starterFormula": "=",
     "quickChips": [
       "=XLOOKUP(",
       "D2",
@@ -3060,7 +3095,8 @@ const excelChallenges = [
       "title": "💡 CONTOH SERUPA: Mencari Email Siswa dari Nama Lengkap",
       "kasusSerupa": "Tabel Siswa: Nama di A2:A5, Email di B2:B5. Cari nama D2. Rumus: =XLOOKUP(D2, A2:A5, B2:B5).",
       "rumusContoh": "=XLOOKUP(D2, A2:A5, B2:B5)",
-      "nalarBayi": "XLOOKUP sangat pintar dan otomatis mencari kecocokan persis tanpa perlu ketik FALSE lagi!"
+      "nalarBayi": "XLOOKUP sangat pintar dan otomatis mencari kecocokan persis tanpa perlu ketik FALSE lagi!",
+      "hasilContoh": "Terevaluasi otomatis oleh Excel sesuai data contoh"
     }
   },
   {
@@ -3120,9 +3156,9 @@ const excelChallenges = [
       }
     ],
     "targetCell": "B9",
-    "instruction": "Tulis rumus =MATCH('Kopi Arabika', A2:A8, 0) di sel B9.",
+    "instruction": "Gunakan fungsi MATCH (menggunakan parameter data 'Kopi Arabika', A2:A8, 0) di sel B9.",
     "babyHint": "🍼 Bahasa Bayi: =MATCH(\"Kopi Arabika\", A2:A8, 0). MATCH adalah detektif nomor baris! Dia menjawab ada di baris ke berapa!",
-    "starterFormula": "=MATCH(",
+    "starterFormula": "=",
     "quickChips": [
       "=MATCH(",
       "\"Kopi Arabika\"",
@@ -3142,7 +3178,8 @@ const excelChallenges = [
       "title": "💡 CONTOH SERUPA: Mengetahui Posisi Bulan Juni dalam Daftar",
       "kasusSerupa": "Tabel Bulan: Daftar bulan A1:A12. Rumus: =MATCH('Juni', A1:A12, 0).",
       "rumusContoh": "=MATCH(\"Juni\", A1:A12, 0)",
-      "nalarBayi": "Karena Juni adalah bulan ke-6, MATCH langsung mengeluarkan angka 6!"
+      "nalarBayi": "Karena Juni adalah bulan ke-6, MATCH langsung mengeluarkan angka 6!",
+      "hasilContoh": "Terevaluasi otomatis oleh Excel sesuai data contoh"
     }
   },
   {
@@ -3208,9 +3245,9 @@ const excelChallenges = [
       }
     ],
     "targetCell": "D2",
-    "instruction": "Tulis rumus =INDEX(A2:C7, 3, 2) di sel D2.",
+    "instruction": "Gunakan fungsi INDEX (menggunakan parameter data A2:C7, 3, 2) di sel D2.",
     "babyHint": "🍼 Bahasa Bayi: =INDEX(A2:C7, 3, 2). INDEX seperti koordinat peta: baris ke-3, kolom ke-2!",
-    "starterFormula": "=INDEX(",
+    "starterFormula": "=",
     "quickChips": [
       "=INDEX(",
       "A2:C7",
@@ -3230,7 +3267,8 @@ const excelChallenges = [
       "title": "💡 CONTOH SERUPA: Mengambil Nama Juara 1 di Baris 1",
       "kasusSerupa": "Tabel Nilai: Tabel di A2:B5. Rumus: =INDEX(A2:B5, 1, 2).",
       "rumusContoh": "=INDEX(A2:B5, 1, 2)",
-      "nalarBayi": "Excel pergi ke baris ke-1, kolom ke-2, lalu mengembalikan nama sang juara!"
+      "nalarBayi": "Excel pergi ke baris ke-1, kolom ke-2, lalu mengembalikan nama sang juara!",
+      "hasilContoh": "Terevaluasi otomatis oleh Excel sesuai data contoh"
     }
   },
   {
@@ -3304,9 +3342,9 @@ const excelChallenges = [
       }
     ],
     "targetCell": "E2",
-    "instruction": "Tulis rumus =INDEX(C2:C7, MATCH(D2, B2:B7, 0)) di sel E2.",
+    "instruction": "Gunakan fungsi INDEX (menggunakan parameter data C2:C7, MATCH(D2, B2:B7, 0)) di sel E2.",
     "babyHint": "🍼 Bahasa Bayi: =INDEX(C2:C7, MATCH(D2, B2:B7, 0)). MATCH mencari posisi barisnya, lalu INDEX mengambil kotanya!",
-    "starterFormula": "=INDEX(",
+    "starterFormula": "=",
     "quickChips": [
       "=INDEX(",
       "C2:C7",
@@ -3328,7 +3366,8 @@ const excelChallenges = [
       "title": "💡 CONTOH SERUPA: Mengambil Harga dari Nama Barang",
       "kasusSerupa": "Tabel: Harga di B2:B6, Nama di A2:A6. Cari nama D2: =INDEX(B2:B6, MATCH(D2, A2:A6, 0)).",
       "rumusContoh": "=INDEX(B2:B6, MATCH(D2, A2:A6, 0))",
-      "nalarBayi": "Kombinasi ini jauh lebih fleksibel dari VLOOKUP karena bisa mencari ke arah mana saja!"
+      "nalarBayi": "Kombinasi ini jauh lebih fleksibel dari VLOOKUP karena bisa mencari ke arah mana saja!",
+      "hasilContoh": "Terevaluasi otomatis oleh Excel sesuai data contoh"
     }
   },
   {
@@ -3402,9 +3441,9 @@ const excelChallenges = [
       }
     ],
     "targetCell": "E2",
-    "instruction": "Tulis rumus =XLOOKUP(D2, B2:B7, A2:A7) di sel E2.",
+    "instruction": "Gunakan fungsi XLOOKUP (menggunakan parameter data D2, B2:B7, A2:A7) di sel E2.",
     "babyHint": "🍼 Bahasa Bayi: =XLOOKUP(D2, B2:B7, A2:A7). XLOOKUP bebas mau ambil kolom sebelah kiri atau kanan!",
-    "starterFormula": "=XLOOKUP(",
+    "starterFormula": "=",
     "quickChips": [
       "=XLOOKUP(",
       "D2",
@@ -3424,7 +3463,8 @@ const excelChallenges = [
       "title": "💡 CONTOH SERUPA: Mencari NIP dari Nama Karyawan",
       "kasusSerupa": "Tabel Pegawai: NIP di A2:A5 (kiri), Nama di B2:B5 (kanan). Rumus: =XLOOKUP(D2, B2:B5, A2:A5).",
       "rumusContoh": "=XLOOKUP(D2, B2:B5, A2:A5)",
-      "nalarBayi": "Excel mencari nama di B lalu mengambil NIP di sebelah kirinya tanpa kendala!"
+      "nalarBayi": "Excel mencari nama di B lalu mengambil NIP di sebelah kirinya tanpa kendala!",
+      "hasilContoh": "Terevaluasi otomatis oleh Excel sesuai data contoh"
     }
   },
   {
@@ -3474,9 +3514,9 @@ const excelChallenges = [
       }
     ],
     "targetCell": "E2",
-    "instruction": "Tulis rumus =XLOOKUP(D2, A2:A4, B2:B4, 'Tidak Ditemukan') di sel E2.",
+    "instruction": "Gunakan fungsi XLOOKUP (menggunakan parameter data D2, A2:A4, B2:B4, 'Tidak Ditemukan') di sel E2.",
     "babyHint": "🍼 Bahasa Bayi: =XLOOKUP(D2, A2:A4, B2:B4, \"Tidak Ditemukan\"). Argumen ke-4 XLOOKUP adalah penyelamat anti pesan error #N/A!",
-    "starterFormula": "=XLOOKUP(",
+    "starterFormula": "=",
     "quickChips": [
       "=XLOOKUP(",
       "D2",
@@ -3497,7 +3537,8 @@ const excelChallenges = [
       "title": "💡 CONTOH SERUPA: Cek Nomor Anggota Member",
       "kasusSerupa": "Tabel Member: ID di A2:A5, Nama di B2:B5. Rumus: =XLOOKUP(D2, A2:A5, B2:B5, 'Bukan Member').",
       "rumusContoh": "=XLOOKUP(D2, A2:A5, B2:B5, \"Bukan Member\")",
-      "nalarBayi": "Jika ID tidak terdaftar di sistem, Excel menampilkan 'Bukan Member' secara ramah!"
+      "nalarBayi": "Jika ID tidak terdaftar di sistem, Excel menampilkan 'Bukan Member' secara ramah!",
+      "hasilContoh": "Terevaluasi otomatis oleh Excel sesuai data contoh"
     }
   },
   {
@@ -3585,9 +3626,9 @@ const excelChallenges = [
       }
     ],
     "targetCell": "C12",
-    "instruction": "Ketik rumus =MEDIAN(A2:A11) di sel C12 sesuai petunjuk dosen.",
+    "instruction": "Gunakan fungsi MEDIAN (menggunakan parameter data A2:A11) di sel C12 sesuai petunjuk dosen.",
     "babyHint": "🍼 Bahasa Bayi: =MEDIAN(A2:A11). Median membagi data jadi dua bagian pas di tengah-tengah!",
-    "starterFormula": "=MEDIAN(",
+    "starterFormula": "=",
     "quickChips": [
       "=MEDIAN(",
       "A2:A11",
@@ -3604,7 +3645,8 @@ const excelChallenges = [
       "title": "💡 CONTOH SERUPA: Nilai Tengah Gaji Karyawan",
       "kasusSerupa": "Tabel Gaji: Daftar gaji [3jt, 5jt, 9jt]. Rumus: =MEDIAN(A2:A4).",
       "rumusContoh": "=MEDIAN(A2:A4)",
-      "nalarBayi": "Setelah data diurutkan, angka yang tepat berada di posisi tengah adalah 5jt!"
+      "nalarBayi": "Setelah data diurutkan, angka yang tepat berada di posisi tengah adalah 5jt!",
+      "hasilContoh": "Terevaluasi otomatis oleh Excel sesuai data contoh"
     }
   },
   {
@@ -3705,9 +3747,9 @@ const excelChallenges = [
       }
     ],
     "targetCell": "D12",
-    "instruction": "Ketik rumus =MODE(A2:A11) di sel D12 sesuai workbook dosen.",
+    "instruction": "Gunakan fungsi MODE (menggunakan parameter data A2:A11) di sel D12 sesuai workbook dosen.",
     "babyHint": "🍼 Bahasa Bayi: =MODE(A2:A11). MODE itu Modus, mencari siapa yang paling laris dan sering nongol!",
-    "starterFormula": "=MODE(",
+    "starterFormula": "=",
     "quickChips": [
       "=MODE(",
       "A2:A11",
@@ -3724,7 +3766,8 @@ const excelChallenges = [
       "title": "💡 CONTOH SERUPA: Ukuran Sepatu Terlaris di Toko",
       "kasusSerupa": "Tabel Kasir: Ukuran sepatu yang terjual [39, 42, 40, 42, 41, 42]. Rumus: =MODE(A2:A7).",
       "rumusContoh": "=MODE(A2:A7)",
-      "nalarBayi": "Karena ukuran 42 muncul sebanyak 3 kali (paling banyak), maka modusnya adalah 42!"
+      "nalarBayi": "Karena ukuran 42 muncul sebanyak 3 kali (paling banyak), maka modusnya adalah 42!",
+      "hasilContoh": "Terevaluasi otomatis oleh Excel sesuai data contoh"
     }
   },
   {
@@ -3838,9 +3881,9 @@ const excelChallenges = [
       }
     ],
     "targetCell": "E12",
-    "instruction": "Ketik rumus =RANK(4, A2:A11, 0) di sel E12 persis lembar kerja dosen.",
+    "instruction": "Gunakan fungsi RANK (menggunakan parameter data 4, A2:A11, 0) di sel E12 persis lembar kerja dosen.",
     "babyHint": "🍼 Bahasa Bayi: =RANK(4, A2:A11, 0). Angka 0 di belakang artinya urutkan dari ranking 1 (nilai tertinggi)!",
-    "starterFormula": "=RANK(",
+    "starterFormula": "=",
     "quickChips": [
       "=RANK(",
       "4",
@@ -3860,7 +3903,8 @@ const excelChallenges = [
       "title": "💡 CONTOH SERUPA: Menentukan Juara Kelas",
       "kasusSerupa": "Tabel Siswa: Nilai Budi di B2 (95) dibandingkan ke seluruh kelas B2:B10. Rumus: =RANK(B2, B2:B10, 0).",
       "rumusContoh": "=RANK(B2, B2:B10, 0)",
-      "nalarBayi": "Karena nilai 95 paling tinggi di antara semua murid, Excel memberinya Ranking 1!"
+      "nalarBayi": "Karena nilai 95 paling tinggi di antara semua murid, Excel memberinya Ranking 1!",
+      "hasilContoh": "Terevaluasi otomatis oleh Excel sesuai data contoh"
     }
   },
   {
@@ -3982,9 +4026,9 @@ const excelChallenges = [
       }
     ],
     "targetCell": "E13",
-    "instruction": "Ketik rumus =RANK(4, A2:A11, 1) di sel E13.",
+    "instruction": "Gunakan fungsi RANK (menggunakan parameter data 4, A2:A11, 1) di sel E13.",
     "babyHint": "🍼 Bahasa Bayi: =RANK(4, A2:A11, 1). Angka 1 di belakang artinya urutan naik (angka paling kecil jadi juara 1)!",
-    "starterFormula": "=RANK(",
+    "starterFormula": "=",
     "quickChips": [
       "=RANK(",
       "4",
@@ -4004,7 +4048,8 @@ const excelChallenges = [
       "title": "💡 CONTOH SERUPA: Peringkat Waktu Tempuh Balap Sepeda",
       "kasusSerupa": "Tabel Balap: Waktu tempuh di A2 (10 detik). Seluruh peserta di A2:A5 = [12, 10, 15, 8].",
       "rumusContoh": "=RANK(A2, A2:A5, 1)",
-      "nalarBayi": "Hanya angka 8 yang lebih cepat dari 10, sehingga catatan waktu 10 detik berada di posisi peringkat ke-2!"
+      "nalarBayi": "Hanya angka 8 yang lebih cepat dari 10, sehingga catatan waktu 10 detik berada di posisi peringkat ke-2!",
+      "hasilContoh": "Terevaluasi otomatis oleh Excel sesuai data contoh"
     }
   },
   {
@@ -4092,9 +4137,9 @@ const excelChallenges = [
       }
     ],
     "targetCell": "C12",
-    "instruction": "Ketik rumus =LARGE(A2:A11, 3) di sel C12.",
+    "instruction": "Gunakan fungsi LARGE (menggunakan parameter data A2:A11, 3) di sel C12.",
     "babyHint": "🍼 Bahasa Bayi: =LARGE(A2:A11, 3). Kalau MAX cuma cari nomor 1, LARGE bisa cari juara 2, 3, 4 bebas!",
-    "starterFormula": "=LARGE(",
+    "starterFormula": "=",
     "quickChips": [
       "=LARGE(",
       "A2:A11",
@@ -4113,7 +4158,8 @@ const excelChallenges = [
       "title": "💡 CONTOH SERUPA: Mencari Penjualan Tertinggi Kedua (Runner-up)",
       "kasusSerupa": "Tabel Sales: Omset di B2:B6. Rumus: =LARGE(B2:B6, 2).",
       "rumusContoh": "=LARGE(B2:B6, 2)",
-      "nalarBayi": "Excel mengurutkan omset dari yang terbesar lalu mengambil ranking nomor 2!"
+      "nalarBayi": "Excel mengurutkan omset dari yang terbesar lalu mengambil ranking nomor 2!",
+      "hasilContoh": "Terevaluasi otomatis oleh Excel sesuai data contoh"
     }
   },
   {
@@ -4201,9 +4247,9 @@ const excelChallenges = [
       }
     ],
     "targetCell": "C12",
-    "instruction": "Ketik rumus =SMALL(A2:A11, 2) di sel C12.",
+    "instruction": "Gunakan fungsi SMALL (menggunakan parameter data A2:A11, 2) di sel C12.",
     "babyHint": "🍼 Bahasa Bayi: =SMALL(A2:A11, 2). SMALL adalah kebalikan LARGE, mencari angka terkecil ke-n!",
-    "starterFormula": "=SMALL(",
+    "starterFormula": "=",
     "quickChips": [
       "=SMALL(",
       "A2:A11",
@@ -4222,7 +4268,8 @@ const excelChallenges = [
       "title": "💡 CONTOH SERUPA: Mencari Harga Termurah Nomor 2",
       "kasusSerupa": "Tabel Vendor: Penawaran harga [10jt, 7jt, 12jt, 8jt]. Rumus: =SMALL(A2:A5, 2).",
       "rumusContoh": "=SMALL(A2:A5, 2)",
-      "nalarBayi": "Harga paling murah 7jt (ke-1), maka harga termurah kedua adalah 8jt!"
+      "nalarBayi": "Harga paling murah 7jt (ke-1), maka harga termurah kedua adalah 8jt!",
+      "hasilContoh": "Terevaluasi otomatis oleh Excel sesuai data contoh"
     }
   },
   {
@@ -4292,9 +4339,9 @@ const excelChallenges = [
       }
     ],
     "targetCell": "C9",
-    "instruction": "Ketik rumus =AVEDEV(A2:A8) di sel C9 sesuai file materi dosen.",
+    "instruction": "Gunakan fungsi AVEDEV (menggunakan parameter data A2:A8) di sel C9 sesuai file materi dosen.",
     "babyHint": "🍼 Bahasa Bayi: =AVEDEV(A2:A8). AVEDEV menghitung seberapa jauh rata-rata angka menyimpang dari titik tengahnya!",
-    "starterFormula": "=AVEDEV(",
+    "starterFormula": "=",
     "quickChips": [
       "=AVEDEV(",
       "A2:A8",
@@ -4311,7 +4358,8 @@ const excelChallenges = [
       "title": "💡 CONTOH SERUPA: Pengukuran Konsistensi Mesin Kopi",
       "kasusSerupa": "Tabel Suhu Mesin: Suhu air [88, 92, 90]. Rumus: =AVEDEV(A2:A4).",
       "rumusContoh": "=AVEDEV(A2:A4)",
-      "nalarBayi": "Rata-rata adalah 90. Jarak absolut tiap angka ke 90 dirata-ratakan menghasilkan deviasi mesin!"
+      "nalarBayi": "Rata-rata adalah 90. Jarak absolut tiap angka ke 90 dirata-ratakan menghasilkan deviasi mesin!",
+      "hasilContoh": "Terevaluasi otomatis oleh Excel sesuai data contoh"
     }
   },
   {
@@ -4399,9 +4447,9 @@ const excelChallenges = [
       }
     ],
     "targetCell": "C12",
-    "instruction": "Ketik rumus =TRIMMEAN(A2:A11, 0.2) di sel C12.",
+    "instruction": "Gunakan fungsi TRIMMEAN (menggunakan parameter data A2:A11, 0.2) di sel C12.",
     "babyHint": "🍼 Bahasa Bayi: =TRIMMEAN(A2:A11, 0.2). Memangkas nilai yang kelewat tinggi atau kelewat rendah sebelum dihitung rata-ratanya!",
-    "starterFormula": "=TRIMMEAN(",
+    "starterFormula": "=",
     "quickChips": [
       "=TRIMMEAN(",
       "A2:A11",
@@ -4420,7 +4468,8 @@ const excelChallenges = [
       "title": "💡 CONTOH SERUPA: Penilaian Juri Lomba Tari",
       "kasusSerupa": "Tabel Juri: Nilai [60, 85, 88, 90, 100]. Nilai terendah 60 dan tertinggi 100 dipotong agar adil.",
       "rumusContoh": "=TRIMMEAN(A2:A6, 0.4)",
-      "nalarBayi": "Rata-rata dihitung murni dari nilai juri penengah yang netral!"
+      "nalarBayi": "Rata-rata dihitung murni dari nilai juri penengah yang netral!",
+      "hasilContoh": "Terevaluasi otomatis oleh Excel sesuai data contoh"
     }
   },
   {
@@ -4526,9 +4575,9 @@ const excelChallenges = [
       }
     ],
     "targetCell": "E11",
-    "instruction": "Ketik rumus =GEOMEAN(A2:A10) di sel E11.",
+    "instruction": "Gunakan fungsi GEOMEAN (menggunakan parameter data A2:A10) di sel E11.",
     "babyHint": "🍼 Bahasa Bayi: =GEOMEAN(A2:A10). GEOMEAN dipakai untuk merata-ratakan persen pertumbuhan atau bunga berbunga!",
-    "starterFormula": "=GEOMEAN(",
+    "starterFormula": "=",
     "quickChips": [
       "=GEOMEAN(",
       "A2:A10",
@@ -4545,7 +4594,8 @@ const excelChallenges = [
       "title": "💡 CONTOH SERUPA: Pertumbuhan Penjualan Perusahaan Tahunan",
       "kasusSerupa": "Tabel Saham: Faktor pengali tiap tahun [1.2, 1.5, 1.1]. Rumus: =GEOMEAN(A2:A4).",
       "rumusContoh": "=GEOMEAN(A2:A4)",
-      "nalarBayi": "Menghitung akar pangkat ke-n dari perkalian seluruh faktor pertumbuhan!"
+      "nalarBayi": "Menghitung akar pangkat ke-n dari perkalian seluruh faktor pertumbuhan!",
+      "hasilContoh": "Terevaluasi otomatis oleh Excel sesuai data contoh"
     }
   },
   {
@@ -4651,9 +4701,9 @@ const excelChallenges = [
       }
     ],
     "targetCell": "E11",
-    "instruction": "Ketik rumus =HARMEAN(A2:A10) di sel E11.",
+    "instruction": "Gunakan fungsi HARMEAN (menggunakan parameter data A2:A10) di sel E11.",
     "babyHint": "🍼 Bahasa Bayi: =HARMEAN(A2:A10). HARMEAN sangat jitu untuk menghitung rata-rata kecepatan perjalanan!",
-    "starterFormula": "=HARMEAN(",
+    "starterFormula": "=",
     "quickChips": [
       "=HARMEAN(",
       "A2:A10",
@@ -4670,7 +4720,8 @@ const excelChallenges = [
       "title": "💡 CONTOH SERUPA: Kecepatan Bolak-Balik Mobil",
       "kasusSerupa": "Tabel Logistik: Pergi 60 km/jam, pulang 40 km/jam. Rumus: =HARMEAN(A2:A3).",
       "rumusContoh": "=HARMEAN(A2:A3)",
-      "nalarBayi": "Rata-rata harmoniknya adalah 48 km/jam, bukan 50 km/jam!"
+      "nalarBayi": "Rata-rata harmoniknya adalah 48 km/jam, bukan 50 km/jam!",
+      "hasilContoh": "Terevaluasi otomatis oleh Excel sesuai data contoh"
     }
   },
   {
@@ -4698,9 +4749,9 @@ const excelChallenges = [
       }
     ],
     "targetCell": "C2",
-    "instruction": "Ketik rumus =STANDARDIZE(A2, 50, 10) di sel C2.",
+    "instruction": "Gunakan fungsi STANDARDIZE (menggunakan parameter data A2, 50, 10) di sel C2.",
     "babyHint": "🍼 Bahasa Bayi: =STANDARDIZE(A2, 50, 10). Rumusnya: (Nilai - Rata_Rata) / Standar_Deviasi. (55 - 50) / 10 = 0.5!",
-    "starterFormula": "=STANDARDIZE(",
+    "starterFormula": "=",
     "quickChips": [
       "=STANDARDIZE(",
       "A2",
@@ -4720,7 +4771,8 @@ const excelChallenges = [
       "title": "💡 CONTOH SERUPA: Membandingkan Skor TOEFL Antar Periode",
       "kasusSerupa": "Tabel Tes: Nilai 550, Mean 500, Stdev 50. Rumus: =STANDARDIZE(550, 500, 50).",
       "rumusContoh": "=STANDARDIZE(550, 500, 50)",
-      "nalarBayi": "Hasilnya adalah 1.0 (nilai peserta berada 1 standar deviasi di atas rata-rata populasi)!"
+      "nalarBayi": "Hasilnya adalah 1.0 (nilai peserta berada 1 standar deviasi di atas rata-rata populasi)!",
+      "hasilContoh": "Terevaluasi otomatis oleh Excel sesuai data contoh"
     }
   },
   {
@@ -4834,9 +4886,9 @@ const excelChallenges = [
       }
     ],
     "targetCell": "E12",
-    "instruction": "Ketik rumus =QUARTILE.INC(A2:A11, 1) di sel E12.",
+    "instruction": "Gunakan fungsi QUARTILE.INC (menggunakan parameter data A2:A11, 1) di sel E12.",
     "babyHint": "🍼 Bahasa Bayi: =QUARTILE.INC(A2:A11, 1). Kuartil membagi data jadi 4 bagian sama rata. Kuartil 1 adalah batas 25% pertama!",
-    "starterFormula": "=QUARTILE.INC(",
+    "starterFormula": "=",
     "quickChips": [
       "=QUARTILE.INC(",
       "A2:A11",
@@ -4857,7 +4909,8 @@ const excelChallenges = [
       "title": "💡 CONTOH SERUPA: Menentukan Batas Bonus Karyawan Rendah",
       "kasusSerupa": "Tabel Evaluasi: Nilai [40, 50, 60, 70, 80, 90]. Rumus: =QUARTILE.INC(A2:A7, 1).",
       "rumusContoh": "=QUARTILE.INC(A2:A7, 1)",
-      "nalarBayi": "Batas bawah 25% nilai terendah ditemukan di angka 52.5!"
+      "nalarBayi": "Batas bawah 25% nilai terendah ditemukan di angka 52.5!",
+      "hasilContoh": "Terevaluasi otomatis oleh Excel sesuai data contoh"
     }
   },
   {
@@ -4979,9 +5032,9 @@ const excelChallenges = [
       }
     ],
     "targetCell": "E13",
-    "instruction": "Ketik rumus =QUARTILE.INC(A2:A11, 3) di sel E13.",
+    "instruction": "Gunakan fungsi QUARTILE.INC (menggunakan parameter data A2:A11, 3) di sel E13.",
     "babyHint": "🍼 Bahasa Bayi: =QUARTILE.INC(A2:A11, 3). Kuartil 3 adalah garis batas untuk masuk kelompok 25% nilai paling hebat!",
-    "starterFormula": "=QUARTILE.INC(",
+    "starterFormula": "=",
     "quickChips": [
       "=QUARTILE.INC(",
       "A2:A11",
@@ -5002,7 +5055,8 @@ const excelChallenges = [
       "title": "💡 CONTOH SERUPA: Menentukan Ambang Pelanggan VIP Prioritas",
       "kasusSerupa": "Tabel Belanja: Kuartil 3 pengeluaran pelanggan bulanan. Rumus: =QUARTILE.INC(A2:A10, 3).",
       "rumusContoh": "=QUARTILE.INC(A2:A10, 3)",
-      "nalarBayi": "Pelanggan dengan belanja di atas kuartil 3 otomatis dipromosikan jadi VIP!"
+      "nalarBayi": "Pelanggan dengan belanja di atas kuartil 3 otomatis dipromosikan jadi VIP!",
+      "hasilContoh": "Terevaluasi otomatis oleh Excel sesuai data contoh"
     }
   },
   {
@@ -5116,9 +5170,9 @@ const excelChallenges = [
       }
     ],
     "targetCell": "E12",
-    "instruction": "Ketik rumus =QUARTILE.EXC(A2:A11, 1) di sel E12.",
+    "instruction": "Gunakan fungsi QUARTILE.EXC (menggunakan parameter data A2:A11, 1) di sel E12.",
     "babyHint": "🍼 Bahasa Bayi: =QUARTILE.EXC(A2:A11, 1). EXC singkatan dari Exclusive, membagi data dari rentang internal persentil murni!",
-    "starterFormula": "=QUARTILE.EXC(",
+    "starterFormula": "=",
     "quickChips": [
       "=QUARTILE.EXC(",
       "A2:A11",
@@ -5137,7 +5191,8 @@ const excelChallenges = [
       "title": "💡 CONTOH SERUPA: Evaluasi Ketat Standar Industri",
       "kasusSerupa": "Tabel Toleransi Mesin: Data penyimpangan A2:A11. Rumus: =QUARTILE.EXC(A2:A11, 1).",
       "rumusContoh": "=QUARTILE.EXC(A2:A11, 1)",
-      "nalarBayi": "Metode eksklusif menghitung batas kuartil dengan interpolasi 1/(N+1) yang lebih ketat!"
+      "nalarBayi": "Metode eksklusif menghitung batas kuartil dengan interpolasi 1/(N+1) yang lebih ketat!",
+      "hasilContoh": "Terevaluasi otomatis oleh Excel sesuai data contoh"
     }
   },
   {
@@ -5251,9 +5306,9 @@ const excelChallenges = [
       }
     ],
     "targetCell": "E12",
-    "instruction": "Ketik rumus =PERCENTILE.INC(A2:A11, 0.2) di sel E12 sesuai file materi dosen.",
+    "instruction": "Gunakan fungsi PERCENTILE.INC (menggunakan parameter data A2:A11, 0.2) di sel E12 sesuai file materi dosen.",
     "babyHint": "🍼 Bahasa Bayi: =PERCENTILE.INC(A2:A11, 0.2). Persentil adalah pembagian data menjadi 100 potong. 0.2 berarti potongan ke-20%!",
-    "starterFormula": "=PERCENTILE.INC(",
+    "starterFormula": "=",
     "quickChips": [
       "=PERCENTILE.INC(",
       "A2:A11",
@@ -5274,7 +5329,8 @@ const excelChallenges = [
       "title": "💡 CONTOH SERUPA: Menghitung SLA Kecepatan Server 95%",
       "kasusSerupa": "Tabel Respon Server: Waktu loading di A2:A100. Rumus: =PERCENTILE.INC(A2:A100, 0.95).",
       "rumusContoh": "=PERCENTILE.INC(A2:A100, 0.95)",
-      "nalarBayi": "Artinya 95% pengguna merasakan loading di bawah nilai persentil tersebut!"
+      "nalarBayi": "Artinya 95% pengguna merasakan loading di bawah nilai persentil tersebut!",
+      "hasilContoh": "Terevaluasi otomatis oleh Excel sesuai data contoh"
     }
   },
   {
@@ -5388,9 +5444,9 @@ const excelChallenges = [
       }
     ],
     "targetCell": "E12",
-    "instruction": "Ketik rumus =PERCENTILE.EXC(A2:A11, 0.8) di sel E12.",
+    "instruction": "Gunakan fungsi PERCENTILE.EXC (menggunakan parameter data A2:A11, 0.8) di sel E12.",
     "babyHint": "🍼 Bahasa Bayi: =PERCENTILE.EXC(A2:A11, 0.8). Mencari batas persentil dengan mengecualikan probabilitas 0 dan 1 mutlak!",
-    "starterFormula": "=PERCENTILE.EXC(",
+    "starterFormula": "=",
     "quickChips": [
       "=PERCENTILE.EXC(",
       "A2:A11",
@@ -5409,7 +5465,8 @@ const excelChallenges = [
       "title": "💡 CONTOH SERUPA: Nilai Kelayakan Beasiswa S2",
       "kasusSerupa": "Tabel Seleksi: Skor di A2:A50. Batas 80% atas dicari dengan: =PERCENTILE.EXC(A2:A50, 0.8).",
       "rumusContoh": "=PERCENTILE.EXC(A2:A50, 0.8)",
-      "nalarBayi": "Hanya pelamar dengan skor melebihi angka ini yang dipanggil wawancara!"
+      "nalarBayi": "Hanya pelamar dengan skor melebihi angka ini yang dipanggil wawancara!",
+      "hasilContoh": "Terevaluasi otomatis oleh Excel sesuai data contoh"
     }
   },
   {
@@ -5497,9 +5554,9 @@ const excelChallenges = [
       }
     ],
     "targetCell": "C12",
-    "instruction": "Ketik rumus =PERCENTRANK.INC(A2:A11, 5) di sel C12.",
+    "instruction": "Gunakan fungsi PERCENTRANK.INC (menggunakan parameter data A2:A11, 5) di sel C12.",
     "babyHint": "🍼 Bahasa Bayi: =PERCENTRANK.INC(A2:A11, 5). Menjawab pertanyaan: 'Angka 5 ini mengalahkan berapa persen peserta lain?'!",
-    "starterFormula": "=PERCENTRANK.INC(",
+    "starterFormula": "=",
     "quickChips": [
       "=PERCENTRANK.INC(",
       "A2:A11",
@@ -5520,7 +5577,8 @@ const excelChallenges = [
       "title": "💡 CONTOH SERUPA: Posisi Persentil Skor UTBK Siswa",
       "kasusSerupa": "Tabel UTBK: Skor 650 dibandingkan dengan seluruh peserta provinsi. Rumus: =PERCENTRANK.INC(A2:A1000, 650).",
       "rumusContoh": "=PERCENTRANK.INC(A2:A1000, 650)",
-      "nalarBayi": "Jika hasilnya 0.85, artinya skor siswa tersebut lebih tinggi dari 85% siswa lainnya!"
+      "nalarBayi": "Jika hasilnya 0.85, artinya skor siswa tersebut lebih tinggi dari 85% siswa lainnya!",
+      "hasilContoh": "Terevaluasi otomatis oleh Excel sesuai data contoh"
     }
   },
   {
@@ -5579,9 +5637,9 @@ const excelChallenges = [
       }
     ],
     "targetCell": "D6",
-    "instruction": "Ketik rumus =PROB(A2:A5, B2:B5, 7) di sel D6.",
+    "instruction": "Gunakan fungsi PROB (menggunakan parameter data A2:A5, B2:B5, 7) di sel D6.",
     "babyHint": "🍼 Bahasa Bayi: =PROB(A2:A5, B2:B5, 7). PROB mencocokkan angka dengan peluang munculnya masing-masing!",
-    "starterFormula": "=PROB(",
+    "starterFormula": "=",
     "quickChips": [
       "=PROB(",
       "A2:A5",
@@ -5601,7 +5659,8 @@ const excelChallenges = [
       "title": "💡 CONTOH SERUPA: Peluang Muncul Angka Dadu",
       "kasusSerupa": "Tabel Dadu: Mata dadu 1-6 masing-masing punya probabilitas 1/6. Rumus: =PROB(A2:A7, B2:B7, 4).",
       "rumusContoh": "=PROB(A2:A7, B2:B7, 4)",
-      "nalarBayi": "Excel mengambil peluang munculnya mata dadu 4 yaitu 0.1667!"
+      "nalarBayi": "Excel mengambil peluang munculnya mata dadu 4 yaitu 0.1667!",
+      "hasilContoh": "Terevaluasi otomatis oleh Excel sesuai data contoh"
     }
   },
   {
@@ -5667,9 +5726,9 @@ const excelChallenges = [
       }
     ],
     "targetCell": "D7",
-    "instruction": "Ketik rumus =PROB(A2:A5, B2:B5, 1, 3) di sel D7.",
+    "instruction": "Gunakan fungsi PROB (menggunakan parameter data A2:A5, B2:B5, 1, 3) di sel D7.",
     "babyHint": "🍼 Bahasa Bayi: =PROB(A2:A5, B2:B5, 1, 3). Menjumlahkan peluang semua kejadian yang berada di antara angka 1 dan 3!",
-    "starterFormula": "=PROB(",
+    "starterFormula": "=",
     "quickChips": [
       "=PROB(",
       "A2:A5",
@@ -5690,7 +5749,8 @@ const excelChallenges = [
       "title": "💡 CONTOH SERUPA: Peluang Jumlah Cacat Produksi Antara 0 Sampai 2",
       "kasusSerupa": "Tabel Cacat: Peluang cacat 0 (0.8), 1 (0.15), 2 (0.04). Rumus: =PROB(A2:A4, B2:B4, 0, 2).",
       "rumusContoh": "=PROB(A2:A4, B2:B4, 0, 2)",
-      "nalarBayi": "Excel menjumlahkan 0.8 + 0.15 + 0.04 = 0.99!"
+      "nalarBayi": "Excel menjumlahkan 0.8 + 0.15 + 0.04 = 0.99!",
+      "hasilContoh": "Terevaluasi otomatis oleh Excel sesuai data contoh"
     }
   },
   {
@@ -5778,9 +5838,9 @@ const excelChallenges = [
       }
     ],
     "targetCell": "C12",
-    "instruction": "Ketik rumus =SKEW(A2:A11) di sel C12 sesuai petunjuk materi dosen.",
+    "instruction": "Gunakan fungsi SKEW (menggunakan parameter data A2:A11) di sel C12 sesuai petunjuk materi dosen.",
     "babyHint": "🍼 Bahasa Bayi: =SKEW(A2:A11). SKEW mengecek apakah grafik data lebih miring ke kiri (negatif) atau condong ke kanan (positif)!",
-    "starterFormula": "=SKEW(",
+    "starterFormula": "=",
     "quickChips": [
       "=SKEW(",
       "A2:A11",
@@ -5797,7 +5857,8 @@ const excelChallenges = [
       "title": "💡 CONTOH SERUPA: Distribusi Pendapatan Masyarakat",
       "kasusSerupa": "Tabel Gaji: Mayoritas bergaji standar tapi ada beberapa konglomerat berpenghasilan super raksasa.",
       "rumusContoh": "=SKEW(A2:A20)",
-      "nalarBayi": "Nilai SKEW positif menunjukkan ekor data memanjang ke kanan ke arah nilai tinggi!"
+      "nalarBayi": "Nilai SKEW positif menunjukkan ekor data memanjang ke kanan ke arah nilai tinggi!",
+      "hasilContoh": "Terevaluasi otomatis oleh Excel sesuai data contoh"
     }
   },
   {
@@ -5885,9 +5946,9 @@ const excelChallenges = [
       }
     ],
     "targetCell": "C12",
-    "instruction": "Ketik rumus =KURT(A2:A11) di sel C12.",
+    "instruction": "Gunakan fungsi KURT (menggunakan parameter data A2:A11) di sel C12.",
     "babyHint": "🍼 Bahasa Bayi: =KURT(A2:A11). KURT mengecek apakah gunung kurva datanya lancip menjulang tinggi atau landai datar!",
-    "starterFormula": "=KURT(",
+    "starterFormula": "=",
     "quickChips": [
       "=KURT(",
       "A2:A11",
@@ -5904,7 +5965,8 @@ const excelChallenges = [
       "title": "💡 CONTOH SERUPA: Uji Volatilitas Fluktuasi Saham",
       "kasusSerupa": "Tabel Saham: Return harian saham di A2:A30. Rumus: =KURT(A2:A30).",
       "rumusContoh": "=KURT(A2:A30)",
-      "nalarBayi": "Kurtosis tinggi menandakan sering terjadi lonjakan ekstrim (risiko ekor tebal)!"
+      "nalarBayi": "Kurtosis tinggi menandakan sering terjadi lonjakan ekstrim (risiko ekor tebal)!",
+      "hasilContoh": "Terevaluasi otomatis oleh Excel sesuai data contoh"
     }
   },
   {
@@ -5992,9 +6054,9 @@ const excelChallenges = [
       }
     ],
     "targetCell": "C12",
-    "instruction": "Ketik rumus =STDEV.S(A2:A11) di sel C12 sesuai file latihan dosen.",
+    "instruction": "Gunakan fungsi STDEV.S (menggunakan parameter data A2:A11) di sel C12 sesuai file latihan dosen.",
     "babyHint": "🍼 Bahasa Bayi: =STDEV.S(A2:A11). Standar Deviasi mengukur seberapa terpencar dan bervariasinya data dari rata-ratanya!",
-    "starterFormula": "=STDEV.S(",
+    "starterFormula": "=",
     "quickChips": [
       "=STDEV.S(",
       "A2:A11",
@@ -6012,7 +6074,8 @@ const excelChallenges = [
       "title": "💡 CONTOH SERUPA: Uji Kestabilan Daya Tahan Lampu LED",
       "kasusSerupa": "Tabel QC: Masa hidup 5 sampel lampu [1000, 1050, 980, 1020, 990] jam. Rumus: =STDEV.S(A2:A6).",
       "rumusContoh": "=STDEV.S(A2:A6)",
-      "nalarBayi": "Semakin kecil nilai standar deviasi, kualitas produk semakin seragam dan konsisten!"
+      "nalarBayi": "Semakin kecil nilai standar deviasi, kualitas produk semakin seragam dan konsisten!",
+      "hasilContoh": "Terevaluasi otomatis oleh Excel sesuai data contoh"
     }
   },
   {
@@ -6100,9 +6163,9 @@ const excelChallenges = [
       }
     ],
     "targetCell": "C12",
-    "instruction": "Ketik rumus =STDEV.P(A2:A11) di sel C12.",
+    "instruction": "Gunakan fungsi STDEV.P (menggunakan parameter data A2:A11) di sel C12.",
     "babyHint": "🍼 Bahasa Bayi: =STDEV.P(A2:A11). Huruf P artinya Population. Pembaginya adalah N utuh tanpa dikurangi 1!",
-    "starterFormula": "=STDEV.P(",
+    "starterFormula": "=",
     "quickChips": [
       "=STDEV.P(",
       "A2:A11",
@@ -6120,7 +6183,8 @@ const excelChallenges = [
       "title": "💡 CONTOH SERUPA: Variasi Usia Seluruh Karyawan Satu Kantor",
       "kasusSerupa": "Tabel Kantor: Usia semua 20 karyawan di A2:A21. Rumus: =STDEV.P(A2:A21).",
       "rumusContoh": "=STDEV.P(A2:A21)",
-      "nalarBayi": "Karena datanya lengkap meliputi seluruh orang di kantor, gunakan .P untuk hasil akurat!"
+      "nalarBayi": "Karena datanya lengkap meliputi seluruh orang di kantor, gunakan .P untuk hasil akurat!",
+      "hasilContoh": "Terevaluasi otomatis oleh Excel sesuai data contoh"
     }
   },
   {
@@ -6208,9 +6272,9 @@ const excelChallenges = [
       }
     ],
     "targetCell": "C12",
-    "instruction": "Ketik rumus =VAR.S(A2:A11) di sel C12.",
+    "instruction": "Gunakan fungsi VAR.S (menggunakan parameter data A2:A11) di sel C12.",
     "babyHint": "🍼 Bahasa Bayi: =VAR.S(A2:A11). Varians adalah kuadrat dari standar deviasi, induk dari pengukuran keragaman data!",
-    "starterFormula": "=VAR.S(",
+    "starterFormula": "=",
     "quickChips": [
       "=VAR.S(",
       "A2:A11",
@@ -6228,7 +6292,8 @@ const excelChallenges = [
       "title": "💡 CONTOH SERUPA: Pengukuran Keberagaman Skor Tes",
       "kasusSerupa": "Tabel Psikotes: Nilai sampel pelamar kerja di A2:A10. Rumus: =VAR.S(A2:A10).",
       "rumusContoh": "=VAR.S(A2:A10)",
-      "nalarBayi": "Excel menghitung jumlah selisih kuadrat dari nilai rata-rata dibagi n-1!"
+      "nalarBayi": "Excel menghitung jumlah selisih kuadrat dari nilai rata-rata dibagi n-1!",
+      "hasilContoh": "Terevaluasi otomatis oleh Excel sesuai data contoh"
     }
   },
   {
@@ -6316,9 +6381,9 @@ const excelChallenges = [
       }
     ],
     "targetCell": "C12",
-    "instruction": "Ketik rumus =VAR.P(A2:A11) di sel C12.",
+    "instruction": "Gunakan fungsi VAR.P (menggunakan parameter data A2:A11) di sel C12.",
     "babyHint": "🍼 Bahasa Bayi: =VAR.P(A2:A11). VAR.P menghitung varians murni tanpa koreksi sampel derajat kebebasan!",
-    "starterFormula": "=VAR.P(",
+    "starterFormula": "=",
     "quickChips": [
       "=VAR.P(",
       "A2:A11",
@@ -6336,7 +6401,8 @@ const excelChallenges = [
       "title": "💡 CONTOH SERUPA: Varians Dimensi Seluruh Baut Cetakan Pabrik",
       "kasusSerupa": "Tabel Pabrik: Panjang baut [50, 51, 49, 50, 50] mm. Rumus: =VAR.P(A2:A6).",
       "rumusContoh": "=VAR.P(A2:A6)",
-      "nalarBayi": "Mengukur varians menyeluruh terhadap seluruh komponen batch produksi!"
+      "nalarBayi": "Mengukur varians menyeluruh terhadap seluruh komponen batch produksi!",
+      "hasilContoh": "Terevaluasi otomatis oleh Excel sesuai data contoh"
     }
   },
   {
@@ -6409,9 +6475,9 @@ const excelChallenges = [
       }
     ],
     "targetCell": "D8",
-    "instruction": "Ketik rumus =DEVSQ(A2:A7) di sel D8 sesuai file latihan dosen.",
+    "instruction": "Gunakan fungsi DEVSQ (menggunakan parameter data A2:A7) di sel D8 sesuai file latihan dosen.",
     "babyHint": "🍼 Bahasa Bayi: =DEVSQ(A2:A7). Deviasi dikuadratkan lalu dijumlahkan semuanya, hasilnya tepat 28!",
-    "starterFormula": "=DEVSQ(",
+    "starterFormula": "=",
     "quickChips": [
       "=DEVSQ(",
       "A2:A7",
@@ -6428,7 +6494,8 @@ const excelChallenges = [
       "title": "💡 CONTOH SERUPA: Menghitung Komponen ANOVA",
       "kasusSerupa": "Tabel Statistik: Data [2, 4, 6]. Rata-ratanya 4. Kuadrat deviasi: (-2)^2 + (0)^2 + (2)^2 = 4 + 0 + 4 = 8.",
       "rumusContoh": "=DEVSQ(A2:A4)",
-      "nalarBayi": "Excel menghitung total variasi kuadratik secara instan!"
+      "nalarBayi": "Excel menghitung total variasi kuadratik secara instan!",
+      "hasilContoh": "Terevaluasi otomatis oleh Excel sesuai data contoh"
     }
   },
   {
@@ -6522,9 +6589,9 @@ const excelChallenges = [
       }
     ],
     "targetCell": "D11",
-    "instruction": "Ketik rumus =CORREL(A2:A10, B2:B10) di sel D11 sesuai contoh dosen.",
+    "instruction": "Gunakan fungsi CORREL (menggunakan parameter data A2:A10, B2:B10) di sel D11 sesuai contoh dosen.",
     "babyHint": "🍼 Bahasa Bayi: =CORREL(A2:A10, B2:B10). Korelasi mengukur keeratan hubungan: jika mendekati 1 artinya makin banyak orang, makin boros air!",
-    "starterFormula": "=CORREL(",
+    "starterFormula": "=",
     "quickChips": [
       "=CORREL(",
       "A2:A10",
@@ -6543,7 +6610,8 @@ const excelChallenges = [
       "title": "💡 CONTOH SERUPA: Hubungan Biaya Iklan Medsos vs Omset Penjualan",
       "kasusSerupa": "Tabel Bisnis: Iklan di A2:A6, Omset di B2:B6. Rumus: =CORREL(A2:A6, B2:B6).",
       "rumusContoh": "=CORREL(A2:A6, B2:B6)",
-      "nalarBayi": "Nilai korelasi 0.84 membuktikan bahwa belanja iklan sangat kuat mendongkrak omset!"
+      "nalarBayi": "Nilai korelasi 0.84 membuktikan bahwa belanja iklan sangat kuat mendongkrak omset!",
+      "hasilContoh": "Terevaluasi otomatis oleh Excel sesuai data contoh"
     }
   },
   {
@@ -6637,9 +6705,9 @@ const excelChallenges = [
       }
     ],
     "targetCell": "D11",
-    "instruction": "Ketik rumus =PEARSON(A2:A10, B2:B10) di sel D11.",
+    "instruction": "Gunakan fungsi PEARSON (menggunakan parameter data A2:A10, B2:B10) di sel D11.",
     "babyHint": "🍼 Bahasa Bayi: =PEARSON(A2:A10, B2:B10). Rumus Pearson menghasilkan angka r korelasi linier dua variabel data!",
-    "starterFormula": "=PEARSON(",
+    "starterFormula": "=",
     "quickChips": [
       "=PEARSON(",
       "A2:A10",
@@ -6658,7 +6726,8 @@ const excelChallenges = [
       "title": "💡 CONTOH SERUPA: Hubungan Jam Belajar vs Nilai Ujian",
       "kasusSerupa": "Tabel Kampus: Jam belajar di A2:A10 dan Nilai di B2:B10. Rumus: =PEARSON(A2:A10, B2:B10).",
       "rumusContoh": "=PEARSON(A2:A10, B2:B10)",
-      "nalarBayi": "Pearson memberikan koefisien korelasi linier parametrik standar riset ilmiah!"
+      "nalarBayi": "Pearson memberikan koefisien korelasi linier parametrik standar riset ilmiah!",
+      "hasilContoh": "Terevaluasi otomatis oleh Excel sesuai data contoh"
     }
   },
   {
@@ -6716,9 +6785,9 @@ const excelChallenges = [
       }
     ],
     "targetCell": "C7",
-    "instruction": "Ketik rumus =COVARIANCE.P(A2:A6, B2:B6) di sel C7.",
+    "instruction": "Gunakan fungsi COVARIANCE.P (menggunakan parameter data A2:A6, B2:B6) di sel C7.",
     "babyHint": "🍼 Bahasa Bayi: =COVARIANCE.P(A2:A6, B2:B6). Mengukur arah hubungan: nilai positif artinya kalau Data1 naik, Data2 ikut naik!",
-    "starterFormula": "=COVARIANCE.P(",
+    "starterFormula": "=",
     "quickChips": [
       "=COVARIANCE.P(",
       "A2:A6",
@@ -6738,7 +6807,8 @@ const excelChallenges = [
       "title": "💡 CONTOH SERUPA: Kovarians Harga Saham dan Indeks Pasar",
       "kasusSerupa": "Tabel Saham: Return saham di A2:A6 dan IHSG di B2:B6. Rumus: =COVARIANCE.P(A2:A6, B2:B6).",
       "rumusContoh": "=COVARIANCE.P(A2:A6, B2:B6)",
-      "nalarBayi": "Kovarians positif membuktikan pergerakan saham searah dengan tren pasar!"
+      "nalarBayi": "Kovarians positif membuktikan pergerakan saham searah dengan tren pasar!",
+      "hasilContoh": "Terevaluasi otomatis oleh Excel sesuai data contoh"
     }
   },
   {
@@ -6796,9 +6866,9 @@ const excelChallenges = [
       }
     ],
     "targetCell": "C7",
-    "instruction": "Ketik rumus =COVARIANCE.S(A2:A6, B2:B6) di sel C7.",
+    "instruction": "Gunakan fungsi COVARIANCE.S (menggunakan parameter data A2:A6, B2:B6) di sel C7.",
     "babyHint": "🍼 Bahasa Bayi: =COVARIANCE.S(A2:A6, B2:B6). Versi sampel dari kovarians untuk data penelitian lapangan!",
-    "starterFormula": "=COVARIANCE.S(",
+    "starterFormula": "=",
     "quickChips": [
       "=COVARIANCE.S(",
       "A2:A6",
@@ -6817,7 +6887,8 @@ const excelChallenges = [
       "title": "💡 CONTOH SERUPA: Kovarians Sampel Pengukuran Fisika",
       "kasusSerupa": "Tabel Laboratorium: Tekanan di A2:A6 dan Suhu di B2:B6. Rumus: =COVARIANCE.S(A2:A6, B2:B6).",
       "rumusContoh": "=COVARIANCE.S(A2:A6, B2:B6)",
-      "nalarBayi": "Menggunakan koreksi derajat kebebasan n-1 untuk estimasi populasi tak bias!"
+      "nalarBayi": "Menggunakan koreksi derajat kebebasan n-1 untuk estimasi populasi tak bias!",
+      "hasilContoh": "Terevaluasi otomatis oleh Excel sesuai data contoh"
     }
   },
   {
@@ -6911,9 +6982,9 @@ const excelChallenges = [
       }
     ],
     "targetCell": "D11",
-    "instruction": "Ketik rumus =RSQ(A2:A10, B2:B10) di sel D11.",
+    "instruction": "Gunakan fungsi RSQ (menggunakan parameter data A2:A10, B2:B10) di sel D11.",
     "babyHint": "🍼 Bahasa Bayi: =RSQ(A2:A10, B2:B10). RSQ adalah R-Square! Menunjukkan berapa persen variasi konsumsi air yang bisa dijelaskan oleh jumlah keluarga!",
-    "starterFormula": "=RSQ(",
+    "starterFormula": "=",
     "quickChips": [
       "=RSQ(",
       "A2:A10",
@@ -6932,7 +7003,8 @@ const excelChallenges = [
       "title": "💡 CONTOH SERUPA: Kekuatan Model Regresi Penjualan",
       "kasusSerupa": "Tabel Toko: Penjualan di B2:B10, Iklan di A2:A10. Rumus: =RSQ(B2:B10, A2:A10).",
       "rumusContoh": "=RSQ(B2:B10, A2:A10)",
-      "nalarBayi": "Nilai RSQ 0.70 berarti 70% naik turunnya penjualan disebabkan langsung oleh biaya iklan!"
+      "nalarBayi": "Nilai RSQ 0.70 berarti 70% naik turunnya penjualan disebabkan langsung oleh biaya iklan!",
+      "hasilContoh": "Terevaluasi otomatis oleh Excel sesuai data contoh"
     }
   },
   {
@@ -7038,9 +7110,9 @@ const excelChallenges = [
       }
     ],
     "targetCell": "E11",
-    "instruction": "Ketik rumus =FORECAST(10, B2:B10, A2:A10) di sel E11 sesuai lembar kerja dosen.",
+    "instruction": "Gunakan fungsi FORECAST (menggunakan parameter data 10, B2:B10, A2:A10) di sel E11 sesuai lembar kerja dosen.",
     "babyHint": "🍼 Bahasa Bayi: =FORECAST(10, B2:B10, A2:A10). FORECAST seperti ramalan cuaca bisnis berbasis data masa lalu!",
-    "starterFormula": "=FORECAST(",
+    "starterFormula": "=",
     "quickChips": [
       "=FORECAST(",
       "10",
@@ -7060,7 +7132,8 @@ const excelChallenges = [
       "title": "💡 CONTOH SERUPA: Memprediksi Nilai Ujian dari Jam Belajar",
       "kasusSerupa": "Tabel Ujian: Nilai di B2:B6, Jam belajar di A2:A6. Berapa nilai jika belajar 8 jam? =FORECAST(8, B2:B6, A2:A6).",
       "rumusContoh": "=FORECAST(8, B2:B6, A2:A6)",
-      "nalarBayi": "Excel menggunakan garis tren regresi linier terbaik untuk meramal hasil masa depan!"
+      "nalarBayi": "Excel menggunakan garis tren regresi linier terbaik untuk meramal hasil masa depan!",
+      "hasilContoh": "Terevaluasi otomatis oleh Excel sesuai data contoh"
     }
   },
   {
@@ -7166,9 +7239,9 @@ const excelChallenges = [
       }
     ],
     "targetCell": "E11",
-    "instruction": "Ketik rumus =SLOPE(B2:B10, A2:A10) di sel E11.",
+    "instruction": "Gunakan fungsi SLOPE (menggunakan parameter data B2:B10, A2:A10) di sel E11.",
     "babyHint": "🍼 Bahasa Bayi: =SLOPE(B2:B10, A2:A10). SLOPE adalah gradien kemiringan garis. Setiap tambah 1 promosi, penjualan naik sebesar slope!",
-    "starterFormula": "=SLOPE(",
+    "starterFormula": "=",
     "quickChips": [
       "=SLOPE(",
       "B2:B10",
@@ -7187,7 +7260,8 @@ const excelChallenges = [
       "title": "💡 CONTOH SERUPA: Laju Penambahan Biaya per Unit Tambahan",
       "kasusSerupa": "Tabel Biaya Produksi: Total biaya di Y (B2:B6), Unit di X (A2:A6). Rumus: =SLOPE(B2:B6, A2:A6).",
       "rumusContoh": "=SLOPE(B2:B6, A2:A6)",
-      "nalarBayi": "Slope menunjukkan marginal cost atau biaya variabel per satu unit tambahan!"
+      "nalarBayi": "Slope menunjukkan marginal cost atau biaya variabel per satu unit tambahan!",
+      "hasilContoh": "Terevaluasi otomatis oleh Excel sesuai data contoh"
     }
   },
   {
@@ -7293,9 +7367,9 @@ const excelChallenges = [
       }
     ],
     "targetCell": "E11",
-    "instruction": "Ketik rumus =INTERCEPT(B2:B10, A2:A10) di sel E11.",
+    "instruction": "Gunakan fungsi INTERCEPT (menggunakan parameter data B2:B10, A2:A10) di sel E11.",
     "babyHint": "🍼 Bahasa Bayi: =INTERCEPT(B2:B10, A2:A10). INTERCEPT adalah konstanta dasar: penjualan minimal yang tetap ada meski tanpa promosi sama sekali!",
-    "starterFormula": "=INTERCEPT(",
+    "starterFormula": "=",
     "quickChips": [
       "=INTERCEPT(",
       "B2:B10",
@@ -7314,7 +7388,8 @@ const excelChallenges = [
       "title": "💡 CONTOH SERUPA: Biaya Beban Tetap Listrik Bulanan",
       "kasusSerupa": "Tabel Tagihan PLN: Tagihan di Y (B2:B6), Pemakaian kWh di X (A2:A6).",
       "rumusContoh": "=INTERCEPT(B2:B6, A2:A6)",
-      "nalarBayi": "Nilai intercept adalah biaya abodemen tetap yang harus dibayar meski tidak ada lampu menyala!"
+      "nalarBayi": "Nilai intercept adalah biaya abodemen tetap yang harus dibayar meski tidak ada lampu menyala!",
+      "hasilContoh": "Terevaluasi otomatis oleh Excel sesuai data contoh"
     }
   },
   {
@@ -7420,9 +7495,9 @@ const excelChallenges = [
       }
     ],
     "targetCell": "E11",
-    "instruction": "Ketik rumus =STEYX(B2:B10, A2:A10) di sel E11.",
+    "instruction": "Gunakan fungsi STEYX (menggunakan parameter data B2:B10, A2:A10) di sel E11.",
     "babyHint": "🍼 Bahasa Bayi: =STEYX(B2:B10, A2:A10). STEYX mengukur tingkat ketidakpastian atau margin error dari hasil ramalan garis regresi!",
-    "starterFormula": "=STEYX(",
+    "starterFormula": "=",
     "quickChips": [
       "=STEYX(",
       "B2:B10",
@@ -7441,7 +7516,8 @@ const excelChallenges = [
       "title": "💡 CONTOH SERUPA: Akurasi Prediksi Kurs Valas",
       "kasusSerupa": "Tabel Valas: Kurs aktual di Y, Prediksi indikator di X. Rumus: =STEYX(B2:B10, A2:A10).",
       "rumusContoh": "=STEYX(B2:B10, A2:A10)",
-      "nalarBayi": "Semakin kecil STEYX, ramalan garis regresi semakin presisi mendekati kenyataan!"
+      "nalarBayi": "Semakin kecil STEYX, ramalan garis regresi semakin presisi mendekati kenyataan!",
+      "hasilContoh": "Terevaluasi otomatis oleh Excel sesuai data contoh"
     }
   },
   {
@@ -7541,9 +7617,9 @@ const excelChallenges = [
       }
     ],
     "targetCell": "C14",
-    "instruction": "Ketik rumus =TREND(C2:C13, B2:B13, B14) di sel C14.",
+    "instruction": "Gunakan fungsi TREND (menggunakan parameter data C2:C13, B2:B13, B14) di sel C14.",
     "babyHint": "🍼 Bahasa Bayi: =TREND(C2:C13, B2:B13, B14). TREND membaca pola garis lurus dari bulan-bulan sebelumnya untuk melihat omset bulan depan!",
-    "starterFormula": "=TREND(",
+    "starterFormula": "=",
     "quickChips": [
       "=TREND(",
       "C2:C13",
@@ -7563,7 +7639,8 @@ const excelChallenges = [
       "title": "💡 CONTOH SERUPA: Tren Kenaikan Jumlah Pengunjung Website",
       "kasusSerupa": "Tabel Web: Kunjungan di C2:C10, Bulan di B2:B10. Prediksi bulan ke-11 di C11: =TREND(C2:C10, B2:B10, B11).",
       "rumusContoh": "=TREND(C2:C10, B2:B10, B11)",
-      "nalarBayi": "Excel menyambung garis tren masa lalu menuju titik waktu yang baru!"
+      "nalarBayi": "Excel menyambung garis tren masa lalu menuju titik waktu yang baru!",
+      "hasilContoh": "Terevaluasi otomatis oleh Excel sesuai data contoh"
     }
   },
   {
@@ -7618,9 +7695,9 @@ const excelChallenges = [
       }
     ],
     "targetCell": "B8",
-    "instruction": "Ketik rumus =GROWTH(B2:B7, A2:A7, A8) di sel B8.",
+    "instruction": "Gunakan fungsi GROWTH (menggunakan parameter data B2:B7, A2:A7, A8) di sel B8.",
     "babyHint": "🍼 Bahasa Bayi: =GROWTH(B2:B7, A2:A7, A8). Kalau TREND garisnya lurus, GROWTH kurvanya melengkung naik seperti roket!",
-    "starterFormula": "=GROWTH(",
+    "starterFormula": "=",
     "quickChips": [
       "=GROWTH(",
       "B2:B7",
@@ -7640,7 +7717,8 @@ const excelChallenges = [
       "title": "💡 CONTOH SERUPA: Pertumbuhan Jumlah Bakteri dalam Kultur",
       "kasusSerupa": "Tabel Biologi: Waktu jam di A2:A5, Koloni di B2:B5. Prediksi jam ke-6: =GROWTH(B2:B5, A2:A5, A6).",
       "rumusContoh": "=GROWTH(B2:B5, A2:A5, A6)",
-      "nalarBayi": "Sangat cocok untuk data yang berlipat ganda secara eksponensial tiap periode!"
+      "nalarBayi": "Sangat cocok untuk data yang berlipat ganda secara eksponensial tiap periode!",
+      "hasilContoh": "Terevaluasi otomatis oleh Excel sesuai data contoh"
     }
   },
   {
@@ -7674,9 +7752,9 @@ const excelChallenges = [
       }
     ],
     "targetCell": "C2",
-    "instruction": "Ketik rumus =PERMUT(A2, A3) di sel C2.",
+    "instruction": "Gunakan fungsi PERMUT (menggunakan parameter data A2, A3) di sel C2.",
     "babyHint": "🍼 Bahasa Bayi: =PERMUT(A2, A3). Permutasi memperhatikan urutan juara (Juara 1, 2, 3)! Rumusnya: 5 * 4 * 3 = 60!",
-    "starterFormula": "=PERMUT(",
+    "starterFormula": "=",
     "quickChips": [
       "=PERMUT(",
       "A2",
@@ -7695,7 +7773,8 @@ const excelChallenges = [
       "title": "💡 CONTOH SERUPA: Memilih Ketua, Sekretaris, dan Bendahara",
       "kasusSerupa": "Tabel Organisasi: Dari 4 kandidat dipilih 2 orang pengurus. Rumus: =PERMUT(4, 2).",
       "rumusContoh": "=PERMUT(4, 2)",
-      "nalarBayi": "Banyaknya kombinasi posisi jabatan berbeda yang bisa terbentuk adalah 4 * 3 = 12 cara!"
+      "nalarBayi": "Banyaknya kombinasi posisi jabatan berbeda yang bisa terbentuk adalah 4 * 3 = 12 cara!",
+      "hasilContoh": "Terevaluasi otomatis oleh Excel sesuai data contoh"
     }
   },
   {
@@ -7735,9 +7814,9 @@ const excelChallenges = [
       }
     ],
     "targetCell": "C2",
-    "instruction": "Ketik rumus =BINOM.DIST(A2, A3, A4, FALSE) di sel C2.",
+    "instruction": "Gunakan fungsi BINOM.DIST (menggunakan parameter data A2, A3, A4, FALSE) di sel C2.",
     "babyHint": "🍼 Bahasa Bayi: =BINOM.DIST(A2, A3, A4, FALSE). Menghitung peluang sukses pada eksperimen ya/tidak seperti lempar koin atau lolos QC!",
-    "starterFormula": "=BINOM.DIST(",
+    "starterFormula": "=",
     "quickChips": [
       "=BINOM.DIST(",
       "A2",
@@ -7758,7 +7837,8 @@ const excelChallenges = [
       "title": "💡 CONTOH SERUPA: Peluang Lolos Uji Coba Kualitas Produk",
       "kasusSerupa": "Tabel QC: Peluang cacat 0.1, diuji 10 barang. Peluang tepat 1 rusak: =BINOM.DIST(1, 10, 0.1, FALSE).",
       "rumusContoh": "=BINOM.DIST(1, 10, 0.1, FALSE)",
-      "nalarBayi": "Distribusi binomial merupakan fondasi uji hipotesis kontrol kualitas industri!"
+      "nalarBayi": "Distribusi binomial merupakan fondasi uji hipotesis kontrol kualitas industri!",
+      "hasilContoh": "Terevaluasi otomatis oleh Excel sesuai data contoh"
     }
   },
   {
@@ -7798,9 +7878,9 @@ const excelChallenges = [
       }
     ],
     "targetCell": "C2",
-    "instruction": "Ketik rumus =NORM.DIST(A2, A3, A4, TRUE) di sel C2.",
+    "instruction": "Gunakan fungsi NORM.DIST (menggunakan parameter data A2, A3, A4, TRUE) di sel C2.",
     "babyHint": "🍼 Bahasa Bayi: =NORM.DIST(A2, A3, A4, TRUE). Menghitung luas kurva lonceng Gauss dari paling kiri sampai titik 42!",
-    "starterFormula": "=NORM.DIST(",
+    "starterFormula": "=",
     "quickChips": [
       "=NORM.DIST(",
       "A2",
@@ -7822,7 +7902,8 @@ const excelChallenges = [
       "title": "💡 CONTOH SERUPA: Peluang Berat Bayi Baru Lahir",
       "kasusSerupa": "Tabel Medis: Rata-rata 3.2 kg, stdev 0.4 kg. Peluang bayi berbobot <= 3.5 kg: =NORM.DIST(3.5, 3.2, 0.4, TRUE).",
       "rumusContoh": "=NORM.DIST(3.5, 3.2, 0.4, TRUE)",
-      "nalarBayi": "Distribusi normal mencakup 90.8% populasi di bawah batas tersebut!"
+      "nalarBayi": "Distribusi normal mencakup 90.8% populasi di bawah batas tersebut!",
+      "hasilContoh": "Terevaluasi otomatis oleh Excel sesuai data contoh"
     }
   },
   {
@@ -7862,9 +7943,9 @@ const excelChallenges = [
       }
     ],
     "targetCell": "C2",
-    "instruction": "Ketik rumus =NORM.INV(A2, A3, A4) di sel C2.",
+    "instruction": "Gunakan fungsi NORM.INV (menggunakan parameter data A2, A3, A4) di sel C2.",
     "babyHint": "🍼 Bahasa Bayi: =NORM.INV(A2, A3, A4). Kebalikan NORM.DIST! Dikasih persentase, dia bisa menebak nilai angkanya (hasilnya kembali ke 42)!",
-    "starterFormula": "=NORM.INV(",
+    "starterFormula": "=",
     "quickChips": [
       "=NORM.INV(",
       "A2",
@@ -7885,7 +7966,8 @@ const excelChallenges = [
       "title": "💡 CONTOH SERUPA: Nilai Minimal Masuk 5% Teratas Sekolah",
       "kasusSerupa": "Tabel Seleksi: Rata-rata 75, stdev 8. Berapa skor untuk masuk 5% teratas (p=0.95)? =NORM.INV(0.95, 75, 8).",
       "rumusContoh": "=NORM.INV(0.95, 75, 8)",
-      "nalarBayi": "Excel menghitung skor ambang batas yang harus dicapai peserta yaitu sekitar 88.16!"
+      "nalarBayi": "Excel menghitung skor ambang batas yang harus dicapai peserta yaitu sekitar 88.16!",
+      "hasilContoh": "Terevaluasi otomatis oleh Excel sesuai data contoh"
     }
   },
   {
@@ -7925,9 +8007,9 @@ const excelChallenges = [
       }
     ],
     "targetCell": "C2",
-    "instruction": "Tulis rumus =CONCAT(A2, ' ', B2) di sel C2.",
+    "instruction": "Gunakan fungsi CONCAT (menggunakan parameter data A2, ' ', B2) di sel C2.",
     "babyHint": "🍼 Bahasa Bayi: =CONCAT(A2, \" \", B2) atau =A2 & \" \" & B2. Tanda petik spasi \" \" wajib ada supaya namanya tidak gandeng dempet!",
-    "starterFormula": "=CONCAT(",
+    "starterFormula": "=",
     "quickChips": [
       "=CONCAT(",
       "A2",
@@ -7951,7 +8033,8 @@ const excelChallenges = [
       "title": "💡 CONTOH SERUPA: Menggabungkan Kota dan Kode Pos",
       "kasusSerupa": "Tabel Alamat: Kota di A2 ('Bandung'), Kode Pos di B2 (40115). Rumus: =A2 & ' - ' & B2.",
       "rumusContoh": "=A2 & \" - \" & B2",
-      "nalarBayi": "Hasil teks yang rapi tersambung menjadi 'Bandung - 40115'!"
+      "nalarBayi": "Hasil teks yang rapi tersambung menjadi 'Bandung - 40115'!",
+      "hasilContoh": "Terevaluasi otomatis oleh Excel sesuai data contoh"
     }
   },
   {
@@ -7986,9 +8069,9 @@ const excelChallenges = [
       }
     ],
     "targetCell": "B2",
-    "instruction": "Tulis rumus =LEFT(A2, 4) di sel B2.",
+    "instruction": "Gunakan fungsi LEFT (menggunakan parameter data A2, 4) di sel B2.",
     "babyHint": "🍼 Bahasa Bayi: =LEFT(A2, 4). LEFT artinya potong dan ambil huruf dari sisi paling kiri!",
-    "starterFormula": "=LEFT(",
+    "starterFormula": "=",
     "quickChips": [
       "=LEFT(",
       "A2",
@@ -8007,7 +8090,8 @@ const excelChallenges = [
       "title": "💡 CONTOH SERUPA: Mengambil Tahun dari Format Resi",
       "kasusSerupa": "Tabel Resi: Resi '2024-EXP-881'. Ambil tahun 4 digit kiri: =LEFT(A2, 4).",
       "rumusContoh": "=LEFT(A2, 4)",
-      "nalarBayi": "Excel memotong 4 huruf pertama dari kiri dan menghasilkan '2024'!"
+      "nalarBayi": "Excel memotong 4 huruf pertama dari kiri dan menghasilkan '2024'!",
+      "hasilContoh": "Terevaluasi otomatis oleh Excel sesuai data contoh"
     }
   },
   {
@@ -8042,9 +8126,9 @@ const excelChallenges = [
       }
     ],
     "targetCell": "B2",
-    "instruction": "Tulis rumus =RIGHT(A2, 3) di sel B2.",
+    "instruction": "Gunakan fungsi RIGHT (menggunakan parameter data A2, 3) di sel B2.",
     "babyHint": "🍼 Bahasa Bayi: =RIGHT(A2, 3). RIGHT artinya potong dan ambil karakter dari ujung ekor sebelah kanan!",
-    "starterFormula": "=RIGHT(",
+    "starterFormula": "=",
     "quickChips": [
       "=RIGHT(",
       "A2",
@@ -8063,7 +8147,8 @@ const excelChallenges = [
       "title": "💡 CONTOH SERUPA: Mengambil Ekstensi File Dokumen",
       "kasusSerupa": "Tabel File: Nama file 'laporan.pdf'. Ambil 3 karakter kanan: =RIGHT(A2, 3).",
       "rumusContoh": "=RIGHT(A2, 3)",
-      "nalarBayi": "Excel mengambil 3 karakter terakhir yaitu 'pdf'!"
+      "nalarBayi": "Excel mengambil 3 karakter terakhir yaitu 'pdf'!",
+      "hasilContoh": "Terevaluasi otomatis oleh Excel sesuai data contoh"
     }
   },
   {
@@ -8098,9 +8183,9 @@ const excelChallenges = [
       }
     ],
     "targetCell": "B2",
-    "instruction": "Tulis rumus =MID(A2, 5, 2) di sel B2.",
+    "instruction": "Gunakan fungsi MID (menggunakan parameter data A2, 5, 2) di sel B2.",
     "babyHint": "🍼 Bahasa Bayi: =MID(A2, 5, 2). MID itu Middle! Mulai potong dari huruf ke-5, ambil sebanyak 2 huruf!",
-    "starterFormula": "=MID(",
+    "starterFormula": "=",
     "quickChips": [
       "=MID(",
       "A2",
@@ -8120,7 +8205,8 @@ const excelChallenges = [
       "title": "💡 CONTOH SERUPA: Mengambil Bulan Lahir dari Nomor KTP",
       "kasusSerupa": "Tabel KTP: NIK '320105251299'. Tanggal di posisi 7 sebanyak 2 digit: =MID(A2, 7, 2).",
       "rumusContoh": "=MID(A2, 7, 2)",
-      "nalarBayi": "Excel menyusup ke tengah teks dan memotong persis 2 digit yang diminta!"
+      "nalarBayi": "Excel menyusup ke tengah teks dan memotong persis 2 digit yang diminta!",
+      "hasilContoh": "Terevaluasi otomatis oleh Excel sesuai data contoh"
     }
   },
   {
@@ -8155,9 +8241,9 @@ const excelChallenges = [
       }
     ],
     "targetCell": "B2",
-    "instruction": "Tulis rumus =LEN(A2) di sel B2.",
+    "instruction": "Gunakan fungsi LEN (menggunakan parameter data A2) di sel B2.",
     "babyHint": "🍼 Bahasa Bayi: =LEN(A2). LEN singkatan dari Length (panjang). Menghitung ada berapa huruf/angka dalam sel!",
-    "starterFormula": "=LEN(",
+    "starterFormula": "=",
     "quickChips": [
       "=LEN(",
       "A2",
@@ -8172,9 +8258,10 @@ const excelChallenges = [
     "expectedValue": 12,
     "workedExample": {
       "title": "💡 CONTOH SERUPA: Memvalidasi Jumlah Digit NIK KTP (Harus 16)",
-      "kasusSerupa": "Tabel Registrasi: NIK di A2. Rumus: =LEN(A2).",
-      "rumusContoh": "=LEN(A2)",
-      "nalarBayi": "Jika hasilnya bukan 16, sistem tahu bahwa nomor KTP tersebut salah ketik atau kurang digit!"
+      "kasusSerupa": "Contoh Soal Latihan (Tabel Simulasi): Misalkan data simulasi berada pada sel sesuai contoh di bawah, maka penulisan rumus yang benar adalah =LEN(D10).",
+      "rumusContoh": "=LEN(D10)",
+      "nalarBayi": "Jika hasilnya bukan 16, sistem tahu bahwa nomor KTP tersebut salah ketik atau kurang digit!",
+      "hasilContoh": "Terevaluasi otomatis oleh Excel sesuai data contoh"
     }
   },
   {
@@ -8209,9 +8296,9 @@ const excelChallenges = [
       }
     ],
     "targetCell": "B2",
-    "instruction": "Tulis rumus =TRIM(A2) di sel B2.",
+    "instruction": "Gunakan fungsi TRIM (menggunakan parameter data A2) di sel B2.",
     "babyHint": "🍼 Bahasa Bayi: =TRIM(A2). TRIM seperti gunting rambut! Membuang spasi di ujung dan menyisakan 1 spasi normal di tengah!",
-    "starterFormula": "=TRIM(",
+    "starterFormula": "=",
     "quickChips": [
       "=TRIM(",
       "A2",
@@ -8226,9 +8313,10 @@ const excelChallenges = [
     "expectedValue": "Kopi Sachet",
     "workedExample": {
       "title": "💡 CONTOH SERUPA: Merapikan Data Hasil Ekspor Formulir Web",
-      "kasusSerupa": "Tabel Import: Nama di A2 banyak spasi acak. Rumus: =TRIM(A2).",
-      "rumusContoh": "=TRIM(A2)",
-      "nalarBayi": "Teks menjadi rapi dan aman dari error pencarian VLOOKUP yang sering gagal karena spasi tersembunyi!"
+      "kasusSerupa": "Contoh Soal Latihan (Tabel Simulasi): Misalkan data simulasi berada pada sel sesuai contoh di bawah, maka penulisan rumus yang benar adalah =TRIM(D10).",
+      "rumusContoh": "=TRIM(D10)",
+      "nalarBayi": "Teks menjadi rapi dan aman dari error pencarian VLOOKUP yang sering gagal karena spasi tersembunyi!",
+      "hasilContoh": "Terevaluasi otomatis oleh Excel sesuai data contoh"
     }
   },
   {
@@ -8263,9 +8351,9 @@ const excelChallenges = [
       }
     ],
     "targetCell": "B2",
-    "instruction": "Tulis rumus =PROPER(A2) di sel B2.",
+    "instruction": "Gunakan fungsi PROPER (menggunakan parameter data A2) di sel B2.",
     "babyHint": "🍼 Bahasa Bayi: =PROPER(A2). PROPER otomatis mengubah huruf pertama tiap kata jadi HURUF BESAR, sisanya huruf kecil!",
-    "starterFormula": "=PROPER(",
+    "starterFormula": "=",
     "quickChips": [
       "=PROPER(",
       "A2",
@@ -8280,9 +8368,10 @@ const excelChallenges = [
     "expectedValue": "Ahmad Fauzi Rohman",
     "workedExample": {
       "title": "💡 CONTOH SERUPA: Merapikan Judul Buku",
-      "kasusSerupa": "Tabel Toko Buku: Judul 'laskar pelangi' di A2. Rumus: =PROPER(A2).",
-      "rumusContoh": "=PROPER(A2)",
-      "nalarBayi": "Otomatis menjadi rapi dan indah dibaca: 'Laskar Pelangi'!"
+      "kasusSerupa": "Contoh Soal Latihan (Tabel Simulasi): Misalkan data simulasi berada pada sel sesuai contoh di bawah, maka penulisan rumus yang benar adalah =PROPER(D10).",
+      "rumusContoh": "=PROPER(D10)",
+      "nalarBayi": "Otomatis menjadi rapi dan indah dibaca: 'Laskar Pelangi'!",
+      "hasilContoh": "Terevaluasi otomatis oleh Excel sesuai data contoh"
     }
   },
   {
@@ -8317,9 +8406,9 @@ const excelChallenges = [
       }
     ],
     "targetCell": "B2",
-    "instruction": "Tulis rumus =UPPER(A2) di sel B2.",
+    "instruction": "Gunakan fungsi UPPER (menggunakan parameter data A2) di sel B2.",
     "babyHint": "🍼 Bahasa Bayi: =UPPER(A2). UPPER artinya Ubah Pergi ke huruf besar raksasa semua!",
-    "starterFormula": "=UPPER(",
+    "starterFormula": "=",
     "quickChips": [
       "=UPPER(",
       "A2",
@@ -8334,9 +8423,10 @@ const excelChallenges = [
     "expectedValue": "B 1234 CD",
     "workedExample": {
       "title": "💡 CONTOH SERUPA: Menyeragamkan Kode Voucher",
-      "kasusSerupa": "Tabel Promo: Kode 'diskon50' di A2. Rumus: =UPPER(A2).",
-      "rumusContoh": "=UPPER(A2)",
-      "nalarBayi": "Berubah menjadi 'DISKON50' sesuai format resmi sistem e-commerce!"
+      "kasusSerupa": "Contoh Soal Latihan (Tabel Simulasi): Misalkan data simulasi berada pada sel sesuai contoh di bawah, maka penulisan rumus yang benar adalah =UPPER(D10).",
+      "rumusContoh": "=UPPER(D10)",
+      "nalarBayi": "Berubah menjadi 'DISKON50' sesuai format resmi sistem e-commerce!",
+      "hasilContoh": "Terevaluasi otomatis oleh Excel sesuai data contoh"
     }
   },
   {
@@ -8371,9 +8461,9 @@ const excelChallenges = [
       }
     ],
     "targetCell": "B2",
-    "instruction": "Tulis rumus =LOWER(A2) di sel B2.",
+    "instruction": "Gunakan fungsi LOWER (menggunakan parameter data A2) di sel B2.",
     "babyHint": "🍼 Bahasa Bayi: =LOWER(A2). LOWER adalah kebalikan UPPER, menyulap semua huruf menjadi huruf kecil yang adem!",
-    "starterFormula": "=LOWER(",
+    "starterFormula": "=",
     "quickChips": [
       "=LOWER(",
       "A2",
@@ -8388,9 +8478,10 @@ const excelChallenges = [
     "expectedValue": "admin.support@kantor.com",
     "workedExample": {
       "title": "💡 CONTOH SERUPA: Menyeragamkan Username Akun",
-      "kasusSerupa": "Tabel Login: Input pengguna 'UserBaru123'. Rumus: =LOWER(A2).",
-      "rumusContoh": "=LOWER(A2)",
-      "nalarBayi": "Otomatis menjadi 'userbaru123' sehingga mudah dicocokkan ke database!"
+      "kasusSerupa": "Contoh Soal Latihan (Tabel Simulasi): Misalkan data simulasi berada pada sel sesuai contoh di bawah, maka penulisan rumus yang benar adalah =LOWER(D10).",
+      "rumusContoh": "=LOWER(D10)",
+      "nalarBayi": "Otomatis menjadi 'userbaru123' sehingga mudah dicocokkan ke database!",
+      "hasilContoh": "Terevaluasi otomatis oleh Excel sesuai data contoh"
     }
   },
   {
@@ -8430,9 +8521,9 @@ const excelChallenges = [
       }
     ],
     "targetCell": "C2",
-    "instruction": "Tulis rumus =TEXT(B2, 'Rp #,##0') di sel C2.",
+    "instruction": "Gunakan fungsi TEXT (menggunakan parameter data B2, 'Rp #,##0') di sel C2.",
     "babyHint": "🍼 Bahasa Bayi: =TEXT(B2, \"Rp #,##0\"). Mengubah angka biasa menjadi tulisan berformat rapi dengan pemisah ribuan!",
-    "starterFormula": "=TEXT(",
+    "starterFormula": "=",
     "quickChips": [
       "=TEXT(",
       "B2",
@@ -8451,7 +8542,8 @@ const excelChallenges = [
       "title": "💡 CONTOH SERUPA: Format Persentase Teks",
       "kasusSerupa": "Tabel Margin: Nilai 0.15 di B2. Format teks: =TEXT(B2, '0.0%').",
       "rumusContoh": "=TEXT(B2, \"0.0%\")",
-      "nalarBayi": "Angka desimal 0.15 disulap menjadi teks '15.0%'!"
+      "nalarBayi": "Angka desimal 0.15 disulap menjadi teks '15.0%'!",
+      "hasilContoh": "Terevaluasi otomatis oleh Excel sesuai data contoh"
     }
   },
   {
@@ -8486,9 +8578,9 @@ const excelChallenges = [
       }
     ],
     "targetCell": "B2",
-    "instruction": "Tulis rumus =TEXT(A2, 'dddd') di sel B2.",
+    "instruction": "Gunakan fungsi TEXT (menggunakan parameter data A2, 'dddd') di sel B2.",
     "babyHint": "🍼 Bahasa Bayi: =TEXT(A2, \"dddd\"). Huruf d empat kali (dddd) artinya tampilkan nama hari secara lengkap (misal Saturday/Sabtu)!",
-    "starterFormula": "=TEXT(",
+    "starterFormula": "=",
     "quickChips": [
       "=TEXT(",
       "A2",
@@ -8507,7 +8599,8 @@ const excelChallenges = [
       "title": "💡 CONTOH SERUPA: Mengambil Nama Bulan dari Tanggal",
       "kasusSerupa": "Tabel Invoice: Tanggal '2024-05-10'. Format bulan lengkap: =TEXT(A2, 'mmmm').",
       "rumusContoh": "=TEXT(A2, \"mmmm\")",
-      "nalarBayi": "Excel langsung menampilkan nama bulan 'May' / 'Mei'!"
+      "nalarBayi": "Excel langsung menampilkan nama bulan 'May' / 'Mei'!",
+      "hasilContoh": "Terevaluasi otomatis oleh Excel sesuai data contoh"
     }
   },
   {
@@ -8547,9 +8640,9 @@ const excelChallenges = [
       }
     ],
     "targetCell": "C2",
-    "instruction": "Tulis rumus =ROUND(B2, 2) di sel C2.",
+    "instruction": "Gunakan fungsi ROUND (menggunakan parameter data B2, 2) di sel C2.",
     "babyHint": "🍼 Bahasa Bayi: =ROUND(B2, 2). Angka 2 artinya kita minta disisakan 2 angka saja di belakang koma (15.75)!",
-    "starterFormula": "=ROUND(",
+    "starterFormula": "=",
     "quickChips": [
       "=ROUND(",
       "B2",
@@ -8568,7 +8661,8 @@ const excelChallenges = [
       "title": "💡 CONTOH SERUPA: Membulatkan Rata-rata Nilai Rapor",
       "kasusSerupa": "Tabel Rapor: Nilai rata-rata 84.6666 di B2. Rumus: =ROUND(B2, 1).",
       "rumusContoh": "=ROUND(B2, 1)",
-      "nalarBayi": "Karena angka setelahnya >= 5, Excel membulatkan ke atas menjadi 84.7!"
+      "nalarBayi": "Karena angka setelahnya >= 5, Excel membulatkan ke atas menjadi 84.7!",
+      "hasilContoh": "Terevaluasi otomatis oleh Excel sesuai data contoh"
     }
   },
   {
@@ -8608,9 +8702,9 @@ const excelChallenges = [
       }
     ],
     "targetCell": "C2",
-    "instruction": "Tulis rumus =ROUNDUP(B2/12, 0) di sel C2.",
+    "instruction": "Gunakan fungsi ROUNDUP (menggunakan parameter data B2/12, 0) di sel C2.",
     "babyHint": "🍼 Bahasa Bayi: =ROUNDUP(B2/12, 0). UP artinya ke atas! Sekecil apa pun lebihnya, langsung dibulatkan naik jadi 5 dus!",
-    "starterFormula": "=ROUNDUP(",
+    "starterFormula": "=",
     "quickChips": [
       "=ROUNDUP(",
       "B2/12",
@@ -8629,7 +8723,8 @@ const excelChallenges = [
       "title": "💡 CONTOH SERUPA: Menghitung Jumlah Mobil Travel untuk Penumpang",
       "kasusSerupa": "Tabel Pariwisata: 15 penumpang, mobil muat 4 orang (15/4 = 3.75). Rumus: =ROUNDUP(15/4, 0).",
       "rumusContoh": "=ROUNDUP(15/4, 0)",
-      "nalarBayi": "Tidak mungkin menyewa 3.75 mobil, jadi dibulatkan ke atas menjadi 4 armada mobil!"
+      "nalarBayi": "Tidak mungkin menyewa 3.75 mobil, jadi dibulatkan ke atas menjadi 4 armada mobil!",
+      "hasilContoh": "Terevaluasi otomatis oleh Excel sesuai data contoh"
     }
   },
   {
@@ -8669,9 +8764,9 @@ const excelChallenges = [
       }
     ],
     "targetCell": "C2",
-    "instruction": "Tulis rumus =ROUNDDOWN(B2, 0) di sel C2.",
+    "instruction": "Gunakan fungsi ROUNDDOWN (menggunakan parameter data B2, 0) di sel C2.",
     "babyHint": "🍼 Bahasa Bayi: =ROUNDDOWN(B2, 0). DOWN artinya ke bawah! Walaupun 48.85 nyaris 49, tetap dipotong ke 48!",
-    "starterFormula": "=ROUNDDOWN(",
+    "starterFormula": "=",
     "quickChips": [
       "=ROUNDDOWN(",
       "B2",
@@ -8690,7 +8785,8 @@ const excelChallenges = [
       "title": "💡 CONTOH SERUPA: Kuota Voucher Belanja Kelipatan 100 Ribu",
       "kasusSerupa": "Tabel Promo: Total belanja 280.000 di B2. Pembulatan voucher ratusan ribu: =ROUNDDOWN(B2, -5).",
       "rumusContoh": "=ROUNDDOWN(B2, -5)",
-      "nalarBayi": "Excel membulatkan ke bawah sehingga pelanggan mendapat voucher senilai 200.000!"
+      "nalarBayi": "Excel membulatkan ke bawah sehingga pelanggan mendapat voucher senilai 200.000!",
+      "hasilContoh": "Terevaluasi otomatis oleh Excel sesuai data contoh"
     }
   },
   {
@@ -8730,9 +8826,9 @@ const excelChallenges = [
       }
     ],
     "targetCell": "C2",
-    "instruction": "Tulis rumus =INT(B2) di sel C2.",
+    "instruction": "Gunakan fungsi INT (menggunakan parameter data B2) di sel C2.",
     "babyHint": "🍼 Bahasa Bayi: =INT(B2). INT singkatan dari Integer (bilangan bulat). Membuang semua koma di belakang!",
-    "starterFormula": "=INT(",
+    "starterFormula": "=",
     "quickChips": [
       "=INT(",
       "B2",
@@ -8747,9 +8843,10 @@ const excelChallenges = [
     "expectedValue": 124,
     "workedExample": {
       "title": "💡 CONTOH SERUPA: Menghitung Usia Tahun dari Desimal",
-      "kasusSerupa": "Tabel Umur: Usia terhitung 25.8 tahun di B2. Rumus: =INT(B2).",
-      "rumusContoh": "=INT(B2)",
-      "nalarBayi": "Pecahan 0.8 tahun dibuang sehingga umur resmi tercatat 25 tahun genap!"
+      "kasusSerupa": "Contoh Soal Latihan (Tabel Simulasi): Misalkan data simulasi berada pada sel sesuai contoh di bawah, maka penulisan rumus yang benar adalah =INT(E10).",
+      "rumusContoh": "=INT(E10)",
+      "nalarBayi": "Pecahan 0.8 tahun dibuang sehingga umur resmi tercatat 25 tahun genap!",
+      "hasilContoh": "Terevaluasi otomatis oleh Excel sesuai data contoh"
     }
   },
   {
@@ -8789,9 +8886,9 @@ const excelChallenges = [
       }
     ],
     "targetCell": "C2",
-    "instruction": "Tulis rumus =MOD(A2, B2) di sel C2.",
+    "instruction": "Gunakan fungsi MOD (menggunakan parameter data A2, B2) di sel C2.",
     "babyHint": "🍼 Bahasa Bayi: =MOD(A2, B2). MOD itu Modulo / Sisa Bagi! 25 dibagi 6 dapat 4 kotak (24 pcs), sisanya 1!",
-    "starterFormula": "=MOD(",
+    "starterFormula": "=",
     "quickChips": [
       "=MOD(",
       "A2",
@@ -8810,7 +8907,8 @@ const excelChallenges = [
       "title": "💡 CONTOH SERUPA: Cek Nomor Ganjil atau Genap",
       "kasusSerupa": "Tabel Angka: Angka di A2. Rumus cek sisa bagi dua: =MOD(A2, 2).",
       "rumusContoh": "=MOD(A2, 2)",
-      "nalarBayi": "Jika hasilnya 0 berarti angka GENAP, jika hasilnya 1 berarti angka GANJIL!"
+      "nalarBayi": "Jika hasilnya 0 berarti angka GENAP, jika hasilnya 1 berarti angka GANJIL!",
+      "hasilContoh": "Terevaluasi otomatis oleh Excel sesuai data contoh"
     }
   },
   {
@@ -8855,9 +8953,9 @@ const excelChallenges = [
       }
     ],
     "targetCell": "D2",
-    "instruction": "Tulis rumus =DATEDIF(B2, C2, 'Y') di sel D2.",
+    "instruction": "Gunakan fungsi DATEDIF (menggunakan parameter data B2, C2, 'Y') di sel D2.",
     "babyHint": "🍼 Bahasa Bayi: =DATEDIF(B2, C2, \"Y\"). DATEDIF artinya Date Difference! Huruf 'Y' untuk Years (tahun penuh)!",
-    "starterFormula": "=DATEDIF(",
+    "starterFormula": "=",
     "quickChips": [
       "=DATEDIF(",
       "B2",
@@ -8877,7 +8975,8 @@ const excelChallenges = [
       "title": "💡 CONTOH SERUPA: Menghitung Usia Karyawan Berdasarkan Tanggal Lahir",
       "kasusSerupa": "Tabel Kelahiran: Tgl Lahir di B2, Hari ini di C2. Rumus: =DATEDIF(B2, C2, 'Y').",
       "rumusContoh": "=DATEDIF(B2, C2, \"Y\")",
-      "nalarBayi": "Menghitung selisih tahun secara presisi tanpa takut salah kabisat!"
+      "nalarBayi": "Menghitung selisih tahun secara presisi tanpa takut salah kabisat!",
+      "hasilContoh": "Terevaluasi otomatis oleh Excel sesuai data contoh"
     }
   },
   {
@@ -8922,9 +9021,9 @@ const excelChallenges = [
       }
     ],
     "targetCell": "D2",
-    "instruction": "Tulis rumus =DATEDIF(B2, C2, 'M') di sel D2.",
+    "instruction": "Gunakan fungsi DATEDIF (menggunakan parameter data B2, C2, 'M') di sel D2.",
     "babyHint": "🍼 Bahasa Bayi: =DATEDIF(B2, C2, \"M\"). Huruf 'M' artinya Months (bulan penuh). 3 tahun = 36 bulan!",
-    "starterFormula": "=DATEDIF(",
+    "starterFormula": "=",
     "quickChips": [
       "=DATEDIF(",
       "B2",
@@ -8944,7 +9043,8 @@ const excelChallenges = [
       "title": "💡 CONTOH SERUPA: Menghitung Durasi Kontrak Sewa Rumah",
       "kasusSerupa": "Tabel Kontrak: Awal sewa di B2, Akhir sewa di C2. Rumus: =DATEDIF(B2, C2, 'M').",
       "rumusContoh": "=DATEDIF(B2, C2, \"M\")",
-      "nalarBayi": "Excel menghitung berapa bulan total masa sewa berjalan!"
+      "nalarBayi": "Excel menghitung berapa bulan total masa sewa berjalan!",
+      "hasilContoh": "Terevaluasi otomatis oleh Excel sesuai data contoh"
     }
   },
   {
@@ -8984,9 +9084,9 @@ const excelChallenges = [
       }
     ],
     "targetCell": "C2",
-    "instruction": "Tulis rumus =NETWORKDAYS(A2, B2) di sel C2.",
+    "instruction": "Gunakan fungsi NETWORKDAYS (menggunakan parameter data A2, B2) di sel C2.",
     "babyHint": "🍼 Bahasa Bayi: =NETWORKDAYS(A2, B2). Net Work Days otomatis mencoret hari Sabtu dan Minggu sehingga menyisakan hari kerja riil!",
-    "starterFormula": "=NETWORKDAYS(",
+    "starterFormula": "=",
     "quickChips": [
       "=NETWORKDAYS(",
       "A2",
@@ -9005,7 +9105,8 @@ const excelChallenges = [
       "title": "💡 CONTOH SERUPA: Menghitung Target Jam Kerja Staf per Bulan",
       "kasusSerupa": "Tabel HRD: Tanggal awal bulan A2, Akhir bulan B2. Rumus: =NETWORKDAYS(A2, B2).",
       "rumusContoh": "=NETWORKDAYS(A2, B2)",
-      "nalarBayi": "Bulan Mei 2024 memiliki 23 hari kerja Senin sampai Jumat!"
+      "nalarBayi": "Bulan Mei 2024 memiliki 23 hari kerja Senin sampai Jumat!",
+      "hasilContoh": "Terevaluasi otomatis oleh Excel sesuai data contoh"
     }
   },
   {
@@ -9050,9 +9151,9 @@ const excelChallenges = [
       }
     ],
     "targetCell": "D2",
-    "instruction": "Tulis rumus =PMT(B2/12, C2, -A2) di sel D2.",
+    "instruction": "Gunakan fungsi PMT (menggunakan parameter data B2/12, C2, -A2) di sel D2.",
     "babyHint": "🍼 Bahasa Bayi: =PMT(B2/12, C2, -A2). PMT singkatan dari Payment! Bunga dibagi 12 karena dibayar per bulan, pokok pinjaman diberi tanda minus!",
-    "starterFormula": "=PMT(",
+    "starterFormula": "=",
     "quickChips": [
       "=PMT(",
       "B2/12",
@@ -9072,14 +9173,15 @@ const excelChallenges = [
       "title": "💡 CONTOH SERUPA: Simulasi Cicilan KPR Rumah Bank",
       "kasusSerupa": "Tabel Bank: Plafon 200jt, Bunga 6% per tahun (0.06/12), Tenor 120 bulan. Rumus: =PMT(0.06/12, 120, -200000000).",
       "rumusContoh": "=PMT(0.06/12, 120, -200000000)",
-      "nalarBayi": "Rumus sakti bankir untuk menghitung angsuran anuitas tetap tiap bulan!"
+      "nalarBayi": "Rumus sakti bankir untuk menghitung angsuran anuitas tetap tiap bulan!",
+      "hasilContoh": "Terevaluasi otomatis oleh Excel sesuai data contoh"
     }
   },
   {
     "id": "xl-103",
     "category": "10. Waktu, Finansial & Pembulatan",
     "title": "Tantangan 103: Menghitung Nilai Investasi Masa Depan (FV)",
-    "scenario": "Karyawan menabung di Koperasi sebesar 500.000 per bulan (D2), dengan bunga 6% per tahun (B2=0.06, bagi 12), selama 24 bulan (C2). Hitung saldo masa depan di sel E2 (=FV(B2/12, C2, -D2)).",
+    "scenario": "Karyawan menabung di Koperasi sebesar 500.000 per bulan (D2), dengan bunga 6% per tahun (B2=0.06, bagi 12), selama 24 bulan (C2). Hitung saldo masa depan di sel E2 (fungsi FV (menggunakan parameter data B2/12, C2, -D2)).",
     "tableHeaders": [
       "A",
       "B",
@@ -9114,9 +9216,9 @@ const excelChallenges = [
       }
     ],
     "targetCell": "E2",
-    "instruction": "Tulis rumus =FV(B2/12, C2, -D2) di sel E2.",
+    "instruction": "Gunakan fungsi FV (menggunakan parameter data B2/12, C2, -D2) di sel E2.",
     "babyHint": "🍼 Bahasa Bayi: =FV(B2/12, C2, -D2). FV artinya Future Value! Memprediksi berapa uang tabunganmu di masa depan setelah ditambah bunga berbunga!",
-    "starterFormula": "=FV(",
+    "starterFormula": "=",
     "quickChips": [
       "=FV(",
       "B2/12",
@@ -9136,14 +9238,15 @@ const excelChallenges = [
       "title": "💡 CONTOH SERUPA: Tabungan Pendidikan Anak",
       "kasusSerupa": "Tabel Investasi: Nabung 1jt per bulan selama 5 tahun (60 bulan) dengan imbal hasil 8% setahun.",
       "rumusContoh": "=FV(0.08/12, 60, -1000000)",
-      "nalarBayi": "Excel memperlihatkan kekuatan bunga berbunga majemuk!"
+      "nalarBayi": "Excel memperlihatkan kekuatan bunga berbunga majemuk!",
+      "hasilContoh": "Terevaluasi otomatis oleh Excel sesuai data contoh"
     }
   },
   {
     "id": "xl-104",
     "category": "10. Waktu, Finansial & Pembulatan",
     "title": "Tantangan 104: Menghitung Nilai Sekarang / Present Value (PV)",
-    "scenario": "Manajer Keuangan ingin memiliki dana 50.000.000 dalam 3 tahun ke depan (D2). Jika suku bunga deposito adalah 8% per tahun (B2=0.08) dan tenor 3 tahun (C2=3), berapa dana yang harus disetor sekarang di sel E2? Gunakan =PV(B2, C2, 0, -D2).",
+    "scenario": "Manajer Keuangan ingin memiliki dana 50.000.000 dalam 3 tahun ke depan (D2). Jika suku bunga deposito adalah 8% per tahun (B2=0.08) dan tenor 3 tahun (C2=3), berapa dana yang harus disetor sekarang di sel E2? Gunakan fungsi PV (menggunakan parameter data B2, C2, 0, -D2).",
     "tableHeaders": [
       "A",
       "B",
@@ -9178,9 +9281,9 @@ const excelChallenges = [
       }
     ],
     "targetCell": "E2",
-    "instruction": "Tulis rumus =PV(B2, C2, 0, -D2) di sel E2.",
+    "instruction": "Gunakan fungsi PV (menggunakan parameter data B2, C2, 0, -D2) di sel E2.",
     "babyHint": "🍼 Bahasa Bayi: =PV(B2, C2, 0, -D2). PV artinya Present Value! Berapa nilai uang hari ini yang harus kamu setor untuk dapat 50 juta di masa depan!",
-    "starterFormula": "=PV(",
+    "starterFormula": "=",
     "quickChips": [
       "=PV(",
       "B2",
@@ -9201,14 +9304,15 @@ const excelChallenges = [
       "title": "💡 CONTOH SERUPA: Nilai Sekarang dari Hadiah Undian",
       "kasusSerupa": "Tabel Keuangan: Hadiah 100jt cair 5 tahun lagi dengan diskon rate 10%. Rumus: =PV(0.1, 5, 0, -100000000).",
       "rumusContoh": "=PV(0.1, 5, 0, -100000000)",
-      "nalarBayi": "Uang 100jt lima tahun lagi setara dengan sekitar 62 juta rupiah hari ini!"
+      "nalarBayi": "Uang 100jt lima tahun lagi setara dengan sekitar 62 juta rupiah hari ini!",
+      "hasilContoh": "Terevaluasi otomatis oleh Excel sesuai data contoh"
     }
   },
   {
     "id": "xl-105",
     "category": "10. Waktu, Finansial & Pembulatan",
     "title": "Tantangan 105: Menghitung Pangkat dan Akar Kuadrat (POWER & SQRT)",
-    "scenario": "Laboratorium Fisika menghitung rumus =SQRT(A2) + POWER(B2, 2) di sel C2, di mana A2 adalah angka 16 (akar dari 16 = 4) dan B2 adalah angka 3 (3 pangkat 2 = 9). Totalnya 4 + 9 = 13.",
+    "scenario": "Laboratorium Fisika menghitung rumus fungsi SQRT (menggunakan parameter data A2) + POWER(B2, 2) di sel C2, di mana A2 adalah angka 16 (akar dari 16 = 4) dan B2 adalah angka 3 (3 pangkat 2 = 9). Totalnya 4 + 9 = 13.",
     "tableHeaders": [
       "A",
       "B",
@@ -9241,9 +9345,9 @@ const excelChallenges = [
       }
     ],
     "targetCell": "C2",
-    "instruction": "Tulis rumus =SQRT(A2) + POWER(B2, 2) di sel C2.",
+    "instruction": "Gunakan fungsi SQRT (menggunakan parameter data A2) + POWER(B2, 2) di sel C2.",
     "babyHint": "🍼 Bahasa Bayi: =SQRT(A2) + POWER(B2, 2). SQRT adalah Square Root (akar kuadrat), POWER adalah perpangkatan!",
-    "starterFormula": "=SQRT(",
+    "starterFormula": "=",
     "quickChips": [
       "=SQRT(",
       "A2",
@@ -9268,3159 +9372,3210 @@ const excelChallenges = [
       "title": "💡 CONTOH SERUPA: Menghitung Sisi Miring Segitiga Phytagoras",
       "kasusSerupa": "Tabel Geometri: Alas a=3, Tinggi b=4. Sisi miring: =SQRT(POWER(3, 2) + POWER(4, 2)).",
       "rumusContoh": "=SQRT(POWER(3, 2) + POWER(4, 2))",
-      "nalarBayi": "Akar dari (9 + 16 = 25) menghasilkan sisi miring tepat 5!"
+      "nalarBayi": "Akar dari (9 + 16 = 25) menghasilkan sisi miring tepat 5!",
+      "hasilContoh": "Terevaluasi otomatis oleh Excel sesuai data contoh"
     }
   },
-{
-  "id": "xl-106",
-  "category": "3. Statistik Bersyarat",
-  "title": "Tantangan 106: Praktik Rumus SUMIFS Dunia Nyata",
-  "scenario": "Kasus Perkantoran (SUMIFS): Menjumlahkan omzet dengan banyak syarat sekaligus (Cabang & Kategori). Gunakan rumus SUMIFS pada sel target C2 sesuai contoh!",
-  "tableHeaders": [
-    "A",
-    "B",
-    "C"
-  ],
-  "tableRows": [
-    {
-      "row": 1,
-      "A": "Unit / Nama Data",
-      "B": "Nilai Input",
-      "C": "Hasil Rumus"
-    },
-    {
-      "row": 2,
-      "A": "Budi Santoso",
-      "B": 82,
-      "C": ""
-    },
-    {
-      "row": 3,
-      "A": "Dewi Lestari",
-      "B": 68,
-      "C": ""
-    },
-    {
-      "row": 4,
-      "A": "Rian Hidayat",
-      "B": 90,
-      "C": ""
+  {
+    "id": "xl-106",
+    "category": "3. Statistik Bersyarat",
+    "title": "Tantangan 106: Praktik Rumus SUMIFS Dunia Nyata",
+    "scenario": "Kasus Perkantoran (SUMIFS): Menjumlahkan omzet dengan banyak syarat sekaligus (Cabang & Kategori). Gunakan rumus SUMIFS pada sel target C2 secara mandiri!",
+    "tableHeaders": [
+      "A",
+      "B",
+      "C"
+    ],
+    "tableRows": [
+      {
+        "row": 1,
+        "A": "Unit / Nama Data",
+        "B": "Nilai Input",
+        "C": "Hasil Rumus"
+      },
+      {
+        "row": 2,
+        "A": "Budi Santoso",
+        "B": 82,
+        "C": ""
+      },
+      {
+        "row": 3,
+        "A": "Dewi Lestari",
+        "B": 68,
+        "C": ""
+      },
+      {
+        "row": 4,
+        "A": "Rian Hidayat",
+        "B": 90,
+        "C": ""
+      }
+    ],
+    "targetCell": "C2",
+    "instruction": "Gunakan fungsi SUMIFS (menggunakan parameter data C2:C4, A2:A4, 'Jakarta', B2:B4, 'Lunas') di sel C2 untuk mempraktekkan fungsi SUMIFS!",
+    "babyHint": "🍼 Bahasa Bayi: Ketik =SUMIFS(C2:C4, A2:A4, \"Jakarta\", B2:B4, \"Lunas\") — Menjumlahkan omzet dengan banyak syarat sekaligus (Cabang & Kategori).",
+    "starterFormula": "=",
+    "quickChips": [
+      "=SUMIFS(",
+      "B2",
+      "B2:B4",
+      "A2",
+      ")",
+      ",",
+      ";"
+    ],
+    "acceptedFormulas": [
+      "=SUMIFS(C2:C4, A2:A4, \"Jakarta\", B2:B4, \"Lunas\")",
+      "=SUMIFS(C2:C4; A2:A4; \"Jakarta\"; B2:B4; \"Lunas\")",
+      "=SUMIFS(C2:C4,A2:A4,\"Jakarta\",B2:B4,\"Lunas\")",
+      "=SUMIFS(C2:C4;A2:A4;\"Jakarta\";B2:B4;\"Lunas\")"
+    ],
+    "expectedValue": 15500000,
+    "workedExample": {
+      "title": "💡 FUNGSINYA BUAT APA & CONTOH RUMUS SUMIFS",
+      "kasusSerupa": "Contoh Soal Latihan (Tabel Simulasi): Misalkan data simulasi berada pada sel sesuai contoh di bawah, maka penulisan rumus yang benar adalah =SUMIFS(F10:F12, D10:D12, \"Jakarta\", E10:E12, \"Lunas\").",
+      "rumusContoh": "=SUMIFS(F10:F12, D10:D12, \"Jakarta\", E10:E12, \"Lunas\")",
+      "nalarBayi": "Rumus SUMIFS sangat krusial di kantor! Cukup ketik fungsi SUMIFS (menggunakan parameter data C2:C4, A2:A4, 'Jakarta', B2:B4, 'Lunas') untuk menyelesaikannya secara otomatis.",
+      "hasilContoh": "Terevaluasi otomatis oleh Excel sesuai data contoh"
     }
-  ],
-  "targetCell": "C2",
-  "instruction": "Ketik rumus =SUMIFS(C2:C4, A2:A4, \"Jakarta\", B2:B4, \"Lunas\") di sel C2 untuk mempraktekkan fungsi SUMIFS!",
-  "babyHint": "🍼 Bahasa Bayi: Ketik =SUMIFS(C2:C4, A2:A4, \"Jakarta\", B2:B4, \"Lunas\") — Menjumlahkan omzet dengan banyak syarat sekaligus (Cabang & Kategori).",
-  "starterFormula": "=SUMIFS(",
-  "quickChips": [
-    "=SUMIFS(",
-    "B2",
-    "B2:B4",
-    "A2",
-    ")",
-    ",",
-    ";"
-  ],
-  "acceptedFormulas": [
-    "=SUMIFS(C2:C4, A2:A4, \"Jakarta\", B2:B4, \"Lunas\")",
-    "=SUMIFS(C2:C4; A2:A4; \"Jakarta\"; B2:B4; \"Lunas\")",
-    "=SUMIFS(C2:C4,A2:A4,\"Jakarta\",B2:B4,\"Lunas\")",
-    "=SUMIFS(C2:C4;A2:A4;\"Jakarta\";B2:B4;\"Lunas\")"
-  ],
-  "expectedValue": 15500000,
-  "workedExample": {
-    "title": "💡 FUNGSINYA BUAT APA & CONTOH RUMUS SUMIFS",
-    "kasusSerupa": "Fungsi SUMIFS: Menjumlahkan omzet dengan banyak syarat sekaligus (Cabang & Kategori).",
-    "rumusContoh": "=SUMIFS(C2:C4, A2:A4, \"Jakarta\", B2:B4, \"Lunas\")",
-    "nalarBayi": "Rumus SUMIFS sangat krusial di kantor! Cukup ketik =SUMIFS(C2:C4, A2:A4, \"Jakarta\", B2:B4, \"Lunas\") untuk menyelesaikannya secara otomatis."
-  }
-},
-{
-  "id": "xl-107",
-  "category": "3. Statistik Bersyarat",
-  "title": "Tantangan 107: Praktik Rumus COUNTIFS Dunia Nyata",
-  "scenario": "Kasus Perkantoran (COUNTIFS): Menghitung jumlah transaksi yang memenuhi banyak kriteria sekaligus. Gunakan rumus COUNTIFS pada sel target C2 sesuai contoh!",
-  "tableHeaders": [
-    "A",
-    "B",
-    "C"
-  ],
-  "tableRows": [
-    {
-      "row": 1,
-      "A": "Unit / Nama Data",
-      "B": "Nilai Input",
-      "C": "Hasil Rumus"
-    },
-    {
-      "row": 2,
-      "A": "Budi Santoso",
-      "B": 82,
-      "C": ""
-    },
-    {
-      "row": 3,
-      "A": "Dewi Lestari",
-      "B": 68,
-      "C": ""
-    },
-    {
-      "row": 4,
-      "A": "Rian Hidayat",
-      "B": 90,
-      "C": ""
+  },
+  {
+    "id": "xl-107",
+    "category": "3. Statistik Bersyarat",
+    "title": "Tantangan 107: Praktik Rumus COUNTIFS Dunia Nyata",
+    "scenario": "Kasus Perkantoran (COUNTIFS): Menghitung jumlah transaksi yang memenuhi banyak kriteria sekaligus. Gunakan rumus COUNTIFS pada sel target C2 secara mandiri!",
+    "tableHeaders": [
+      "A",
+      "B",
+      "C"
+    ],
+    "tableRows": [
+      {
+        "row": 1,
+        "A": "Unit / Nama Data",
+        "B": "Nilai Input",
+        "C": "Hasil Rumus"
+      },
+      {
+        "row": 2,
+        "A": "Budi Santoso",
+        "B": 82,
+        "C": ""
+      },
+      {
+        "row": 3,
+        "A": "Dewi Lestari",
+        "B": 68,
+        "C": ""
+      },
+      {
+        "row": 4,
+        "A": "Rian Hidayat",
+        "B": 90,
+        "C": ""
+      }
+    ],
+    "targetCell": "C2",
+    "instruction": "Gunakan fungsi COUNTIFS (menggunakan parameter data B2:B4, 'Jakarta', C2:C4, '>=1000000') di sel C2 untuk mempraktekkan fungsi COUNTIFS!",
+    "babyHint": "🍼 Bahasa Bayi: Ketik =COUNTIFS(B2:B4, \"Jakarta\", C2:C4, \">=1000000\") — Menghitung jumlah transaksi yang memenuhi banyak kriteria sekaligus.",
+    "starterFormula": "=",
+    "quickChips": [
+      "=COUNTIFS(",
+      "B2",
+      "B2:B4",
+      "A2",
+      ")",
+      ",",
+      ";"
+    ],
+    "acceptedFormulas": [
+      "=COUNTIFS(B2:B4, \"Jakarta\", C2:C4, \">=1000000\")",
+      "=COUNTIFS(B2:B4; \"Jakarta\"; C2:C4; \">=1000000\")",
+      "=COUNTIFS(B2:B4,\"Jakarta\",C2:C4,\">=1000000\")",
+      "=COUNTIFS(B2:B4;\"Jakarta\";C2:C4;\">=1000000\")"
+    ],
+    "expectedValue": 2,
+    "workedExample": {
+      "title": "💡 FUNGSINYA BUAT APA & CONTOH RUMUS COUNTIFS",
+      "kasusSerupa": "Contoh Soal Latihan (Tabel Simulasi): Misalkan data simulasi berada pada sel sesuai contoh di bawah, maka penulisan rumus yang benar adalah =COUNTIFS(E10:E12, \"Jakarta\", F10:F12, \">=1000000\").",
+      "rumusContoh": "=COUNTIFS(E10:E12, \"Jakarta\", F10:F12, \">=1000000\")",
+      "nalarBayi": "Rumus COUNTIFS sangat krusial di kantor! Cukup ketik fungsi COUNTIFS (menggunakan parameter data B2:B4, 'Jakarta', C2:C4, '>=1000000') untuk menyelesaikannya secara otomatis.",
+      "hasilContoh": "Terevaluasi otomatis oleh Excel sesuai data contoh"
     }
-  ],
-  "targetCell": "C2",
-  "instruction": "Ketik rumus =COUNTIFS(B2:B4, \"Jakarta\", C2:C4, \">=1000000\") di sel C2 untuk mempraktekkan fungsi COUNTIFS!",
-  "babyHint": "🍼 Bahasa Bayi: Ketik =COUNTIFS(B2:B4, \"Jakarta\", C2:C4, \">=1000000\") — Menghitung jumlah transaksi yang memenuhi banyak kriteria sekaligus.",
-  "starterFormula": "=COUNTIFS(",
-  "quickChips": [
-    "=COUNTIFS(",
-    "B2",
-    "B2:B4",
-    "A2",
-    ")",
-    ",",
-    ";"
-  ],
-  "acceptedFormulas": [
-    "=COUNTIFS(B2:B4, \"Jakarta\", C2:C4, \">=1000000\")",
-    "=COUNTIFS(B2:B4; \"Jakarta\"; C2:C4; \">=1000000\")",
-    "=COUNTIFS(B2:B4,\"Jakarta\",C2:C4,\">=1000000\")",
-    "=COUNTIFS(B2:B4;\"Jakarta\";C2:C4;\">=1000000\")"
-  ],
-  "expectedValue": 2,
-  "workedExample": {
-    "title": "💡 FUNGSINYA BUAT APA & CONTOH RUMUS COUNTIFS",
-    "kasusSerupa": "Fungsi COUNTIFS: Menghitung jumlah transaksi yang memenuhi banyak kriteria sekaligus.",
-    "rumusContoh": "=COUNTIFS(B2:B4, \"Jakarta\", C2:C4, \">=1000000\")",
-    "nalarBayi": "Rumus COUNTIFS sangat krusial di kantor! Cukup ketik =COUNTIFS(B2:B4, \"Jakarta\", C2:C4, \">=1000000\") untuk menyelesaikannya secara otomatis."
-  }
-},
-{
-  "id": "xl-108",
-  "category": "3. Statistik Bersyarat",
-  "title": "Tantangan 108: Praktik Rumus AVERAGEIFS Dunia Nyata",
-  "scenario": "Kasus Perkantoran (AVERAGEIFS): Menghitung rata-rata nilai khusus data yang memenuhi 2 syarat. Gunakan rumus AVERAGEIFS pada sel target C2 sesuai contoh!",
-  "tableHeaders": [
-    "A",
-    "B",
-    "C"
-  ],
-  "tableRows": [
-    {
-      "row": 1,
-      "A": "Unit / Nama Data",
-      "B": "Nilai Input",
-      "C": "Hasil Rumus"
-    },
-    {
-      "row": 2,
-      "A": "Budi Santoso",
-      "B": 82,
-      "C": ""
-    },
-    {
-      "row": 3,
-      "A": "Dewi Lestari",
-      "B": 68,
-      "C": ""
-    },
-    {
-      "row": 4,
-      "A": "Rian Hidayat",
-      "B": 90,
-      "C": ""
+  },
+  {
+    "id": "xl-108",
+    "category": "3. Statistik Bersyarat",
+    "title": "Tantangan 108: Praktik Rumus AVERAGEIFS Dunia Nyata",
+    "scenario": "Kasus Perkantoran (AVERAGEIFS): Menghitung rata-rata nilai khusus data yang memenuhi 2 syarat. Gunakan rumus AVERAGEIFS pada sel target C2 secara mandiri!",
+    "tableHeaders": [
+      "A",
+      "B",
+      "C"
+    ],
+    "tableRows": [
+      {
+        "row": 1,
+        "A": "Unit / Nama Data",
+        "B": "Nilai Input",
+        "C": "Hasil Rumus"
+      },
+      {
+        "row": 2,
+        "A": "Budi Santoso",
+        "B": 82,
+        "C": ""
+      },
+      {
+        "row": 3,
+        "A": "Dewi Lestari",
+        "B": 68,
+        "C": ""
+      },
+      {
+        "row": 4,
+        "A": "Rian Hidayat",
+        "B": 90,
+        "C": ""
+      }
+    ],
+    "targetCell": "C2",
+    "instruction": "Gunakan fungsi AVERAGEIFS (menggunakan parameter data C2:C4, B2:B4, 'Aktif') di sel C2 untuk mempraktekkan fungsi AVERAGEIFS!",
+    "babyHint": "🍼 Bahasa Bayi: Ketik =AVERAGEIFS(C2:C4, B2:B4, \"Aktif\") — Menghitung rata-rata nilai khusus data yang memenuhi 2 syarat.",
+    "starterFormula": "=",
+    "quickChips": [
+      "=AVERAGEIFS(",
+      "B2",
+      "B2:B4",
+      "A2",
+      ")",
+      ",",
+      ";"
+    ],
+    "acceptedFormulas": [
+      "=AVERAGEIFS(C2:C4, B2:B4, \"Aktif\")",
+      "=AVERAGEIFS(C2:C4; B2:B4; \"Aktif\")",
+      "=AVERAGEIFS(C2:C4,B2:B4,\"Aktif\")",
+      "=AVERAGEIFS(C2:C4;B2:B4;\"Aktif\")"
+    ],
+    "expectedValue": 85,
+    "workedExample": {
+      "title": "💡 FUNGSINYA BUAT APA & CONTOH RUMUS AVERAGEIFS",
+      "kasusSerupa": "Contoh Soal Latihan (Tabel Simulasi): Misalkan data simulasi berada pada sel sesuai contoh di bawah, maka penulisan rumus yang benar adalah =AVERAGEIFS(F10:F12, E10:E12, \"Aktif\").",
+      "rumusContoh": "=AVERAGEIFS(F10:F12, E10:E12, \"Aktif\")",
+      "nalarBayi": "Rumus AVERAGEIFS sangat krusial di kantor! Cukup ketik fungsi AVERAGEIFS (menggunakan parameter data C2:C4, B2:B4, 'Aktif') untuk menyelesaikannya secara otomatis.",
+      "hasilContoh": "Terevaluasi otomatis oleh Excel sesuai data contoh"
     }
-  ],
-  "targetCell": "C2",
-  "instruction": "Ketik rumus =AVERAGEIFS(C2:C4, B2:B4, \"Aktif\") di sel C2 untuk mempraktekkan fungsi AVERAGEIFS!",
-  "babyHint": "🍼 Bahasa Bayi: Ketik =AVERAGEIFS(C2:C4, B2:B4, \"Aktif\") — Menghitung rata-rata nilai khusus data yang memenuhi 2 syarat.",
-  "starterFormula": "=AVERAGEIFS(",
-  "quickChips": [
-    "=AVERAGEIFS(",
-    "B2",
-    "B2:B4",
-    "A2",
-    ")",
-    ",",
-    ";"
-  ],
-  "acceptedFormulas": [
-    "=AVERAGEIFS(C2:C4, B2:B4, \"Aktif\")",
-    "=AVERAGEIFS(C2:C4; B2:B4; \"Aktif\")",
-    "=AVERAGEIFS(C2:C4,B2:B4,\"Aktif\")",
-    "=AVERAGEIFS(C2:C4;B2:B4;\"Aktif\")"
-  ],
-  "expectedValue": 85,
-  "workedExample": {
-    "title": "💡 FUNGSINYA BUAT APA & CONTOH RUMUS AVERAGEIFS",
-    "kasusSerupa": "Fungsi AVERAGEIFS: Menghitung rata-rata nilai khusus data yang memenuhi 2 syarat.",
-    "rumusContoh": "=AVERAGEIFS(C2:C4, B2:B4, \"Aktif\")",
-    "nalarBayi": "Rumus AVERAGEIFS sangat krusial di kantor! Cukup ketik =AVERAGEIFS(C2:C4, B2:B4, \"Aktif\") untuk menyelesaikannya secara otomatis."
-  }
-},
-{
-  "id": "xl-109",
-  "category": "1. Logika Bisnis & Kondisional",
-  "title": "Tantangan 109: Praktik Rumus IFS Dunia Nyata",
-  "scenario": "Kasus Perkantoran (IFS): Menentukan predikat nilai bertingkat tanpa IF bersarang rumit. Gunakan rumus IFS pada sel target C2 sesuai contoh!",
-  "tableHeaders": [
-    "A",
-    "B",
-    "C"
-  ],
-  "tableRows": [
-    {
-      "row": 1,
-      "A": "Unit / Nama Data",
-      "B": "Nilai Input",
-      "C": "Hasil Rumus"
-    },
-    {
-      "row": 2,
-      "A": "Budi Santoso",
-      "B": 82,
-      "C": ""
-    },
-    {
-      "row": 3,
-      "A": "Dewi Lestari",
-      "B": 68,
-      "C": ""
-    },
-    {
-      "row": 4,
-      "A": "Rian Hidayat",
-      "B": 90,
-      "C": ""
+  },
+  {
+    "id": "xl-109",
+    "category": "1. Logika Bisnis & Kondisional",
+    "title": "Tantangan 109: Praktik Rumus IFS Dunia Nyata",
+    "scenario": "Kasus Perkantoran (IFS): Menentukan predikat nilai bertingkat tanpa IF bersarang rumit. Gunakan rumus IFS pada sel target C2 secara mandiri!",
+    "tableHeaders": [
+      "A",
+      "B",
+      "C"
+    ],
+    "tableRows": [
+      {
+        "row": 1,
+        "A": "Unit / Nama Data",
+        "B": "Nilai Input",
+        "C": "Hasil Rumus"
+      },
+      {
+        "row": 2,
+        "A": "Budi Santoso",
+        "B": 82,
+        "C": ""
+      },
+      {
+        "row": 3,
+        "A": "Dewi Lestari",
+        "B": 68,
+        "C": ""
+      },
+      {
+        "row": 4,
+        "A": "Rian Hidayat",
+        "B": 90,
+        "C": ""
+      }
+    ],
+    "targetCell": "C2",
+    "instruction": "Gunakan fungsi IFS (menggunakan parameter data B2>=85, 'A', B2>=70, 'B', TRUE, 'C') di sel C2 untuk mempraktekkan fungsi IFS!",
+    "babyHint": "🍼 Bahasa Bayi: Ketik =IFS(B2>=85, \"A\", B2>=70, \"B\", TRUE, \"C\") — Menentukan predikat nilai bertingkat tanpa IF bersarang rumit.",
+    "starterFormula": "=",
+    "quickChips": [
+      "=IFS(",
+      "B2",
+      "B2:B4",
+      "A2",
+      ")",
+      ",",
+      ";"
+    ],
+    "acceptedFormulas": [
+      "=IFS(B2>=85, \"A\", B2>=70, \"B\", TRUE, \"C\")",
+      "=IFS(B2>=85; \"A\"; B2>=70; \"B\"; TRUE; \"C\")",
+      "=IFS(B2>=85,\"A\",B2>=70,\"B\",TRUE,\"C\")",
+      "=IFS(B2>=85;\"A\";B2>=70;\"B\";TRUE;\"C\")"
+    ],
+    "expectedValue": "A",
+    "workedExample": {
+      "title": "💡 FUNGSINYA BUAT APA & CONTOH RUMUS IFS",
+      "kasusSerupa": "Contoh Soal Latihan (Tabel Simulasi): Misalkan data simulasi berada pada sel sesuai contoh di bawah, maka penulisan rumus yang benar adalah =IFS(E10>=85, \"A\", E10>=70, \"B\", TRUE, \"C\").",
+      "rumusContoh": "=IFS(E10>=85, \"A\", E10>=70, \"B\", TRUE, \"C\")",
+      "nalarBayi": "Rumus IFS sangat krusial di kantor! Cukup ketik fungsi IFS (menggunakan parameter data B2>=85, 'A', B2>=70, 'B', TRUE, 'C') untuk menyelesaikannya secara otomatis.",
+      "hasilContoh": "Terevaluasi otomatis oleh Excel sesuai data contoh"
     }
-  ],
-  "targetCell": "C2",
-  "instruction": "Ketik rumus =IFS(B2>=85, \"A\", B2>=70, \"B\", TRUE, \"C\") di sel C2 untuk mempraktekkan fungsi IFS!",
-  "babyHint": "🍼 Bahasa Bayi: Ketik =IFS(B2>=85, \"A\", B2>=70, \"B\", TRUE, \"C\") — Menentukan predikat nilai bertingkat tanpa IF bersarang rumit.",
-  "starterFormula": "=IFS(",
-  "quickChips": [
-    "=IFS(",
-    "B2",
-    "B2:B4",
-    "A2",
-    ")",
-    ",",
-    ";"
-  ],
-  "acceptedFormulas": [
-    "=IFS(B2>=85, \"A\", B2>=70, \"B\", TRUE, \"C\")",
-    "=IFS(B2>=85; \"A\"; B2>=70; \"B\"; TRUE; \"C\")",
-    "=IFS(B2>=85,\"A\",B2>=70,\"B\",TRUE,\"C\")",
-    "=IFS(B2>=85;\"A\";B2>=70;\"B\";TRUE;\"C\")"
-  ],
-  "expectedValue": "A",
-  "workedExample": {
-    "title": "💡 FUNGSINYA BUAT APA & CONTOH RUMUS IFS",
-    "kasusSerupa": "Fungsi IFS: Menentukan predikat nilai bertingkat tanpa IF bersarang rumit.",
-    "rumusContoh": "=IFS(B2>=85, \"A\", B2>=70, \"B\", TRUE, \"C\")",
-    "nalarBayi": "Rumus IFS sangat krusial di kantor! Cukup ketik =IFS(B2>=85, \"A\", B2>=70, \"B\", TRUE, \"C\") untuk menyelesaikannya secara otomatis."
-  }
-},
-{
-  "id": "xl-110",
-  "category": "1. Logika Bisnis & Kondisional",
-  "title": "Tantangan 110: Praktik Rumus XOR Dunia Nyata",
-  "scenario": "Kasus Perkantoran (XOR): Logika Eksklusif OR: benar jika tepat salah satu syarat terpenuhi. Gunakan rumus XOR pada sel target C2 sesuai contoh!",
-  "tableHeaders": [
-    "A",
-    "B",
-    "C"
-  ],
-  "tableRows": [
-    {
-      "row": 1,
-      "A": "Unit / Nama Data",
-      "B": "Nilai Input",
-      "C": "Hasil Rumus"
-    },
-    {
-      "row": 2,
-      "A": "Budi Santoso",
-      "B": 82,
-      "C": ""
-    },
-    {
-      "row": 3,
-      "A": "Dewi Lestari",
-      "B": 68,
-      "C": ""
-    },
-    {
-      "row": 4,
-      "A": "Rian Hidayat",
-      "B": 90,
-      "C": ""
+  },
+  {
+    "id": "xl-110",
+    "category": "1. Logika Bisnis & Kondisional",
+    "title": "Tantangan 110: Praktik Rumus XOR Dunia Nyata",
+    "scenario": "Kasus Perkantoran (XOR): Logika Eksklusif OR: benar jika tepat salah satu syarat terpenuhi. Gunakan rumus XOR pada sel target C2 secara mandiri!",
+    "tableHeaders": [
+      "A",
+      "B",
+      "C"
+    ],
+    "tableRows": [
+      {
+        "row": 1,
+        "A": "Unit / Nama Data",
+        "B": "Nilai Input",
+        "C": "Hasil Rumus"
+      },
+      {
+        "row": 2,
+        "A": "Budi Santoso",
+        "B": 82,
+        "C": ""
+      },
+      {
+        "row": 3,
+        "A": "Dewi Lestari",
+        "B": 68,
+        "C": ""
+      },
+      {
+        "row": 4,
+        "A": "Rian Hidayat",
+        "B": 90,
+        "C": ""
+      }
+    ],
+    "targetCell": "C2",
+    "instruction": "Gunakan fungsi XOR (menggunakan parameter data B2>=80, C2>=80) di sel C2 untuk mempraktekkan fungsi XOR!",
+    "babyHint": "🍼 Bahasa Bayi: Ketik =XOR(B2>=80, C2>=80) — Logika Eksklusif OR: benar jika tepat salah satu syarat terpenuhi.",
+    "starterFormula": "=",
+    "quickChips": [
+      "=XOR(",
+      "B2",
+      "B2:B4",
+      "A2",
+      ")",
+      ",",
+      ";"
+    ],
+    "acceptedFormulas": [
+      "=XOR(B2>=80, C2>=80)",
+      "=XOR(B2>=80; C2>=80)",
+      "=XOR(B2>=80,C2>=80)",
+      "=XOR(B2>=80;C2>=80)"
+    ],
+    "expectedValue": "TRUE",
+    "workedExample": {
+      "title": "💡 FUNGSINYA BUAT APA & CONTOH RUMUS XOR",
+      "kasusSerupa": "Contoh Soal Latihan (Tabel Simulasi): Misalkan data simulasi berada pada sel sesuai contoh di bawah, maka penulisan rumus yang benar adalah =XOR(E10>=80, F10>=80).",
+      "rumusContoh": "=XOR(E10>=80, F10>=80)",
+      "nalarBayi": "Rumus XOR sangat krusial di kantor! Cukup ketik fungsi XOR (menggunakan parameter data B2>=80, C2>=80) untuk menyelesaikannya secara otomatis.",
+      "hasilContoh": "Terevaluasi otomatis oleh Excel sesuai data contoh"
     }
-  ],
-  "targetCell": "C2",
-  "instruction": "Ketik rumus =XOR(B2>=80, C2>=80) di sel C2 untuk mempraktekkan fungsi XOR!",
-  "babyHint": "🍼 Bahasa Bayi: Ketik =XOR(B2>=80, C2>=80) — Logika Eksklusif OR: benar jika tepat salah satu syarat terpenuhi.",
-  "starterFormula": "=XOR(",
-  "quickChips": [
-    "=XOR(",
-    "B2",
-    "B2:B4",
-    "A2",
-    ")",
-    ",",
-    ";"
-  ],
-  "acceptedFormulas": [
-    "=XOR(B2>=80, C2>=80)",
-    "=XOR(B2>=80; C2>=80)",
-    "=XOR(B2>=80,C2>=80)",
-    "=XOR(B2>=80;C2>=80)"
-  ],
-  "expectedValue": "TRUE",
-  "workedExample": {
-    "title": "💡 FUNGSINYA BUAT APA & CONTOH RUMUS XOR",
-    "kasusSerupa": "Fungsi XOR: Logika Eksklusif OR: benar jika tepat salah satu syarat terpenuhi.",
-    "rumusContoh": "=XOR(B2>=80, C2>=80)",
-    "nalarBayi": "Rumus XOR sangat krusial di kantor! Cukup ketik =XOR(B2>=80, C2>=80) untuk menyelesaikannya secara otomatis."
-  }
-},
-{
-  "id": "xl-111",
-  "category": "1. Logika Bisnis & Kondisional",
-  "title": "Tantangan 111: Praktik Rumus IFNA Dunia Nyata",
-  "scenario": "Kasus Perkantoran (IFNA): Menangkap error #N/A pada pencarian kode barang yang tidak terdaftar. Gunakan rumus IFNA pada sel target C2 sesuai contoh!",
-  "tableHeaders": [
-    "A",
-    "B",
-    "C"
-  ],
-  "tableRows": [
-    {
-      "row": 1,
-      "A": "Unit / Nama Data",
-      "B": "Nilai Input",
-      "C": "Hasil Rumus"
-    },
-    {
-      "row": 2,
-      "A": "Budi Santoso",
-      "B": 82,
-      "C": ""
-    },
-    {
-      "row": 3,
-      "A": "Dewi Lestari",
-      "B": 68,
-      "C": ""
-    },
-    {
-      "row": 4,
-      "A": "Rian Hidayat",
-      "B": 90,
-      "C": ""
+  },
+  {
+    "id": "xl-111",
+    "category": "1. Logika Bisnis & Kondisional",
+    "title": "Tantangan 111: Praktik Rumus IFNA Dunia Nyata",
+    "scenario": "Kasus Perkantoran (IFNA): Menangkap error #N/A pada pencarian kode barang yang tidak terdaftar. Gunakan rumus IFNA pada sel target C2 secara mandiri!",
+    "tableHeaders": [
+      "A",
+      "B",
+      "C"
+    ],
+    "tableRows": [
+      {
+        "row": 1,
+        "A": "Unit / Nama Data",
+        "B": "Nilai Input",
+        "C": "Hasil Rumus"
+      },
+      {
+        "row": 2,
+        "A": "Budi Santoso",
+        "B": 82,
+        "C": ""
+      },
+      {
+        "row": 3,
+        "A": "Dewi Lestari",
+        "B": 68,
+        "C": ""
+      },
+      {
+        "row": 4,
+        "A": "Rian Hidayat",
+        "B": 90,
+        "C": ""
+      }
+    ],
+    "targetCell": "C2",
+    "instruction": "Gunakan fungsi IFNA (menggunakan parameter data B2, 'Tidak Ada') di sel C2 untuk mempraktekkan fungsi IFNA!",
+    "babyHint": "🍼 Bahasa Bayi: Ketik =IFNA(B2, \"Tidak Ada\") — Menangkap error #N/A pada pencarian kode barang yang tidak terdaftar.",
+    "starterFormula": "=",
+    "quickChips": [
+      "=IFNA(",
+      "B2",
+      "B2:B4",
+      "A2",
+      ")",
+      ",",
+      ";"
+    ],
+    "acceptedFormulas": [
+      "=IFNA(B2, \"Tidak Ada\")",
+      "=IFNA(B2; \"Tidak Ada\")",
+      "=IFNA(B2,\"Tidak Ada\")",
+      "=IFNA(B2;\"Tidak Ada\")"
+    ],
+    "expectedValue": 82,
+    "workedExample": {
+      "title": "💡 FUNGSINYA BUAT APA & CONTOH RUMUS IFNA",
+      "kasusSerupa": "Contoh Soal Latihan (Tabel Simulasi): Misalkan data simulasi berada pada sel sesuai contoh di bawah, maka penulisan rumus yang benar adalah =IFNA(E10, \"Tidak Ada\").",
+      "rumusContoh": "=IFNA(E10, \"Tidak Ada\")",
+      "nalarBayi": "Rumus IFNA sangat krusial di kantor! Cukup ketik fungsi IFNA (menggunakan parameter data B2, 'Tidak Ada') untuk menyelesaikannya secara otomatis.",
+      "hasilContoh": "Terevaluasi otomatis oleh Excel sesuai data contoh"
     }
-  ],
-  "targetCell": "C2",
-  "instruction": "Ketik rumus =IFNA(B2, \"Tidak Ada\") di sel C2 untuk mempraktekkan fungsi IFNA!",
-  "babyHint": "🍼 Bahasa Bayi: Ketik =IFNA(B2, \"Tidak Ada\") — Menangkap error #N/A pada pencarian kode barang yang tidak terdaftar.",
-  "starterFormula": "=IFNA(",
-  "quickChips": [
-    "=IFNA(",
-    "B2",
-    "B2:B4",
-    "A2",
-    ")",
-    ",",
-    ";"
-  ],
-  "acceptedFormulas": [
-    "=IFNA(B2, \"Tidak Ada\")",
-    "=IFNA(B2; \"Tidak Ada\")",
-    "=IFNA(B2,\"Tidak Ada\")",
-    "=IFNA(B2;\"Tidak Ada\")"
-  ],
-  "expectedValue": 82,
-  "workedExample": {
-    "title": "💡 FUNGSINYA BUAT APA & CONTOH RUMUS IFNA",
-    "kasusSerupa": "Fungsi IFNA: Menangkap error #N/A pada pencarian kode barang yang tidak terdaftar.",
-    "rumusContoh": "=IFNA(B2, \"Tidak Ada\")",
-    "nalarBayi": "Rumus IFNA sangat krusial di kantor! Cukup ketik =IFNA(B2, \"Tidak Ada\") untuk menyelesaikannya secara otomatis."
-  }
-},
-{
-  "id": "xl-112",
-  "category": "4. Pencarian Data & Lookup",
-  "title": "Tantangan 112: Praktik Rumus XLOOKUP Dunia Nyata",
-  "scenario": "Kasus Perkantoran (XLOOKUP): Rumus pencarian modern pengganti VLOOKUP & HLOOKUP ke segala arah. Gunakan rumus XLOOKUP pada sel target C2 sesuai contoh!",
-  "tableHeaders": [
-    "A",
-    "B",
-    "C"
-  ],
-  "tableRows": [
-    {
-      "row": 1,
-      "A": "Unit / Nama Data",
-      "B": "Nilai Input",
-      "C": "Hasil Rumus"
-    },
-    {
-      "row": 2,
-      "A": "Budi Santoso",
-      "B": 82,
-      "C": ""
-    },
-    {
-      "row": 3,
-      "A": "Dewi Lestari",
-      "B": 68,
-      "C": ""
-    },
-    {
-      "row": 4,
-      "A": "Rian Hidayat",
-      "B": 90,
-      "C": ""
+  },
+  {
+    "id": "xl-112",
+    "category": "4. Pencarian Data & Lookup",
+    "title": "Tantangan 112: Praktik Rumus XLOOKUP Dunia Nyata",
+    "scenario": "Kasus Perkantoran (XLOOKUP): Rumus pencarian modern pengganti VLOOKUP & HLOOKUP ke segala arah. Gunakan rumus XLOOKUP pada sel target C2 secara mandiri!",
+    "tableHeaders": [
+      "A",
+      "B",
+      "C"
+    ],
+    "tableRows": [
+      {
+        "row": 1,
+        "A": "Unit / Nama Data",
+        "B": "Nilai Input",
+        "C": "Hasil Rumus"
+      },
+      {
+        "row": 2,
+        "A": "Budi Santoso",
+        "B": 82,
+        "C": ""
+      },
+      {
+        "row": 3,
+        "A": "Dewi Lestari",
+        "B": 68,
+        "C": ""
+      },
+      {
+        "row": 4,
+        "A": "Rian Hidayat",
+        "B": 90,
+        "C": ""
+      }
+    ],
+    "targetCell": "C2",
+    "instruction": "Gunakan fungsi XLOOKUP (menggunakan parameter data A2, A2:A4, B2:B4) di sel C2 untuk mempraktekkan fungsi XLOOKUP!",
+    "babyHint": "🍼 Bahasa Bayi: Ketik =XLOOKUP(A2, A2:A4, B2:B4) — Rumus pencarian modern pengganti VLOOKUP & HLOOKUP ke segala arah.",
+    "starterFormula": "=",
+    "quickChips": [
+      "=XLOOKUP(",
+      "B2",
+      "B2:B4",
+      "A2",
+      ")",
+      ",",
+      ";"
+    ],
+    "acceptedFormulas": [
+      "=XLOOKUP(A2, A2:A4, B2:B4)",
+      "=XLOOKUP(A2; A2:A4; B2:B4)",
+      "=XLOOKUP(A2,A2:A4,B2:B4)",
+      "=XLOOKUP(A2;A2:A4;B2:B4)"
+    ],
+    "expectedValue": 82,
+    "workedExample": {
+      "title": "💡 FUNGSINYA BUAT APA & CONTOH RUMUS XLOOKUP",
+      "kasusSerupa": "Contoh Soal Latihan (Tabel Simulasi): Misalkan data simulasi berada pada sel sesuai contoh di bawah, maka penulisan rumus yang benar adalah =XLOOKUP(D10, D10:D12, E10:E12).",
+      "rumusContoh": "=XLOOKUP(D10, D10:D12, E10:E12)",
+      "nalarBayi": "Rumus XLOOKUP sangat krusial di kantor! Cukup ketik fungsi XLOOKUP (menggunakan parameter data A2, A2:A4, B2:B4) untuk menyelesaikannya secara otomatis.",
+      "hasilContoh": "Terevaluasi otomatis oleh Excel sesuai data contoh"
     }
-  ],
-  "targetCell": "C2",
-  "instruction": "Ketik rumus =XLOOKUP(A2, A2:A4, B2:B4) di sel C2 untuk mempraktekkan fungsi XLOOKUP!",
-  "babyHint": "🍼 Bahasa Bayi: Ketik =XLOOKUP(A2, A2:A4, B2:B4) — Rumus pencarian modern pengganti VLOOKUP & HLOOKUP ke segala arah.",
-  "starterFormula": "=XLOOKUP(",
-  "quickChips": [
-    "=XLOOKUP(",
-    "B2",
-    "B2:B4",
-    "A2",
-    ")",
-    ",",
-    ";"
-  ],
-  "acceptedFormulas": [
-    "=XLOOKUP(A2, A2:A4, B2:B4)",
-    "=XLOOKUP(A2; A2:A4; B2:B4)",
-    "=XLOOKUP(A2,A2:A4,B2:B4)",
-    "=XLOOKUP(A2;A2:A4;B2:B4)"
-  ],
-  "expectedValue": 82,
-  "workedExample": {
-    "title": "💡 FUNGSINYA BUAT APA & CONTOH RUMUS XLOOKUP",
-    "kasusSerupa": "Fungsi XLOOKUP: Rumus pencarian modern pengganti VLOOKUP & HLOOKUP ke segala arah.",
-    "rumusContoh": "=XLOOKUP(A2, A2:A4, B2:B4)",
-    "nalarBayi": "Rumus XLOOKUP sangat krusial di kantor! Cukup ketik =XLOOKUP(A2, A2:A4, B2:B4) untuk menyelesaikannya secara otomatis."
-  }
-},
-{
-  "id": "xl-113",
-  "category": "4. Pencarian Data & Lookup",
-  "title": "Tantangan 113: Praktik Rumus OFFSET Dunia Nyata",
-  "scenario": "Kasus Perkantoran (OFFSET): Mengambil data sel dengan bergeser sejumlah baris dan kolom dari titik awal. Gunakan rumus OFFSET pada sel target C2 sesuai contoh!",
-  "tableHeaders": [
-    "A",
-    "B",
-    "C"
-  ],
-  "tableRows": [
-    {
-      "row": 1,
-      "A": "Unit / Nama Data",
-      "B": "Nilai Input",
-      "C": "Hasil Rumus"
-    },
-    {
-      "row": 2,
-      "A": "Budi Santoso",
-      "B": 82,
-      "C": ""
-    },
-    {
-      "row": 3,
-      "A": "Dewi Lestari",
-      "B": 68,
-      "C": ""
-    },
-    {
-      "row": 4,
-      "A": "Rian Hidayat",
-      "B": 90,
-      "C": ""
+  },
+  {
+    "id": "xl-113",
+    "category": "4. Pencarian Data & Lookup",
+    "title": "Tantangan 113: Praktik Rumus OFFSET Dunia Nyata",
+    "scenario": "Kasus Perkantoran (OFFSET): Mengambil data sel dengan bergeser sejumlah baris dan kolom dari titik awal. Gunakan rumus OFFSET pada sel target C2 secara mandiri!",
+    "tableHeaders": [
+      "A",
+      "B",
+      "C"
+    ],
+    "tableRows": [
+      {
+        "row": 1,
+        "A": "Unit / Nama Data",
+        "B": "Nilai Input",
+        "C": "Hasil Rumus"
+      },
+      {
+        "row": 2,
+        "A": "Budi Santoso",
+        "B": 82,
+        "C": ""
+      },
+      {
+        "row": 3,
+        "A": "Dewi Lestari",
+        "B": 68,
+        "C": ""
+      },
+      {
+        "row": 4,
+        "A": "Rian Hidayat",
+        "B": 90,
+        "C": ""
+      }
+    ],
+    "targetCell": "C2",
+    "instruction": "Gunakan fungsi OFFSET (menggunakan parameter data B2, 1, 0) di sel C2 untuk mempraktekkan fungsi OFFSET!",
+    "babyHint": "🍼 Bahasa Bayi: Ketik =OFFSET(B2, 1, 0) — Mengambil data sel dengan bergeser sejumlah baris dan kolom dari titik awal.",
+    "starterFormula": "=",
+    "quickChips": [
+      "=OFFSET(",
+      "B2",
+      "B2:B4",
+      "A2",
+      ")",
+      ",",
+      ";"
+    ],
+    "acceptedFormulas": [
+      "=OFFSET(B2, 1, 0)",
+      "=OFFSET(B2; 1; 0)",
+      "=OFFSET(B2,1,0)",
+      "=OFFSET(B2;1;0)"
+    ],
+    "expectedValue": 68,
+    "workedExample": {
+      "title": "💡 FUNGSINYA BUAT APA & CONTOH RUMUS OFFSET",
+      "kasusSerupa": "Contoh Soal Latihan (Tabel Simulasi): Misalkan data simulasi berada pada sel sesuai contoh di bawah, maka penulisan rumus yang benar adalah =OFFSET(E10, 1, 0).",
+      "rumusContoh": "=OFFSET(E10, 1, 0)",
+      "nalarBayi": "Rumus OFFSET sangat krusial di kantor! Cukup ketik fungsi OFFSET (menggunakan parameter data B2, 1, 0) untuk menyelesaikannya secara otomatis.",
+      "hasilContoh": "Terevaluasi otomatis oleh Excel sesuai data contoh"
     }
-  ],
-  "targetCell": "C2",
-  "instruction": "Ketik rumus =OFFSET(B2, 1, 0) di sel C2 untuk mempraktekkan fungsi OFFSET!",
-  "babyHint": "🍼 Bahasa Bayi: Ketik =OFFSET(B2, 1, 0) — Mengambil data sel dengan bergeser sejumlah baris dan kolom dari titik awal.",
-  "starterFormula": "=OFFSET(",
-  "quickChips": [
-    "=OFFSET(",
-    "B2",
-    "B2:B4",
-    "A2",
-    ")",
-    ",",
-    ";"
-  ],
-  "acceptedFormulas": [
-    "=OFFSET(B2, 1, 0)",
-    "=OFFSET(B2; 1; 0)",
-    "=OFFSET(B2,1,0)",
-    "=OFFSET(B2;1;0)"
-  ],
-  "expectedValue": 68,
-  "workedExample": {
-    "title": "💡 FUNGSINYA BUAT APA & CONTOH RUMUS OFFSET",
-    "kasusSerupa": "Fungsi OFFSET: Mengambil data sel dengan bergeser sejumlah baris dan kolom dari titik awal.",
-    "rumusContoh": "=OFFSET(B2, 1, 0)",
-    "nalarBayi": "Rumus OFFSET sangat krusial di kantor! Cukup ketik =OFFSET(B2, 1, 0) untuk menyelesaikannya secara otomatis."
-  }
-},
-{
-  "id": "xl-114",
-  "category": "4. Pencarian Data & Lookup",
-  "title": "Tantangan 114: Praktik Rumus INDIRECT Dunia Nyata",
-  "scenario": "Kasus Perkantoran (INDIRECT): Mengubah teks alamat sel (misal \"B2\") menjadi referensi sel aktif. Gunakan rumus INDIRECT pada sel target C2 sesuai contoh!",
-  "tableHeaders": [
-    "A",
-    "B",
-    "C"
-  ],
-  "tableRows": [
-    {
-      "row": 1,
-      "A": "Unit / Nama Data",
-      "B": "Nilai Input",
-      "C": "Hasil Rumus"
-    },
-    {
-      "row": 2,
-      "A": "Budi Santoso",
-      "B": 82,
-      "C": ""
-    },
-    {
-      "row": 3,
-      "A": "Dewi Lestari",
-      "B": 68,
-      "C": ""
-    },
-    {
-      "row": 4,
-      "A": "Rian Hidayat",
-      "B": 90,
-      "C": ""
+  },
+  {
+    "id": "xl-114",
+    "category": "4. Pencarian Data & Lookup",
+    "title": "Tantangan 114: Praktik Rumus INDIRECT Dunia Nyata",
+    "scenario": "Kasus Perkantoran (INDIRECT): Mengubah teks alamat sel (misal \"B2\") menjadi referensi sel aktif. Gunakan rumus INDIRECT pada sel target C2 secara mandiri!",
+    "tableHeaders": [
+      "A",
+      "B",
+      "C"
+    ],
+    "tableRows": [
+      {
+        "row": 1,
+        "A": "Unit / Nama Data",
+        "B": "Nilai Input",
+        "C": "Hasil Rumus"
+      },
+      {
+        "row": 2,
+        "A": "Budi Santoso",
+        "B": 82,
+        "C": ""
+      },
+      {
+        "row": 3,
+        "A": "Dewi Lestari",
+        "B": 68,
+        "C": ""
+      },
+      {
+        "row": 4,
+        "A": "Rian Hidayat",
+        "B": 90,
+        "C": ""
+      }
+    ],
+    "targetCell": "C2",
+    "instruction": "Gunakan fungsi INDIRECT (menggunakan parameter data 'B2') di sel C2 untuk mempraktekkan fungsi INDIRECT!",
+    "babyHint": "🍼 Bahasa Bayi: Ketik =INDIRECT(\"B2\") — Mengubah teks alamat sel (misal \"B2\") menjadi referensi sel aktif.",
+    "starterFormula": "=",
+    "quickChips": [
+      "=INDIRECT(",
+      "B2",
+      "B2:B4",
+      "A2",
+      ")",
+      ",",
+      ";"
+    ],
+    "acceptedFormulas": [
+      "=INDIRECT(\"B2\")",
+      "=INDIRECT(\"B2\")",
+      "=INDIRECT(\"B2\")",
+      "=INDIRECT(\"B2\")"
+    ],
+    "expectedValue": 82,
+    "workedExample": {
+      "title": "💡 FUNGSINYA BUAT APA & CONTOH RUMUS INDIRECT",
+      "kasusSerupa": "Contoh Soal Latihan (Tabel Simulasi): Misalkan data simulasi berada pada sel sesuai contoh di bawah, maka penulisan rumus yang benar adalah =INDIRECT(\"D10\").",
+      "rumusContoh": "=INDIRECT(\"D10\")",
+      "nalarBayi": "Rumus INDIRECT sangat krusial di kantor! Cukup ketik fungsi INDIRECT (menggunakan parameter data 'B2') untuk menyelesaikannya secara otomatis.",
+      "hasilContoh": "Terevaluasi otomatis oleh Excel sesuai data contoh"
     }
-  ],
-  "targetCell": "C2",
-  "instruction": "Ketik rumus =INDIRECT(\"B2\") di sel C2 untuk mempraktekkan fungsi INDIRECT!",
-  "babyHint": "🍼 Bahasa Bayi: Ketik =INDIRECT(\"B2\") — Mengubah teks alamat sel (misal \"B2\") menjadi referensi sel aktif.",
-  "starterFormula": "=INDIRECT(",
-  "quickChips": [
-    "=INDIRECT(",
-    "B2",
-    "B2:B4",
-    "A2",
-    ")",
-    ",",
-    ";"
-  ],
-  "acceptedFormulas": [
-    "=INDIRECT(\"B2\")",
-    "=INDIRECT(\"B2\")",
-    "=INDIRECT(\"B2\")",
-    "=INDIRECT(\"B2\")"
-  ],
-  "expectedValue": 82,
-  "workedExample": {
-    "title": "💡 FUNGSINYA BUAT APA & CONTOH RUMUS INDIRECT",
-    "kasusSerupa": "Fungsi INDIRECT: Mengubah teks alamat sel (misal \"B2\") menjadi referensi sel aktif.",
-    "rumusContoh": "=INDIRECT(\"B2\")",
-    "nalarBayi": "Rumus INDIRECT sangat krusial di kantor! Cukup ketik =INDIRECT(\"B2\") untuk menyelesaikannya secara otomatis."
-  }
-},
-{
-  "id": "xl-115",
-  "category": "4. Pencarian Data & Lookup",
-  "title": "Tantangan 115: Praktik Rumus CHOOSE Dunia Nyata",
-  "scenario": "Kasus Perkantoran (CHOOSE): Memilih item dari daftar berdasarkan nomor urut pilihan (1, 2, 3). Gunakan rumus CHOOSE pada sel target C2 sesuai contoh!",
-  "tableHeaders": [
-    "A",
-    "B",
-    "C"
-  ],
-  "tableRows": [
-    {
-      "row": 1,
-      "A": "Unit / Nama Data",
-      "B": "Nilai Input",
-      "C": "Hasil Rumus"
-    },
-    {
-      "row": 2,
-      "A": "Budi Santoso",
-      "B": 82,
-      "C": ""
-    },
-    {
-      "row": 3,
-      "A": "Dewi Lestari",
-      "B": 68,
-      "C": ""
-    },
-    {
-      "row": 4,
-      "A": "Rian Hidayat",
-      "B": 90,
-      "C": ""
+  },
+  {
+    "id": "xl-115",
+    "category": "4. Pencarian Data & Lookup",
+    "title": "Tantangan 115: Praktik Rumus CHOOSE Dunia Nyata",
+    "scenario": "Kasus Perkantoran (CHOOSE): Memilih item dari daftar berdasarkan nomor urut pilihan (1, 2, 3). Gunakan rumus CHOOSE pada sel target C2 secara mandiri!",
+    "tableHeaders": [
+      "A",
+      "B",
+      "C"
+    ],
+    "tableRows": [
+      {
+        "row": 1,
+        "A": "Unit / Nama Data",
+        "B": "Nilai Input",
+        "C": "Hasil Rumus"
+      },
+      {
+        "row": 2,
+        "A": "Budi Santoso",
+        "B": 82,
+        "C": ""
+      },
+      {
+        "row": 3,
+        "A": "Dewi Lestari",
+        "B": 68,
+        "C": ""
+      },
+      {
+        "row": 4,
+        "A": "Rian Hidayat",
+        "B": 90,
+        "C": ""
+      }
+    ],
+    "targetCell": "C2",
+    "instruction": "Gunakan fungsi CHOOSE (menggunakan parameter data 1, 'Emas', 'Perak', 'Perunggu') di sel C2 untuk mempraktekkan fungsi CHOOSE!",
+    "babyHint": "🍼 Bahasa Bayi: Ketik =CHOOSE(1, \"Emas\", \"Perak\", \"Perunggu\") — Memilih item dari daftar berdasarkan nomor urut pilihan (1, 2, 3).",
+    "starterFormula": "=",
+    "quickChips": [
+      "=CHOOSE(",
+      "B2",
+      "B2:B4",
+      "A2",
+      ")",
+      ",",
+      ";"
+    ],
+    "acceptedFormulas": [
+      "=CHOOSE(1, \"Emas\", \"Perak\", \"Perunggu\")",
+      "=CHOOSE(1; \"Emas\"; \"Perak\"; \"Perunggu\")",
+      "=CHOOSE(1,\"Emas\",\"Perak\",\"Perunggu\")",
+      "=CHOOSE(1;\"Emas\";\"Perak\";\"Perunggu\")"
+    ],
+    "expectedValue": "Emas",
+    "workedExample": {
+      "title": "💡 FUNGSINYA BUAT APA & CONTOH RUMUS CHOOSE",
+      "kasusSerupa": "Contoh Soal Latihan (Tabel Simulasi): Misalkan data simulasi berada pada sel sesuai contoh di bawah, maka penulisan rumus yang benar adalah =CHOOSE(2, \"Emas\", \"Perak\", \"Perunggu\").",
+      "rumusContoh": "=CHOOSE(2, \"Emas\", \"Perak\", \"Perunggu\")",
+      "nalarBayi": "Rumus CHOOSE sangat krusial di kantor! Cukup ketik fungsi CHOOSE (menggunakan parameter data 1, 'Emas', 'Perak', 'Perunggu') untuk menyelesaikannya secara otomatis.",
+      "hasilContoh": "Terevaluasi otomatis oleh Excel sesuai data contoh"
     }
-  ],
-  "targetCell": "C2",
-  "instruction": "Ketik rumus =CHOOSE(1, \"Emas\", \"Perak\", \"Perunggu\") di sel C2 untuk mempraktekkan fungsi CHOOSE!",
-  "babyHint": "🍼 Bahasa Bayi: Ketik =CHOOSE(1, \"Emas\", \"Perak\", \"Perunggu\") — Memilih item dari daftar berdasarkan nomor urut pilihan (1, 2, 3).",
-  "starterFormula": "=CHOOSE(",
-  "quickChips": [
-    "=CHOOSE(",
-    "B2",
-    "B2:B4",
-    "A2",
-    ")",
-    ",",
-    ";"
-  ],
-  "acceptedFormulas": [
-    "=CHOOSE(1, \"Emas\", \"Perak\", \"Perunggu\")",
-    "=CHOOSE(1; \"Emas\"; \"Perak\"; \"Perunggu\")",
-    "=CHOOSE(1,\"Emas\",\"Perak\",\"Perunggu\")",
-    "=CHOOSE(1;\"Emas\";\"Perak\";\"Perunggu\")"
-  ],
-  "expectedValue": "Emas",
-  "workedExample": {
-    "title": "💡 FUNGSINYA BUAT APA & CONTOH RUMUS CHOOSE",
-    "kasusSerupa": "Fungsi CHOOSE: Memilih item dari daftar berdasarkan nomor urut pilihan (1, 2, 3).",
-    "rumusContoh": "=CHOOSE(1, \"Emas\", \"Perak\", \"Perunggu\")",
-    "nalarBayi": "Rumus CHOOSE sangat krusial di kantor! Cukup ketik =CHOOSE(1, \"Emas\", \"Perak\", \"Perunggu\") untuk menyelesaikannya secara otomatis."
-  }
-},
-{
-  "id": "xl-116",
-  "category": "4. Pencarian Data & Lookup",
-  "title": "Tantangan 116: Praktik Rumus ROW Dunia Nyata",
-  "scenario": "Kasus Perkantoran (ROW): Mengetahui nomor urut baris dari suatu sel di lembar kerja. Gunakan rumus ROW pada sel target C2 sesuai contoh!",
-  "tableHeaders": [
-    "A",
-    "B",
-    "C"
-  ],
-  "tableRows": [
-    {
-      "row": 1,
-      "A": "Unit / Nama Data",
-      "B": "Nilai Input",
-      "C": "Hasil Rumus"
-    },
-    {
-      "row": 2,
-      "A": "Budi Santoso",
-      "B": 82,
-      "C": ""
-    },
-    {
-      "row": 3,
-      "A": "Dewi Lestari",
-      "B": 68,
-      "C": ""
-    },
-    {
-      "row": 4,
-      "A": "Rian Hidayat",
-      "B": 90,
-      "C": ""
+  },
+  {
+    "id": "xl-116",
+    "category": "4. Pencarian Data & Lookup",
+    "title": "Tantangan 116: Praktik Rumus ROW Dunia Nyata",
+    "scenario": "Kasus Perkantoran (ROW): Mengetahui nomor urut baris dari suatu sel di lembar kerja. Gunakan rumus ROW pada sel target C2 secara mandiri!",
+    "tableHeaders": [
+      "A",
+      "B",
+      "C"
+    ],
+    "tableRows": [
+      {
+        "row": 1,
+        "A": "Unit / Nama Data",
+        "B": "Nilai Input",
+        "C": "Hasil Rumus"
+      },
+      {
+        "row": 2,
+        "A": "Budi Santoso",
+        "B": 82,
+        "C": ""
+      },
+      {
+        "row": 3,
+        "A": "Dewi Lestari",
+        "B": 68,
+        "C": ""
+      },
+      {
+        "row": 4,
+        "A": "Rian Hidayat",
+        "B": 90,
+        "C": ""
+      }
+    ],
+    "targetCell": "C2",
+    "instruction": "Gunakan fungsi ROW (menggunakan parameter data B2) di sel C2 untuk mempraktekkan fungsi ROW!",
+    "babyHint": "🍼 Bahasa Bayi: Ketik =ROW(B2) — Mengetahui nomor urut baris dari suatu sel di lembar kerja.",
+    "starterFormula": "=",
+    "quickChips": [
+      "=ROW(",
+      "B2",
+      "B2:B4",
+      "A2",
+      ")",
+      ",",
+      ";"
+    ],
+    "acceptedFormulas": [
+      "=ROW(B2)",
+      "=ROW(B2)",
+      "=ROW(B2)",
+      "=ROW(B2)"
+    ],
+    "expectedValue": 2,
+    "workedExample": {
+      "title": "💡 FUNGSINYA BUAT APA & CONTOH RUMUS ROW",
+      "kasusSerupa": "Contoh Soal Latihan (Tabel Simulasi): Misalkan data simulasi berada pada sel sesuai contoh di bawah, maka penulisan rumus yang benar adalah =ROW(E10).",
+      "rumusContoh": "=ROW(E10)",
+      "nalarBayi": "Rumus ROW sangat krusial di kantor! Cukup ketik fungsi ROW (menggunakan parameter data B2) untuk menyelesaikannya secara otomatis.",
+      "hasilContoh": "Terevaluasi otomatis oleh Excel sesuai data contoh"
     }
-  ],
-  "targetCell": "C2",
-  "instruction": "Ketik rumus =ROW(B2) di sel C2 untuk mempraktekkan fungsi ROW!",
-  "babyHint": "🍼 Bahasa Bayi: Ketik =ROW(B2) — Mengetahui nomor urut baris dari suatu sel di lembar kerja.",
-  "starterFormula": "=ROW(",
-  "quickChips": [
-    "=ROW(",
-    "B2",
-    "B2:B4",
-    "A2",
-    ")",
-    ",",
-    ";"
-  ],
-  "acceptedFormulas": [
-    "=ROW(B2)",
-    "=ROW(B2)",
-    "=ROW(B2)",
-    "=ROW(B2)"
-  ],
-  "expectedValue": 2,
-  "workedExample": {
-    "title": "💡 FUNGSINYA BUAT APA & CONTOH RUMUS ROW",
-    "kasusSerupa": "Fungsi ROW: Mengetahui nomor urut baris dari suatu sel di lembar kerja.",
-    "rumusContoh": "=ROW(B2)",
-    "nalarBayi": "Rumus ROW sangat krusial di kantor! Cukup ketik =ROW(B2) untuk menyelesaikannya secara otomatis."
-  }
-},
-{
-  "id": "xl-117",
-  "category": "4. Pencarian Data & Lookup",
-  "title": "Tantangan 117: Praktik Rumus ROWS Dunia Nyata",
-  "scenario": "Kasus Perkantoran (ROWS): Menghitung berapa total baris dalam suatu blok tabel. Gunakan rumus ROWS pada sel target C2 sesuai contoh!",
-  "tableHeaders": [
-    "A",
-    "B",
-    "C"
-  ],
-  "tableRows": [
-    {
-      "row": 1,
-      "A": "Unit / Nama Data",
-      "B": "Nilai Input",
-      "C": "Hasil Rumus"
-    },
-    {
-      "row": 2,
-      "A": "Budi Santoso",
-      "B": 82,
-      "C": ""
-    },
-    {
-      "row": 3,
-      "A": "Dewi Lestari",
-      "B": 68,
-      "C": ""
-    },
-    {
-      "row": 4,
-      "A": "Rian Hidayat",
-      "B": 90,
-      "C": ""
+  },
+  {
+    "id": "xl-117",
+    "category": "4. Pencarian Data & Lookup",
+    "title": "Tantangan 117: Praktik Rumus ROWS Dunia Nyata",
+    "scenario": "Kasus Perkantoran (ROWS): Menghitung berapa total baris dalam suatu blok tabel. Gunakan rumus ROWS pada sel target C2 secara mandiri!",
+    "tableHeaders": [
+      "A",
+      "B",
+      "C"
+    ],
+    "tableRows": [
+      {
+        "row": 1,
+        "A": "Unit / Nama Data",
+        "B": "Nilai Input",
+        "C": "Hasil Rumus"
+      },
+      {
+        "row": 2,
+        "A": "Budi Santoso",
+        "B": 82,
+        "C": ""
+      },
+      {
+        "row": 3,
+        "A": "Dewi Lestari",
+        "B": 68,
+        "C": ""
+      },
+      {
+        "row": 4,
+        "A": "Rian Hidayat",
+        "B": 90,
+        "C": ""
+      }
+    ],
+    "targetCell": "C2",
+    "instruction": "Gunakan fungsi ROWS (menggunakan parameter data A2:A4) di sel C2 untuk mempraktekkan fungsi ROWS!",
+    "babyHint": "🍼 Bahasa Bayi: Ketik =ROWS(A2:A4) — Menghitung berapa total baris dalam suatu blok tabel.",
+    "starterFormula": "=",
+    "quickChips": [
+      "=ROWS(",
+      "B2",
+      "B2:B4",
+      "A2",
+      ")",
+      ",",
+      ";"
+    ],
+    "acceptedFormulas": [
+      "=ROWS(A2:A4)",
+      "=ROWS(A2:A4)",
+      "=ROWS(A2:A4)",
+      "=ROWS(A2:A4)"
+    ],
+    "expectedValue": 3,
+    "workedExample": {
+      "title": "💡 FUNGSINYA BUAT APA & CONTOH RUMUS ROWS",
+      "kasusSerupa": "Contoh Soal Latihan (Tabel Simulasi): Misalkan data simulasi berada pada sel sesuai contoh di bawah, maka penulisan rumus yang benar adalah =ROWS(D10:D12).",
+      "rumusContoh": "=ROWS(D10:D12)",
+      "nalarBayi": "Rumus ROWS sangat krusial di kantor! Cukup ketik fungsi ROWS (menggunakan parameter data A2:A4) untuk menyelesaikannya secara otomatis.",
+      "hasilContoh": "Terevaluasi otomatis oleh Excel sesuai data contoh"
     }
-  ],
-  "targetCell": "C2",
-  "instruction": "Ketik rumus =ROWS(A2:A4) di sel C2 untuk mempraktekkan fungsi ROWS!",
-  "babyHint": "🍼 Bahasa Bayi: Ketik =ROWS(A2:A4) — Menghitung berapa total baris dalam suatu blok tabel.",
-  "starterFormula": "=ROWS(",
-  "quickChips": [
-    "=ROWS(",
-    "B2",
-    "B2:B4",
-    "A2",
-    ")",
-    ",",
-    ";"
-  ],
-  "acceptedFormulas": [
-    "=ROWS(A2:A4)",
-    "=ROWS(A2:A4)",
-    "=ROWS(A2:A4)",
-    "=ROWS(A2:A4)"
-  ],
-  "expectedValue": 3,
-  "workedExample": {
-    "title": "💡 FUNGSINYA BUAT APA & CONTOH RUMUS ROWS",
-    "kasusSerupa": "Fungsi ROWS: Menghitung berapa total baris dalam suatu blok tabel.",
-    "rumusContoh": "=ROWS(A2:A4)",
-    "nalarBayi": "Rumus ROWS sangat krusial di kantor! Cukup ketik =ROWS(A2:A4) untuk menyelesaikannya secara otomatis."
-  }
-},
-{
-  "id": "xl-118",
-  "category": "4. Pencarian Data & Lookup",
-  "title": "Tantangan 118: Praktik Rumus COLUMN Dunia Nyata",
-  "scenario": "Kasus Perkantoran (COLUMN): Mengetahui nomor urut kolom suatu sel (A=1, B=2, C=3). Gunakan rumus COLUMN pada sel target C2 sesuai contoh!",
-  "tableHeaders": [
-    "A",
-    "B",
-    "C"
-  ],
-  "tableRows": [
-    {
-      "row": 1,
-      "A": "Unit / Nama Data",
-      "B": "Nilai Input",
-      "C": "Hasil Rumus"
-    },
-    {
-      "row": 2,
-      "A": "Budi Santoso",
-      "B": 82,
-      "C": ""
-    },
-    {
-      "row": 3,
-      "A": "Dewi Lestari",
-      "B": 68,
-      "C": ""
-    },
-    {
-      "row": 4,
-      "A": "Rian Hidayat",
-      "B": 90,
-      "C": ""
+  },
+  {
+    "id": "xl-118",
+    "category": "4. Pencarian Data & Lookup",
+    "title": "Tantangan 118: Praktik Rumus COLUMN Dunia Nyata",
+    "scenario": "Kasus Perkantoran (COLUMN): Mengetahui nomor urut kolom suatu sel (A=1, B=2, C=3). Gunakan rumus COLUMN pada sel target C2 secara mandiri!",
+    "tableHeaders": [
+      "A",
+      "B",
+      "C"
+    ],
+    "tableRows": [
+      {
+        "row": 1,
+        "A": "Unit / Nama Data",
+        "B": "Nilai Input",
+        "C": "Hasil Rumus"
+      },
+      {
+        "row": 2,
+        "A": "Budi Santoso",
+        "B": 82,
+        "C": ""
+      },
+      {
+        "row": 3,
+        "A": "Dewi Lestari",
+        "B": 68,
+        "C": ""
+      },
+      {
+        "row": 4,
+        "A": "Rian Hidayat",
+        "B": 90,
+        "C": ""
+      }
+    ],
+    "targetCell": "C2",
+    "instruction": "Gunakan fungsi COLUMN (menggunakan parameter data B2) di sel C2 untuk mempraktekkan fungsi COLUMN!",
+    "babyHint": "🍼 Bahasa Bayi: Ketik =COLUMN(B2) — Mengetahui nomor urut kolom suatu sel (A=1, B=2, C=3).",
+    "starterFormula": "=",
+    "quickChips": [
+      "=COLUMN(",
+      "B2",
+      "B2:B4",
+      "A2",
+      ")",
+      ",",
+      ";"
+    ],
+    "acceptedFormulas": [
+      "=COLUMN(B2)",
+      "=COLUMN(B2)",
+      "=COLUMN(B2)",
+      "=COLUMN(B2)"
+    ],
+    "expectedValue": 2,
+    "workedExample": {
+      "title": "💡 FUNGSINYA BUAT APA & CONTOH RUMUS COLUMN",
+      "kasusSerupa": "Contoh Soal Latihan (Tabel Simulasi): Misalkan data simulasi berada pada sel sesuai contoh di bawah, maka penulisan rumus yang benar adalah =COLUMN(E10).",
+      "rumusContoh": "=COLUMN(E10)",
+      "nalarBayi": "Rumus COLUMN sangat krusial di kantor! Cukup ketik fungsi COLUMN (menggunakan parameter data B2) untuk menyelesaikannya secara otomatis.",
+      "hasilContoh": "Terevaluasi otomatis oleh Excel sesuai data contoh"
     }
-  ],
-  "targetCell": "C2",
-  "instruction": "Ketik rumus =COLUMN(B2) di sel C2 untuk mempraktekkan fungsi COLUMN!",
-  "babyHint": "🍼 Bahasa Bayi: Ketik =COLUMN(B2) — Mengetahui nomor urut kolom suatu sel (A=1, B=2, C=3).",
-  "starterFormula": "=COLUMN(",
-  "quickChips": [
-    "=COLUMN(",
-    "B2",
-    "B2:B4",
-    "A2",
-    ")",
-    ",",
-    ";"
-  ],
-  "acceptedFormulas": [
-    "=COLUMN(B2)",
-    "=COLUMN(B2)",
-    "=COLUMN(B2)",
-    "=COLUMN(B2)"
-  ],
-  "expectedValue": 2,
-  "workedExample": {
-    "title": "💡 FUNGSINYA BUAT APA & CONTOH RUMUS COLUMN",
-    "kasusSerupa": "Fungsi COLUMN: Mengetahui nomor urut kolom suatu sel (A=1, B=2, C=3).",
-    "rumusContoh": "=COLUMN(B2)",
-    "nalarBayi": "Rumus COLUMN sangat krusial di kantor! Cukup ketik =COLUMN(B2) untuk menyelesaikannya secara otomatis."
-  }
-},
-{
-  "id": "xl-119",
-  "category": "4. Pencarian Data & Lookup",
-  "title": "Tantangan 119: Praktik Rumus COLUMNS Dunia Nyata",
-  "scenario": "Kasus Perkantoran (COLUMNS): Menghitung berapa total kolom menyamping dalam suatu tabel. Gunakan rumus COLUMNS pada sel target C2 sesuai contoh!",
-  "tableHeaders": [
-    "A",
-    "B",
-    "C"
-  ],
-  "tableRows": [
-    {
-      "row": 1,
-      "A": "Unit / Nama Data",
-      "B": "Nilai Input",
-      "C": "Hasil Rumus"
-    },
-    {
-      "row": 2,
-      "A": "Budi Santoso",
-      "B": 82,
-      "C": ""
-    },
-    {
-      "row": 3,
-      "A": "Dewi Lestari",
-      "B": 68,
-      "C": ""
-    },
-    {
-      "row": 4,
-      "A": "Rian Hidayat",
-      "B": 90,
-      "C": ""
+  },
+  {
+    "id": "xl-119",
+    "category": "4. Pencarian Data & Lookup",
+    "title": "Tantangan 119: Praktik Rumus COLUMNS Dunia Nyata",
+    "scenario": "Kasus Perkantoran (COLUMNS): Menghitung berapa total kolom menyamping dalam suatu tabel. Gunakan rumus COLUMNS pada sel target C2 secara mandiri!",
+    "tableHeaders": [
+      "A",
+      "B",
+      "C"
+    ],
+    "tableRows": [
+      {
+        "row": 1,
+        "A": "Unit / Nama Data",
+        "B": "Nilai Input",
+        "C": "Hasil Rumus"
+      },
+      {
+        "row": 2,
+        "A": "Budi Santoso",
+        "B": 82,
+        "C": ""
+      },
+      {
+        "row": 3,
+        "A": "Dewi Lestari",
+        "B": 68,
+        "C": ""
+      },
+      {
+        "row": 4,
+        "A": "Rian Hidayat",
+        "B": 90,
+        "C": ""
+      }
+    ],
+    "targetCell": "C2",
+    "instruction": "Gunakan fungsi COLUMNS (menggunakan parameter data A1:C1) di sel C2 untuk mempraktekkan fungsi COLUMNS!",
+    "babyHint": "🍼 Bahasa Bayi: Ketik =COLUMNS(A1:C1) — Menghitung berapa total kolom menyamping dalam suatu tabel.",
+    "starterFormula": "=",
+    "quickChips": [
+      "=COLUMNS(",
+      "B2",
+      "B2:B4",
+      "A2",
+      ")",
+      ",",
+      ";"
+    ],
+    "acceptedFormulas": [
+      "=COLUMNS(A1:C1)",
+      "=COLUMNS(A1:C1)",
+      "=COLUMNS(A1:C1)",
+      "=COLUMNS(A1:C1)"
+    ],
+    "expectedValue": 3,
+    "workedExample": {
+      "title": "💡 FUNGSINYA BUAT APA & CONTOH RUMUS COLUMNS",
+      "kasusSerupa": "Contoh Soal Latihan (Tabel Simulasi): Misalkan data simulasi berada pada sel sesuai contoh di bawah, maka penulisan rumus yang benar adalah =COLUMNS(D9:F9).",
+      "rumusContoh": "=COLUMNS(D9:F9)",
+      "nalarBayi": "Rumus COLUMNS sangat krusial di kantor! Cukup ketik fungsi COLUMNS (menggunakan parameter data A1:C1) untuk menyelesaikannya secara otomatis.",
+      "hasilContoh": "Terevaluasi otomatis oleh Excel sesuai data contoh"
     }
-  ],
-  "targetCell": "C2",
-  "instruction": "Ketik rumus =COLUMNS(A1:C1) di sel C2 untuk mempraktekkan fungsi COLUMNS!",
-  "babyHint": "🍼 Bahasa Bayi: Ketik =COLUMNS(A1:C1) — Menghitung berapa total kolom menyamping dalam suatu tabel.",
-  "starterFormula": "=COLUMNS(",
-  "quickChips": [
-    "=COLUMNS(",
-    "B2",
-    "B2:B4",
-    "A2",
-    ")",
-    ",",
-    ";"
-  ],
-  "acceptedFormulas": [
-    "=COLUMNS(A1:C1)",
-    "=COLUMNS(A1:C1)",
-    "=COLUMNS(A1:C1)",
-    "=COLUMNS(A1:C1)"
-  ],
-  "expectedValue": 3,
-  "workedExample": {
-    "title": "💡 FUNGSINYA BUAT APA & CONTOH RUMUS COLUMNS",
-    "kasusSerupa": "Fungsi COLUMNS: Menghitung berapa total kolom menyamping dalam suatu tabel.",
-    "rumusContoh": "=COLUMNS(A1:C1)",
-    "nalarBayi": "Rumus COLUMNS sangat krusial di kantor! Cukup ketik =COLUMNS(A1:C1) untuk menyelesaikannya secara otomatis."
-  }
-},
-{
-  "id": "xl-120",
-  "category": "4. Pencarian Data & Lookup",
-  "title": "Tantangan 120: Praktik Rumus ADDRESS Dunia Nyata",
-  "scenario": "Kasus Perkantoran (ADDRESS): Membuat teks alamat sel ($B$2) dari nomor baris dan nomor kolom. Gunakan rumus ADDRESS pada sel target C2 sesuai contoh!",
-  "tableHeaders": [
-    "A",
-    "B",
-    "C"
-  ],
-  "tableRows": [
-    {
-      "row": 1,
-      "A": "Unit / Nama Data",
-      "B": "Nilai Input",
-      "C": "Hasil Rumus"
-    },
-    {
-      "row": 2,
-      "A": "Budi Santoso",
-      "B": 82,
-      "C": ""
-    },
-    {
-      "row": 3,
-      "A": "Dewi Lestari",
-      "B": 68,
-      "C": ""
-    },
-    {
-      "row": 4,
-      "A": "Rian Hidayat",
-      "B": 90,
-      "C": ""
+  },
+  {
+    "id": "xl-120",
+    "category": "4. Pencarian Data & Lookup",
+    "title": "Tantangan 120: Praktik Rumus ADDRESS Dunia Nyata",
+    "scenario": "Kasus Perkantoran (ADDRESS): Membuat teks alamat sel ($B$2) dari nomor baris dan nomor kolom. Gunakan rumus ADDRESS pada sel target C2 secara mandiri!",
+    "tableHeaders": [
+      "A",
+      "B",
+      "C"
+    ],
+    "tableRows": [
+      {
+        "row": 1,
+        "A": "Unit / Nama Data",
+        "B": "Nilai Input",
+        "C": "Hasil Rumus"
+      },
+      {
+        "row": 2,
+        "A": "Budi Santoso",
+        "B": 82,
+        "C": ""
+      },
+      {
+        "row": 3,
+        "A": "Dewi Lestari",
+        "B": 68,
+        "C": ""
+      },
+      {
+        "row": 4,
+        "A": "Rian Hidayat",
+        "B": 90,
+        "C": ""
+      }
+    ],
+    "targetCell": "C2",
+    "instruction": "Gunakan fungsi ADDRESS (menggunakan parameter data 2, 2) di sel C2 untuk mempraktekkan fungsi ADDRESS!",
+    "babyHint": "🍼 Bahasa Bayi: Ketik =ADDRESS(2, 2) — Membuat teks alamat sel ($B$2) dari nomor baris dan nomor kolom.",
+    "starterFormula": "=",
+    "quickChips": [
+      "=ADDRESS(",
+      "B2",
+      "B2:B4",
+      "A2",
+      ")",
+      ",",
+      ";"
+    ],
+    "acceptedFormulas": [
+      "=ADDRESS(2, 2)",
+      "=ADDRESS(2; 2)",
+      "=ADDRESS(2,2)",
+      "=ADDRESS(2;2)"
+    ],
+    "expectedValue": "$B$2",
+    "workedExample": {
+      "title": "💡 FUNGSINYA BUAT APA & CONTOH RUMUS ADDRESS",
+      "kasusSerupa": "Contoh Soal Latihan (Tabel Simulasi): Misalkan data simulasi berada pada sel sesuai contoh di bawah, maka penulisan rumus yang benar adalah =ADDRESS(3, 3).",
+      "rumusContoh": "=ADDRESS(3, 3)",
+      "nalarBayi": "Rumus ADDRESS sangat krusial di kantor! Cukup ketik fungsi ADDRESS (menggunakan parameter data 2, 2) untuk menyelesaikannya secara otomatis.",
+      "hasilContoh": "Terevaluasi otomatis oleh Excel sesuai data contoh"
     }
-  ],
-  "targetCell": "C2",
-  "instruction": "Ketik rumus =ADDRESS(2, 2) di sel C2 untuk mempraktekkan fungsi ADDRESS!",
-  "babyHint": "🍼 Bahasa Bayi: Ketik =ADDRESS(2, 2) — Membuat teks alamat sel ($B$2) dari nomor baris dan nomor kolom.",
-  "starterFormula": "=ADDRESS(",
-  "quickChips": [
-    "=ADDRESS(",
-    "B2",
-    "B2:B4",
-    "A2",
-    ")",
-    ",",
-    ";"
-  ],
-  "acceptedFormulas": [
-    "=ADDRESS(2, 2)",
-    "=ADDRESS(2; 2)",
-    "=ADDRESS(2,2)",
-    "=ADDRESS(2;2)"
-  ],
-  "expectedValue": "$B$2",
-  "workedExample": {
-    "title": "💡 FUNGSINYA BUAT APA & CONTOH RUMUS ADDRESS",
-    "kasusSerupa": "Fungsi ADDRESS: Membuat teks alamat sel ($B$2) dari nomor baris dan nomor kolom.",
-    "rumusContoh": "=ADDRESS(2, 2)",
-    "nalarBayi": "Rumus ADDRESS sangat krusial di kantor! Cukup ketik =ADDRESS(2, 2) untuk menyelesaikannya secara otomatis."
-  }
-},
-{
-  "id": "xl-121",
-  "category": "9. Manipulasi Teks & Rapikan Data",
-  "title": "Tantangan 121: Praktik Rumus TEXTJOIN Dunia Nyata",
-  "scenario": "Kasus Perkantoran (TEXTJOIN): Menggabungkan banyak sel teks dengan pemisah rapi (koma/strip). Gunakan rumus TEXTJOIN pada sel target C2 sesuai contoh!",
-  "tableHeaders": [
-    "A",
-    "B",
-    "C"
-  ],
-  "tableRows": [
-    {
-      "row": 1,
-      "A": "Unit / Nama Data",
-      "B": "Nilai Input",
-      "C": "Hasil Rumus"
-    },
-    {
-      "row": 2,
-      "A": "Budi Santoso",
-      "B": 82,
-      "C": ""
-    },
-    {
-      "row": 3,
-      "A": "Dewi Lestari",
-      "B": 68,
-      "C": ""
-    },
-    {
-      "row": 4,
-      "A": "Rian Hidayat",
-      "B": 90,
-      "C": ""
+  },
+  {
+    "id": "xl-121",
+    "category": "9. Manipulasi Teks & Rapikan Data",
+    "title": "Tantangan 121: Praktik Rumus TEXTJOIN Dunia Nyata",
+    "scenario": "Kasus Perkantoran (TEXTJOIN): Menggabungkan banyak sel teks dengan pemisah rapi (koma/strip). Gunakan rumus TEXTJOIN pada sel target C2 secara mandiri!",
+    "tableHeaders": [
+      "A",
+      "B",
+      "C"
+    ],
+    "tableRows": [
+      {
+        "row": 1,
+        "A": "Unit / Nama Data",
+        "B": "Nilai Input",
+        "C": "Hasil Rumus"
+      },
+      {
+        "row": 2,
+        "A": "Budi Santoso",
+        "B": 82,
+        "C": ""
+      },
+      {
+        "row": 3,
+        "A": "Dewi Lestari",
+        "B": 68,
+        "C": ""
+      },
+      {
+        "row": 4,
+        "A": "Rian Hidayat",
+        "B": 90,
+        "C": ""
+      }
+    ],
+    "targetCell": "C2",
+    "instruction": "Gunakan fungsi TEXTJOIN (menggunakan parameter data ' - ', TRUE, A2, B2) di sel C2 untuk mempraktekkan fungsi TEXTJOIN!",
+    "babyHint": "🍼 Bahasa Bayi: Ketik =TEXTJOIN(\" - \", TRUE, A2, B2) — Menggabungkan banyak sel teks dengan pemisah rapi (koma/strip).",
+    "starterFormula": "=",
+    "quickChips": [
+      "=TEXTJOIN(",
+      "B2",
+      "B2:B4",
+      "A2",
+      ")",
+      ",",
+      ";"
+    ],
+    "acceptedFormulas": [
+      "=TEXTJOIN(\" - \", TRUE, A2, B2)",
+      "=TEXTJOIN(\" - \"; TRUE; A2; B2)",
+      "=TEXTJOIN(\" - \",TRUE,A2,B2)",
+      "=TEXTJOIN(\" - \";TRUE;A2;B2)"
+    ],
+    "expectedValue": "Budi Santoso - 82",
+    "workedExample": {
+      "title": "💡 FUNGSINYA BUAT APA & CONTOH RUMUS TEXTJOIN",
+      "kasusSerupa": "Contoh Soal Latihan (Tabel Simulasi): Misalkan data simulasi berada pada sel sesuai contoh di bawah, maka penulisan rumus yang benar adalah =TEXTJOIN(\" - \", TRUE, D10, E10).",
+      "rumusContoh": "=TEXTJOIN(\" - \", TRUE, D10, E10)",
+      "nalarBayi": "Rumus TEXTJOIN sangat krusial di kantor! Cukup ketik fungsi TEXTJOIN (menggunakan parameter data ' - ', TRUE, A2, B2) untuk menyelesaikannya secara otomatis.",
+      "hasilContoh": "Terevaluasi otomatis oleh Excel sesuai data contoh"
     }
-  ],
-  "targetCell": "C2",
-  "instruction": "Ketik rumus =TEXTJOIN(\" - \", TRUE, A2, B2) di sel C2 untuk mempraktekkan fungsi TEXTJOIN!",
-  "babyHint": "🍼 Bahasa Bayi: Ketik =TEXTJOIN(\" - \", TRUE, A2, B2) — Menggabungkan banyak sel teks dengan pemisah rapi (koma/strip).",
-  "starterFormula": "=TEXTJOIN(",
-  "quickChips": [
-    "=TEXTJOIN(",
-    "B2",
-    "B2:B4",
-    "A2",
-    ")",
-    ",",
-    ";"
-  ],
-  "acceptedFormulas": [
-    "=TEXTJOIN(\" - \", TRUE, A2, B2)",
-    "=TEXTJOIN(\" - \"; TRUE; A2; B2)",
-    "=TEXTJOIN(\" - \",TRUE,A2,B2)",
-    "=TEXTJOIN(\" - \";TRUE;A2;B2)"
-  ],
-  "expectedValue": "Budi Santoso - 82",
-  "workedExample": {
-    "title": "💡 FUNGSINYA BUAT APA & CONTOH RUMUS TEXTJOIN",
-    "kasusSerupa": "Fungsi TEXTJOIN: Menggabungkan banyak sel teks dengan pemisah rapi (koma/strip).",
-    "rumusContoh": "=TEXTJOIN(\" - \", TRUE, A2, B2)",
-    "nalarBayi": "Rumus TEXTJOIN sangat krusial di kantor! Cukup ketik =TEXTJOIN(\" - \", TRUE, A2, B2) untuk menyelesaikannya secara otomatis."
-  }
-},
-{
-  "id": "xl-122",
-  "category": "9. Manipulasi Teks & Rapikan Data",
-  "title": "Tantangan 122: Praktik Rumus CLEAN Dunia Nyata",
-  "scenario": "Kasus Perkantoran (CLEAN): Membersihkan karakter tersembunyi hasil impor sistem. Gunakan rumus CLEAN pada sel target C2 sesuai contoh!",
-  "tableHeaders": [
-    "A",
-    "B",
-    "C"
-  ],
-  "tableRows": [
-    {
-      "row": 1,
-      "A": "Unit / Nama Data",
-      "B": "Nilai Input",
-      "C": "Hasil Rumus"
-    },
-    {
-      "row": 2,
-      "A": "Budi Santoso",
-      "B": 82,
-      "C": ""
-    },
-    {
-      "row": 3,
-      "A": "Dewi Lestari",
-      "B": 68,
-      "C": ""
-    },
-    {
-      "row": 4,
-      "A": "Rian Hidayat",
-      "B": 90,
-      "C": ""
+  },
+  {
+    "id": "xl-122",
+    "category": "9. Manipulasi Teks & Rapikan Data",
+    "title": "Tantangan 122: Praktik Rumus CLEAN Dunia Nyata",
+    "scenario": "Kasus Perkantoran (CLEAN): Membersihkan karakter tersembunyi hasil impor sistem. Gunakan rumus CLEAN pada sel target C2 secara mandiri!",
+    "tableHeaders": [
+      "A",
+      "B",
+      "C"
+    ],
+    "tableRows": [
+      {
+        "row": 1,
+        "A": "Unit / Nama Data",
+        "B": "Nilai Input",
+        "C": "Hasil Rumus"
+      },
+      {
+        "row": 2,
+        "A": "Budi Santoso",
+        "B": 82,
+        "C": ""
+      },
+      {
+        "row": 3,
+        "A": "Dewi Lestari",
+        "B": 68,
+        "C": ""
+      },
+      {
+        "row": 4,
+        "A": "Rian Hidayat",
+        "B": 90,
+        "C": ""
+      }
+    ],
+    "targetCell": "C2",
+    "instruction": "Gunakan fungsi CLEAN (menggunakan parameter data A2) di sel C2 untuk mempraktekkan fungsi CLEAN!",
+    "babyHint": "🍼 Bahasa Bayi: Ketik =CLEAN(A2) — Membersihkan karakter tersembunyi hasil impor sistem.",
+    "starterFormula": "=",
+    "quickChips": [
+      "=CLEAN(",
+      "B2",
+      "B2:B4",
+      "A2",
+      ")",
+      ",",
+      ";"
+    ],
+    "acceptedFormulas": [
+      "=CLEAN(A2)",
+      "=CLEAN(A2)",
+      "=CLEAN(A2)",
+      "=CLEAN(A2)"
+    ],
+    "expectedValue": "Budi Santoso",
+    "workedExample": {
+      "title": "💡 FUNGSINYA BUAT APA & CONTOH RUMUS CLEAN",
+      "kasusSerupa": "Contoh Soal Latihan (Tabel Simulasi): Misalkan data simulasi berada pada sel sesuai contoh di bawah, maka penulisan rumus yang benar adalah =CLEAN(D10).",
+      "rumusContoh": "=CLEAN(D10)",
+      "nalarBayi": "Rumus CLEAN sangat krusial di kantor! Cukup ketik fungsi CLEAN (menggunakan parameter data A2) untuk menyelesaikannya secara otomatis.",
+      "hasilContoh": "Terevaluasi otomatis oleh Excel sesuai data contoh"
     }
-  ],
-  "targetCell": "C2",
-  "instruction": "Ketik rumus =CLEAN(A2) di sel C2 untuk mempraktekkan fungsi CLEAN!",
-  "babyHint": "🍼 Bahasa Bayi: Ketik =CLEAN(A2) — Membersihkan karakter tersembunyi hasil impor sistem.",
-  "starterFormula": "=CLEAN(",
-  "quickChips": [
-    "=CLEAN(",
-    "B2",
-    "B2:B4",
-    "A2",
-    ")",
-    ",",
-    ";"
-  ],
-  "acceptedFormulas": [
-    "=CLEAN(A2)",
-    "=CLEAN(A2)",
-    "=CLEAN(A2)",
-    "=CLEAN(A2)"
-  ],
-  "expectedValue": "Budi Santoso",
-  "workedExample": {
-    "title": "💡 FUNGSINYA BUAT APA & CONTOH RUMUS CLEAN",
-    "kasusSerupa": "Fungsi CLEAN: Membersihkan karakter tersembunyi hasil impor sistem.",
-    "rumusContoh": "=CLEAN(A2)",
-    "nalarBayi": "Rumus CLEAN sangat krusial di kantor! Cukup ketik =CLEAN(A2) untuk menyelesaikannya secara otomatis."
-  }
-},
-{
-  "id": "xl-123",
-  "category": "9. Manipulasi Teks & Rapikan Data",
-  "title": "Tantangan 123: Praktik Rumus EXACT Dunia Nyata",
-  "scenario": "Kasus Perkantoran (EXACT): Membandingkan apakah dua teks sama persis termasuk huruf besar-kecilnya. Gunakan rumus EXACT pada sel target C2 sesuai contoh!",
-  "tableHeaders": [
-    "A",
-    "B",
-    "C"
-  ],
-  "tableRows": [
-    {
-      "row": 1,
-      "A": "Unit / Nama Data",
-      "B": "Nilai Input",
-      "C": "Hasil Rumus"
-    },
-    {
-      "row": 2,
-      "A": "Budi Santoso",
-      "B": 82,
-      "C": ""
-    },
-    {
-      "row": 3,
-      "A": "Dewi Lestari",
-      "B": 68,
-      "C": ""
-    },
-    {
-      "row": 4,
-      "A": "Rian Hidayat",
-      "B": 90,
-      "C": ""
+  },
+  {
+    "id": "xl-123",
+    "category": "9. Manipulasi Teks & Rapikan Data",
+    "title": "Tantangan 123: Praktik Rumus EXACT Dunia Nyata",
+    "scenario": "Kasus Perkantoran (EXACT): Membandingkan apakah dua teks sama persis termasuk huruf besar-kecilnya. Gunakan rumus EXACT pada sel target C2 secara mandiri!",
+    "tableHeaders": [
+      "A",
+      "B",
+      "C"
+    ],
+    "tableRows": [
+      {
+        "row": 1,
+        "A": "Unit / Nama Data",
+        "B": "Nilai Input",
+        "C": "Hasil Rumus"
+      },
+      {
+        "row": 2,
+        "A": "Budi Santoso",
+        "B": 82,
+        "C": ""
+      },
+      {
+        "row": 3,
+        "A": "Dewi Lestari",
+        "B": 68,
+        "C": ""
+      },
+      {
+        "row": 4,
+        "A": "Rian Hidayat",
+        "B": 90,
+        "C": ""
+      }
+    ],
+    "targetCell": "C2",
+    "instruction": "Gunakan fungsi EXACT (menggunakan parameter data A2, A2) di sel C2 untuk mempraktekkan fungsi EXACT!",
+    "babyHint": "🍼 Bahasa Bayi: Ketik =EXACT(A2, A2) — Membandingkan apakah dua teks sama persis termasuk huruf besar-kecilnya.",
+    "starterFormula": "=",
+    "quickChips": [
+      "=EXACT(",
+      "B2",
+      "B2:B4",
+      "A2",
+      ")",
+      ",",
+      ";"
+    ],
+    "acceptedFormulas": [
+      "=EXACT(A2, A2)",
+      "=EXACT(A2; A2)",
+      "=EXACT(A2,A2)",
+      "=EXACT(A2;A2)"
+    ],
+    "expectedValue": "TRUE",
+    "workedExample": {
+      "title": "💡 FUNGSINYA BUAT APA & CONTOH RUMUS EXACT",
+      "kasusSerupa": "Contoh Soal Latihan (Tabel Simulasi): Misalkan data simulasi berada pada sel sesuai contoh di bawah, maka penulisan rumus yang benar adalah =EXACT(D10, D10).",
+      "rumusContoh": "=EXACT(D10, D10)",
+      "nalarBayi": "Rumus EXACT sangat krusial di kantor! Cukup ketik fungsi EXACT (menggunakan parameter data A2, A2) untuk menyelesaikannya secara otomatis.",
+      "hasilContoh": "Terevaluasi otomatis oleh Excel sesuai data contoh"
     }
-  ],
-  "targetCell": "C2",
-  "instruction": "Ketik rumus =EXACT(A2, A2) di sel C2 untuk mempraktekkan fungsi EXACT!",
-  "babyHint": "🍼 Bahasa Bayi: Ketik =EXACT(A2, A2) — Membandingkan apakah dua teks sama persis termasuk huruf besar-kecilnya.",
-  "starterFormula": "=EXACT(",
-  "quickChips": [
-    "=EXACT(",
-    "B2",
-    "B2:B4",
-    "A2",
-    ")",
-    ",",
-    ";"
-  ],
-  "acceptedFormulas": [
-    "=EXACT(A2, A2)",
-    "=EXACT(A2; A2)",
-    "=EXACT(A2,A2)",
-    "=EXACT(A2;A2)"
-  ],
-  "expectedValue": "TRUE",
-  "workedExample": {
-    "title": "💡 FUNGSINYA BUAT APA & CONTOH RUMUS EXACT",
-    "kasusSerupa": "Fungsi EXACT: Membandingkan apakah dua teks sama persis termasuk huruf besar-kecilnya.",
-    "rumusContoh": "=EXACT(A2, A2)",
-    "nalarBayi": "Rumus EXACT sangat krusial di kantor! Cukup ketik =EXACT(A2, A2) untuk menyelesaikannya secara otomatis."
-  }
-},
-{
-  "id": "xl-124",
-  "category": "9. Manipulasi Teks & Rapikan Data",
-  "title": "Tantangan 124: Praktik Rumus FIND Dunia Nyata",
-  "scenario": "Kasus Perkantoran (FIND): Mencari posisi karakter tertentu di dalam teks (Case-Sensitive). Gunakan rumus FIND pada sel target C2 sesuai contoh!",
-  "tableHeaders": [
-    "A",
-    "B",
-    "C"
-  ],
-  "tableRows": [
-    {
-      "row": 1,
-      "A": "Unit / Nama Data",
-      "B": "Nilai Input",
-      "C": "Hasil Rumus"
-    },
-    {
-      "row": 2,
-      "A": "Budi Santoso",
-      "B": 82,
-      "C": ""
-    },
-    {
-      "row": 3,
-      "A": "Dewi Lestari",
-      "B": 68,
-      "C": ""
-    },
-    {
-      "row": 4,
-      "A": "Rian Hidayat",
-      "B": 90,
-      "C": ""
+  },
+  {
+    "id": "xl-124",
+    "category": "9. Manipulasi Teks & Rapikan Data",
+    "title": "Tantangan 124: Praktik Rumus FIND Dunia Nyata",
+    "scenario": "Kasus Perkantoran (FIND): Mencari posisi karakter tertentu di dalam teks (Case-Sensitive). Gunakan rumus FIND pada sel target C2 secara mandiri!",
+    "tableHeaders": [
+      "A",
+      "B",
+      "C"
+    ],
+    "tableRows": [
+      {
+        "row": 1,
+        "A": "Unit / Nama Data",
+        "B": "Nilai Input",
+        "C": "Hasil Rumus"
+      },
+      {
+        "row": 2,
+        "A": "Budi Santoso",
+        "B": 82,
+        "C": ""
+      },
+      {
+        "row": 3,
+        "A": "Dewi Lestari",
+        "B": 68,
+        "C": ""
+      },
+      {
+        "row": 4,
+        "A": "Rian Hidayat",
+        "B": 90,
+        "C": ""
+      }
+    ],
+    "targetCell": "C2",
+    "instruction": "Gunakan fungsi FIND (menggunakan parameter data ' ', A2) di sel C2 untuk mempraktekkan fungsi FIND!",
+    "babyHint": "🍼 Bahasa Bayi: Ketik =FIND(\" \", A2) — Mencari posisi karakter tertentu di dalam teks (Case-Sensitive).",
+    "starterFormula": "=",
+    "quickChips": [
+      "=FIND(",
+      "B2",
+      "B2:B4",
+      "A2",
+      ")",
+      ",",
+      ";"
+    ],
+    "acceptedFormulas": [
+      "=FIND(\" \", A2)",
+      "=FIND(\" \"; A2)",
+      "=FIND(\" \",A2)",
+      "=FIND(\" \";A2)"
+    ],
+    "expectedValue": 5,
+    "workedExample": {
+      "title": "💡 FUNGSINYA BUAT APA & CONTOH RUMUS FIND",
+      "kasusSerupa": "Contoh Soal Latihan (Tabel Simulasi): Misalkan data simulasi berada pada sel sesuai contoh di bawah, maka penulisan rumus yang benar adalah =FIND(\" \", D10).",
+      "rumusContoh": "=FIND(\" \", D10)",
+      "nalarBayi": "Rumus FIND sangat krusial di kantor! Cukup ketik fungsi FIND (menggunakan parameter data ' ', A2) untuk menyelesaikannya secara otomatis.",
+      "hasilContoh": "Terevaluasi otomatis oleh Excel sesuai data contoh"
     }
-  ],
-  "targetCell": "C2",
-  "instruction": "Ketik rumus =FIND(\" \", A2) di sel C2 untuk mempraktekkan fungsi FIND!",
-  "babyHint": "🍼 Bahasa Bayi: Ketik =FIND(\" \", A2) — Mencari posisi karakter tertentu di dalam teks (Case-Sensitive).",
-  "starterFormula": "=FIND(",
-  "quickChips": [
-    "=FIND(",
-    "B2",
-    "B2:B4",
-    "A2",
-    ")",
-    ",",
-    ";"
-  ],
-  "acceptedFormulas": [
-    "=FIND(\" \", A2)",
-    "=FIND(\" \"; A2)",
-    "=FIND(\" \",A2)",
-    "=FIND(\" \";A2)"
-  ],
-  "expectedValue": 5,
-  "workedExample": {
-    "title": "💡 FUNGSINYA BUAT APA & CONTOH RUMUS FIND",
-    "kasusSerupa": "Fungsi FIND: Mencari posisi karakter tertentu di dalam teks (Case-Sensitive).",
-    "rumusContoh": "=FIND(\" \", A2)",
-    "nalarBayi": "Rumus FIND sangat krusial di kantor! Cukup ketik =FIND(\" \", A2) untuk menyelesaikannya secara otomatis."
-  }
-},
-{
-  "id": "xl-125",
-  "category": "9. Manipulasi Teks & Rapikan Data",
-  "title": "Tantangan 125: Praktik Rumus SEARCH Dunia Nyata",
-  "scenario": "Kasus Perkantoran (SEARCH): Mencari posisi kata di dalam teks tanpa membedakan huruf besar/kecil. Gunakan rumus SEARCH pada sel target C2 sesuai contoh!",
-  "tableHeaders": [
-    "A",
-    "B",
-    "C"
-  ],
-  "tableRows": [
-    {
-      "row": 1,
-      "A": "Unit / Nama Data",
-      "B": "Nilai Input",
-      "C": "Hasil Rumus"
-    },
-    {
-      "row": 2,
-      "A": "Budi Santoso",
-      "B": 82,
-      "C": ""
-    },
-    {
-      "row": 3,
-      "A": "Dewi Lestari",
-      "B": 68,
-      "C": ""
-    },
-    {
-      "row": 4,
-      "A": "Rian Hidayat",
-      "B": 90,
-      "C": ""
+  },
+  {
+    "id": "xl-125",
+    "category": "9. Manipulasi Teks & Rapikan Data",
+    "title": "Tantangan 125: Praktik Rumus SEARCH Dunia Nyata",
+    "scenario": "Kasus Perkantoran (SEARCH): Mencari posisi kata di dalam teks tanpa membedakan huruf besar/kecil. Gunakan rumus SEARCH pada sel target C2 secara mandiri!",
+    "tableHeaders": [
+      "A",
+      "B",
+      "C"
+    ],
+    "tableRows": [
+      {
+        "row": 1,
+        "A": "Unit / Nama Data",
+        "B": "Nilai Input",
+        "C": "Hasil Rumus"
+      },
+      {
+        "row": 2,
+        "A": "Budi Santoso",
+        "B": 82,
+        "C": ""
+      },
+      {
+        "row": 3,
+        "A": "Dewi Lestari",
+        "B": 68,
+        "C": ""
+      },
+      {
+        "row": 4,
+        "A": "Rian Hidayat",
+        "B": 90,
+        "C": ""
+      }
+    ],
+    "targetCell": "C2",
+    "instruction": "Gunakan fungsi SEARCH (menggunakan parameter data 'SANTOSO', A2) di sel C2 untuk mempraktekkan fungsi SEARCH!",
+    "babyHint": "🍼 Bahasa Bayi: Ketik =SEARCH(\"SANTOSO\", A2) — Mencari posisi kata di dalam teks tanpa membedakan huruf besar/kecil.",
+    "starterFormula": "=",
+    "quickChips": [
+      "=SEARCH(",
+      "B2",
+      "B2:B4",
+      "A2",
+      ")",
+      ",",
+      ";"
+    ],
+    "acceptedFormulas": [
+      "=SEARCH(\"SANTOSO\", A2)",
+      "=SEARCH(\"SANTOSO\"; A2)",
+      "=SEARCH(\"SANTOSO\",A2)",
+      "=SEARCH(\"SANTOSO\";A2)"
+    ],
+    "expectedValue": 6,
+    "workedExample": {
+      "title": "💡 FUNGSINYA BUAT APA & CONTOH RUMUS SEARCH",
+      "kasusSerupa": "Contoh Soal Latihan (Tabel Simulasi): Misalkan data simulasi berada pada sel sesuai contoh di bawah, maka penulisan rumus yang benar adalah =SEARCH(\"SANTOSO\", D10).",
+      "rumusContoh": "=SEARCH(\"SANTOSO\", D10)",
+      "nalarBayi": "Rumus SEARCH sangat krusial di kantor! Cukup ketik fungsi SEARCH (menggunakan parameter data 'SANTOSO', A2) untuk menyelesaikannya secara otomatis.",
+      "hasilContoh": "Terevaluasi otomatis oleh Excel sesuai data contoh"
     }
-  ],
-  "targetCell": "C2",
-  "instruction": "Ketik rumus =SEARCH(\"SANTOSO\", A2) di sel C2 untuk mempraktekkan fungsi SEARCH!",
-  "babyHint": "🍼 Bahasa Bayi: Ketik =SEARCH(\"SANTOSO\", A2) — Mencari posisi kata di dalam teks tanpa membedakan huruf besar/kecil.",
-  "starterFormula": "=SEARCH(",
-  "quickChips": [
-    "=SEARCH(",
-    "B2",
-    "B2:B4",
-    "A2",
-    ")",
-    ",",
-    ";"
-  ],
-  "acceptedFormulas": [
-    "=SEARCH(\"SANTOSO\", A2)",
-    "=SEARCH(\"SANTOSO\"; A2)",
-    "=SEARCH(\"SANTOSO\",A2)",
-    "=SEARCH(\"SANTOSO\";A2)"
-  ],
-  "expectedValue": 6,
-  "workedExample": {
-    "title": "💡 FUNGSINYA BUAT APA & CONTOH RUMUS SEARCH",
-    "kasusSerupa": "Fungsi SEARCH: Mencari posisi kata di dalam teks tanpa membedakan huruf besar/kecil.",
-    "rumusContoh": "=SEARCH(\"SANTOSO\", A2)",
-    "nalarBayi": "Rumus SEARCH sangat krusial di kantor! Cukup ketik =SEARCH(\"SANTOSO\", A2) untuk menyelesaikannya secara otomatis."
-  }
-},
-{
-  "id": "xl-126",
-  "category": "9. Manipulasi Teks & Rapikan Data",
-  "title": "Tantangan 126: Praktik Rumus SUBSTITUTE Dunia Nyata",
-  "scenario": "Kasus Perkantoran (SUBSTITUTE): Mengganti kata atau simbol lama dengan yang baru secara otomatis. Gunakan rumus SUBSTITUTE pada sel target C2 sesuai contoh!",
-  "tableHeaders": [
-    "A",
-    "B",
-    "C"
-  ],
-  "tableRows": [
-    {
-      "row": 1,
-      "A": "Unit / Nama Data",
-      "B": "Nilai Input",
-      "C": "Hasil Rumus"
-    },
-    {
-      "row": 2,
-      "A": "Budi Santoso",
-      "B": 82,
-      "C": ""
-    },
-    {
-      "row": 3,
-      "A": "Dewi Lestari",
-      "B": 68,
-      "C": ""
-    },
-    {
-      "row": 4,
-      "A": "Rian Hidayat",
-      "B": 90,
-      "C": ""
+  },
+  {
+    "id": "xl-126",
+    "category": "9. Manipulasi Teks & Rapikan Data",
+    "title": "Tantangan 126: Praktik Rumus SUBSTITUTE Dunia Nyata",
+    "scenario": "Kasus Perkantoran (SUBSTITUTE): Mengganti kata atau simbol lama dengan yang baru secara otomatis. Gunakan rumus SUBSTITUTE pada sel target C2 secara mandiri!",
+    "tableHeaders": [
+      "A",
+      "B",
+      "C"
+    ],
+    "tableRows": [
+      {
+        "row": 1,
+        "A": "Unit / Nama Data",
+        "B": "Nilai Input",
+        "C": "Hasil Rumus"
+      },
+      {
+        "row": 2,
+        "A": "Budi Santoso",
+        "B": 82,
+        "C": ""
+      },
+      {
+        "row": 3,
+        "A": "Dewi Lestari",
+        "B": 68,
+        "C": ""
+      },
+      {
+        "row": 4,
+        "A": "Rian Hidayat",
+        "B": 90,
+        "C": ""
+      }
+    ],
+    "targetCell": "C2",
+    "instruction": "Gunakan fungsi SUBSTITUTE (menggunakan parameter data A2, ' ', '_') di sel C2 untuk mempraktekkan fungsi SUBSTITUTE!",
+    "babyHint": "🍼 Bahasa Bayi: Ketik =SUBSTITUTE(A2, \" \", \"_\") — Mengganti kata atau simbol lama dengan yang baru secara otomatis.",
+    "starterFormula": "=",
+    "quickChips": [
+      "=SUBSTITUTE(",
+      "B2",
+      "B2:B4",
+      "A2",
+      ")",
+      ",",
+      ";"
+    ],
+    "acceptedFormulas": [
+      "=SUBSTITUTE(A2, \" \", \"_\")",
+      "=SUBSTITUTE(A2; \" \"; \"_\")",
+      "=SUBSTITUTE(A2,\" \",\"_\")",
+      "=SUBSTITUTE(A2;\" \";\"_\")"
+    ],
+    "expectedValue": "Budi_Santoso",
+    "workedExample": {
+      "title": "💡 FUNGSINYA BUAT APA & CONTOH RUMUS SUBSTITUTE",
+      "kasusSerupa": "Contoh Soal Latihan (Tabel Simulasi): Misalkan data simulasi berada pada sel sesuai contoh di bawah, maka penulisan rumus yang benar adalah =SUBSTITUTE(D10, \" \", \"_\").",
+      "rumusContoh": "=SUBSTITUTE(D10, \" \", \"_\")",
+      "nalarBayi": "Rumus SUBSTITUTE sangat krusial di kantor! Cukup ketik fungsi SUBSTITUTE (menggunakan parameter data A2, ' ', '_') untuk menyelesaikannya secara otomatis.",
+      "hasilContoh": "Terevaluasi otomatis oleh Excel sesuai data contoh"
     }
-  ],
-  "targetCell": "C2",
-  "instruction": "Ketik rumus =SUBSTITUTE(A2, \" \", \"_\") di sel C2 untuk mempraktekkan fungsi SUBSTITUTE!",
-  "babyHint": "🍼 Bahasa Bayi: Ketik =SUBSTITUTE(A2, \" \", \"_\") — Mengganti kata atau simbol lama dengan yang baru secara otomatis.",
-  "starterFormula": "=SUBSTITUTE(",
-  "quickChips": [
-    "=SUBSTITUTE(",
-    "B2",
-    "B2:B4",
-    "A2",
-    ")",
-    ",",
-    ";"
-  ],
-  "acceptedFormulas": [
-    "=SUBSTITUTE(A2, \" \", \"_\")",
-    "=SUBSTITUTE(A2; \" \"; \"_\")",
-    "=SUBSTITUTE(A2,\" \",\"_\")",
-    "=SUBSTITUTE(A2;\" \";\"_\")"
-  ],
-  "expectedValue": "Budi_Santoso",
-  "workedExample": {
-    "title": "💡 FUNGSINYA BUAT APA & CONTOH RUMUS SUBSTITUTE",
-    "kasusSerupa": "Fungsi SUBSTITUTE: Mengganti kata atau simbol lama dengan yang baru secara otomatis.",
-    "rumusContoh": "=SUBSTITUTE(A2, \" \", \"_\")",
-    "nalarBayi": "Rumus SUBSTITUTE sangat krusial di kantor! Cukup ketik =SUBSTITUTE(A2, \" \", \"_\") untuk menyelesaikannya secara otomatis."
-  }
-},
-{
-  "id": "xl-127",
-  "category": "9. Manipulasi Teks & Rapikan Data",
-  "title": "Tantangan 127: Praktik Rumus REPLACE Dunia Nyata",
-  "scenario": "Kasus Perkantoran (REPLACE): Mengganti sebagian teks berdasarkan posisi awal dan jumlah karakter. Gunakan rumus REPLACE pada sel target C2 sesuai contoh!",
-  "tableHeaders": [
-    "A",
-    "B",
-    "C"
-  ],
-  "tableRows": [
-    {
-      "row": 1,
-      "A": "Unit / Nama Data",
-      "B": "Nilai Input",
-      "C": "Hasil Rumus"
-    },
-    {
-      "row": 2,
-      "A": "Budi Santoso",
-      "B": 82,
-      "C": ""
-    },
-    {
-      "row": 3,
-      "A": "Dewi Lestari",
-      "B": 68,
-      "C": ""
-    },
-    {
-      "row": 4,
-      "A": "Rian Hidayat",
-      "B": 90,
-      "C": ""
+  },
+  {
+    "id": "xl-127",
+    "category": "9. Manipulasi Teks & Rapikan Data",
+    "title": "Tantangan 127: Praktik Rumus REPLACE Dunia Nyata",
+    "scenario": "Kasus Perkantoran (REPLACE): Mengganti sebagian teks berdasarkan posisi awal dan jumlah karakter. Gunakan rumus REPLACE pada sel target C2 secara mandiri!",
+    "tableHeaders": [
+      "A",
+      "B",
+      "C"
+    ],
+    "tableRows": [
+      {
+        "row": 1,
+        "A": "Unit / Nama Data",
+        "B": "Nilai Input",
+        "C": "Hasil Rumus"
+      },
+      {
+        "row": 2,
+        "A": "Budi Santoso",
+        "B": 82,
+        "C": ""
+      },
+      {
+        "row": 3,
+        "A": "Dewi Lestari",
+        "B": 68,
+        "C": ""
+      },
+      {
+        "row": 4,
+        "A": "Rian Hidayat",
+        "B": 90,
+        "C": ""
+      }
+    ],
+    "targetCell": "C2",
+    "instruction": "Gunakan fungsi REPLACE (menggunakan parameter data A2, 1, 4, 'Andi') di sel C2 untuk mempraktekkan fungsi REPLACE!",
+    "babyHint": "🍼 Bahasa Bayi: Ketik =REPLACE(A2, 1, 4, \"Andi\") — Mengganti sebagian teks berdasarkan posisi awal dan jumlah karakter.",
+    "starterFormula": "=",
+    "quickChips": [
+      "=REPLACE(",
+      "B2",
+      "B2:B4",
+      "A2",
+      ")",
+      ",",
+      ";"
+    ],
+    "acceptedFormulas": [
+      "=REPLACE(A2, 1, 4, \"Andi\")",
+      "=REPLACE(A2; 1; 4; \"Andi\")",
+      "=REPLACE(A2,1,4,\"Andi\")",
+      "=REPLACE(A2;1;4;\"Andi\")"
+    ],
+    "expectedValue": "Andi Santoso",
+    "workedExample": {
+      "title": "💡 FUNGSINYA BUAT APA & CONTOH RUMUS REPLACE",
+      "kasusSerupa": "Contoh Soal Latihan (Tabel Simulasi): Misalkan data simulasi berada pada sel sesuai contoh di bawah, maka penulisan rumus yang benar adalah =REPLACE(D10, 1, 4, \"Andi\").",
+      "rumusContoh": "=REPLACE(D10, 1, 4, \"Andi\")",
+      "nalarBayi": "Rumus REPLACE sangat krusial di kantor! Cukup ketik fungsi REPLACE (menggunakan parameter data A2, 1, 4, 'Andi') untuk menyelesaikannya secara otomatis.",
+      "hasilContoh": "Terevaluasi otomatis oleh Excel sesuai data contoh"
     }
-  ],
-  "targetCell": "C2",
-  "instruction": "Ketik rumus =REPLACE(A2, 1, 4, \"Andi\") di sel C2 untuk mempraktekkan fungsi REPLACE!",
-  "babyHint": "🍼 Bahasa Bayi: Ketik =REPLACE(A2, 1, 4, \"Andi\") — Mengganti sebagian teks berdasarkan posisi awal dan jumlah karakter.",
-  "starterFormula": "=REPLACE(",
-  "quickChips": [
-    "=REPLACE(",
-    "B2",
-    "B2:B4",
-    "A2",
-    ")",
-    ",",
-    ";"
-  ],
-  "acceptedFormulas": [
-    "=REPLACE(A2, 1, 4, \"Andi\")",
-    "=REPLACE(A2; 1; 4; \"Andi\")",
-    "=REPLACE(A2,1,4,\"Andi\")",
-    "=REPLACE(A2;1;4;\"Andi\")"
-  ],
-  "expectedValue": "Andi Santoso",
-  "workedExample": {
-    "title": "💡 FUNGSINYA BUAT APA & CONTOH RUMUS REPLACE",
-    "kasusSerupa": "Fungsi REPLACE: Mengganti sebagian teks berdasarkan posisi awal dan jumlah karakter.",
-    "rumusContoh": "=REPLACE(A2, 1, 4, \"Andi\")",
-    "nalarBayi": "Rumus REPLACE sangat krusial di kantor! Cukup ketik =REPLACE(A2, 1, 4, \"Andi\") untuk menyelesaikannya secara otomatis."
-  }
-},
-{
-  "id": "xl-128",
-  "category": "9. Manipulasi Teks & Rapikan Data",
-  "title": "Tantangan 128: Praktik Rumus REPT Dunia Nyata",
-  "scenario": "Kasus Perkantoran (REPT): Mengulang simbol berkali-kali (membuat grafik bintang di dalam sel). Gunakan rumus REPT pada sel target C2 sesuai contoh!",
-  "tableHeaders": [
-    "A",
-    "B",
-    "C"
-  ],
-  "tableRows": [
-    {
-      "row": 1,
-      "A": "Unit / Nama Data",
-      "B": "Nilai Input",
-      "C": "Hasil Rumus"
-    },
-    {
-      "row": 2,
-      "A": "Budi Santoso",
-      "B": 82,
-      "C": ""
-    },
-    {
-      "row": 3,
-      "A": "Dewi Lestari",
-      "B": 68,
-      "C": ""
-    },
-    {
-      "row": 4,
-      "A": "Rian Hidayat",
-      "B": 90,
-      "C": ""
+  },
+  {
+    "id": "xl-128",
+    "category": "9. Manipulasi Teks & Rapikan Data",
+    "title": "Tantangan 128: Praktik Rumus REPT Dunia Nyata",
+    "scenario": "Kasus Perkantoran (REPT): Mengulang simbol berkali-kali (membuat grafik bintang di dalam sel). Gunakan rumus REPT pada sel target C2 secara mandiri!",
+    "tableHeaders": [
+      "A",
+      "B",
+      "C"
+    ],
+    "tableRows": [
+      {
+        "row": 1,
+        "A": "Unit / Nama Data",
+        "B": "Nilai Input",
+        "C": "Hasil Rumus"
+      },
+      {
+        "row": 2,
+        "A": "Budi Santoso",
+        "B": 82,
+        "C": ""
+      },
+      {
+        "row": 3,
+        "A": "Dewi Lestari",
+        "B": 68,
+        "C": ""
+      },
+      {
+        "row": 4,
+        "A": "Rian Hidayat",
+        "B": 90,
+        "C": ""
+      }
+    ],
+    "targetCell": "C2",
+    "instruction": "Gunakan fungsi REPT (menggunakan parameter data '*', 5) di sel C2 untuk mempraktekkan fungsi REPT!",
+    "babyHint": "🍼 Bahasa Bayi: Ketik =REPT(\"*\", 5) — Mengulang simbol berkali-kali (membuat grafik bintang di dalam sel).",
+    "starterFormula": "=",
+    "quickChips": [
+      "=REPT(",
+      "B2",
+      "B2:B4",
+      "A2",
+      ")",
+      ",",
+      ";"
+    ],
+    "acceptedFormulas": [
+      "=REPT(\"*\", 5)",
+      "=REPT(\"*\"; 5)",
+      "=REPT(\"*\",5)",
+      "=REPT(\"*\";5)"
+    ],
+    "expectedValue": "*****",
+    "workedExample": {
+      "title": "💡 FUNGSINYA BUAT APA & CONTOH RUMUS REPT",
+      "kasusSerupa": "Contoh Soal Latihan (Tabel Simulasi): Misalkan data simulasi berada pada sel sesuai contoh di bawah, maka penulisan rumus yang benar adalah =REPT(\"*\", 3).",
+      "rumusContoh": "=REPT(\"*\", 3)",
+      "nalarBayi": "Rumus REPT sangat krusial di kantor! Cukup ketik fungsi REPT (menggunakan parameter data '*', 5) untuk menyelesaikannya secara otomatis.",
+      "hasilContoh": "Terevaluasi otomatis oleh Excel sesuai data contoh"
     }
-  ],
-  "targetCell": "C2",
-  "instruction": "Ketik rumus =REPT(\"*\", 5) di sel C2 untuk mempraktekkan fungsi REPT!",
-  "babyHint": "🍼 Bahasa Bayi: Ketik =REPT(\"*\", 5) — Mengulang simbol berkali-kali (membuat grafik bintang di dalam sel).",
-  "starterFormula": "=REPT(",
-  "quickChips": [
-    "=REPT(",
-    "B2",
-    "B2:B4",
-    "A2",
-    ")",
-    ",",
-    ";"
-  ],
-  "acceptedFormulas": [
-    "=REPT(\"*\", 5)",
-    "=REPT(\"*\"; 5)",
-    "=REPT(\"*\",5)",
-    "=REPT(\"*\";5)"
-  ],
-  "expectedValue": "*****",
-  "workedExample": {
-    "title": "💡 FUNGSINYA BUAT APA & CONTOH RUMUS REPT",
-    "kasusSerupa": "Fungsi REPT: Mengulang simbol berkali-kali (membuat grafik bintang di dalam sel).",
-    "rumusContoh": "=REPT(\"*\", 5)",
-    "nalarBayi": "Rumus REPT sangat krusial di kantor! Cukup ketik =REPT(\"*\", 5) untuk menyelesaikannya secara otomatis."
-  }
-},
-{
-  "id": "xl-129",
-  "category": "9. Manipulasi Teks & Rapikan Data",
-  "title": "Tantangan 129: Praktik Rumus VALUE Dunia Nyata",
-  "scenario": "Kasus Perkantoran (VALUE): Mengubah teks angka menjadi angka murni agar bisa dihitung. Gunakan rumus VALUE pada sel target C2 sesuai contoh!",
-  "tableHeaders": [
-    "A",
-    "B",
-    "C"
-  ],
-  "tableRows": [
-    {
-      "row": 1,
-      "A": "Unit / Nama Data",
-      "B": "Nilai Input",
-      "C": "Hasil Rumus"
-    },
-    {
-      "row": 2,
-      "A": "Budi Santoso",
-      "B": 82,
-      "C": ""
-    },
-    {
-      "row": 3,
-      "A": "Dewi Lestari",
-      "B": 68,
-      "C": ""
-    },
-    {
-      "row": 4,
-      "A": "Rian Hidayat",
-      "B": 90,
-      "C": ""
+  },
+  {
+    "id": "xl-129",
+    "category": "9. Manipulasi Teks & Rapikan Data",
+    "title": "Tantangan 129: Praktik Rumus VALUE Dunia Nyata",
+    "scenario": "Kasus Perkantoran (VALUE): Mengubah teks angka menjadi angka murni agar bisa dihitung. Gunakan rumus VALUE pada sel target C2 secara mandiri!",
+    "tableHeaders": [
+      "A",
+      "B",
+      "C"
+    ],
+    "tableRows": [
+      {
+        "row": 1,
+        "A": "Unit / Nama Data",
+        "B": "Nilai Input",
+        "C": "Hasil Rumus"
+      },
+      {
+        "row": 2,
+        "A": "Budi Santoso",
+        "B": 82,
+        "C": ""
+      },
+      {
+        "row": 3,
+        "A": "Dewi Lestari",
+        "B": 68,
+        "C": ""
+      },
+      {
+        "row": 4,
+        "A": "Rian Hidayat",
+        "B": 90,
+        "C": ""
+      }
+    ],
+    "targetCell": "C2",
+    "instruction": "Gunakan fungsi VALUE (menggunakan parameter data B2) di sel C2 untuk mempraktekkan fungsi VALUE!",
+    "babyHint": "🍼 Bahasa Bayi: Ketik =VALUE(B2) — Mengubah teks angka menjadi angka murni agar bisa dihitung.",
+    "starterFormula": "=",
+    "quickChips": [
+      "=VALUE(",
+      "B2",
+      "B2:B4",
+      "A2",
+      ")",
+      ",",
+      ";"
+    ],
+    "acceptedFormulas": [
+      "=VALUE(B2)",
+      "=VALUE(B2)",
+      "=VALUE(B2)",
+      "=VALUE(B2)"
+    ],
+    "expectedValue": 82,
+    "workedExample": {
+      "title": "💡 FUNGSINYA BUAT APA & CONTOH RUMUS VALUE",
+      "kasusSerupa": "Contoh Soal Latihan (Tabel Simulasi): Misalkan data simulasi berada pada sel sesuai contoh di bawah, maka penulisan rumus yang benar adalah =VALUE(E10).",
+      "rumusContoh": "=VALUE(E10)",
+      "nalarBayi": "Rumus VALUE sangat krusial di kantor! Cukup ketik fungsi VALUE (menggunakan parameter data B2) untuk menyelesaikannya secara otomatis.",
+      "hasilContoh": "Terevaluasi otomatis oleh Excel sesuai data contoh"
     }
-  ],
-  "targetCell": "C2",
-  "instruction": "Ketik rumus =VALUE(B2) di sel C2 untuk mempraktekkan fungsi VALUE!",
-  "babyHint": "🍼 Bahasa Bayi: Ketik =VALUE(B2) — Mengubah teks angka menjadi angka murni agar bisa dihitung.",
-  "starterFormula": "=VALUE(",
-  "quickChips": [
-    "=VALUE(",
-    "B2",
-    "B2:B4",
-    "A2",
-    ")",
-    ",",
-    ";"
-  ],
-  "acceptedFormulas": [
-    "=VALUE(B2)",
-    "=VALUE(B2)",
-    "=VALUE(B2)",
-    "=VALUE(B2)"
-  ],
-  "expectedValue": 82,
-  "workedExample": {
-    "title": "💡 FUNGSINYA BUAT APA & CONTOH RUMUS VALUE",
-    "kasusSerupa": "Fungsi VALUE: Mengubah teks angka menjadi angka murni agar bisa dihitung.",
-    "rumusContoh": "=VALUE(B2)",
-    "nalarBayi": "Rumus VALUE sangat krusial di kantor! Cukup ketik =VALUE(B2) untuk menyelesaikannya secara otomatis."
-  }
-},
-{
-  "id": "xl-130",
-  "category": "9. Manipulasi Teks & Rapikan Data",
-  "title": "Tantangan 130: Praktik Rumus TEXT Dunia Nyata",
-  "scenario": "Kasus Perkantoran (TEXT): Memformat angka/tanggal menjadi tampilan teks ribuan atau kalender. Gunakan rumus TEXT pada sel target C2 sesuai contoh!",
-  "tableHeaders": [
-    "A",
-    "B",
-    "C"
-  ],
-  "tableRows": [
-    {
-      "row": 1,
-      "A": "Unit / Nama Data",
-      "B": "Nilai Input",
-      "C": "Hasil Rumus"
-    },
-    {
-      "row": 2,
-      "A": "Budi Santoso",
-      "B": 82,
-      "C": ""
-    },
-    {
-      "row": 3,
-      "A": "Dewi Lestari",
-      "B": 68,
-      "C": ""
-    },
-    {
-      "row": 4,
-      "A": "Rian Hidayat",
-      "B": 90,
-      "C": ""
+  },
+  {
+    "id": "xl-130",
+    "category": "9. Manipulasi Teks & Rapikan Data",
+    "title": "Tantangan 130: Praktik Rumus TEXT Dunia Nyata",
+    "scenario": "Kasus Perkantoran (TEXT): Memformat angka/tanggal menjadi tampilan teks ribuan atau kalender. Gunakan rumus TEXT pada sel target C2 secara mandiri!",
+    "tableHeaders": [
+      "A",
+      "B",
+      "C"
+    ],
+    "tableRows": [
+      {
+        "row": 1,
+        "A": "Unit / Nama Data",
+        "B": "Nilai Input",
+        "C": "Hasil Rumus"
+      },
+      {
+        "row": 2,
+        "A": "Budi Santoso",
+        "B": 82,
+        "C": ""
+      },
+      {
+        "row": 3,
+        "A": "Dewi Lestari",
+        "B": 68,
+        "C": ""
+      },
+      {
+        "row": 4,
+        "A": "Rian Hidayat",
+        "B": 90,
+        "C": ""
+      }
+    ],
+    "targetCell": "C2",
+    "instruction": "Gunakan fungsi TEXT (menggunakan parameter data B2, '000') di sel C2 untuk mempraktekkan fungsi TEXT!",
+    "babyHint": "🍼 Bahasa Bayi: Ketik =TEXT(B2, \"000\") — Memformat angka/tanggal menjadi tampilan teks ribuan atau kalender.",
+    "starterFormula": "=",
+    "quickChips": [
+      "=TEXT(",
+      "B2",
+      "B2:B4",
+      "A2",
+      ")",
+      ",",
+      ";"
+    ],
+    "acceptedFormulas": [
+      "=TEXT(B2, \"000\")",
+      "=TEXT(B2; \"000\")",
+      "=TEXT(B2,\"000\")",
+      "=TEXT(B2;\"000\")"
+    ],
+    "expectedValue": "082",
+    "workedExample": {
+      "title": "💡 FUNGSINYA BUAT APA & CONTOH RUMUS TEXT",
+      "kasusSerupa": "Contoh Soal Latihan (Tabel Simulasi): Misalkan data simulasi berada pada sel sesuai contoh di bawah, maka penulisan rumus yang benar adalah =TEXT(E10, \"000\").",
+      "rumusContoh": "=TEXT(E10, \"000\")",
+      "nalarBayi": "Rumus TEXT sangat krusial di kantor! Cukup ketik fungsi TEXT (menggunakan parameter data B2, '000') untuk menyelesaikannya secara otomatis.",
+      "hasilContoh": "Terevaluasi otomatis oleh Excel sesuai data contoh"
     }
-  ],
-  "targetCell": "C2",
-  "instruction": "Ketik rumus =TEXT(B2, \"000\") di sel C2 untuk mempraktekkan fungsi TEXT!",
-  "babyHint": "🍼 Bahasa Bayi: Ketik =TEXT(B2, \"000\") — Memformat angka/tanggal menjadi tampilan teks ribuan atau kalender.",
-  "starterFormula": "=TEXT(",
-  "quickChips": [
-    "=TEXT(",
-    "B2",
-    "B2:B4",
-    "A2",
-    ")",
-    ",",
-    ";"
-  ],
-  "acceptedFormulas": [
-    "=TEXT(B2, \"000\")",
-    "=TEXT(B2; \"000\")",
-    "=TEXT(B2,\"000\")",
-    "=TEXT(B2;\"000\")"
-  ],
-  "expectedValue": "082",
-  "workedExample": {
-    "title": "💡 FUNGSINYA BUAT APA & CONTOH RUMUS TEXT",
-    "kasusSerupa": "Fungsi TEXT: Memformat angka/tanggal menjadi tampilan teks ribuan atau kalender.",
-    "rumusContoh": "=TEXT(B2, \"000\")",
-    "nalarBayi": "Rumus TEXT sangat krusial di kantor! Cukup ketik =TEXT(B2, \"000\") untuk menyelesaikannya secara otomatis."
-  }
-},
-{
-  "id": "xl-131",
-  "category": "10. Waktu, Finansial & Pembulatan",
-  "title": "Tantangan 131: Praktik Rumus DATE Dunia Nyata",
-  "scenario": "Kasus Perkantoran (DATE): Merakit angka Tahun, Bulan, dan Hari menjadi Tanggal Resmi Excel. Gunakan rumus DATE pada sel target C2 sesuai contoh!",
-  "tableHeaders": [
-    "A",
-    "B",
-    "C"
-  ],
-  "tableRows": [
-    {
-      "row": 1,
-      "A": "Unit / Nama Data",
-      "B": "Nilai Input",
-      "C": "Hasil Rumus"
-    },
-    {
-      "row": 2,
-      "A": "Budi Santoso",
-      "B": 82,
-      "C": ""
-    },
-    {
-      "row": 3,
-      "A": "Dewi Lestari",
-      "B": 68,
-      "C": ""
-    },
-    {
-      "row": 4,
-      "A": "Rian Hidayat",
-      "B": 90,
-      "C": ""
+  },
+  {
+    "id": "xl-131",
+    "category": "10. Waktu, Finansial & Pembulatan",
+    "title": "Tantangan 131: Praktik Rumus DATE Dunia Nyata",
+    "scenario": "Kasus Perkantoran (DATE): Merakit angka Tahun, Bulan, dan Hari menjadi Tanggal Resmi Excel. Gunakan rumus DATE pada sel target C2 secara mandiri!",
+    "tableHeaders": [
+      "A",
+      "B",
+      "C"
+    ],
+    "tableRows": [
+      {
+        "row": 1,
+        "A": "Unit / Nama Data",
+        "B": "Nilai Input",
+        "C": "Hasil Rumus"
+      },
+      {
+        "row": 2,
+        "A": "Budi Santoso",
+        "B": 82,
+        "C": ""
+      },
+      {
+        "row": 3,
+        "A": "Dewi Lestari",
+        "B": 68,
+        "C": ""
+      },
+      {
+        "row": 4,
+        "A": "Rian Hidayat",
+        "B": 90,
+        "C": ""
+      }
+    ],
+    "targetCell": "C2",
+    "instruction": "Gunakan fungsi DATE (menggunakan parameter data 2026, 10, 12) di sel C2 untuk mempraktekkan fungsi DATE!",
+    "babyHint": "🍼 Bahasa Bayi: Ketik =DATE(2026, 10, 12) — Merakit angka Tahun, Bulan, dan Hari menjadi Tanggal Resmi Excel.",
+    "starterFormula": "=",
+    "quickChips": [
+      "=DATE(",
+      "B2",
+      "B2:B4",
+      "A2",
+      ")",
+      ",",
+      ";"
+    ],
+    "acceptedFormulas": [
+      "=DATE(2026, 10, 12)",
+      "=DATE(2026; 10; 12)",
+      "=DATE(2026,10,12)",
+      "=DATE(2026;10;12)"
+    ],
+    "expectedValue": "2026-10-12",
+    "workedExample": {
+      "title": "💡 FUNGSINYA BUAT APA & CONTOH RUMUS DATE",
+      "kasusSerupa": "Contoh Soal Latihan (Tabel Simulasi): Misalkan data simulasi berada pada sel sesuai contoh di bawah, maka penulisan rumus yang benar adalah =DATE(2024, 10, 12).",
+      "rumusContoh": "=DATE(2024, 10, 12)",
+      "nalarBayi": "Rumus DATE sangat krusial di kantor! Cukup ketik fungsi DATE (menggunakan parameter data 2026, 10, 12) untuk menyelesaikannya secara otomatis.",
+      "hasilContoh": "Terevaluasi otomatis oleh Excel sesuai data contoh"
     }
-  ],
-  "targetCell": "C2",
-  "instruction": "Ketik rumus =DATE(2026, 10, 12) di sel C2 untuk mempraktekkan fungsi DATE!",
-  "babyHint": "🍼 Bahasa Bayi: Ketik =DATE(2026, 10, 12) — Merakit angka Tahun, Bulan, dan Hari menjadi Tanggal Resmi Excel.",
-  "starterFormula": "=DATE(",
-  "quickChips": [
-    "=DATE(",
-    "B2",
-    "B2:B4",
-    "A2",
-    ")",
-    ",",
-    ";"
-  ],
-  "acceptedFormulas": [
-    "=DATE(2026, 10, 12)",
-    "=DATE(2026; 10; 12)",
-    "=DATE(2026,10,12)",
-    "=DATE(2026;10;12)"
-  ],
-  "expectedValue": "2026-10-12",
-  "workedExample": {
-    "title": "💡 FUNGSINYA BUAT APA & CONTOH RUMUS DATE",
-    "kasusSerupa": "Fungsi DATE: Merakit angka Tahun, Bulan, dan Hari menjadi Tanggal Resmi Excel.",
-    "rumusContoh": "=DATE(2026, 10, 12)",
-    "nalarBayi": "Rumus DATE sangat krusial di kantor! Cukup ketik =DATE(2026, 10, 12) untuk menyelesaikannya secara otomatis."
-  }
-},
-{
-  "id": "xl-132",
-  "category": "10. Waktu, Finansial & Pembulatan",
-  "title": "Tantangan 132: Praktik Rumus YEAR Dunia Nyata",
-  "scenario": "Kasus Perkantoran (YEAR): Mengambil angka Tahun (4 digit) dari sebuah sel tanggal. Gunakan rumus YEAR pada sel target C2 sesuai contoh!",
-  "tableHeaders": [
-    "A",
-    "B",
-    "C"
-  ],
-  "tableRows": [
-    {
-      "row": 1,
-      "A": "Unit / Nama Data",
-      "B": "Nilai Input",
-      "C": "Hasil Rumus"
-    },
-    {
-      "row": 2,
-      "A": "Budi Santoso",
-      "B": 82,
-      "C": ""
-    },
-    {
-      "row": 3,
-      "A": "Dewi Lestari",
-      "B": 68,
-      "C": ""
-    },
-    {
-      "row": 4,
-      "A": "Rian Hidayat",
-      "B": 90,
-      "C": ""
+  },
+  {
+    "id": "xl-132",
+    "category": "10. Waktu, Finansial & Pembulatan",
+    "title": "Tantangan 132: Praktik Rumus YEAR Dunia Nyata",
+    "scenario": "Kasus Perkantoran (YEAR): Mengambil angka Tahun (4 digit) dari sebuah sel tanggal. Gunakan rumus YEAR pada sel target C2 secara mandiri!",
+    "tableHeaders": [
+      "A",
+      "B",
+      "C"
+    ],
+    "tableRows": [
+      {
+        "row": 1,
+        "A": "Unit / Nama Data",
+        "B": "Nilai Input",
+        "C": "Hasil Rumus"
+      },
+      {
+        "row": 2,
+        "A": "Budi Santoso",
+        "B": 82,
+        "C": ""
+      },
+      {
+        "row": 3,
+        "A": "Dewi Lestari",
+        "B": 68,
+        "C": ""
+      },
+      {
+        "row": 4,
+        "A": "Rian Hidayat",
+        "B": 90,
+        "C": ""
+      }
+    ],
+    "targetCell": "C2",
+    "instruction": "Gunakan fungsi YEAR (menggunakan parameter data DATE(2026, 10, 12)) di sel C2 untuk mempraktekkan fungsi YEAR!",
+    "babyHint": "🍼 Bahasa Bayi: Ketik =YEAR(DATE(2026, 10, 12)) — Mengambil angka Tahun (4 digit) dari sebuah sel tanggal.",
+    "starterFormula": "=",
+    "quickChips": [
+      "=YEAR(",
+      "B2",
+      "B2:B4",
+      "A2",
+      ")",
+      ",",
+      ";"
+    ],
+    "acceptedFormulas": [
+      "=YEAR(DATE(2026, 10, 12))",
+      "=YEAR(DATE(2026; 10; 12))",
+      "=YEAR(DATE(2026,10,12))",
+      "=YEAR(DATE(2026;10;12))"
+    ],
+    "expectedValue": 2026,
+    "workedExample": {
+      "title": "💡 FUNGSINYA BUAT APA & CONTOH RUMUS YEAR",
+      "kasusSerupa": "Contoh Soal Latihan (Tabel Simulasi): Misalkan data simulasi berada pada sel sesuai contoh di bawah, maka penulisan rumus yang benar adalah =YEAR(DATE(2024, 10, 12)).",
+      "rumusContoh": "=YEAR(DATE(2024, 10, 12))",
+      "nalarBayi": "Rumus YEAR sangat krusial di kantor! Cukup ketik fungsi YEAR (menggunakan parameter data DATE(2026, 10, 12)) untuk menyelesaikannya secara otomatis.",
+      "hasilContoh": "Terevaluasi otomatis oleh Excel sesuai data contoh"
     }
-  ],
-  "targetCell": "C2",
-  "instruction": "Ketik rumus =YEAR(DATE(2026, 10, 12)) di sel C2 untuk mempraktekkan fungsi YEAR!",
-  "babyHint": "🍼 Bahasa Bayi: Ketik =YEAR(DATE(2026, 10, 12)) — Mengambil angka Tahun (4 digit) dari sebuah sel tanggal.",
-  "starterFormula": "=YEAR(",
-  "quickChips": [
-    "=YEAR(",
-    "B2",
-    "B2:B4",
-    "A2",
-    ")",
-    ",",
-    ";"
-  ],
-  "acceptedFormulas": [
-    "=YEAR(DATE(2026, 10, 12))",
-    "=YEAR(DATE(2026; 10; 12))",
-    "=YEAR(DATE(2026,10,12))",
-    "=YEAR(DATE(2026;10;12))"
-  ],
-  "expectedValue": 2026,
-  "workedExample": {
-    "title": "💡 FUNGSINYA BUAT APA & CONTOH RUMUS YEAR",
-    "kasusSerupa": "Fungsi YEAR: Mengambil angka Tahun (4 digit) dari sebuah sel tanggal.",
-    "rumusContoh": "=YEAR(DATE(2026, 10, 12))",
-    "nalarBayi": "Rumus YEAR sangat krusial di kantor! Cukup ketik =YEAR(DATE(2026, 10, 12)) untuk menyelesaikannya secara otomatis."
-  }
-},
-{
-  "id": "xl-133",
-  "category": "10. Waktu, Finansial & Pembulatan",
-  "title": "Tantangan 133: Praktik Rumus MONTH Dunia Nyata",
-  "scenario": "Kasus Perkantoran (MONTH): Mengambil angka Bulan (1–12) dari sebuah sel tanggal. Gunakan rumus MONTH pada sel target C2 sesuai contoh!",
-  "tableHeaders": [
-    "A",
-    "B",
-    "C"
-  ],
-  "tableRows": [
-    {
-      "row": 1,
-      "A": "Unit / Nama Data",
-      "B": "Nilai Input",
-      "C": "Hasil Rumus"
-    },
-    {
-      "row": 2,
-      "A": "Budi Santoso",
-      "B": 82,
-      "C": ""
-    },
-    {
-      "row": 3,
-      "A": "Dewi Lestari",
-      "B": 68,
-      "C": ""
-    },
-    {
-      "row": 4,
-      "A": "Rian Hidayat",
-      "B": 90,
-      "C": ""
+  },
+  {
+    "id": "xl-133",
+    "category": "10. Waktu, Finansial & Pembulatan",
+    "title": "Tantangan 133: Praktik Rumus MONTH Dunia Nyata",
+    "scenario": "Kasus Perkantoran (MONTH): Mengambil angka Bulan (1–12) dari sebuah sel tanggal. Gunakan rumus MONTH pada sel target C2 secara mandiri!",
+    "tableHeaders": [
+      "A",
+      "B",
+      "C"
+    ],
+    "tableRows": [
+      {
+        "row": 1,
+        "A": "Unit / Nama Data",
+        "B": "Nilai Input",
+        "C": "Hasil Rumus"
+      },
+      {
+        "row": 2,
+        "A": "Budi Santoso",
+        "B": 82,
+        "C": ""
+      },
+      {
+        "row": 3,
+        "A": "Dewi Lestari",
+        "B": 68,
+        "C": ""
+      },
+      {
+        "row": 4,
+        "A": "Rian Hidayat",
+        "B": 90,
+        "C": ""
+      }
+    ],
+    "targetCell": "C2",
+    "instruction": "Gunakan fungsi MONTH (menggunakan parameter data DATE(2026, 10, 12)) di sel C2 untuk mempraktekkan fungsi MONTH!",
+    "babyHint": "🍼 Bahasa Bayi: Ketik =MONTH(DATE(2026, 10, 12)) — Mengambil angka Bulan (1–12) dari sebuah sel tanggal.",
+    "starterFormula": "=",
+    "quickChips": [
+      "=MONTH(",
+      "B2",
+      "B2:B4",
+      "A2",
+      ")",
+      ",",
+      ";"
+    ],
+    "acceptedFormulas": [
+      "=MONTH(DATE(2026, 10, 12))",
+      "=MONTH(DATE(2026; 10; 12))",
+      "=MONTH(DATE(2026,10,12))",
+      "=MONTH(DATE(2026;10;12))"
+    ],
+    "expectedValue": 10,
+    "workedExample": {
+      "title": "💡 FUNGSINYA BUAT APA & CONTOH RUMUS MONTH",
+      "kasusSerupa": "Contoh Soal Latihan (Tabel Simulasi): Misalkan data simulasi berada pada sel sesuai contoh di bawah, maka penulisan rumus yang benar adalah =MONTH(DATE(2024, 10, 12)).",
+      "rumusContoh": "=MONTH(DATE(2024, 10, 12))",
+      "nalarBayi": "Rumus MONTH sangat krusial di kantor! Cukup ketik fungsi MONTH (menggunakan parameter data DATE(2026, 10, 12)) untuk menyelesaikannya secara otomatis.",
+      "hasilContoh": "Terevaluasi otomatis oleh Excel sesuai data contoh"
     }
-  ],
-  "targetCell": "C2",
-  "instruction": "Ketik rumus =MONTH(DATE(2026, 10, 12)) di sel C2 untuk mempraktekkan fungsi MONTH!",
-  "babyHint": "🍼 Bahasa Bayi: Ketik =MONTH(DATE(2026, 10, 12)) — Mengambil angka Bulan (1–12) dari sebuah sel tanggal.",
-  "starterFormula": "=MONTH(",
-  "quickChips": [
-    "=MONTH(",
-    "B2",
-    "B2:B4",
-    "A2",
-    ")",
-    ",",
-    ";"
-  ],
-  "acceptedFormulas": [
-    "=MONTH(DATE(2026, 10, 12))",
-    "=MONTH(DATE(2026; 10; 12))",
-    "=MONTH(DATE(2026,10,12))",
-    "=MONTH(DATE(2026;10;12))"
-  ],
-  "expectedValue": 10,
-  "workedExample": {
-    "title": "💡 FUNGSINYA BUAT APA & CONTOH RUMUS MONTH",
-    "kasusSerupa": "Fungsi MONTH: Mengambil angka Bulan (1–12) dari sebuah sel tanggal.",
-    "rumusContoh": "=MONTH(DATE(2026, 10, 12))",
-    "nalarBayi": "Rumus MONTH sangat krusial di kantor! Cukup ketik =MONTH(DATE(2026, 10, 12)) untuk menyelesaikannya secara otomatis."
-  }
-},
-{
-  "id": "xl-134",
-  "category": "10. Waktu, Finansial & Pembulatan",
-  "title": "Tantangan 134: Praktik Rumus DAY Dunia Nyata",
-  "scenario": "Kasus Perkantoran (DAY): Mengambil angka Hari/Tanggal (1–31) dari sebuah sel tanggal. Gunakan rumus DAY pada sel target C2 sesuai contoh!",
-  "tableHeaders": [
-    "A",
-    "B",
-    "C"
-  ],
-  "tableRows": [
-    {
-      "row": 1,
-      "A": "Unit / Nama Data",
-      "B": "Nilai Input",
-      "C": "Hasil Rumus"
-    },
-    {
-      "row": 2,
-      "A": "Budi Santoso",
-      "B": 82,
-      "C": ""
-    },
-    {
-      "row": 3,
-      "A": "Dewi Lestari",
-      "B": 68,
-      "C": ""
-    },
-    {
-      "row": 4,
-      "A": "Rian Hidayat",
-      "B": 90,
-      "C": ""
+  },
+  {
+    "id": "xl-134",
+    "category": "10. Waktu, Finansial & Pembulatan",
+    "title": "Tantangan 134: Praktik Rumus DAY Dunia Nyata",
+    "scenario": "Kasus Perkantoran (DAY): Mengambil angka Hari/Tanggal (1–31) dari sebuah sel tanggal. Gunakan rumus DAY pada sel target C2 secara mandiri!",
+    "tableHeaders": [
+      "A",
+      "B",
+      "C"
+    ],
+    "tableRows": [
+      {
+        "row": 1,
+        "A": "Unit / Nama Data",
+        "B": "Nilai Input",
+        "C": "Hasil Rumus"
+      },
+      {
+        "row": 2,
+        "A": "Budi Santoso",
+        "B": 82,
+        "C": ""
+      },
+      {
+        "row": 3,
+        "A": "Dewi Lestari",
+        "B": 68,
+        "C": ""
+      },
+      {
+        "row": 4,
+        "A": "Rian Hidayat",
+        "B": 90,
+        "C": ""
+      }
+    ],
+    "targetCell": "C2",
+    "instruction": "Gunakan fungsi DAY (menggunakan parameter data DATE(2026, 10, 12)) di sel C2 untuk mempraktekkan fungsi DAY!",
+    "babyHint": "🍼 Bahasa Bayi: Ketik =DAY(DATE(2026, 10, 12)) — Mengambil angka Hari/Tanggal (1–31) dari sebuah sel tanggal.",
+    "starterFormula": "=",
+    "quickChips": [
+      "=DAY(",
+      "B2",
+      "B2:B4",
+      "A2",
+      ")",
+      ",",
+      ";"
+    ],
+    "acceptedFormulas": [
+      "=DAY(DATE(2026, 10, 12))",
+      "=DAY(DATE(2026; 10; 12))",
+      "=DAY(DATE(2026,10,12))",
+      "=DAY(DATE(2026;10;12))"
+    ],
+    "expectedValue": 12,
+    "workedExample": {
+      "title": "💡 FUNGSINYA BUAT APA & CONTOH RUMUS DAY",
+      "kasusSerupa": "Contoh Soal Latihan (Tabel Simulasi): Misalkan data simulasi berada pada sel sesuai contoh di bawah, maka penulisan rumus yang benar adalah =DAY(DATE(2024, 10, 12)).",
+      "rumusContoh": "=DAY(DATE(2024, 10, 12))",
+      "nalarBayi": "Rumus DAY sangat krusial di kantor! Cukup ketik fungsi DAY (menggunakan parameter data DATE(2026, 10, 12)) untuk menyelesaikannya secara otomatis.",
+      "hasilContoh": "Terevaluasi otomatis oleh Excel sesuai data contoh"
     }
-  ],
-  "targetCell": "C2",
-  "instruction": "Ketik rumus =DAY(DATE(2026, 10, 12)) di sel C2 untuk mempraktekkan fungsi DAY!",
-  "babyHint": "🍼 Bahasa Bayi: Ketik =DAY(DATE(2026, 10, 12)) — Mengambil angka Hari/Tanggal (1–31) dari sebuah sel tanggal.",
-  "starterFormula": "=DAY(",
-  "quickChips": [
-    "=DAY(",
-    "B2",
-    "B2:B4",
-    "A2",
-    ")",
-    ",",
-    ";"
-  ],
-  "acceptedFormulas": [
-    "=DAY(DATE(2026, 10, 12))",
-    "=DAY(DATE(2026; 10; 12))",
-    "=DAY(DATE(2026,10,12))",
-    "=DAY(DATE(2026;10;12))"
-  ],
-  "expectedValue": 12,
-  "workedExample": {
-    "title": "💡 FUNGSINYA BUAT APA & CONTOH RUMUS DAY",
-    "kasusSerupa": "Fungsi DAY: Mengambil angka Hari/Tanggal (1–31) dari sebuah sel tanggal.",
-    "rumusContoh": "=DAY(DATE(2026, 10, 12))",
-    "nalarBayi": "Rumus DAY sangat krusial di kantor! Cukup ketik =DAY(DATE(2026, 10, 12)) untuk menyelesaikannya secara otomatis."
-  }
-},
-{
-  "id": "xl-135",
-  "category": "10. Waktu, Finansial & Pembulatan",
-  "title": "Tantangan 135: Praktik Rumus DAYS Dunia Nyata",
-  "scenario": "Kasus Perkantoran (DAYS): Menghitung jumlah selisih hari antara Tanggal Akhir dan Tanggal Awal. Gunakan rumus DAYS pada sel target C2 sesuai contoh!",
-  "tableHeaders": [
-    "A",
-    "B",
-    "C"
-  ],
-  "tableRows": [
-    {
-      "row": 1,
-      "A": "Unit / Nama Data",
-      "B": "Nilai Input",
-      "C": "Hasil Rumus"
-    },
-    {
-      "row": 2,
-      "A": "Budi Santoso",
-      "B": 82,
-      "C": ""
-    },
-    {
-      "row": 3,
-      "A": "Dewi Lestari",
-      "B": 68,
-      "C": ""
-    },
-    {
-      "row": 4,
-      "A": "Rian Hidayat",
-      "B": 90,
-      "C": ""
+  },
+  {
+    "id": "xl-135",
+    "category": "10. Waktu, Finansial & Pembulatan",
+    "title": "Tantangan 135: Praktik Rumus DAYS Dunia Nyata",
+    "scenario": "Kasus Perkantoran (DAYS): Menghitung jumlah selisih hari antara Tanggal Akhir dan Tanggal Awal. Gunakan rumus DAYS pada sel target C2 secara mandiri!",
+    "tableHeaders": [
+      "A",
+      "B",
+      "C"
+    ],
+    "tableRows": [
+      {
+        "row": 1,
+        "A": "Unit / Nama Data",
+        "B": "Nilai Input",
+        "C": "Hasil Rumus"
+      },
+      {
+        "row": 2,
+        "A": "Budi Santoso",
+        "B": 82,
+        "C": ""
+      },
+      {
+        "row": 3,
+        "A": "Dewi Lestari",
+        "B": 68,
+        "C": ""
+      },
+      {
+        "row": 4,
+        "A": "Rian Hidayat",
+        "B": 90,
+        "C": ""
+      }
+    ],
+    "targetCell": "C2",
+    "instruction": "Gunakan fungsi DAYS (menggunakan parameter data '2026-10-20', '2026-10-10') di sel C2 untuk mempraktekkan fungsi DAYS!",
+    "babyHint": "🍼 Bahasa Bayi: Ketik =DAYS(\"2026-10-20\", \"2026-10-10\") — Menghitung jumlah selisih hari antara Tanggal Akhir dan Tanggal Awal.",
+    "starterFormula": "=",
+    "quickChips": [
+      "=DAYS(",
+      "B2",
+      "B2:B4",
+      "A2",
+      ")",
+      ",",
+      ";"
+    ],
+    "acceptedFormulas": [
+      "=DAYS(\"2026-10-20\", \"2026-10-10\")",
+      "=DAYS(\"2026-10-20\"; \"2026-10-10\")",
+      "=DAYS(\"2026-10-20\",\"2026-10-10\")",
+      "=DAYS(\"2026-10-20\";\"2026-10-10\")"
+    ],
+    "expectedValue": 10,
+    "workedExample": {
+      "title": "💡 FUNGSINYA BUAT APA & CONTOH RUMUS DAYS",
+      "kasusSerupa": "Contoh Soal Latihan (Tabel Simulasi): Misalkan data simulasi berada pada sel sesuai contoh di bawah, maka penulisan rumus yang benar adalah =DAYS(\"2024-10-20\", \"2024-10-10\").",
+      "rumusContoh": "=DAYS(\"2024-10-20\", \"2024-10-10\")",
+      "nalarBayi": "Rumus DAYS sangat krusial di kantor! Cukup ketik fungsi DAYS (menggunakan parameter data '2026-10-20', '2026-10-10') untuk menyelesaikannya secara otomatis.",
+      "hasilContoh": "Terevaluasi otomatis oleh Excel sesuai data contoh"
     }
-  ],
-  "targetCell": "C2",
-  "instruction": "Ketik rumus =DAYS(\"2026-10-20\", \"2026-10-10\") di sel C2 untuk mempraktekkan fungsi DAYS!",
-  "babyHint": "🍼 Bahasa Bayi: Ketik =DAYS(\"2026-10-20\", \"2026-10-10\") — Menghitung jumlah selisih hari antara Tanggal Akhir dan Tanggal Awal.",
-  "starterFormula": "=DAYS(",
-  "quickChips": [
-    "=DAYS(",
-    "B2",
-    "B2:B4",
-    "A2",
-    ")",
-    ",",
-    ";"
-  ],
-  "acceptedFormulas": [
-    "=DAYS(\"2026-10-20\", \"2026-10-10\")",
-    "=DAYS(\"2026-10-20\"; \"2026-10-10\")",
-    "=DAYS(\"2026-10-20\",\"2026-10-10\")",
-    "=DAYS(\"2026-10-20\";\"2026-10-10\")"
-  ],
-  "expectedValue": 10,
-  "workedExample": {
-    "title": "💡 FUNGSINYA BUAT APA & CONTOH RUMUS DAYS",
-    "kasusSerupa": "Fungsi DAYS: Menghitung jumlah selisih hari antara Tanggal Akhir dan Tanggal Awal.",
-    "rumusContoh": "=DAYS(\"2026-10-20\", \"2026-10-10\")",
-    "nalarBayi": "Rumus DAYS sangat krusial di kantor! Cukup ketik =DAYS(\"2026-10-20\", \"2026-10-10\") untuk menyelesaikannya secara otomatis."
-  }
-},
-{
-  "id": "xl-136",
-  "category": "10. Waktu, Finansial & Pembulatan",
-  "title": "Tantangan 136: Praktik Rumus DATEDIF Dunia Nyata",
-  "scenario": "Kasus Perkantoran (DATEDIF): Menghitung masa kerja karyawan atau umur dalam Tahun/Bulan/Hari. Gunakan rumus DATEDIF pada sel target C2 sesuai contoh!",
-  "tableHeaders": [
-    "A",
-    "B",
-    "C"
-  ],
-  "tableRows": [
-    {
-      "row": 1,
-      "A": "Unit / Nama Data",
-      "B": "Nilai Input",
-      "C": "Hasil Rumus"
-    },
-    {
-      "row": 2,
-      "A": "Budi Santoso",
-      "B": 82,
-      "C": ""
-    },
-    {
-      "row": 3,
-      "A": "Dewi Lestari",
-      "B": 68,
-      "C": ""
-    },
-    {
-      "row": 4,
-      "A": "Rian Hidayat",
-      "B": 90,
-      "C": ""
+  },
+  {
+    "id": "xl-136",
+    "category": "10. Waktu, Finansial & Pembulatan",
+    "title": "Tantangan 136: Praktik Rumus DATEDIF Dunia Nyata",
+    "scenario": "Kasus Perkantoran (DATEDIF): Menghitung masa kerja karyawan atau umur dalam Tahun/Bulan/Hari. Gunakan rumus DATEDIF pada sel target C2 secara mandiri!",
+    "tableHeaders": [
+      "A",
+      "B",
+      "C"
+    ],
+    "tableRows": [
+      {
+        "row": 1,
+        "A": "Unit / Nama Data",
+        "B": "Nilai Input",
+        "C": "Hasil Rumus"
+      },
+      {
+        "row": 2,
+        "A": "Budi Santoso",
+        "B": 82,
+        "C": ""
+      },
+      {
+        "row": 3,
+        "A": "Dewi Lestari",
+        "B": 68,
+        "C": ""
+      },
+      {
+        "row": 4,
+        "A": "Rian Hidayat",
+        "B": 90,
+        "C": ""
+      }
+    ],
+    "targetCell": "C2",
+    "instruction": "Gunakan fungsi DATEDIF (menggunakan parameter data '2020-01-01', '2026-01-01', 'Y') di sel C2 untuk mempraktekkan fungsi DATEDIF!",
+    "babyHint": "🍼 Bahasa Bayi: Ketik =DATEDIF(\"2020-01-01\", \"2026-01-01\", \"Y\") — Menghitung masa kerja karyawan atau umur dalam Tahun/Bulan/Hari.",
+    "starterFormula": "=",
+    "quickChips": [
+      "=DATEDIF(",
+      "B2",
+      "B2:B4",
+      "A2",
+      ")",
+      ",",
+      ";"
+    ],
+    "acceptedFormulas": [
+      "=DATEDIF(\"2020-01-01\", \"2026-01-01\", \"Y\")",
+      "=DATEDIF(\"2020-01-01\"; \"2026-01-01\"; \"Y\")",
+      "=DATEDIF(\"2020-01-01\",\"2026-01-01\",\"Y\")",
+      "=DATEDIF(\"2020-01-01\";\"2026-01-01\";\"Y\")"
+    ],
+    "expectedValue": 6,
+    "workedExample": {
+      "title": "💡 FUNGSINYA BUAT APA & CONTOH RUMUS DATEDIF",
+      "kasusSerupa": "Contoh Soal Latihan (Tabel Simulasi): Misalkan data simulasi berada pada sel sesuai contoh di bawah, maka penulisan rumus yang benar adalah =DATEDIF(\"2020-01-01\", \"2024-01-01\", \"Y\").",
+      "rumusContoh": "=DATEDIF(\"2020-01-01\", \"2024-01-01\", \"Y\")",
+      "nalarBayi": "Rumus DATEDIF sangat krusial di kantor! Cukup ketik fungsi DATEDIF (menggunakan parameter data '2020-01-01', '2026-01-01', 'Y') untuk menyelesaikannya secara otomatis.",
+      "hasilContoh": "Terevaluasi otomatis oleh Excel sesuai data contoh"
     }
-  ],
-  "targetCell": "C2",
-  "instruction": "Ketik rumus =DATEDIF(\"2020-01-01\", \"2026-01-01\", \"Y\") di sel C2 untuk mempraktekkan fungsi DATEDIF!",
-  "babyHint": "🍼 Bahasa Bayi: Ketik =DATEDIF(\"2020-01-01\", \"2026-01-01\", \"Y\") — Menghitung masa kerja karyawan atau umur dalam Tahun/Bulan/Hari.",
-  "starterFormula": "=DATEDIF(",
-  "quickChips": [
-    "=DATEDIF(",
-    "B2",
-    "B2:B4",
-    "A2",
-    ")",
-    ",",
-    ";"
-  ],
-  "acceptedFormulas": [
-    "=DATEDIF(\"2020-01-01\", \"2026-01-01\", \"Y\")",
-    "=DATEDIF(\"2020-01-01\"; \"2026-01-01\"; \"Y\")",
-    "=DATEDIF(\"2020-01-01\",\"2026-01-01\",\"Y\")",
-    "=DATEDIF(\"2020-01-01\";\"2026-01-01\";\"Y\")"
-  ],
-  "expectedValue": 6,
-  "workedExample": {
-    "title": "💡 FUNGSINYA BUAT APA & CONTOH RUMUS DATEDIF",
-    "kasusSerupa": "Fungsi DATEDIF: Menghitung masa kerja karyawan atau umur dalam Tahun/Bulan/Hari.",
-    "rumusContoh": "=DATEDIF(\"2020-01-01\", \"2026-01-01\", \"Y\")",
-    "nalarBayi": "Rumus DATEDIF sangat krusial di kantor! Cukup ketik =DATEDIF(\"2020-01-01\", \"2026-01-01\", \"Y\") untuk menyelesaikannya secara otomatis."
-  }
-},
-{
-  "id": "xl-137",
-  "category": "10. Waktu, Finansial & Pembulatan",
-  "title": "Tantangan 137: Praktik Rumus EDATE Dunia Nyata",
-  "scenario": "Kasus Perkantoran (EDATE): Mencari tanggal jatuh tempo persis N bulan ke depan. Gunakan rumus EDATE pada sel target C2 sesuai contoh!",
-  "tableHeaders": [
-    "A",
-    "B",
-    "C"
-  ],
-  "tableRows": [
-    {
-      "row": 1,
-      "A": "Unit / Nama Data",
-      "B": "Nilai Input",
-      "C": "Hasil Rumus"
-    },
-    {
-      "row": 2,
-      "A": "Budi Santoso",
-      "B": 82,
-      "C": ""
-    },
-    {
-      "row": 3,
-      "A": "Dewi Lestari",
-      "B": 68,
-      "C": ""
-    },
-    {
-      "row": 4,
-      "A": "Rian Hidayat",
-      "B": 90,
-      "C": ""
+  },
+  {
+    "id": "xl-137",
+    "category": "10. Waktu, Finansial & Pembulatan",
+    "title": "Tantangan 137: Praktik Rumus EDATE Dunia Nyata",
+    "scenario": "Kasus Perkantoran (EDATE): Mencari tanggal jatuh tempo persis N bulan ke depan. Gunakan rumus EDATE pada sel target C2 secara mandiri!",
+    "tableHeaders": [
+      "A",
+      "B",
+      "C"
+    ],
+    "tableRows": [
+      {
+        "row": 1,
+        "A": "Unit / Nama Data",
+        "B": "Nilai Input",
+        "C": "Hasil Rumus"
+      },
+      {
+        "row": 2,
+        "A": "Budi Santoso",
+        "B": 82,
+        "C": ""
+      },
+      {
+        "row": 3,
+        "A": "Dewi Lestari",
+        "B": 68,
+        "C": ""
+      },
+      {
+        "row": 4,
+        "A": "Rian Hidayat",
+        "B": 90,
+        "C": ""
+      }
+    ],
+    "targetCell": "C2",
+    "instruction": "Gunakan fungsi EDATE (menggunakan parameter data '2026-01-15', 6) di sel C2 untuk mempraktekkan fungsi EDATE!",
+    "babyHint": "🍼 Bahasa Bayi: Ketik =EDATE(\"2026-01-15\", 6) — Mencari tanggal jatuh tempo persis N bulan ke depan.",
+    "starterFormula": "=",
+    "quickChips": [
+      "=EDATE(",
+      "B2",
+      "B2:B4",
+      "A2",
+      ")",
+      ",",
+      ";"
+    ],
+    "acceptedFormulas": [
+      "=EDATE(\"2026-01-15\", 6)",
+      "=EDATE(\"2026-01-15\"; 6)",
+      "=EDATE(\"2026-01-15\",6)",
+      "=EDATE(\"2026-01-15\";6)"
+    ],
+    "expectedValue": "2026-07-15",
+    "workedExample": {
+      "title": "💡 FUNGSINYA BUAT APA & CONTOH RUMUS EDATE",
+      "kasusSerupa": "Contoh Soal Latihan (Tabel Simulasi): Misalkan data simulasi berada pada sel sesuai contoh di bawah, maka penulisan rumus yang benar adalah =EDATE(\"2024-01-13\", 6).",
+      "rumusContoh": "=EDATE(\"2024-01-13\", 6)",
+      "nalarBayi": "Rumus EDATE sangat krusial di kantor! Cukup ketik fungsi EDATE (menggunakan parameter data '2026-01-15', 6) untuk menyelesaikannya secara otomatis.",
+      "hasilContoh": "Terevaluasi otomatis oleh Excel sesuai data contoh"
     }
-  ],
-  "targetCell": "C2",
-  "instruction": "Ketik rumus =EDATE(\"2026-01-15\", 6) di sel C2 untuk mempraktekkan fungsi EDATE!",
-  "babyHint": "🍼 Bahasa Bayi: Ketik =EDATE(\"2026-01-15\", 6) — Mencari tanggal jatuh tempo persis N bulan ke depan.",
-  "starterFormula": "=EDATE(",
-  "quickChips": [
-    "=EDATE(",
-    "B2",
-    "B2:B4",
-    "A2",
-    ")",
-    ",",
-    ";"
-  ],
-  "acceptedFormulas": [
-    "=EDATE(\"2026-01-15\", 6)",
-    "=EDATE(\"2026-01-15\"; 6)",
-    "=EDATE(\"2026-01-15\",6)",
-    "=EDATE(\"2026-01-15\";6)"
-  ],
-  "expectedValue": "2026-07-15",
-  "workedExample": {
-    "title": "💡 FUNGSINYA BUAT APA & CONTOH RUMUS EDATE",
-    "kasusSerupa": "Fungsi EDATE: Mencari tanggal jatuh tempo persis N bulan ke depan.",
-    "rumusContoh": "=EDATE(\"2026-01-15\", 6)",
-    "nalarBayi": "Rumus EDATE sangat krusial di kantor! Cukup ketik =EDATE(\"2026-01-15\", 6) untuk menyelesaikannya secara otomatis."
-  }
-},
-{
-  "id": "xl-138",
-  "category": "10. Waktu, Finansial & Pembulatan",
-  "title": "Tantangan 138: Praktik Rumus EOMONTH Dunia Nyata",
-  "scenario": "Kasus Perkantoran (EOMONTH): Mencari tanggal akhir bulan untuk tutup buku & jadwal gajian. Gunakan rumus EOMONTH pada sel target C2 sesuai contoh!",
-  "tableHeaders": [
-    "A",
-    "B",
-    "C"
-  ],
-  "tableRows": [
-    {
-      "row": 1,
-      "A": "Unit / Nama Data",
-      "B": "Nilai Input",
-      "C": "Hasil Rumus"
-    },
-    {
-      "row": 2,
-      "A": "Budi Santoso",
-      "B": 82,
-      "C": ""
-    },
-    {
-      "row": 3,
-      "A": "Dewi Lestari",
-      "B": 68,
-      "C": ""
-    },
-    {
-      "row": 4,
-      "A": "Rian Hidayat",
-      "B": 90,
-      "C": ""
+  },
+  {
+    "id": "xl-138",
+    "category": "10. Waktu, Finansial & Pembulatan",
+    "title": "Tantangan 138: Praktik Rumus EOMONTH Dunia Nyata",
+    "scenario": "Kasus Perkantoran (EOMONTH): Mencari tanggal akhir bulan untuk tutup buku & jadwal gajian. Gunakan rumus EOMONTH pada sel target C2 secara mandiri!",
+    "tableHeaders": [
+      "A",
+      "B",
+      "C"
+    ],
+    "tableRows": [
+      {
+        "row": 1,
+        "A": "Unit / Nama Data",
+        "B": "Nilai Input",
+        "C": "Hasil Rumus"
+      },
+      {
+        "row": 2,
+        "A": "Budi Santoso",
+        "B": 82,
+        "C": ""
+      },
+      {
+        "row": 3,
+        "A": "Dewi Lestari",
+        "B": 68,
+        "C": ""
+      },
+      {
+        "row": 4,
+        "A": "Rian Hidayat",
+        "B": 90,
+        "C": ""
+      }
+    ],
+    "targetCell": "C2",
+    "instruction": "Gunakan fungsi EOMONTH (menggunakan parameter data '2026-02-10', 0) di sel C2 untuk mempraktekkan fungsi EOMONTH!",
+    "babyHint": "🍼 Bahasa Bayi: Ketik =EOMONTH(\"2026-02-10\", 0) — Mencari tanggal akhir bulan untuk tutup buku & jadwal gajian.",
+    "starterFormula": "=",
+    "quickChips": [
+      "=EOMONTH(",
+      "B2",
+      "B2:B4",
+      "A2",
+      ")",
+      ",",
+      ";"
+    ],
+    "acceptedFormulas": [
+      "=EOMONTH(\"2026-02-10\", 0)",
+      "=EOMONTH(\"2026-02-10\"; 0)",
+      "=EOMONTH(\"2026-02-10\",0)",
+      "=EOMONTH(\"2026-02-10\";0)"
+    ],
+    "expectedValue": "2026-02-28",
+    "workedExample": {
+      "title": "💡 FUNGSINYA BUAT APA & CONTOH RUMUS EOMONTH",
+      "kasusSerupa": "Contoh Soal Latihan (Tabel Simulasi): Misalkan data simulasi berada pada sel sesuai contoh di bawah, maka penulisan rumus yang benar adalah =EOMONTH(\"2024-02-10\", 0).",
+      "rumusContoh": "=EOMONTH(\"2024-02-10\", 0)",
+      "nalarBayi": "Rumus EOMONTH sangat krusial di kantor! Cukup ketik fungsi EOMONTH (menggunakan parameter data '2026-02-10', 0) untuk menyelesaikannya secara otomatis.",
+      "hasilContoh": "Terevaluasi otomatis oleh Excel sesuai data contoh"
     }
-  ],
-  "targetCell": "C2",
-  "instruction": "Ketik rumus =EOMONTH(\"2026-02-10\", 0) di sel C2 untuk mempraktekkan fungsi EOMONTH!",
-  "babyHint": "🍼 Bahasa Bayi: Ketik =EOMONTH(\"2026-02-10\", 0) — Mencari tanggal akhir bulan untuk tutup buku & jadwal gajian.",
-  "starterFormula": "=EOMONTH(",
-  "quickChips": [
-    "=EOMONTH(",
-    "B2",
-    "B2:B4",
-    "A2",
-    ")",
-    ",",
-    ";"
-  ],
-  "acceptedFormulas": [
-    "=EOMONTH(\"2026-02-10\", 0)",
-    "=EOMONTH(\"2026-02-10\"; 0)",
-    "=EOMONTH(\"2026-02-10\",0)",
-    "=EOMONTH(\"2026-02-10\";0)"
-  ],
-  "expectedValue": "2026-02-28",
-  "workedExample": {
-    "title": "💡 FUNGSINYA BUAT APA & CONTOH RUMUS EOMONTH",
-    "kasusSerupa": "Fungsi EOMONTH: Mencari tanggal akhir bulan untuk tutup buku & jadwal gajian.",
-    "rumusContoh": "=EOMONTH(\"2026-02-10\", 0)",
-    "nalarBayi": "Rumus EOMONTH sangat krusial di kantor! Cukup ketik =EOMONTH(\"2026-02-10\", 0) untuk menyelesaikannya secara otomatis."
-  }
-},
-{
-  "id": "xl-139",
-  "category": "10. Waktu, Finansial & Pembulatan",
-  "title": "Tantangan 139: Praktik Rumus NETWORKDAYS Dunia Nyata",
-  "scenario": "Kasus Perkantoran (NETWORKDAYS): Menghitung hari kerja efektif (otomatis memotong Sabtu & Minggu). Gunakan rumus NETWORKDAYS pada sel target C2 sesuai contoh!",
-  "tableHeaders": [
-    "A",
-    "B",
-    "C"
-  ],
-  "tableRows": [
-    {
-      "row": 1,
-      "A": "Unit / Nama Data",
-      "B": "Nilai Input",
-      "C": "Hasil Rumus"
-    },
-    {
-      "row": 2,
-      "A": "Budi Santoso",
-      "B": 82,
-      "C": ""
-    },
-    {
-      "row": 3,
-      "A": "Dewi Lestari",
-      "B": 68,
-      "C": ""
-    },
-    {
-      "row": 4,
-      "A": "Rian Hidayat",
-      "B": 90,
-      "C": ""
+  },
+  {
+    "id": "xl-139",
+    "category": "10. Waktu, Finansial & Pembulatan",
+    "title": "Tantangan 139: Praktik Rumus NETWORKDAYS Dunia Nyata",
+    "scenario": "Kasus Perkantoran (NETWORKDAYS): Menghitung hari kerja efektif (otomatis memotong Sabtu & Minggu). Gunakan rumus NETWORKDAYS pada sel target C2 secara mandiri!",
+    "tableHeaders": [
+      "A",
+      "B",
+      "C"
+    ],
+    "tableRows": [
+      {
+        "row": 1,
+        "A": "Unit / Nama Data",
+        "B": "Nilai Input",
+        "C": "Hasil Rumus"
+      },
+      {
+        "row": 2,
+        "A": "Budi Santoso",
+        "B": 82,
+        "C": ""
+      },
+      {
+        "row": 3,
+        "A": "Dewi Lestari",
+        "B": 68,
+        "C": ""
+      },
+      {
+        "row": 4,
+        "A": "Rian Hidayat",
+        "B": 90,
+        "C": ""
+      }
+    ],
+    "targetCell": "C2",
+    "instruction": "Gunakan fungsi NETWORKDAYS (menggunakan parameter data '2026-10-01', '2026-10-15') di sel C2 untuk mempraktekkan fungsi NETWORKDAYS!",
+    "babyHint": "🍼 Bahasa Bayi: Ketik =NETWORKDAYS(\"2026-10-01\", \"2026-10-15\") — Menghitung hari kerja efektif (otomatis memotong Sabtu & Minggu).",
+    "starterFormula": "=",
+    "quickChips": [
+      "=NETWORKDAYS(",
+      "B2",
+      "B2:B4",
+      "A2",
+      ")",
+      ",",
+      ";"
+    ],
+    "acceptedFormulas": [
+      "=NETWORKDAYS(\"2026-10-01\", \"2026-10-15\")",
+      "=NETWORKDAYS(\"2026-10-01\"; \"2026-10-15\")",
+      "=NETWORKDAYS(\"2026-10-01\",\"2026-10-15\")",
+      "=NETWORKDAYS(\"2026-10-01\";\"2026-10-15\")"
+    ],
+    "expectedValue": 11,
+    "workedExample": {
+      "title": "💡 FUNGSINYA BUAT APA & CONTOH RUMUS NETWORKDAYS",
+      "kasusSerupa": "Contoh Soal Latihan (Tabel Simulasi): Misalkan data simulasi berada pada sel sesuai contoh di bawah, maka penulisan rumus yang benar adalah =NETWORKDAYS(\"2024-10-01\", \"2024-10-13\").",
+      "rumusContoh": "=NETWORKDAYS(\"2024-10-01\", \"2024-10-13\")",
+      "nalarBayi": "Rumus NETWORKDAYS sangat krusial di kantor! Cukup ketik fungsi NETWORKDAYS (menggunakan parameter data '2026-10-01', '2026-10-15') untuk menyelesaikannya secara otomatis.",
+      "hasilContoh": "Terevaluasi otomatis oleh Excel sesuai data contoh"
     }
-  ],
-  "targetCell": "C2",
-  "instruction": "Ketik rumus =NETWORKDAYS(\"2026-10-01\", \"2026-10-15\") di sel C2 untuk mempraktekkan fungsi NETWORKDAYS!",
-  "babyHint": "🍼 Bahasa Bayi: Ketik =NETWORKDAYS(\"2026-10-01\", \"2026-10-15\") — Menghitung hari kerja efektif (otomatis memotong Sabtu & Minggu).",
-  "starterFormula": "=NETWORKDAYS(",
-  "quickChips": [
-    "=NETWORKDAYS(",
-    "B2",
-    "B2:B4",
-    "A2",
-    ")",
-    ",",
-    ";"
-  ],
-  "acceptedFormulas": [
-    "=NETWORKDAYS(\"2026-10-01\", \"2026-10-15\")",
-    "=NETWORKDAYS(\"2026-10-01\"; \"2026-10-15\")",
-    "=NETWORKDAYS(\"2026-10-01\",\"2026-10-15\")",
-    "=NETWORKDAYS(\"2026-10-01\";\"2026-10-15\")"
-  ],
-  "expectedValue": 11,
-  "workedExample": {
-    "title": "💡 FUNGSINYA BUAT APA & CONTOH RUMUS NETWORKDAYS",
-    "kasusSerupa": "Fungsi NETWORKDAYS: Menghitung hari kerja efektif (otomatis memotong Sabtu & Minggu).",
-    "rumusContoh": "=NETWORKDAYS(\"2026-10-01\", \"2026-10-15\")",
-    "nalarBayi": "Rumus NETWORKDAYS sangat krusial di kantor! Cukup ketik =NETWORKDAYS(\"2026-10-01\", \"2026-10-15\") untuk menyelesaikannya secara otomatis."
-  }
-},
-{
-  "id": "xl-140",
-  "category": "10. Waktu, Finansial & Pembulatan",
-  "title": "Tantangan 140: Praktik Rumus WORKDAY Dunia Nyata",
-  "scenario": "Kasus Perkantoran (WORKDAY): Menentukan tanggal selesai proyek setelah N hari kerja efektif. Gunakan rumus WORKDAY pada sel target C2 sesuai contoh!",
-  "tableHeaders": [
-    "A",
-    "B",
-    "C"
-  ],
-  "tableRows": [
-    {
-      "row": 1,
-      "A": "Unit / Nama Data",
-      "B": "Nilai Input",
-      "C": "Hasil Rumus"
-    },
-    {
-      "row": 2,
-      "A": "Budi Santoso",
-      "B": 82,
-      "C": ""
-    },
-    {
-      "row": 3,
-      "A": "Dewi Lestari",
-      "B": 68,
-      "C": ""
-    },
-    {
-      "row": 4,
-      "A": "Rian Hidayat",
-      "B": 90,
-      "C": ""
+  },
+  {
+    "id": "xl-140",
+    "category": "10. Waktu, Finansial & Pembulatan",
+    "title": "Tantangan 140: Praktik Rumus WORKDAY Dunia Nyata",
+    "scenario": "Kasus Perkantoran (WORKDAY): Menentukan tanggal selesai proyek setelah N hari kerja efektif. Gunakan rumus WORKDAY pada sel target C2 secara mandiri!",
+    "tableHeaders": [
+      "A",
+      "B",
+      "C"
+    ],
+    "tableRows": [
+      {
+        "row": 1,
+        "A": "Unit / Nama Data",
+        "B": "Nilai Input",
+        "C": "Hasil Rumus"
+      },
+      {
+        "row": 2,
+        "A": "Budi Santoso",
+        "B": 82,
+        "C": ""
+      },
+      {
+        "row": 3,
+        "A": "Dewi Lestari",
+        "B": 68,
+        "C": ""
+      },
+      {
+        "row": 4,
+        "A": "Rian Hidayat",
+        "B": 90,
+        "C": ""
+      }
+    ],
+    "targetCell": "C2",
+    "instruction": "Gunakan fungsi WORKDAY (menggunakan parameter data '2026-10-01', 5) di sel C2 untuk mempraktekkan fungsi WORKDAY!",
+    "babyHint": "🍼 Bahasa Bayi: Ketik =WORKDAY(\"2026-10-01\", 5) — Menentukan tanggal selesai proyek setelah N hari kerja efektif.",
+    "starterFormula": "=",
+    "quickChips": [
+      "=WORKDAY(",
+      "B2",
+      "B2:B4",
+      "A2",
+      ")",
+      ",",
+      ";"
+    ],
+    "acceptedFormulas": [
+      "=WORKDAY(\"2026-10-01\", 5)",
+      "=WORKDAY(\"2026-10-01\"; 5)",
+      "=WORKDAY(\"2026-10-01\",5)",
+      "=WORKDAY(\"2026-10-01\";5)"
+    ],
+    "expectedValue": "2026-10-08",
+    "workedExample": {
+      "title": "💡 FUNGSINYA BUAT APA & CONTOH RUMUS WORKDAY",
+      "kasusSerupa": "Contoh Soal Latihan (Tabel Simulasi): Misalkan data simulasi berada pada sel sesuai contoh di bawah, maka penulisan rumus yang benar adalah =WORKDAY(\"2024-10-01\", 3).",
+      "rumusContoh": "=WORKDAY(\"2024-10-01\", 3)",
+      "nalarBayi": "Rumus WORKDAY sangat krusial di kantor! Cukup ketik fungsi WORKDAY (menggunakan parameter data '2026-10-01', 5) untuk menyelesaikannya secara otomatis.",
+      "hasilContoh": "Terevaluasi otomatis oleh Excel sesuai data contoh"
     }
-  ],
-  "targetCell": "C2",
-  "instruction": "Ketik rumus =WORKDAY(\"2026-10-01\", 5) di sel C2 untuk mempraktekkan fungsi WORKDAY!",
-  "babyHint": "🍼 Bahasa Bayi: Ketik =WORKDAY(\"2026-10-01\", 5) — Menentukan tanggal selesai proyek setelah N hari kerja efektif.",
-  "starterFormula": "=WORKDAY(",
-  "quickChips": [
-    "=WORKDAY(",
-    "B2",
-    "B2:B4",
-    "A2",
-    ")",
-    ",",
-    ";"
-  ],
-  "acceptedFormulas": [
-    "=WORKDAY(\"2026-10-01\", 5)",
-    "=WORKDAY(\"2026-10-01\"; 5)",
-    "=WORKDAY(\"2026-10-01\",5)",
-    "=WORKDAY(\"2026-10-01\";5)"
-  ],
-  "expectedValue": "2026-10-08",
-  "workedExample": {
-    "title": "💡 FUNGSINYA BUAT APA & CONTOH RUMUS WORKDAY",
-    "kasusSerupa": "Fungsi WORKDAY: Menentukan tanggal selesai proyek setelah N hari kerja efektif.",
-    "rumusContoh": "=WORKDAY(\"2026-10-01\", 5)",
-    "nalarBayi": "Rumus WORKDAY sangat krusial di kantor! Cukup ketik =WORKDAY(\"2026-10-01\", 5) untuk menyelesaikannya secara otomatis."
-  }
-},
-{
-  "id": "xl-141",
-  "category": "10. Waktu, Finansial & Pembulatan",
-  "title": "Tantangan 141: Praktik Rumus WEEKDAY Dunia Nyata",
-  "scenario": "Kasus Perkantoran (WEEKDAY): Mengecek urutan hari dalam seminggu (1=Minggu s/d 7=Sabtu). Gunakan rumus WEEKDAY pada sel target C2 sesuai contoh!",
-  "tableHeaders": [
-    "A",
-    "B",
-    "C"
-  ],
-  "tableRows": [
-    {
-      "row": 1,
-      "A": "Unit / Nama Data",
-      "B": "Nilai Input",
-      "C": "Hasil Rumus"
-    },
-    {
-      "row": 2,
-      "A": "Budi Santoso",
-      "B": 82,
-      "C": ""
-    },
-    {
-      "row": 3,
-      "A": "Dewi Lestari",
-      "B": 68,
-      "C": ""
-    },
-    {
-      "row": 4,
-      "A": "Rian Hidayat",
-      "B": 90,
-      "C": ""
+  },
+  {
+    "id": "xl-141",
+    "category": "10. Waktu, Finansial & Pembulatan",
+    "title": "Tantangan 141: Praktik Rumus WEEKDAY Dunia Nyata",
+    "scenario": "Kasus Perkantoran (WEEKDAY): Mengecek urutan hari dalam seminggu (1=Minggu s/d 7=Sabtu). Gunakan rumus WEEKDAY pada sel target C2 secara mandiri!",
+    "tableHeaders": [
+      "A",
+      "B",
+      "C"
+    ],
+    "tableRows": [
+      {
+        "row": 1,
+        "A": "Unit / Nama Data",
+        "B": "Nilai Input",
+        "C": "Hasil Rumus"
+      },
+      {
+        "row": 2,
+        "A": "Budi Santoso",
+        "B": 82,
+        "C": ""
+      },
+      {
+        "row": 3,
+        "A": "Dewi Lestari",
+        "B": 68,
+        "C": ""
+      },
+      {
+        "row": 4,
+        "A": "Rian Hidayat",
+        "B": 90,
+        "C": ""
+      }
+    ],
+    "targetCell": "C2",
+    "instruction": "Gunakan fungsi WEEKDAY (menggunakan parameter data '2026-10-12') di sel C2 untuk mempraktekkan fungsi WEEKDAY!",
+    "babyHint": "🍼 Bahasa Bayi: Ketik =WEEKDAY(\"2026-10-12\") — Mengecek urutan hari dalam seminggu (1=Minggu s/d 7=Sabtu).",
+    "starterFormula": "=",
+    "quickChips": [
+      "=WEEKDAY(",
+      "B2",
+      "B2:B4",
+      "A2",
+      ")",
+      ",",
+      ";"
+    ],
+    "acceptedFormulas": [
+      "=WEEKDAY(\"2026-10-12\")",
+      "=WEEKDAY(\"2026-10-12\")",
+      "=WEEKDAY(\"2026-10-12\")",
+      "=WEEKDAY(\"2026-10-12\")"
+    ],
+    "expectedValue": 2,
+    "workedExample": {
+      "title": "💡 FUNGSINYA BUAT APA & CONTOH RUMUS WEEKDAY",
+      "kasusSerupa": "Contoh Soal Latihan (Tabel Simulasi): Misalkan data simulasi berada pada sel sesuai contoh di bawah, maka penulisan rumus yang benar adalah =WEEKDAY(\"2024-10-12\").",
+      "rumusContoh": "=WEEKDAY(\"2024-10-12\")",
+      "nalarBayi": "Rumus WEEKDAY sangat krusial di kantor! Cukup ketik fungsi WEEKDAY (menggunakan parameter data '2026-10-12') untuk menyelesaikannya secara otomatis.",
+      "hasilContoh": "Terevaluasi otomatis oleh Excel sesuai data contoh"
     }
-  ],
-  "targetCell": "C2",
-  "instruction": "Ketik rumus =WEEKDAY(\"2026-10-12\") di sel C2 untuk mempraktekkan fungsi WEEKDAY!",
-  "babyHint": "🍼 Bahasa Bayi: Ketik =WEEKDAY(\"2026-10-12\") — Mengecek urutan hari dalam seminggu (1=Minggu s/d 7=Sabtu).",
-  "starterFormula": "=WEEKDAY(",
-  "quickChips": [
-    "=WEEKDAY(",
-    "B2",
-    "B2:B4",
-    "A2",
-    ")",
-    ",",
-    ";"
-  ],
-  "acceptedFormulas": [
-    "=WEEKDAY(\"2026-10-12\")",
-    "=WEEKDAY(\"2026-10-12\")",
-    "=WEEKDAY(\"2026-10-12\")",
-    "=WEEKDAY(\"2026-10-12\")"
-  ],
-  "expectedValue": 2,
-  "workedExample": {
-    "title": "💡 FUNGSINYA BUAT APA & CONTOH RUMUS WEEKDAY",
-    "kasusSerupa": "Fungsi WEEKDAY: Mengecek urutan hari dalam seminggu (1=Minggu s/d 7=Sabtu).",
-    "rumusContoh": "=WEEKDAY(\"2026-10-12\")",
-    "nalarBayi": "Rumus WEEKDAY sangat krusial di kantor! Cukup ketik =WEEKDAY(\"2026-10-12\") untuk menyelesaikannya secara otomatis."
-  }
-},
-{
-  "id": "xl-142",
-  "category": "10. Waktu, Finansial & Pembulatan",
-  "title": "Tantangan 142: Praktik Rumus WEEKNUM Dunia Nyata",
-  "scenario": "Kasus Perkantoran (WEEKNUM): Mengecek minggu ke berapa suatu tanggal di dalam kalender tahunan. Gunakan rumus WEEKNUM pada sel target C2 sesuai contoh!",
-  "tableHeaders": [
-    "A",
-    "B",
-    "C"
-  ],
-  "tableRows": [
-    {
-      "row": 1,
-      "A": "Unit / Nama Data",
-      "B": "Nilai Input",
-      "C": "Hasil Rumus"
-    },
-    {
-      "row": 2,
-      "A": "Budi Santoso",
-      "B": 82,
-      "C": ""
-    },
-    {
-      "row": 3,
-      "A": "Dewi Lestari",
-      "B": 68,
-      "C": ""
-    },
-    {
-      "row": 4,
-      "A": "Rian Hidayat",
-      "B": 90,
-      "C": ""
+  },
+  {
+    "id": "xl-142",
+    "category": "10. Waktu, Finansial & Pembulatan",
+    "title": "Tantangan 142: Praktik Rumus WEEKNUM Dunia Nyata",
+    "scenario": "Kasus Perkantoran (WEEKNUM): Mengecek minggu ke berapa suatu tanggal di dalam kalender tahunan. Gunakan rumus WEEKNUM pada sel target C2 secara mandiri!",
+    "tableHeaders": [
+      "A",
+      "B",
+      "C"
+    ],
+    "tableRows": [
+      {
+        "row": 1,
+        "A": "Unit / Nama Data",
+        "B": "Nilai Input",
+        "C": "Hasil Rumus"
+      },
+      {
+        "row": 2,
+        "A": "Budi Santoso",
+        "B": 82,
+        "C": ""
+      },
+      {
+        "row": 3,
+        "A": "Dewi Lestari",
+        "B": 68,
+        "C": ""
+      },
+      {
+        "row": 4,
+        "A": "Rian Hidayat",
+        "B": 90,
+        "C": ""
+      }
+    ],
+    "targetCell": "C2",
+    "instruction": "Gunakan fungsi WEEKNUM (menggunakan parameter data '2026-10-12') di sel C2 untuk mempraktekkan fungsi WEEKNUM!",
+    "babyHint": "🍼 Bahasa Bayi: Ketik =WEEKNUM(\"2026-10-12\") — Mengecek minggu ke berapa suatu tanggal di dalam kalender tahunan.",
+    "starterFormula": "=",
+    "quickChips": [
+      "=WEEKNUM(",
+      "B2",
+      "B2:B4",
+      "A2",
+      ")",
+      ",",
+      ";"
+    ],
+    "acceptedFormulas": [
+      "=WEEKNUM(\"2026-10-12\")",
+      "=WEEKNUM(\"2026-10-12\")",
+      "=WEEKNUM(\"2026-10-12\")",
+      "=WEEKNUM(\"2026-10-12\")"
+    ],
+    "expectedValue": 42,
+    "workedExample": {
+      "title": "💡 FUNGSINYA BUAT APA & CONTOH RUMUS WEEKNUM",
+      "kasusSerupa": "Contoh Soal Latihan (Tabel Simulasi): Misalkan data simulasi berada pada sel sesuai contoh di bawah, maka penulisan rumus yang benar adalah =WEEKNUM(\"2024-10-12\").",
+      "rumusContoh": "=WEEKNUM(\"2024-10-12\")",
+      "nalarBayi": "Rumus WEEKNUM sangat krusial di kantor! Cukup ketik fungsi WEEKNUM (menggunakan parameter data '2026-10-12') untuk menyelesaikannya secara otomatis.",
+      "hasilContoh": "Terevaluasi otomatis oleh Excel sesuai data contoh"
     }
-  ],
-  "targetCell": "C2",
-  "instruction": "Ketik rumus =WEEKNUM(\"2026-10-12\") di sel C2 untuk mempraktekkan fungsi WEEKNUM!",
-  "babyHint": "🍼 Bahasa Bayi: Ketik =WEEKNUM(\"2026-10-12\") — Mengecek minggu ke berapa suatu tanggal di dalam kalender tahunan.",
-  "starterFormula": "=WEEKNUM(",
-  "quickChips": [
-    "=WEEKNUM(",
-    "B2",
-    "B2:B4",
-    "A2",
-    ")",
-    ",",
-    ";"
-  ],
-  "acceptedFormulas": [
-    "=WEEKNUM(\"2026-10-12\")",
-    "=WEEKNUM(\"2026-10-12\")",
-    "=WEEKNUM(\"2026-10-12\")",
-    "=WEEKNUM(\"2026-10-12\")"
-  ],
-  "expectedValue": 42,
-  "workedExample": {
-    "title": "💡 FUNGSINYA BUAT APA & CONTOH RUMUS WEEKNUM",
-    "kasusSerupa": "Fungsi WEEKNUM: Mengecek minggu ke berapa suatu tanggal di dalam kalender tahunan.",
-    "rumusContoh": "=WEEKNUM(\"2026-10-12\")",
-    "nalarBayi": "Rumus WEEKNUM sangat krusial di kantor! Cukup ketik =WEEKNUM(\"2026-10-12\") untuk menyelesaikannya secara otomatis."
-  }
-},
-{
-  "id": "xl-143",
-  "category": "10. Waktu, Finansial & Pembulatan",
-  "title": "Tantangan 143: Praktik Rumus IPMT Dunia Nyata",
-  "scenario": "Kasus Perkantoran (IPMT): Menghitung porsi bunga pinjaman pada periode cicilan tertentu. Gunakan rumus IPMT pada sel target C2 sesuai contoh!",
-  "tableHeaders": [
-    "A",
-    "B",
-    "C"
-  ],
-  "tableRows": [
-    {
-      "row": 1,
-      "A": "Unit / Nama Data",
-      "B": "Nilai Input",
-      "C": "Hasil Rumus"
-    },
-    {
-      "row": 2,
-      "A": "Budi Santoso",
-      "B": 82,
-      "C": ""
-    },
-    {
-      "row": 3,
-      "A": "Dewi Lestari",
-      "B": 68,
-      "C": ""
-    },
-    {
-      "row": 4,
-      "A": "Rian Hidayat",
-      "B": 90,
-      "C": ""
+  },
+  {
+    "id": "xl-143",
+    "category": "10. Waktu, Finansial & Pembulatan",
+    "title": "Tantangan 143: Praktik Rumus IPMT Dunia Nyata",
+    "scenario": "Kasus Perkantoran (IPMT): Menghitung porsi bunga pinjaman pada periode cicilan tertentu. Gunakan rumus IPMT pada sel target C2 secara mandiri!",
+    "tableHeaders": [
+      "A",
+      "B",
+      "C"
+    ],
+    "tableRows": [
+      {
+        "row": 1,
+        "A": "Unit / Nama Data",
+        "B": "Nilai Input",
+        "C": "Hasil Rumus"
+      },
+      {
+        "row": 2,
+        "A": "Budi Santoso",
+        "B": 82,
+        "C": ""
+      },
+      {
+        "row": 3,
+        "A": "Dewi Lestari",
+        "B": 68,
+        "C": ""
+      },
+      {
+        "row": 4,
+        "A": "Rian Hidayat",
+        "B": 90,
+        "C": ""
+      }
+    ],
+    "targetCell": "C2",
+    "instruction": "Gunakan fungsi IPMT (menggunakan parameter data 0.01, 1, 12, -12000000) di sel C2 untuk mempraktekkan fungsi IPMT!",
+    "babyHint": "🍼 Bahasa Bayi: Ketik =IPMT(0.01, 1, 12, -12000000) — Menghitung porsi bunga pinjaman pada periode cicilan tertentu.",
+    "starterFormula": "=",
+    "quickChips": [
+      "=IPMT(",
+      "B2",
+      "B2:B4",
+      "A2",
+      ")",
+      ",",
+      ";"
+    ],
+    "acceptedFormulas": [
+      "=IPMT(0.01, 1, 12, -12000000)",
+      "=IPMT(0.01; 1; 12; -12000000)",
+      "=IPMT(0.01,1,12,-12000000)",
+      "=IPMT(0.01;1;12;-12000000)"
+    ],
+    "expectedValue": 120000,
+    "workedExample": {
+      "title": "💡 FUNGSINYA BUAT APA & CONTOH RUMUS IPMT",
+      "kasusSerupa": "Contoh Soal Latihan (Tabel Simulasi): Misalkan data simulasi berada pada sel sesuai contoh di bawah, maka penulisan rumus yang benar adalah =IPMT(0.01, 1, 12, -24000000).",
+      "rumusContoh": "=IPMT(0.01, 1, 12, -24000000)",
+      "nalarBayi": "Rumus IPMT sangat krusial di kantor! Cukup ketik fungsi IPMT (menggunakan parameter data 0.01, 1, 12, -12000000) untuk menyelesaikannya secara otomatis.",
+      "hasilContoh": "Terevaluasi otomatis oleh Excel sesuai data contoh"
     }
-  ],
-  "targetCell": "C2",
-  "instruction": "Ketik rumus =IPMT(0.01, 1, 12, -12000000) di sel C2 untuk mempraktekkan fungsi IPMT!",
-  "babyHint": "🍼 Bahasa Bayi: Ketik =IPMT(0.01, 1, 12, -12000000) — Menghitung porsi bunga pinjaman pada periode cicilan tertentu.",
-  "starterFormula": "=IPMT(",
-  "quickChips": [
-    "=IPMT(",
-    "B2",
-    "B2:B4",
-    "A2",
-    ")",
-    ",",
-    ";"
-  ],
-  "acceptedFormulas": [
-    "=IPMT(0.01, 1, 12, -12000000)",
-    "=IPMT(0.01; 1; 12; -12000000)",
-    "=IPMT(0.01,1,12,-12000000)",
-    "=IPMT(0.01;1;12;-12000000)"
-  ],
-  "expectedValue": 120000,
-  "workedExample": {
-    "title": "💡 FUNGSINYA BUAT APA & CONTOH RUMUS IPMT",
-    "kasusSerupa": "Fungsi IPMT: Menghitung porsi bunga pinjaman pada periode cicilan tertentu.",
-    "rumusContoh": "=IPMT(0.01, 1, 12, -12000000)",
-    "nalarBayi": "Rumus IPMT sangat krusial di kantor! Cukup ketik =IPMT(0.01, 1, 12, -12000000) untuk menyelesaikannya secara otomatis."
-  }
-},
-{
-  "id": "xl-144",
-  "category": "10. Waktu, Finansial & Pembulatan",
-  "title": "Tantangan 144: Praktik Rumus PPMT Dunia Nyata",
-  "scenario": "Kasus Perkantoran (PPMT): Menghitung porsi pokok pinjaman pada periode cicilan tertentu. Gunakan rumus PPMT pada sel target C2 sesuai contoh!",
-  "tableHeaders": [
-    "A",
-    "B",
-    "C"
-  ],
-  "tableRows": [
-    {
-      "row": 1,
-      "A": "Unit / Nama Data",
-      "B": "Nilai Input",
-      "C": "Hasil Rumus"
-    },
-    {
-      "row": 2,
-      "A": "Budi Santoso",
-      "B": 82,
-      "C": ""
-    },
-    {
-      "row": 3,
-      "A": "Dewi Lestari",
-      "B": 68,
-      "C": ""
-    },
-    {
-      "row": 4,
-      "A": "Rian Hidayat",
-      "B": 90,
-      "C": ""
+  },
+  {
+    "id": "xl-144",
+    "category": "10. Waktu, Finansial & Pembulatan",
+    "title": "Tantangan 144: Praktik Rumus PPMT Dunia Nyata",
+    "scenario": "Kasus Perkantoran (PPMT): Menghitung porsi pokok pinjaman pada periode cicilan tertentu. Gunakan rumus PPMT pada sel target C2 secara mandiri!",
+    "tableHeaders": [
+      "A",
+      "B",
+      "C"
+    ],
+    "tableRows": [
+      {
+        "row": 1,
+        "A": "Unit / Nama Data",
+        "B": "Nilai Input",
+        "C": "Hasil Rumus"
+      },
+      {
+        "row": 2,
+        "A": "Budi Santoso",
+        "B": 82,
+        "C": ""
+      },
+      {
+        "row": 3,
+        "A": "Dewi Lestari",
+        "B": 68,
+        "C": ""
+      },
+      {
+        "row": 4,
+        "A": "Rian Hidayat",
+        "B": 90,
+        "C": ""
+      }
+    ],
+    "targetCell": "C2",
+    "instruction": "Gunakan fungsi PPMT (menggunakan parameter data 0.01, 1, 12, -12000000) di sel C2 untuk mempraktekkan fungsi PPMT!",
+    "babyHint": "🍼 Bahasa Bayi: Ketik =PPMT(0.01, 1, 12, -12000000) — Menghitung porsi pokok pinjaman pada periode cicilan tertentu.",
+    "starterFormula": "=",
+    "quickChips": [
+      "=PPMT(",
+      "B2",
+      "B2:B4",
+      "A2",
+      ")",
+      ",",
+      ";"
+    ],
+    "acceptedFormulas": [
+      "=PPMT(0.01, 1, 12, -12000000)",
+      "=PPMT(0.01; 1; 12; -12000000)",
+      "=PPMT(0.01,1,12,-12000000)",
+      "=PPMT(0.01;1;12;-12000000)"
+    ],
+    "expectedValue": 946185,
+    "workedExample": {
+      "title": "💡 FUNGSINYA BUAT APA & CONTOH RUMUS PPMT",
+      "kasusSerupa": "Contoh Soal Latihan (Tabel Simulasi): Misalkan data simulasi berada pada sel sesuai contoh di bawah, maka penulisan rumus yang benar adalah =PPMT(0.01, 1, 12, -24000000).",
+      "rumusContoh": "=PPMT(0.01, 1, 12, -24000000)",
+      "nalarBayi": "Rumus PPMT sangat krusial di kantor! Cukup ketik fungsi PPMT (menggunakan parameter data 0.01, 1, 12, -12000000) untuk menyelesaikannya secara otomatis.",
+      "hasilContoh": "Terevaluasi otomatis oleh Excel sesuai data contoh"
     }
-  ],
-  "targetCell": "C2",
-  "instruction": "Ketik rumus =PPMT(0.01, 1, 12, -12000000) di sel C2 untuk mempraktekkan fungsi PPMT!",
-  "babyHint": "🍼 Bahasa Bayi: Ketik =PPMT(0.01, 1, 12, -12000000) — Menghitung porsi pokok pinjaman pada periode cicilan tertentu.",
-  "starterFormula": "=PPMT(",
-  "quickChips": [
-    "=PPMT(",
-    "B2",
-    "B2:B4",
-    "A2",
-    ")",
-    ",",
-    ";"
-  ],
-  "acceptedFormulas": [
-    "=PPMT(0.01, 1, 12, -12000000)",
-    "=PPMT(0.01; 1; 12; -12000000)",
-    "=PPMT(0.01,1,12,-12000000)",
-    "=PPMT(0.01;1;12;-12000000)"
-  ],
-  "expectedValue": 946185,
-  "workedExample": {
-    "title": "💡 FUNGSINYA BUAT APA & CONTOH RUMUS PPMT",
-    "kasusSerupa": "Fungsi PPMT: Menghitung porsi pokok pinjaman pada periode cicilan tertentu.",
-    "rumusContoh": "=PPMT(0.01, 1, 12, -12000000)",
-    "nalarBayi": "Rumus PPMT sangat krusial di kantor! Cukup ketik =PPMT(0.01, 1, 12, -12000000) untuk menyelesaikannya secara otomatis."
-  }
-},
-{
-  "id": "xl-145",
-  "category": "10. Waktu, Finansial & Pembulatan",
-  "title": "Tantangan 145: Praktik Rumus FV Dunia Nyata",
-  "scenario": "Kasus Perkantoran (FV): Future Value: Menghitung nilai akhir tabungan/investasi rutin. Gunakan rumus FV pada sel target C2 sesuai contoh!",
-  "tableHeaders": [
-    "A",
-    "B",
-    "C"
-  ],
-  "tableRows": [
-    {
-      "row": 1,
-      "A": "Unit / Nama Data",
-      "B": "Nilai Input",
-      "C": "Hasil Rumus"
-    },
-    {
-      "row": 2,
-      "A": "Budi Santoso",
-      "B": 82,
-      "C": ""
-    },
-    {
-      "row": 3,
-      "A": "Dewi Lestari",
-      "B": 68,
-      "C": ""
-    },
-    {
-      "row": 4,
-      "A": "Rian Hidayat",
-      "B": 90,
-      "C": ""
+  },
+  {
+    "id": "xl-145",
+    "category": "10. Waktu, Finansial & Pembulatan",
+    "title": "Tantangan 145: Praktik Rumus FV Dunia Nyata",
+    "scenario": "Kasus Perkantoran (FV): Future Value: Menghitung nilai akhir tabungan/investasi rutin. Gunakan rumus FV pada sel target C2 secara mandiri!",
+    "tableHeaders": [
+      "A",
+      "B",
+      "C"
+    ],
+    "tableRows": [
+      {
+        "row": 1,
+        "A": "Unit / Nama Data",
+        "B": "Nilai Input",
+        "C": "Hasil Rumus"
+      },
+      {
+        "row": 2,
+        "A": "Budi Santoso",
+        "B": 82,
+        "C": ""
+      },
+      {
+        "row": 3,
+        "A": "Dewi Lestari",
+        "B": 68,
+        "C": ""
+      },
+      {
+        "row": 4,
+        "A": "Rian Hidayat",
+        "B": 90,
+        "C": ""
+      }
+    ],
+    "targetCell": "C2",
+    "instruction": "Gunakan fungsi FV (menggunakan parameter data 0.01, 12, -1000000) di sel C2 untuk mempraktekkan fungsi FV!",
+    "babyHint": "🍼 Bahasa Bayi: Ketik =FV(0.01, 12, -1000000) — Future Value: Menghitung nilai akhir tabungan/investasi rutin.",
+    "starterFormula": "=",
+    "quickChips": [
+      "=FV(",
+      "B2",
+      "B2:B4",
+      "A2",
+      ")",
+      ",",
+      ";"
+    ],
+    "acceptedFormulas": [
+      "=FV(0.01, 12, -1000000)",
+      "=FV(0.01; 12; -1000000)",
+      "=FV(0.01,12,-1000000)",
+      "=FV(0.01;12;-1000000)"
+    ],
+    "expectedValue": 12682503,
+    "workedExample": {
+      "title": "💡 FUNGSINYA BUAT APA & CONTOH RUMUS FV",
+      "kasusSerupa": "Contoh Soal Latihan (Tabel Simulasi): Misalkan data simulasi berada pada sel sesuai contoh di bawah, maka penulisan rumus yang benar adalah =FV(0.01, 12, -2300000).",
+      "rumusContoh": "=FV(0.01, 12, -2300000)",
+      "nalarBayi": "Rumus FV sangat krusial di kantor! Cukup ketik fungsi FV (menggunakan parameter data 0.01, 12, -1000000) untuk menyelesaikannya secara otomatis.",
+      "hasilContoh": "Terevaluasi otomatis oleh Excel sesuai data contoh"
     }
-  ],
-  "targetCell": "C2",
-  "instruction": "Ketik rumus =FV(0.01, 12, -1000000) di sel C2 untuk mempraktekkan fungsi FV!",
-  "babyHint": "🍼 Bahasa Bayi: Ketik =FV(0.01, 12, -1000000) — Future Value: Menghitung nilai akhir tabungan/investasi rutin.",
-  "starterFormula": "=FV(",
-  "quickChips": [
-    "=FV(",
-    "B2",
-    "B2:B4",
-    "A2",
-    ")",
-    ",",
-    ";"
-  ],
-  "acceptedFormulas": [
-    "=FV(0.01, 12, -1000000)",
-    "=FV(0.01; 12; -1000000)",
-    "=FV(0.01,12,-1000000)",
-    "=FV(0.01;12;-1000000)"
-  ],
-  "expectedValue": 12682503,
-  "workedExample": {
-    "title": "💡 FUNGSINYA BUAT APA & CONTOH RUMUS FV",
-    "kasusSerupa": "Fungsi FV: Future Value: Menghitung nilai akhir tabungan/investasi rutin.",
-    "rumusContoh": "=FV(0.01, 12, -1000000)",
-    "nalarBayi": "Rumus FV sangat krusial di kantor! Cukup ketik =FV(0.01, 12, -1000000) untuk menyelesaikannya secara otomatis."
-  }
-},
-{
-  "id": "xl-146",
-  "category": "10. Waktu, Finansial & Pembulatan",
-  "title": "Tantangan 146: Praktik Rumus PV Dunia Nyata",
-  "scenario": "Kasus Perkantoran (PV): Present Value: Menghitung nilai sekarang dari arus kas masa depan. Gunakan rumus PV pada sel target C2 sesuai contoh!",
-  "tableHeaders": [
-    "A",
-    "B",
-    "C"
-  ],
-  "tableRows": [
-    {
-      "row": 1,
-      "A": "Unit / Nama Data",
-      "B": "Nilai Input",
-      "C": "Hasil Rumus"
-    },
-    {
-      "row": 2,
-      "A": "Budi Santoso",
-      "B": 82,
-      "C": ""
-    },
-    {
-      "row": 3,
-      "A": "Dewi Lestari",
-      "B": 68,
-      "C": ""
-    },
-    {
-      "row": 4,
-      "A": "Rian Hidayat",
-      "B": 90,
-      "C": ""
+  },
+  {
+    "id": "xl-146",
+    "category": "10. Waktu, Finansial & Pembulatan",
+    "title": "Tantangan 146: Praktik Rumus PV Dunia Nyata",
+    "scenario": "Kasus Perkantoran (PV): Present Value: Menghitung nilai sekarang dari arus kas masa depan. Gunakan rumus PV pada sel target C2 secara mandiri!",
+    "tableHeaders": [
+      "A",
+      "B",
+      "C"
+    ],
+    "tableRows": [
+      {
+        "row": 1,
+        "A": "Unit / Nama Data",
+        "B": "Nilai Input",
+        "C": "Hasil Rumus"
+      },
+      {
+        "row": 2,
+        "A": "Budi Santoso",
+        "B": 82,
+        "C": ""
+      },
+      {
+        "row": 3,
+        "A": "Dewi Lestari",
+        "B": 68,
+        "C": ""
+      },
+      {
+        "row": 4,
+        "A": "Rian Hidayat",
+        "B": 90,
+        "C": ""
+      }
+    ],
+    "targetCell": "C2",
+    "instruction": "Gunakan fungsi PV (menggunakan parameter data 0.01, 12, -1000000) di sel C2 untuk mempraktekkan fungsi PV!",
+    "babyHint": "🍼 Bahasa Bayi: Ketik =PV(0.01, 12, -1000000) — Present Value: Menghitung nilai sekarang dari arus kas masa depan.",
+    "starterFormula": "=",
+    "quickChips": [
+      "=PV(",
+      "B2",
+      "B2:B4",
+      "A2",
+      ")",
+      ",",
+      ";"
+    ],
+    "acceptedFormulas": [
+      "=PV(0.01, 12, -1000000)",
+      "=PV(0.01; 12; -1000000)",
+      "=PV(0.01,12,-1000000)",
+      "=PV(0.01;12;-1000000)"
+    ],
+    "expectedValue": 11255077,
+    "workedExample": {
+      "title": "💡 FUNGSINYA BUAT APA & CONTOH RUMUS PV",
+      "kasusSerupa": "Contoh Soal Latihan (Tabel Simulasi): Misalkan data simulasi berada pada sel sesuai contoh di bawah, maka penulisan rumus yang benar adalah =PV(0.01, 12, -2300000).",
+      "rumusContoh": "=PV(0.01, 12, -2300000)",
+      "nalarBayi": "Rumus PV sangat krusial di kantor! Cukup ketik fungsi PV (menggunakan parameter data 0.01, 12, -1000000) untuk menyelesaikannya secara otomatis.",
+      "hasilContoh": "Terevaluasi otomatis oleh Excel sesuai data contoh"
     }
-  ],
-  "targetCell": "C2",
-  "instruction": "Ketik rumus =PV(0.01, 12, -1000000) di sel C2 untuk mempraktekkan fungsi PV!",
-  "babyHint": "🍼 Bahasa Bayi: Ketik =PV(0.01, 12, -1000000) — Present Value: Menghitung nilai sekarang dari arus kas masa depan.",
-  "starterFormula": "=PV(",
-  "quickChips": [
-    "=PV(",
-    "B2",
-    "B2:B4",
-    "A2",
-    ")",
-    ",",
-    ";"
-  ],
-  "acceptedFormulas": [
-    "=PV(0.01, 12, -1000000)",
-    "=PV(0.01; 12; -1000000)",
-    "=PV(0.01,12,-1000000)",
-    "=PV(0.01;12;-1000000)"
-  ],
-  "expectedValue": 11255077,
-  "workedExample": {
-    "title": "💡 FUNGSINYA BUAT APA & CONTOH RUMUS PV",
-    "kasusSerupa": "Fungsi PV: Present Value: Menghitung nilai sekarang dari arus kas masa depan.",
-    "rumusContoh": "=PV(0.01, 12, -1000000)",
-    "nalarBayi": "Rumus PV sangat krusial di kantor! Cukup ketik =PV(0.01, 12, -1000000) untuk menyelesaikannya secara otomatis."
-  }
-},
-{
-  "id": "xl-147",
-  "category": "10. Waktu, Finansial & Pembulatan",
-  "title": "Tantangan 147: Praktik Rumus NPV Dunia Nyata",
-  "scenario": "Kasus Perkantoran (NPV): Net Present Value: Menilai kelayakan investasi dibanding bunga bank. Gunakan rumus NPV pada sel target C2 sesuai contoh!",
-  "tableHeaders": [
-    "A",
-    "B",
-    "C"
-  ],
-  "tableRows": [
-    {
-      "row": 1,
-      "A": "Unit / Nama Data",
-      "B": "Nilai Input",
-      "C": "Hasil Rumus"
-    },
-    {
-      "row": 2,
-      "A": "Budi Santoso",
-      "B": 82,
-      "C": ""
-    },
-    {
-      "row": 3,
-      "A": "Dewi Lestari",
-      "B": 68,
-      "C": ""
-    },
-    {
-      "row": 4,
-      "A": "Rian Hidayat",
-      "B": 90,
-      "C": ""
+  },
+  {
+    "id": "xl-147",
+    "category": "10. Waktu, Finansial & Pembulatan",
+    "title": "Tantangan 147: Praktik Rumus NPV Dunia Nyata",
+    "scenario": "Kasus Perkantoran (NPV): Net Present Value: Menilai kelayakan investasi dibanding bunga bank. Gunakan rumus NPV pada sel target C2 secara mandiri!",
+    "tableHeaders": [
+      "A",
+      "B",
+      "C"
+    ],
+    "tableRows": [
+      {
+        "row": 1,
+        "A": "Unit / Nama Data",
+        "B": "Nilai Input",
+        "C": "Hasil Rumus"
+      },
+      {
+        "row": 2,
+        "A": "Budi Santoso",
+        "B": 82,
+        "C": ""
+      },
+      {
+        "row": 3,
+        "A": "Dewi Lestari",
+        "B": 68,
+        "C": ""
+      },
+      {
+        "row": 4,
+        "A": "Rian Hidayat",
+        "B": 90,
+        "C": ""
+      }
+    ],
+    "targetCell": "C2",
+    "instruction": "Gunakan fungsi NPV (menggunakan parameter data 0.1, B2:B4) di sel C2 untuk mempraktekkan fungsi NPV!",
+    "babyHint": "🍼 Bahasa Bayi: Ketik =NPV(0.1, B2:B4) — Net Present Value: Menilai kelayakan investasi dibanding bunga bank.",
+    "starterFormula": "=",
+    "quickChips": [
+      "=NPV(",
+      "B2",
+      "B2:B4",
+      "A2",
+      ")",
+      ",",
+      ";"
+    ],
+    "acceptedFormulas": [
+      "=NPV(0.1, B2:B4)",
+      "=NPV(0.1; B2:B4)",
+      "=NPV(0.1,B2:B4)",
+      "=NPV(0.1;B2:B4)"
+    ],
+    "expectedValue": 198899,
+    "workedExample": {
+      "title": "💡 FUNGSINYA BUAT APA & CONTOH RUMUS NPV",
+      "kasusSerupa": "Contoh Soal Latihan (Tabel Simulasi): Misalkan data simulasi berada pada sel sesuai contoh di bawah, maka penulisan rumus yang benar adalah =NPV(0.1, E10:E12).",
+      "rumusContoh": "=NPV(0.1, E10:E12)",
+      "nalarBayi": "Rumus NPV sangat krusial di kantor! Cukup ketik fungsi NPV (menggunakan parameter data 0.1, B2:B4) untuk menyelesaikannya secara otomatis.",
+      "hasilContoh": "Terevaluasi otomatis oleh Excel sesuai data contoh"
     }
-  ],
-  "targetCell": "C2",
-  "instruction": "Ketik rumus =NPV(0.1, B2:B4) di sel C2 untuk mempraktekkan fungsi NPV!",
-  "babyHint": "🍼 Bahasa Bayi: Ketik =NPV(0.1, B2:B4) — Net Present Value: Menilai kelayakan investasi dibanding bunga bank.",
-  "starterFormula": "=NPV(",
-  "quickChips": [
-    "=NPV(",
-    "B2",
-    "B2:B4",
-    "A2",
-    ")",
-    ",",
-    ";"
-  ],
-  "acceptedFormulas": [
-    "=NPV(0.1, B2:B4)",
-    "=NPV(0.1; B2:B4)",
-    "=NPV(0.1,B2:B4)",
-    "=NPV(0.1;B2:B4)"
-  ],
-  "expectedValue": 198899,
-  "workedExample": {
-    "title": "💡 FUNGSINYA BUAT APA & CONTOH RUMUS NPV",
-    "kasusSerupa": "Fungsi NPV: Net Present Value: Menilai kelayakan investasi dibanding bunga bank.",
-    "rumusContoh": "=NPV(0.1, B2:B4)",
-    "nalarBayi": "Rumus NPV sangat krusial di kantor! Cukup ketik =NPV(0.1, B2:B4) untuk menyelesaikannya secara otomatis."
-  }
-},
-{
-  "id": "xl-148",
-  "category": "10. Waktu, Finansial & Pembulatan",
-  "title": "Tantangan 148: Praktik Rumus SLN Dunia Nyata",
-  "scenario": "Kasus Perkantoran (SLN): Menghitung penyusutan aset kantor metode garis lurus per tahun. Gunakan rumus SLN pada sel target C2 sesuai contoh!",
-  "tableHeaders": [
-    "A",
-    "B",
-    "C"
-  ],
-  "tableRows": [
-    {
-      "row": 1,
-      "A": "Unit / Nama Data",
-      "B": "Nilai Input",
-      "C": "Hasil Rumus"
-    },
-    {
-      "row": 2,
-      "A": "Budi Santoso",
-      "B": 82,
-      "C": ""
-    },
-    {
-      "row": 3,
-      "A": "Dewi Lestari",
-      "B": 68,
-      "C": ""
-    },
-    {
-      "row": 4,
-      "A": "Rian Hidayat",
-      "B": 90,
-      "C": ""
+  },
+  {
+    "id": "xl-148",
+    "category": "10. Waktu, Finansial & Pembulatan",
+    "title": "Tantangan 148: Praktik Rumus SLN Dunia Nyata",
+    "scenario": "Kasus Perkantoran (SLN): Menghitung penyusutan aset kantor metode garis lurus per tahun. Gunakan rumus SLN pada sel target C2 secara mandiri!",
+    "tableHeaders": [
+      "A",
+      "B",
+      "C"
+    ],
+    "tableRows": [
+      {
+        "row": 1,
+        "A": "Unit / Nama Data",
+        "B": "Nilai Input",
+        "C": "Hasil Rumus"
+      },
+      {
+        "row": 2,
+        "A": "Budi Santoso",
+        "B": 82,
+        "C": ""
+      },
+      {
+        "row": 3,
+        "A": "Dewi Lestari",
+        "B": 68,
+        "C": ""
+      },
+      {
+        "row": 4,
+        "A": "Rian Hidayat",
+        "B": 90,
+        "C": ""
+      }
+    ],
+    "targetCell": "C2",
+    "instruction": "Gunakan fungsi SLN (menggunakan parameter data 50000000, 5000000, 5) di sel C2 untuk mempraktekkan fungsi SLN!",
+    "babyHint": "🍼 Bahasa Bayi: Ketik =SLN(50000000, 5000000, 5) — Menghitung penyusutan aset kantor metode garis lurus per tahun.",
+    "starterFormula": "=",
+    "quickChips": [
+      "=SLN(",
+      "B2",
+      "B2:B4",
+      "A2",
+      ")",
+      ",",
+      ";"
+    ],
+    "acceptedFormulas": [
+      "=SLN(50000000, 5000000, 5)",
+      "=SLN(50000000; 5000000; 5)",
+      "=SLN(50000000,5000000,5)",
+      "=SLN(50000000;5000000;5)"
+    ],
+    "expectedValue": 9000000,
+    "workedExample": {
+      "title": "💡 FUNGSINYA BUAT APA & CONTOH RUMUS SLN",
+      "kasusSerupa": "Contoh Soal Latihan (Tabel Simulasi): Misalkan data simulasi berada pada sel sesuai contoh di bawah, maka penulisan rumus yang benar adalah =SLN(30000000, 3000000, 3).",
+      "rumusContoh": "=SLN(30000000, 3000000, 3)",
+      "nalarBayi": "Rumus SLN sangat krusial di kantor! Cukup ketik fungsi SLN (menggunakan parameter data 50000000, 5000000, 5) untuk menyelesaikannya secara otomatis.",
+      "hasilContoh": "Terevaluasi otomatis oleh Excel sesuai data contoh"
     }
-  ],
-  "targetCell": "C2",
-  "instruction": "Ketik rumus =SLN(50000000, 5000000, 5) di sel C2 untuk mempraktekkan fungsi SLN!",
-  "babyHint": "🍼 Bahasa Bayi: Ketik =SLN(50000000, 5000000, 5) — Menghitung penyusutan aset kantor metode garis lurus per tahun.",
-  "starterFormula": "=SLN(",
-  "quickChips": [
-    "=SLN(",
-    "B2",
-    "B2:B4",
-    "A2",
-    ")",
-    ",",
-    ";"
-  ],
-  "acceptedFormulas": [
-    "=SLN(50000000, 5000000, 5)",
-    "=SLN(50000000; 5000000; 5)",
-    "=SLN(50000000,5000000,5)",
-    "=SLN(50000000;5000000;5)"
-  ],
-  "expectedValue": 9000000,
-  "workedExample": {
-    "title": "💡 FUNGSINYA BUAT APA & CONTOH RUMUS SLN",
-    "kasusSerupa": "Fungsi SLN: Menghitung penyusutan aset kantor metode garis lurus per tahun.",
-    "rumusContoh": "=SLN(50000000, 5000000, 5)",
-    "nalarBayi": "Rumus SLN sangat krusial di kantor! Cukup ketik =SLN(50000000, 5000000, 5) untuk menyelesaikannya secara otomatis."
-  }
-},
-{
-  "id": "xl-149",
-  "category": "10. Waktu, Finansial & Pembulatan",
-  "title": "Tantangan 149: Praktik Rumus MROUND Dunia Nyata",
-  "scenario": "Kasus Perkantoran (MROUND): Membulatkan angka ke kelipatan tertentu terdekat (misal Rp 500). Gunakan rumus MROUND pada sel target C2 sesuai contoh!",
-  "tableHeaders": [
-    "A",
-    "B",
-    "C"
-  ],
-  "tableRows": [
-    {
-      "row": 1,
-      "A": "Unit / Nama Data",
-      "B": "Nilai Input",
-      "C": "Hasil Rumus"
-    },
-    {
-      "row": 2,
-      "A": "Budi Santoso",
-      "B": 82,
-      "C": ""
-    },
-    {
-      "row": 3,
-      "A": "Dewi Lestari",
-      "B": 68,
-      "C": ""
-    },
-    {
-      "row": 4,
-      "A": "Rian Hidayat",
-      "B": 90,
-      "C": ""
+  },
+  {
+    "id": "xl-149",
+    "category": "10. Waktu, Finansial & Pembulatan",
+    "title": "Tantangan 149: Praktik Rumus MROUND Dunia Nyata",
+    "scenario": "Kasus Perkantoran (MROUND): Membulatkan angka ke kelipatan tertentu terdekat (misal Rp 500). Gunakan rumus MROUND pada sel target C2 secara mandiri!",
+    "tableHeaders": [
+      "A",
+      "B",
+      "C"
+    ],
+    "tableRows": [
+      {
+        "row": 1,
+        "A": "Unit / Nama Data",
+        "B": "Nilai Input",
+        "C": "Hasil Rumus"
+      },
+      {
+        "row": 2,
+        "A": "Budi Santoso",
+        "B": 82,
+        "C": ""
+      },
+      {
+        "row": 3,
+        "A": "Dewi Lestari",
+        "B": 68,
+        "C": ""
+      },
+      {
+        "row": 4,
+        "A": "Rian Hidayat",
+        "B": 90,
+        "C": ""
+      }
+    ],
+    "targetCell": "C2",
+    "instruction": "Gunakan fungsi MROUND (menggunakan parameter data B2, 5) di sel C2 untuk mempraktekkan fungsi MROUND!",
+    "babyHint": "🍼 Bahasa Bayi: Ketik =MROUND(B2, 5) — Membulatkan angka ke kelipatan tertentu terdekat (misal Rp 500).",
+    "starterFormula": "=",
+    "quickChips": [
+      "=MROUND(",
+      "B2",
+      "B2:B4",
+      "A2",
+      ")",
+      ",",
+      ";"
+    ],
+    "acceptedFormulas": [
+      "=MROUND(B2, 5)",
+      "=MROUND(B2; 5)",
+      "=MROUND(B2,5)",
+      "=MROUND(B2;5)"
+    ],
+    "expectedValue": 80,
+    "workedExample": {
+      "title": "💡 FUNGSINYA BUAT APA & CONTOH RUMUS MROUND",
+      "kasusSerupa": "Contoh Soal Latihan (Tabel Simulasi): Misalkan data simulasi berada pada sel sesuai contoh di bawah, maka penulisan rumus yang benar adalah =MROUND(E10, 5).",
+      "rumusContoh": "=MROUND(E10, 5)",
+      "nalarBayi": "Rumus MROUND sangat krusial di kantor! Cukup ketik fungsi MROUND (menggunakan parameter data B2, 5) untuk menyelesaikannya secara otomatis.",
+      "hasilContoh": "Terevaluasi otomatis oleh Excel sesuai data contoh"
     }
-  ],
-  "targetCell": "C2",
-  "instruction": "Ketik rumus =MROUND(B2, 5) di sel C2 untuk mempraktekkan fungsi MROUND!",
-  "babyHint": "🍼 Bahasa Bayi: Ketik =MROUND(B2, 5) — Membulatkan angka ke kelipatan tertentu terdekat (misal Rp 500).",
-  "starterFormula": "=MROUND(",
-  "quickChips": [
-    "=MROUND(",
-    "B2",
-    "B2:B4",
-    "A2",
-    ")",
-    ",",
-    ";"
-  ],
-  "acceptedFormulas": [
-    "=MROUND(B2, 5)",
-    "=MROUND(B2; 5)",
-    "=MROUND(B2,5)",
-    "=MROUND(B2;5)"
-  ],
-  "expectedValue": 80,
-  "workedExample": {
-    "title": "💡 FUNGSINYA BUAT APA & CONTOH RUMUS MROUND",
-    "kasusSerupa": "Fungsi MROUND: Membulatkan angka ke kelipatan tertentu terdekat (misal Rp 500).",
-    "rumusContoh": "=MROUND(B2, 5)",
-    "nalarBayi": "Rumus MROUND sangat krusial di kantor! Cukup ketik =MROUND(B2, 5) untuk menyelesaikannya secara otomatis."
-  }
-},
-{
-  "id": "xl-150",
-  "category": "10. Waktu, Finansial & Pembulatan",
-  "title": "Tantangan 150: Praktik Rumus CEILING Dunia Nyata",
-  "scenario": "Kasus Perkantoran (CEILING): Membulatkan angka ke atas menuju kelipatan terdekat. Gunakan rumus CEILING pada sel target C2 sesuai contoh!",
-  "tableHeaders": [
-    "A",
-    "B",
-    "C"
-  ],
-  "tableRows": [
-    {
-      "row": 1,
-      "A": "Unit / Nama Data",
-      "B": "Nilai Input",
-      "C": "Hasil Rumus"
-    },
-    {
-      "row": 2,
-      "A": "Budi Santoso",
-      "B": 82,
-      "C": ""
-    },
-    {
-      "row": 3,
-      "A": "Dewi Lestari",
-      "B": 68,
-      "C": ""
-    },
-    {
-      "row": 4,
-      "A": "Rian Hidayat",
-      "B": 90,
-      "C": ""
+  },
+  {
+    "id": "xl-150",
+    "category": "10. Waktu, Finansial & Pembulatan",
+    "title": "Tantangan 150: Praktik Rumus CEILING Dunia Nyata",
+    "scenario": "Kasus Perkantoran (CEILING): Membulatkan angka ke atas menuju kelipatan terdekat. Gunakan rumus CEILING pada sel target C2 secara mandiri!",
+    "tableHeaders": [
+      "A",
+      "B",
+      "C"
+    ],
+    "tableRows": [
+      {
+        "row": 1,
+        "A": "Unit / Nama Data",
+        "B": "Nilai Input",
+        "C": "Hasil Rumus"
+      },
+      {
+        "row": 2,
+        "A": "Budi Santoso",
+        "B": 82,
+        "C": ""
+      },
+      {
+        "row": 3,
+        "A": "Dewi Lestari",
+        "B": 68,
+        "C": ""
+      },
+      {
+        "row": 4,
+        "A": "Rian Hidayat",
+        "B": 90,
+        "C": ""
+      }
+    ],
+    "targetCell": "C2",
+    "instruction": "Gunakan fungsi CEILING (menggunakan parameter data B2, 10) di sel C2 untuk mempraktekkan fungsi CEILING!",
+    "babyHint": "🍼 Bahasa Bayi: Ketik =CEILING(B2, 10) — Membulatkan angka ke atas menuju kelipatan terdekat.",
+    "starterFormula": "=",
+    "quickChips": [
+      "=CEILING(",
+      "B2",
+      "B2:B4",
+      "A2",
+      ")",
+      ",",
+      ";"
+    ],
+    "acceptedFormulas": [
+      "=CEILING(B2, 10)",
+      "=CEILING(B2; 10)",
+      "=CEILING(B2,10)",
+      "=CEILING(B2;10)"
+    ],
+    "expectedValue": 90,
+    "workedExample": {
+      "title": "💡 FUNGSINYA BUAT APA & CONTOH RUMUS CEILING",
+      "kasusSerupa": "Contoh Soal Latihan (Tabel Simulasi): Misalkan data simulasi berada pada sel sesuai contoh di bawah, maka penulisan rumus yang benar adalah =CEILING(E10, 10).",
+      "rumusContoh": "=CEILING(E10, 10)",
+      "nalarBayi": "Rumus CEILING sangat krusial di kantor! Cukup ketik fungsi CEILING (menggunakan parameter data B2, 10) untuk menyelesaikannya secara otomatis.",
+      "hasilContoh": "Terevaluasi otomatis oleh Excel sesuai data contoh"
     }
-  ],
-  "targetCell": "C2",
-  "instruction": "Ketik rumus =CEILING(B2, 10) di sel C2 untuk mempraktekkan fungsi CEILING!",
-  "babyHint": "🍼 Bahasa Bayi: Ketik =CEILING(B2, 10) — Membulatkan angka ke atas menuju kelipatan terdekat.",
-  "starterFormula": "=CEILING(",
-  "quickChips": [
-    "=CEILING(",
-    "B2",
-    "B2:B4",
-    "A2",
-    ")",
-    ",",
-    ";"
-  ],
-  "acceptedFormulas": [
-    "=CEILING(B2, 10)",
-    "=CEILING(B2; 10)",
-    "=CEILING(B2,10)",
-    "=CEILING(B2;10)"
-  ],
-  "expectedValue": 90,
-  "workedExample": {
-    "title": "💡 FUNGSINYA BUAT APA & CONTOH RUMUS CEILING",
-    "kasusSerupa": "Fungsi CEILING: Membulatkan angka ke atas menuju kelipatan terdekat.",
-    "rumusContoh": "=CEILING(B2, 10)",
-    "nalarBayi": "Rumus CEILING sangat krusial di kantor! Cukup ketik =CEILING(B2, 10) untuk menyelesaikannya secara otomatis."
-  }
-},
-{
-  "id": "xl-151",
-  "category": "10. Waktu, Finansial & Pembulatan",
-  "title": "Tantangan 151: Praktik Rumus FLOOR Dunia Nyata",
-  "scenario": "Kasus Perkantoran (FLOOR): Membulatkan angka ke bawah menuju kelipatan terdekat. Gunakan rumus FLOOR pada sel target C2 sesuai contoh!",
-  "tableHeaders": [
-    "A",
-    "B",
-    "C"
-  ],
-  "tableRows": [
-    {
-      "row": 1,
-      "A": "Unit / Nama Data",
-      "B": "Nilai Input",
-      "C": "Hasil Rumus"
-    },
-    {
-      "row": 2,
-      "A": "Budi Santoso",
-      "B": 82,
-      "C": ""
-    },
-    {
-      "row": 3,
-      "A": "Dewi Lestari",
-      "B": 68,
-      "C": ""
-    },
-    {
-      "row": 4,
-      "A": "Rian Hidayat",
-      "B": 90,
-      "C": ""
+  },
+  {
+    "id": "xl-151",
+    "category": "10. Waktu, Finansial & Pembulatan",
+    "title": "Tantangan 151: Praktik Rumus FLOOR Dunia Nyata",
+    "scenario": "Kasus Perkantoran (FLOOR): Membulatkan angka ke bawah menuju kelipatan terdekat. Gunakan rumus FLOOR pada sel target C2 secara mandiri!",
+    "tableHeaders": [
+      "A",
+      "B",
+      "C"
+    ],
+    "tableRows": [
+      {
+        "row": 1,
+        "A": "Unit / Nama Data",
+        "B": "Nilai Input",
+        "C": "Hasil Rumus"
+      },
+      {
+        "row": 2,
+        "A": "Budi Santoso",
+        "B": 82,
+        "C": ""
+      },
+      {
+        "row": 3,
+        "A": "Dewi Lestari",
+        "B": 68,
+        "C": ""
+      },
+      {
+        "row": 4,
+        "A": "Rian Hidayat",
+        "B": 90,
+        "C": ""
+      }
+    ],
+    "targetCell": "C2",
+    "instruction": "Gunakan fungsi FLOOR (menggunakan parameter data B2, 10) di sel C2 untuk mempraktekkan fungsi FLOOR!",
+    "babyHint": "🍼 Bahasa Bayi: Ketik =FLOOR(B2, 10) — Membulatkan angka ke bawah menuju kelipatan terdekat.",
+    "starterFormula": "=",
+    "quickChips": [
+      "=FLOOR(",
+      "B2",
+      "B2:B4",
+      "A2",
+      ")",
+      ",",
+      ";"
+    ],
+    "acceptedFormulas": [
+      "=FLOOR(B2, 10)",
+      "=FLOOR(B2; 10)",
+      "=FLOOR(B2,10)",
+      "=FLOOR(B2;10)"
+    ],
+    "expectedValue": 80,
+    "workedExample": {
+      "title": "💡 FUNGSINYA BUAT APA & CONTOH RUMUS FLOOR",
+      "kasusSerupa": "Contoh Soal Latihan (Tabel Simulasi): Misalkan data simulasi berada pada sel sesuai contoh di bawah, maka penulisan rumus yang benar adalah =FLOOR(E10, 10).",
+      "rumusContoh": "=FLOOR(E10, 10)",
+      "nalarBayi": "Rumus FLOOR sangat krusial di kantor! Cukup ketik fungsi FLOOR (menggunakan parameter data B2, 10) untuk menyelesaikannya secara otomatis.",
+      "hasilContoh": "Terevaluasi otomatis oleh Excel sesuai data contoh"
     }
-  ],
-  "targetCell": "C2",
-  "instruction": "Ketik rumus =FLOOR(B2, 10) di sel C2 untuk mempraktekkan fungsi FLOOR!",
-  "babyHint": "🍼 Bahasa Bayi: Ketik =FLOOR(B2, 10) — Membulatkan angka ke bawah menuju kelipatan terdekat.",
-  "starterFormula": "=FLOOR(",
-  "quickChips": [
-    "=FLOOR(",
-    "B2",
-    "B2:B4",
-    "A2",
-    ")",
-    ",",
-    ";"
-  ],
-  "acceptedFormulas": [
-    "=FLOOR(B2, 10)",
-    "=FLOOR(B2; 10)",
-    "=FLOOR(B2,10)",
-    "=FLOOR(B2;10)"
-  ],
-  "expectedValue": 80,
-  "workedExample": {
-    "title": "💡 FUNGSINYA BUAT APA & CONTOH RUMUS FLOOR",
-    "kasusSerupa": "Fungsi FLOOR: Membulatkan angka ke bawah menuju kelipatan terdekat.",
-    "rumusContoh": "=FLOOR(B2, 10)",
-    "nalarBayi": "Rumus FLOOR sangat krusial di kantor! Cukup ketik =FLOOR(B2, 10) untuk menyelesaikannya secara otomatis."
-  }
-},
-{
-  "id": "xl-152",
-  "category": "2. Statistik Dasar & Agregasi",
-  "title": "Tantangan 152: Praktik Rumus QUOTIENT Dunia Nyata",
-  "scenario": "Kasus Perkantoran (QUOTIENT): Mengambil hasil bagi bulat saja tanpa sisa pembagian. Gunakan rumus QUOTIENT pada sel target C2 sesuai contoh!",
-  "tableHeaders": [
-    "A",
-    "B",
-    "C"
-  ],
-  "tableRows": [
-    {
-      "row": 1,
-      "A": "Unit / Nama Data",
-      "B": "Nilai Input",
-      "C": "Hasil Rumus"
-    },
-    {
-      "row": 2,
-      "A": "Budi Santoso",
-      "B": 82,
-      "C": ""
-    },
-    {
-      "row": 3,
-      "A": "Dewi Lestari",
-      "B": 68,
-      "C": ""
-    },
-    {
-      "row": 4,
-      "A": "Rian Hidayat",
-      "B": 90,
-      "C": ""
+  },
+  {
+    "id": "xl-152",
+    "category": "2. Statistik Dasar & Agregasi",
+    "title": "Tantangan 152: Praktik Rumus QUOTIENT Dunia Nyata",
+    "scenario": "Kasus Perkantoran (QUOTIENT): Mengambil hasil bagi bulat saja tanpa sisa pembagian. Gunakan rumus QUOTIENT pada sel target C2 secara mandiri!",
+    "tableHeaders": [
+      "A",
+      "B",
+      "C"
+    ],
+    "tableRows": [
+      {
+        "row": 1,
+        "A": "Unit / Nama Data",
+        "B": "Nilai Input",
+        "C": "Hasil Rumus"
+      },
+      {
+        "row": 2,
+        "A": "Budi Santoso",
+        "B": 82,
+        "C": ""
+      },
+      {
+        "row": 3,
+        "A": "Dewi Lestari",
+        "B": 68,
+        "C": ""
+      },
+      {
+        "row": 4,
+        "A": "Rian Hidayat",
+        "B": 90,
+        "C": ""
+      }
+    ],
+    "targetCell": "C2",
+    "instruction": "Gunakan fungsi QUOTIENT (menggunakan parameter data B2, 10) di sel C2 untuk mempraktekkan fungsi QUOTIENT!",
+    "babyHint": "🍼 Bahasa Bayi: Ketik =QUOTIENT(B2, 10) — Mengambil hasil bagi bulat saja tanpa sisa pembagian.",
+    "starterFormula": "=",
+    "quickChips": [
+      "=QUOTIENT(",
+      "B2",
+      "B2:B4",
+      "A2",
+      ")",
+      ",",
+      ";"
+    ],
+    "acceptedFormulas": [
+      "=QUOTIENT(B2, 10)",
+      "=QUOTIENT(B2; 10)",
+      "=QUOTIENT(B2,10)",
+      "=QUOTIENT(B2;10)"
+    ],
+    "expectedValue": 8,
+    "workedExample": {
+      "title": "💡 FUNGSINYA BUAT APA & CONTOH RUMUS QUOTIENT",
+      "kasusSerupa": "Contoh Soal Latihan (Tabel Simulasi): Misalkan data simulasi berada pada sel sesuai contoh di bawah, maka penulisan rumus yang benar adalah =QUOTIENT(E10, 10).",
+      "rumusContoh": "=QUOTIENT(E10, 10)",
+      "nalarBayi": "Rumus QUOTIENT sangat krusial di kantor! Cukup ketik fungsi QUOTIENT (menggunakan parameter data B2, 10) untuk menyelesaikannya secara otomatis.",
+      "hasilContoh": "Terevaluasi otomatis oleh Excel sesuai data contoh"
     }
-  ],
-  "targetCell": "C2",
-  "instruction": "Ketik rumus =QUOTIENT(B2, 10) di sel C2 untuk mempraktekkan fungsi QUOTIENT!",
-  "babyHint": "🍼 Bahasa Bayi: Ketik =QUOTIENT(B2, 10) — Mengambil hasil bagi bulat saja tanpa sisa pembagian.",
-  "starterFormula": "=QUOTIENT(",
-  "quickChips": [
-    "=QUOTIENT(",
-    "B2",
-    "B2:B4",
-    "A2",
-    ")",
-    ",",
-    ";"
-  ],
-  "acceptedFormulas": [
-    "=QUOTIENT(B2, 10)",
-    "=QUOTIENT(B2; 10)",
-    "=QUOTIENT(B2,10)",
-    "=QUOTIENT(B2;10)"
-  ],
-  "expectedValue": 8,
-  "workedExample": {
-    "title": "💡 FUNGSINYA BUAT APA & CONTOH RUMUS QUOTIENT",
-    "kasusSerupa": "Fungsi QUOTIENT: Mengambil hasil bagi bulat saja tanpa sisa pembagian.",
-    "rumusContoh": "=QUOTIENT(B2, 10)",
-    "nalarBayi": "Rumus QUOTIENT sangat krusial di kantor! Cukup ketik =QUOTIENT(B2, 10) untuk menyelesaikannya secara otomatis."
-  }
-},
-{
-  "id": "xl-153",
-  "category": "2. Statistik Dasar & Agregasi",
-  "title": "Tantangan 153: Praktik Rumus PRODUCT Dunia Nyata",
-  "scenario": "Kasus Perkantoran (PRODUCT): Mengalikan seluruh angka dalam rentang sel sekaligus. Gunakan rumus PRODUCT pada sel target C2 sesuai contoh!",
-  "tableHeaders": [
-    "A",
-    "B",
-    "C"
-  ],
-  "tableRows": [
-    {
-      "row": 1,
-      "A": "Unit / Nama Data",
-      "B": "Nilai Input",
-      "C": "Hasil Rumus"
-    },
-    {
-      "row": 2,
-      "A": "Budi Santoso",
-      "B": 82,
-      "C": ""
-    },
-    {
-      "row": 3,
-      "A": "Dewi Lestari",
-      "B": 68,
-      "C": ""
-    },
-    {
-      "row": 4,
-      "A": "Rian Hidayat",
-      "B": 90,
-      "C": ""
+  },
+  {
+    "id": "xl-153",
+    "category": "2. Statistik Dasar & Agregasi",
+    "title": "Tantangan 153: Praktik Rumus PRODUCT Dunia Nyata",
+    "scenario": "Kasus Perkantoran (PRODUCT): Mengalikan seluruh angka dalam rentang sel sekaligus. Gunakan rumus PRODUCT pada sel target C2 secara mandiri!",
+    "tableHeaders": [
+      "A",
+      "B",
+      "C"
+    ],
+    "tableRows": [
+      {
+        "row": 1,
+        "A": "Unit / Nama Data",
+        "B": "Nilai Input",
+        "C": "Hasil Rumus"
+      },
+      {
+        "row": 2,
+        "A": "Budi Santoso",
+        "B": 82,
+        "C": ""
+      },
+      {
+        "row": 3,
+        "A": "Dewi Lestari",
+        "B": 68,
+        "C": ""
+      },
+      {
+        "row": 4,
+        "A": "Rian Hidayat",
+        "B": 90,
+        "C": ""
+      }
+    ],
+    "targetCell": "C2",
+    "instruction": "Gunakan fungsi PRODUCT (menggunakan parameter data B2:B4) di sel C2 untuk mempraktekkan fungsi PRODUCT!",
+    "babyHint": "🍼 Bahasa Bayi: Ketik =PRODUCT(B2:B4) — Mengalikan seluruh angka dalam rentang sel sekaligus.",
+    "starterFormula": "=",
+    "quickChips": [
+      "=PRODUCT(",
+      "B2",
+      "B2:B4",
+      "A2",
+      ")",
+      ",",
+      ";"
+    ],
+    "acceptedFormulas": [
+      "=PRODUCT(B2:B4)",
+      "=PRODUCT(B2:B4)",
+      "=PRODUCT(B2:B4)",
+      "=PRODUCT(B2:B4)"
+    ],
+    "expectedValue": 501840,
+    "workedExample": {
+      "title": "💡 FUNGSINYA BUAT APA & CONTOH RUMUS PRODUCT",
+      "kasusSerupa": "Contoh Soal Latihan (Tabel Simulasi): Misalkan data simulasi berada pada sel sesuai contoh di bawah, maka penulisan rumus yang benar adalah =PRODUCT(E10:E12).",
+      "rumusContoh": "=PRODUCT(E10:E12)",
+      "nalarBayi": "Rumus PRODUCT sangat krusial di kantor! Cukup ketik fungsi PRODUCT (menggunakan parameter data B2:B4) untuk menyelesaikannya secara otomatis.",
+      "hasilContoh": "Terevaluasi otomatis oleh Excel sesuai data contoh"
     }
-  ],
-  "targetCell": "C2",
-  "instruction": "Ketik rumus =PRODUCT(B2:B4) di sel C2 untuk mempraktekkan fungsi PRODUCT!",
-  "babyHint": "🍼 Bahasa Bayi: Ketik =PRODUCT(B2:B4) — Mengalikan seluruh angka dalam rentang sel sekaligus.",
-  "starterFormula": "=PRODUCT(",
-  "quickChips": [
-    "=PRODUCT(",
-    "B2",
-    "B2:B4",
-    "A2",
-    ")",
-    ",",
-    ";"
-  ],
-  "acceptedFormulas": [
-    "=PRODUCT(B2:B4)",
-    "=PRODUCT(B2:B4)",
-    "=PRODUCT(B2:B4)",
-    "=PRODUCT(B2:B4)"
-  ],
-  "expectedValue": 501840,
-  "workedExample": {
-    "title": "💡 FUNGSINYA BUAT APA & CONTOH RUMUS PRODUCT",
-    "kasusSerupa": "Fungsi PRODUCT: Mengalikan seluruh angka dalam rentang sel sekaligus.",
-    "rumusContoh": "=PRODUCT(B2:B4)",
-    "nalarBayi": "Rumus PRODUCT sangat krusial di kantor! Cukup ketik =PRODUCT(B2:B4) untuk menyelesaikannya secara otomatis."
-  }
-},
-{
-  "id": "xl-154",
-  "category": "2. Statistik Dasar & Agregasi",
-  "title": "Tantangan 154: Praktik Rumus SUMPRODUCT Dunia Nyata",
-  "scenario": "Kasus Perkantoran (SUMPRODUCT): Mengalikan dua kolom sejajar lalu menjumlahkan hasilnya sekaligus. Gunakan rumus SUMPRODUCT pada sel target C2 sesuai contoh!",
-  "tableHeaders": [
-    "A",
-    "B",
-    "C"
-  ],
-  "tableRows": [
-    {
-      "row": 1,
-      "A": "Unit / Nama Data",
-      "B": "Nilai Input",
-      "C": "Hasil Rumus"
-    },
-    {
-      "row": 2,
-      "A": "Budi Santoso",
-      "B": 82,
-      "C": ""
-    },
-    {
-      "row": 3,
-      "A": "Dewi Lestari",
-      "B": 68,
-      "C": ""
-    },
-    {
-      "row": 4,
-      "A": "Rian Hidayat",
-      "B": 90,
-      "C": ""
+  },
+  {
+    "id": "xl-154",
+    "category": "2. Statistik Dasar & Agregasi",
+    "title": "Tantangan 154: Praktik Rumus SUMPRODUCT Dunia Nyata",
+    "scenario": "Kasus Perkantoran (SUMPRODUCT): Mengalikan dua kolom sejajar lalu menjumlahkan hasilnya sekaligus. Gunakan rumus SUMPRODUCT pada sel target C2 secara mandiri!",
+    "tableHeaders": [
+      "A",
+      "B",
+      "C"
+    ],
+    "tableRows": [
+      {
+        "row": 1,
+        "A": "Unit / Nama Data",
+        "B": "Nilai Input",
+        "C": "Hasil Rumus"
+      },
+      {
+        "row": 2,
+        "A": "Budi Santoso",
+        "B": 82,
+        "C": ""
+      },
+      {
+        "row": 3,
+        "A": "Dewi Lestari",
+        "B": 68,
+        "C": ""
+      },
+      {
+        "row": 4,
+        "A": "Rian Hidayat",
+        "B": 90,
+        "C": ""
+      }
+    ],
+    "targetCell": "C2",
+    "instruction": "Gunakan fungsi SUMPRODUCT (menggunakan parameter data B2:B4, B2:B4) di sel C2 untuk mempraktekkan fungsi SUMPRODUCT!",
+    "babyHint": "🍼 Bahasa Bayi: Ketik =SUMPRODUCT(B2:B4, B2:B4) — Mengalikan dua kolom sejajar lalu menjumlahkan hasilnya sekaligus.",
+    "starterFormula": "=",
+    "quickChips": [
+      "=SUMPRODUCT(",
+      "B2",
+      "B2:B4",
+      "A2",
+      ")",
+      ",",
+      ";"
+    ],
+    "acceptedFormulas": [
+      "=SUMPRODUCT(B2:B4, B2:B4)",
+      "=SUMPRODUCT(B2:B4; B2:B4)",
+      "=SUMPRODUCT(B2:B4,B2:B4)",
+      "=SUMPRODUCT(B2:B4;B2:B4)"
+    ],
+    "expectedValue": 19448,
+    "workedExample": {
+      "title": "💡 FUNGSINYA BUAT APA & CONTOH RUMUS SUMPRODUCT",
+      "kasusSerupa": "Contoh Soal Latihan (Tabel Simulasi): Misalkan data simulasi berada pada sel sesuai contoh di bawah, maka penulisan rumus yang benar adalah =SUMPRODUCT(E10:E12, E10:E12).",
+      "rumusContoh": "=SUMPRODUCT(E10:E12, E10:E12)",
+      "nalarBayi": "Rumus SUMPRODUCT sangat krusial di kantor! Cukup ketik fungsi SUMPRODUCT (menggunakan parameter data B2:B4, B2:B4) untuk menyelesaikannya secara otomatis.",
+      "hasilContoh": "Terevaluasi otomatis oleh Excel sesuai data contoh"
     }
-  ],
-  "targetCell": "C2",
-  "instruction": "Ketik rumus =SUMPRODUCT(B2:B4, B2:B4) di sel C2 untuk mempraktekkan fungsi SUMPRODUCT!",
-  "babyHint": "🍼 Bahasa Bayi: Ketik =SUMPRODUCT(B2:B4, B2:B4) — Mengalikan dua kolom sejajar lalu menjumlahkan hasilnya sekaligus.",
-  "starterFormula": "=SUMPRODUCT(",
-  "quickChips": [
-    "=SUMPRODUCT(",
-    "B2",
-    "B2:B4",
-    "A2",
-    ")",
-    ",",
-    ";"
-  ],
-  "acceptedFormulas": [
-    "=SUMPRODUCT(B2:B4, B2:B4)",
-    "=SUMPRODUCT(B2:B4; B2:B4)",
-    "=SUMPRODUCT(B2:B4,B2:B4)",
-    "=SUMPRODUCT(B2:B4;B2:B4)"
-  ],
-  "expectedValue": 19448,
-  "workedExample": {
-    "title": "💡 FUNGSINYA BUAT APA & CONTOH RUMUS SUMPRODUCT",
-    "kasusSerupa": "Fungsi SUMPRODUCT: Mengalikan dua kolom sejajar lalu menjumlahkan hasilnya sekaligus.",
-    "rumusContoh": "=SUMPRODUCT(B2:B4, B2:B4)",
-    "nalarBayi": "Rumus SUMPRODUCT sangat krusial di kantor! Cukup ketik =SUMPRODUCT(B2:B4, B2:B4) untuk menyelesaikannya secara otomatis."
-  }
-},
-{
-  "id": "xl-155",
-  "category": "2. Statistik Dasar & Agregasi",
-  "title": "Tantangan 155: Praktik Rumus SUBTOTAL Dunia Nyata",
-  "scenario": "Kasus Perkantoran (SUBTOTAL): Menghitung total pintar yang otomatis mengabaikan baris terfilter. Gunakan rumus SUBTOTAL pada sel target C2 sesuai contoh!",
-  "tableHeaders": [
-    "A",
-    "B",
-    "C"
-  ],
-  "tableRows": [
-    {
-      "row": 1,
-      "A": "Unit / Nama Data",
-      "B": "Nilai Input",
-      "C": "Hasil Rumus"
-    },
-    {
-      "row": 2,
-      "A": "Budi Santoso",
-      "B": 82,
-      "C": ""
-    },
-    {
-      "row": 3,
-      "A": "Dewi Lestari",
-      "B": 68,
-      "C": ""
-    },
-    {
-      "row": 4,
-      "A": "Rian Hidayat",
-      "B": 90,
-      "C": ""
+  },
+  {
+    "id": "xl-155",
+    "category": "2. Statistik Dasar & Agregasi",
+    "title": "Tantangan 155: Praktik Rumus SUBTOTAL Dunia Nyata",
+    "scenario": "Kasus Perkantoran (SUBTOTAL): Menghitung total pintar yang otomatis mengabaikan baris terfilter. Gunakan rumus SUBTOTAL pada sel target C2 secara mandiri!",
+    "tableHeaders": [
+      "A",
+      "B",
+      "C"
+    ],
+    "tableRows": [
+      {
+        "row": 1,
+        "A": "Unit / Nama Data",
+        "B": "Nilai Input",
+        "C": "Hasil Rumus"
+      },
+      {
+        "row": 2,
+        "A": "Budi Santoso",
+        "B": 82,
+        "C": ""
+      },
+      {
+        "row": 3,
+        "A": "Dewi Lestari",
+        "B": 68,
+        "C": ""
+      },
+      {
+        "row": 4,
+        "A": "Rian Hidayat",
+        "B": 90,
+        "C": ""
+      }
+    ],
+    "targetCell": "C2",
+    "instruction": "Gunakan fungsi SUBTOTAL (menggunakan parameter data 9, B2:B4) di sel C2 untuk mempraktekkan fungsi SUBTOTAL!",
+    "babyHint": "🍼 Bahasa Bayi: Ketik =SUBTOTAL(9, B2:B4) — Menghitung total pintar yang otomatis mengabaikan baris terfilter.",
+    "starterFormula": "=",
+    "quickChips": [
+      "=SUBTOTAL(",
+      "B2",
+      "B2:B4",
+      "A2",
+      ")",
+      ",",
+      ";"
+    ],
+    "acceptedFormulas": [
+      "=SUBTOTAL(9, B2:B4)",
+      "=SUBTOTAL(9; B2:B4)",
+      "=SUBTOTAL(9,B2:B4)",
+      "=SUBTOTAL(9;B2:B4)"
+    ],
+    "expectedValue": 240,
+    "workedExample": {
+      "title": "💡 FUNGSINYA BUAT APA & CONTOH RUMUS SUBTOTAL",
+      "kasusSerupa": "Contoh Soal Latihan (Tabel Simulasi): Misalkan data simulasi berada pada sel sesuai contoh di bawah, maka penulisan rumus yang benar adalah =SUBTOTAL(9, E10:E12).",
+      "rumusContoh": "=SUBTOTAL(9, E10:E12)",
+      "nalarBayi": "Rumus SUBTOTAL sangat krusial di kantor! Cukup ketik fungsi SUBTOTAL (menggunakan parameter data 9, B2:B4) untuk menyelesaikannya secara otomatis.",
+      "hasilContoh": "Terevaluasi otomatis oleh Excel sesuai data contoh"
     }
-  ],
-  "targetCell": "C2",
-  "instruction": "Ketik rumus =SUBTOTAL(9, B2:B4) di sel C2 untuk mempraktekkan fungsi SUBTOTAL!",
-  "babyHint": "🍼 Bahasa Bayi: Ketik =SUBTOTAL(9, B2:B4) — Menghitung total pintar yang otomatis mengabaikan baris terfilter.",
-  "starterFormula": "=SUBTOTAL(",
-  "quickChips": [
-    "=SUBTOTAL(",
-    "B2",
-    "B2:B4",
-    "A2",
-    ")",
-    ",",
-    ";"
-  ],
-  "acceptedFormulas": [
-    "=SUBTOTAL(9, B2:B4)",
-    "=SUBTOTAL(9; B2:B4)",
-    "=SUBTOTAL(9,B2:B4)",
-    "=SUBTOTAL(9;B2:B4)"
-  ],
-  "expectedValue": 240,
-  "workedExample": {
-    "title": "💡 FUNGSINYA BUAT APA & CONTOH RUMUS SUBTOTAL",
-    "kasusSerupa": "Fungsi SUBTOTAL: Menghitung total pintar yang otomatis mengabaikan baris terfilter.",
-    "rumusContoh": "=SUBTOTAL(9, B2:B4)",
-    "nalarBayi": "Rumus SUBTOTAL sangat krusial di kantor! Cukup ketik =SUBTOTAL(9, B2:B4) untuk menyelesaikannya secara otomatis."
   }
-}
 ];
 
 
@@ -12778,49 +12933,47 @@ if (typeof module !== "undefined" && module.exports) {
 
 
 
-// Generator 5 Persoalan Dunia Nyata untuk Setiap Rumus di Website
+
+
+
+
+// Generator 5 Persoalan Tes Dunia Nyata untuk Setiap Rumus di Website (Tanpa Spoiler Kunci Rumus!)
 window.getExcelFiveCasesForChallenge = function(chal) {
-  const baseFormula = (chal.acceptedFormulas && chal.acceptedFormulas[0]) ? chal.acceptedFormulas[0] : (chal.workedExample ? chal.workedExample.rumusContoh : "=SUM(B2:B4)");
   return [
     {
       caseNum: 1,
-      badge: "Persoalan #1 • Kasus Utama",
-      contextTitle: "Kasus Dunia Nyata #1: Operasional & Evaluasi Utama",
+      badge: "Soal Tes #1 • Kasus Utama",
+      contextTitle: "Soal Tes #1: Operasional & Evaluasi Utama",
       scenario: chal.scenario,
-      instruction: chal.instruction,
-      hint: baseFormula
+      instruction: chal.instruction
     },
     {
       caseNum: 2,
-      badge: "Persoalan #2 • Keuangan & Akuntansi",
-      contextTitle: "Kasus Dunia Nyata #2: Audit Pembukuan & Rekap Keuangan Cabang",
-      scenario: "Divisi Keuangan meminta Anda menerapkan rumus yang sama pada tabel transaksi keuangan ini di sel " + chal.targetCell + ".",
-      instruction: chal.instruction + " (Latihan penguatan tangan ke-2: ketik langsung tanpa melihat petunjuk!)",
-      hint: baseFormula
+      badge: "Soal Tes #2 • Keuangan & Akuntansi",
+      contextTitle: "Soal Tes #2: Audit Pembukuan & Rekap Keuangan Cabang",
+      scenario: "Divisi Keuangan meminta Anda menyelesaikan perhitungan pada tabel transaksi ini di sel " + chal.targetCell + " tanpa melihat petunjuk.",
+      instruction: chal.instruction
     },
     {
       caseNum: 3,
-      badge: "Persoalan #3 • HRD & Penggajian",
-      contextTitle: "Kasus Dunia Nyata #3: Penilaian Kinerja & Absensi Staf HRD",
+      badge: "Soal Tes #3 • HRD & Penggajian",
+      contextTitle: "Soal Tes #3: Penilaian Kinerja & Absensi Staf HRD",
       scenario: "Bagian Personalia (HRD) membutuhkan perhitungan otomatis di sel " + chal.targetCell + " untuk laporan bulanan direksi.",
-      instruction: chal.instruction + " (Latihan ke-3: gunakan pemisah koma , atau titik koma ; sesuai kebiasaanmu!)",
-      hint: baseFormula
+      instruction: chal.instruction
     },
     {
       caseNum: 4,
-      badge: "Persoalan #4 • Logistik & Gudang",
-      contextTitle: "Kasus Dunia Nyata #4: Pemeriksaan Stok & Pengiriman Barang Gudang",
-      scenario: "Kepala Gudang Logistik meminta Anda mengisi sel " + chal.targetCell + " menggunakan rumus Excel yang tepat.",
-      instruction: chal.instruction + " (Latihan ke-4: pastikan penulisan kurung buka dan kurung tutup lengkap!)",
-      hint: baseFormula
+      badge: "Soal Tes #4 • Logistik & Gudang",
+      contextTitle: "Soal Tes #4: Pemeriksaan Stok & Pengiriman Barang Gudang",
+      scenario: "Kepala Gudang Logistik meminta Anda mengisi sel " + chal.targetCell + " menggunakan rumus yang tepat.",
+      instruction: chal.instruction
     },
     {
       caseNum: 5,
-      badge: "Persoalan #5 • Ujian Mandiri Tanpa Bantuan",
-      contextTitle: "Kasus Dunia Nyata #5: Tantangan Kecepatan Administrasi Kantor",
-      scenario: "Ujian Kemahiran Akhir untuk rumus ini! Selesaikan perhitungan di sel " + chal.targetCell + " dengan cepat dan akurat.",
-      instruction: chal.instruction,
-      hint: baseFormula
+      badge: "Soal Tes #5 • Ujian Mandiri",
+      contextTitle: "Soal Tes #5: Tantangan Kecepatan Administrasi Kantor",
+      scenario: "Ujian Kemahiran Akhir! Selesaikan perhitungan di sel " + chal.targetCell + " secara mandiri.",
+      instruction: chal.instruction
     }
   ];
 };
