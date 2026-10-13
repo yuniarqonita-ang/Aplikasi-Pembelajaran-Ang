@@ -228,10 +228,18 @@ function switchTab(tabName) {
     );
   } else if (tabName === 'admin-panel') {
     renderAdminPanelPage();
-    setKodiSpeech(
-      "Selamat datang di Master Admin Panel Terpadu! 🛠️ Akses langsung terbuka 100% tanpa password untuk mengontrol seluruh 11 modul, melihat 880+ kunci jawaban resmi, dan rekap nilai!",
-      "Gunakan 4 sub-menu di atas: Overview Modul, Master Kunci Jawaban, Rekap Nilai Siswa, atau Pusat Download File!"
-    );
+    const curSess = typeof isTeacherLoggedIn === "function" ? isTeacherLoggedIn() : false;
+    if (curSess) {
+      setKodiSpeech(
+        `Selamat datang di Master Admin Panel, ${curSess.name}! 🛠️`,
+        "Gunakan 4 sub-menu di atas: Overview Modul, Master Kunci Jawaban (880+ Soal), Rekap Nilai Siswa, atau Pusat Unduhan File!"
+      );
+    } else {
+      setKodiSpeech(
+        "Gerbang Masuk Master Admin & Guru 🛡️",
+        "Area terbatas khusus Guru, Administrator, & Pengawas. Masukkan Username dan Password untuk mengakses panel kendali!"
+      );
+    }
   } else if (tabName === 'math-trainer') {
     renderMathTrainer();
     setKodiSpeech(
@@ -7119,13 +7127,55 @@ appState.adminKeyModuleFilter = "ihsaniyah";
 appState.adminKeySearchQuery = "";
 appState.adminKeyPage = 1;
 
-// Akses Master Admin Panel Langsung Terbuka 100% Bebas Tanpa Hambatan Username & Password
-function isTeacherLoggedIn() {
-  return true;
+// =====================================================================
+// AUTENTIKASI RESMI MASTER ADMIN PANEL & GURU (MULTI-ROLE & REMEMBER ME)
+// =====================================================================
+function getAdminCredentials() {
+  try {
+    const raw = localStorage.getItem("kodi_admin_accounts");
+    if (raw) {
+      const parsed = JSON.parse(raw);
+      if (parsed && typeof parsed === "object") return parsed;
+    }
+  } catch(e) {}
+  const defaults = {
+    "admin": { password: "admin123", role: "Super Administrator", name: "Administrator Utama" },
+    "guru": { password: "guru2026", role: "Guru / Pendidik", name: "Guru Pengajar SD Ihsaniyah" },
+    "pengawas": { password: "pengawas123", role: "Pengawas Ujian", name: "Pengawas Evaluasi" }
+  };
+  try {
+    localStorage.setItem("kodi_admin_accounts", JSON.stringify(defaults));
+  } catch(e) {}
+  return defaults;
 }
 
-function setTeacherLoggedInState(val) {
-  window._ihsTeacherLoggedIn = true;
+function isTeacherLoggedIn() {
+  try {
+    const sessStr = sessionStorage.getItem("kodi_admin_session") || localStorage.getItem("kodi_admin_session");
+    if (sessStr) {
+      const sess = JSON.parse(sessStr);
+      if (sess && sess.loggedIn && sess.username) {
+        return sess;
+      }
+    }
+  } catch(e) {}
+  return false;
+}
+
+function setTeacherLoggedInState(sessionData, rememberMe) {
+  if (sessionData && sessionData.loggedIn) {
+    const str = JSON.stringify(sessionData);
+    if (rememberMe) {
+      localStorage.setItem("kodi_admin_session", str);
+      sessionStorage.removeItem("kodi_admin_session");
+    } else {
+      sessionStorage.setItem("kodi_admin_session", str);
+      localStorage.removeItem("kodi_admin_session");
+    }
+  } else {
+    localStorage.removeItem("kodi_admin_session");
+    sessionStorage.removeItem("kodi_admin_session");
+  }
 }
 
 window.openIhsaniyahAdminPanel = function(defaultSubTab) {
@@ -7151,26 +7201,114 @@ window.togglePasswordVisibility = function(inputId) {
   }
 };
 
-window.handleTeacherLoginSubmit = function() {
-  setTeacherLoggedInState(true);
-  if (window.sfx && typeof sfx.playSuccess === "function") sfx.playSuccess();
-  closeIhsaniyahAdminPanel();
-  switchTab("admin-panel");
-  renderAdminPanelPage();
+window.handleTeacherLoginSubmit = function(e) {
+  if (e && typeof e.preventDefault === "function") e.preventDefault();
+  const userEl = document.getElementById("admin-login-username");
+  const passEl = document.getElementById("admin-login-password");
+  const remEl = document.getElementById("admin-login-remember");
+  const errEl = document.getElementById("admin-login-error");
+
+  const username = (userEl ? userEl.value : "").trim().toLowerCase();
+  const password = (passEl ? passEl.value : "").trim();
+  const remember = remEl ? remEl.checked : true;
+
+  if (!username || !password) {
+    if (errEl) {
+      errEl.style.display = "block";
+      errEl.innerHTML = "⚠️ Harap masukkan Username dan Password lengkap!";
+    }
+    if (window.sfx && typeof sfx.playError === "function") sfx.playError();
+    return;
+  }
+
+  const accounts = getAdminCredentials();
+  const targetAcc = accounts[username];
+
+  if (targetAcc && targetAcc.password === password) {
+    const sessionData = {
+      loggedIn: true,
+      username: username,
+      name: targetAcc.name || username,
+      role: targetAcc.role || "Administrator",
+      loginTime: new Date().toISOString()
+    };
+    setTeacherLoggedInState(sessionData, remember);
+    if (window.sfx && typeof sfx.playSuccess === "function") sfx.playSuccess();
+    renderAdminPanelPage();
+    if (typeof setKodiSpeech === "function") {
+      setKodiSpeech(
+        `Selamat datang, ${sessionData.name}! 🛡️`,
+        `Anda berhasil masuk sebagai ${sessionData.role}. Seluruh kontrol modul, kunci jawaban, dan rekap nilai siap dikelola!`
+      );
+    }
+  } else {
+    if (errEl) {
+      errEl.style.display = "block";
+      errEl.innerHTML = "❌ Username atau Password salah! Periksa kembali atau gunakan kredensial default di bawah.";
+    }
+    if (window.sfx && typeof sfx.playError === "function") sfx.playError();
+    if (passEl) {
+      passEl.focus();
+      passEl.select();
+    }
+  }
 };
 
-window.quickLoginTeacherAdmin = function() {
-  setTeacherLoggedInState(true);
-  if (window.sfx && typeof sfx.playSuccess === "function") sfx.playSuccess();
-  closeIhsaniyahAdminPanel();
-  switchTab("admin-panel");
-  renderAdminPanelPage();
+window.quickFillAdminCredentials = function(username, password) {
+  const userEl = document.getElementById("admin-login-username");
+  const passEl = document.getElementById("admin-login-password");
+  if (userEl) userEl.value = username;
+  if (passEl) passEl.value = password;
+  if (window.sfx && typeof sfx.playClick === "function") sfx.playClick();
 };
 
 window.logoutTeacherHandler = function() {
-  // Akses admin dibuat terbuka langsung, tombol diarahkan kembali ke beranda petualangan
-  if (window.sfx && typeof sfx.playClick === "function") sfx.playClick();
-  switchTab("adventure");
+  if (confirm("Apakah Anda yakin ingin keluar dari Master Admin Panel? Sesi Anda akan diamankan kembali.")) {
+    setTeacherLoggedInState(null);
+    if (window.sfx && typeof sfx.playClick === "function") sfx.playClick();
+    renderAdminPanelPage();
+    if (typeof setKodiSpeech === "function") {
+      setKodiSpeech(
+        "Sesi Admin Ditutup 🔒",
+        "Anda telah keluar dari Master Admin Panel. Halaman kembali dilindungi username dan password."
+      );
+    }
+  }
+};
+
+window.openChangePasswordModal = function() {
+  const currentSess = isTeacherLoggedIn();
+  if (!currentSess) return;
+  const username = currentSess.username;
+  const accounts = getAdminCredentials();
+  const acc = accounts[username];
+  if (!acc) return;
+
+  const oldPass = prompt(`Ubah Kata Sandi untuk [${username}]\n\nMasukkan password saat ini:`);
+  if (oldPass === null) return;
+  if (oldPass !== acc.password) {
+    alert("❌ Password saat ini tidak sesuai!");
+    return;
+  }
+
+  const newPass = prompt("Masukkan password baru (minimal 4 karakter):");
+  if (newPass === null) return;
+  if (!newPass || newPass.trim().length < 4) {
+    alert("❌ Password baru minimal harus 4 karakter!");
+    return;
+  }
+
+  const confirmPass = prompt("Konfirmasi ulang password baru:");
+  if (confirmPass === null) return;
+  if (newPass.trim() !== confirmPass.trim()) {
+    alert("❌ Konfirmasi password tidak cocok!");
+    return;
+  }
+
+  accounts[username].password = newPass.trim();
+  localStorage.setItem("kodi_admin_accounts", JSON.stringify(accounts));
+  alert(`✅ Berhasil! Kata sandi untuk [${username}] telah diperbarui. Silakan gunakan kata sandi baru untuk login berikutnya.`);
+  if (window.sfx && typeof sfx.playSuccess === "function") sfx.playSuccess();
 };
 
 window.setAdminSubTab = function(subTab) {
@@ -7825,10 +7963,141 @@ function renderAdminPanelPage() {
   const container = document.getElementById("admin-panel-content-area");
   if (!container) return;
 
+  const currentSession = isTeacherLoggedIn();
+
+  // =====================================================================
+  // JIKA BELUM LOGIN: TAMPILKAN PORTAL LOGIN GERBANG RESMI ADMIN & GURU
+  // =====================================================================
+  if (!currentSession) {
+    container.innerHTML = `
+      <div style="max-width: 580px; margin: 30px auto; padding: 0 16px;">
+        <div style="background: linear-gradient(135deg, rgba(15, 23, 42, 0.98), rgba(30, 41, 59, 0.96)); border: 2px solid #38bdf8; border-radius: 24px; padding: 32px 28px; box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5); backdrop-filter: blur(12px);">
+          
+          <!-- HEADER & ICON -->
+          <div style="text-align: center; margin-bottom: 24px;">
+            <div style="width: 72px; height: 72px; margin: 0 auto 14px; border-radius: 20px; background: linear-gradient(135deg, #0284c7, #2563eb); display: flex; align-items: center; justify-content: center; font-size: 2.4rem; border: 2px solid #7dd3fc; box-shadow: 0 8px 25px rgba(2, 132, 199, 0.4);">
+              🛡️
+            </div>
+            <div style="display: inline-block; background: rgba(56, 189, 248, 0.15); border: 1px solid rgba(56, 189, 248, 0.4); color: #38bdf8; font-size: 0.76rem; font-weight: 800; padding: 4px 14px; border-radius: 999px; margin-bottom: 8px;">
+              PORTAL OTENTIKASI & AREA KHUSUS GURU/ADMIN
+            </div>
+            <h2 style="margin: 0 0 8px; color: #ffffff; font-size: 1.55rem; font-weight: 900;">
+              Login Master Admin & Guru
+            </h2>
+            <p style="margin: 0; color: #94a3b8; font-size: 0.86rem; line-height: 1.5;">
+              Halaman ini dibatasi khusus untuk <strong>Guru, Administrator, dan Pengawas</strong> guna mengontrol seluruh 11 modul, melihat 880+ kunci jawaban resmi, dan mengelola nilai siswa.
+            </p>
+          </div>
+
+          <!-- KARTU PEMBEDA ROLE SISWA VS ADMIN -->
+          <div style="background: rgba(2, 6, 23, 0.6); border: 1px solid rgba(148, 163, 184, 0.2); border-radius: 14px; padding: 12px 14px; margin-bottom: 22px; font-size: 0.8rem; line-height: 1.45;">
+            <div style="color: #fca5a5; margin-bottom: 4px;">
+              🚫 <strong>Murid / Siswa / Pengguna Publik:</strong> Dilarang mengakses panel ini agar kunci jawaban dan integritas ujian tetap terjaga. Silakan gunakan modul belajar di tab atas.
+            </div>
+            <div style="color: #86efac;">
+              ✅ <strong>Admin / Guru / Pengawas:</strong> Masukkan kredensial resmi Anda untuk mengakses dashboard manajemen penuh.
+            </div>
+          </div>
+
+          <!-- FORM LOGIN -->
+          <form id="form-admin-login" onsubmit="handleTeacherLoginSubmit(event)">
+            <!-- USERNAME -->
+            <div style="margin-bottom: 16px;">
+              <label for="admin-login-username" style="display: block; font-weight: 800; font-size: 0.84rem; color: #cbd5e1; margin-bottom: 6px;">
+                👤 Username / Nama Pengguna:
+              </label>
+              <input type="text" id="admin-login-username" value="admin" placeholder="Ketik username (contoh: admin atau guru)"
+                     style="width: 100%; box-sizing: border-box; background: rgba(15, 23, 42, 0.85); border: 1.5px solid rgba(56, 189, 248, 0.4); border-radius: 12px; padding: 12px 16px; color: #ffffff; font-size: 0.95rem; outline: none; transition: all 0.2s;"
+                     onfocus="this.style.borderColor='#38bdf8'; this.style.boxShadow='0 0 12px rgba(56, 189, 248, 0.25)';"
+                     onblur="this.style.borderColor='rgba(56, 189, 248, 0.4)'; this.style.boxShadow='none';"
+                     autocomplete="username" required>
+            </div>
+
+            <!-- PASSWORD -->
+            <div style="margin-bottom: 16px;">
+              <label for="admin-login-password" style="display: flex; justify-content: space-between; align-items: center; font-weight: 800; font-size: 0.84rem; color: #cbd5e1; margin-bottom: 6px;">
+                <span>🔑 Password / Kata Sandi:</span>
+                <span style="font-size: 0.75rem; color: #38bdf8; cursor: pointer;" onclick="togglePasswordVisibility('admin-login-password')">👁️ Lihat / Sembunyikan</span>
+              </label>
+              <div style="position: relative;">
+                <input type="password" id="admin-login-password" placeholder="Masukkan password admin..."
+                       style="width: 100%; box-sizing: border-box; background: rgba(15, 23, 42, 0.85); border: 1.5px solid rgba(56, 189, 248, 0.4); border-radius: 12px; padding: 12px 48px 12px 16px; color: #ffffff; font-size: 0.95rem; outline: none; transition: all 0.2s;"
+                       onfocus="this.style.borderColor='#38bdf8'; this.style.boxShadow='0 0 12px rgba(56, 189, 248, 0.25)';"
+                       onblur="this.style.borderColor='rgba(56, 189, 248, 0.4)'; this.style.boxShadow='none';"
+                       autocomplete="current-password" required>
+                <button type="button" onclick="togglePasswordVisibility('admin-login-password')"
+                        style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); background: transparent; border: none; font-size: 1.1rem; cursor: pointer; color: #94a3b8; padding: 4px;">
+                  👁️
+                </button>
+              </div>
+            </div>
+
+            <!-- REMEMBER ME CHECKBOX -->
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; font-size: 0.82rem; color: #cbd5e1;">
+              <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
+                <input type="checkbox" id="admin-login-remember" checked style="accent-color: #38bdf8; width: 16px; height: 16px;">
+                <span>Ingat sesi saya di perangkat ini</span>
+              </label>
+            </div>
+
+            <!-- ERROR MESSAGE BOX -->
+            <div id="admin-login-error" style="display: none; background: rgba(239, 68, 68, 0.15); border: 1.5px solid #ef4444; color: #fca5a5; font-size: 0.84rem; font-weight: 700; padding: 10px 14px; border-radius: 10px; margin-bottom: 18px; text-align: center;">
+            </div>
+
+            <!-- TOMBOL SUBMIT -->
+            <button type="submit"
+                    style="width: 100%; background: linear-gradient(135deg, #0284c7, #2563eb); border: none; border-radius: 12px; padding: 14px 20px; color: #ffffff; font-size: 1rem; font-weight: 900; cursor: pointer; box-shadow: 0 8px 24px rgba(2, 132, 199, 0.35); transition: transform 0.15s, box-shadow 0.15s;"
+                    onmouseover="this.style.transform='translateY(-2px)';"
+                    onmouseout="this.style.transform='translateY(0)';">
+              🚀 Masuk ke Master Admin Panel
+            </button>
+          </form>
+
+          <!-- KOTAK INFO AKUN DEFAULT & TOMBOL CEPAT ISI -->
+          <div style="margin-top: 22px; padding: 14px; background: rgba(255, 255, 255, 0.03); border: 1px dashed rgba(56, 189, 248, 0.35); border-radius: 12px; font-size: 0.79rem; color: #94a3b8; line-height: 1.5;">
+            <div style="font-weight: 800; color: #38bdf8; margin-bottom: 8px;">
+              💡 Kredensial Login Terdaftar (Klik untuk Langsung Isi):
+            </div>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
+              <div onclick="quickFillAdminCredentials('admin', 'admin123')"
+                   style="background: rgba(15, 23, 42, 0.7); border: 1px solid rgba(56, 189, 248, 0.3); padding: 8px 10px; border-radius: 8px; cursor: pointer; transition: all 0.2s;"
+                   onmouseover="this.style.borderColor='#38bdf8'; this.style.background='rgba(2, 132, 199, 0.2)';"
+                   onmouseout="this.style.borderColor='rgba(56, 189, 248, 0.3)'; this.style.background='rgba(15, 23, 42, 0.7)';">
+                <strong style="color: #4ade80;">👑 Akun Admin:</strong><br>
+                User: <code>admin</code><br>
+                Pass: <code>admin123</code>
+              </div>
+              <div onclick="quickFillAdminCredentials('guru', 'guru2026')"
+                   style="background: rgba(15, 23, 42, 0.7); border: 1px solid rgba(168, 85, 247, 0.3); padding: 8px 10px; border-radius: 8px; cursor: pointer; transition: all 0.2s;"
+                   onmouseover="this.style.borderColor='#c084fc'; this.style.background='rgba(168, 85, 247, 0.2)';"
+                   onmouseout="this.style.borderColor='rgba(168, 85, 247, 0.3)'; this.style.background='rgba(15, 23, 42, 0.7)';">
+                <strong style="color: #c084fc;">👩‍🏫 Akun Guru:</strong><br>
+                User: <code>guru</code><br>
+                Pass: <code>guru2026</code>
+              </div>
+            </div>
+            <div style="margin-top: 8px; font-size: 0.74rem; color: #64748b;">
+              *Password dapat diubah kapan saja di dalam dashboard setelah Anda berhasil masuk.
+            </div>
+          </div>
+
+          <!-- TOMBOL KEMBALI KE BERANDA PEMBELAJARAN SISWA -->
+          <div style="text-align: center; margin-top: 20px;">
+            <button type="button" class="btn-secondary" style="font-size: 0.84rem; padding: 8px 18px; border-radius: 10px;" onclick="switchTab('adventure')">
+              ← Kembali ke Petualangan Pembelajaran Siswa
+            </button>
+          </div>
+
+        </div>
+      </div>
+    `;
+    return;
+  }
+
   // Sinkronisasi progres ujian SD Ihsaniyah bila ada siswa aktif
   syncIhsaniyahProgressToRecords(false);
 
-  // 1. HITUNG STATISTIK LIVE DARI SELURUH 11 MODUL DI APLIKASI (AKSES LANGSUNG TERBUKA TANPA PASSWORD)
+  // 1. HITUNG STATISTIK LIVE DARI SELURUH 11 MODUL DI APLIKASI
   const totalLevels = (typeof levelsData !== "undefined" ? levelsData.length : 5);
   const doneLevels = (appState.completedLevels || []).length;
 
@@ -8050,8 +8319,8 @@ function renderAdminPanelPage() {
           </div>
           <div>
             <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
-              <span style="font-size: 0.74rem; font-weight: 900; background: rgba(16, 185, 129, 0.2); color: #4ade80; padding: 3px 10px; border-radius: 999px; border: 1px solid #10b981;">
-                🟢 AKSES LANGSUNG TERBUKA (BEBAS TANPA PASSWORD)
+              <span style="font-size: 0.74rem; font-weight: 900; background: rgba(16, 185, 129, 0.2); color: #4ade80; padding: 3px 12px; border-radius: 999px; border: 1px solid #10b981;">
+                🟢 TERAUTENTIKASI: ${currentSession.name} (${currentSession.role})
               </span>
               <span style="font-size: 0.78rem; font-weight: 800; color: #38bdf8;">
                 KODI IT ACADEMY & SD IHSANIYAH • PUSAT KENDALI SELURUH 11 MODUL
@@ -8070,8 +8339,11 @@ function renderAdminPanelPage() {
           <button class="btn-primary" style="padding: 10px 14px; font-size: 0.82rem; font-weight: 800; background: linear-gradient(135deg, #059669, #10b981); border: none; border-radius: 10px; cursor: pointer;" onclick="adminUnlockModule('ALL')">
             🔓 Unlock 100% Semua Modul
           </button>
-          <button class="btn-secondary" style="padding: 10px 14px; font-size: 0.82rem; font-weight: 800; color: #38bdf8; border-radius: 10px; cursor: pointer;" onclick="switchTab('ihsaniyah-test')">
-            🎒 Ke Ujian Siswa
+          <button class="btn-secondary" style="padding: 10px 14px; font-size: 0.82rem; font-weight: 800; color: #38bdf8; border: 1.5px solid rgba(56, 189, 248, 0.45); border-radius: 10px; cursor: pointer;" onclick="openChangePasswordModal()" title="Ubah kata sandi akun admin ini">
+            🔑 Ganti Password
+          </button>
+          <button class="btn-secondary" style="padding: 10px 14px; font-size: 0.82rem; font-weight: 800; color: #f87171; border: 1.5px solid rgba(239, 68, 68, 0.5); border-radius: 10px; cursor: pointer;" onclick="logoutTeacherHandler()" title="Keluar dari sesi admin dan amankan kembali">
+            🚪 Logout Admin
           </button>
           <button class="btn-secondary" style="padding: 10px 14px; font-size: 0.82rem; font-weight: 800; color: #fde047; border-radius: 10px; cursor: pointer;" onclick="exportFullAppBackupJSON()">
             💾 Backup Data (.json)
