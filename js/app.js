@@ -196,6 +196,21 @@ function switchTab(tabName) {
     content.classList.toggle("active", content.id === `tab-${tabName}`);
   });
 
+  const headerAdminBtn = document.getElementById("btn-header-admin");
+  if (headerAdminBtn) {
+    if (tabName === 'admin-panel') {
+      headerAdminBtn.style.background = "linear-gradient(135deg, #0284c7, #2563eb)";
+      headerAdminBtn.style.boxShadow = "0 0 16px rgba(56, 189, 248, 0.7)";
+      headerAdminBtn.style.border = "2px solid #7dd3fc";
+      headerAdminBtn.style.color = "#ffffff";
+    } else {
+      headerAdminBtn.style.background = "linear-gradient(135deg, rgba(2, 132, 199, 0.35), rgba(37, 99, 235, 0.45))";
+      headerAdminBtn.style.boxShadow = "none";
+      headerAdminBtn.style.border = "1.5px solid #38bdf8";
+      headerAdminBtn.style.color = "#ffffff";
+    }
+  }
+
   if (tabName === 'sql-trainer') {
     renderSqlTrainer();
     setKodiSpeech(
@@ -8006,7 +8021,7 @@ function renderAdminPanelPage() {
               <label for="admin-login-username" style="display: block; font-weight: 800; font-size: 0.84rem; color: #cbd5e1; margin-bottom: 6px;">
                 👤 Username / Nama Pengguna:
               </label>
-              <input type="text" id="admin-login-username" value="admin" placeholder="Ketik username (contoh: admin atau guru)"
+              <input type="text" id="admin-login-username" value="" placeholder="Masukkan username admin / guru..."
                      style="width: 100%; box-sizing: border-box; background: rgba(15, 23, 42, 0.85); border: 1.5px solid rgba(56, 189, 248, 0.4); border-radius: 12px; padding: 12px 16px; color: #ffffff; font-size: 0.95rem; outline: none; transition: all 0.2s;"
                      onfocus="this.style.borderColor='#38bdf8'; this.style.boxShadow='0 0 12px rgba(56, 189, 248, 0.25)';"
                      onblur="this.style.borderColor='rgba(56, 189, 248, 0.4)'; this.style.boxShadow='none';"
@@ -8020,7 +8035,7 @@ function renderAdminPanelPage() {
                 <span style="font-size: 0.75rem; color: #38bdf8; cursor: pointer;" onclick="togglePasswordVisibility('admin-login-password')">👁️ Lihat / Sembunyikan</span>
               </label>
               <div style="position: relative;">
-                <input type="password" id="admin-login-password" placeholder="Masukkan password admin..."
+                <input type="password" id="admin-login-password" placeholder="Masukkan password..."
                        style="width: 100%; box-sizing: border-box; background: rgba(15, 23, 42, 0.85); border: 1.5px solid rgba(56, 189, 248, 0.4); border-radius: 12px; padding: 12px 48px 12px 16px; color: #ffffff; font-size: 0.95rem; outline: none; transition: all 0.2s;"
                        onfocus="this.style.borderColor='#38bdf8'; this.style.boxShadow='0 0 12px rgba(56, 189, 248, 0.25)';"
                        onblur="this.style.borderColor='rgba(56, 189, 248, 0.4)'; this.style.boxShadow='none';"
@@ -8052,34 +8067,6 @@ function renderAdminPanelPage() {
               🚀 Masuk ke Master Admin Panel
             </button>
           </form>
-
-          <!-- KOTAK INFO AKUN DEFAULT & TOMBOL CEPAT ISI -->
-          <div style="margin-top: 22px; padding: 14px; background: rgba(255, 255, 255, 0.03); border: 1px dashed rgba(56, 189, 248, 0.35); border-radius: 12px; font-size: 0.79rem; color: #94a3b8; line-height: 1.5;">
-            <div style="font-weight: 800; color: #38bdf8; margin-bottom: 8px;">
-              💡 Kredensial Login Terdaftar (Klik untuk Langsung Isi):
-            </div>
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
-              <div onclick="quickFillAdminCredentials('admin', 'admin123')"
-                   style="background: rgba(15, 23, 42, 0.7); border: 1px solid rgba(56, 189, 248, 0.3); padding: 8px 10px; border-radius: 8px; cursor: pointer; transition: all 0.2s;"
-                   onmouseover="this.style.borderColor='#38bdf8'; this.style.background='rgba(2, 132, 199, 0.2)';"
-                   onmouseout="this.style.borderColor='rgba(56, 189, 248, 0.3)'; this.style.background='rgba(15, 23, 42, 0.7)';">
-                <strong style="color: #4ade80;">👑 Akun Admin:</strong><br>
-                User: <code>admin</code><br>
-                Pass: <code>admin123</code>
-              </div>
-              <div onclick="quickFillAdminCredentials('guru', 'guru2026')"
-                   style="background: rgba(15, 23, 42, 0.7); border: 1px solid rgba(168, 85, 247, 0.3); padding: 8px 10px; border-radius: 8px; cursor: pointer; transition: all 0.2s;"
-                   onmouseover="this.style.borderColor='#c084fc'; this.style.background='rgba(168, 85, 247, 0.2)';"
-                   onmouseout="this.style.borderColor='rgba(168, 85, 247, 0.3)'; this.style.background='rgba(15, 23, 42, 0.7)';">
-                <strong style="color: #c084fc;">👩‍🏫 Akun Guru:</strong><br>
-                User: <code>guru</code><br>
-                Pass: <code>guru2026</code>
-              </div>
-            </div>
-            <div style="margin-top: 8px; font-size: 0.74rem; color: #64748b;">
-              *Password dapat diubah kapan saja di dalam dashboard setelah Anda berhasil masuk.
-            </div>
-          </div>
 
           <!-- TOMBOL KEMBALI KE BERANDA PEMBELAJARAN SISWA -->
           <div style="text-align: center; margin-top: 20px;">
