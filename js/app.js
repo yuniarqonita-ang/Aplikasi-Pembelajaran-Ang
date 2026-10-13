@@ -229,8 +229,8 @@ function switchTab(tabName) {
   } else if (tabName === 'admin-panel') {
     renderAdminPanelPage();
     setKodiSpeech(
-      "Selamat datang di Admin Panel Guru Terpadu! 👩‍🏫 Di halaman ini Bapak/Ibu Guru dapat memantau rekap nilai siswa secara realtime, melihat kunci jawaban 27 soal, dan mengunduh laporan CSV/Excel!",
-      "Gunakan akun Guru (Username: guru | Password: sdihsaniyah2026) atau klik tombol Masuk Cepat untuk membuka dashboard penuh!"
+      "Selamat datang di Master Admin Panel Terpadu! 🛠️ Akses langsung terbuka 100% tanpa password untuk mengontrol seluruh 11 modul, melihat 880+ kunci jawaban resmi, dan rekap nilai!",
+      "Gunakan 4 sub-menu di atas: Overview Modul, Master Kunci Jawaban, Rekap Nilai Siswa, atau Pusat Download File!"
     );
   } else if (tabName === 'math-trainer') {
     renderMathTrainer();
@@ -7107,27 +7107,13 @@ appState.adminKeyModuleFilter = "ihsaniyah";
 appState.adminKeySearchQuery = "";
 appState.adminKeyPage = 1;
 
+// Akses Master Admin Panel Langsung Terbuka 100% Bebas Tanpa Hambatan Username & Password
 function isTeacherLoggedIn() {
-  try {
-    return window._ihsTeacherLoggedIn === true ||
-           sessionStorage.getItem("ihs_teacher_auth") === "true" ||
-           localStorage.getItem("ihs_teacher_auth_persist") === "true";
-  } catch (e) {
-    return window._ihsTeacherLoggedIn === true;
-  }
+  return true;
 }
 
 function setTeacherLoggedInState(val) {
-  window._ihsTeacherLoggedIn = !!val;
-  try {
-    if (val) {
-      sessionStorage.setItem("ihs_teacher_auth", "true");
-      localStorage.setItem("ihs_teacher_auth_persist", "true");
-    } else {
-      sessionStorage.removeItem("ihs_teacher_auth");
-      localStorage.removeItem("ihs_teacher_auth_persist");
-    }
-  } catch (e) {}
+  window._ihsTeacherLoggedIn = true;
 }
 
 window.openIhsaniyahAdminPanel = function(defaultSubTab) {
@@ -7153,30 +7139,12 @@ window.togglePasswordVisibility = function(inputId) {
   }
 };
 
-window.handleTeacherLoginSubmit = function(userInputId, passInputId, errBoxId) {
-  const userEl = document.getElementById(userInputId || "teacher-username-input");
-  const passEl = document.getElementById(passInputId || "teacher-password-input");
-  const errEl = document.getElementById(errBoxId || "teacher-login-error");
-
-  const u = userEl ? userEl.value.trim().toLowerCase() : "";
-  const p = passEl ? passEl.value.trim().toLowerCase() : "";
-
-  const validUsers = ["admin", "guru", "master", "kodi", "ihsaniyah", "sdihsaniyah"];
-  const validPasswords = ["admin2026", "sdihsaniyah2026", "ihsaniyah2026", "sdihsaniyah", "guru123", "guru", "admin123", "admin"];
-
-  if ((validUsers.includes(u) && validPasswords.includes(p)) || (u.length >= 3 && p.length >= 4)) {
-    setTeacherLoggedInState(true);
-    if (window.sfx && typeof sfx.playSuccess === "function") sfx.playSuccess();
-    closeIhsaniyahAdminPanel();
-    switchTab("admin-panel");
-    renderAdminPanelPage();
-  } else {
-    if (errEl) {
-      errEl.style.display = "block";
-      errEl.textContent = "⚠️ Gunakan Username: admin (atau guru) | Password: sdihsaniyah2026 (atau klik Masuk Cepat 1-Klik di bawah)";
-    }
-    if (window.sfx && typeof sfx.playWrong === "function") sfx.playWrong();
-  }
+window.handleTeacherLoginSubmit = function() {
+  setTeacherLoggedInState(true);
+  if (window.sfx && typeof sfx.playSuccess === "function") sfx.playSuccess();
+  closeIhsaniyahAdminPanel();
+  switchTab("admin-panel");
+  renderAdminPanelPage();
 };
 
 window.quickLoginTeacherAdmin = function() {
@@ -7188,10 +7156,9 @@ window.quickLoginTeacherAdmin = function() {
 };
 
 window.logoutTeacherHandler = function() {
-  setTeacherLoggedInState(false);
+  // Akses admin dibuat terbuka langsung, tombol diarahkan kembali ke beranda petualangan
   if (window.sfx && typeof sfx.playClick === "function") sfx.playClick();
-  closeIhsaniyahAdminPanel();
-  renderAdminPanelPage();
+  switchTab("adventure");
 };
 
 window.setAdminSubTab = function(subTab) {
@@ -7849,56 +7816,7 @@ function renderAdminPanelPage() {
   // Sinkronisasi progres ujian SD Ihsaniyah bila ada siswa aktif
   syncIhsaniyahProgressToRecords(false);
 
-  // 1. JIKA BELUM LOGIN ADMIN: TAMPILKAN GERBANG LOGIN MASTER ADMIN PANEL (UNTUK SEMUA MODUL)
-  if (!isTeacherLoggedIn()) {
-    container.innerHTML = `
-      <div style="max-width: 580px; margin: 26px auto; background: linear-gradient(145deg, rgba(30, 41, 59, 0.98), rgba(15, 23, 42, 0.99)); border: 2.5px solid #38bdf8; border-radius: 22px; padding: 32px; box-shadow: 0 16px 40px rgba(0,0,0,0.45); text-align: center;">
-        <div style="font-size: 3.2rem; margin-bottom: 6px;">🛠️🔐</div>
-        <div style="font-size: 0.8rem; font-weight: 900; color: #38bdf8; letter-spacing: 0.8px; text-transform: uppercase;">
-          MASTER ADMIN & CONTROL PANEL • SELURUH MODUL APLIKASI
-        </div>
-        <h2 style="margin: 6px 0 8px; color: #fff; font-size: 1.45rem;">
-          Portal Master Admin Panel (Semua Modul & Guru)
-        </h2>
-        <p style="font-size: 0.86rem; color: #cbd5e1; margin: 0 0 20px; line-height: 1.5;">
-          Kelola <strong>seluruh 11 modul pembelajaran</strong> dalam satu tempat: Kontrol & Unlock Progres Semua Modul, jelajahi <strong>Master Kunci Jawaban (SD Ihsaniyah, Cambridge Math, Koding, SQL, Rumus Excel, Pintasan, IT Lab, English)</strong>, pantau Rekap Nilai Siswa, dan unduh seluruh file <code>.xlsx</code> / <code>.docx</code>!
-        </p>
-
-        <div style="background: rgba(2, 6, 23, 0.65); border-radius: 14px; padding: 20px; margin-bottom: 20px; text-align: left; border: 1px solid rgba(56, 189, 248, 0.25);">
-          <div style="margin-bottom: 14px;">
-            <label style="display: block; font-size: 0.82rem; font-weight: 800; color: #38bdf8; margin-bottom: 6px;">Username Master Admin / Guru:</label>
-            <input type="text" id="page-teacher-user" value="admin" placeholder="Masukkan username (admin / guru)" onkeydown="if(event.key==='Enter') handleTeacherLoginSubmit('page-teacher-user', 'page-teacher-pass', 'page-teacher-err')" style="width: 100%; padding: 12px 14px; font-size: 0.95rem; font-weight: 700; border-radius: 10px; border: 1.5px solid #38bdf8; background: #0f172a; color: #fff; box-sizing: border-box;">
-          </div>
-
-          <div style="margin-bottom: 14px;">
-            <label style="display: block; font-size: 0.82rem; font-weight: 800; color: #38bdf8; margin-bottom: 6px;">Password Master Admin / Guru:</label>
-            <div style="position: relative;">
-              <input type="password" id="page-teacher-pass" value="sdihsaniyah2026" placeholder="Masukkan password" onkeydown="if(event.key==='Enter') handleTeacherLoginSubmit('page-teacher-user', 'page-teacher-pass', 'page-teacher-err')" style="width: 100%; padding: 12px 14px; font-size: 0.95rem; font-weight: 700; border-radius: 10px; border: 1.5px solid #38bdf8; background: #0f172a; color: #fff; box-sizing: border-box;">
-              <button type="button" onclick="togglePasswordVisibility('page-teacher-pass')" style="position: absolute; right: 12px; top: 50%; transform: translateY(-50%); background: none; border: none; color: #94a3b8; cursor: pointer; font-size: 1.15rem;" title="Lihat/Sembunyikan Password">👁️</button>
-            </div>
-          </div>
-
-          <div id="page-teacher-err" style="display: none; color: #f87171; font-size: 0.82rem; font-weight: 700; margin-top: 8px;"></div>
-
-          <div style="margin-top: 10px; padding: 10px 12px; background: rgba(16, 185, 129, 0.12); border-radius: 8px; font-size: 0.8rem; color: #86efac; border: 1px solid rgba(16, 185, 129, 0.3);">
-            💡 <strong>Akses Master Admin:</strong> Username: <code>admin</code> (atau <code>guru</code>) &nbsp;|&nbsp; Password: <code>sdihsaniyah2026</code> (Sudah terisi otomatis, langsung klik tombol Masuk di bawah!)
-          </div>
-        </div>
-
-        <div style="display: flex; flex-direction: column; gap: 10px;">
-          <button class="btn-primary" style="width: 100%; padding: 14px; font-size: 1.05rem; font-weight: 800; background: linear-gradient(135deg, #0284c7, #2563eb); border: none; border-radius: 12px; cursor: pointer; box-shadow: 0 6px 20px rgba(2, 132, 199, 0.4);" onclick="handleTeacherLoginSubmit('page-teacher-user', 'page-teacher-pass', 'page-teacher-err')">
-            🔑 Masuk ke Master Admin Panel (Semua Modul)
-          </button>
-          <button class="btn-secondary" style="width: 100%; padding: 11px; font-size: 0.88rem; font-weight: 800; color: #4ade80; border-color: #10b981; border-radius: 10px; cursor: pointer;" onclick="quickLoginTeacherAdmin()">
-            ⚡ Masuk Cepat 1-Klik (Langsung Buka Master Dashboard)
-          </button>
-        </div>
-      </div>
-    `;
-    return;
-  }
-
-  // 2. HITUNG STATISTIK LIVE DARI SELURUH 11 MODUL DI APLIKASI
+  // 1. HITUNG STATISTIK LIVE DARI SELURUH 11 MODUL DI APLIKASI (AKSES LANGSUNG TERBUKA TANPA PASSWORD)
   const totalLevels = (typeof levelsData !== "undefined" ? levelsData.length : 5);
   const doneLevels = (appState.completedLevels || []).length;
 
@@ -8121,7 +8039,7 @@ function renderAdminPanelPage() {
           <div>
             <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
               <span style="font-size: 0.74rem; font-weight: 900; background: rgba(16, 185, 129, 0.2); color: #4ade80; padding: 3px 10px; border-radius: 999px; border: 1px solid #10b981;">
-                🟢 MASTER ADMIN AKTIF
+                🟢 AKSES LANGSUNG TERBUKA (BEBAS TANPA PASSWORD)
               </span>
               <span style="font-size: 0.78rem; font-weight: 800; color: #38bdf8;">
                 KODI IT ACADEMY & SD IHSANIYAH • PUSAT KENDALI SELURUH 11 MODUL
@@ -8140,11 +8058,11 @@ function renderAdminPanelPage() {
           <button class="btn-primary" style="padding: 10px 14px; font-size: 0.82rem; font-weight: 800; background: linear-gradient(135deg, #059669, #10b981); border: none; border-radius: 10px; cursor: pointer;" onclick="adminUnlockModule('ALL')">
             🔓 Unlock 100% Semua Modul
           </button>
-          <button class="btn-secondary" style="padding: 10px 14px; font-size: 0.82rem; font-weight: 800; color: #38bdf8; border-radius: 10px; cursor: pointer;" onclick="exportFullAppBackupJSON()">
-            💾 Backup Semua Data (.json)
+          <button class="btn-secondary" style="padding: 10px 14px; font-size: 0.82rem; font-weight: 800; color: #38bdf8; border-radius: 10px; cursor: pointer;" onclick="switchTab('ihsaniyah-test')">
+            🎒 Ke Ujian Siswa
           </button>
-          <button class="btn-secondary" style="padding: 10px 14px; font-size: 0.82rem; font-weight: 800; color: #f59e0b; border-radius: 10px; cursor: pointer;" onclick="logoutTeacherHandler()">
-            🔒 Logout Admin
+          <button class="btn-secondary" style="padding: 10px 14px; font-size: 0.82rem; font-weight: 800; color: #fde047; border-radius: 10px; cursor: pointer;" onclick="exportFullAppBackupJSON()">
+            💾 Backup Data (.json)
           </button>
         </div>
       </div>
