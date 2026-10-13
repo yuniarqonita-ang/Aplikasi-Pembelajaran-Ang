@@ -223,8 +223,14 @@ function switchTab(tabName) {
   } else if (tabName === 'ihsaniyah-test') {
     renderIhsaniyahTest();
     setKodiSpeech(
-      "Selamat datang di Math Formative Test 2 & Division Stories! 🎒 Soal resmi kurikulum SD Ihsaniyah Gajahmada Tegal (Kampus Al Hafidz) lengkap dengan Nalar Bayi Kodi!",
-      "Isi identitas siswa, selesaikan soal pilihan ganda, game hubungkan garis kaos ke gantungan baju, dan cerita pembagian!"
+      "Selamat datang di Math Formative Test 2 & Division Stories! 🎒 Soal resmi kurikulum SD Ihsaniyah Gajahmada Tegal (Kampus Al Hafidz) lengkap dengan Visual Interaktif!",
+      "Isi identitas siswa, selesaikan 27 soal berurutan, atau klik menu 'Admin Panel Guru' di atas untuk melihat rekap nilai & kunci jawaban!"
+    );
+  } else if (tabName === 'admin-panel') {
+    renderAdminPanelPage();
+    setKodiSpeech(
+      "Selamat datang di Admin Panel Guru Terpadu! 👩‍🏫 Di halaman ini Bapak/Ibu Guru dapat memantau rekap nilai siswa secara realtime, melihat kunci jawaban 27 soal, dan mengunduh laporan CSV/Excel!",
+      "Gunakan akun Guru (Username: guru | Password: sdihsaniyah2026) atau klik tombol Masuk Cepat untuk membuka dashboard penuh!"
     );
   } else if (tabName === 'math-trainer') {
     renderMathTrainer();
@@ -7093,267 +7099,516 @@ function syncIhsaniyahProgressToRecords(updateBadgesOnly) {
   }
 }
 
-// ================= AUTENTIKASI & PANEL GURU SD IHSANIYAH =================
+// ================= AUTENTIKASI & HALAMAN PENUH ADMIN PANEL GURU =================
+appState.adminSubTab = "rekap";
+appState.adminClassFilter = "all";
+appState.adminSearchQuery = "";
+
 function isTeacherLoggedIn() {
   try {
-    return window._ihsTeacherLoggedIn === true || sessionStorage.getItem("ihs_teacher_auth") === "true";
+    return window._ihsTeacherLoggedIn === true ||
+           sessionStorage.getItem("ihs_teacher_auth") === "true" ||
+           localStorage.getItem("ihs_teacher_auth_persist") === "true";
   } catch (e) {
     return window._ihsTeacherLoggedIn === true;
   }
 }
 
+function setTeacherLoggedInState(val) {
+  window._ihsTeacherLoggedIn = !!val;
+  try {
+    if (val) {
+      sessionStorage.setItem("ihs_teacher_auth", "true");
+      localStorage.setItem("ihs_teacher_auth_persist", "true");
+    } else {
+      sessionStorage.removeItem("ihs_teacher_auth");
+      localStorage.removeItem("ihs_teacher_auth_persist");
+    }
+  } catch (e) {}
+}
+
 window.openIhsaniyahAdminPanel = function() {
   if (window.sfx && typeof sfx.playClick === "function") sfx.playClick();
   syncIhsaniyahProgressToRecords(false);
-
-  if (!isTeacherLoggedIn()) {
-    renderTeacherLoginModal();
-    return;
-  }
-
-  renderTeacherAdminModal();
+  closeIhsaniyahAdminPanel();
+  switchTab("admin-panel");
+  window.scrollTo({ top: 0, behavior: "smooth" });
 };
-
-function renderTeacherLoginModal() {
-  let modalEl = document.getElementById("ihs-admin-modal-wrap");
-  if (!modalEl) {
-    modalEl = document.createElement("div");
-    modalEl.id = "ihs-admin-modal-wrap";
-    modalEl.className = "modal-overlay active";
-    document.body.appendChild(modalEl);
-  } else {
-    modalEl.className = "modal-overlay active";
-  }
-
-  modalEl.innerHTML = `
-    <div class="modal-content" style="max-width: 460px; width: 95%; text-align: center; border: 2px solid #38bdf8; border-radius: 18px; padding: 26px; background: linear-gradient(145deg, rgba(30, 41, 59, 0.98), rgba(15, 23, 42, 0.99));">
-      <div style="font-size: 2.8rem; margin-bottom: 8px;">🔐</div>
-      <div style="font-size: 0.78rem; font-weight: 800; color: #38bdf8; letter-spacing: 0.5px; text-transform: uppercase;">
-        SD IHSANIYAH GAJAHMADA TEGAL
-      </div>
-      <h3 style="margin: 4px 0 8px; color: #fff; font-size: 1.3rem;">
-        Login Khusus Guru & Admin
-      </h3>
-      <p style="font-size: 0.82rem; color: #94a3b8; margin: 0 0 18px; line-height: 1.4;">
-        Halaman rekap nilai siswa dan kunci jawaban hanya dapat diakses oleh Bapak/Ibu Guru pengajar.
-      </p>
-
-      <div style="background: rgba(0,0,0,0.3); border-radius: 12px; padding: 16px; margin-bottom: 18px; text-align: left; border: 1px solid rgba(255,255,255,0.08);">
-        <div style="margin-bottom: 12px;">
-          <label style="display: block; font-size: 0.8rem; font-weight: 700; color: #38bdf8; margin-bottom: 4px;">Username Guru:</label>
-          <input type="text" id="teacher-username-input" placeholder="Masukkan username guru" onkeydown="if(event.key==='Enter') handleTeacherLoginSubmit()" style="width: 100%; padding: 10px 12px; font-size: 0.9rem; border-radius: 8px; border: 1.5px solid #64748b; background: #0f172a; color: #fff; box-sizing: border-box;">
-        </div>
-
-        <div style="margin-bottom: 12px;">
-          <label style="display: block; font-size: 0.8rem; font-weight: 700; color: #38bdf8; margin-bottom: 4px;">Password Guru:</label>
-          <div style="position: relative;">
-            <input type="password" id="teacher-password-input" placeholder="Masukkan password guru" onkeydown="if(event.key==='Enter') handleTeacherLoginSubmit()" style="width: 100%; padding: 10px 12px; font-size: 0.9rem; border-radius: 8px; border: 1.5px solid #64748b; background: #0f172a; color: #fff; box-sizing: border-box;">
-            <button type="button" onclick="togglePasswordVisibility()" style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); background: none; border: none; color: #94a3b8; cursor: pointer; font-size: 1.1rem;" title="Lihat/Sembunyikan Password">👁️</button>
-          </div>
-        </div>
-
-        <div id="teacher-login-error" style="display: none; color: #f87171; font-size: 0.8rem; font-weight: 700; margin-top: 6px;"></div>
-
-        <div style="margin-top: 10px; padding: 8px 12px; background: rgba(56, 189, 248, 0.08); border-radius: 6px; font-size: 0.76rem; color: var(--text-muted); border: 1px solid rgba(56, 189, 248, 0.2); text-align: center;">
-          🔒 Akses khusus dan terbatas untuk Bapak/Ibu Dewan Guru SD Ihsaniyah Gajahmada Tegal.
-        </div>
-      </div>
-
-      <div style="display: flex; gap: 10px; justify-content: center;">
-        <button class="btn-primary" style="flex: 1; padding: 11px; font-weight: 800; background: linear-gradient(135deg, #0284c7, #2563eb);" onclick="handleTeacherLoginSubmit()">
-          🔑 Masuk ke Panel Guru
-        </button>
-        <button class="btn-secondary" style="padding: 11px 18px;" onclick="closeIhsaniyahAdminPanel()">
-          Batal
-        </button>
-      </div>
-    </div>
-  `;
-}
-
-window.togglePasswordVisibility = function() {
-  const passEl = document.getElementById("teacher-password-input");
-  if (passEl) {
-    passEl.type = passEl.type === "password" ? "text" : "password";
-  }
-};
-
-window.handleTeacherLoginSubmit = function() {
-  const userEl = document.getElementById("teacher-username-input");
-  const passEl = document.getElementById("teacher-password-input");
-  const errEl = document.getElementById("teacher-login-error");
-
-  const u = userEl ? userEl.value.trim().toLowerCase() : "";
-  const p = passEl ? passEl.value.trim().toLowerCase() : "";
-
-  const validUsers = ["guru", "admin", "ihsaniyah"];
-  const validPasswords = ["sdihsaniyah2026", "ihsaniyah2026", "sdihsaniyah", "guru123", "guru"];
-
-  if (validUsers.includes(u) && validPasswords.includes(p)) {
-    window._ihsTeacherLoggedIn = true;
-    try {
-      sessionStorage.setItem("ihs_teacher_auth", "true");
-    } catch (e) {}
-    if (window.sfx && typeof sfx.playSuccess === "function") sfx.playSuccess();
-    renderTeacherAdminModal();
-  } else {
-    if (errEl) {
-      errEl.style.display = "block";
-      errEl.textContent = "⚠️ Username atau Password guru belum tepat! Gunakan Username: guru | Password: sdihsaniyah2026";
-    }
-    if (window.sfx && typeof sfx.playWrong === "function") sfx.playWrong();
-  }
-};
-
-window.logoutTeacherHandler = function() {
-  window._ihsTeacherLoggedIn = false;
-  try {
-    sessionStorage.removeItem("ihs_teacher_auth");
-  } catch (e) {}
-  if (window.sfx && typeof sfx.playClick === "function") sfx.playClick();
-  renderTeacherLoginModal();
-};
-
-function renderTeacherAdminModal() {
-  const records = typeof window.getIhsaniyahRecords === "function"
-    ? window.getIhsaniyahRecords()
-    : (typeof window.getAllIhsaniyahRecords === "function" ? window.getAllIhsaniyahRecords() : []);
-  const avgScore = records.length ? Math.round(records.reduce((acc, r) => acc + (r.score || 0), 0) / records.length) : 0;
-  const highestScore = records.length ? Math.max(...records.map(r => r.score || 0)) : 0;
-  const questions = window.IHSANIYAH_QUESTIONS || [];
-
-  let modalEl = document.getElementById("ihs-admin-modal-wrap");
-  if (!modalEl) {
-    modalEl = document.createElement("div");
-    modalEl.id = "ihs-admin-modal-wrap";
-    modalEl.className = "modal-overlay active";
-    document.body.appendChild(modalEl);
-  } else {
-    modalEl.className = "modal-overlay active";
-  }
-
-  modalEl.innerHTML = `
-    <div class="modal-content" style="max-width: 940px; width: 96%;">
-      <div class="modal-header">
-        <div style="display: flex; align-items: center; gap: 10px;">
-          <span style="font-size: 1.8rem;">👩‍🏫</span>
-          <div>
-            <h2 style="margin: 0; font-size: 1.25rem; color: #fff;">Panel Guru: Rekap Realtime Nilai Siswa & Kunci Jawaban (27 Soal)</h2>
-            <div style="font-size: 0.8rem; color: var(--accent-cyan);">SD Ihsaniyah Gajahmada Tegal (Kampus Al Hafidz)</div>
-          </div>
-        </div>
-        <button class="btn-close-modal" onclick="closeIhsaniyahAdminPanel()">✕</button>
-      </div>
-
-      <div class="modal-body" style="padding: 20px; max-height: 78vh; overflow-y: auto;">
-        <!-- Statistik Ringkas -->
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 14px; margin-bottom: 20px;">
-          <div style="background: rgba(30, 41, 59, 0.7); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; padding: 14px; text-align: center;">
-            <div style="font-size: 0.8rem; color: #94a3b8;">Total Siswa Tercatat</div>
-            <div style="font-size: 1.5rem; font-weight: 800; color: #fff; margin-top: 4px;">${records.length} Siswa</div>
-          </div>
-          <div style="background: rgba(30, 41, 59, 0.7); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; padding: 14px; text-align: center;">
-            <div style="font-size: 0.8rem; color: #94a3b8;">Rata-rata Nilai</div>
-            <div style="font-size: 1.5rem; font-weight: 800; color: #38bdf8; margin-top: 4px;">${avgScore} / 100</div>
-          </div>
-          <div style="background: rgba(30, 41, 59, 0.7); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; padding: 14px; text-align: center;">
-            <div style="font-size: 0.8rem; color: #94a3b8;">Nilai Tertinggi</div>
-            <div style="font-size: 1.5rem; font-weight: 800; color: #4ade80; margin-top: 4px;">${highestScore} / 100</div>
-          </div>
-        </div>
-
-        <!-- Tombol Aksi Download & Kunci Jawaban Guru -->
-        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; margin-bottom: 14px;">
-          <div style="display: flex; gap: 8px; flex-wrap: wrap;">
-            <button class="btn-primary" style="padding: 10px 18px; font-weight: 800; background: linear-gradient(135deg, #059669, #10b981); border: none; border-radius: 8px;" onclick="window.exportIhsaniyahCSV && window.exportIhsaniyahCSV()">
-              📥 Download Rekap Nilai Siswa (Excel / CSV)
-            </button>
-            <button class="btn-secondary" style="padding: 10px 14px; font-size: 0.82rem; font-weight: 800; color: #38bdf8;" onclick="const el=document.getElementById('teacher-key-box'); if(el) el.style.display=el.style.display==='none'?'block':'none';">
-              📖 Tampilkan / Sembunyikan Kunci Jawaban 27 Soal (Khusus Guru)
-            </button>
-          </div>
-          <div style="display: flex; gap: 8px;">
-            <button class="btn-secondary" style="padding: 8px 14px; font-size: 0.8rem; color: #fca5a5;" onclick="clearIhsaniyahRecordsHandler()">
-              🗑️ Reset Data
-            </button>
-            <button class="btn-secondary" style="padding: 8px 14px; font-size: 0.8rem; color: #f59e0b;" onclick="logoutTeacherHandler()">
-              🔒 Logout Guru
-            </button>
-          </div>
-        </div>
-
-        <!-- Tabel Rekap Nilai Realtime -->
-        <div style="overflow-x: auto; max-height: 340px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.1); margin-bottom: 16px;">
-          <table class="admin-table">
-            <thead>
-              <tr>
-                <th>No</th>
-                <th>Waktu Update</th>
-                <th>Nama Siswa</th>
-                <th>Kelas</th>
-                <th>Absen</th>
-                <th>Terjawab</th>
-                <th>Benar</th>
-                <th>Skor (0-100)</th>
-                <th>Status</th>
-              </tr>
-            </thead>
-            <tbody>
-              ${records.length ? records.map((r, idx) => `
-                <tr>
-                  <td>${idx + 1}</td>
-                  <td>${r.date || '-'} ${r.time || ''}</td>
-                  <td style="font-weight: 700; color: #fff;">${r.studentName}</td>
-                  <td>${r.studentClass}</td>
-                  <td>#${r.studentNumber}</td>
-                  <td style="font-weight: 700; color: #38bdf8;">${r.answeredCount || 0} / ${r.totalQuestions || 27}</td>
-                  <td style="font-weight: 700; color: #4ade80;">${r.correctCount || 0} / ${r.totalQuestions || 27}</td>
-                  <td style="font-weight: 900; font-size: 1.05rem; color: ${r.score >= 70 ? '#4ade80' : '#f59e0b'};">${r.score || 0}</td>
-                  <td><span style="font-size: 0.75rem; padding: 3px 8px; border-radius: 12px; background: ${r.score >= 70 ? 'rgba(16, 185, 129, 0.2)' : 'rgba(245, 158, 11, 0.2)'}; color: ${r.score >= 70 ? '#86efac' : '#fde68a'};">${r.status || '-'}</span></td>
-                </tr>
-              `).join('') : `
-                <tr>
-                  <td colspan="9" style="text-align: center; padding: 30px; color: #94a3b8;">
-                    Belum ada siswa yang masuk. Begitu siswa mengisi nama dan mengerjakan soal, data nilai langsung masuk secara realtime ke tabel ini.
-                  </td>
-                </tr>
-              `}
-            </tbody>
-          </table>
-        </div>
-
-        <!-- Kotak Kunci Jawaban Khusus Guru -->
-        <div id="teacher-key-box" style="display: none; background: rgba(15, 23, 42, 0.9); border: 1.5px solid #38bdf8; border-radius: 12px; padding: 16px;">
-          <h4 style="margin: 0 0 10px; color: #38bdf8;">📖 Kunci Jawaban Resmi 27 Soal SD Ihsaniyah (Hanya Tampil di Panel Guru):</h4>
-          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 10px;">
-            ${questions.map(q => `
-              <div style="background: rgba(0,0,0,0.35); padding: 10px 12px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.08); font-size: 0.82rem;">
-                <div style="font-weight: 800; color: #fff;">No. ${q.number} (${q.page})</div>
-                <div style="color: #86efac; font-weight: 700; margin-top: 3px;">🔑 ${q.answerKeySummary || '-'}</div>
-              </div>
-            `).join('')}
-          </div>
-        </div>
-      </div>
-
-      <div class="modal-footer" style="padding: 14px 20px;">
-        <button class="btn-secondary" onclick="closeIhsaniyahAdminPanel()">Tutup</button>
-      </div>
-    </div>
-  `;
-}
 
 window.closeIhsaniyahAdminPanel = function() {
   const modalEl = document.getElementById("ihs-admin-modal-wrap");
   if (modalEl) modalEl.className = "modal-overlay";
 };
 
-window.clearIhsaniyahRecordsHandler = function() {
-  if (confirm("Apakah Bapak/Ibu Guru yakin ingin menghapus seluruh data rekap siswa?")) {
-    window.clearIhsaniyahRecords();
-    openIhsaniyahAdminPanel();
+window.togglePasswordVisibility = function(inputId) {
+  const passEl = document.getElementById(inputId || "teacher-password-input");
+  if (passEl) {
+    passEl.type = passEl.type === "password" ? "text" : "password";
   }
 };
+
+window.handleTeacherLoginSubmit = function(userInputId, passInputId, errBoxId) {
+  const userEl = document.getElementById(userInputId || "teacher-username-input");
+  const passEl = document.getElementById(passInputId || "teacher-password-input");
+  const errEl = document.getElementById(errBoxId || "teacher-login-error");
+
+  const u = userEl ? userEl.value.trim().toLowerCase() : "";
+  const p = passEl ? passEl.value.trim().toLowerCase() : "";
+
+  const validUsers = ["guru", "admin", "ihsaniyah", "sdihsaniyah"];
+  const validPasswords = ["sdihsaniyah2026", "ihsaniyah2026", "sdihsaniyah", "guru123", "guru", "admin123"];
+
+  if (validUsers.includes(u) && validPasswords.includes(p)) {
+    setTeacherLoggedInState(true);
+    if (window.sfx && typeof sfx.playSuccess === "function") sfx.playSuccess();
+    closeIhsaniyahAdminPanel();
+    switchTab("admin-panel");
+    renderAdminPanelPage();
+  } else {
+    if (errEl) {
+      errEl.style.display = "block";
+      errEl.textContent = "⚠️ Username atau Password belum tepat! Gunakan Username: guru | Password: sdihsaniyah2026";
+    }
+    if (window.sfx && typeof sfx.playWrong === "function") sfx.playWrong();
+  }
+};
+
+window.quickLoginTeacherAdmin = function() {
+  setTeacherLoggedInState(true);
+  if (window.sfx && typeof sfx.playSuccess === "function") sfx.playSuccess();
+  closeIhsaniyahAdminPanel();
+  switchTab("admin-panel");
+  renderAdminPanelPage();
+};
+
+window.logoutTeacherHandler = function() {
+  setTeacherLoggedInState(false);
+  if (window.sfx && typeof sfx.playClick === "function") sfx.playClick();
+  closeIhsaniyahAdminPanel();
+  renderAdminPanelPage();
+};
+
+window.setAdminSubTab = function(subTab) {
+  appState.adminSubTab = subTab;
+  if (window.sfx && typeof sfx.playClick === "function") sfx.playClick();
+  renderAdminPanelPage();
+};
+
+window.setAdminClassFilter = function(cls) {
+  appState.adminClassFilter = cls;
+  renderAdminPanelPage();
+};
+
+window.setAdminSearchQuery = function(q) {
+  appState.adminSearchQuery = q;
+  renderAdminPanelPage();
+};
+
+window.deleteSingleStudentRecord = function(sessionId) {
+  if (!confirm("Hapus data rekap siswa ini dari tabel?")) return;
+  try {
+    const records = typeof window.getIhsaniyahRecords === "function" ? window.getIhsaniyahRecords() : [];
+    const filtered = records.filter(r => (r.sessionId || `${r.studentName}_${r.studentClass}_${r.studentNumber}`) !== sessionId);
+    localStorage.setItem("ihsaniyah_student_records", JSON.stringify(filtered));
+    if (window.sfx && typeof sfx.playClick === "function") sfx.playClick();
+    renderAdminPanelPage();
+  } catch (e) {}
+};
+
+window.seedDemoStudentRecords = function() {
+  const nowDate = new Date().toLocaleDateString("id-ID");
+  const nowTime = new Date().toLocaleTimeString("id-ID");
+  const samples = [
+    {
+      sessionId: "demo_aisyah_2a_3",
+      date: nowDate,
+      time: nowTime,
+      studentName: "Aisyah Putri Azzahra (Contoh)",
+      studentClass: "Kelas 2A",
+      studentNumber: "3",
+      answeredCount: 27,
+      correctCount: 25,
+      totalQuestions: 27,
+      score: 93,
+      status: "Selesai & Tuntas"
+    },
+    {
+      sessionId: "demo_farhan_2a_12",
+      date: nowDate,
+      time: nowTime,
+      studentName: "Muhammad Farhan Al-Hafidz (Contoh)",
+      studentClass: "Kelas 2A",
+      studentNumber: "12",
+      answeredCount: 27,
+      correctCount: 23,
+      totalQuestions: 27,
+      score: 85,
+      status: "Selesai & Tuntas"
+    },
+    {
+      sessionId: "demo_nabhan_2b_7",
+      date: nowDate,
+      time: nowTime,
+      studentName: "Ahmad Nabhan (Contoh)",
+      studentClass: "Kelas 2B",
+      studentNumber: "7",
+      answeredCount: 19,
+      correctCount: 15,
+      totalQuestions: 27,
+      score: 56,
+      status: "Sedang Mengerjakan (19/27)"
+    }
+  ];
+  samples.forEach(s => {
+    if (typeof window.upsertIhsaniyahRecord === "function") {
+      window.upsertIhsaniyahRecord(s);
+    }
+  });
+  if (window.sfx && typeof sfx.playSuccess === "function") sfx.playSuccess();
+  renderAdminPanelPage();
+};
+
+window.clearIhsaniyahRecordsHandler = function() {
+  if (confirm("Apakah Bapak/Ibu Guru yakin ingin menghapus seluruh data rekap siswa?")) {
+    if (typeof window.clearIhsaniyahRecords === "function") window.clearIhsaniyahRecords();
+    renderAdminPanelPage();
+  }
+};
+
+window.jumpToQuestionFromAdmin = function(idx) {
+  appState.currentIhsIndex = idx;
+  switchTab("ihsaniyah-test");
+  window.scrollTo({ top: 0, behavior: "smooth" });
+};
+
+function renderAdminPanelPage() {
+  const container = document.getElementById("admin-panel-content-area");
+  if (!container) return;
+
+  // Pastikan data progres siswa aktif tersinkronisasi dulu
+  syncIhsaniyahProgressToRecords(false);
+
+  // 1. JIKA BELUM LOGIN GURU/ADMIN: TAMPILKAN HALAMAN LOGIN ADMIN DI DALAM TAB
+  if (!isTeacherLoggedIn()) {
+    container.innerHTML = `
+      <div style="max-width: 540px; margin: 28px auto; background: linear-gradient(145deg, rgba(30, 41, 59, 0.98), rgba(15, 23, 42, 0.99)); border: 2.5px solid #38bdf8; border-radius: 22px; padding: 32px; box-shadow: 0 16px 40px rgba(0,0,0,0.45); text-align: center;">
+        <div style="font-size: 3.2rem; margin-bottom: 6px;">👩‍🏫🔐</div>
+        <div style="font-size: 0.8rem; font-weight: 800; color: #38bdf8; letter-spacing: 0.8px; text-transform: uppercase;">
+          PORTAL ADMIN & DEWAN GURU TERPADU
+        </div>
+        <h2 style="margin: 6px 0 8px; color: #fff; font-size: 1.45rem;">
+          Login Admin Panel & Rekap Nilai
+        </h2>
+        <p style="font-size: 0.86rem; color: #cbd5e1; margin: 0 0 20px; line-height: 1.5;">
+          Halaman ini berada dalam satu link yang sama dengan halaman siswa, namun dikhususkan bagi Bapak/Ibu Guru & Admin untuk memantau nilai siswa, melihat kunci jawaban 27 soal, dan mengunduh rekap Excel/CSV.
+        </p>
+
+        <div style="background: rgba(2, 6, 23, 0.65); border-radius: 14px; padding: 20px; margin-bottom: 20px; text-align: left; border: 1px solid rgba(56, 189, 248, 0.25);">
+          <div style="margin-bottom: 14px;">
+            <label style="display: block; font-size: 0.82rem; font-weight: 800; color: #38bdf8; margin-bottom: 6px;">Username Guru / Admin:</label>
+            <input type="text" id="page-teacher-user" value="guru" placeholder="Masukkan username (guru)" onkeydown="if(event.key==='Enter') handleTeacherLoginSubmit('page-teacher-user', 'page-teacher-pass', 'page-teacher-err')" style="width: 100%; padding: 12px 14px; font-size: 0.95rem; font-weight: 700; border-radius: 10px; border: 1.5px solid #38bdf8; background: #0f172a; color: #fff; box-sizing: border-box;">
+          </div>
+
+          <div style="margin-bottom: 14px;">
+            <label style="display: block; font-size: 0.82rem; font-weight: 800; color: #38bdf8; margin-bottom: 6px;">Password Guru / Admin:</label>
+            <div style="position: relative;">
+              <input type="password" id="page-teacher-pass" value="sdihsaniyah2026" placeholder="Masukkan password (sdihsaniyah2026)" onkeydown="if(event.key==='Enter') handleTeacherLoginSubmit('page-teacher-user', 'page-teacher-pass', 'page-teacher-err')" style="width: 100%; padding: 12px 14px; font-size: 0.95rem; font-weight: 700; border-radius: 10px; border: 1.5px solid #38bdf8; background: #0f172a; color: #fff; box-sizing: border-box;">
+              <button type="button" onclick="togglePasswordVisibility('page-teacher-pass')" style="position: absolute; right: 12px; top: 50%; transform: translateY(-50%); background: none; border: none; color: #94a3b8; cursor: pointer; font-size: 1.15rem;" title="Lihat/Sembunyikan Password">👁️</button>
+            </div>
+          </div>
+
+          <div id="page-teacher-err" style="display: none; color: #f87171; font-size: 0.82rem; font-weight: 700; margin-top: 8px;"></div>
+
+          <div style="margin-top: 10px; padding: 10px 12px; background: rgba(16, 185, 129, 0.12); border-radius: 8px; font-size: 0.8rem; color: #86efac; border: 1px solid rgba(16, 185, 129, 0.3);">
+            💡 <strong>Akun Standar Guru:</strong> Username: <code>guru</code> &nbsp;|&nbsp; Password: <code>sdihsaniyah2026</code> (Sudah terisi otomatis, silakan langsung klik tombol Masuk di bawah!)
+          </div>
+        </div>
+
+        <div style="display: flex; flex-direction: column; gap: 10px;">
+          <button class="btn-primary" style="width: 100%; padding: 14px; font-size: 1.05rem; font-weight: 800; background: linear-gradient(135deg, #0284c7, #2563eb); border: none; border-radius: 12px; cursor: pointer; box-shadow: 0 6px 20px rgba(2, 132, 199, 0.4);" onclick="handleTeacherLoginSubmit('page-teacher-user', 'page-teacher-pass', 'page-teacher-err')">
+            🔑 Masuk ke Dashboard Admin Panel Guru
+          </button>
+          <button class="btn-secondary" style="width: 100%; padding: 11px; font-size: 0.88rem; font-weight: 800; color: #4ade80; border-color: #10b981; border-radius: 10px; cursor: pointer;" onclick="quickLoginTeacherAdmin()">
+            ⚡ Masuk Cepat 1-Klik (Langsung Buka Dashboard Guru)
+          </button>
+        </div>
+      </div>
+    `;
+    return;
+  }
+
+  // 2. JIKA SUDAH LOGIN: TAMPILKAN DASHBOARD LENGKAP ADMIN & GURU
+  const allRecords = typeof window.getIhsaniyahRecords === "function" ? window.getIhsaniyahRecords() : [];
+  const clsFilter = appState.adminClassFilter || "all";
+  const searchQ = (appState.adminSearchQuery || "").trim().toLowerCase();
+
+  const filteredRecords = allRecords.filter(r => {
+    const matchCls = clsFilter === "all" || r.studentClass === clsFilter;
+    const matchName = !searchQ || (r.studentName || "").toLowerCase().includes(searchQ) || String(r.studentNumber || "").includes(searchQ);
+    return matchCls && matchName;
+  });
+
+  const avgScore = allRecords.length ? Math.round(allRecords.reduce((acc, r) => acc + (r.score || 0), 0) / allRecords.length) : 0;
+  const highestScore = allRecords.length ? Math.max(...allRecords.map(r => r.score || 0)) : 0;
+  const passedCount = allRecords.filter(r => (r.score || 0) >= 70).length;
+  const questions = window.IHSANIYAH_QUESTIONS || [];
+  const activeSub = appState.adminSubTab || "rekap";
+
+  container.innerHTML = `
+    <!-- Header Banner Admin Panel Guru -->
+    <div style="background: linear-gradient(135deg, rgba(15, 23, 42, 0.96), rgba(30, 41, 59, 0.98)); border: 2px solid #38bdf8; border-radius: 18px; padding: 22px; margin-bottom: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.35);">
+      <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 14px;">
+        <div style="display: flex; align-items: center; gap: 14px;">
+          <div style="width: 58px; height: 58px; border-radius: 14px; background: linear-gradient(135deg, #0284c7, #2563eb); display: flex; align-items: center; justify-content: center; font-size: 2rem; border: 2px solid #7dd3fc;">
+            👩‍🏫
+          </div>
+          <div>
+            <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
+              <span style="font-size: 0.74rem; font-weight: 900; background: rgba(16, 185, 129, 0.2); color: #4ade80; padding: 3px 10px; border-radius: 999px; border: 1px solid #10b981;">
+                🟢 ADMIN / GURU AKTIF
+              </span>
+              <span style="font-size: 0.78rem; font-weight: 800; color: #38bdf8;">
+                YAYASAN PERGURUAN IHSANIYAH • SD IHSANIYAH GAJAHMADA TEGAL
+              </span>
+            </div>
+            <h2 style="margin: 4px 0 2px; color: #fff; font-size: 1.35rem;">
+              Dashboard Admin Panel & Rekap Nilai Siswa Terpadu
+            </h2>
+            <div style="font-size: 0.82rem; color: #cbd5e1;">
+              Pantau nilai ujian siswa secara realtime, lihat kunci jawaban 27 soal, dan unduh file rekap CSV/Excel dalam satu link.
+            </div>
+          </div>
+        </div>
+
+        <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+          <button class="btn-primary" style="padding: 10px 16px; font-size: 0.84rem; font-weight: 800; background: linear-gradient(135deg, #059669, #10b981); border: none; border-radius: 10px; cursor: pointer;" onclick="window.exportIhsaniyahCSV && window.exportIhsaniyahCSV()">
+            📥 Download Rekap CSV / Excel
+          </button>
+          <button class="btn-secondary" style="padding: 10px 14px; font-size: 0.82rem; font-weight: 800; color: #38bdf8; border-radius: 10px; cursor: pointer;" onclick="switchTab('ihsaniyah-test')">
+            🎒 Ke Halaman Ujian Siswa
+          </button>
+          <button class="btn-secondary" style="padding: 10px 14px; font-size: 0.82rem; font-weight: 800; color: #f59e0b; border-radius: 10px; cursor: pointer;" onclick="logoutTeacherHandler()">
+            🔒 Logout Admin
+          </button>
+        </div>
+      </div>
+
+      <!-- Navigasi 3 Sub-Menu Admin Panel -->
+      <div style="display: flex; gap: 10px; flex-wrap: wrap; margin-top: 18px; padding-top: 16px; border-top: 1px solid rgba(255,255,255,0.1);">
+        <button type="button" onclick="setAdminSubTab('rekap')" style="padding: 10px 18px; border-radius: 10px; font-size: 0.88rem; font-weight: 800; cursor: pointer; border: ${activeSub === 'rekap' ? '2px solid #38bdf8' : '1px solid rgba(255,255,255,0.15)'}; background: ${activeSub === 'rekap' ? 'linear-gradient(135deg, #0284c7, #2563eb)' : 'rgba(15, 23, 42, 0.8)'}; color: #fff;">
+          📊 1. Rekap Nilai Siswa (${allRecords.length})
+        </button>
+        <button type="button" onclick="setAdminSubTab('kunci')" style="padding: 10px 18px; border-radius: 10px; font-size: 0.88rem; font-weight: 800; cursor: pointer; border: ${activeSub === 'kunci' ? '2px solid #10b981' : '1px solid rgba(255,255,255,0.15)'}; background: ${activeSub === 'kunci' ? 'linear-gradient(135deg, #059669, #10b981)' : 'rgba(15, 23, 42, 0.8)'}; color: #fff;">
+          📖 2. Kunci Jawaban Resmi (27 Soal)
+        </button>
+        <button type="button" onclick="setAdminSubTab('modul')" style="padding: 10px 18px; border-radius: 10px; font-size: 0.88rem; font-weight: 800; cursor: pointer; border: ${activeSub === 'modul' ? '2px solid #f59e0b' : '1px solid rgba(255,255,255,0.15)'}; background: ${activeSub === 'modul' ? 'linear-gradient(135deg, #d97706, #f59e0b)' : 'rgba(15, 23, 42, 0.8)'}; color: #fff;">
+          📦 3. Bank File Excel & Kunci Jawaban (.xlsx)
+        </button>
+      </div>
+    </div>
+
+    <!-- SUB-TAB 1: REKAP NILAI & AKTIVITAS SISWA -->
+    ${activeSub === 'rekap' ? `
+      <div style="background: rgba(15, 23, 42, 0.95); border: 1.5px solid rgba(56, 189, 248, 0.35); border-radius: 18px; padding: 22px;">
+        <!-- 4 Kartu Statistik -->
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 14px; margin-bottom: 20px;">
+          <div style="background: rgba(30, 41, 59, 0.85); border: 1.5px solid rgba(56, 189, 248, 0.3); border-radius: 14px; padding: 16px; text-align: center;">
+            <div style="font-size: 0.8rem; color: #94a3b8; font-weight: 700;">Total Siswa Tercatat</div>
+            <div style="font-size: 1.7rem; font-weight: 900; color: #fff; margin-top: 4px;">${allRecords.length} Siswa</div>
+          </div>
+          <div style="background: rgba(30, 41, 59, 0.85); border: 1.5px solid rgba(56, 189, 248, 0.3); border-radius: 14px; padding: 16px; text-align: center;">
+            <div style="font-size: 0.8rem; color: #94a3b8; font-weight: 700;">Rata-Rata Nilai</div>
+            <div style="font-size: 1.7rem; font-weight: 900; color: #38bdf8; margin-top: 4px;">${avgScore} / 100</div>
+          </div>
+          <div style="background: rgba(30, 41, 59, 0.85); border: 1.5px solid rgba(16, 185, 129, 0.3); border-radius: 14px; padding: 16px; text-align: center;">
+            <div style="font-size: 0.8rem; color: #94a3b8; font-weight: 700;">Nilai Tertinggi</div>
+            <div style="font-size: 1.7rem; font-weight: 900; color: #4ade80; margin-top: 4px;">${highestScore} / 100</div>
+          </div>
+          <div style="background: rgba(30, 41, 59, 0.85); border: 1.5px solid rgba(245, 158, 11, 0.3); border-radius: 14px; padding: 16px; text-align: center;">
+            <div style="font-size: 0.8rem; color: #94a3b8; font-weight: 700;">Siswa Tuntas (≥ 70)</div>
+            <div style="font-size: 1.7rem; font-weight: 900; color: #fde047; margin-top: 4px;">${passedCount} Siswa</div>
+          </div>
+        </div>
+
+        <!-- Baris Filter Kelas, Pencarian, & Simulasi Data -->
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; margin-bottom: 16px; background: rgba(2, 6, 23, 0.6); padding: 12px 16px; border-radius: 12px;">
+          <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
+            <label style="font-size: 0.82rem; font-weight: 800; color: #38bdf8;">Filter Kelas:</label>
+            <select onchange="setAdminClassFilter(this.value)" style="padding: 8px 12px; border-radius: 8px; background: #0f172a; color: #fff; border: 1px solid #38bdf8; font-weight: 700;">
+              <option value="all" ${clsFilter === 'all' ? 'selected' : ''}>Semua Kelas (${allRecords.length})</option>
+              ${['Kelas 2A', 'Kelas 2B', 'Kelas 2C', 'Kelas 3A', 'Kelas 3B', 'Kelas 3C'].map(c => `
+                <option value="${c}" ${clsFilter === c ? 'selected' : ''}>${c}</option>
+              `).join('')}
+            </select>
+            <input type="text" value="${(appState.adminSearchQuery || '').replace(/"/g, '&quot;')}" placeholder="🔍 Cari nama siswa / absen..." oninput="setAdminSearchQuery(this.value)" style="padding: 8px 14px; border-radius: 8px; background: #0f172a; color: #fff; border: 1px solid rgba(148,163,184,0.4); font-size: 0.85rem; min-width: 210px;">
+          </div>
+
+          <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+            <button type="button" onclick="seedDemoStudentRecords()" style="background: rgba(56, 189, 248, 0.18); color: #7dd3fc; border: 1px solid #38bdf8; border-radius: 8px; padding: 8px 14px; font-size: 0.8rem; font-weight: 800; cursor: pointer;">
+              🧪 + Tambah Contoh Data Siswa (Simulasi)
+            </button>
+            <button type="button" onclick="clearIhsaniyahRecordsHandler()" style="background: rgba(239, 68, 68, 0.2); color: #fca5a5; border: 1px solid #ef4444; border-radius: 8px; padding: 8px 14px; font-size: 0.8rem; font-weight: 800; cursor: pointer;">
+              🗑️ Reset Semua Data
+            </button>
+          </div>
+        </div>
+
+        <!-- Tabel Rekap Nilai Siswa -->
+        <div style="overflow-x: auto; border-radius: 12px; border: 1px solid rgba(255,255,255,0.12);">
+          <table style="width: 100%; border-collapse: collapse; font-size: 0.9rem; text-align: left;">
+            <thead>
+              <tr style="background: rgba(2, 132, 199, 0.25); color: #7dd3fc; border-bottom: 2px solid rgba(56, 189, 248, 0.4);">
+                <th style="padding: 12px 10px;">No</th>
+                <th style="padding: 12px 10px;">Waktu Update</th>
+                <th style="padding: 12px 10px;">Nama Lengkap Siswa</th>
+                <th style="padding: 12px 10px;">Kelas</th>
+                <th style="padding: 12px 10px;">Absen</th>
+                <th style="padding: 12px 10px;">Soal Dijawab</th>
+                <th style="padding: 12px 10px;">Jawaban Benar</th>
+                <th style="padding: 12px 10px;">Nilai Akhir</th>
+                <th style="padding: 12px 10px;">Status</th>
+                <th style="padding: 12px 10px; text-align: center;">Aksi</th>
+              </tr>
+            </thead>
+            <tbody>
+              ${filteredRecords.length ? filteredRecords.map((r, idx) => {
+                const sKey = r.sessionId || `${r.studentName}_${r.studentClass}_${r.studentNumber}`;
+                return `
+                  <tr style="border-bottom: 1px solid rgba(255,255,255,0.08); background: ${idx % 2 === 0 ? 'rgba(15, 23, 42, 0.6)' : 'rgba(30, 41, 59, 0.45)'};">
+                    <td style="padding: 12px 10px; font-weight: 800; color: #94a3b8;">${idx + 1}</td>
+                    <td style="padding: 12px 10px; color: #cbd5e1; font-size: 0.82rem;">${r.date || '-'} ${r.time || ''}</td>
+                    <td style="padding: 12px 10px; font-weight: 800; color: #ffffff;">${r.studentName || '-'}</td>
+                    <td style="padding: 12px 10px; color: #bae6fd; font-weight: 700;">${r.studentClass || '-'}</td>
+                    <td style="padding: 12px 10px; font-family: monospace; font-weight: 800; color: #fde047;">#${r.studentNumber || '-'}</td>
+                    <td style="padding: 12px 10px; font-weight: 800; color: #38bdf8;">${r.answeredCount !== undefined ? r.answeredCount : (r.correctCount || 0)} / ${r.totalQuestions || 27}</td>
+                    <td style="padding: 12px 10px; font-weight: 800; color: #4ade80;">${r.correctCount || 0} / ${r.totalQuestions || 27}</td>
+                    <td style="padding: 12px 10px; font-weight: 900; font-size: 1.1rem; color: ${(r.score || 0) >= 70 ? '#4ade80' : '#f59e0b'};">${r.score || 0}</td>
+                    <td style="padding: 12px 10px;">
+                      <span style="font-size: 0.76rem; font-weight: 800; padding: 4px 10px; border-radius: 999px; background: ${(r.score || 0) >= 70 ? 'rgba(16, 185, 129, 0.2)' : 'rgba(245, 158, 11, 0.2)'}; color: ${(r.score || 0) >= 70 ? '#86efac' : '#fde68a'};">
+                        ${r.status || 'Sedang Mengerjakan'}
+                      </span>
+                    </td>
+                    <td style="padding: 12px 10px; text-align: center;">
+                      <button type="button" onclick="deleteSingleStudentRecord('${sKey.replace(/'/g, "\\'")}')" style="background: rgba(239,68,68,0.2); color: #fca5a5; border: 1px solid #ef4444; border-radius: 6px; padding: 4px 8px; font-size: 0.75rem; cursor: pointer;">🗑️ Hapus</button>
+                    </td>
+                  </tr>
+                `;
+              }).join('') : `
+                <tr>
+                  <td colspan="10" style="text-align: center; padding: 36px 20px; color: #94a3b8;">
+                    <div style="font-size: 2rem; margin-bottom: 8px;">📭</div>
+                    <div style="font-size: 0.95rem; font-weight: 700; color: #e2e8f0; margin-bottom: 6px;">Belum Ada Data Siswa di Perangkat Ini</div>
+                    <div style="font-size: 0.82rem; margin-bottom: 14px;">Begitu siswa mengisi nama di menu <strong>SD Ihsaniyah (27)</strong>, progres dan nilainya langsung tampil otomatis di tabel ini. Atau klik tombol di bawah untuk melihat simulasi rekap nilai:</div>
+                    <button type="button" onclick="seedDemoStudentRecords()" style="background: linear-gradient(135deg, #0284c7, #2563eb); color: #fff; border: none; border-radius: 8px; padding: 9px 18px; font-size: 0.84rem; font-weight: 800; cursor: pointer;">
+                      🧪 Muat 3 Contoh Data Siswa (Simulasi Tabel Rekap)
+                    </button>
+                  </td>
+                </tr>
+              `}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    ` : ''}
+
+    <!-- SUB-TAB 2: KUNCI JAWABAN RESMI 27 SOAL SD IHSANIYAH -->
+    ${activeSub === 'kunci' ? `
+      <div style="background: rgba(15, 23, 42, 0.95); border: 1.5px solid rgba(16, 185, 129, 0.4); border-radius: 18px; padding: 22px;">
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; margin-bottom: 16px;">
+          <div>
+            <h3 style="margin: 0; color: #4ade80; font-size: 1.2rem;">📖 Kunci Jawaban Resmi 27 Soal SD Ihsaniyah Gajahmada Tegal</h3>
+            <p style="margin: 4px 0 0; font-size: 0.84rem; color: #cbd5e1;">
+              Urut lengkap mulai dari Math Formative Test 2 (No. 1–10) hingga Buku Paket Cambridge Primary Mathematics Unit 5 & 6 Halaman 55–75 (No. 11–27).
+            </p>
+          </div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 14px;">
+          ${questions.map((q, idx) => `
+            <div style="background: rgba(2, 6, 23, 0.7); border: 1.5px solid rgba(56, 189, 248, 0.28); border-radius: 14px; padding: 16px; display: flex; flex-direction: column; justify-content: space-between; gap: 10px;">
+              <div>
+                <div style="display: flex; justify-content: space-between; align-items: center; gap: 8px; margin-bottom: 6px;">
+                  <span style="font-size: 0.75rem; font-weight: 900; background: rgba(56, 189, 248, 0.2); color: #38bdf8; padding: 3px 10px; border-radius: 999px;">
+                    Soal No. ${q.number}
+                  </span>
+                  <span style="font-size: 0.74rem; color: #fde047; font-weight: 700;">
+                    📄 ${q.page}
+                  </span>
+                </div>
+                <div style="font-weight: 800; color: #ffffff; font-size: 0.95rem; margin-bottom: 6px;">
+                  ${q.title}
+                </div>
+                <div style="font-size: 0.8rem; color: #94a3b8; line-height: 1.45; margin-bottom: 10px;">
+                  ${q.instruction.replace(/\n/g, '<br>')}
+                </div>
+              </div>
+
+              <div>
+                <div style="background: rgba(16, 185, 129, 0.14); border: 1px solid rgba(16, 185, 129, 0.4); border-radius: 10px; padding: 10px 12px; margin-bottom: 8px;">
+                  <div style="font-size: 0.72rem; font-weight: 800; color: #86efac; text-transform: uppercase;">🔑 Kunci Jawaban Resmi:</div>
+                  <div style="font-size: 0.9rem; font-weight: 900; color: #ffffff; font-family: monospace; margin-top: 2px;">
+                    ${q.answerKeySummary || '-'}
+                  </div>
+                </div>
+                <button type="button" onclick="jumpToQuestionFromAdmin(${idx})" style="width: 100%; padding: 8px 12px; border-radius: 8px; background: rgba(56, 189, 248, 0.15); border: 1px solid #38bdf8; color: #7dd3fc; font-size: 0.78rem; font-weight: 800; cursor: pointer;">
+                  👁️ Lihat Soal No. ${q.number} di Lembar Ujian
+                </button>
+              </div>
+            </div>
+          `).join('')}
+        </div>
+      </div>
+    ` : ''}
+
+    <!-- SUB-TAB 3: PUSAT DOWNLOAD WORKBOOK EXCEL & KUNCI JAWABAN (99_KUNCI_JAWABAN) -->
+    ${activeSub === 'modul' ? `
+      <div style="background: rgba(15, 23, 42, 0.95); border: 1.5px solid rgba(245, 158, 11, 0.4); border-radius: 18px; padding: 22px;">
+        <h3 style="margin: 0 0 6px; color: #fde047; font-size: 1.2rem;">📦 Pusat File Workbook Excel & Kunci Jawaban (Sheet 99_KUNCI_JAWABAN)</h3>
+        <p style="margin: 0 0 18px; font-size: 0.85rem; color: #cbd5e1; line-height: 1.5;">
+          Setiap file Excel (<code>.xlsx</code>) di bawah memiliki <strong>1 Contoh Soal & Jawaban Benar</strong> pada tiap sheet rumus, diikuti <strong>5 Soal Tes Tanpa Bocoran Jawaban</strong>, serta <strong>Kunci Jawaban Lengkap di Sheet Paling Terakhir (<code>99_KUNCI_JAWABAN</code>)</strong>:
+        </p>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); gap: 14px;">
+          <a href="assets/downloads/Master_160_Rumus_Excel_Dunia_Nyata.xlsx" download style="text-decoration: none; background: rgba(2, 6, 23, 0.75); border: 2px solid #10b981; border-radius: 14px; padding: 16px; display: block;">
+            <div style="font-size: 0.75rem; font-weight: 900; color: #4ade80;">📊 MASTER WORKBOOK LENGKAP</div>
+            <div style="font-size: 1rem; font-weight: 800; color: #fff; margin: 4px 0;">Master 160+ Rumus Excel Dunia Nyata (.xlsx)</div>
+            <div style="font-size: 0.78rem; color: #94a3b8; margin-bottom: 10px;">Berisi seluruh sheet rumus + 5 soal tes per rumus + Sheet 99_KUNCI_JAWABAN di akhir.</div>
+            <span style="display: inline-block; background: #10b981; color: #0f172a; font-weight: 900; font-size: 0.78rem; padding: 6px 12px; border-radius: 8px;">📥 Download File (.xlsx)</span>
+          </a>
+
+          <a href="assets/downloads/Paket_1_Rumus_Matematika_Akuntansi_Logika.xlsx" download style="text-decoration: none; background: rgba(2, 6, 23, 0.75); border: 1.5px solid #38bdf8; border-radius: 14px; padding: 16px; display: block;">
+            <div style="font-size: 0.75rem; font-weight: 900; color: #38bdf8;">📘 PAKET 1</div>
+            <div style="font-size: 1rem; font-weight: 800; color: #fff; margin: 4px 0;">Rumus Matematika, Akuntansi & Logika (.xlsx)</div>
+            <div style="font-size: 0.78rem; color: #94a3b8; margin-bottom: 10px;">Lengkap dengan Sheet 99_KUNCI_JAWABAN di bagian paling akhir workbook.</div>
+            <span style="display: inline-block; background: #38bdf8; color: #0f172a; font-weight: 900; font-size: 0.78rem; padding: 6px 12px; border-radius: 8px;">📥 Download Paket 1</span>
+          </a>
+
+          <a href="assets/downloads/Paket_2_Rumus_Lookup_Teks_Tanggal_HRD.xlsx" download style="text-decoration: none; background: rgba(2, 6, 23, 0.75); border: 1.5px solid #a855f7; border-radius: 14px; padding: 16px; display: block;">
+            <div style="font-size: 0.75rem; font-weight: 900; color: #c084fc;">🟣 PAKET 2</div>
+            <div style="font-size: 1rem; font-weight: 800; color: #fff; margin: 4px 0;">Rumus Lookup, Teks, Tanggal & HRD (.xlsx)</div>
+            <div style="font-size: 0.78rem; color: #94a3b8; margin-bottom: 10px;">Lengkap dengan Sheet 99_KUNCI_JAWABAN di bagian paling akhir workbook.</div>
+            <span style="display: inline-block; background: #a855f7; color: #fff; font-weight: 900; font-size: 0.78rem; padding: 6px 12px; border-radius: 8px;">📥 Download Paket 2</span>
+          </a>
+
+          <a href="assets/downloads/Paket_3_Rumus_Keuangan_Audit_Statistika_Lengkap.xlsx" download style="text-decoration: none; background: rgba(2, 6, 23, 0.75); border: 1.5px solid #f59e0b; border-radius: 14px; padding: 16px; display: block;">
+            <div style="font-size: 0.75rem; font-weight: 900; color: #fde047;">🟠 PAKET 3</div>
+            <div style="font-size: 1rem; font-weight: 800; color: #fff; margin: 4px 0;">Rumus Keuangan, Audit & Statistika (.xlsx)</div>
+            <div style="font-size: 0.78rem; color: #94a3b8; margin-bottom: 10px;">Lengkap dengan Sheet 99_KUNCI_JAWABAN di bagian paling akhir workbook.</div>
+            <span style="display: inline-block; background: #f59e0b; color: #0f172a; font-weight: 900; font-size: 0.78rem; padding: 6px 12px; border-radius: 8px;">📥 Download Paket 3</span>
+          </a>
+
+          <a href="assets/downloads/Paket_4_Khusus_95_Rumus_Statistika_Lengkap.xlsx" download style="text-decoration: none; background: rgba(2, 6, 23, 0.75); border: 1.5px solid #ec4899; border-radius: 14px; padding: 16px; display: block;">
+            <div style="font-size: 0.75rem; font-weight: 900; color: #f472b6;">📈 PAKET 4 KHUSUS STATISTIKA</div>
+            <div style="font-size: 1rem; font-weight: 800; color: #fff; margin: 4px 0;">95 Rumus Statistika & Analisis Data (.xlsx)</div>
+            <div style="font-size: 0.78rem; color: #94a3b8; margin-bottom: 10px;">Lengkap dengan Sheet 99_KUNCI_JAWABAN di bagian paling akhir workbook.</div>
+            <span style="display: inline-block; background: #ec4899; color: #fff; font-weight: 900; font-size: 0.78rem; padding: 6px 12px; border-radius: 8px;">📥 Download Paket 4</span>
+          </a>
+        </div>
+      </div>
+    ` : ''}
+  `;
+}
+
 
 // ================= SVG MATCHING LINES DRAWING ENGINE =================
 window.drawAllMatchingLines = function(q, matched) {
