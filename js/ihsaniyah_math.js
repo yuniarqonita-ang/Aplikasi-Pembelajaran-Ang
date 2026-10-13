@@ -2321,6 +2321,7 @@
       return [];
     }
   };
+  window.getAllIhsaniyahRecords = window.getIhsaniyahRecords;
 
   window.upsertIhsaniyahRecord = function(record) {
     try {
@@ -2419,5 +2420,6 @@
     document.body.removeChild(a);
     URL.revokeObjectURL(url);
   };
+  window.downloadIhsaniyahCSV = window.exportIhsaniyahCSV;
 
 })();

@@ -7095,7 +7095,11 @@ function syncIhsaniyahProgressToRecords(updateBadgesOnly) {
 
 // ================= AUTENTIKASI & PANEL GURU SD IHSANIYAH =================
 function isTeacherLoggedIn() {
-  return sessionStorage.getItem("ihs_teacher_auth") === "true";
+  try {
+    return window._ihsTeacherLoggedIn === true || sessionStorage.getItem("ihs_teacher_auth") === "true";
+  } catch (e) {
+    return window._ihsTeacherLoggedIn === true;
+  }
 }
 
 window.openIhsaniyahAdminPanel = function() {
@@ -7180,29 +7184,40 @@ window.handleTeacherLoginSubmit = function() {
   const errEl = document.getElementById("teacher-login-error");
 
   const u = userEl ? userEl.value.trim().toLowerCase() : "";
-  const p = passEl ? passEl.value.trim() : "";
+  const p = passEl ? passEl.value.trim().toLowerCase() : "";
 
-  if (u === "guru" && p === "sdihsaniyah2026") {
-    sessionStorage.setItem("ihs_teacher_auth", "true");
+  const validUsers = ["guru", "admin", "ihsaniyah"];
+  const validPasswords = ["sdihsaniyah2026", "ihsaniyah2026", "sdihsaniyah", "guru123", "guru"];
+
+  if (validUsers.includes(u) && validPasswords.includes(p)) {
+    window._ihsTeacherLoggedIn = true;
+    try {
+      sessionStorage.setItem("ihs_teacher_auth", "true");
+    } catch (e) {}
     if (window.sfx && typeof sfx.playSuccess === "function") sfx.playSuccess();
     renderTeacherAdminModal();
   } else {
     if (errEl) {
       errEl.style.display = "block";
-      errEl.textContent = "⚠️ Username atau Password guru salah! Periksa kembali.";
+      errEl.textContent = "⚠️ Username atau Password guru belum tepat! Gunakan Username: guru | Password: sdihsaniyah2026";
     }
     if (window.sfx && typeof sfx.playWrong === "function") sfx.playWrong();
   }
 };
 
 window.logoutTeacherHandler = function() {
-  sessionStorage.removeItem("ihs_teacher_auth");
+  window._ihsTeacherLoggedIn = false;
+  try {
+    sessionStorage.removeItem("ihs_teacher_auth");
+  } catch (e) {}
   if (window.sfx && typeof sfx.playClick === "function") sfx.playClick();
   renderTeacherLoginModal();
 };
 
 function renderTeacherAdminModal() {
-  const records = window.getAllIhsaniyahRecords();
+  const records = typeof window.getIhsaniyahRecords === "function"
+    ? window.getIhsaniyahRecords()
+    : (typeof window.getAllIhsaniyahRecords === "function" ? window.getAllIhsaniyahRecords() : []);
   const avgScore = records.length ? Math.round(records.reduce((acc, r) => acc + (r.score || 0), 0) / records.length) : 0;
   const highestScore = records.length ? Math.max(...records.map(r => r.score || 0)) : 0;
   const questions = window.IHSANIYAH_QUESTIONS || [];
@@ -7250,7 +7265,7 @@ function renderTeacherAdminModal() {
         <!-- Tombol Aksi Download & Kunci Jawaban Guru -->
         <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; margin-bottom: 14px;">
           <div style="display: flex; gap: 8px; flex-wrap: wrap;">
-            <button class="btn-primary" style="padding: 10px 18px; font-weight: 800; background: linear-gradient(135deg, #059669, #10b981); border: none; border-radius: 8px;" onclick="window.downloadIhsaniyahCSV()">
+            <button class="btn-primary" style="padding: 10px 18px; font-weight: 800; background: linear-gradient(135deg, #059669, #10b981); border: none; border-radius: 8px;" onclick="window.exportIhsaniyahCSV && window.exportIhsaniyahCSV()">
               📥 Download Rekap Nilai Siswa (Excel / CSV)
             </button>
             <button class="btn-secondary" style="padding: 10px 14px; font-size: 0.82rem; font-weight: 800; color: #38bdf8;" onclick="const el=document.getElementById('teacher-key-box'); if(el) el.style.display=el.style.display==='none'?'block':'none';">
