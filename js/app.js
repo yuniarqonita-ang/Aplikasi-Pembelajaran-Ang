@@ -6451,28 +6451,10 @@ function renderIhsaniyahTest() {
       <h3 style="margin: 0 0 8px; font-size: 1.2rem; color: #fff;">${q.number}. ${q.title}</h3>
       <p style="margin: 0 0 14px; font-size: 0.95rem; color: #e2e8f0; line-height: 1.55; white-space: pre-line;">${q.instruction}</p>
 
-      <!-- Gambar Asli Soal dari Lembar PDF SD Ihsaniyah -->
-      ${q.cropImg ? `
-        <div style="background: #ffffff; border: 2px solid #38bdf8; border-radius: 12px; padding: 12px; margin: 14px 0; text-align: center; box-shadow: 0 4px 14px rgba(0,0,0,0.25);">
-          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; padding-bottom: 6px; border-bottom: 1px solid #e2e8f0;">
-            <span style="font-size: 0.76rem; font-weight: 800; color: #0f172a;">📸 Gambar Soal Asli Lembar Ujian / Buku Paket (${q.page}):</span>
-            ${q.fullPageImg ? `
-              <button type="button" onclick="toggleFullWorksheetPage('${q.id}')" style="background: #0284c7; color: #fff; border: none; border-radius: 6px; padding: 4px 10px; font-size: 0.74rem; font-weight: 700; cursor: pointer;">
-                🔍 Lihat Halaman Penuh PDF
-              </button>
-            ` : ''}
-          </div>
-          <img src="${q.cropImg}" alt="Soal ${q.number}" style="max-width: 100%; max-height: 390px; height: auto; border-radius: 6px; object-fit: contain;">
-          ${q.fullPageImg ? `
-            <div id="full-page-wrap-${q.id}" style="display: none; margin-top: 12px; padding-top: 12px; border-top: 2px dashed #94a3b8;">
-              <div style="font-size: 0.75rem; font-weight: 800; color: #334155; margin-bottom: 6px;">Halaman Penuh Lembar PDF (${q.page}):</div>
-              <img src="${q.fullPageImg}" alt="Full Page ${q.number}" style="max-width: 100%; height: auto; border-radius: 8px; border: 1px solid #cbd5e1;">
-            </div>
-          ` : ''}
-        </div>
-      ` : ''}
+      <!-- Visual Interaktif & Manipulatif Buatan Sendiri (100% Tanpa Gambar Crop PDF!) -->
+      ${typeof window.renderIhsaniyahCustomVisual === 'function' ? window.renderIhsaniyahCustomVisual(q) : ''}
 
-      <!-- Area Input Jawaban Siswa Sesuai Bentuk Kotak di PDF -->
+      <!-- Area Input Jawaban Siswa Interaktif -->
       <div id="ihs-question-interactive-body" style="margin: 18px 0;">
         ${renderIhsaniyahInteractiveBody(q)}
       </div>
@@ -6497,13 +6479,6 @@ function renderIhsaniyahTest() {
     </div>
   `;
 }
-
-window.toggleFullWorksheetPage = function(qid) {
-  const el = document.getElementById("full-page-wrap-" + qid);
-  if (el) {
-    el.style.display = el.style.display === "none" ? "block" : "none";
-  }
-};
 
 // Render Identity Gate (Form Siswa Sebelum Masuk)
 function renderIhsaniyahStudentGate(container) {
@@ -6668,7 +6643,7 @@ function renderIhsaniyahInteractiveBody(q) {
     return `
       <div style="background: rgba(15, 23, 42, 0.85); border: 1.5px solid rgba(56, 189, 248, 0.35); border-radius: 12px; padding: 16px;">
         <div style="font-size: 0.85rem; font-weight: 800; color: #38bdf8; margin-bottom: 12px;">
-          ✏️ Isi kotak-kotak titik-titik sesuai lembar soal di atas:
+          ✏️ Isi kotak-kotak jawaban berdasarkan diagram visual di atas:
         </div>
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 14px;">
           ${q.boxes.map(b => `
@@ -6690,7 +6665,7 @@ function renderIhsaniyahInteractiveBody(q) {
     return `
       <div style="background: rgba(15, 23, 42, 0.9); border: 2px solid #10b981; border-radius: 14px; padding: 18px;">
         <div style="font-size: 0.85rem; font-weight: 800; color: #86efac; margin-bottom: 14px;">
-          ✏️ Lengkapi kotak kalimat pembagian (Division Sentence) persis seperti di buku:
+          ✏️ Lengkapi kotak kalimat pembagian (Division Sentence) berdasarkan visual di atas:
         </div>
 
         <!-- Baris 1: [ ] ÷ [ ] = [ ] -->
@@ -6718,7 +6693,7 @@ function renderIhsaniyahInteractiveBody(q) {
     return `
       <div style="background: rgba(15, 23, 42, 0.9); border: 2px solid #38bdf8; border-radius: 14px; padding: 18px; display: flex; flex-direction: column; gap: 12px;">
         <div style="font-size: 0.85rem; font-weight: 800; color: #38bdf8;">
-          ✏️ Lengkapi ke-4 baris cerita pembagian (Making Division Stories) sesuai gambar di atas:
+          ✏️ Lengkapi ke-4 baris cerita pembagian (Making Division Stories) berdasarkan diorama visual di atas:
         </div>
 
         <!-- Line 1 -->
@@ -6754,7 +6729,7 @@ function renderIhsaniyahInteractiveBody(q) {
     `;
   }
 
-  // 6. MATCHING GAME: T-SHIRTS TO CLOTHES HANGERS (No. 26: Book Page 62)
+  // 6. MATCHING GAME: CUSTOM SVG T-SHIRTS TO CLOTHES HANGERS (No. 26: Book Page 62)
   if (q.type === "matching_game") {
     const matched = currentAnswer.matchedPairs || {};
     const matchedCount = Object.keys(matched).length;
@@ -6769,11 +6744,11 @@ function renderIhsaniyahInteractiveBody(q) {
       <div style="margin: 10px 0;">
         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; flex-wrap: wrap; gap: 8px;">
           <span style="font-size: 0.88rem; color: #38bdf8; font-weight: 700;">
-            👕 Klik Kaos di sebelah kiri, lalu klik Gantungan Baju (Hanger) pasangannya di sebelah kanan untuk menarik garis!
+            👕 Klik Baju Kaos warna-warni di kiri, lalu klik Gantungan Baju (Hanger) pasangannya di kanan untuk menarik tali jemuran!
           </span>
           <div style="display: flex; align-items: center; gap: 10px;">
             <span style="font-size: 0.85rem; font-weight: 800; color: #4ade80;">
-              Garis Terhubung: ${matchedCount} / ${q.pairs.length}
+              Tali Terhubung: ${matchedCount} / ${q.pairs.length}
             </span>
             <button class="btn-secondary" style="padding: 5px 12px; font-size: 0.78rem;" onclick="resetIhsMatchingLines('${q.id}')">
               🔄 Hapus / Ulangi Garis
@@ -6789,9 +6764,13 @@ function renderIhsaniyahInteractiveBody(q) {
               ${q.pairs.map(p => {
                 const isCardMatched = !!matched[p.leftId];
                 const isCardSelected = (appState.matchingSelectedShirt === p.leftId);
+                const sCol = p.shirtColor || p.color || "#0284c7";
                 return `
-                  <div id="card-left-${p.leftId}" class="matching-card ${isCardMatched ? 'matched' : ''} ${isCardSelected ? 'selected' : ''}" onclick="selectIhsShirt('${p.leftId}')">
-                    <span style="font-size: 1.05rem; font-weight: 800; color: #fff;">${p.leftText}</span>
+                  <div id="card-left-${p.leftId}" class="matching-card ${isCardMatched ? 'matched' : ''} ${isCardSelected ? 'selected' : ''}" onclick="selectIhsShirt('${p.leftId}')" style="display: flex; align-items: center; gap: 12px; border-color: ${p.color};">
+                    <svg width="46" height="42" viewBox="0 0 64 56" style="flex-shrink: 0; filter: drop-shadow(0 3px 6px rgba(0,0,0,0.35));">
+                      <path d="M16 6 L24 6 C26 12 38 12 40 6 L48 6 L60 18 L52 28 L46 22 L46 52 L18 52 L18 22 L12 28 L4 18 Z" fill="${sCol}" stroke="#ffffff" stroke-width="2.5" stroke-linejoin="round"/>
+                    </svg>
+                    <span style="font-size: 1.12rem; font-weight: 900; color: #fff; font-family: monospace;">${p.leftText}</span>
                     <span class="matching-pin pin-right" id="pin-left-${p.leftId}"></span>
                   </div>
                 `;
@@ -6803,9 +6782,13 @@ function renderIhsaniyahInteractiveBody(q) {
                 const matchedShirt = Object.keys(matched).find(k => matched[k] === p.rightId);
                 const isHangerMatched = !!matchedShirt;
                 return `
-                  <div id="card-right-${p.rightId}" class="matching-card ${isHangerMatched ? 'matched' : ''}" onclick="connectIhsHanger('${p.rightId}')">
+                  <div id="card-right-${p.rightId}" class="matching-card ${isHangerMatched ? 'matched' : ''}" onclick="connectIhsHanger('${p.rightId}')" style="display: flex; align-items: center; gap: 12px;">
                     <span class="matching-pin pin-left" id="pin-right-${p.rightId}"></span>
-                    <span style="font-size: 1.05rem; font-weight: 800; color: #fff;">${p.rightText}</span>
+                    <svg width="48" height="38" viewBox="0 0 68 48" style="flex-shrink: 0; filter: drop-shadow(0 3px 6px rgba(0,0,0,0.35));">
+                      <path d="M34 16 C34 9 42 7 42 12 C42 15 34 17 34 21" fill="none" stroke="#fde047" stroke-width="3.5" stroke-linecap="round"/>
+                      <path d="M8 40 L34 21 L60 40 Z" fill="rgba(56, 189, 248, 0.2)" stroke="#38bdf8" stroke-width="3.5" stroke-linejoin="round"/>
+                    </svg>
+                    <span style="font-size: 1.12rem; font-weight: 900; color: #fff; font-family: monospace;">${p.rightText}</span>
                   </div>
                 `;
               }).join('')}
@@ -6816,23 +6799,88 @@ function renderIhsaniyahInteractiveBody(q) {
     `;
   }
 
-  // 7. PAGE 75: 1 TO 100 NUMBER GRID & 3 SUB-QUESTIONS (No. 27)
+  // 7. PAGE 75: INTERACTIVE 1 TO 100 NUMBER EXPLORER BOARD & 3 SUB-QUESTIONS (No. 27)
   if (q.type === "grid_100_page75") {
     const subAns = currentAnswer.subAnswers || {};
-    return `
-      <div style="background: rgba(15, 23, 42, 0.9); border: 2px solid #38bdf8; border-radius: 14px; padding: 18px;">
-        <div style="font-size: 0.88rem; font-weight: 800; color: #38bdf8; margin-bottom: 12px;">
-          ✏️ Jawab ke-3 pertanyaan di bawah tabel 1–100 (Tuliskan angka-angkanya dipisahkan koma, contoh: 10, 20, 30, ...):
+    const vSt = window.ihsVisualState || { grid100Tool: 'circle2', grid100Marks: {} };
+    const activeTool = vSt.grid100Tool || 'circle2';
+    const marks = vSt.grid100Marks || {};
+
+    let gridCellsHtml = '';
+    for (let n = 1; n <= 100; n++) {
+      const m = marks[n] || { c2: false, b5: false, t10: false };
+      const bgCol = m.b5 ? 'linear-gradient(135deg, #0284c7, #2563eb)' : 'rgba(30, 41, 59, 0.9)';
+      const borderStyle = m.c2 ? '3px solid #f43f5e' : '1px solid rgba(148, 163, 184, 0.28)';
+      const radiusStyle = m.c2 ? '999px' : '8px';
+      const glowStyle = (m.c2 && m.b5 && m.t10) ? '0 0 12px rgba(250, 204, 21, 0.75)' : 'none';
+
+      gridCellsHtml += `
+        <div onclick="ihsClickGrid100Cell(${n})"
+             title="Klik untuk menandai angka ${n}"
+             style="position: relative; height: 42px; display: flex; align-items: center; justify-content: center; cursor: pointer; font-family: monospace; font-size: 0.95rem; font-weight: 900; color: #ffffff; background: ${bgCol}; border: ${borderStyle}; border-radius: ${radiusStyle}; box-shadow: ${glowStyle}; user-select: none; transition: all 0.15s;">
+          <span>${n}</span>
+          ${m.t10 ? `<span style="position: absolute; top: -4px; right: -2px; font-size: 0.72rem; background: #10b981; color: #0f172a; border-radius: 999px; padding: 0 4px; font-weight: 900;">✓</span>` : ''}
         </div>
-        <div style="display: flex; flex-direction: column; gap: 14px;">
-          ${q.subPrompts.map(sp => `
-            <div style="background: rgba(0,0,0,0.35); padding: 14px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.12);">
-              <label style="display: block; font-size: 0.92rem; font-weight: 700; color: #fff; margin-bottom: 8px;">
-                ${sp.label}
-              </label>
-              <input type="text" value="${String(subAns[sp.id] || '').replace(/"/g, '&quot;')}" placeholder="${sp.placeholder}" oninput="saveIhsPage75Sub('${q.id}', '${sp.id}', this.value)" style="width: 100%; padding: 12px; font-size: 1rem; font-weight: 800; font-family: monospace; border-radius: 8px; border: 2px solid #4ade80; background: #0f172a; color: #4ade80; box-sizing: border-box;">
+      `;
+    }
+
+    return `
+      <div style="display: flex; flex-direction: column; gap: 18px;">
+        <!-- Papan Eksplorasi Angka 1 - 100 Interaktif Buatan Sendiri -->
+        <div style="background: linear-gradient(135deg, rgba(15, 23, 42, 0.96), rgba(30, 41, 59, 0.96)); border: 2px solid #38bdf8; border-radius: 16px; padding: 18px;">
+          <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; margin-bottom: 12px;">
+            <div>
+              <div style="font-size: 0.92rem; font-weight: 800; color: #38bdf8;">
+                🔢 Papan Interaktif Tabel Angka 1 sampai 100 (Klik Angka atau Gunakan Tombol Cepat!)
+              </div>
+              <div style="font-size: 0.78rem; color: #cbd5e1;">
+                Pilih alat kuas di bawah untuk melingkari (⭕ Kelipatan 2), mewarnai biru (🟦 Kelipatan 5), dan memberi centang (✅ Kelipatan 10).
+              </div>
             </div>
-          `).join('')}
+            <div style="display: flex; gap: 6px; flex-wrap: wrap;">
+              <button type="button" onclick="ihsAutoMarkGrid100('all')" style="background: linear-gradient(135deg, #10b981, #059669); color: #fff; border: none; border-radius: 8px; padding: 7px 12px; font-size: 0.76rem; font-weight: 900; cursor: pointer;">
+                ⚡ Tandai Otomatis Semua Kelipatan (2, 5, 10)
+              </button>
+              <button type="button" onclick="ihsAutoMarkGrid100('reset')" style="background: rgba(239, 68, 68, 0.2); color: #fca5a5; border: 1px solid #ef4444; border-radius: 8px; padding: 7px 12px; font-size: 0.76rem; font-weight: 800; cursor: pointer;">
+                🔄 Reset Tabel
+              </button>
+            </div>
+          </div>
+
+          <!-- Baris Pilihan Kuas Interaktif -->
+          <div style="display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 14px;">
+            <button type="button" onclick="ihsSetGrid100Tool('circle2')" style="padding: 8px 14px; border-radius: 10px; font-size: 0.8rem; font-weight: 800; cursor: pointer; border: ${activeTool === 'circle2' ? '2.5px solid #f43f5e' : '1px solid rgba(255,255,255,0.15)'}; background: ${activeTool === 'circle2' ? 'rgba(244, 63, 94, 0.25)' : 'rgba(0,0,0,0.3)'}; color: #fff;">
+              ⭕ Kuas 1: Lingkari Merah (Kelipatan 2)
+            </button>
+            <button type="button" onclick="ihsSetGrid100Tool('blue5')" style="padding: 8px 14px; border-radius: 10px; font-size: 0.8rem; font-weight: 800; cursor: pointer; border: ${activeTool === 'blue5' ? '2.5px solid #38bdf8' : '1px solid rgba(255,255,255,0.15)'}; background: ${activeTool === 'blue5' ? 'rgba(56, 189, 248, 0.25)' : 'rgba(0,0,0,0.3)'}; color: #fff;">
+              🟦 Kuas 2: Warnai Biru (Kelipatan 5)
+            </button>
+            <button type="button" onclick="ihsSetGrid100Tool('tick10')" style="padding: 8px 14px; border-radius: 10px; font-size: 0.8rem; font-weight: 800; cursor: pointer; border: ${activeTool === 'tick10' ? '2.5px solid #10b981' : '1px solid rgba(255,255,255,0.15)'}; background: ${activeTool === 'tick10' ? 'rgba(16, 185, 129, 0.25)' : 'rgba(0,0,0,0.3)'}; color: #fff;">
+              ✅ Kuas 3: Beri Centang ✓ (Kelipatan 10)
+            </button>
+          </div>
+
+          <!-- Grid 10x10 Angka 1 s/d 100 -->
+          <div style="display: grid; grid-template-columns: repeat(10, 1fr); gap: 6px; padding: 12px; background: rgba(2, 6, 23, 0.75); border-radius: 14px; border: 1px solid rgba(56, 189, 248, 0.25);">
+            ${gridCellsHtml}
+          </div>
+        </div>
+
+        <!-- 3 Pertanyaan Kesimpulan di Bawah Papan 1-100 -->
+        <div style="background: rgba(15, 23, 42, 0.9); border: 2px solid #10b981; border-radius: 14px; padding: 18px;">
+          <div style="font-size: 0.88rem; font-weight: 800; color: #4ade80; margin-bottom: 12px;">
+            ✏️ Jawab ke-3 pertanyaan di bawah berdasarkan hasil eksplorasimu di Papan 1–100 (Tuliskan angka-angkanya dipisahkan koma):
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 14px;">
+            ${q.subPrompts.map(sp => `
+              <div style="background: rgba(0,0,0,0.35); padding: 14px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.12);">
+                <label style="display: block; font-size: 0.92rem; font-weight: 700; color: #fff; margin-bottom: 8px;">
+                  ${sp.label}
+                </label>
+                <input type="text" value="${String(subAns[sp.id] || '').replace(/"/g, '&quot;')}" placeholder="${sp.placeholder}" oninput="saveIhsPage75Sub('${q.id}', '${sp.id}', this.value)" style="width: 100%; padding: 12px; font-size: 1rem; font-weight: 800; font-family: monospace; border-radius: 8px; border: 2px solid #4ade80; background: #0f172a; color: #4ade80; box-sizing: border-box;">
+              </div>
+            `).join('')}
+          </div>
         </div>
       </div>
     `;
