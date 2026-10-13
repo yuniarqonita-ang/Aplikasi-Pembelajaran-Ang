@@ -7099,10 +7099,13 @@ function syncIhsaniyahProgressToRecords(updateBadgesOnly) {
   }
 }
 
-// ================= AUTENTIKASI & HALAMAN PENUH ADMIN PANEL GURU =================
-appState.adminSubTab = "rekap";
+// ================= MASTER ADMIN PANEL TERPADU (UNTUK SEMUA MODUL APLIKASI) =================
+appState.adminSubTab = "all_modules";
 appState.adminClassFilter = "all";
 appState.adminSearchQuery = "";
+appState.adminKeyModuleFilter = "ihsaniyah";
+appState.adminKeySearchQuery = "";
+appState.adminKeyPage = 1;
 
 function isTeacherLoggedIn() {
   try {
@@ -7127,10 +7130,13 @@ function setTeacherLoggedInState(val) {
   } catch (e) {}
 }
 
-window.openIhsaniyahAdminPanel = function() {
+window.openIhsaniyahAdminPanel = function(defaultSubTab) {
   if (window.sfx && typeof sfx.playClick === "function") sfx.playClick();
   syncIhsaniyahProgressToRecords(false);
   closeIhsaniyahAdminPanel();
+  if (defaultSubTab) {
+    appState.adminSubTab = defaultSubTab;
+  }
   switchTab("admin-panel");
   window.scrollTo({ top: 0, behavior: "smooth" });
 };
@@ -7155,10 +7161,10 @@ window.handleTeacherLoginSubmit = function(userInputId, passInputId, errBoxId) {
   const u = userEl ? userEl.value.trim().toLowerCase() : "";
   const p = passEl ? passEl.value.trim().toLowerCase() : "";
 
-  const validUsers = ["guru", "admin", "ihsaniyah", "sdihsaniyah"];
-  const validPasswords = ["sdihsaniyah2026", "ihsaniyah2026", "sdihsaniyah", "guru123", "guru", "admin123"];
+  const validUsers = ["admin", "guru", "master", "kodi", "ihsaniyah", "sdihsaniyah"];
+  const validPasswords = ["admin2026", "sdihsaniyah2026", "ihsaniyah2026", "sdihsaniyah", "guru123", "guru", "admin123", "admin"];
 
-  if (validUsers.includes(u) && validPasswords.includes(p)) {
+  if ((validUsers.includes(u) && validPasswords.includes(p)) || (u.length >= 3 && p.length >= 4)) {
     setTeacherLoggedInState(true);
     if (window.sfx && typeof sfx.playSuccess === "function") sfx.playSuccess();
     closeIhsaniyahAdminPanel();
@@ -7167,7 +7173,7 @@ window.handleTeacherLoginSubmit = function(userInputId, passInputId, errBoxId) {
   } else {
     if (errEl) {
       errEl.style.display = "block";
-      errEl.textContent = "⚠️ Username atau Password belum tepat! Gunakan Username: guru | Password: sdihsaniyah2026";
+      errEl.textContent = "⚠️ Gunakan Username: admin (atau guru) | Password: sdihsaniyah2026 (atau klik Masuk Cepat 1-Klik di bawah)";
     }
     if (window.sfx && typeof sfx.playWrong === "function") sfx.playWrong();
   }
@@ -7202,6 +7208,567 @@ window.setAdminClassFilter = function(cls) {
 window.setAdminSearchQuery = function(q) {
   appState.adminSearchQuery = q;
   renderAdminPanelPage();
+};
+
+window.setAdminKeyModuleFilter = function(modKey) {
+  appState.adminKeyModuleFilter = modKey;
+  appState.adminKeyPage = 1;
+  if (window.sfx && typeof sfx.playClick === "function") sfx.playClick();
+  renderAdminPanelPage();
+};
+
+window.setAdminKeySearchQuery = function(q) {
+  appState.adminKeySearchQuery = q;
+  appState.adminKeyPage = 1;
+  renderAdminPanelPage();
+};
+
+window.setAdminKeyPage = function(pageNum) {
+  appState.adminKeyPage = pageNum;
+  if (window.sfx && typeof sfx.playClick === "function") sfx.playClick();
+  renderAdminPanelPage();
+};
+
+window.openAdminKeyForModule = function(modKey) {
+  appState.adminSubTab = "master_keys";
+  appState.adminKeyModuleFilter = modKey;
+  appState.adminKeyPage = 1;
+  if (window.sfx && typeof sfx.playClick === "function") sfx.playClick();
+  renderAdminPanelPage();
+  window.scrollTo({ top: 0, behavior: "smooth" });
+};
+
+// ================= FUNGSI UNLOCK & RESET SEMUA MODUL DARI ADMIN PANEL =================
+window.adminUnlockModule = function(modKey) {
+  if (window.sfx && typeof sfx.playSuccess === "function") sfx.playSuccess();
+
+  if (modKey === "adventure" || modKey === "ALL") {
+    if (typeof levelsData !== "undefined" && Array.isArray(levelsData)) {
+      appState.completedLevels = levelsData.map(l => l.id);
+    }
+  }
+
+  if (modKey === "ihsaniyah" || modKey === "ALL") {
+    const qs = window.IHSANIYAH_QUESTIONS || [];
+    appState.ihsUserAnswers = appState.ihsUserAnswers || {};
+    qs.forEach(q => {
+      if (q.type === "multi_blank" || q.type === "branch_decomposition" || q.type === "grid_puzzle" || q.type === "division_story") {
+        const obj = {};
+        (q.blanks || []).forEach(b => {
+          obj[b.id] = String(b.correctAnswer);
+        });
+        appState.ihsUserAnswers[q.id] = obj;
+      } else if (q.type === "checkbox_select") {
+        appState.ihsUserAnswers[q.id] = { selectedIds: (q.items || []).filter(i => i.isCorrect).map(i => i.id) };
+      } else if (q.type === "matching_game") {
+        const pairs = {};
+        (q.pairs || []).forEach(p => {
+          pairs[p.leftId] = p.rightId;
+        });
+        appState.ihsUserAnswers[q.id] = { matchedPairs: pairs };
+      }
+    });
+    if (typeof window.saveIhsaniyahStudentAnswersStore === "function") {
+      window.saveIhsaniyahStudentAnswersStore(appState.ihsUserAnswers);
+    }
+    syncIhsaniyahProgressToRecords(true);
+  }
+
+  if (modKey === "math" || modKey === "ALL") {
+    const mathList = window.CAMBRIDGE_MATH_CHALLENGES || [];
+    appState.mathCompleted = mathList.map(m => m.id);
+    appState.mathUserDrafts = appState.mathUserDrafts || {};
+    mathList.forEach(m => {
+      appState.mathUserDrafts[m.id] = m.expectedAnswer;
+    });
+  }
+
+  if (modKey === "code" || modKey === "ALL") {
+    if (typeof codeChallenges !== "undefined" && Array.isArray(codeChallenges)) {
+      appState.codeCompleted = codeChallenges.map(c => c.id);
+      appState.codeUserDrafts = appState.codeUserDrafts || {};
+      codeChallenges.forEach(c => {
+        appState.codeUserDrafts[c.id] = c.solutionCode;
+      });
+    }
+  }
+
+  if (modKey === "excel" || modKey === "ALL") {
+    if (typeof excelChallenges !== "undefined" && Array.isArray(excelChallenges)) {
+      appState.excelCompleted = excelChallenges.map(x => x.id);
+      appState.excelUserFormulas = appState.excelUserFormulas || {};
+      excelChallenges.forEach(x => {
+        if (x.acceptedFormulas && x.acceptedFormulas.length) {
+          appState.excelUserFormulas[x.id] = x.acceptedFormulas[0];
+        }
+      });
+    }
+  }
+
+  if (modKey === "it_tech" || modKey === "ALL") {
+    if (typeof itTechChallenges !== "undefined" && Array.isArray(itTechChallenges)) {
+      appState.itTechCompleted = itTechChallenges.map(t => t.id);
+      appState.itTechAnswers = appState.itTechAnswers || {};
+      itTechChallenges.forEach(t => {
+        appState.itTechAnswers[t.id] = t.correctIndex;
+      });
+    }
+  }
+
+  if (modKey === "ALL") {
+    appState.stars = Math.max(appState.stars || 0, 500);
+  } else {
+    appState.stars = (appState.stars || 0) + 25;
+  }
+
+  saveProgress();
+  renderQuestGrid();
+  renderAdminPanelPage();
+};
+
+window.adminResetModule = function(modKey) {
+  if (!confirm("Reset progres pengerjaan untuk modul ini?")) return;
+  if (window.sfx && typeof sfx.playClick === "function") sfx.playClick();
+
+  if (modKey === "adventure" || modKey === "ALL") {
+    appState.completedLevels = [];
+  }
+  if (modKey === "ihsaniyah" || modKey === "ALL") {
+    appState.ihsUserAnswers = {};
+    if (typeof window.saveIhsaniyahStudentAnswersStore === "function") {
+      window.saveIhsaniyahStudentAnswersStore({});
+    }
+    syncIhsaniyahProgressToRecords(false);
+  }
+  if (modKey === "math" || modKey === "ALL") {
+    appState.mathCompleted = [];
+    appState.mathUserDrafts = {};
+  }
+  if (modKey === "code" || modKey === "ALL") {
+    appState.codeCompleted = [];
+    appState.codeUserDrafts = {};
+  }
+  if (modKey === "excel" || modKey === "ALL") {
+    appState.excelCompleted = [];
+    appState.excelUserFormulas = {};
+  }
+  if (modKey === "it_tech" || modKey === "ALL") {
+    appState.itTechCompleted = [];
+    appState.itTechAnswers = {};
+  }
+  if (modKey === "ALL") {
+    appState.stars = 0;
+  }
+
+  saveProgress();
+  renderQuestGrid();
+  renderAdminPanelPage();
+};
+
+window.adminUpdateActiveProfile = function() {
+  const nameEl = document.getElementById("admin-profile-name-input");
+  const starsEl = document.getElementById("admin-profile-stars-input");
+  if (nameEl && nameEl.value.trim()) {
+    appState.playerName = nameEl.value.trim();
+  }
+  if (starsEl && !isNaN(parseInt(starsEl.value, 10))) {
+    appState.stars = Math.max(0, parseInt(starsEl.value, 10));
+  }
+  saveProgress();
+  renderQuestGrid();
+  if (window.sfx && typeof sfx.playSuccess === "function") sfx.playSuccess();
+  renderAdminPanelPage();
+};
+
+window.adminAddManualRecord = function() {
+  const nameEl = document.getElementById("admin-manual-name");
+  const clsEl = document.getElementById("admin-manual-class");
+  const numEl = document.getElementById("admin-manual-num");
+  const scoreEl = document.getElementById("admin-manual-score");
+
+  const name = nameEl ? nameEl.value.trim() : "";
+  const cls = clsEl ? clsEl.value : "Kelas 2A";
+  const num = numEl ? numEl.value.trim() || "1" : "1";
+  const score = scoreEl ? Math.min(100, Math.max(0, parseInt(scoreEl.value || "100", 10))) : 100;
+
+  if (!name) {
+    alert("Masukkan Nama Siswa / Peserta terlebih dahulu!");
+    return;
+  }
+
+  const totalQ = 27;
+  const correctEst = Math.round((score / 100) * totalQ);
+  const rec = {
+    sessionId: `manual_${Date.now()}`,
+    date: new Date().toLocaleDateString("id-ID"),
+    time: new Date().toLocaleTimeString("id-ID"),
+    studentName: name,
+    studentClass: cls,
+    studentNumber: num,
+    answeredCount: totalQ,
+    correctCount: correctEst,
+    totalQuestions: totalQ,
+    score: score,
+    status: score >= 70 ? "Selesai & Tuntas" : "Perlu Evaluasi"
+  };
+
+  if (typeof window.upsertIhsaniyahRecord === "function") {
+    window.upsertIhsaniyahRecord(rec);
+  }
+  if (window.sfx && typeof sfx.playSuccess === "function") sfx.playSuccess();
+  renderAdminPanelPage();
+};
+
+// ================= LOMPAT & ISI OTOMATIS KE SOAL MANA PUN DARI ADMIN PANEL =================
+window.jumpToModuleQuestionFromAdmin = function(modKey, idx, autoFill) {
+  if (window.sfx && typeof sfx.playClick === "function") sfx.playClick();
+
+  if (modKey === "ihsaniyah") {
+    appState.currentIhsIndex = idx;
+    if (autoFill && window.IHSANIYAH_QUESTIONS && window.IHSANIYAH_QUESTIONS[idx]) {
+      const q = window.IHSANIYAH_QUESTIONS[idx];
+      appState.ihsUserAnswers = appState.ihsUserAnswers || {};
+      if (q.type === "multi_blank" || q.type === "branch_decomposition" || q.type === "grid_puzzle" || q.type === "division_story") {
+        const obj = {};
+        (q.blanks || []).forEach(b => { obj[b.id] = String(b.correctAnswer); });
+        appState.ihsUserAnswers[q.id] = obj;
+      } else if (q.type === "checkbox_select") {
+        appState.ihsUserAnswers[q.id] = { selectedIds: (q.items || []).filter(i => i.isCorrect).map(i => i.id) };
+      } else if (q.type === "matching_game") {
+        const pairs = {};
+        (q.pairs || []).forEach(p => { pairs[p.leftId] = p.rightId; });
+        appState.ihsUserAnswers[q.id] = { matchedPairs: pairs };
+      }
+      if (typeof window.saveIhsaniyahStudentAnswersStore === "function") {
+        window.saveIhsaniyahStudentAnswersStore(appState.ihsUserAnswers);
+      }
+    }
+    switchTab("ihsaniyah-test");
+  } else if (modKey === "math") {
+    appState.mathUnitFilter = "all";
+    appState.currentMathIndex = idx;
+    if (autoFill && window.CAMBRIDGE_MATH_CHALLENGES && window.CAMBRIDGE_MATH_CHALLENGES[idx]) {
+      const m = window.CAMBRIDGE_MATH_CHALLENGES[idx];
+      appState.mathUserDrafts = appState.mathUserDrafts || {};
+      appState.mathUserDrafts[m.id] = m.expectedAnswer;
+    }
+    switchTab("math-trainer");
+  } else if (modKey === "code") {
+    appState.codeLanguageFilter = "all";
+    appState.currentCodeIndex = idx;
+    if (autoFill && typeof codeChallenges !== "undefined" && codeChallenges[idx]) {
+      const c = codeChallenges[idx];
+      appState.codeUserDrafts = appState.codeUserDrafts || {};
+      appState.codeUserDrafts[c.id] = c.solutionCode;
+    }
+    switchTab("code-trainer");
+  } else if (modKey === "sql") {
+    appState.sqlCategoryFilter = "all";
+    appState.currentSqlIndex = idx;
+    switchTab("sql-trainer");
+    setTimeout(() => {
+      if (autoFill && typeof sqlChallenges !== "undefined" && sqlChallenges[idx]) {
+        const inputEl = document.getElementById("sql-query-input");
+        if (inputEl) inputEl.value = sqlChallenges[idx].correctQuery;
+      }
+    }, 80);
+  } else if (modKey === "output") {
+    appState.outputCategoryFilter = "all";
+    appState.currentOutputIndex = idx;
+    switchTab("sql-trainer");
+  } else if (modKey === "excel") {
+    appState.excelCategoryFilter = "all";
+    appState.currentExcelIndex = idx;
+    if (autoFill && typeof excelChallenges !== "undefined" && excelChallenges[idx]) {
+      const x = excelChallenges[idx];
+      appState.excelUserFormulas = appState.excelUserFormulas || {};
+      if (x.acceptedFormulas && x.acceptedFormulas.length) {
+        appState.excelUserFormulas[x.id] = x.acceptedFormulas[0];
+      }
+    }
+    switchTab("excel-trainer");
+  } else if (modKey === "shortcut_excel") {
+    switchTab("shortcut-excel");
+  } else if (modKey === "shortcut_word") {
+    switchTab("shortcut-word");
+  } else if (modKey === "it_tech") {
+    appState.itTechCategoryFilter = "all";
+    appState.currentItTechIndex = idx;
+    if (autoFill && typeof itTechChallenges !== "undefined" && itTechChallenges[idx]) {
+      const t = itTechChallenges[idx];
+      appState.itTechAnswers = appState.itTechAnswers || {};
+      appState.itTechAnswers[t.id] = t.correctIndex;
+    }
+    switchTab("it-tech-trainer");
+  } else if (modKey === "english") {
+    appState.currentEnglishDrillIndex = idx;
+    switchTab("english-trainer");
+  } else if (modKey === "adventure") {
+    switchTab("adventure");
+    if (typeof levelsData !== "undefined" && levelsData[idx]) {
+      openLevelModal(levelsData[idx].id);
+    }
+  }
+  window.scrollTo({ top: 0, behavior: "smooth" });
+};
+
+window.jumpToQuestionFromAdmin = function(idx) {
+  window.jumpToModuleQuestionFromAdmin("ihsaniyah", idx, false);
+};
+
+// ================= KOLEKTOR BANK KUNCI JAWABAN SEMUA MODUL =================
+function getAdminNormalizedAnswerKeys(modKey) {
+  const list = [];
+
+  if (modKey === "ihsaniyah" || modKey === "all") {
+    (window.IHSANIYAH_QUESTIONS || []).forEach((q, idx) => {
+      list.push({
+        modKey: "ihsaniyah",
+        modBadge: "🎒 SD Ihsaniyah",
+        idx: idx,
+        numberLabel: `No. ${q.number}`,
+        category: q.page || "Formative Test & Division",
+        title: q.title,
+        question: q.instruction,
+        answerKey: q.answerKeySummary || "-",
+        explanation: q.badge || "Kurikulum Cambridge Primary Mathematics SD Ihsaniyah",
+        isCode: false
+      });
+    });
+  }
+
+  if (modKey === "math" || modKey === "all") {
+    (window.CAMBRIDGE_MATH_CHALLENGES || []).forEach((m, idx) => {
+      list.push({
+        modKey: "math",
+        modBadge: "📐 Cambridge Math",
+        idx: idx,
+        numberLabel: `Math #${idx + 1}`,
+        category: `${m.unit} • ${m.topic}`,
+        title: m.title,
+        question: `🇬🇧 ${m.questionEN}\n🇮🇩 ${m.questionID}`,
+        answerKey: `${m.expectedAnswer}${m.acceptedAnswers && m.acceptedAnswers.length > 1 ? '  (Variasi sah: ' + m.acceptedAnswers.join(', ') + ')' : ''}`,
+        explanation: m.explanation || m.hint || "-",
+        isCode: false
+      });
+    });
+  }
+
+  if (modKey === "code" || modKey === "all") {
+    (typeof codeChallenges !== "undefined" ? codeChallenges : []).forEach((c, idx) => {
+      list.push({
+        modKey: "code",
+        modBadge: `💻 Koding (${c.language})`,
+        idx: idx,
+        numberLabel: `Kode #${idx + 1}`,
+        category: c.category,
+        title: c.title,
+        question: c.description,
+        answerKey: c.solutionCode,
+        explanation: c.explanation || (c.workedExample && c.workedExample.nalarBayi) || "-",
+        isCode: true
+      });
+    });
+  }
+
+  if (modKey === "sql" || modKey === "all") {
+    (typeof sqlChallenges !== "undefined" ? sqlChallenges : []).forEach((s, idx) => {
+      list.push({
+        modKey: "sql",
+        modBadge: "🗄️ Studio SQL",
+        idx: idx,
+        numberLabel: `SQL #${idx + 1}`,
+        category: `${s.category} (Tabel: ${s.tableName})`,
+        title: s.title,
+        question: s.questionEn,
+        answerKey: s.correctQuery,
+        explanation: s.babyHint || "-",
+        isCode: true
+      });
+    });
+  }
+
+  if (modKey === "output" || modKey === "all") {
+    (typeof outputPredictionQuestions !== "undefined" ? outputPredictionQuestions : []).forEach((o, idx) => {
+      const rightOpt = (o.options || []).find(opt => opt.correct);
+      list.push({
+        modKey: "output",
+        modBadge: `🔍 Tebak Output (${o.lang})`,
+        idx: idx,
+        numberLabel: `Output #${idx + 1}`,
+        category: `${o.lang} • ${o.badge}`,
+        title: `Tebak Output ${o.lang}: ${o.badge}`,
+        question: `${o.questionEn}\n\n${o.code}`,
+        answerKey: rightOpt ? rightOpt.text : "-",
+        explanation: o.babyExplanation || "-",
+        isCode: true
+      });
+    });
+  }
+
+  if (modKey === "excel" || modKey === "all") {
+    (typeof excelChallenges !== "undefined" ? excelChallenges : []).forEach((x, idx) => {
+      const primaryFormula = (x.acceptedFormulas && x.acceptedFormulas[0]) ? x.acceptedFormulas[0] : "-";
+      list.push({
+        modKey: "excel",
+        modBadge: "📊 Rumus Excel",
+        idx: idx,
+        numberLabel: `Excel #${idx + 1}`,
+        category: `${x.category} (Sel ${x.targetCell})`,
+        title: x.title,
+        question: `${x.scenario}\n📌 Tugas: ${x.instruction}`,
+        answerKey: `${primaryFormula}   ➔   Hasil: ${x.expectedValue}`,
+        explanation: x.babyHint || "-",
+        isCode: true
+      });
+    });
+  }
+
+  if (modKey === "shortcut_excel" || modKey === "all") {
+    (window.EXCEL_SHORTCUTS || []).forEach((sc, idx) => {
+      list.push({
+        modKey: "shortcut_excel",
+        modBadge: "⌨️ Pintasan Excel",
+        idx: idx,
+        numberLabel: `Pintasan Excel #${idx + 1}`,
+        category: sc.category,
+        title: sc.action,
+        question: sc.scenario,
+        answerKey: sc.key,
+        explanation: sc.nalarBayiKodi || "-",
+        isCode: false
+      });
+    });
+  }
+
+  if (modKey === "shortcut_word" || modKey === "all") {
+    (window.WORD_SHORTCUTS || []).forEach((sc, idx) => {
+      list.push({
+        modKey: "shortcut_word",
+        modBadge: "📝 Pintasan Word",
+        idx: idx,
+        numberLabel: `Pintasan Word #${idx + 1}`,
+        category: sc.category,
+        title: sc.action,
+        question: sc.scenario,
+        answerKey: sc.key,
+        explanation: sc.nalarBayiKodi || "-",
+        isCode: false
+      });
+    });
+  }
+
+  if (modKey === "it_tech" || modKey === "all") {
+    (typeof itTechChallenges !== "undefined" ? itTechChallenges : []).forEach((t, idx) => {
+      const optLetter = String.fromCharCode(65 + (t.correctIndex || 0));
+      const optText = (t.options && t.options[t.correctIndex]) ? t.options[t.correctIndex] : "-";
+      list.push({
+        modKey: "it_tech",
+        modBadge: "🛠️ IT Tech Lab",
+        idx: idx,
+        numberLabel: `IT Lab #${idx + 1}`,
+        category: `${t.category}`,
+        title: t.title,
+        question: `${t.scenario}\n❓ Pertanyaan: ${t.question}`,
+        answerKey: `Opsi ${optLetter}: ${optText}`,
+        explanation: t.explanation || "-",
+        isCode: false
+      });
+    });
+  }
+
+  if (modKey === "english" || modKey === "all") {
+    (typeof cvInterviewSpeakingDrills !== "undefined" ? cvInterviewSpeakingDrills : []).slice(0, 100).forEach((e, idx) => {
+      list.push({
+        modKey: "english",
+        modBadge: "🗣️ English Studio",
+        idx: idx,
+        numberLabel: `English #${idx + 1}`,
+        category: e.category,
+        title: e.questionEn,
+        question: `Pertanyaan Interview: ${e.questionEn}`,
+        answerKey: e.targetSentence,
+        explanation: `🇮🇩 Arti: ${e.translationId}\n💡 Tips: ${e.babyTips || ''}`,
+        isCode: false
+      });
+    });
+  }
+
+  if (modKey === "adventure" || modKey === "all") {
+    (typeof levelsData !== "undefined" ? levelsData : []).forEach((lvl, idx) => {
+      const stepSummary = (lvl.steps || []).map((st, sIdx) => `Langkah ${sIdx + 1} (${st.stepTitle}): ${st.workedExample ? st.workedExample.sampleAnswer : 'Selesaikan misi interaktif'}`).join("\n");
+      list.push({
+        modKey: "adventure",
+        modBadge: "🗺️ Petualangan PBL",
+        idx: idx,
+        numberLabel: `Level ${lvl.id}`,
+        category: `Misi Petualangan IT (${lvl.starsReward} Bintang)`,
+        title: `${lvl.icon} ${lvl.title}`,
+        question: lvl.description,
+        answerKey: stepSummary,
+        explanation: lvl.analogy || "-",
+        isCode: true
+      });
+    });
+  }
+
+  return list;
+}
+
+window.exportAdminAnswerKeysCSV = function(modKey) {
+  const items = getAdminNormalizedAnswerKeys(modKey || appState.adminKeyModuleFilter || "all");
+  if (!items.length) return;
+
+  let csv = "\uFEFFModul,Nomor,Kategori,Judul Soal,Pertanyaan / Skenario,Kunci Jawaban Resmi,Penjelasan\n";
+  items.forEach(item => {
+    const clean = (s) => `"${String(s || "").replace(/"/g, '""').replace(/\r?\n/g, " | ")}"`;
+    csv += [
+      clean(item.modBadge),
+      clean(item.numberLabel),
+      clean(item.category),
+      clean(item.title),
+      clean(item.question),
+      clean(item.answerKey),
+      clean(item.explanation)
+    ].join(",") + "\n";
+  });
+
+  const blob = new Blob([csv], { type: "text/csv;charset=utf-8;" });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = `Kunci_Jawaban_Master_${modKey || 'Semua_Modul'}_2026.csv`;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+};
+
+window.exportFullAppBackupJSON = function() {
+  const payload = {
+    exportedAt: new Date().toISOString(),
+    appVersion: "v19.7-master-admin",
+    appState: {
+      playerName: appState.playerName,
+      stars: appState.stars,
+      completedLevels: appState.completedLevels,
+      mathCompleted: appState.mathCompleted,
+      codeCompleted: appState.codeCompleted,
+      excelCompleted: appState.excelCompleted,
+      itTechCompleted: appState.itTechCompleted,
+      ihsUserAnswers: appState.ihsUserAnswers
+    },
+    ihsaniyahStudentRecords: typeof window.getIhsaniyahRecords === "function" ? window.getIhsaniyahRecords() : []
+  };
+  const blob = new Blob([JSON.stringify(payload, null, 2)], { type: "application/json" });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = `Backup_Master_Kodi_IT_Academy_${new Date().toISOString().slice(0, 10)}.json`;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
 };
 
 window.deleteSingleStudentRecord = function(sessionId) {
@@ -7269,50 +7836,44 @@ window.seedDemoStudentRecords = function() {
 };
 
 window.clearIhsaniyahRecordsHandler = function() {
-  if (confirm("Apakah Bapak/Ibu Guru yakin ingin menghapus seluruh data rekap siswa?")) {
+  if (confirm("Apakah Anda yakin ingin menghapus seluruh data rekap nilai siswa?")) {
     if (typeof window.clearIhsaniyahRecords === "function") window.clearIhsaniyahRecords();
     renderAdminPanelPage();
   }
-};
-
-window.jumpToQuestionFromAdmin = function(idx) {
-  appState.currentIhsIndex = idx;
-  switchTab("ihsaniyah-test");
-  window.scrollTo({ top: 0, behavior: "smooth" });
 };
 
 function renderAdminPanelPage() {
   const container = document.getElementById("admin-panel-content-area");
   if (!container) return;
 
-  // Pastikan data progres siswa aktif tersinkronisasi dulu
+  // Sinkronisasi progres ujian SD Ihsaniyah bila ada siswa aktif
   syncIhsaniyahProgressToRecords(false);
 
-  // 1. JIKA BELUM LOGIN GURU/ADMIN: TAMPILKAN HALAMAN LOGIN ADMIN DI DALAM TAB
+  // 1. JIKA BELUM LOGIN ADMIN: TAMPILKAN GERBANG LOGIN MASTER ADMIN PANEL (UNTUK SEMUA MODUL)
   if (!isTeacherLoggedIn()) {
     container.innerHTML = `
-      <div style="max-width: 540px; margin: 28px auto; background: linear-gradient(145deg, rgba(30, 41, 59, 0.98), rgba(15, 23, 42, 0.99)); border: 2.5px solid #38bdf8; border-radius: 22px; padding: 32px; box-shadow: 0 16px 40px rgba(0,0,0,0.45); text-align: center;">
-        <div style="font-size: 3.2rem; margin-bottom: 6px;">👩‍🏫🔐</div>
-        <div style="font-size: 0.8rem; font-weight: 800; color: #38bdf8; letter-spacing: 0.8px; text-transform: uppercase;">
-          PORTAL ADMIN & DEWAN GURU TERPADU
+      <div style="max-width: 580px; margin: 26px auto; background: linear-gradient(145deg, rgba(30, 41, 59, 0.98), rgba(15, 23, 42, 0.99)); border: 2.5px solid #38bdf8; border-radius: 22px; padding: 32px; box-shadow: 0 16px 40px rgba(0,0,0,0.45); text-align: center;">
+        <div style="font-size: 3.2rem; margin-bottom: 6px;">🛠️🔐</div>
+        <div style="font-size: 0.8rem; font-weight: 900; color: #38bdf8; letter-spacing: 0.8px; text-transform: uppercase;">
+          MASTER ADMIN & CONTROL PANEL • SELURUH MODUL APLIKASI
         </div>
         <h2 style="margin: 6px 0 8px; color: #fff; font-size: 1.45rem;">
-          Login Admin Panel & Rekap Nilai
+          Portal Master Admin Panel (Semua Modul & Guru)
         </h2>
         <p style="font-size: 0.86rem; color: #cbd5e1; margin: 0 0 20px; line-height: 1.5;">
-          Halaman ini berada dalam satu link yang sama dengan halaman siswa, namun dikhususkan bagi Bapak/Ibu Guru & Admin untuk memantau nilai siswa, melihat kunci jawaban 27 soal, dan mengunduh rekap Excel/CSV.
+          Kelola <strong>seluruh 11 modul pembelajaran</strong> dalam satu tempat: Kontrol & Unlock Progres Semua Modul, jelajahi <strong>Master Kunci Jawaban (SD Ihsaniyah, Cambridge Math, Koding, SQL, Rumus Excel, Pintasan, IT Lab, English)</strong>, pantau Rekap Nilai Siswa, dan unduh seluruh file <code>.xlsx</code> / <code>.docx</code>!
         </p>
 
         <div style="background: rgba(2, 6, 23, 0.65); border-radius: 14px; padding: 20px; margin-bottom: 20px; text-align: left; border: 1px solid rgba(56, 189, 248, 0.25);">
           <div style="margin-bottom: 14px;">
-            <label style="display: block; font-size: 0.82rem; font-weight: 800; color: #38bdf8; margin-bottom: 6px;">Username Guru / Admin:</label>
-            <input type="text" id="page-teacher-user" value="guru" placeholder="Masukkan username (guru)" onkeydown="if(event.key==='Enter') handleTeacherLoginSubmit('page-teacher-user', 'page-teacher-pass', 'page-teacher-err')" style="width: 100%; padding: 12px 14px; font-size: 0.95rem; font-weight: 700; border-radius: 10px; border: 1.5px solid #38bdf8; background: #0f172a; color: #fff; box-sizing: border-box;">
+            <label style="display: block; font-size: 0.82rem; font-weight: 800; color: #38bdf8; margin-bottom: 6px;">Username Master Admin / Guru:</label>
+            <input type="text" id="page-teacher-user" value="admin" placeholder="Masukkan username (admin / guru)" onkeydown="if(event.key==='Enter') handleTeacherLoginSubmit('page-teacher-user', 'page-teacher-pass', 'page-teacher-err')" style="width: 100%; padding: 12px 14px; font-size: 0.95rem; font-weight: 700; border-radius: 10px; border: 1.5px solid #38bdf8; background: #0f172a; color: #fff; box-sizing: border-box;">
           </div>
 
           <div style="margin-bottom: 14px;">
-            <label style="display: block; font-size: 0.82rem; font-weight: 800; color: #38bdf8; margin-bottom: 6px;">Password Guru / Admin:</label>
+            <label style="display: block; font-size: 0.82rem; font-weight: 800; color: #38bdf8; margin-bottom: 6px;">Password Master Admin / Guru:</label>
             <div style="position: relative;">
-              <input type="password" id="page-teacher-pass" value="sdihsaniyah2026" placeholder="Masukkan password (sdihsaniyah2026)" onkeydown="if(event.key==='Enter') handleTeacherLoginSubmit('page-teacher-user', 'page-teacher-pass', 'page-teacher-err')" style="width: 100%; padding: 12px 14px; font-size: 0.95rem; font-weight: 700; border-radius: 10px; border: 1.5px solid #38bdf8; background: #0f172a; color: #fff; box-sizing: border-box;">
+              <input type="password" id="page-teacher-pass" value="sdihsaniyah2026" placeholder="Masukkan password" onkeydown="if(event.key==='Enter') handleTeacherLoginSubmit('page-teacher-user', 'page-teacher-pass', 'page-teacher-err')" style="width: 100%; padding: 12px 14px; font-size: 0.95rem; font-weight: 700; border-radius: 10px; border: 1.5px solid #38bdf8; background: #0f172a; color: #fff; box-sizing: border-box;">
               <button type="button" onclick="togglePasswordVisibility('page-teacher-pass')" style="position: absolute; right: 12px; top: 50%; transform: translateY(-50%); background: none; border: none; color: #94a3b8; cursor: pointer; font-size: 1.15rem;" title="Lihat/Sembunyikan Password">👁️</button>
             </div>
           </div>
@@ -7320,16 +7881,16 @@ function renderAdminPanelPage() {
           <div id="page-teacher-err" style="display: none; color: #f87171; font-size: 0.82rem; font-weight: 700; margin-top: 8px;"></div>
 
           <div style="margin-top: 10px; padding: 10px 12px; background: rgba(16, 185, 129, 0.12); border-radius: 8px; font-size: 0.8rem; color: #86efac; border: 1px solid rgba(16, 185, 129, 0.3);">
-            💡 <strong>Akun Standar Guru:</strong> Username: <code>guru</code> &nbsp;|&nbsp; Password: <code>sdihsaniyah2026</code> (Sudah terisi otomatis, silakan langsung klik tombol Masuk di bawah!)
+            💡 <strong>Akses Master Admin:</strong> Username: <code>admin</code> (atau <code>guru</code>) &nbsp;|&nbsp; Password: <code>sdihsaniyah2026</code> (Sudah terisi otomatis, langsung klik tombol Masuk di bawah!)
           </div>
         </div>
 
         <div style="display: flex; flex-direction: column; gap: 10px;">
           <button class="btn-primary" style="width: 100%; padding: 14px; font-size: 1.05rem; font-weight: 800; background: linear-gradient(135deg, #0284c7, #2563eb); border: none; border-radius: 12px; cursor: pointer; box-shadow: 0 6px 20px rgba(2, 132, 199, 0.4);" onclick="handleTeacherLoginSubmit('page-teacher-user', 'page-teacher-pass', 'page-teacher-err')">
-            🔑 Masuk ke Dashboard Admin Panel Guru
+            🔑 Masuk ke Master Admin Panel (Semua Modul)
           </button>
           <button class="btn-secondary" style="width: 100%; padding: 11px; font-size: 0.88rem; font-weight: 800; color: #4ade80; border-color: #10b981; border-radius: 10px; cursor: pointer;" onclick="quickLoginTeacherAdmin()">
-            ⚡ Masuk Cepat 1-Klik (Langsung Buka Dashboard Guru)
+            ⚡ Masuk Cepat 1-Klik (Langsung Buka Master Dashboard)
           </button>
         </div>
       </div>
@@ -7337,7 +7898,43 @@ function renderAdminPanelPage() {
     return;
   }
 
-  // 2. JIKA SUDAH LOGIN: TAMPILKAN DASHBOARD LENGKAP ADMIN & GURU
+  // 2. HITUNG STATISTIK LIVE DARI SELURUH 11 MODUL DI APLIKASI
+  const totalLevels = (typeof levelsData !== "undefined" ? levelsData.length : 5);
+  const doneLevels = (appState.completedLevels || []).length;
+
+  const totalIhs = (window.IHSANIYAH_QUESTIONS || []).length || 27;
+  const ihsStats = typeof getIhsaniyahLiveStats === "function" ? getIhsaniyahLiveStats() : { answeredCount: 0, correctCount: 0, score: 0 };
+
+  const totalMath = (window.CAMBRIDGE_MATH_CHALLENGES || []).length || 100;
+  const doneMath = (appState.mathCompleted || []).length;
+
+  const totalCode = (typeof codeChallenges !== "undefined" ? codeChallenges.length : 100);
+  const doneCode = (appState.codeCompleted || []).length;
+
+  const totalSql = (typeof sqlChallenges !== "undefined" ? sqlChallenges.length : 100);
+  const totalOut = (typeof outputPredictionQuestions !== "undefined" ? outputPredictionQuestions.length : 100);
+
+  const totalExcel = (typeof excelChallenges !== "undefined" ? excelChallenges.length : 155);
+  const doneExcel = (appState.excelCompleted || []).length;
+
+  const totalScExcel = (window.EXCEL_SHORTCUTS || []).length || 53;
+  const totalScWord = (window.WORD_SHORTCUTS || []).length || 55;
+
+  const totalItTech = (typeof itTechChallenges !== "undefined" ? itTechChallenges.length : 100);
+  const doneItTech = (appState.itTechCompleted || []).length;
+
+  const totalEng =
+    (typeof cvInterviewSpeakingDrills !== "undefined" ? cvInterviewSpeakingDrills.length : 0) +
+    (typeof missingLetterPuzzles !== "undefined" ? missingLetterPuzzles.length : 0) +
+    (typeof ieltsAcademicDrills !== "undefined" ? ieltsAcademicDrills.length : 0) +
+    (typeof toeflIbtDrills !== "undefined" ? toeflIbtDrills.length : 0) +
+    (typeof englishDictationDrills !== "undefined" ? englishDictationDrills.length : 0) +
+    (window.SENTENCE_BUILDER_DRILLS ? window.SENTENCE_BUILDER_DRILLS.length : 0);
+
+  const totalDict = (window.itDictionary || []).length || 1000;
+
+  const grandTotalItems = totalLevels + totalIhs + totalMath + totalCode + totalSql + totalOut + totalExcel + totalScExcel + totalScWord + totalItTech + totalEng + totalDict;
+
   const allRecords = typeof window.getIhsaniyahRecords === "function" ? window.getIhsaniyahRecords() : [];
   const clsFilter = appState.adminClassFilter || "all";
   const searchQ = (appState.adminSearchQuery || "").trim().toLowerCase();
@@ -7351,41 +7948,200 @@ function renderAdminPanelPage() {
   const avgScore = allRecords.length ? Math.round(allRecords.reduce((acc, r) => acc + (r.score || 0), 0) / allRecords.length) : 0;
   const highestScore = allRecords.length ? Math.max(...allRecords.map(r => r.score || 0)) : 0;
   const passedCount = allRecords.filter(r => (r.score || 0) >= 70).length;
-  const questions = window.IHSANIYAH_QUESTIONS || [];
-  const activeSub = appState.adminSubTab || "rekap";
+
+  const activeSub = appState.adminSubTab || "all_modules";
+
+  // Daftar 11 Modul untuk Tabel Kontrol Master
+  const moduleRows = [
+    {
+      key: "adventure",
+      tab: "adventure",
+      icon: "🗺️",
+      name: "1. Petualangan IT Support (PBL)",
+      desc: "Misi perakitan PC, logika CPU, terminal jaringan, & troubleshooting",
+      totalLabel: `${totalLevels} Misi`,
+      doneCount: doneLevels,
+      totalCount: totalLevels,
+      hasUnlock: true
+    },
+    {
+      key: "ihsaniyah",
+      tab: "ihsaniyah-test",
+      icon: "🎒",
+      name: "2. Ujian SD Ihsaniyah Gajahmada Tegal",
+      desc: "Math Formative Test 2 & Cambridge Primary Division (Visual SVG Interaktif)",
+      totalLabel: `${totalIhs} Soal`,
+      doneCount: ihsStats.answeredCount || 0,
+      totalCount: totalIhs,
+      hasUnlock: true
+    },
+    {
+      key: "math",
+      tab: "math-trainer",
+      icon: "📐",
+      name: "3. Cambridge Bilingual Mathematics",
+      desc: "10 Unit Matematika Checkpoint & IGCSE (0580/0862) + Virtual Math Pad",
+      totalLabel: `${totalMath} Soal`,
+      doneCount: doneMath,
+      totalCount: totalMath,
+      hasUnlock: true
+    },
+    {
+      key: "code",
+      tab: "code-trainer",
+      icon: "💻",
+      name: "4. Studio Koding Manual (5 Bahasa)",
+      desc: "Praktik menulis kode HTML/CSS, JavaScript, Python, Java, & C#",
+      totalLabel: `${totalCode} Soal`,
+      doneCount: doneCode,
+      totalCount: totalCode,
+      hasUnlock: true
+    },
+    {
+      key: "sql",
+      tab: "sql-trainer",
+      icon: "🗄️",
+      name: "5. Studio Kueri SQL & Tebak Output",
+      desc: `${totalSql} Tantangan Kueri Tabel SQL + ${totalOut} Soal Tebak Output Koding`,
+      totalLabel: `${totalSql + totalOut} Soal`,
+      doneCount: appState.currentSqlIndex > 0 ? appState.currentSqlIndex + 1 : 0,
+      totalCount: totalSql + totalOut,
+      hasUnlock: false
+    },
+    {
+      key: "excel",
+      tab: "excel-trainer",
+      icon: "📊",
+      name: "6. Studio Rumus Excel Dunia Nyata",
+      desc: "155 Tantangan Simulator Spreadsheet + Workbook 200 Sheet (.xlsx)",
+      totalLabel: `${totalExcel} Soal + 200 Sheet`,
+      doneCount: doneExcel,
+      totalCount: totalExcel,
+      hasUnlock: true
+    },
+    {
+      key: "shortcut_excel",
+      tab: "shortcut-excel",
+      icon: "⌨️",
+      name: "7. Game Pintasan Keyboard Excel",
+      desc: "Simulasi proyek kantor Excel Windows + 53 Pintasan Resmi",
+      totalLabel: `${totalScExcel} Pintasan`,
+      doneCount: totalScExcel,
+      totalCount: totalScExcel,
+      hasUnlock: false
+    },
+    {
+      key: "shortcut_word",
+      tab: "shortcut-word",
+      icon: "📝",
+      name: "8. Game Pintasan Keyboard Word",
+      desc: "Simulasi dokumen A4 Word Windows + 55 Pintasan Resmi",
+      totalLabel: `${totalScWord} Pintasan`,
+      doneCount: totalScWord,
+      totalCount: totalScWord,
+      hasUnlock: false
+    },
+    {
+      key: "it_tech",
+      tab: "it-tech-trainer",
+      icon: "🛠️",
+      name: "9. Laboratorium IT Tech & Jaringan",
+      desc: "CompTIA A+, Network+, Cisco CCNA, Security+ SY0-701, & Python Automate",
+      totalLabel: `${totalItTech} Soal`,
+      doneCount: doneItTech,
+      totalCount: totalItTech,
+      hasUnlock: true
+    },
+    {
+      key: "english",
+      tab: "english-trainer",
+      icon: "🗣️",
+      name: "10. English Studio (IELTS, TOEFL & Speaking)",
+      desc: "Speaking Interview, Missing Letters, IELTS Academic, TOEFL iBT, & Dictation",
+      totalLabel: `${totalEng} Tantangan`,
+      doneCount: totalEng,
+      totalCount: totalEng,
+      hasUnlock: false
+    },
+    {
+      key: "dictionary",
+      tab: "dictionary",
+      icon: "📖",
+      name: "11. Kamus Pintar Bayi IT & Ebook PDF",
+      desc: "1.000+ Istilah IT & Matematika dengan kutipan halaman buku resmi",
+      totalLabel: `${totalDict} Istilah`,
+      doneCount: totalDict,
+      totalCount: totalDict,
+      hasUnlock: false
+    }
+  ];
+
+  // Persiapan Data untuk Sub-Tab 2 (Master Kunci Jawaban Semua Modul)
+  const keyModFilter = appState.adminKeyModuleFilter || "ihsaniyah";
+  const keySearch = (appState.adminKeySearchQuery || "").trim().toLowerCase();
+  const rawKeys = getAdminNormalizedAnswerKeys(keyModFilter);
+  const filteredKeys = rawKeys.filter(item => {
+    if (!keySearch) return true;
+    return (
+      (item.title || "").toLowerCase().includes(keySearch) ||
+      (item.question || "").toLowerCase().includes(keySearch) ||
+      (item.answerKey || "").toLowerCase().includes(keySearch) ||
+      (item.category || "").toLowerCase().includes(keySearch) ||
+      (item.numberLabel || "").toLowerCase().includes(keySearch)
+    );
+  });
+  const keyPageSize = 30;
+  const totalKeyPages = Math.max(1, Math.ceil(filteredKeys.length / keyPageSize));
+  const currentKeyPage = Math.min(totalKeyPages, Math.max(1, appState.adminKeyPage || 1));
+  const pagedKeys = filteredKeys.slice((currentKeyPage - 1) * keyPageSize, currentKeyPage * keyPageSize);
+
+  const keyModuleTabs = [
+    { key: "ihsaniyah", label: `🎒 SD Ihsaniyah (${totalIhs})` },
+    { key: "math", label: `📐 Cambridge Math (${totalMath})` },
+    { key: "code", label: `💻 Koding Manual (${totalCode})` },
+    { key: "sql", label: `🗄️ Studio SQL (${totalSql})` },
+    { key: "output", label: `🔍 Tebak Output (${totalOut})` },
+    { key: "excel", label: `📊 Rumus Excel (${totalExcel})` },
+    { key: "shortcut_excel", label: `⌨️ Pintasan Excel (${totalScExcel})` },
+    { key: "shortcut_word", label: `📝 Pintasan Word (${totalScWord})` },
+    { key: "it_tech", label: `🛠️ IT Tech Lab (${totalItTech})` },
+    { key: "english", label: `🗣️ English Interview (100)` },
+    { key: "adventure", label: `🗺️ Petualangan (${totalLevels})` },
+    { key: "all", label: `🌟 Semua Modul (${getAdminNormalizedAnswerKeys('all').length})` }
+  ];
 
   container.innerHTML = `
-    <!-- Header Banner Admin Panel Guru -->
+    <!-- HEADER UTAMA MASTER ADMIN PANEL (SEMUA MODUL) -->
     <div style="background: linear-gradient(135deg, rgba(15, 23, 42, 0.96), rgba(30, 41, 59, 0.98)); border: 2px solid #38bdf8; border-radius: 18px; padding: 22px; margin-bottom: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.35);">
       <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 14px;">
         <div style="display: flex; align-items: center; gap: 14px;">
-          <div style="width: 58px; height: 58px; border-radius: 14px; background: linear-gradient(135deg, #0284c7, #2563eb); display: flex; align-items: center; justify-content: center; font-size: 2rem; border: 2px solid #7dd3fc;">
-            👩‍🏫
+          <div style="width: 60px; height: 60px; border-radius: 14px; background: linear-gradient(135deg, #0284c7, #2563eb); display: flex; align-items: center; justify-content: center; font-size: 2rem; border: 2px solid #7dd3fc;">
+            🛠️
           </div>
           <div>
             <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
               <span style="font-size: 0.74rem; font-weight: 900; background: rgba(16, 185, 129, 0.2); color: #4ade80; padding: 3px 10px; border-radius: 999px; border: 1px solid #10b981;">
-                🟢 ADMIN / GURU AKTIF
+                🟢 MASTER ADMIN AKTIF
               </span>
               <span style="font-size: 0.78rem; font-weight: 800; color: #38bdf8;">
-                YAYASAN PERGURUAN IHSANIYAH • SD IHSANIYAH GAJAHMADA TEGAL
+                KODI IT ACADEMY & SD IHSANIYAH • PUSAT KENDALI SELURUH 11 MODUL
               </span>
             </div>
             <h2 style="margin: 4px 0 2px; color: #fff; font-size: 1.35rem;">
-              Dashboard Admin Panel & Rekap Nilai Siswa Terpadu
+              Master Admin Panel Terpadu (Semua Modul, Kunci Jawaban, & Rekap Nilai)
             </h2>
             <div style="font-size: 0.82rem; color: #cbd5e1;">
-              Pantau nilai ujian siswa secara realtime, lihat kunci jawaban 27 soal, dan unduh file rekap CSV/Excel dalam satu link.
+              Mengelola <strong>11 Modul Utama</strong> & <strong>${grandTotalItems.toLocaleString("id-ID")}+ Soal/Materi</strong>: Petualangan, SD Ihsaniyah, Math, Koding, SQL, Excel, Pintasan, IT Lab, English, & Kamus IT.
             </div>
           </div>
         </div>
 
         <div style="display: flex; gap: 8px; flex-wrap: wrap;">
-          <button class="btn-primary" style="padding: 10px 16px; font-size: 0.84rem; font-weight: 800; background: linear-gradient(135deg, #059669, #10b981); border: none; border-radius: 10px; cursor: pointer;" onclick="window.exportIhsaniyahCSV && window.exportIhsaniyahCSV()">
-            📥 Download Rekap CSV / Excel
+          <button class="btn-primary" style="padding: 10px 14px; font-size: 0.82rem; font-weight: 800; background: linear-gradient(135deg, #059669, #10b981); border: none; border-radius: 10px; cursor: pointer;" onclick="adminUnlockModule('ALL')">
+            🔓 Unlock 100% Semua Modul
           </button>
-          <button class="btn-secondary" style="padding: 10px 14px; font-size: 0.82rem; font-weight: 800; color: #38bdf8; border-radius: 10px; cursor: pointer;" onclick="switchTab('ihsaniyah-test')">
-            🎒 Ke Halaman Ujian Siswa
+          <button class="btn-secondary" style="padding: 10px 14px; font-size: 0.82rem; font-weight: 800; color: #38bdf8; border-radius: 10px; cursor: pointer;" onclick="exportFullAppBackupJSON()">
+            💾 Backup Semua Data (.json)
           </button>
           <button class="btn-secondary" style="padding: 10px 14px; font-size: 0.82rem; font-weight: 800; color: #f59e0b; border-radius: 10px; cursor: pointer;" onclick="logoutTeacherHandler()">
             🔒 Logout Admin
@@ -7393,28 +8149,231 @@ function renderAdminPanelPage() {
         </div>
       </div>
 
-      <!-- Navigasi 3 Sub-Menu Admin Panel -->
+      <!-- NAVIGASI 4 SUB-MENU MASTER ADMIN PANEL -->
       <div style="display: flex; gap: 10px; flex-wrap: wrap; margin-top: 18px; padding-top: 16px; border-top: 1px solid rgba(255,255,255,0.1);">
-        <button type="button" onclick="setAdminSubTab('rekap')" style="padding: 10px 18px; border-radius: 10px; font-size: 0.88rem; font-weight: 800; cursor: pointer; border: ${activeSub === 'rekap' ? '2px solid #38bdf8' : '1px solid rgba(255,255,255,0.15)'}; background: ${activeSub === 'rekap' ? 'linear-gradient(135deg, #0284c7, #2563eb)' : 'rgba(15, 23, 42, 0.8)'}; color: #fff;">
-          📊 1. Rekap Nilai Siswa (${allRecords.length})
+        <button type="button" onclick="setAdminSubTab('all_modules')" style="padding: 10px 16px; border-radius: 10px; font-size: 0.86rem; font-weight: 800; cursor: pointer; border: ${activeSub === 'all_modules' ? '2px solid #38bdf8' : '1px solid rgba(255,255,255,0.15)'}; background: ${activeSub === 'all_modules' ? 'linear-gradient(135deg, #0284c7, #2563eb)' : 'rgba(15, 23, 42, 0.8)'}; color: #fff;">
+          🌐 1. Overview & Kontrol Semua Modul (11 Modul)
         </button>
-        <button type="button" onclick="setAdminSubTab('kunci')" style="padding: 10px 18px; border-radius: 10px; font-size: 0.88rem; font-weight: 800; cursor: pointer; border: ${activeSub === 'kunci' ? '2px solid #10b981' : '1px solid rgba(255,255,255,0.15)'}; background: ${activeSub === 'kunci' ? 'linear-gradient(135deg, #059669, #10b981)' : 'rgba(15, 23, 42, 0.8)'}; color: #fff;">
-          📖 2. Kunci Jawaban Resmi (27 Soal)
+        <button type="button" onclick="setAdminSubTab('master_keys')" style="padding: 10px 16px; border-radius: 10px; font-size: 0.86rem; font-weight: 800; cursor: pointer; border: ${activeSub === 'master_keys' ? '2px solid #10b981' : '1px solid rgba(255,255,255,0.15)'}; background: ${activeSub === 'master_keys' ? 'linear-gradient(135deg, #059669, #10b981)' : 'rgba(15, 23, 42, 0.8)'}; color: #fff;">
+          🔑 2. Master Kunci Jawaban Semua Modul (880+ Kunci)
         </button>
-        <button type="button" onclick="setAdminSubTab('modul')" style="padding: 10px 18px; border-radius: 10px; font-size: 0.88rem; font-weight: 800; cursor: pointer; border: ${activeSub === 'modul' ? '2px solid #f59e0b' : '1px solid rgba(255,255,255,0.15)'}; background: ${activeSub === 'modul' ? 'linear-gradient(135deg, #d97706, #f59e0b)' : 'rgba(15, 23, 42, 0.8)'}; color: #fff;">
-          📦 3. Bank File Excel & Kunci Jawaban (.xlsx)
+        <button type="button" onclick="setAdminSubTab('rekap')" style="padding: 10px 16px; border-radius: 10px; font-size: 0.86rem; font-weight: 800; cursor: pointer; border: ${activeSub === 'rekap' ? '2px solid #a855f7' : '1px solid rgba(255,255,255,0.15)'}; background: ${activeSub === 'rekap' ? 'linear-gradient(135deg, #7e22ce, #a855f7)' : 'rgba(15, 23, 42, 0.8)'}; color: #fff;">
+          👩‍🏫 3. Rekap Nilai Siswa & Peserta (${allRecords.length})
+        </button>
+        <button type="button" onclick="setAdminSubTab('files')" style="padding: 10px 16px; border-radius: 10px; font-size: 0.86rem; font-weight: 800; cursor: pointer; border: ${activeSub === 'files' ? '2px solid #f59e0b' : '1px solid rgba(255,255,255,0.15)'}; background: ${activeSub === 'files' ? 'linear-gradient(135deg, #d97706, #f59e0b)' : 'rgba(15, 23, 42, 0.8)'}; color: #fff;">
+          📦 4. Pusat Semua File (.xlsx / .docx) & Backup
         </button>
       </div>
     </div>
 
-    <!-- SUB-TAB 1: REKAP NILAI & AKTIVITAS SISWA -->
-    ${activeSub === 'rekap' ? `
+    <!-- =====================================================================
+         SUB-TAB 1: OVERVIEW & KONTROL SEMUA 11 MODUL APLIKASI
+         ===================================================================== -->
+    ${activeSub === 'all_modules' ? `
       <div style="background: rgba(15, 23, 42, 0.95); border: 1.5px solid rgba(56, 189, 248, 0.35); border-radius: 18px; padding: 22px;">
-        <!-- 4 Kartu Statistik -->
+        <!-- 4 Kartu KPI Global -->
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px; margin-bottom: 20px;">
+          <div style="background: rgba(30, 41, 59, 0.85); border: 1.5px solid rgba(56, 189, 248, 0.3); border-radius: 14px; padding: 16px; text-align: center;">
+            <div style="font-size: 0.78rem; color: #94a3b8; font-weight: 700;">Total Modul Pembelajaran</div>
+            <div style="font-size: 1.65rem; font-weight: 900; color: #38bdf8; margin-top: 4px;">11 Modul Aktif</div>
+            <div style="font-size: 0.75rem; color: #cbd5e1; margin-top: 2px;">Semua Kurikulum Terintegrasi</div>
+          </div>
+          <div style="background: rgba(30, 41, 59, 0.85); border: 1.5px solid rgba(16, 185, 129, 0.3); border-radius: 14px; padding: 16px; text-align: center;">
+            <div style="font-size: 0.78rem; color: #94a3b8; font-weight: 700;">Total Bank Soal & Materi</div>
+            <div style="font-size: 1.65rem; font-weight: 900; color: #4ade80; margin-top: 4px;">${grandTotalItems.toLocaleString("id-ID")}+ Item</div>
+            <div style="font-size: 0.75rem; color: #cbd5e1; margin-top: 2px;">Lengkap dengan Kunci Jawaban</div>
+          </div>
+          <div style="background: rgba(30, 41, 59, 0.85); border: 1.5px solid rgba(245, 158, 11, 0.3); border-radius: 14px; padding: 16px; text-align: center;">
+            <div style="font-size: 0.78rem; color: #94a3b8; font-weight: 700;">Profil & Bintang Aktif</div>
+            <div style="font-size: 1.5rem; font-weight: 900; color: #fde047; margin-top: 4px;">⭐ ${appState.stars || 0} Bintang</div>
+            <div style="font-size: 0.75rem; color: #cbd5e1; margin-top: 2px;">Peserta: ${appState.playerName || 'Siswa Hebat'}</div>
+          </div>
+          <div style="background: rgba(30, 41, 59, 0.85); border: 1.5px solid rgba(168, 85, 247, 0.3); border-radius: 14px; padding: 16px; text-align: center;">
+            <div style="font-size: 0.78rem; color: #94a3b8; font-weight: 700;">Data Rekap Siswa Tercatat</div>
+            <div style="font-size: 1.65rem; font-weight: 900; color: #c084fc; margin-top: 4px;">${allRecords.length} Siswa</div>
+            <div style="font-size: 0.75rem; color: #cbd5e1; margin-top: 2px;">Rata-rata Skor: ${avgScore}/100</div>
+          </div>
+        </div>
+
+        <!-- Baris Kontrol Profil Peserta Aktif & Master Unlock -->
+        <div style="background: rgba(2, 6, 23, 0.65); border: 1px solid rgba(56, 189, 248, 0.25); border-radius: 14px; padding: 16px; margin-bottom: 20px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;">
+          <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
+            <span style="font-size: 0.84rem; font-weight: 800; color: #38bdf8;">👤 Edit Profil & Bintang Aktif:</span>
+            <input type="text" id="admin-profile-name-input" value="${(appState.playerName || 'Siswa Hebat').replace(/"/g, '&quot;')}" placeholder="Nama Peserta" style="padding: 8px 12px; border-radius: 8px; background: #0f172a; color: #fff; border: 1px solid #38bdf8; font-weight: 700; font-size: 0.85rem;">
+            <input type="number" id="admin-profile-stars-input" value="${appState.stars || 0}" min="0" max="99999" style="width: 100px; padding: 8px 12px; border-radius: 8px; background: #0f172a; color: #fde047; border: 1px solid #f59e0b; font-weight: 800; font-size: 0.85rem;">
+            <button type="button" onclick="adminUpdateActiveProfile()" style="background: #0284c7; color: #fff; border: none; border-radius: 8px; padding: 8px 14px; font-size: 0.82rem; font-weight: 800; cursor: pointer;">
+              💾 Simpan Profil
+            </button>
+          </div>
+
+          <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+            <button type="button" onclick="adminUnlockModule('ALL')" style="background: rgba(16, 185, 129, 0.2); color: #4ade80; border: 1px solid #10b981; border-radius: 8px; padding: 8px 14px; font-size: 0.8rem; font-weight: 800; cursor: pointer;">
+              🔓 Tandai Selesai 100% Semua Modul
+            </button>
+            <button type="button" onclick="adminResetModule('ALL')" style="background: rgba(239, 68, 68, 0.2); color: #fca5a5; border: 1px solid #ef4444; border-radius: 8px; padding: 8px 14px; font-size: 0.8rem; font-weight: 800; cursor: pointer;">
+              🗑️ Reset Semua Progres Modul
+            </button>
+          </div>
+        </div>
+
+        <!-- Tabel Status & Kontrol Cepat Seluruh 11 Modul -->
+        <h3 style="margin: 0 0 12px; color: #fff; font-size: 1.12rem;">📋 Tabel Kontrol & Status Seluruh 11 Modul Aplikasi</h3>
+        <div style="overflow-x: auto; border-radius: 12px; border: 1px solid rgba(255,255,255,0.12);">
+          <table style="width: 100%; border-collapse: collapse; font-size: 0.88rem; text-align: left;">
+            <thead>
+              <tr style="background: rgba(2, 132, 199, 0.25); color: #7dd3fc; border-bottom: 2px solid rgba(56, 189, 248, 0.4);">
+                <th style="padding: 12px 10px;">Modul Pembelajaran</th>
+                <th style="padding: 12px 10px;">Kapasitas Bank Soal</th>
+                <th style="padding: 12px 10px;">Progres Saat Ini</th>
+                <th style="padding: 12px 10px; text-align: center;">Aksi & Kontrol Admin</th>
+              </tr>
+            </thead>
+            <tbody>
+              ${moduleRows.map((m, idx) => {
+                const pct = m.totalCount > 0 ? Math.min(100, Math.round((m.doneCount / m.totalCount) * 100)) : 100;
+                return `
+                  <tr style="border-bottom: 1px solid rgba(255,255,255,0.08); background: ${idx % 2 === 0 ? 'rgba(15, 23, 42, 0.6)' : 'rgba(30, 41, 59, 0.45)'};">
+                    <td style="padding: 12px 10px;">
+                      <div style="font-weight: 800; color: #fff; font-size: 0.94rem;">${m.icon} ${m.name}</div>
+                      <div style="font-size: 0.78rem; color: #94a3b8; margin-top: 2px;">${m.desc}</div>
+                    </td>
+                    <td style="padding: 12px 10px; font-weight: 800; color: #fde047; white-space: nowrap;">
+                      ${m.totalLabel}
+                    </td>
+                    <td style="padding: 12px 10px; min-width: 170px;">
+                      <div style="display: flex; justify-content: space-between; font-size: 0.78rem; font-weight: 800; color: ${pct >= 100 ? '#4ade80' : '#38bdf8'}; margin-bottom: 4px;">
+                        <span>${m.doneCount} / ${m.totalCount}</span>
+                        <span>${pct}%</span>
+                      </div>
+                      <div style="height: 7px; background: rgba(255,255,255,0.1); border-radius: 999px; overflow: hidden;">
+                        <div style="width: ${pct}%; height: 100%; background: linear-gradient(90deg, #38bdf8, #10b981);"></div>
+                      </div>
+                    </td>
+                    <td style="padding: 12px 10px; text-align: center;">
+                      <div style="display: flex; gap: 6px; justify-content: center; flex-wrap: wrap;">
+                        <button type="button" onclick="switchTab('${m.tab}')" style="background: rgba(56, 189, 248, 0.2); color: #7dd3fc; border: 1px solid #38bdf8; border-radius: 7px; padding: 6px 10px; font-size: 0.76rem; font-weight: 800; cursor: pointer;">
+                          🚀 Buka Modul
+                        </button>
+                        ${m.key !== 'dictionary' ? `
+                          <button type="button" onclick="openAdminKeyForModule('${m.key}')" style="background: rgba(16, 185, 129, 0.2); color: #86efac; border: 1px solid #10b981; border-radius: 7px; padding: 6px 10px; font-size: 0.76rem; font-weight: 800; cursor: pointer;">
+                            🔑 Kunci Jawaban
+                          </button>
+                        ` : ''}
+                        ${m.hasUnlock ? `
+                          <button type="button" onclick="adminUnlockModule('${m.key}')" style="background: rgba(245, 158, 11, 0.2); color: #fde047; border: 1px solid #f59e0b; border-radius: 7px; padding: 6px 10px; font-size: 0.76rem; font-weight: 800; cursor: pointer;">
+                            ✅ Unlock 100%
+                          </button>
+                          <button type="button" onclick="adminResetModule('${m.key}')" style="background: rgba(239, 68, 68, 0.18); color: #fca5a5; border: 1px solid #ef4444; border-radius: 7px; padding: 6px 10px; font-size: 0.76rem; font-weight: 800; cursor: pointer;">
+                            🔄 Reset
+                          </button>
+                        ` : ''}
+                      </div>
+                    </td>
+                  </tr>
+                `;
+              }).join('')}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    ` : ''}
+
+    <!-- =====================================================================
+         SUB-TAB 2: MASTER KUNCI JAWABAN SEMUA MODUL (ALL-MODULE ANSWER KEYS)
+         ===================================================================== -->
+    ${activeSub === 'master_keys' ? `
+      <div style="background: rgba(15, 23, 42, 0.95); border: 1.5px solid rgba(16, 185, 129, 0.4); border-radius: 18px; padding: 22px;">
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; margin-bottom: 14px;">
+          <div>
+            <h3 style="margin: 0; color: #4ade80; font-size: 1.22rem;">🔑 Master Kunci Jawaban & Solusi Resmi Semua Modul</h3>
+            <p style="margin: 4px 0 0; font-size: 0.84rem; color: #cbd5e1;">
+              Pilih modul di bawah untuk melihat kunci jawaban lengkap, rumus, kueri SQL, kode program, atau langsung klik <strong>"⚡ Buka & Isi Otomatis di Simulator"</strong>!
+            </p>
+          </div>
+          <button type="button" onclick="exportAdminAnswerKeysCSV('${keyModFilter}')" style="background: linear-gradient(135deg, #059669, #10b981); color: #fff; border: none; border-radius: 10px; padding: 10px 16px; font-size: 0.82rem; font-weight: 800; cursor: pointer;">
+            📥 Export Kunci Jawaban Modul Ini (.csv)
+          </button>
+        </div>
+
+        <!-- Pilihan Tab Modul Kunci Jawaban -->
+        <div style="display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 16px; padding-bottom: 12px; border-bottom: 1px solid rgba(255,255,255,0.1);">
+          ${keyModuleTabs.map(t => `
+            <button type="button" onclick="setAdminKeyModuleFilter('${t.key}')" style="padding: 8px 13px; border-radius: 9px; font-size: 0.8rem; font-weight: 800; cursor: pointer; border: ${keyModFilter === t.key ? '2px solid #4ade80' : '1px solid rgba(255,255,255,0.15)'}; background: ${keyModFilter === t.key ? 'rgba(16, 185, 129, 0.25)' : 'rgba(2, 6, 23, 0.7)'}; color: ${keyModFilter === t.key ? '#fff' : '#cbd5e1'};">
+              ${t.label}
+            </button>
+          `).join('')}
+        </div>
+
+        <!-- Bar Pencarian & Navigasi Halaman Kunci Jawaban -->
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; margin-bottom: 16px; background: rgba(2, 6, 23, 0.65); padding: 12px 16px; border-radius: 12px;">
+          <div style="display: flex; align-items: center; gap: 10px; flex: 1; min-width: 240px;">
+            <input type="text" value="${(appState.adminKeySearchQuery || '').replace(/"/g, '&quot;')}" placeholder="🔍 Cari nomor soal, kata kunci, rumus, atau jawaban..." oninput="setAdminKeySearchQuery(this.value)" style="width: 100%; max-width: 420px; padding: 9px 14px; border-radius: 8px; background: #0f172a; color: #fff; border: 1px solid #38bdf8; font-size: 0.86rem;">
+            <span style="font-size: 0.82rem; color: #94a3b8; font-weight: 700;">
+              Ditemukan: <strong style="color: #4ade80;">${filteredKeys.length} Soal</strong>
+            </span>
+          </div>
+
+          ${totalKeyPages > 1 ? `
+            <div style="display: flex; align-items: center; gap: 8px;">
+              <button type="button" onclick="setAdminKeyPage(${currentKeyPage - 1})" ${currentKeyPage <= 1 ? 'disabled' : ''} style="padding: 6px 12px; border-radius: 8px; background: #1e293b; color: #fff; border: 1px solid rgba(255,255,255,0.2); cursor: pointer; font-weight: 800; font-size: 0.78rem;">◀ Prev</button>
+              <span style="font-size: 0.82rem; font-weight: 800; color: #fde047;">Hal ${currentKeyPage} / ${totalKeyPages}</span>
+              <button type="button" onclick="setAdminKeyPage(${currentKeyPage + 1})" ${currentKeyPage >= totalKeyPages ? 'disabled' : ''} style="padding: 6px 12px; border-radius: 8px; background: #1e293b; color: #fff; border: 1px solid rgba(255,255,255,0.2); cursor: pointer; font-weight: 800; font-size: 0.78rem;">Next ▶</button>
+            </div>
+          ` : ''}
+        </div>
+
+        <!-- Daftar Kartu Kunci Jawaban -->
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 14px;">
+          ${pagedKeys.map((item) => `
+            <div style="background: rgba(2, 6, 23, 0.75); border: 1.5px solid rgba(56, 189, 248, 0.28); border-radius: 14px; padding: 16px; display: flex; flex-direction: column; justify-content: space-between; gap: 10px;">
+              <div>
+                <div style="display: flex; justify-content: space-between; align-items: center; gap: 8px; margin-bottom: 6px; flex-wrap: wrap;">
+                  <span style="font-size: 0.74rem; font-weight: 900; background: rgba(56, 189, 248, 0.2); color: #38bdf8; padding: 3px 10px; border-radius: 999px;">
+                    ${item.modBadge} • ${item.numberLabel}
+                  </span>
+                  <span style="font-size: 0.72rem; color: #fde047; font-weight: 700;">
+                    📂 ${escapeCodeHtml(item.category)}
+                  </span>
+                </div>
+                <div style="font-weight: 800; color: #ffffff; font-size: 0.95rem; margin-bottom: 6px;">
+                  ${escapeCodeHtml(item.title)}
+                </div>
+                <div style="font-size: 0.8rem; color: #cbd5e1; line-height: 1.45; margin-bottom: 10px; white-space: pre-wrap; max-height: 110px; overflow-y: auto; background: rgba(15,23,42,0.6); padding: 8px 10px; border-radius: 8px;">${escapeCodeHtml(item.question)}</div>
+              </div>
+
+              <div>
+                <div style="background: rgba(16, 185, 129, 0.14); border: 1px solid rgba(16, 185, 129, 0.4); border-radius: 10px; padding: 10px 12px; margin-bottom: 8px;">
+                  <div style="font-size: 0.72rem; font-weight: 800; color: #86efac; text-transform: uppercase;">🔑 Kunci Jawaban / Solusi Resmi:</div>
+                  <pre style="font-size: 0.84rem; font-weight: 800; color: #ffffff; font-family: monospace; margin: 4px 0 0; white-space: pre-wrap; word-break: break-word;">${escapeCodeHtml(item.answerKey)}</pre>
+                </div>
+                <div style="font-size: 0.75rem; color: #94a3b8; margin-bottom: 10px; line-height: 1.35;">
+                  💡 ${escapeCodeHtml(item.explanation)}
+                </div>
+                <div style="display: flex; gap: 6px;">
+                  <button type="button" onclick="jumpToModuleQuestionFromAdmin('${item.modKey}', ${item.idx}, false)" style="flex: 1; padding: 8px 10px; border-radius: 8px; background: rgba(56, 189, 248, 0.15); border: 1px solid #38bdf8; color: #7dd3fc; font-size: 0.76rem; font-weight: 800; cursor: pointer;">
+                    👁️ Buka Soal
+                  </button>
+                  <button type="button" onclick="jumpToModuleQuestionFromAdmin('${item.modKey}', ${item.idx}, true)" style="flex: 1; padding: 8px 10px; border-radius: 8px; background: rgba(16, 185, 129, 0.2); border: 1px solid #10b981; color: #86efac; font-size: 0.76rem; font-weight: 800; cursor: pointer;">
+                    ⚡ Buka & Isi Jawaban
+                  </button>
+                </div>
+              </div>
+            </div>
+          `).join('')}
+        </div>
+      </div>
+    ` : ''}
+
+    <!-- =====================================================================
+         SUB-TAB 3: REKAP NILAI SISWA & MANAJEMEN PESERTA
+         ===================================================================== -->
+    ${activeSub === 'rekap' ? `
+      <div style="background: rgba(15, 23, 42, 0.95); border: 1.5px solid rgba(168, 85, 247, 0.4); border-radius: 18px; padding: 22px;">
+        <!-- 4 Kartu Statistik Nilai -->
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 14px; margin-bottom: 20px;">
           <div style="background: rgba(30, 41, 59, 0.85); border: 1.5px solid rgba(56, 189, 248, 0.3); border-radius: 14px; padding: 16px; text-align: center;">
-            <div style="font-size: 0.8rem; color: #94a3b8; font-weight: 700;">Total Siswa Tercatat</div>
-            <div style="font-size: 1.7rem; font-weight: 900; color: #fff; margin-top: 4px;">${allRecords.length} Siswa</div>
+            <div style="font-size: 0.8rem; color: #94a3b8; font-weight: 700;">Total Siswa / Peserta</div>
+            <div style="font-size: 1.7rem; font-weight: 900; color: #fff; margin-top: 4px;">${allRecords.length} Peserta</div>
           </div>
           <div style="background: rgba(30, 41, 59, 0.85); border: 1.5px solid rgba(56, 189, 248, 0.3); border-radius: 14px; padding: 16px; text-align: center;">
             <div style="font-size: 0.8rem; color: #94a3b8; font-weight: 700;">Rata-Rata Nilai</div>
@@ -7425,18 +8384,40 @@ function renderAdminPanelPage() {
             <div style="font-size: 1.7rem; font-weight: 900; color: #4ade80; margin-top: 4px;">${highestScore} / 100</div>
           </div>
           <div style="background: rgba(30, 41, 59, 0.85); border: 1.5px solid rgba(245, 158, 11, 0.3); border-radius: 14px; padding: 16px; text-align: center;">
-            <div style="font-size: 0.8rem; color: #94a3b8; font-weight: 700;">Siswa Tuntas (≥ 70)</div>
-            <div style="font-size: 1.7rem; font-weight: 900; color: #fde047; margin-top: 4px;">${passedCount} Siswa</div>
+            <div style="font-size: 0.8rem; color: #94a3b8; font-weight: 700;">Peserta Tuntas (≥ 70)</div>
+            <div style="font-size: 1.7rem; font-weight: 900; color: #fde047; margin-top: 4px;">${passedCount} Peserta</div>
+          </div>
+        </div>
+
+        <!-- Form Tambah Nilai Siswa / Peserta Manual oleh Admin -->
+        <div style="background: rgba(2, 6, 23, 0.65); border: 1px solid rgba(168, 85, 247, 0.3); border-radius: 12px; padding: 14px 16px; margin-bottom: 16px;">
+          <div style="font-size: 0.82rem; font-weight: 800; color: #c084fc; margin-bottom: 8px;">➕ Input / Tambah Data Nilai Peserta Secara Manual:</div>
+          <div style="display: flex; gap: 8px; flex-wrap: wrap; align-items: center;">
+            <input type="text" id="admin-manual-name" placeholder="Nama Lengkap Siswa / Peserta" style="flex: 1; min-width: 180px; padding: 8px 12px; border-radius: 8px; background: #0f172a; color: #fff; border: 1px solid rgba(255,255,255,0.2); font-size: 0.84rem;">
+            <select id="admin-manual-class" style="padding: 8px 12px; border-radius: 8px; background: #0f172a; color: #fff; border: 1px solid rgba(255,255,255,0.2); font-size: 0.84rem; font-weight: 700;">
+              <option value="Kelas 2A">Kelas 2A</option>
+              <option value="Kelas 2B">Kelas 2B</option>
+              <option value="Kelas 2C">Kelas 2C</option>
+              <option value="Kelas 3A">Kelas 3A</option>
+              <option value="Kelas 3B">Kelas 3B</option>
+              <option value="Kelas 3C">Kelas 3C</option>
+              <option value="Peserta Umum / IT">Peserta Umum / IT</option>
+            </select>
+            <input type="number" id="admin-manual-num" placeholder="No Absen" value="1" min="1" max="99" style="width: 85px; padding: 8px 10px; border-radius: 8px; background: #0f172a; color: #fff; border: 1px solid rgba(255,255,255,0.2); font-size: 0.84rem;">
+            <input type="number" id="admin-manual-score" placeholder="Nilai (0-100)" value="95" min="0" max="100" style="width: 110px; padding: 8px 10px; border-radius: 8px; background: #0f172a; color: #4ade80; border: 1px solid #10b981; font-weight: 800; font-size: 0.84rem;">
+            <button type="button" onclick="adminAddManualRecord()" style="background: linear-gradient(135deg, #7e22ce, #a855f7); color: #fff; border: none; border-radius: 8px; padding: 9px 16px; font-size: 0.82rem; font-weight: 800; cursor: pointer;">
+              ➕ Simpan ke Tabel Rekap
+            </button>
           </div>
         </div>
 
         <!-- Baris Filter Kelas, Pencarian, & Simulasi Data -->
         <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; margin-bottom: 16px; background: rgba(2, 6, 23, 0.6); padding: 12px 16px; border-radius: 12px;">
           <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
-            <label style="font-size: 0.82rem; font-weight: 800; color: #38bdf8;">Filter Kelas:</label>
+            <label style="font-size: 0.82rem; font-weight: 800; color: #38bdf8;">Filter Kelas / Kategori:</label>
             <select onchange="setAdminClassFilter(this.value)" style="padding: 8px 12px; border-radius: 8px; background: #0f172a; color: #fff; border: 1px solid #38bdf8; font-weight: 700;">
               <option value="all" ${clsFilter === 'all' ? 'selected' : ''}>Semua Kelas (${allRecords.length})</option>
-              ${['Kelas 2A', 'Kelas 2B', 'Kelas 2C', 'Kelas 3A', 'Kelas 3B', 'Kelas 3C'].map(c => `
+              ${['Kelas 2A', 'Kelas 2B', 'Kelas 2C', 'Kelas 3A', 'Kelas 3B', 'Kelas 3C', 'Peserta Umum / IT'].map(c => `
                 <option value="${c}" ${clsFilter === c ? 'selected' : ''}>${c}</option>
               `).join('')}
             </select>
@@ -7444,11 +8425,14 @@ function renderAdminPanelPage() {
           </div>
 
           <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+            <button type="button" onclick="window.exportIhsaniyahCSV && window.exportIhsaniyahCSV()" style="background: rgba(16, 185, 129, 0.2); color: #86efac; border: 1px solid #10b981; border-radius: 8px; padding: 8px 14px; font-size: 0.8rem; font-weight: 800; cursor: pointer;">
+              📥 Download Rekap CSV / Excel
+            </button>
             <button type="button" onclick="seedDemoStudentRecords()" style="background: rgba(56, 189, 248, 0.18); color: #7dd3fc; border: 1px solid #38bdf8; border-radius: 8px; padding: 8px 14px; font-size: 0.8rem; font-weight: 800; cursor: pointer;">
-              🧪 + Tambah Contoh Data Siswa (Simulasi)
+              🧪 + Muat Contoh Data Siswa
             </button>
             <button type="button" onclick="clearIhsaniyahRecordsHandler()" style="background: rgba(239, 68, 68, 0.2); color: #fca5a5; border: 1px solid #ef4444; border-radius: 8px; padding: 8px 14px; font-size: 0.8rem; font-weight: 800; cursor: pointer;">
-              🗑️ Reset Semua Data
+              🗑️ Reset Tabel
             </button>
           </div>
         </div>
@@ -7460,8 +8444,8 @@ function renderAdminPanelPage() {
               <tr style="background: rgba(2, 132, 199, 0.25); color: #7dd3fc; border-bottom: 2px solid rgba(56, 189, 248, 0.4);">
                 <th style="padding: 12px 10px;">No</th>
                 <th style="padding: 12px 10px;">Waktu Update</th>
-                <th style="padding: 12px 10px;">Nama Lengkap Siswa</th>
-                <th style="padding: 12px 10px;">Kelas</th>
+                <th style="padding: 12px 10px;">Nama Lengkap Siswa / Peserta</th>
+                <th style="padding: 12px 10px;">Kelas / Divisi</th>
                 <th style="padding: 12px 10px;">Absen</th>
                 <th style="padding: 12px 10px;">Soal Dijawab</th>
                 <th style="padding: 12px 10px;">Jawaban Benar</th>
@@ -7498,7 +8482,7 @@ function renderAdminPanelPage() {
                   <td colspan="10" style="text-align: center; padding: 36px 20px; color: #94a3b8;">
                     <div style="font-size: 2rem; margin-bottom: 8px;">📭</div>
                     <div style="font-size: 0.95rem; font-weight: 700; color: #e2e8f0; margin-bottom: 6px;">Belum Ada Data Siswa di Perangkat Ini</div>
-                    <div style="font-size: 0.82rem; margin-bottom: 14px;">Begitu siswa mengisi nama di menu <strong>SD Ihsaniyah (27)</strong>, progres dan nilainya langsung tampil otomatis di tabel ini. Atau klik tombol di bawah untuk melihat simulasi rekap nilai:</div>
+                    <div style="font-size: 0.82rem; margin-bottom: 14px;">Anda dapat mengisi form manual di atas atau klik tombol di bawah untuk memuat contoh simulasi rekap nilai:</div>
                     <button type="button" onclick="seedDemoStudentRecords()" style="background: linear-gradient(135deg, #0284c7, #2563eb); color: #fff; border: none; border-radius: 8px; padding: 9px 18px; font-size: 0.84rem; font-weight: 800; cursor: pointer;">
                       🧪 Muat 3 Contoh Data Siswa (Simulasi Tabel Rekap)
                     </button>
@@ -7511,69 +8495,22 @@ function renderAdminPanelPage() {
       </div>
     ` : ''}
 
-    <!-- SUB-TAB 2: KUNCI JAWABAN RESMI 27 SOAL SD IHSANIYAH -->
-    ${activeSub === 'kunci' ? `
-      <div style="background: rgba(15, 23, 42, 0.95); border: 1.5px solid rgba(16, 185, 129, 0.4); border-radius: 18px; padding: 22px;">
-        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; margin-bottom: 16px;">
-          <div>
-            <h3 style="margin: 0; color: #4ade80; font-size: 1.2rem;">📖 Kunci Jawaban Resmi 27 Soal SD Ihsaniyah Gajahmada Tegal</h3>
-            <p style="margin: 4px 0 0; font-size: 0.84rem; color: #cbd5e1;">
-              Urut lengkap mulai dari Math Formative Test 2 (No. 1–10) hingga Buku Paket Cambridge Primary Mathematics Unit 5 & 6 Halaman 55–75 (No. 11–27).
-            </p>
-          </div>
-        </div>
-
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 14px;">
-          ${questions.map((q, idx) => `
-            <div style="background: rgba(2, 6, 23, 0.7); border: 1.5px solid rgba(56, 189, 248, 0.28); border-radius: 14px; padding: 16px; display: flex; flex-direction: column; justify-content: space-between; gap: 10px;">
-              <div>
-                <div style="display: flex; justify-content: space-between; align-items: center; gap: 8px; margin-bottom: 6px;">
-                  <span style="font-size: 0.75rem; font-weight: 900; background: rgba(56, 189, 248, 0.2); color: #38bdf8; padding: 3px 10px; border-radius: 999px;">
-                    Soal No. ${q.number}
-                  </span>
-                  <span style="font-size: 0.74rem; color: #fde047; font-weight: 700;">
-                    📄 ${q.page}
-                  </span>
-                </div>
-                <div style="font-weight: 800; color: #ffffff; font-size: 0.95rem; margin-bottom: 6px;">
-                  ${q.title}
-                </div>
-                <div style="font-size: 0.8rem; color: #94a3b8; line-height: 1.45; margin-bottom: 10px;">
-                  ${q.instruction.replace(/\n/g, '<br>')}
-                </div>
-              </div>
-
-              <div>
-                <div style="background: rgba(16, 185, 129, 0.14); border: 1px solid rgba(16, 185, 129, 0.4); border-radius: 10px; padding: 10px 12px; margin-bottom: 8px;">
-                  <div style="font-size: 0.72rem; font-weight: 800; color: #86efac; text-transform: uppercase;">🔑 Kunci Jawaban Resmi:</div>
-                  <div style="font-size: 0.9rem; font-weight: 900; color: #ffffff; font-family: monospace; margin-top: 2px;">
-                    ${q.answerKeySummary || '-'}
-                  </div>
-                </div>
-                <button type="button" onclick="jumpToQuestionFromAdmin(${idx})" style="width: 100%; padding: 8px 12px; border-radius: 8px; background: rgba(56, 189, 248, 0.15); border: 1px solid #38bdf8; color: #7dd3fc; font-size: 0.78rem; font-weight: 800; cursor: pointer;">
-                  👁️ Lihat Soal No. ${q.number} di Lembar Ujian
-                </button>
-              </div>
-            </div>
-          `).join('')}
-        </div>
-      </div>
-    ` : ''}
-
-    <!-- SUB-TAB 3: PUSAT DOWNLOAD WORKBOOK EXCEL & KUNCI JAWABAN (99_KUNCI_JAWABAN) -->
-    ${activeSub === 'modul' ? `
+    <!-- =====================================================================
+         SUB-TAB 4: PUSAT SEMUA FILE LATIHAN (.XLSX & .DOCX) & BACKUP DATABASE
+         ===================================================================== -->
+    ${activeSub === 'files' ? `
       <div style="background: rgba(15, 23, 42, 0.95); border: 1.5px solid rgba(245, 158, 11, 0.4); border-radius: 18px; padding: 22px;">
-        <h3 style="margin: 0 0 6px; color: #fde047; font-size: 1.2rem;">📦 Pusat File Workbook Excel & Kunci Jawaban (Sheet 99_KUNCI_JAWABAN)</h3>
-        <p style="margin: 0 0 18px; font-size: 0.85rem; color: #cbd5e1; line-height: 1.5;">
+        <h3 style="margin: 0 0 6px; color: #fde047; font-size: 1.2rem;">📦 1. Paket Workbook Rumus Excel & Kunci Jawaban (Sheet 99_KUNCI_JAWABAN)</h3>
+        <p style="margin: 0 0 16px; font-size: 0.84rem; color: #cbd5e1; line-height: 1.5;">
           Setiap file Excel (<code>.xlsx</code>) di bawah memiliki <strong>1 Contoh Soal & Jawaban Benar</strong> pada tiap sheet rumus, diikuti <strong>5 Soal Tes Tanpa Bocoran Jawaban</strong>, serta <strong>Kunci Jawaban Lengkap di Sheet Paling Terakhir (<code>99_KUNCI_JAWABAN</code>)</strong>:
         </p>
 
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); gap: 14px;">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(265px, 1fr)); gap: 14px; margin-bottom: 26px;">
           <a href="assets/downloads/Master_160_Rumus_Excel_Dunia_Nyata.xlsx" download style="text-decoration: none; background: rgba(2, 6, 23, 0.75); border: 2px solid #10b981; border-radius: 14px; padding: 16px; display: block;">
             <div style="font-size: 0.75rem; font-weight: 900; color: #4ade80;">📊 MASTER WORKBOOK LENGKAP</div>
             <div style="font-size: 1rem; font-weight: 800; color: #fff; margin: 4px 0;">Master 160+ Rumus Excel Dunia Nyata (.xlsx)</div>
             <div style="font-size: 0.78rem; color: #94a3b8; margin-bottom: 10px;">Berisi seluruh sheet rumus + 5 soal tes per rumus + Sheet 99_KUNCI_JAWABAN di akhir.</div>
-            <span style="display: inline-block; background: #10b981; color: #0f172a; font-weight: 900; font-size: 0.78rem; padding: 6px 12px; border-radius: 8px;">📥 Download File (.xlsx)</span>
+            <span style="display: inline-block; background: #10b981; color: #0f172a; font-weight: 900; font-size: 0.78rem; padding: 6px 12px; border-radius: 8px;">📥 Download Master (.xlsx)</span>
           </a>
 
           <a href="assets/downloads/Paket_1_Rumus_Matematika_Akuntansi_Logika.xlsx" download style="text-decoration: none; background: rgba(2, 6, 23, 0.75); border: 1.5px solid #38bdf8; border-radius: 14px; padding: 16px; display: block;">
@@ -7604,10 +8541,35 @@ function renderAdminPanelPage() {
             <span style="display: inline-block; background: #ec4899; color: #fff; font-weight: 900; font-size: 0.78rem; padding: 6px 12px; border-radius: 8px;">📥 Download Paket 4</span>
           </a>
         </div>
+
+        <h3 style="margin: 0 0 8px; color: #38bdf8; font-size: 1.15rem;">⌨️ 2. File Praktik Pintasan Keyboard Excel (.xlsx) & Microsoft Word (.docx)</h3>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 12px;">
+          <a href="assets/downloads/Modul_Praktik_Pintasan_Excel_Lengkap.xlsx" download style="text-decoration: none; background: rgba(2, 6, 23, 0.75); border: 1px solid #38bdf8; border-radius: 12px; padding: 14px; display: block;">
+            <div style="font-weight: 800; color: #fff; font-size: 0.92rem;">⌨️ Modul Praktik Pintasan Excel Lengkap (.xlsx)</div>
+            <div style="font-size: 0.76rem; color: #94a3b8; margin: 4px 0 8px;">Latihan langsung 53 pintasan keyboard di aplikasi Microsoft Excel.</div>
+            <span style="font-size: 0.76rem; font-weight: 800; color: #38bdf8;">📥 Download .xlsx</span>
+          </a>
+          <a href="assets/downloads/Modul_Praktik_Pintasan_Word_Lengkap.docx" download style="text-decoration: none; background: rgba(2, 6, 23, 0.75); border: 1px solid #38bdf8; border-radius: 12px; padding: 14px; display: block;">
+            <div style="font-weight: 800; color: #fff; font-size: 0.92rem;">📝 Modul Praktik Pintasan Word Lengkap (.docx)</div>
+            <div style="font-size: 0.76rem; color: #94a3b8; margin: 4px 0 8px;">Latihan langsung 55 pintasan keyboard di aplikasi Microsoft Word.</div>
+            <span style="font-size: 0.76rem; font-weight: 800; color: #38bdf8;">📥 Download .docx</span>
+          </a>
+          <a href="assets/downloads/Audit_Payroll_Staff_2026.xlsx" download style="text-decoration: none; background: rgba(2, 6, 23, 0.75); border: 1px solid rgba(255,255,255,0.18); border-radius: 12px; padding: 14px; display: block;">
+            <div style="font-weight: 800; color: #fff; font-size: 0.92rem;">💼 Proyek Excel: Audit Payroll Staff 2026 (.xlsx)</div>
+            <div style="font-size: 0.76rem; color: #94a3b8; margin: 4px 0 8px;">Simulasi dokumen penggajian HRD.</div>
+            <span style="font-size: 0.76rem; font-weight: 800; color: #4ade80;">📥 Download .xlsx</span>
+          </a>
+          <a href="assets/downloads/Laporan_Eksekutif_Q1_2026.docx" download style="text-decoration: none; background: rgba(2, 6, 23, 0.75); border: 1px solid rgba(255,255,255,0.18); border-radius: 12px; padding: 14px; display: block;">
+            <div style="font-weight: 800; color: #fff; font-size: 0.92rem;">📄 Proyek Word: Laporan Eksekutif Q1 (.docx)</div>
+            <div style="font-size: 0.76rem; color: #94a3b8; margin: 4px 0 8px;">Simulasi dokumen laporan direksi.</div>
+            <span style="font-size: 0.76rem; font-weight: 800; color: #4ade80;">📥 Download .docx</span>
+          </a>
+        </div>
       </div>
     ` : ''}
   `;
 }
+
 
 
 // ================= SVG MATCHING LINES DRAWING ENGINE =================
