@@ -9493,3 +9493,249 @@ body.light-theme .admin-module-card:hover {
   border-color: #0284c7 !important;
   box-shadow: 0 12px 28px rgba(2, 132, 199, 0.15) !important;
 }
+
+/* ==============================================================================
+   🌊 BIOLUMINESCENT OCEAN ABYSS & CELESTIAL FANTASY UPGRADE (v23.0)
+   Inspired by Reference Images:
+   - Image 1: Squircle fantasy cards with neon rim glow & circular badge icons
+   - Image 2: Ornate celestial fantasy banners with corner crystals & gold filigree
+   - Image 3: Ocean & Marine Life deep ocean abyss, caustic light rays & floating water bubbles
+   ============================================================================== */
+
+/* 1. Deep Ocean Abyss Canvas (Dark Mode Default) */
+body:not(.light-theme) {
+  background: radial-gradient(ellipse at 50% -5%, #033c5e 0%, #02233c 30%, #011222 70%, #000812 100%) fixed !important;
+  color: #f8fafc;
+}
+
+body:not(.light-theme) .tech-bg {
+  background-image: 
+    radial-gradient(circle at 50% 0%, rgba(56, 189, 248, 0.08) 0%, transparent 70%),
+    linear-gradient(to right, rgba(56, 189, 248, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(56, 189, 248, 0.03) 1px, transparent 1px) !important;
+  background-size: 100% 100%, 40px 40px, 40px 40px !important;
+}
+
+/* 2. Floating Water Bubbles Container & Animation */
+.ocean-bubbles-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+body.light-theme .ocean-bubbles-container {
+  opacity: 0.28;
+}
+
+.ocean-bubble-item {
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(circle at 32% 28%, rgba(255, 255, 255, 0.75) 0%, rgba(56, 189, 248, 0.3) 38%, rgba(14, 165, 233, 0.12) 65%, rgba(255, 255, 255, 0.45) 100%);
+  box-shadow: inset 0 2px 4px rgba(255, 255, 255, 0.8), 0 0 14px rgba(56, 189, 248, 0.35);
+  pointer-events: none;
+  animation: floatBubble linear infinite;
+}
+
+.ocean-bubble-item::after {
+  content: '';
+  position: absolute;
+  top: 18%;
+  left: 20%;
+  width: 25%;
+  height: 25%;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.9);
+}
+
+@keyframes floatBubble {
+  0% {
+    transform: translateY(0) translateX(0) scale(0.9);
+    opacity: 0;
+  }
+  8% {
+    opacity: 0.85;
+  }
+  88% {
+    opacity: 0.85;
+  }
+  100% {
+    transform: translateY(-118vh) translateX(var(--sway-x, 15px)) scale(1.08);
+    opacity: 0;
+  }
+}
+
+/* 3. Ornate Celestial Fantasy Banners (Image 2) */
+.ornate-celestial-banner {
+  position: relative;
+  margin-bottom: 24px;
+  padding: 24px 32px;
+  border-radius: 24px;
+  text-align: center;
+  background: linear-gradient(135deg, rgba(3, 33, 58, 0.92) 0%, rgba(1, 18, 34, 0.96) 100%);
+  border: 2px solid rgba(56, 189, 248, 0.5);
+  box-shadow: 0 12px 40px rgba(0, 15, 30, 0.7), inset 0 0 30px rgba(56, 189, 248, 0.15), 0 0 35px rgba(56, 189, 248, 0.2);
+  overflow: hidden;
+}
+
+.ornate-celestial-banner::before {
+  content: '';
+  position: absolute;
+  inset: 4px;
+  border-radius: 20px;
+  border: 1px dashed rgba(250, 204, 21, 0.5);
+  pointer-events: none;
+}
+
+.ornate-celestial-banner .banner-sparkle-left,
+.ornate-celestial-banner .banner-sparkle-right {
+  font-size: 1.45rem;
+  color: #facc15;
+  margin: 0 8px;
+  animation: sparkleRotate 3s infinite ease-in-out;
+  display: inline-block;
+}
+
+@keyframes sparkleRotate {
+  0%, 100% { transform: scale(1) rotate(0deg); opacity: 0.8; }
+  50% { transform: scale(1.25) rotate(15deg); opacity: 1; filter: drop-shadow(0 0 10px #facc15); }
+}
+
+.ornate-celestial-banner .banner-title {
+  font-size: 1.55rem;
+  font-weight: 900;
+  letter-spacing: -0.3px;
+  background: linear-gradient(90deg, #38bdf8 0%, #ffffff 50%, #facc15 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin: 0 0 6px;
+  display: inline-block;
+}
+
+.ornate-celestial-banner .banner-subtext {
+  font-size: 0.92rem;
+  color: #cbd5e1;
+  max-width: 880px;
+  margin: 0 auto;
+  line-height: 1.55;
+}
+
+body.light-theme .ornate-celestial-banner {
+  background: linear-gradient(135deg, #ffffff, #f0fdf4 50%, #e0f2fe 100%) !important;
+  border: 2px solid rgba(147, 197, 253, 0.8) !important;
+  box-shadow: 0 12px 35px rgba(99, 102, 241, 0.08) !important;
+}
+
+body.light-theme .ornate-celestial-banner .banner-title {
+  background: linear-gradient(90deg, #0284c7 0%, #1e40af 50%, #d97706 100%) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+}
+
+body.light-theme .ornate-celestial-banner .banner-subtext {
+  color: #475569 !important;
+}
+
+/* 4. Squircle Cards with Bioluminescent Rim Glow (Images 1 & 3) */
+.ocean-squircle-card {
+  position: relative;
+  background: linear-gradient(145deg, rgba(3, 33, 58, 0.8) 0%, rgba(1, 18, 34, 0.9) 100%);
+  border: 1.5px solid rgba(56, 189, 248, 0.35);
+  border-radius: 22px;
+  box-shadow: 0 10px 30px rgba(0, 15, 30, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  padding: 20px 22px;
+}
+
+.ocean-squircle-card:hover {
+  border-color: #38bdf8;
+  box-shadow: 0 16px 40px rgba(0, 20, 45, 0.7), inset 0 1px 0 rgba(255, 255, 255, 0.25), 0 0 25px rgba(56, 189, 248, 0.35);
+  transform: translateY(-3px);
+}
+
+.ocean-circle-badge {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.35rem;
+  background: rgba(56, 189, 248, 0.15);
+  border: 2px solid #38bdf8;
+  box-shadow: 0 0 14px rgba(56, 189, 248, 0.4), inset 0 0 6px rgba(56, 189, 248, 0.25);
+  flex-shrink: 0;
+}
+
+body.light-theme .ocean-squircle-card {
+  background: #ffffff !important;
+  border: 1.5px solid rgba(203, 213, 225, 0.8) !important;
+  box-shadow: 0 10px 30px rgba(99, 102, 241, 0.07) !important;
+}
+
+body.light-theme .ocean-squircle-card:hover {
+  border-color: #0284c7 !important;
+  box-shadow: 0 16px 36px rgba(2, 132, 199, 0.15) !important;
+}
+
+body.light-theme .ocean-circle-badge {
+  background: #e0f2fe !important;
+  border: 2px solid #38bdf8 !important;
+  box-shadow: 0 0 10px rgba(56, 189, 248, 0.25) !important;
+}
+
+/* 5. Formula Cards & Copy Button Styles */
+.excel-formula-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.excel-formula-card code {
+  color: #34d399;
+  letter-spacing: 0.3px;
+}
+
+body.light-theme .excel-formula-card code {
+  color: #059669 !important;
+}
+
+body.light-theme .excel-formula-card div[style*="background: rgba(2, 6, 23, 0.85)"] {
+  background: #f8fafc !important;
+  border-color: #cbd5e1 !important;
+}
+
+body.light-theme .btn-copy-formula {
+  background: rgba(16, 185, 129, 0.15) !important;
+  color: #059669 !important;
+  border-color: #10b981 !important;
+}
+
+/* 6. Navigation Tabs with Oceanic Rim in Dark Mode */
+body:not(.light-theme) .nav-tab {
+  background: rgba(3, 33, 58, 0.65) !important;
+  border: 1px solid rgba(56, 189, 248, 0.25) !important;
+  color: #cbd5e1 !important;
+}
+
+body:not(.light-theme) .nav-tab:hover {
+  background: rgba(56, 189, 248, 0.15) !important;
+  border-color: #38bdf8 !important;
+  color: #ffffff !important;
+  box-shadow: 0 0 18px rgba(56, 189, 248, 0.3) !important;
+}
+
+body:not(.light-theme) .nav-tab.active {
+  border-color: #38bdf8 !important;
+  box-shadow: 0 0 20px rgba(56, 189, 248, 0.45) !important;
+}
+
+body:not(.light-theme) .kodi-hero-card {
+  background: linear-gradient(135deg, rgba(3, 33, 58, 0.85) 0%, rgba(1, 18, 34, 0.95) 100%) !important;
+  border: 2px solid rgba(56, 189, 248, 0.4) !important;
+  box-shadow: 0 14px 45px rgba(0, 15, 30, 0.7), 0 0 30px rgba(56, 189, 248, 0.2) !important;
+}
+

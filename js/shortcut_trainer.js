@@ -2186,4 +2186,20 @@
     window.renderShortcutStudio("word");
   };
 
+  // Auto-render if DOM already loaded or on DOMContentLoaded
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", () => {
+      setTimeout(() => {
+        window.renderExcelShortcutStudio();
+        window.renderWordShortcutStudio();
+      }, 50);
+    });
+  } else {
+    setTimeout(() => {
+      window.renderExcelShortcutStudio();
+      window.renderWordShortcutStudio();
+    }, 50);
+  }
+
 })();
+
