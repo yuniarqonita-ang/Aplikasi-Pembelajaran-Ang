@@ -8896,3 +8896,600 @@ body.light-theme .vault-cat-btn {
   border-color: #cbd5e1;
   color: #475569;
 }
+
+
+/* ==============================================================================
+   🌟 WONDERLEARN + CLASSIADS + MIDJOURNEY VIBRANT THEME UPGRADE
+   Inspired by:
+   - WonderLearn: Cheerful sky pastel canvas, sunny yellow pills, magical soft cards
+   - ClassiAds: 3D Claymorphism, floating translucent depth, rounded pill buttons
+   - Midjourney & PRYDA: Translucent frosted glass, cyan/neon purple rim glow, fluid aero
+   ============================================================================== */
+
+/* =========================================
+   1. GLOBAL CANVAS & BACKGROUNDS
+   ========================================= */
+body.light-theme {
+  background: radial-gradient(circle at 10% 12%, #e0f2fe 0%, #f0fdf4 30%, #fef3c7 65%, #fdf4ff 100%) fixed !important;
+  color: #0f172a !important;
+  --bg-primary: #f0f9ff;
+  --bg-secondary: #f8fafc;
+  --bg-card: rgba(255, 255, 255, 0.94);
+  --bg-card-hover: #ffffff;
+  --border-glow: rgba(147, 197, 253, 0.6);
+  --border-active: #0284c7;
+
+  --accent-cyan: #0284c7;
+  --accent-cyan-glow: rgba(2, 132, 199, 0.25);
+  --accent-green: #10b981;
+  --accent-green-glow: rgba(16, 185, 129, 0.25);
+  --accent-yellow: #f59e0b;
+  --accent-pink: #ec4899;
+  --accent-purple: #8b5cf6;
+  --accent-orange: #f97316;
+  --accent-red: #ef4444;
+
+  --text-main: #0f172a;
+  --text-muted: #475569;
+  --text-dim: #64748b;
+  --shadow-glow: 0 10px 32px rgba(99, 102, 241, 0.08);
+}
+
+body.light-theme .tech-bg {
+  background-image: 
+    radial-gradient(circle at 50% 50%, rgba(99, 102, 241, 0.06) 1.5px, transparent 1.5px),
+    linear-gradient(to right, rgba(56, 189, 248, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(56, 189, 248, 0.05) 1px, transparent 1px) !important;
+  background-size: 32px 32px !important;
+  opacity: 0.9 !important;
+}
+
+/* =========================================
+   2. HEADER & BRANDING (LIGHT THEME)
+   ========================================= */
+body.light-theme .app-header {
+  background: rgba(255, 255, 255, 0.88) !important;
+  backdrop-filter: blur(20px) !important;
+  border: 1.5px solid rgba(199, 210, 254, 0.7) !important;
+  box-shadow: 0 12px 36px rgba(99, 102, 241, 0.08) !important;
+  border-radius: 20px !important;
+}
+
+body.light-theme .logo-text h1 {
+  background: linear-gradient(90deg, #0284c7 0%, #6366f1 50%, #d946ef 100%) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  font-weight: 900 !important;
+}
+
+body.light-theme .logo-text p {
+  color: #475569 !important;
+  font-weight: 600 !important;
+}
+
+body.light-theme .pwa-install-btn {
+  background: #ecfeff !important;
+  border: 1.5px solid #a5f3fc !important;
+  color: #0891b2 !important;
+  font-weight: 800 !important;
+}
+
+body.light-theme .accent-toggle-btn {
+  background: #eef2ff !important;
+  border: 1.5px solid #c7d2fe !important;
+  color: #4f46e5 !important;
+  font-weight: 800 !important;
+}
+
+body.light-theme #theme-toggle-btn {
+  background: #fef3c7 !important;
+  border: 1.5px solid #fde68a !important;
+  color: #d97706 !important;
+  font-weight: 800 !important;
+  box-shadow: 0 4px 12px rgba(245, 158, 11, 0.15) !important;
+}
+
+body.light-theme #btn-header-admin {
+  background: linear-gradient(135deg, #0284c7, #2563eb) !important;
+  color: #ffffff !important;
+  border: 1.5px solid #38bdf8 !important;
+  font-weight: 800 !important;
+  box-shadow: 0 4px 14px rgba(2, 132, 199, 0.35) !important;
+}
+
+body.light-theme #btn-force-update {
+  background: linear-gradient(135deg, #10b981, #059669) !important;
+  color: #ffffff !important;
+  border: 1.5px solid #34d399 !important;
+  font-weight: 800 !important;
+  box-shadow: 0 4px 14px rgba(16, 185, 129, 0.35) !important;
+}
+
+body.light-theme .star-count {
+  background: #fef9c3 !important;
+  border: 1.5px solid #fde047 !important;
+  color: #854d0e !important;
+  font-weight: 800 !important;
+}
+
+body.light-theme .level-tag {
+  background: #e0f2fe !important;
+  border: 1.5px solid #bae6fd !important;
+  color: #0369a1 !important;
+  font-weight: 800 !important;
+}
+
+/* =========================================
+   3. MAIN NAVIGATION HUB (WONDERLEARN PILLS)
+   ========================================= */
+body.light-theme .main-nav-wrapper {
+  background: rgba(255, 255, 255, 0.8) !important;
+  backdrop-filter: blur(16px) !important;
+  border: 1.5px solid rgba(226, 232, 240, 0.9) !important;
+  border-radius: 20px !important;
+  box-shadow: 0 8px 25px rgba(99, 102, 241, 0.05) !important;
+  padding: 12px 16px !important;
+}
+
+body.light-theme .nav-category-group:nth-child(1) .nav-group-badge {
+  background: #fef3c7 !important;
+  color: #92400e !important;
+  border: 1px solid #fde68a !important;
+  font-weight: 800 !important;
+}
+
+body.light-theme .nav-category-group:nth-child(2) .nav-group-badge {
+  background: #e0f2fe !important;
+  color: #0369a1 !important;
+  border: 1px solid #bae6fd !important;
+  font-weight: 800 !important;
+}
+
+body.light-theme .nav-category-group:nth-child(3) .nav-group-badge {
+  background: #f3e8ff !important;
+  color: #6b21a8 !important;
+  border: 1px solid #e9d5ff !important;
+  font-weight: 800 !important;
+}
+
+body.light-theme .nav-tab {
+  background: #ffffff !important;
+  border: 1.5px solid #e2e8f0 !important;
+  color: #334155 !important;
+  border-radius: 999px !important;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02) !important;
+  font-weight: 700 !important;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+body.light-theme .nav-tab:hover {
+  background: #f8fafc !important;
+  border-color: #38bdf8 !important;
+  color: #0284c7 !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 6px 16px rgba(2, 132, 199, 0.12) !important;
+}
+
+body.light-theme .nav-tab.active {
+  color: #ffffff !important;
+  font-weight: 800 !important;
+  border-color: transparent !important;
+  transform: translateY(-2px) !important;
+}
+
+body.light-theme .nav-tab[data-tab="adventure"].active {
+  background: linear-gradient(135deg, #f59e0b, #fbbf24) !important;
+  box-shadow: 0 6px 20px rgba(245, 158, 11, 0.4) !important;
+}
+
+body.light-theme .nav-tab[data-tab="ihsaniyah-test"].active {
+  background: linear-gradient(135deg, #ec4899, #f43f5e) !important;
+  box-shadow: 0 6px 20px rgba(244, 63, 94, 0.4) !important;
+}
+
+body.light-theme .nav-tab[data-tab="math-trainer"].active {
+  background: linear-gradient(135deg, #d97706, #f59e0b) !important;
+  box-shadow: 0 6px 20px rgba(217, 119, 6, 0.4) !important;
+}
+
+body.light-theme .nav-tab[data-tab="code-trainer"].active {
+  background: linear-gradient(135deg, #6366f1, #8b5cf6) !important;
+  box-shadow: 0 6px 20px rgba(99, 102, 241, 0.4) !important;
+}
+
+body.light-theme .nav-tab[data-tab="sql-trainer"].active {
+  background: linear-gradient(135deg, #0284c7, #38bdf8) !important;
+  box-shadow: 0 6px 20px rgba(2, 132, 199, 0.4) !important;
+}
+
+body.light-theme .nav-tab[data-tab="excel-trainer"].active {
+  background: linear-gradient(135deg, #10b981, #059669) !important;
+  box-shadow: 0 6px 20px rgba(16, 185, 129, 0.4) !important;
+}
+
+body.light-theme .nav-tab[data-tab="shortcut-excel"].active {
+  background: linear-gradient(135deg, #059669, #10b981) !important;
+  box-shadow: 0 6px 20px rgba(5, 150, 105, 0.4) !important;
+}
+
+body.light-theme .nav-tab[data-tab="shortcut-word"].active {
+  background: linear-gradient(135deg, #2563eb, #3b82f6) !important;
+  box-shadow: 0 6px 20px rgba(37, 99, 235, 0.4) !important;
+}
+
+body.light-theme .nav-tab[data-tab="it-tech-trainer"].active {
+  background: linear-gradient(135deg, #ea580c, #f97316) !important;
+  box-shadow: 0 6px 20px rgba(234, 88, 12, 0.4) !important;
+}
+
+body.light-theme .nav-tab[data-tab="english-trainer"].active {
+  background: linear-gradient(135deg, #e11d48, #fb7185) !important;
+  box-shadow: 0 6px 20px rgba(225, 29, 72, 0.4) !important;
+}
+
+body.light-theme .nav-tab[data-tab="dictionary"].active {
+  background: linear-gradient(135deg, #7c3aed, #a855f7) !important;
+  box-shadow: 0 6px 20px rgba(124, 58, 237, 0.4) !important;
+}
+
+/* =========================================
+   4. KODI CLAY HERO BANNER (LIGHT THEME)
+   ========================================= */
+body.light-theme .kodi-hero-card {
+  background: linear-gradient(135deg, #ffffff 0%, #f0fdf4 40%, #e0f2fe 100%) !important;
+  border: 2px solid rgba(147, 197, 253, 0.6) !important;
+  box-shadow: 0 14px 40px rgba(99, 102, 241, 0.08) !important;
+  border-radius: 22px !important;
+}
+
+body.light-theme .kodi-speech-bubble {
+  background: #ffffff !important;
+  border: 1.5px solid #cbd5e1 !important;
+  color: #0f172a !important;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.04) !important;
+  border-radius: 16px !important;
+}
+
+body.light-theme .kodi-speaker-name {
+  color: #0284c7 !important;
+  font-weight: 800 !important;
+}
+
+body.light-theme .kodi-message-text {
+  color: #1e293b !important;
+  font-size: 0.92rem !important;
+  line-height: 1.6 !important;
+}
+
+body.light-theme .visual-mission-flow {
+  background: rgba(241, 245, 249, 0.85) !important;
+  border: 1px solid #cbd5e1 !important;
+  border-radius: 12px !important;
+}
+
+body.light-theme .flow-step-item {
+  background: #ffffff !important;
+  border: 1px solid #cbd5e1 !important;
+  color: #475569 !important;
+  border-radius: 8px !important;
+  font-weight: 700 !important;
+}
+
+body.light-theme .flow-step-item.active {
+  background: linear-gradient(135deg, #dbeafe, #eff6ff) !important;
+  color: #1e40af !important;
+  border-color: #93c5fd !important;
+  font-weight: 800 !important;
+  box-shadow: 0 2px 8px rgba(30, 64, 175, 0.12) !important;
+}
+
+body.light-theme .flow-arrow-sep {
+  color: #94a3b8 !important;
+}
+
+body.light-theme .kodi-subtip {
+  color: #64748b !important;
+}
+
+/* =========================================
+   5. UNIVERSAL CARDS & CONTAINERS (LIGHT THEME)
+   ========================================= */
+body.light-theme .card,
+body.light-theme .quest-card,
+body.light-theme .it-tech-card,
+body.light-theme .english-studio-card,
+body.light-theme .math-studio-card,
+body.light-theme .sql-studio-card,
+body.light-theme .code-studio-card,
+body.light-theme .office-file-card {
+  background: #ffffff !important;
+  border: 1.5px solid rgba(203, 213, 225, 0.8) !important;
+  box-shadow: 0 10px 30px rgba(99, 102, 241, 0.07) !important;
+  border-radius: 18px !important;
+  color: #0f172a !important;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+body.light-theme .card:hover,
+body.light-theme .quest-card:hover,
+body.light-theme .it-tech-card:hover,
+body.light-theme .office-file-card:hover {
+  box-shadow: 0 18px 40px rgba(99, 102, 241, 0.14) !important;
+  border-color: #38bdf8 !important;
+  transform: translateY(-4px) !important;
+}
+
+body.light-theme .section-title {
+  color: #0f172a !important;
+  font-weight: 800 !important;
+}
+
+/* =========================================
+   6. BABY LOGIC & CALLOUT BOXES (LIGHT THEME)
+   ========================================= */
+body.light-theme .kodi-analogy-box,
+body.light-theme .baby-logic-box,
+body.light-theme .nalar-box {
+  background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%) !important;
+  border: 1.5px solid #fde68a !important;
+  border-left: 5px solid #f59e0b !important;
+  color: #78350f !important;
+  border-radius: 12px !important;
+  box-shadow: 0 4px 14px rgba(245, 158, 11, 0.08) !important;
+}
+
+body.light-theme .kodi-analogy-box *,
+body.light-theme .baby-logic-box *,
+body.light-theme .nalar-box * {
+  color: #78350f !important;
+}
+
+body.light-theme .info-box,
+body.light-theme .tip-box {
+  background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%) !important;
+  border: 1.5px solid #bae6fd !important;
+  border-left: 5px solid #0284c7 !important;
+  color: #0369a1 !important;
+  border-radius: 12px !important;
+}
+
+body.light-theme .info-box *,
+body.light-theme .tip-box * {
+  color: #0369a1 !important;
+}
+
+body.light-theme .success-box {
+  background: linear-gradient(135deg, #dcfce7 0%, #f0fdf4 100%) !important;
+  border: 1.5px solid #86efac !important;
+  border-left: 5px solid #16a34a !important;
+  color: #14532d !important;
+  border-radius: 12px !important;
+}
+
+body.light-theme .success-box * {
+  color: #14532d !important;
+}
+
+/* =========================================
+   7. INPUTS, SELECTS & CONTROLS (LIGHT THEME)
+   ========================================= */
+body.light-theme input[type="text"],
+body.light-theme input[type="password"],
+body.light-theme select,
+body.light-theme textarea {
+  background: #ffffff !important;
+  border: 1.5px solid #cbd5e1 !important;
+  color: #0f172a !important;
+  border-radius: 10px !important;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02) !important;
+}
+
+body.light-theme input[type="text"]:focus,
+body.light-theme input[type="password"]:focus,
+body.light-theme select:focus,
+body.light-theme textarea:focus {
+  border-color: #0284c7 !important;
+  box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.18) !important;
+  outline: none !important;
+}
+
+body.light-theme .challenge-nav-bar {
+  background: rgba(255, 255, 255, 0.8) !important;
+  border: 1px solid #cbd5e1 !important;
+  border-radius: 12px !important;
+}
+
+body.light-theme .btn-arrow-nav {
+  background: #ffffff !important;
+  border: 1.5px solid #cbd5e1 !important;
+  color: #1e293b !important;
+  border-radius: 8px !important;
+  font-weight: 700 !important;
+}
+
+body.light-theme .btn-arrow-nav:hover:not(:disabled) {
+  background: #f1f5f9 !important;
+  border-color: #0284c7 !important;
+  color: #0284c7 !important;
+}
+
+/* =========================================
+   8. OFFICE VAULT & DOWNLOAD SHOWCASE (LIGHT)
+   ========================================= */
+body.light-theme .vault-hero-card.excel-hero {
+  background: linear-gradient(135deg, rgba(220, 252, 231, 0.7), rgba(255, 255, 255, 0.95)) !important;
+  border: 2px solid rgba(52, 211, 153, 0.8) !important;
+  box-shadow: 0 10px 30px rgba(16, 185, 129, 0.12) !important;
+}
+
+body.light-theme .vault-hero-card.word-hero {
+  background: linear-gradient(135deg, rgba(219, 234, 254, 0.7), rgba(255, 255, 255, 0.95)) !important;
+  border: 2px solid rgba(96, 165, 250, 0.8) !important;
+  box-shadow: 0 10px 30px rgba(37, 99, 235, 0.12) !important;
+}
+
+body.light-theme .vault-hero-title {
+  color: #0f172a !important;
+}
+
+body.light-theme .vault-hero-desc {
+  color: #475569 !important;
+}
+
+body.light-theme .vault-stat-box {
+  background: #ffffff !important;
+  border: 1.5px solid #cbd5e1 !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05) !important;
+}
+
+body.light-theme .vault-stat-box .stat-num {
+  color: #0284c7 !important;
+}
+
+body.light-theme .vault-stat-box .stat-lbl {
+  color: #64748b !important;
+}
+
+body.light-theme .vault-search-input {
+  background: #ffffff !important;
+  border: 1.5px solid #cbd5e1 !important;
+  color: #0f172a !important;
+}
+
+body.light-theme .vault-search-input:focus {
+  border-color: #0284c7 !important;
+  box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.18) !important;
+}
+
+body.light-theme .vault-cat-btn {
+  background: #ffffff !important;
+  border: 1.5px solid #cbd5e1 !important;
+  color: #475569 !important;
+}
+
+body.light-theme .vault-cat-btn:hover {
+  background: #f1f5f9 !important;
+  color: #0f172a !important;
+}
+
+body.light-theme .vault-cat-btn.active.excel-pill {
+  background: linear-gradient(135deg, #10b981, #059669) !important;
+  color: #ffffff !important;
+  border-color: #34d399 !important;
+  box-shadow: 0 4px 14px rgba(16, 185, 129, 0.35) !important;
+}
+
+body.light-theme .vault-cat-btn.active.word-pill {
+  background: linear-gradient(135deg, #3b82f6, #1d4ed8) !important;
+  color: #ffffff !important;
+  border-color: #60a5fa !important;
+  box-shadow: 0 4px 14px rgba(59, 130, 246, 0.35) !important;
+}
+
+body.light-theme .table-responsive-box {
+  background: #ffffff !important;
+  border: 1px solid #cbd5e1 !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04) !important;
+}
+
+body.light-theme .vault-cheatsheet-table thead tr {
+  background: #f8fafc !important;
+  border-bottom: 2px solid #cbd5e1 !important;
+}
+
+body.light-theme .vault-cheatsheet-table th {
+  color: #0284c7 !important;
+  font-weight: 800 !important;
+}
+
+body.light-theme .vault-cheatsheet-table td {
+  border-bottom: 1px solid #e2e8f0 !important;
+  color: #1e293b !important;
+}
+
+body.light-theme .vault-cheatsheet-table tbody tr:hover {
+  background: #f8fafc !important;
+}
+
+/* =========================================
+   9. SD IHSANIYAH & CAMBRIDGE MATH (LIGHT)
+   ========================================= */
+body.light-theme .ihsaniyah-hero-banner {
+  background: linear-gradient(135deg, #ffffff 0%, #fdf2f8 50%, #eff6ff 100%) !important;
+  border: 2px solid rgba(244, 114, 182, 0.6) !important;
+  box-shadow: 0 10px 30px rgba(244, 63, 94, 0.08) !important;
+}
+
+body.light-theme .ihsaniyah-question-card {
+  background: #ffffff !important;
+  border: 1.5px solid #cbd5e1 !important;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.04) !important;
+}
+
+body.light-theme .virtual-math-pad {
+  background: #ffffff !important;
+  border: 1.5px solid #cbd5e1 !important;
+}
+
+/* =========================================
+   10. ENGLISH & SPEAKING STUDIO (LIGHT)
+   ========================================= */
+body.light-theme .audio-visualizer-box {
+  background: #f8fafc !important;
+  border: 1.5px solid #cbd5e1 !important;
+}
+
+body.light-theme .speaking-sample-box {
+  background: linear-gradient(135deg, #f0fdf4, #dcfce7) !important;
+  border: 1.5px solid #86efac !important;
+  color: #14532d !important;
+}
+
+body.light-theme .speaking-sample-box * {
+  color: #14532d !important;
+}
+
+/* =========================================
+   11. KAMUS PINTAR IT (LIGHT)
+   ========================================= */
+body.light-theme .dict-card {
+  background: #ffffff !important;
+  border: 1.5px solid #e2e8f0 !important;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.04) !important;
+}
+
+body.light-theme .dict-term-title {
+  color: #6d28d9 !important;
+  font-weight: 800 !important;
+}
+
+body.light-theme .dict-analogy-callout {
+  background: #fefce8 !important;
+  border: 1.5px solid #fef08a !important;
+  border-left: 4px solid #eab308 !important;
+  color: #854d0e !important;
+}
+
+body.light-theme .dict-analogy-callout * {
+  color: #854d0e !important;
+}
+
+/* =========================================
+   12. MASTER ADMIN PANEL (LIGHT)
+   ========================================= */
+body.light-theme .admin-dashboard-hero {
+  background: linear-gradient(135deg, #ffffff 0%, #e0f2fe 100%) !important;
+  border: 2px solid #93c5fd !important;
+  box-shadow: 0 10px 30px rgba(2, 132, 199, 0.1) !important;
+}
+
+body.light-theme .admin-module-card {
+  background: #ffffff !important;
+  border: 1.5px solid #cbd5e1 !important;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.05) !important;
+}
+
+body.light-theme .admin-module-card:hover {
+  border-color: #0284c7 !important;
+  box-shadow: 0 12px 28px rgba(2, 132, 199, 0.15) !important;
+}
