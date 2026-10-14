@@ -5719,16 +5719,16 @@ const outputPredictionQuestions = [
     "code": "let count = 0;\nfor (let i = 0; i < 4; i++) {\n  count += i;\n}\nconsole.log(count);",
     "options": [
       {
-        "text": "6",
-        "correct": true
+        "text": "4",
+        "correct": false
       },
       {
         "text": "10",
         "correct": false
       },
       {
-        "text": "4",
-        "correct": false
+        "text": "6",
+        "correct": true
       },
       {
         "text": "3",
@@ -5750,12 +5750,12 @@ const outputPredictionQuestions = [
     "code": "let sum = 0;\nfor (let i = 1; i <= 5; i++) {\n  if (i === 3) break;\n  sum += i;\n}\nconsole.log(sum);",
     "options": [
       {
-        "text": "3",
-        "correct": true
-      },
-      {
         "text": "6",
         "correct": false
+      },
+      {
+        "text": "3",
+        "correct": true
       },
       {
         "text": "15",
@@ -5812,8 +5812,8 @@ const outputPredictionQuestions = [
     "code": "let x = 1;\nwhile (x < 8) {\n  x *= 2;\n}\nconsole.log(x);",
     "options": [
       {
-        "text": "8",
-        "correct": true
+        "text": "7",
+        "correct": false
       },
       {
         "text": "4",
@@ -5824,8 +5824,8 @@ const outputPredictionQuestions = [
         "correct": false
       },
       {
-        "text": "7",
-        "correct": false
+        "text": "8",
+        "correct": true
       }
     ],
     "babyExplanation": "🍼 Nalar Bayi: x mulai 1 -> x=2 -> x=4 -> x=8. Karena 8 tidak lebih kecil dari 8 (8 < 8 bernilai false), loop berhenti dan x = 8!",
@@ -5843,16 +5843,16 @@ const outputPredictionQuestions = [
     "code": "let num = 10;\ndo {\n  num++;\n} while (num < 10);\nconsole.log(num);",
     "options": [
       {
-        "text": "11",
-        "correct": true
+        "text": "9",
+        "correct": false
       },
       {
         "text": "10",
         "correct": false
       },
       {
-        "text": "9",
-        "correct": false
+        "text": "11",
+        "correct": true
       },
       {
         "text": "Infinite Loop",
@@ -5874,12 +5874,12 @@ const outputPredictionQuestions = [
     "code": "let count = 0;\nfor (let i = 0; i < 3; i++) {\n  for (let j = 0; j < 2; j++) {\n    count++;\n  }\n}\nconsole.log(count);",
     "options": [
       {
-        "text": "6",
-        "correct": true
-      },
-      {
         "text": "5",
         "correct": false
+      },
+      {
+        "text": "6",
+        "correct": true
       },
       {
         "text": "9",
@@ -5936,8 +5936,8 @@ const outputPredictionQuestions = [
     "code": "let sum = 0;\nfor (let i = 0; i <= 6; i += 2) {\n  sum += i;\n}\nconsole.log(sum);",
     "options": [
       {
-        "text": "12",
-        "correct": true
+        "text": "10",
+        "correct": false
       },
       {
         "text": "6",
@@ -5948,8 +5948,8 @@ const outputPredictionQuestions = [
         "correct": false
       },
       {
-        "text": "10",
-        "correct": false
+        "text": "12",
+        "correct": true
       }
     ],
     "babyExplanation": "🍼 Nalar Bayi: i meloncat genap: 0, 2, 4, 6. Total penjumlahan: 0 + 2 + 4 + 6 = 12!",
@@ -5967,16 +5967,16 @@ const outputPredictionQuestions = [
     "code": "let res = 1;\nfor (let i = 3; i > 0; i--) {\n  res *= i;\n}\nconsole.log(res);",
     "options": [
       {
-        "text": "6",
-        "correct": true
+        "text": "1",
+        "correct": false
       },
       {
         "text": "3",
         "correct": false
       },
       {
-        "text": "1",
-        "correct": false
+        "text": "6",
+        "correct": true
       },
       {
         "text": "0",
@@ -5998,12 +5998,12 @@ const outputPredictionQuestions = [
     "code": "let evens = 0;\nfor (let i = 1; i <= 6; i++) {\n  if (i % 2 === 0) evens++;\n}\nconsole.log(evens);",
     "options": [
       {
-        "text": "3",
-        "correct": true
-      },
-      {
         "text": "6",
         "correct": false
+      },
+      {
+        "text": "3",
+        "correct": true
       },
       {
         "text": "2",
@@ -6060,8 +6060,8 @@ const outputPredictionQuestions = [
     "code": "const items = [5, 12, 8, 20];\nconst filtered = items.filter(x => x > 10);\nconsole.log(filtered.length);",
     "options": [
       {
-        "text": "2",
-        "correct": true
+        "text": "1",
+        "correct": false
       },
       {
         "text": "4",
@@ -6072,8 +6072,8 @@ const outputPredictionQuestions = [
         "correct": false
       },
       {
-        "text": "1",
-        "correct": false
+        "text": "2",
+        "correct": true
       }
     ],
     "babyExplanation": "🍼 Nalar Bayi: .filter() menyaring yang > 10, yaitu 12 dan 20 (ada 2 elemen). Panjangnya 2!",
@@ -6091,16 +6091,16 @@ const outputPredictionQuestions = [
     "code": "const nums = [1, 2, 3, 4];\nconst sum = nums.reduce((acc, curr) => acc + curr, 0);\nconsole.log(sum);",
     "options": [
       {
-        "text": "10",
-        "correct": true
+        "text": "4",
+        "correct": false
       },
       {
         "text": "24",
         "correct": false
       },
       {
-        "text": "4",
-        "correct": false
+        "text": "10",
+        "correct": true
       },
       {
         "text": "0",
@@ -6122,12 +6122,12 @@ const outputPredictionQuestions = [
     "code": "const scores = [40, 75, 82, 90];\nconst match = scores.find(s => s > 70);\nconsole.log(match);",
     "options": [
       {
-        "text": "75",
-        "correct": true
-      },
-      {
         "text": "82",
         "correct": false
+      },
+      {
+        "text": "75",
+        "correct": true
       },
       {
         "text": "90",
@@ -6184,8 +6184,8 @@ const outputPredictionQuestions = [
     "code": "const fruits = ['apple', 'banana', 'orange'];\nconsole.log(fruits.includes('banana'));",
     "options": [
       {
-        "text": "true",
-        "correct": true
+        "text": "undefined",
+        "correct": false
       },
       {
         "text": "false",
@@ -6196,8 +6196,8 @@ const outputPredictionQuestions = [
         "correct": false
       },
       {
-        "text": "undefined",
-        "correct": false
+        "text": "true",
+        "correct": true
       }
     ],
     "babyExplanation": "🍼 Nalar Bayi: .includes() mengecek keberadaan elemen. Karena 'banana' ada, hasilnya true!",
@@ -6215,16 +6215,16 @@ const outputPredictionQuestions = [
     "code": "const a = [1, 2];\nconst b = [3, 4, 5];\nconst c = a.concat(b);\nconsole.log(c.length);",
     "options": [
       {
-        "text": "5",
-        "correct": true
+        "text": "3",
+        "correct": false
       },
       {
         "text": "2",
         "correct": false
       },
       {
-        "text": "3",
-        "correct": false
+        "text": "5",
+        "correct": true
       },
       {
         "text": "6",
@@ -6246,12 +6246,12 @@ const outputPredictionQuestions = [
     "code": "const nums = [2, 4, 6, 8];\nconst allEven = nums.every(n => n % 2 === 0);\nconsole.log(allEven);",
     "options": [
       {
-        "text": "true",
-        "correct": true
-      },
-      {
         "text": "false",
         "correct": false
+      },
+      {
+        "text": "true",
+        "correct": true
       },
       {
         "text": "undefined",
@@ -6308,8 +6308,8 @@ const outputPredictionQuestions = [
     "code": "const arr = [1, 2, 3];\narr.reverse();\nconsole.log(arr[0]);",
     "options": [
       {
-        "text": "3",
-        "correct": true
+        "text": "undefined",
+        "correct": false
       },
       {
         "text": "1",
@@ -6320,8 +6320,8 @@ const outputPredictionQuestions = [
         "correct": false
       },
       {
-        "text": "undefined",
-        "correct": false
+        "text": "3",
+        "correct": true
       }
     ],
     "babyExplanation": "🍼 Nalar Bayi: .reverse() membalik array menjadi [3, 2, 1]. Indeks 0 sekarang 3!",
@@ -6339,16 +6339,16 @@ const outputPredictionQuestions = [
     "code": "const res = '5' + 3;\nconsole.log(res);",
     "options": [
       {
-        "text": "53",
-        "correct": true
+        "text": "NaN",
+        "correct": false
       },
       {
         "text": "8",
         "correct": false
       },
       {
-        "text": "NaN",
-        "correct": false
+        "text": "53",
+        "correct": true
       },
       {
         "text": "TypeError",
@@ -6370,12 +6370,12 @@ const outputPredictionQuestions = [
     "code": "const res = '10' - 4;\nconsole.log(res);",
     "options": [
       {
-        "text": "6",
-        "correct": true
-      },
-      {
         "text": "104",
         "correct": false
+      },
+      {
+        "text": "6",
+        "correct": true
       },
       {
         "text": "NaN",
@@ -6432,8 +6432,8 @@ const outputPredictionQuestions = [
     "code": "const val = Boolean('false');\nconsole.log(val);",
     "options": [
       {
-        "text": "true",
-        "correct": true
+        "text": "NaN",
+        "correct": false
       },
       {
         "text": "false",
@@ -6444,8 +6444,8 @@ const outputPredictionQuestions = [
         "correct": false
       },
       {
-        "text": "NaN",
-        "correct": false
+        "text": "true",
+        "correct": true
       }
     ],
     "babyExplanation": "🍼 Nalar Bayi: Teks apapun yang ada karakternya (bukan string kosong '') selalu bernilai TRUTHY di JS! Hasilnya true!",
@@ -6463,16 +6463,16 @@ const outputPredictionQuestions = [
     "code": "console.log(Boolean('') + ' ' + Boolean(' '));",
     "options": [
       {
-        "text": "false true",
-        "correct": true
+        "text": "true true",
+        "correct": false
       },
       {
         "text": "false false",
         "correct": false
       },
       {
-        "text": "true true",
-        "correct": false
+        "text": "false true",
+        "correct": true
       },
       {
         "text": "true false",
@@ -6494,12 +6494,12 @@ const outputPredictionQuestions = [
     "code": "console.log(typeof NaN);",
     "options": [
       {
-        "text": "number",
-        "correct": true
-      },
-      {
         "text": "nan",
         "correct": false
+      },
+      {
+        "text": "number",
+        "correct": true
       },
       {
         "text": "undefined",
@@ -6556,8 +6556,8 @@ const outputPredictionQuestions = [
     "code": "console.log([] + []);",
     "options": [
       {
-        "text": "\"\" (empty string)",
-        "correct": true
+        "text": "NaN",
+        "correct": false
       },
       {
         "text": "[]",
@@ -6568,8 +6568,8 @@ const outputPredictionQuestions = [
         "correct": false
       },
       {
-        "text": "NaN",
-        "correct": false
+        "text": "\"\" (empty string)",
+        "correct": true
       }
     ],
     "babyExplanation": "🍼 Nalar Bayi: [].toString() menghasilkan string kosong ''. Jadi '' + '' = '' (empty string)!",
@@ -6587,16 +6587,16 @@ const outputPredictionQuestions = [
     "code": "console.log(true + true);\nconsole.log(true - false);",
     "options": [
       {
-        "text": "2 1",
-        "correct": true
+        "text": "1 1",
+        "correct": false
       },
       {
         "text": "truetrue true",
         "correct": false
       },
       {
-        "text": "1 1",
-        "correct": false
+        "text": "2 1",
+        "correct": true
       },
       {
         "text": "2 0",
@@ -6618,12 +6618,12 @@ const outputPredictionQuestions = [
     "code": "console.log(null == undefined, null === undefined);",
     "options": [
       {
-        "text": "true false",
-        "correct": true
-      },
-      {
         "text": "true true",
         "correct": false
+      },
+      {
+        "text": "true false",
+        "correct": true
       },
       {
         "text": "false false",
@@ -6680,8 +6680,8 @@ const outputPredictionQuestions = [
     "code": "if (true) {\n  var b = 50;\n}\nconsole.log(b);",
     "options": [
       {
-        "text": "50",
-        "correct": true
+        "text": "null",
+        "correct": false
       },
       {
         "text": "undefined",
@@ -6692,8 +6692,8 @@ const outputPredictionQuestions = [
         "correct": false
       },
       {
-        "text": "null",
-        "correct": false
+        "text": "50",
+        "correct": true
       }
     ],
     "babyExplanation": "🍼 Nalar Bayi: 'var' tidak memedulikan kurung if (bukan block scope), sehingga tembus ke luar: 50!",
@@ -6711,16 +6711,16 @@ const outputPredictionQuestions = [
     "code": "function makeCounter() {\n  let count = 0;\n  return function() {\n    count++;\n    return count;\n  };\n}\nconst c = makeCounter();\nc();\nconsole.log(c());",
     "options": [
       {
-        "text": "2",
-        "correct": true
+        "text": "0",
+        "correct": false
       },
       {
         "text": "1",
         "correct": false
       },
       {
-        "text": "0",
-        "correct": false
+        "text": "2",
+        "correct": true
       },
       {
         "text": "undefined",
@@ -6742,12 +6742,12 @@ const outputPredictionQuestions = [
     "code": "console.log(myVar);\nvar myVar = 'Hello';",
     "options": [
       {
-        "text": "undefined",
-        "correct": true
-      },
-      {
         "text": "Hello",
         "correct": false
+      },
+      {
+        "text": "undefined",
+        "correct": true
       },
       {
         "text": "ReferenceError",
@@ -6804,8 +6804,8 @@ const outputPredictionQuestions = [
     "code": "for (let i = 0; i < 3; i++) {\n  // each iteration gets its own fresh 'i'\n}",
     "options": [
       {
-        "text": "Independent value per iteration",
-        "correct": true
+        "text": "ReferenceError",
+        "correct": false
       },
       {
         "text": "Always 3 for all",
@@ -6816,8 +6816,8 @@ const outputPredictionQuestions = [
         "correct": false
       },
       {
-        "text": "ReferenceError",
-        "correct": false
+        "text": "Independent value per iteration",
+        "correct": true
       }
     ],
     "babyExplanation": "🍼 Nalar Bayi: 'let' menciptakan variabel baru yang segar di setiap putaran loop sehingga nilainya tidak saling menimpa!",
@@ -6835,16 +6835,16 @@ const outputPredictionQuestions = [
     "code": "function greet(name = 'Guest') {\n  return 'Hi ' + name;\n}\nconsole.log(greet());",
     "options": [
       {
-        "text": "Hi Guest",
-        "correct": true
+        "text": "Hi",
+        "correct": false
       },
       {
         "text": "Hi undefined",
         "correct": false
       },
       {
-        "text": "Hi",
-        "correct": false
+        "text": "Hi Guest",
+        "correct": true
       },
       {
         "text": "ReferenceError",
@@ -6866,12 +6866,12 @@ const outputPredictionQuestions = [
     "code": "const obj = {\n  val: 42,\n  getVal: () => this.val\n};",
     "options": [
       {
-        "text": "Inherits this from lexical enclosing scope",
-        "correct": true
-      },
-      {
         "text": "Binds to obj dynamically",
         "correct": false
+      },
+      {
+        "text": "Inherits this from lexical enclosing scope",
+        "correct": true
       },
       {
         "text": "Throws TypeError",
@@ -6928,8 +6928,8 @@ const outputPredictionQuestions = [
     "code": "console.log(sayHi());\nfunction sayHi() {\n  return 'Hello';\n}",
     "options": [
       {
-        "text": "Hello",
-        "correct": true
+        "text": "ReferenceError",
+        "correct": false
       },
       {
         "text": "undefined",
@@ -6940,8 +6940,8 @@ const outputPredictionQuestions = [
         "correct": false
       },
       {
-        "text": "ReferenceError",
-        "correct": false
+        "text": "Hello",
+        "correct": true
       }
     ],
     "babyExplanation": "🍼 Nalar Bayi: Function declaration diangkat seutuhnya ke atas oleh JS, sehingga bisa dipanggil sebelum baris pembuatannya!",
@@ -6959,16 +6959,16 @@ const outputPredictionQuestions = [
     "code": "const user = { name: 'Kodi', role: 'Dev' };\nconst { name, age = 1 } = user;\nconsole.log(name + '-' + age);",
     "options": [
       {
-        "text": "Kodi-1",
-        "correct": true
+        "text": "Kodi-Dev",
+        "correct": false
       },
       {
         "text": "Kodi-undefined",
         "correct": false
       },
       {
-        "text": "Kodi-Dev",
-        "correct": false
+        "text": "Kodi-1",
+        "correct": true
       },
       {
         "text": "ReferenceError",
@@ -6990,12 +6990,12 @@ const outputPredictionQuestions = [
     "code": "const base = { x: 1, y: 2 };\nconst next = { ...base, y: 10 };\nconsole.log(next.y);",
     "options": [
       {
-        "text": "10",
-        "correct": true
-      },
-      {
         "text": "2",
         "correct": false
+      },
+      {
+        "text": "10",
+        "correct": true
       },
       {
         "text": "12",
@@ -7052,8 +7052,8 @@ const outputPredictionQuestions = [
     "code": "const server = { host: 'localhost', port: 8080, active: true };\nconsole.log(Object.keys(server).length);",
     "options": [
       {
-        "text": "3",
-        "correct": true
+        "text": "undefined",
+        "correct": false
       },
       {
         "text": "2",
@@ -7064,8 +7064,8 @@ const outputPredictionQuestions = [
         "correct": false
       },
       {
-        "text": "undefined",
-        "correct": false
+        "text": "3",
+        "correct": true
       }
     ],
     "babyExplanation": "🍼 Nalar Bayi: Object.keys() menghasilkan daftar ['host', 'port', 'active']. Ada 3 kunci properti!",
@@ -7083,16 +7083,16 @@ const outputPredictionQuestions = [
     "code": "const config = { api: null };\nconsole.log(config.api?.endpoint);",
     "options": [
       {
-        "text": "undefined",
-        "correct": true
+        "text": "TypeError",
+        "correct": false
       },
       {
         "text": "null",
         "correct": false
       },
       {
-        "text": "TypeError",
-        "correct": false
+        "text": "undefined",
+        "correct": true
       },
       {
         "text": "ReferenceError",
@@ -7114,12 +7114,12 @@ const outputPredictionQuestions = [
     "code": "const a = 0 ?? 42;\nconst b = null ?? 42;\nconsole.log(a + ' ' + b);",
     "options": [
       {
-        "text": "0 42",
-        "correct": true
-      },
-      {
         "text": "42 42",
         "correct": false
+      },
+      {
+        "text": "0 42",
+        "correct": true
       },
       {
         "text": "0 null",
@@ -7176,8 +7176,8 @@ const outputPredictionQuestions = [
     "code": "let x = 1, y = 2;\n[x, y] = [y, x];\nconsole.log(x + '' + y);",
     "options": [
       {
-        "text": "21",
-        "correct": true
+        "text": "11",
+        "correct": false
       },
       {
         "text": "12",
@@ -7188,8 +7188,8 @@ const outputPredictionQuestions = [
         "correct": false
       },
       {
-        "text": "11",
-        "correct": false
+        "text": "21",
+        "correct": true
       }
     ],
     "babyExplanation": "🍼 Nalar Bayi: Nilai x dan y bertukar posisi: x jadi 2 dan y jadi 1! Gabung jadi '21'!",
@@ -7207,16 +7207,16 @@ const outputPredictionQuestions = [
     "code": "const target = { a: 1 };\nconst source = { b: 2 };\nObject.assign(target, source);\nconsole.log(target.a + target.b);",
     "options": [
       {
-        "text": "3",
-        "correct": true
+        "text": "2",
+        "correct": false
       },
       {
         "text": "1",
         "correct": false
       },
       {
-        "text": "2",
-        "correct": false
+        "text": "3",
+        "correct": true
       },
       {
         "text": "NaN",
@@ -7238,12 +7238,12 @@ const outputPredictionQuestions = [
     "code": "const item = Object.freeze({ price: 50 });\nitem.price = 100;\nconsole.log(item.price);",
     "options": [
       {
-        "text": "50",
-        "correct": true
-      },
-      {
         "text": "100",
         "correct": false
+      },
+      {
+        "text": "50",
+        "correct": true
       },
       {
         "text": "undefined",
@@ -7300,8 +7300,8 @@ const outputPredictionQuestions = [
     "code": "const res = true && 'Connected';\nconsole.log(res);",
     "options": [
       {
-        "text": "Connected",
-        "correct": true
+        "text": "undefined",
+        "correct": false
       },
       {
         "text": "true",
@@ -7312,8 +7312,8 @@ const outputPredictionQuestions = [
         "correct": false
       },
       {
-        "text": "undefined",
-        "correct": false
+        "text": "Connected",
+        "correct": true
       }
     ],
     "babyExplanation": "🍼 Nalar Bayi: Sisi kiri true, maka && terus jalan dan mengembalikan nilai di sisi kanan: 'Connected'!",
@@ -7331,16 +7331,16 @@ const outputPredictionQuestions = [
     "code": "console.log(undefined || 3000);",
     "options": [
       {
-        "text": "3000",
-        "correct": true
+        "text": "true",
+        "correct": false
       },
       {
         "text": "undefined",
         "correct": false
       },
       {
-        "text": "true",
-        "correct": false
+        "text": "3000",
+        "correct": true
       },
       {
         "text": "0",
@@ -7362,12 +7362,12 @@ const outputPredictionQuestions = [
     "code": "const remainder = 17 % 5;\nconsole.log(remainder);",
     "options": [
       {
-        "text": "2",
-        "correct": true
-      },
-      {
         "text": "3",
         "correct": false
+      },
+      {
+        "text": "2",
+        "correct": true
       },
       {
         "text": "3.4",
@@ -7424,8 +7424,8 @@ const outputPredictionQuestions = [
     "code": "// 4 in binary: 100\n// 1 in binary: 001\nconsole.log(4 | 1);",
     "options": [
       {
-        "text": "5",
-        "correct": true
+        "text": "0",
+        "correct": false
       },
       {
         "text": "4",
@@ -7436,8 +7436,8 @@ const outputPredictionQuestions = [
         "correct": false
       },
       {
-        "text": "0",
-        "correct": false
+        "text": "5",
+        "correct": true
       }
     ],
     "babyExplanation": "🍼 Nalar Bayi: 100 | 001 = 101 biner. Nilai biner 101 adalah angka 5 desimal!",
@@ -7455,16 +7455,16 @@ const outputPredictionQuestions = [
     "code": "console.log(5 << 1);",
     "options": [
       {
-        "text": "10",
-        "correct": true
+        "text": "2",
+        "correct": false
       },
       {
         "text": "5",
         "correct": false
       },
       {
-        "text": "2",
-        "correct": false
+        "text": "10",
+        "correct": true
       },
       {
         "text": "25",
@@ -7486,12 +7486,12 @@ const outputPredictionQuestions = [
     "code": "console.log(!!'hello', !!0);",
     "options": [
       {
-        "text": "true false",
-        "correct": true
-      },
-      {
         "text": "false true",
         "correct": false
+      },
+      {
+        "text": "true false",
+        "correct": true
       },
       {
         "text": "true true",
@@ -7548,8 +7548,8 @@ const outputPredictionQuestions = [
     "code": "console.log(2 + 3 * 4);",
     "options": [
       {
-        "text": "14",
-        "correct": true
+        "text": "12",
+        "correct": false
       },
       {
         "text": "20",
@@ -7560,8 +7560,8 @@ const outputPredictionQuestions = [
         "correct": false
       },
       {
-        "text": "12",
-        "correct": false
+        "text": "14",
+        "correct": true
       }
     ],
     "babyExplanation": "🍼 Nalar Bayi: Perkalian (*) dikerjakan duluan: 3 × 4 = 12, lalu 2 + 12 = 14!",
@@ -7579,16 +7579,16 @@ const outputPredictionQuestions = [
     "code": "word = 'PYTHON'\nprint(word[::-1])",
     "options": [
       {
-        "text": "NOHTYP",
-        "correct": true
+        "text": "P",
+        "correct": false
       },
       {
         "text": "PYTHON",
         "correct": false
       },
       {
-        "text": "P",
-        "correct": false
+        "text": "NOHTYP",
+        "correct": true
       },
       {
         "text": "IndexError",
@@ -7610,12 +7610,12 @@ const outputPredictionQuestions = [
     "code": "squares = [x * x for x in range(4)]\nprint(squares)",
     "options": [
       {
-        "text": "[0, 1, 4, 9]",
-        "correct": true
-      },
-      {
         "text": "[1, 4, 9, 16]",
         "correct": false
+      },
+      {
+        "text": "[0, 1, 4, 9]",
+        "correct": true
       },
       {
         "text": "[0, 1, 2, 3]",
@@ -7672,8 +7672,8 @@ const outputPredictionQuestions = [
     "code": "items = ['server', 'router', 'switch']\nprint(items[-1])",
     "options": [
       {
-        "text": "switch",
-        "correct": true
+        "text": "IndexError",
+        "correct": false
       },
       {
         "text": "server",
@@ -7684,8 +7684,8 @@ const outputPredictionQuestions = [
         "correct": false
       },
       {
-        "text": "IndexError",
-        "correct": false
+        "text": "switch",
+        "correct": true
       }
     ],
     "babyExplanation": "🍼 Nalar Bayi: Indeks negatif [-1] mengambil elemen paling akhir yaitu 'switch'!",
@@ -7703,16 +7703,16 @@ const outputPredictionQuestions = [
     "code": "# tup = (1, 2, 3)\n# tup[0] = 99\n# What error will be thrown?",
     "options": [
       {
-        "text": "TypeError",
-        "correct": true
+        "text": "IndexError",
+        "correct": false
       },
       {
         "text": "ValueError",
         "correct": false
       },
       {
-        "text": "IndexError",
-        "correct": false
+        "text": "TypeError",
+        "correct": true
       },
       {
         "text": "SyntaxError",
@@ -7734,12 +7734,12 @@ const outputPredictionQuestions = [
     "code": "nums = [1, 2, 2, 3, 3, 3]\nprint(len(set(nums)))",
     "options": [
       {
-        "text": "3",
-        "correct": true
-      },
-      {
         "text": "6",
         "correct": false
+      },
+      {
+        "text": "3",
+        "correct": true
       },
       {
         "text": "1",
@@ -7796,8 +7796,8 @@ const outputPredictionQuestions = [
     "code": "name = 'Kodi'\nage = 1\nprint(f'{name} is {age * 12} months old')",
     "options": [
       {
-        "text": "Kodi is 12 months old",
-        "correct": true
+        "text": "SyntaxError",
+        "correct": false
       },
       {
         "text": "Kodi is 1 months old",
@@ -7808,8 +7808,8 @@ const outputPredictionQuestions = [
         "correct": false
       },
       {
-        "text": "SyntaxError",
-        "correct": false
+        "text": "Kodi is 12 months old",
+        "correct": true
       }
     ],
     "babyExplanation": "🍼 Nalar Bayi: {age * 12} dihitung menjadi 1 × 12 = 12!",
@@ -7827,16 +7827,16 @@ const outputPredictionQuestions = [
     "code": "print(3 in range(1, 4))",
     "options": [
       {
-        "text": "True",
-        "correct": true
+        "text": "None",
+        "correct": false
       },
       {
         "text": "False",
         "correct": false
       },
       {
-        "text": "None",
-        "correct": false
+        "text": "True",
+        "correct": true
       },
       {
         "text": "Error",
@@ -7858,12 +7858,12 @@ const outputPredictionQuestions = [
     "code": "d = {'a': 1, 'b': 2}\nprint(''.join(d))",
     "options": [
       {
-        "text": "ab",
-        "correct": true
-      },
-      {
         "text": "12",
         "correct": false
+      },
+      {
+        "text": "ab",
+        "correct": true
       },
       {
         "text": "a1b2",
@@ -7920,8 +7920,8 @@ const outputPredictionQuestions = [
     "code": "string dev = \"Boti\";\nint ver = 2;\nConsole.WriteLine($\"{dev} v{ver}\");",
     "options": [
       {
-        "text": "Boti v2",
-        "correct": true
+        "text": "Compile Error",
+        "correct": false
       },
       {
         "text": "{dev} v{ver}",
@@ -7932,8 +7932,8 @@ const outputPredictionQuestions = [
         "correct": false
       },
       {
-        "text": "Compile Error",
-        "correct": false
+        "text": "Boti v2",
+        "correct": true
       }
     ],
     "babyExplanation": "🍼 Nalar Bayi: Tanda $ di string C# menyisipkan nilai variabel langsung: 'Boti v2'!",
@@ -7951,16 +7951,16 @@ const outputPredictionQuestions = [
     "code": "int code = 2;\nstring msg = code switch {\n    1 => \"Low\",\n    2 => \"Med\",\n    _ => \"High\"\n};\nConsole.WriteLine(msg);",
     "options": [
       {
-        "text": "Med",
-        "correct": true
+        "text": "High",
+        "correct": false
       },
       {
         "text": "Low",
         "correct": false
       },
       {
-        "text": "High",
-        "correct": false
+        "text": "Med",
+        "correct": true
       },
       {
         "text": "Null",
@@ -7982,12 +7982,12 @@ const outputPredictionQuestions = [
     "code": "int? score = null;\nConsole.WriteLine(score.HasValue);",
     "options": [
       {
-        "text": "False",
-        "correct": true
-      },
-      {
         "text": "True",
         "correct": false
+      },
+      {
+        "text": "False",
+        "correct": true
       },
       {
         "text": "Null",
@@ -8044,8 +8044,8 @@ const outputPredictionQuestions = [
     "code": "string text = \"NETWORKING\";\nConsole.WriteLine(text.Substring(0, 3));",
     "options": [
       {
-        "text": "NET",
-        "correct": true
+        "text": "WORKING",
+        "correct": false
       },
       {
         "text": "NETW",
@@ -8056,8 +8056,8 @@ const outputPredictionQuestions = [
         "correct": false
       },
       {
-        "text": "WORKING",
-        "correct": false
+        "text": "NET",
+        "correct": true
       }
     ],
     "babyExplanation": "🍼 Nalar Bayi: Di C#, Substring(start, length) mengambil 3 huruf mulai dari indeks 0 = 'NET'!",
@@ -8075,16 +8075,16 @@ const outputPredictionQuestions = [
     "code": "var sb = new System.Text.StringBuilder();\nsb.Append(\"SQL\").Append(\" Server\");\nConsole.WriteLine(sb.ToString());",
     "options": [
       {
-        "text": "SQL Server",
-        "correct": true
+        "text": "Server",
+        "correct": false
       },
       {
         "text": "SQL",
         "correct": false
       },
       {
-        "text": "Server",
-        "correct": false
+        "text": "SQL Server",
+        "correct": true
       },
       {
         "text": "TypeError",
@@ -8106,12 +8106,12 @@ const outputPredictionQuestions = [
     "code": "var isOnline = true;\n// What is the compiled type of isOnline?",
     "options": [
       {
-        "text": "bool (Strongly typed at compile-time)",
-        "correct": true
-      },
-      {
         "text": "dynamic (Type resolved at runtime)",
         "correct": false
+      },
+      {
+        "text": "bool (Strongly typed at compile-time)",
+        "correct": true
       },
       {
         "text": "object",
@@ -8168,8 +8168,8 @@ const outputPredictionQuestions = [
     "code": "Console.WriteLine(string.IsNullOrEmpty(\"\"));",
     "options": [
       {
-        "text": "True",
-        "correct": true
+        "text": "Empty",
+        "correct": false
       },
       {
         "text": "False",
@@ -8180,8 +8180,8 @@ const outputPredictionQuestions = [
         "correct": false
       },
       {
-        "text": "Empty",
-        "correct": false
+        "text": "True",
+        "correct": true
       }
     ],
     "babyExplanation": "🍼 Nalar Bayi: Karena stringnya memang kosong, hasilnya True!",
@@ -8199,16 +8199,16 @@ const outputPredictionQuestions = [
     "code": "const stack = [];\nstack.push('A');\nstack.push('B');\nstack.push('C');\nconsole.log(stack.pop());",
     "options": [
       {
-        "text": "C",
-        "correct": true
+        "text": "B",
+        "correct": false
       },
       {
         "text": "A",
         "correct": false
       },
       {
-        "text": "B",
-        "correct": false
+        "text": "C",
+        "correct": true
       },
       {
         "text": "undefined",
@@ -8230,12 +8230,12 @@ const outputPredictionQuestions = [
     "code": "const queue = [];\nqueue.push('First');\nqueue.push('Second');\nconsole.log(queue.shift());",
     "options": [
       {
-        "text": "First",
-        "correct": true
-      },
-      {
         "text": "Second",
         "correct": false
+      },
+      {
+        "text": "First",
+        "correct": true
       },
       {
         "text": "undefined",
@@ -8292,8 +8292,8 @@ const outputPredictionQuestions = [
     "code": "const stack = [];\nstack.push(1);\nstack.push(2);\nstack.pop();\nstack.push(3);\nconsole.log(stack.join('-'));",
     "options": [
       {
-        "text": "1-3",
-        "correct": true
+        "text": "2-3",
+        "correct": false
       },
       {
         "text": "1-2-3",
@@ -8304,8 +8304,8 @@ const outputPredictionQuestions = [
         "correct": false
       },
       {
-        "text": "2-3",
-        "correct": false
+        "text": "1-3",
+        "correct": true
       }
     ],
     "babyExplanation": "🍼 Nalar Bayi: Masuk 1 -> Masuk 2 -> Pop buang 2 -> Masuk 3. Tersisa 1 dan 3 = '1-3'!",
@@ -8323,16 +8323,16 @@ const outputPredictionQuestions = [
     "code": "const buffer = [];\nbuffer.push('msg1');\nbuffer.push('msg2');\nbuffer.push('msg3');\nbuffer.shift();\nconsole.log(buffer.length);",
     "options": [
       {
-        "text": "2",
-        "correct": true
+        "text": "1",
+        "correct": false
       },
       {
         "text": "3",
         "correct": false
       },
       {
-        "text": "1",
-        "correct": false
+        "text": "2",
+        "correct": true
       },
       {
         "text": "0",
@@ -8354,12 +8354,12 @@ const outputPredictionQuestions = [
     "code": "// Root value: 50\n// Value to insert: 30\n// Where does 30 go?",
     "options": [
       {
-        "text": "Left child of root",
-        "correct": true
-      },
-      {
         "text": "Right child of root",
         "correct": false
+      },
+      {
+        "text": "Left child of root",
+        "correct": true
       },
       {
         "text": "Parent of root",
@@ -8416,8 +8416,8 @@ const outputPredictionQuestions = [
     "code": "const arr = [2, 3];\narr.unshift(1);\nconsole.log(arr[0]);",
     "options": [
       {
-        "text": "1",
-        "correct": true
+        "text": "undefined",
+        "correct": false
       },
       {
         "text": "2",
@@ -8428,8 +8428,8 @@ const outputPredictionQuestions = [
         "correct": false
       },
       {
-        "text": "undefined",
-        "correct": false
+        "text": "1",
+        "correct": true
       }
     ],
     "babyExplanation": "🍼 Nalar Bayi: unshift menyelipkan elemen baru di barisan terdepan (indeks 0). Indeks 0 jadi 1!",
@@ -8447,16 +8447,16 @@ const outputPredictionQuestions = [
     "code": "const map = new Map();\nmap.set('user101', 'Active');\n// Time complexity of map.get('user101')?",
     "options": [
       {
-        "text": "O(1) Constant Time",
-        "correct": true
+        "text": "O(log N) Logarithmic",
+        "correct": false
       },
       {
         "text": "O(N) Linear Time",
         "correct": false
       },
       {
-        "text": "O(log N) Logarithmic",
-        "correct": false
+        "text": "O(1) Constant Time",
+        "correct": true
       },
       {
         "text": "O(N^2)",
@@ -8478,12 +8478,12 @@ const outputPredictionQuestions = [
     "code": "// Printer spooler job order",
     "options": [
       {
-        "text": "Queue (FIFO)",
-        "correct": true
-      },
-      {
         "text": "Stack (LIFO)",
         "correct": false
+      },
+      {
+        "text": "Queue (FIFO)",
+        "correct": true
       },
       {
         "text": "Heap",
@@ -8540,8 +8540,8 @@ const outputPredictionQuestions = [
     "code": "// Row 1: IT, JKT\n// Row 2: IT, BDG\n// Row 3: HR, JKT\n// WHERE dept = 'IT' AND city = 'JKT'",
     "options": [
       {
-        "text": "1 row",
-        "correct": true
+        "text": "0 rows",
+        "correct": false
       },
       {
         "text": "2 rows",
@@ -8552,8 +8552,8 @@ const outputPredictionQuestions = [
         "correct": false
       },
       {
-        "text": "0 rows",
-        "correct": false
+        "text": "1 row",
+        "correct": true
       }
     ],
     "babyExplanation": "🍼 Nalar Bayi: Hanya Row 1 yang divisinya IT sekaligus kotanya JKT. Tepat 1 baris!",
@@ -8571,16 +8571,16 @@ const outputPredictionQuestions = [
     "code": "// 3 rows: Passed, Passed, Rejected\n// WHERE status = 'Passed' OR status = 'Rejected'",
     "options": [
       {
-        "text": "3 rows (All rows)",
-        "correct": true
+        "text": "1 row",
+        "correct": false
       },
       {
         "text": "2 rows",
         "correct": false
       },
       {
-        "text": "1 row",
-        "correct": false
+        "text": "3 rows (All rows)",
+        "correct": true
       },
       {
         "text": "0 rows",
@@ -8602,12 +8602,12 @@ const outputPredictionQuestions = [
     "code": "// 100 total rows\n// SELECT * FROM Table ORDER BY id ASC LIMIT 5;",
     "options": [
       {
-        "text": "5 rows",
-        "correct": true
-      },
-      {
         "text": "100 rows",
         "correct": false
+      },
+      {
+        "text": "5 rows",
+        "correct": true
       },
       {
         "text": "10 rows",
@@ -8664,8 +8664,8 @@ const outputPredictionQuestions = [
     "code": "// SELECT category, COUNT(*) FROM Dept GROUP BY category;",
     "options": [
       {
-        "text": "2 rows (One for IT, one for HR)",
-        "correct": true
+        "text": "1 row",
+        "correct": false
       },
       {
         "text": "5 rows",
@@ -8676,8 +8676,8 @@ const outputPredictionQuestions = [
         "correct": false
       },
       {
-        "text": "1 row",
-        "correct": false
+        "text": "2 rows (One for IT, one for HR)",
+        "correct": true
       }
     ],
     "babyExplanation": "🍼 Nalar Bayi: Ada 2 kelompok kategori unik ('IT' dan 'HR'), jadi tabel hasil memiliki 2 baris!",
@@ -8695,16 +8695,16 @@ const outputPredictionQuestions = [
     "code": "// SELECT * FROM A INNER JOIN B ON A.id = B.id;",
     "options": [
       {
-        "text": "2 rows (IDs 2 and 3 match)",
-        "correct": true
+        "text": "4 rows",
+        "correct": false
       },
       {
         "text": "3 rows",
         "correct": false
       },
       {
-        "text": "4 rows",
-        "correct": false
+        "text": "2 rows (IDs 2 and 3 match)",
+        "correct": true
       },
       {
         "text": "6 rows",
@@ -8726,12 +8726,12 @@ const outputPredictionQuestions = [
     "code": "// HAVING COUNT(*) > 2",
     "options": [
       {
-        "text": "2 groups (IT and Finance)",
-        "correct": true
-      },
-      {
         "text": "3 groups",
         "correct": false
+      },
+      {
+        "text": "2 groups (IT and Finance)",
+        "correct": true
       },
       {
         "text": "1 group",
@@ -8788,8 +8788,8 @@ const outputPredictionQuestions = [
     "code": "// SELECT DISTINCT department FROM Employees;",
     "options": [
       {
-        "text": "2 unique values ('IT' and 'Finance')",
-        "correct": true
+        "text": "3 values",
+        "correct": false
       },
       {
         "text": "4 values",
@@ -8800,8 +8800,8 @@ const outputPredictionQuestions = [
         "correct": false
       },
       {
-        "text": "3 values",
-        "correct": false
+        "text": "2 unique values ('IT' and 'Finance')",
+        "correct": true
       }
     ],
     "babyExplanation": "🍼 Nalar Bayi: DISTINCT membuang duplikat, menyisakan 2 nilai unik: 'IT' dan 'Finance'!",

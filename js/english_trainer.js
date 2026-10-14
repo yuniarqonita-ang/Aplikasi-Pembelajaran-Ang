@@ -8815,8 +8815,8 @@ const ieltsAcademicBank = [
     "ieltsFocus": "Task 1: Deskripsi Grafik",
     "questionPrompt": "The bar chart ______ the proportion of renewable energy consumed by five European nations in 2020.",
     "options": [
-      "illustrates",
       "is illustrating",
+      "illustrates",
       "illustrate",
       "has illustrated"
     ],
@@ -8853,10 +8853,10 @@ const ieltsAcademicBank = [
     "ieltsFocus": "Task 2: Ongoing Trends",
     "questionPrompt": "Currently, the global temperature ______ at an unprecedented rate due to carbon emissions.",
     "options": [
-      "is rising",
+      "rose",
       "rises",
       "has risen",
-      "rose"
+      "is rising"
     ],
     "correctAnswer": "is rising",
     "babyExplanation": "🍼 Nalar Bayi: Kata keterangan 'Currently' (saat ini sedang berlangsung) menunjukkan tren dinamis yang sedang terjadi, jadi memakai Present Continuous ('is rising')!",
@@ -8872,9 +8872,9 @@ const ieltsAcademicBank = [
     "ieltsFocus": "Academic Tone",
     "questionPrompt": "Many sociologists ______ that urbanization contributes directly to economic growth.",
     "options": [
-      "believe",
-      "are believing",
       "believed",
+      "are believing",
+      "believe",
       "have been believing"
     ],
     "correctAnswer": "believe",
@@ -8891,8 +8891,8 @@ const ieltsAcademicBank = [
     "ieltsFocus": "Data Attributes",
     "questionPrompt": "The experimental sample ______ three distinct chemical compounds.",
     "options": [
-      "contains",
       "is containing",
+      "contains",
       "has been containing",
       "contain"
     ],
@@ -8929,10 +8929,10 @@ const ieltsAcademicBank = [
     "ieltsFocus": "Task 2: General Patterns",
     "questionPrompt": "In automated factories, robotic arms ______ precision assembly without human fatigue.",
     "options": [
-      "perform",
+      "have performed",
       "are performing",
       "performed",
-      "have performed"
+      "perform"
     ],
     "correctAnswer": "perform",
     "babyExplanation": "🍼 Nalar Bayi: Kemampuan umum robotik sehari-hari di pabrik adalah rutinitas umum = Present Simple ('perform')!",
@@ -8948,9 +8948,9 @@ const ieltsAcademicBank = [
     "ieltsFocus": "Subject-Verb Agreement",
     "questionPrompt": "The data provided in the appendix ______ the primary findings of the report.",
     "options": [
-      "confirm",
-      "confirms",
       "is confirming",
+      "confirms",
+      "confirm",
       "has confirmed"
     ],
     "correctAnswer": "confirm",
@@ -8967,8 +8967,8 @@ const ieltsAcademicBank = [
     "ieltsFocus": "Academic Observation",
     "questionPrompt": "The proposed policy ______ reasonable to most environmental analysts.",
     "options": [
-      "seems",
       "is seeming",
+      "seems",
       "has been seeming",
       "seem"
     ],
@@ -9005,10 +9005,10 @@ const ieltsAcademicBank = [
     "ieltsFocus": "Task 1: Past Periods",
     "questionPrompt": "Between 2000 and 2010, the company's annual revenue ______ by 45 percent.",
     "options": [
-      "increased",
+      "was increased",
       "has increased",
       "is increasing",
-      "was increased"
+      "increased"
     ],
     "correctAnswer": "increased",
     "babyExplanation": "🍼 Nalar Bayi: Periode waktu lampau yang sudah tamat tuntas (Between 2000 and 2010) WAJIB memakai Past Simple V2 ('increased')!",
@@ -9024,9 +9024,9 @@ const ieltsAcademicBank = [
     "ieltsFocus": "Task 1 Interrupted Trends",
     "questionPrompt": "While the European economy was expanding, Asian manufacturing sectors ______ at an even faster pace.",
     "options": [
-      "were growing",
-      "grew",
       "have grown",
+      "grew",
+      "were growing",
       "had been grown"
     ],
     "correctAnswer": "were growing",
@@ -9043,8 +9043,8 @@ const ieltsAcademicBank = [
     "ieltsFocus": "Task 2 Historical Background",
     "questionPrompt": "By the time the new environmental regulation was enacted, carbon emissions ______ dangerous levels.",
     "options": [
-      "had reached",
       "reached",
+      "had reached",
       "have reached",
       "were reaching"
     ],
@@ -9081,10 +9081,10 @@ const ieltsAcademicBank = [
     "ieltsFocus": "Task 2 Societal Changes",
     "questionPrompt": "Prior to the internet era, students ______ reference encyclopedias in physical libraries.",
     "options": [
-      "used to consult",
+      "used to consulting",
       "are used to consult",
       "use to consult",
-      "used to consulting"
+      "used to consult"
     ],
     "correctAnswer": "used to consult",
     "babyExplanation": "🍼 Nalar Bayi: Kebiasaan masa lalu yang sekarang sudah tidak dilakukan lagi memakai 'used to + Verb 1' ('used to consult')!",
@@ -9100,9 +9100,9 @@ const ieltsAcademicBank = [
     "ieltsFocus": "Task 2 Historical Description",
     "questionPrompt": "Whenever a machine malfunctioned in the 19th century, technicians ______ the parts by hand.",
     "options": [
-      "would replace",
-      "will replace",
       "are replacing",
+      "will replace",
+      "would replace",
       "used to replacing"
     ],
     "correctAnswer": "would replace",
@@ -9119,8 +9119,8 @@ const ieltsAcademicBank = [
     "ieltsFocus": "Task 1 Graph Describing",
     "questionPrompt": "The number of electric vehicles ______ slightly in the second quarter of 2018.",
     "options": [
-      "fell",
       "felled",
+      "fell",
       "fall",
       "has fallen"
     ],
@@ -9157,10 +9157,10 @@ const ieltsAcademicBank = [
     "ieltsFocus": "Lab Scenarios",
     "questionPrompt": "The technician was testing the circuit when the power supply suddenly ______.",
     "options": [
-      "failed",
+      "fails",
       "was failing",
       "had failed",
-      "fails"
+      "failed"
     ],
     "correctAnswer": "failed",
     "babyExplanation": "🍼 Nalar Bayi: Saat suatu kegiatan sedang berlangsung (was testing), peristiwa dadakan yang memotong memakai Past Simple ('failed')!",
@@ -9176,9 +9176,9 @@ const ieltsAcademicBank = [
     "ieltsFocus": "Adaptation Context",
     "questionPrompt": "Modern workers ______ collaborating with colleagues across different time zones.",
     "options": [
-      "are used to",
-      "used to",
       "use to",
+      "used to",
+      "are used to",
       "used to be"
     ],
     "correctAnswer": "are used to",
@@ -9195,8 +9195,8 @@ const ieltsAcademicBank = [
     "ieltsFocus": "Task 2 Modern Context",
     "questionPrompt": "Over the past two decades, artificial intelligence ______ various industrial sectors.",
     "options": [
-      "has transformed",
       "transformed",
+      "has transformed",
       "transforms",
       "had transformed"
     ],
@@ -9233,10 +9233,10 @@ const ieltsAcademicBank = [
     "ieltsFocus": "Time Structure",
     "questionPrompt": "Since the automated sorting facility was built, manufacturing errors ______ by 60%.",
     "options": [
-      "have decreased",
+      "are decreasing",
       "decreased",
       "had decreased",
-      "are decreasing"
+      "have decreased"
     ],
     "correctAnswer": "have decreased",
     "babyExplanation": "🍼 Nalar Bayi: Rumus baku IELTS: Since + Past Simple, [Klausa Utama = Present Perfect ('have decreased')]!",
@@ -9252,9 +9252,9 @@ const ieltsAcademicBank = [
     "ieltsFocus": "Duration Markers",
     "questionPrompt": "The university has offered computer engineering degrees ______ more than thirty years.",
     "options": [
-      "for",
-      "since",
       "during",
+      "since",
+      "for",
       "in"
     ],
     "correctAnswer": "for",
@@ -9271,8 +9271,8 @@ const ieltsAcademicBank = [
     "ieltsFocus": "Research Accomplishments",
     "questionPrompt": "No previous study ______ such a comprehensive correlation between both variables.",
     "options": [
-      "has demonstrated",
       "demonstrated",
+      "has demonstrated",
       "was demonstrating",
       "had demonstrated"
     ],
@@ -9309,10 +9309,10 @@ const ieltsAcademicBank = [
     "ieltsFocus": "Task Completion",
     "questionPrompt": "The peer-review panel has ______ approved the methodology for the clinical trial.",
     "options": [
-      "already",
+      "since",
       "yet",
       "still",
-      "since"
+      "already"
     ],
     "correctAnswer": "already",
     "babyExplanation": "🍼 Nalar Bayi: 'Already' ditempatkan di antara 'has' dan V3 untuk menyatakan bahwa persetujuan sudah selesai dilakukan!",
@@ -9328,9 +9328,9 @@ const ieltsAcademicBank = [
     "ieltsFocus": "Frequency of Experiments",
     "questionPrompt": "The experimental procedure ______ three times to ensure scientific validity.",
     "options": [
-      "has been repeated",
-      "repeated",
       "was repeating",
+      "repeated",
+      "has been repeated",
       "had been repeating"
     ],
     "correctAnswer": "has been repeated",
@@ -9347,8 +9347,8 @@ const ieltsAcademicBank = [
     "ieltsFocus": "Current Decade",
     "questionPrompt": "So far this decade, renewable energy investment ______ all prior records.",
     "options": [
-      "has surpassed",
       "surpassed",
+      "has surpassed",
       "had surpassed",
       "surpasses"
     ],
@@ -9385,10 +9385,10 @@ const ieltsAcademicBank = [
     "ieltsFocus": "Task 1: Proses Pabrik",
     "questionPrompt": "First, the raw leather ______ and inspected before being cut into shoe patterns.",
     "options": [
-      "is sorted",
+      "has sorted",
       "sorts",
       "is sorting",
-      "has sorted"
+      "is sorted"
     ],
     "correctAnswer": "is sorted",
     "babyExplanation": "🍼 Nalar Bayi: Dalam IELTS Task 1 Process Diagram, objek tidak menyortir dirinya sendiri melainkan disortir oleh pekerja/mesin = Present Simple Passive ('is sorted')!",
@@ -9404,9 +9404,9 @@ const ieltsAcademicBank = [
     "ieltsFocus": "Historical Manufacturing",
     "questionPrompt": "In the 1920s, assembly lines ______ to standardize automobile production.",
     "options": [
-      "were introduced",
-      "introduced",
       "are introduced",
+      "introduced",
+      "were introduced",
       "had introduced"
     ],
     "correctAnswer": "were introduced",
@@ -9423,8 +9423,8 @@ const ieltsAcademicBank = [
     "ieltsFocus": "Task 2 Academic Claims",
     "questionPrompt": "It ______ widely believed that early childhood education yields lifelong economic advantages.",
     "options": [
-      "is",
       "was",
+      "is",
       "has",
       "does"
     ],
@@ -9461,10 +9461,10 @@ const ieltsAcademicBank = [
     "ieltsFocus": "Policy Recommendations",
     "questionPrompt": "Stricter regulations must ______ to curb industrial effluent discharge into rivers.",
     "options": [
-      "be implemented",
+      "be implementing",
       "implement",
       "have implemented",
-      "be implementing"
+      "be implemented"
     ],
     "correctAnswer": "be implemented",
     "babyExplanation": "🍼 Nalar Bayi: Rumus Modal Pasif: Modal (must) + be + Verb 3 (implemented) = 'must be implemented' (harus diterapkan)!",
@@ -9480,9 +9480,9 @@ const ieltsAcademicBank = [
     "ieltsFocus": "Technical Services",
     "questionPrompt": "Large organizations routinely have their network security ______ by certified ethical hackers.",
     "options": [
-      "audited",
-      "audit",
       "auditing",
+      "audit",
+      "audited",
       "to audit"
     ],
     "correctAnswer": "audited",
@@ -9499,8 +9499,8 @@ const ieltsAcademicBank = [
     "ieltsFocus": "Identifying the Cause",
     "questionPrompt": "The initial anomaly in server latency was caused ______ a faulty fiber-optic transceiver.",
     "options": [
-      "by",
       "with",
+      "by",
       "from",
       "through"
     ],
@@ -9537,10 +9537,10 @@ const ieltsAcademicBank = [
     "ieltsFocus": "Ongoing Engineering Work",
     "questionPrompt": "A state-of-the-art supercomputing cluster ______ currently installed on campus.",
     "options": [
-      "is being",
+      "was being",
       "is",
       "has been",
-      "was being"
+      "is being"
     ],
     "correctAnswer": "is being",
     "babyExplanation": "🍼 Nalar Bayi: Komputer super saat ini sedang dalam proses dipasang oleh teknisi = Present Continuous Passive: 'is being installed'!",
@@ -9556,9 +9556,9 @@ const ieltsAcademicBank = [
     "ieltsFocus": "Passive Meaning",
     "questionPrompt": "The outdated firewall software urgently needs ______ to prevent zero-day exploits.",
     "options": [
-      "updating",
-      "to update",
       "updated",
+      "to update",
+      "updating",
       "update"
     ],
     "correctAnswer": "updating",
@@ -9575,8 +9575,8 @@ const ieltsAcademicBank = [
     "ieltsFocus": "Scientific Cause-Effect",
     "questionPrompt": "If the temperature inside the reaction vessel rises above 80 degrees, the enzyme ______.",
     "options": [
-      "denatures",
       "will denature",
+      "denatures",
       "denatured",
       "would denature"
     ],
@@ -9613,10 +9613,10 @@ const ieltsAcademicBank = [
     "ieltsFocus": "Task 2 Hypothetical Debate",
     "questionPrompt": "If developing nations ______ completely to solar energy tomorrow, fossil fuel demand would collapse.",
     "options": [
-      "transitioned",
+      "had transitioned",
       "transition",
       "will transition",
-      "had transitioned"
+      "transitioned"
     ],
     "correctAnswer": "transitioned",
     "babyExplanation": "🍼 Nalar Bayi: Second conditional (pengandaian tidak nyata saat ini): If + Past Simple ('transitioned'), [Klausa utama = would + Verb 1]!",
@@ -9632,9 +9632,9 @@ const ieltsAcademicBank = [
     "ieltsFocus": "Formal Speculation",
     "questionPrompt": "If the ice sheet ______ melt entirely, global sea levels would rise by several meters.",
     "options": [
-      "were to",
-      "was to",
       "would",
+      "was to",
+      "were to",
       "had to"
     ],
     "correctAnswer": "were to",
@@ -9651,8 +9651,8 @@ const ieltsAcademicBank = [
     "ieltsFocus": "Historical Analysis",
     "questionPrompt": "If the backup generator had engaged automatically, the hospital ______ power during the storm.",
     "options": [
-      "would not have lost",
       "will not lose",
+      "would not have lost",
       "did not lose",
       "would not lose"
     ],
@@ -9689,10 +9689,10 @@ const ieltsAcademicBank = [
     "ieltsFocus": "Academic Requirements",
     "questionPrompt": "Industrial emissions will continue to climb ______ strict carbon caps are enforced.",
     "options": [
-      "unless",
+      "as long as",
       "if",
       "provided",
-      "as long as"
+      "unless"
     ],
     "correctAnswer": "unless",
     "babyExplanation": "🍼 Nalar Bayi: 'Unless' bermakna 'jika tidak' (if not): emisi akan terus naik KECUALI JIKA batasan karbon ditegakkan!",
@@ -9708,9 +9708,9 @@ const ieltsAcademicBank = [
     "ieltsFocus": "Advanced Academic Tone",
     "questionPrompt": "______ the team detected the vulnerability earlier, the security breach could have been averted.",
     "options": [
-      "Had",
-      "Were",
       "Should",
+      "Were",
+      "Had",
       "If had"
     ],
     "correctAnswer": "Had",
@@ -9727,8 +9727,8 @@ const ieltsAcademicBank = [
     "ieltsFocus": "Stipulating Conditions",
     "questionPrompt": "Autonomous vehicles are remarkably safe, ______ their sensor algorithms are properly calibrated.",
     "options": [
-      "provided that",
       "unless",
+      "provided that",
       "in case",
       "although"
     ],
@@ -9765,10 +9765,10 @@ const ieltsAcademicBank = [
     "ieltsFocus": "Cautious Scientific Tone",
     "questionPrompt": "The preliminary data suggests that inadequate dietary fiber ______ contribute to gastrointestinal disorders.",
     "options": [
-      "may",
+      "shall",
       "will",
       "must",
-      "shall"
+      "may"
     ],
     "correctAnswer": "may",
     "babyExplanation": "🍼 Nalar Bayi: Dalam karya ilmiah IELTS, jangan pernah overclaim (klaim mutlak)! Gunakan modal 'may' atau 'might' untuk merendah hati (hedging)!",
@@ -9784,9 +9784,9 @@ const ieltsAcademicBank = [
     "ieltsFocus": "Logical Deductions",
     "questionPrompt": "Given that all three sensors recorded identical anomalies, the reading ______ be a mere fluke.",
     "options": [
-      "cannot",
-      "must not",
       "might",
+      "must not",
+      "cannot",
       "should"
     ],
     "correctAnswer": "cannot",
@@ -9803,8 +9803,8 @@ const ieltsAcademicBank = [
     "ieltsFocus": "Evaluating Results",
     "questionPrompt": "The experimental cooling system ______ activated at 50 degrees, but a sensor fault prevented it.",
     "options": [
-      "should have",
       "must have",
+      "should have",
       "could have",
       "would have"
     ],
@@ -9841,10 +9841,10 @@ const ieltsAcademicBank = [
     "ieltsFocus": "Technological Capability",
     "questionPrompt": "Modern quantum processors ______ calculate complex molecular structures in seconds.",
     "options": [
-      "are able to",
+      "are can",
       "can to",
       "could to",
-      "are can"
+      "are able to"
     ],
     "correctAnswer": "are able to",
     "babyExplanation": "🍼 Nalar Bayi: 'Are able to' menekankan kapasitas kapabilitas khusus yang berhasil dicapai!",
@@ -9860,9 +9860,9 @@ const ieltsAcademicBank = [
     "ieltsFocus": "Ethical Research Guidelines",
     "questionPrompt": "Researchers ______ disclose all conflicts of interest prior to journal publication.",
     "options": [
-      "are required to",
-      "must to",
       "ought",
+      "must to",
+      "are required to",
       "need"
     ],
     "correctAnswer": "are required to",
@@ -9879,8 +9879,8 @@ const ieltsAcademicBank = [
     "ieltsFocus": "Describing General Patterns",
     "questionPrompt": "Higher educational attainment ______ correlate with increased civic engagement.",
     "options": [
-      "tends to",
       "is tending to",
+      "tends to",
       "must to",
       "tend"
     ],
@@ -9917,10 +9917,10 @@ const ieltsAcademicBank = [
     "ieltsFocus": "Nuanced Claims",
     "questionPrompt": "These experimental outcomes ______ indicate a breakthrough in superconductor physics.",
     "options": [
-      "arguably",
+      "definite",
       "mustly",
       "sure",
-      "definite"
+      "arguably"
     ],
     "correctAnswer": "arguably",
     "babyExplanation": "🍼 Nalar Bayi: 'Arguably' (bisa dibilang / dapat diargumentasikan) adalah adverbia hedging akademik tingkat Band 8.5!",
@@ -9936,9 +9936,9 @@ const ieltsAcademicBank = [
     "ieltsFocus": "Laboratory Safety",
     "questionPrompt": "Unauthorized personnel ______ access the high-voltage server room under any circumstance.",
     "options": [
-      "must not",
-      "need not",
       "might not",
+      "need not",
+      "must not",
       "could not to"
     ],
     "correctAnswer": "must not",
@@ -9955,8 +9955,8 @@ const ieltsAcademicBank = [
     "ieltsFocus": "Technical Definitions",
     "questionPrompt": "A firewall is a network security system ______ monitors incoming and outgoing traffic.",
     "options": [
-      "that",
       "who",
+      "that",
       "whom",
       "where"
     ],
@@ -9993,10 +9993,10 @@ const ieltsAcademicBank = [
     "ieltsFocus": "Formal Academic Precision",
     "questionPrompt": "The control framework ______ the factory operates was updated last year.",
     "options": [
-      "under which",
+      "in that",
       "which",
       "whereby that",
-      "in that"
+      "under which"
     ],
     "correctAnswer": "under which",
     "babyExplanation": "🍼 Nalar Bayi: Bahasa Inggris formal tingkat tinggi: preposisi ditaruh di depan relative pronoun ('under which the factory operates')!",
@@ -10012,9 +10012,9 @@ const ieltsAcademicBank = [
     "ieltsFocus": "Explaining Mechanisms",
     "questionPrompt": "The algorithm employs a voting mechanism ______ consensus is reached among distributed nodes.",
     "options": [
-      "whereby",
-      "whereas",
       "wherever",
+      "whereas",
+      "whereby",
       "wherein that"
     ],
     "correctAnswer": "whereby",
@@ -10031,8 +10031,8 @@ const ieltsAcademicBank = [
     "ieltsFocus": "Synthesizing Sentences",
     "questionPrompt": "The company automated its logistics center, ______ operating expenses by 30 percent.",
     "options": [
-      "reducing",
       "reduced",
+      "reducing",
       "reduces",
       "to reduce"
     ],
@@ -10069,10 +10069,10 @@ const ieltsAcademicBank = [
     "ieltsFocus": "Describing Entities",
     "questionPrompt": "Countries ______ reliance on fossil fuels is high face severe transition costs.",
     "options": [
-      "whose",
+      "that",
       "which",
       "where",
-      "that"
+      "whose"
     ],
     "correctAnswer": "whose",
     "babyExplanation": "🍼 Nalar Bayi: Kata ganti kepemilikan 'whose' bisa dipakai untuk negara atau organisasi: 'Countries whose reliance...' (Negara yang ketergantungannya...)!",
@@ -10088,9 +10088,9 @@ const ieltsAcademicBank = [
     "ieltsFocus": "Task 1 Concise Descriptions",
     "questionPrompt": "The volume of wastewater ______ into coastal waters declined steadily after 2015.",
     "options": [
-      "discharged",
-      "discharging",
       "was discharged",
+      "discharging",
+      "discharged",
       "which discharged"
     ],
     "correctAnswer": "discharged",
@@ -10107,8 +10107,8 @@ const ieltsAcademicBank = [
     "ieltsFocus": "Sequencing Academic Steps",
     "questionPrompt": "______ completed the clinical trial, the pharmacologists published their findings in a peer-reviewed journal.",
     "options": [
-      "Having",
       "Being",
+      "Having",
       "After had",
       "To have"
     ],
@@ -10145,10 +10145,10 @@ const ieltsAcademicBank = [
     "ieltsFocus": "Task 2 Academic Cohesion",
     "questionPrompt": "The ______ efficient an industrial engine is, the ______ fuel it consumes per kilometer.",
     "options": [
-      "more / less",
+      "much / little",
       "most / least",
       "more / lesser",
-      "much / little"
+      "more / less"
     ],
     "correctAnswer": "more / less",
     "babyExplanation": "🍼 Nalar Bayi: Pola 'The more..., the less...' (Makin efisien mesinnya, makin sedikit bahan bakar yang dihabiskannya)!",
@@ -10164,9 +10164,9 @@ const ieltsAcademicBank = [
     "ieltsFocus": "Graph Gap Measurement",
     "questionPrompt": "Car production in Germany was ______ higher than in the United Kingdom throughout the decade.",
     "options": [
-      "significantly",
-      "significant",
       "more significant",
+      "significant",
+      "significantly",
       "most"
     ],
     "correctAnswer": "significantly",
@@ -10183,8 +10183,8 @@ const ieltsAcademicBank = [
     "ieltsFocus": "Selecting Categories",
     "questionPrompt": "Hydroelectric power was the most widely used renewable energy source ______ South America.",
     "options": [
-      "in",
       "of",
+      "in",
       "from",
       "at"
     ],
@@ -10221,10 +10221,10 @@ const ieltsAcademicBank = [
     "ieltsFocus": "Ratio Expressions",
     "questionPrompt": "In 2021, wind power output was ______ that of geothermal power.",
     "options": [
-      "three times",
+      "three time",
       "three times more than",
       "three fold of",
-      "three time"
+      "three times"
     ],
     "correctAnswer": "three times",
     "babyExplanation": "🍼 Nalar Bayi: Rumus penggandaan rasio IELTS: 'three times that of...' (tiga kali lipat dari angka geothermal)!",
@@ -10240,9 +10240,9 @@ const ieltsAcademicBank = [
     "ieltsFocus": "Academic Prominence",
     "questionPrompt": "Cybersecurity is widely recognized as one of the most critical ______ facing modern enterprises.",
     "options": [
-      "challenges",
-      "challenge",
       "challenging",
+      "challenge",
+      "challenges",
       "of challenge"
     ],
     "correctAnswer": "challenges",
@@ -10259,8 +10259,8 @@ const ieltsAcademicBank = [
     "ieltsFocus": "Statistical Benchmarking",
     "questionPrompt": "Shoe sales increased by 15 percent in the third quarter ______ with the same period last year.",
     "options": [
-      "compared",
       "comparing",
+      "compared",
       "in compare",
       "compare"
     ],
@@ -10297,10 +10297,10 @@ const ieltsAcademicBank = [
     "ieltsFocus": "Comparative Adjectives",
     "questionPrompt": "The tensile strength of modern carbon fiber is distinctly superior ______ conventional steel.",
     "options": [
-      "to",
+      "as",
       "than",
       "from",
-      "as"
+      "to"
     ],
     "correctAnswer": "to",
     "babyExplanation": "🍼 Nalar Bayi: Jebakan grammar: kata 'superior', 'inferior', 'prior' SELALU berpasangan dengan 'to', BUKAN 'than'!",
@@ -10316,9 +10316,9 @@ const ieltsAcademicBank = [
     "ieltsFocus": "Graph Divergence",
     "questionPrompt": "In contrast to European markets, ______ consumer spending fell, Asian retail sales surged.",
     "options": [
-      "where",
-      "which",
       "that",
+      "which",
+      "where",
       "when"
     ],
     "correctAnswer": "where",
@@ -10335,8 +10335,8 @@ const ieltsAcademicBank = [
     "ieltsFocus": "Concession Structures",
     "questionPrompt": "______ substantial investments were made in green infrastructure, carbon neutrality remained elusive.",
     "options": [
-      "Although",
       "Despite",
+      "Although",
       "In spite of",
       "Regardless"
     ],
@@ -10373,10 +10373,10 @@ const ieltsAcademicBank = [
     "ieltsFocus": "Expressing Consequences",
     "questionPrompt": "Server workloads exceeded capacity; ______, the database experienced unexpected downtime.",
     "options": [
-      "consequently",
+      "nevertheless",
       "whereas",
       "although",
-      "nevertheless"
+      "consequently"
     ],
     "correctAnswer": "consequently",
     "babyExplanation": "🍼 Nalar Bayi: Beban kerja melebihi kapasitas; KONSEKUENSINYA / AKIBATNYA ('consequently'), database mengalami downtime!",
@@ -10392,9 +10392,9 @@ const ieltsAcademicBank = [
     "ieltsFocus": "Causal Prepositions",
     "questionPrompt": "The delay in production was ______ to an unexpected breakdown in the automated conveyor belt.",
     "options": [
-      "due",
-      "because",
       "owing",
+      "because",
+      "due",
       "caused"
     ],
     "correctAnswer": "due",
@@ -10411,8 +10411,8 @@ const ieltsAcademicBank = [
     "ieltsFocus": "Task 1 Comparing Two Groups",
     "questionPrompt": "The percentage of urban dwellers rose to 70%, ______ rural populations contracted to 30%.",
     "options": [
-      "whereas",
       "despite",
+      "whereas",
       "because",
       "due to"
     ],
@@ -10449,10 +10449,10 @@ const ieltsAcademicBank = [
     "ieltsFocus": "Contrasting Ideas",
     "questionPrompt": "The initial trials yielded promising data; ______, long-term clinical verification remains necessary.",
     "options": [
-      "nevertheless",
+      "similarly",
       "furthermore",
       "therefore",
-      "similarly"
+      "nevertheless"
     ],
     "correctAnswer": "nevertheless",
     "babyExplanation": "🍼 Nalar Bayi: Hasil awal menjanjikan, NAMUN DEMIKIAN ('nevertheless'), pengujian jangka panjang tetap wajib dilakukan!",
@@ -10468,9 +10468,9 @@ const ieltsAcademicBank = [
     "ieltsFocus": "Participle Consequence",
     "questionPrompt": "The storm damaged primary power lines, ______ widespread blackouts across the industrial zone.",
     "options": [
-      "leading to",
-      "leads to",
       "led to that",
+      "leads to",
+      "leading to",
       "because of"
     ],
     "correctAnswer": "leading to",
@@ -10487,8 +10487,8 @@ const ieltsAcademicBank = [
     "ieltsFocus": "Dual Perspectives in Task 2",
     "questionPrompt": "Automation accelerates assembly speed; on the other ______, it displaces manual manufacturing jobs.",
     "options": [
-      "hand",
       "side",
+      "hand",
       "way",
       "view"
     ],
@@ -10525,10 +10525,10 @@ const ieltsAcademicBank = [
     "ieltsFocus": "Transforming Verbs to Nouns",
     "questionPrompt": "The rapid ______ of urban infrastructure strained municipal municipal budgets.",
     "options": [
-      "expansion",
+      "expanded",
       "expand",
       "expanding",
-      "expanded"
+      "expansion"
     ],
     "correctAnswer": "expansion",
     "babyExplanation": "🍼 Nalar Bayi: Nominalisation (mengubah kata kerja 'expand' menjadi kata benda 'expansion') membuat tulisan kamu berbobot resmi akademik!",
@@ -10544,9 +10544,9 @@ const ieltsAcademicBank = [
     "ieltsFocus": "Emphasis in Task 2",
     "questionPrompt": "Not only ______ renewable power reduce carbon footprints, but it also creates sustainable employment.",
     "options": [
-      "does",
-      "is",
       "did",
+      "is",
+      "does",
       "has"
     ],
     "correctAnswer": "does",
@@ -10563,8 +10563,8 @@ const ieltsAcademicBank = [
     "ieltsFocus": "Historical Narrative",
     "questionPrompt": "Little ______ the initial computer engineers realize how profoundly the internet would reshape society.",
     "options": [
-      "did",
       "had",
+      "did",
       "were",
       "would"
     ],
@@ -10601,10 +10601,10 @@ const ieltsAcademicBank = [
     "ieltsFocus": "Task 2 Essays",
     "questionPrompt": "Technological literacy plays a ______ role in modern workforce adaptability.",
     "options": [
-      "pivotal",
+      "pivoted",
       "pivot",
       "pivoting",
-      "pivoted"
+      "pivotal"
     ],
     "correctAnswer": "pivotal",
     "babyExplanation": "🍼 Nalar Bayi: Pasangan kata (collocation) emas dalam esai akademik: 'plays a pivotal / crucial / vital role' (memainkan peran penting)! Band 8.5!",
@@ -10620,9 +10620,9 @@ const ieltsAcademicBank = [
     "ieltsFocus": "Government Action",
     "questionPrompt": "Municipal councils should take immediate ______ to reduce single-use plastic waste.",
     "options": [
-      "measures",
-      "acts",
       "measuring",
+      "acts",
+      "measures",
       "measurements"
     ],
     "correctAnswer": "measures",
@@ -10639,8 +10639,8 @@ const ieltsAcademicBank = [
     "ieltsFocus": "Hedging Probability",
     "questionPrompt": "Given current investment trajectories, it is highly ______ that solar energy will dominate by 2040.",
     "options": [
-      "probable",
       "probably",
+      "probable",
       "probability",
       "probabling"
     ],
@@ -10677,10 +10677,10 @@ const ieltsAcademicBank = [
     "ieltsFocus": "Addressing Essay Prompt",
     "questionPrompt": "The primary debate centers on the ______ to which governments should regulate artificial intelligence.",
     "options": [
-      "extent",
+      "extensively",
       "extend",
       "extension",
-      "extensively"
+      "extent"
     ],
     "correctAnswer": "extent",
     "babyExplanation": "🍼 Nalar Bayi: Frasa akademik kunci IELTS: 'the extent to which...' (sejauh mana batasan di mana pemerintah harus mengatur AI)!",
@@ -10696,9 +10696,9 @@ const ieltsAcademicBank = [
     "ieltsFocus": "Task 2 Concluding Paragraph",
     "questionPrompt": "In conclusion, although automation carries transitional challenges, its economic benefits are ______ profound.",
     "options": [
-      "undeniably",
-      "undeniable",
       "deniably",
+      "undeniable",
+      "undeniably",
       "denying"
     ],
     "correctAnswer": "undeniably",
@@ -10721,9 +10721,9 @@ const toeflIbtBuildingSkills = [
     "passageSnippet": "Many desert succulents exhibit dormant metabolic phases during severe arid spells. This adaptive latency enables them to survive prolonged droughts.",
     "questionPrompt": "The word 'dormant' in the passage is closest in meaning to:",
     "options": [
-      "inactive",
-      "flourishing",
       "hazardous",
+      "flourishing",
+      "inactive",
       "visible"
     ],
     "correctAnswer": "inactive",
@@ -10744,8 +10744,8 @@ const toeflIbtBuildingSkills = [
     "passageSnippet": "The relentless advance of polar ice sheets caused profound alterations in terrestrial topography.",
     "questionPrompt": "The word 'relentless' in the passage is closest in meaning to:",
     "options": [
-      "continuous and unyielding",
       "temporary",
+      "continuous and unyielding",
       "gradual",
       "peaceful"
     ],
@@ -10790,10 +10790,10 @@ const toeflIbtBuildingSkills = [
     "passageSnippet": "The Martian atmosphere is remarkably tenuous compared to Earth's dense envelope of nitrogen and oxygen.",
     "questionPrompt": "The word 'tenuous' in the passage is closest in meaning to:",
     "options": [
-      "thin and insubstantial",
+      "turbulent",
       "humid",
       "protective",
-      "turbulent"
+      "thin and insubstantial"
     ],
     "correctAnswer": "thin and insubstantial",
     "babyExplanation": "🍼 Nalar Bayi: Atmosfer Mars sangat tipis dan renggang partikel gasnya = 'thin and insubstantial'!",
@@ -10813,9 +10813,9 @@ const toeflIbtBuildingSkills = [
     "passageSnippet": "Children acquire linguistic fluency with intuitive ease, whereas adults must exert deliberate cognitive effort.",
     "questionPrompt": "The word 'exert' in the passage is closest in meaning to:",
     "options": [
-      "apply or put forth",
-      "avoid",
       "measure",
+      "avoid",
+      "apply or put forth",
       "conceal"
     ],
     "correctAnswer": "apply or put forth",
@@ -10836,8 +10836,8 @@ const toeflIbtBuildingSkills = [
     "passageSnippet": "Apex predators play an indispensable role in maintaining biodiversity within trophic cascades.",
     "questionPrompt": "The word 'indispensable' in the passage is closest in meaning to:",
     "options": [
-      "essential",
       "replaceable",
+      "essential",
       "minor",
       "optional"
     ],
@@ -10882,10 +10882,10 @@ const toeflIbtBuildingSkills = [
     "passageSnippet": "Hydrothermal vent organisms thrive in an environment devoid of natural solar radiation.",
     "questionPrompt": "The word 'devoid of' in the passage is closest in meaning to:",
     "options": [
-      "lacking completely",
+      "shielded from",
       "surrounded by",
       "heated by",
-      "shielded from"
+      "lacking completely"
     ],
     "correctAnswer": "lacking completely",
     "babyExplanation": "🍼 Nalar Bayi: Dasar laut dalam gelap gulita tanpa sinar matahari sama sekali (kosong melompong) = 'lacking completely'!",
@@ -10905,9 +10905,9 @@ const toeflIbtBuildingSkills = [
     "passageSnippet": "The rapid expansion of mechanized factories triggered substantial migration toward metropolitan hubs.",
     "questionPrompt": "The word 'substantial' in the passage is closest in meaning to:",
     "options": [
-      "considerable in size",
-      "negligible",
       "unpredictable",
+      "negligible",
+      "considerable in size",
       "brief"
     ],
     "correctAnswer": "considerable in size",
@@ -10928,8 +10928,8 @@ const toeflIbtBuildingSkills = [
     "passageSnippet": "Aerospace alloys must maintain structural integrity under extreme thermal fluctuations.",
     "questionPrompt": "The word 'integrity' in the passage is closest in meaning to:",
     "options": [
-      "soundness and wholeness",
       "flexibility",
+      "soundness and wholeness",
       "electrical conductivity",
       "transparency"
     ],
@@ -10974,10 +10974,10 @@ const toeflIbtBuildingSkills = [
     "passageSnippet": "Excavators unearthed meticulously carved stone tablets detailing trade treaties.",
     "questionPrompt": "The word 'meticulously' in the passage is closest in meaning to:",
     "options": [
-      "carefully and precisely",
+      "randomly",
       "crudely",
       "hastily",
-      "randomly"
+      "carefully and precisely"
     ],
     "correctAnswer": "carefully and precisely",
     "babyExplanation": "🍼 Nalar Bayi: Mengukir dengan penuh ketelitian dan ketelitian tingkat tinggi = 'carefully and precisely'!",
@@ -10997,9 +10997,9 @@ const toeflIbtBuildingSkills = [
     "passageSnippet": "Catalytic enzymes facilitate biochemical transformations without being consumed in the reaction.",
     "questionPrompt": "The word 'facilitate' in the passage is closest in meaning to:",
     "options": [
-      "make easier",
-      "hinder",
       "terminate",
+      "hinder",
+      "make easier",
       "prolong"
     ],
     "correctAnswer": "make easier",
@@ -11020,8 +11020,8 @@ const toeflIbtBuildingSkills = [
     "passageSnippet": "Intermittent sunlight poses storage challenges that smart grid batteries must overcome.",
     "questionPrompt": "The word 'intermittent' in the passage is closest in meaning to:",
     "options": [
-      "occurring at irregular intervals",
       "continuous",
+      "occurring at irregular intervals",
       "intense",
       "permanent"
     ],
@@ -11066,10 +11066,10 @@ const toeflIbtBuildingSkills = [
     "passageSnippet": "Greenhouse gases impede the dissipation of thermal infrared radiation into space.",
     "questionPrompt": "The word 'impede' in the passage is closest in meaning to:",
     "options": [
-      "obstruct or slow down",
+      "reproduce",
       "promote",
       "absorb totally",
-      "reproduce"
+      "obstruct or slow down"
     ],
     "correctAnswer": "obstruct or slow down",
     "babyExplanation": "🍼 Nalar Bayi: 'Impede' berarti merintangi atau menghambat pelepasan panas = 'obstruct or slow down'!",
@@ -11089,9 +11089,9 @@ const toeflIbtBuildingSkills = [
     "passageSnippet": "Urban enclaves provide newcomers with cohesive mutual support networks.",
     "questionPrompt": "The word 'cohesive' in the passage is closest in meaning to:",
     "options": [
-      "tightly united",
-      "fractured",
       "isolated",
+      "fractured",
+      "tightly united",
       "temporary"
     ],
     "correctAnswer": "tightly united",
@@ -11112,8 +11112,8 @@ const toeflIbtBuildingSkills = [
     "passageSnippet": "Excessive irrigation can cause salinization, which diminishes agricultural yields over time.",
     "questionPrompt": "The word 'diminishes' in the passage is closest in meaning to:",
     "options": [
-      "reduces",
       "improves",
+      "reduces",
       "stabilizes",
       "protects"
     ],
@@ -11158,10 +11158,10 @@ const toeflIbtBuildingSkills = [
     "passageSnippet": "Because tropical rainforests possess multi-layered canopies that absorb up to 98 percent of solar radiation before it strikes the ground, forest floor plants have evolved expansive, thin foliage specifically adapted to maximize photosynthesis in deep shade.",
     "questionPrompt": "Which sentence best expresses the essential information in the highlighted sentence?",
     "options": [
-      "Understory plants developed wide, thin leaves to capture scarce light filtered by the dense upper canopy.",
+      "Plants on the forest floor photosynthesize more effectively than canopy trees.",
       "Canopy trees shed their leaves to allow ground plants sufficient sunlight for photosynthesis.",
       "Rainforest floors receive nearly all solar radiation, stunting the growth of ground vegetation.",
-      "Plants on the forest floor photosynthesize more effectively than canopy trees."
+      "Understory plants developed wide, thin leaves to capture scarce light filtered by the dense upper canopy."
     ],
     "correctAnswer": "Understory plants developed wide, thin leaves to capture scarce light filtered by the dense upper canopy.",
     "babyExplanation": "🍼 Nalar Bayi: Inti pesan: Kanopi pohon di atas menyerap 98% cahaya, maka tanaman bawah beradaptasi punya daun tipis-lebar biar bisa fotosintesis di tempat teduh!",
@@ -11181,9 +11181,9 @@ const toeflIbtBuildingSkills = [
     "passageSnippet": "While multi-core processors substantially increase parallel throughput, software developers must explicitly restructure algorithms to prevent concurrency bottlenecks that otherwise negate processing advantages.",
     "questionPrompt": "Which sentence best expresses the essential information?",
     "options": [
-      "Multi-core chips only deliver performance gains if programmers redesign software for parallel execution.",
-      "Software programs automatically run faster on modern processors without code modifications.",
       "Concurrency bottlenecks have made multi-core chips obsolete in modern servers.",
+      "Software programs automatically run faster on modern processors without code modifications.",
+      "Multi-core chips only deliver performance gains if programmers redesign software for parallel execution.",
       "Parallel throughput is unaffected by software structure."
     ],
     "correctAnswer": "Multi-core chips only deliver performance gains if programmers redesign software for parallel execution.",
@@ -11204,8 +11204,8 @@ const toeflIbtBuildingSkills = [
     "passageSnippet": "The Maya civilization relied on sophisticated subterranean reservoirs called chultuns to store rainwater because northern Yucatan features porous limestone bedrock that drains precipitation almost immediately, leaving no perennial rivers.",
     "questionPrompt": "Which sentence best expresses the essential information?",
     "options": [
-      "The Maya constructed underground cisterns to harvest rainwater because limestone ground prevented surface rivers from forming.",
       "Yucatan had abundant perennial rivers that supplied freshwater to the Maya year-round.",
+      "The Maya constructed underground cisterns to harvest rainwater because limestone ground prevented surface rivers from forming.",
       "Porous limestone enabled the Maya to build stone pyramids over natural reservoirs.",
       "Chultuns were natural caves that the Maya discovered rather than engineered structures."
     ],
@@ -11250,10 +11250,10 @@ const toeflIbtBuildingSkills = [
     "passageSnippet": "Rising seawater temperatures cause coral polyps to expel the symbiotic photosynthetic algae residing in their tissues, turning the reefs stark white and depriving corals of their primary energy source.",
     "questionPrompt": "Which sentence best expresses the essential information?",
     "options": [
-      "Thermal stress leads corals to lose their symbiotic algae, causing bleaching and severe nutritional deprivation.",
+      "Expelling algae protects corals from thermal shock during heatwaves.",
       "Coral reefs turn white as a defensive mechanism that enhances their photosynthetic capacity.",
       "Algae abandon corals in cold water, forcing polyps to seek alternate marine habitats.",
-      "Expelling algae protects corals from thermal shock during heatwaves."
+      "Thermal stress leads corals to lose their symbiotic algae, causing bleaching and severe nutritional deprivation."
     ],
     "correctAnswer": "Thermal stress leads corals to lose their symbiotic algae, causing bleaching and severe nutritional deprivation.",
     "babyExplanation": "🍼 Nalar Bayi: Air laut memanas -> karang mengusir alga simbiotik -> karang memutih dan kelaparan kekurangan sumber energi utama!",
@@ -11273,9 +11273,9 @@ const toeflIbtBuildingSkills = [
     "passageSnippet": "Fossilized transitional specimens illustrate how ancient tetrapods developed weight-bearing limbs while retaining aquatic features like internal gills, disproving the simplistic notion that vertebrates crawled directly onto dry land.",
     "questionPrompt": "Which sentence best expresses the essential information?",
     "options": [
-      "Transitional fossils prove that limb evolution began in water before vertebrates fully transitioned to terrestrial habitats.",
-      "Ancient tetrapods abandoned all aquatic features before developing limbs capable of walking on land.",
       "Vertebrates crawled onto land instantaneously without intermediate evolutionary stages.",
+      "Ancient tetrapods abandoned all aquatic features before developing limbs capable of walking on land.",
+      "Transitional fossils prove that limb evolution began in water before vertebrates fully transitioned to terrestrial habitats.",
       "Internal gills prevented early tetrapods from ever venturing out of aquatic zones."
     ],
     "correctAnswer": "Transitional fossils prove that limb evolution began in water before vertebrates fully transitioned to terrestrial habitats.",
@@ -11296,8 +11296,8 @@ const toeflIbtBuildingSkills = [
     "passageSnippet": "Despite geographical barriers that separated regional dialects for centuries, modern digital telecommunications have fostered linguistic standardization by exposing populations to uniform broadcast media.",
     "questionPrompt": "Which sentence best expresses the essential information?",
     "options": [
-      "Digital media and broadcasting have unified language variations that were once maintained by geographical isolation.",
       "Geographical barriers continue to prevent digital communication from standardizing regional speech.",
+      "Digital media and broadcasting have unified language variations that were once maintained by geographical isolation.",
       "Regional dialects have expanded into distinct languages because of broadcasting platforms.",
       "Broadcast media intentionally promotes diverse regional dialects over standardized grammar."
     ],
@@ -11342,10 +11342,10 @@ const toeflIbtBuildingSkills = [
     "passageSnippet": "Because basaltic lava possesses low silica content, it flows with exceptional fluidity over vast distances, constructing broad, gently sloped shield volcanoes rather than steep-sided explosive cones.",
     "questionPrompt": "Which sentence best expresses the essential information?",
     "options": [
-      "Low-silica basaltic lava travels fluidly over large areas, creating wide shield volcanoes instead of steep cones.",
+      "Steep volcanic cones form whenever lava flows smoothly across long distances.",
       "Silica-rich lava builds wide, flat shield volcanoes because it cools rapidly upon eruption.",
       "Shield volcanoes erupt violently because basaltic lava accumulates near the central vent.",
-      "Steep volcanic cones form whenever lava flows smoothly across long distances."
+      "Low-silica basaltic lava travels fluidly over large areas, creating wide shield volcanoes instead of steep cones."
     ],
     "correctAnswer": "Low-silica basaltic lava travels fluidly over large areas, creating wide shield volcanoes instead of steep cones.",
     "babyExplanation": "Because basaltic lava possesses low silica content, it flows with exceptional fluidity over vast distances, constructing broad, gently sloped shield volcanoes rather than steep-sided explosive cones.",
@@ -11365,9 +11365,9 @@ const toeflIbtBuildingSkills = [
     "passageSnippet": "Although mercantilist policies aimed to maximize national gold reserves by curbing imports and subsidizing exports, Adam Smith demonstrated that real wealth consists of the productive capacity of a nation's workforce.",
     "questionPrompt": "Which sentence best expresses the essential information?",
     "options": [
-      "Smith countered mercantilism by showing that a nation's true wealth derives from production rather than accumulated precious metals.",
-      "Mercantilism successfully enriched European nations by banning all exports of manufactured goods.",
       "Adam Smith advocated for strict import tariffs to expand domestic gold reserves.",
+      "Mercantilism successfully enriched European nations by banning all exports of manufactured goods.",
+      "Smith countered mercantilism by showing that a nation's true wealth derives from production rather than accumulated precious metals.",
       "Gold reserves remain the sole measurement of an economy's productive capacity."
     ],
     "correctAnswer": "Smith countered mercantilism by showing that a nation's true wealth derives from production rather than accumulated precious metals.",
@@ -11388,8 +11388,8 @@ const toeflIbtBuildingSkills = [
     "passageSnippet": "While short-term memory holds limited information for mere seconds without rehearsal, emotional arousal triggers neurochemical cascades that consolidate critical memories permanently into long-term cerebral storage.",
     "questionPrompt": "Which sentence best expresses the essential information?",
     "options": [
-      "Emotional stimulation activates chemical processes that securely store important memories in long-term retention.",
       "Short-term memory retains emotional data indefinitely without requiring neural rehearsal.",
+      "Emotional stimulation activates chemical processes that securely store important memories in long-term retention.",
       "All sensory information is automatically transferred into permanent storage regardless of emotional state.",
       "Neurochemical cascades degrade long-term memory when a person experiences intense stress."
     ],
@@ -11434,10 +11434,10 @@ const toeflIbtBuildingSkills = [
     "passageSnippet": "Bacterial biofilms form protective extracellular matrices that not only anchor colonies to clinical implants but also impede the penetration of conventional antibiotic treatments.",
     "questionPrompt": "Which sentence best expresses the essential information?",
     "options": [
-      "Biofilms produce a matrix that secures bacteria to surfaces and shields them against antibiotic penetration.",
+      "Clinical implants prevent bacterial colonies from producing protective biofilm shields.",
       "Antibiotics penetrate biofilms easily to dissolve bacterial attachment to medical devices.",
       "Extracellular matrices cause bacteria to detach from surfaces when clinical drugs are applied.",
-      "Clinical implants prevent bacterial colonies from producing protective biofilm shields."
+      "Biofilms produce a matrix that secures bacteria to surfaces and shields them against antibiotic penetration."
     ],
     "correctAnswer": "Biofilms produce a matrix that secures bacteria to surfaces and shields them against antibiotic penetration.",
     "babyExplanation": "Bacterial biofilms form protective extracellular matrices that not only anchor colonies to clinical implants but also impede the penetration of conventional antibiotic treatments.",
@@ -11457,9 +11457,9 @@ const toeflIbtBuildingSkills = [
     "passageSnippet": "Over-extraction of groundwater in coastal aquifers alters subterranean hydrostatic gradients, allowing dense marine saltwater to encroach inland and contaminate municipal drinking wells.",
     "questionPrompt": "Which sentence best expresses the essential information?",
     "options": [
-      "Excessive coastal well pumping shifts groundwater pressure, drawing ocean saltwater into freshwater drinking supplies.",
-      "Coastal aquifers naturally replenish freshwater wells by filtering out marine saltwater.",
       "Hydrostatic pressure prevents ocean water from ever mixing with municipal groundwater reserves.",
+      "Coastal aquifers naturally replenish freshwater wells by filtering out marine saltwater.",
+      "Excessive coastal well pumping shifts groundwater pressure, drawing ocean saltwater into freshwater drinking supplies.",
       "Inland aquifers contain more salt than coastal aquifers due to natural precipitation."
     ],
     "correctAnswer": "Excessive coastal well pumping shifts groundwater pressure, drawing ocean saltwater into freshwater drinking supplies.",
@@ -11480,8 +11480,8 @@ const toeflIbtBuildingSkills = [
     "passageSnippet": "The asteroid impact hypothesis posits that a six-mile-wide bolide collision threw pulverized debris into the upper atmosphere, blocking sunlight for years and inducing a photosynthetic blackout that collapsed Cretaceous food chains.",
     "questionPrompt": "Which sentence best expresses the essential information?",
     "options": [
-      "An asteroid strike darkened the planet with airborne dust, shutting down plant growth and triggering mass starvation.",
       "Cretaceous food chains collapsed centuries before the asteroid impact due to climate warming.",
+      "An asteroid strike darkened the planet with airborne dust, shutting down plant growth and triggering mass starvation.",
       "Photosynthetic plants multiplied across the planet following the dispersal of asteroid dust.",
       "The bolide impact vaporized all marine life immediately without affecting terrestrial vegetation."
     ],
@@ -11526,10 +11526,10 @@ const toeflIbtBuildingSkills = [
     "passageSnippet": "Carnivorous plants inhabit nutrient-poor peat bogs where acidic conditions inhibit bacterial decomposition of organic matter. Consequently, the soil contains virtually no bioavailable nitrogen. To compensate, pitcher plants and Venus flytraps evolved modified leaves that secrete digestive enzymes to dissolve captured insect prey, absorbing vital nitrogen directly through leaf tissue.",
     "questionPrompt": "According to the passage, carnivorous plants trap insects primarily because:",
     "options": [
-      "acidic bog soils lack bioavailable nitrogen needed for plant growth",
+      "water is scarce in peat bogs",
       "insects destroy their flowering structures",
       "they cannot perform standard photosynthesis",
-      "water is scarce in peat bogs"
+      "acidic bog soils lack bioavailable nitrogen needed for plant growth"
     ],
     "correctAnswer": "acidic bog soils lack bioavailable nitrogen needed for plant growth",
     "babyExplanation": "🍼 Nalar Bayi: Teks menyatakan tanah rawa asam miskin nitrogen (contains virtually no nitrogen), jadi mereka menjebak serangga buat menyerap nitrogen!",
@@ -11548,9 +11548,9 @@ const toeflIbtBuildingSkills = [
     "passageSnippet": "Carnivorous plants inhabit nutrient-poor peat bogs where acidic conditions inhibit bacterial decomposition of organic matter. Consequently, the soil contains virtually no bioavailable nitrogen. To compensate, pitcher plants and Venus flytraps evolved modified leaves that secrete digestive enzymes to dissolve captured insect prey, absorbing vital nitrogen directly through leaf tissue.",
     "questionPrompt": "All of the following are mentioned about carnivorous plants EXCEPT:",
     "options": [
-      "they absorb nitrogen through their root systems",
-      "they live in acidic peat environments",
       "they secrete enzymes to digest prey",
+      "they live in acidic peat environments",
+      "they absorb nitrogen through their root systems",
       "their insect traps are modified leaves"
     ],
     "correctAnswer": "they absorb nitrogen through their root systems",
@@ -11570,8 +11570,8 @@ const toeflIbtBuildingSkills = [
     "passageSnippet": "Sunspots appear dark against the solar photosphere because intense magnetic field bundles inhibit convective heat transport from the sun's interior. As a result, sunspots maintain temperatures around 3,800 Kelvin, significantly cooler than the surrounding 5,800 Kelvin plasma.",
     "questionPrompt": "According to the passage, why do sunspots appear darker than the rest of the sun?",
     "options": [
-      "They are cooler than the surrounding solar plasma due to blocked heat convection.",
       "They absorb external cosmic radiation from deep space.",
+      "They are cooler than the surrounding solar plasma due to blocked heat convection.",
       "They consist of solid carbon rather than hydrogen plasma.",
       "They are shadows cast by passing planets."
     ],
@@ -11614,10 +11614,10 @@ const toeflIbtBuildingSkills = [
     "passageSnippet": "During the Last Glacial Maximum, massive continental ice sheets locked up millions of cubic kilometers of seawater. Global sea levels dropped by approximately 120 meters, exposing continental shelves and establishing land bridges, such as the Bering Strait corridor connecting Asia and North America.",
     "questionPrompt": "According to the passage, which condition enabled the formation of the Bering land bridge?",
     "options": [
-      "A drop in global sea levels of roughly 120 meters caused by ice accumulation.",
+      "The complete evaporation of the Arctic Ocean.",
       "Tectonic uplifting of the ocean floor in the Pacific basin.",
       "Intense volcanic activity creating basaltic causeways.",
-      "The complete evaporation of the Arctic Ocean."
+      "A drop in global sea levels of roughly 120 meters caused by ice accumulation."
     ],
     "correctAnswer": "A drop in global sea levels of roughly 120 meters caused by ice accumulation.",
     "babyExplanation": "🍼 Nalar Bayi: Jembatan darat Bering muncul karena es raksasa mengunci air laut sehingga permukaan air laut dunia surut turun sekitar 120 meter!",
@@ -11636,9 +11636,9 @@ const toeflIbtBuildingSkills = [
     "passageSnippet": "ARPANET, the precursor to the modern internet, introduced packet-switching technology in 1969. Unlike traditional circuit-switched telephone networks that required a dedicated physical line between callers, packet switching segmented digital messages into discrete chunks that routed independently across redundant network nodes.",
     "questionPrompt": "According to the passage, how did ARPANET differ from traditional telephone networks?",
     "options": [
-      "It broke data into chunks that traveled independently without dedicated physical lines.",
-      "It relied entirely on copper telephone wires between caller pairs.",
       "It was designed exclusively for commercial financial transactions.",
+      "It relied entirely on copper telephone wires between caller pairs.",
+      "It broke data into chunks that traveled independently without dedicated physical lines.",
       "It prevented messages from being rerouted through alternative nodes."
     ],
     "correctAnswer": "It broke data into chunks that traveled independently without dedicated physical lines.",
@@ -11658,8 +11658,8 @@ const toeflIbtBuildingSkills = [
     "passageSnippet": "The kangaroo rat never drinks liquid water throughout its entire lifecycle. Instead, it derives moisture entirely through metabolic water generated as a byproduct of cellular oxidation of dry seeds. Furthermore, its kidneys concentrate urine to an extraordinary degree, minimizing physiological moisture loss.",
     "questionPrompt": "According to the passage, the kangaroo rat survives without drinking water because it:",
     "options": [
-      "generates water internally during the digestion of dry seeds",
       "absorbs atmospheric moisture through its skin at night",
+      "generates water internally during the digestion of dry seeds",
       "consumes succulent cactus fruit exclusively",
       "hibernates underground during dry seasons"
     ],
@@ -11702,10 +11702,10 @@ const toeflIbtBuildingSkills = [
     "passageSnippet": "Viruses lack cellular machinery, ribosomes, and metabolic pathways. Consequently, they cannot replicate independently and must hijack the biochemical synthesis apparatus of a living host cell to produce new virions.",
     "questionPrompt": "According to the passage, why are viruses unable to reproduce on their own?",
     "options": [
-      "They lack ribosomes and the cellular apparatus needed for independent metabolism.",
+      "They are composed purely of inorganic mineral compounds.",
       "Their genetic material degrades instantly outside host bloodstreams.",
       "Host cells destroy their nucleic acid cores before replication.",
-      "They are composed purely of inorganic mineral compounds."
+      "They lack ribosomes and the cellular apparatus needed for independent metabolism."
     ],
     "correctAnswer": "They lack ribosomes and the cellular apparatus needed for independent metabolism.",
     "babyExplanation": "🍼 Nalar Bayi: Virus tidak punya mesin sel dan ribosom sendiri, jadi wajib membajak sel inang yang hidup untuk memperbanyak diri!",
@@ -11724,9 +11724,9 @@ const toeflIbtBuildingSkills = [
     "passageSnippet": "Carbon nanotubes possess tensile strength sixty times greater than high-carbon steel, along with exceptional thermal conductivity and lightweight molecular density, making them prime candidates for next-generation aerospace composites.",
     "questionPrompt": "All of the following are cited as properties of carbon nanotubes EXCEPT:",
     "options": [
-      "heavy gravitational mass",
-      "extraordinary tensile strength",
       "superior thermal conductivity",
+      "extraordinary tensile strength",
+      "heavy gravitational mass",
       "lightweight molecular density"
     ],
     "correctAnswer": "heavy gravitational mass",
@@ -11746,8 +11746,8 @@ const toeflIbtBuildingSkills = [
     "passageSnippet": "Honeybee foragers communicate the distance and directional heading of floral nectar through the waggle dance. The angle of the central waggle run relative to gravity encodes the angle between the sun and the food source, while the duration of the waggle indicates the distance to the flower patch.",
     "questionPrompt": "According to the passage, what information does the duration of the waggle dance convey?",
     "options": [
-      "The distance from the hive to the floral resource.",
       "The chemical sugar concentration of the nectar.",
+      "The distance from the hive to the floral resource.",
       "The presence of predatory hornets nearby.",
       "The compass direction towards the sun."
     ],
@@ -11790,10 +11790,10 @@ const toeflIbtBuildingSkills = [
     "passageSnippet": "The 1815 eruption of Mount Tambora injected approximately 100 million tons of sulfur aerosols into the stratosphere. The resulting aerosol veil reflected incoming solar radiation, causing the 'Year Without a Summer' in 1816, marked by widespread crop failures across North America and Europe.",
     "questionPrompt": "According to the passage, the global cooling in 1816 was directly caused by:",
     "options": [
-      "stratospheric sulfur aerosols reflecting incoming sunlight",
+      "global ocean currents halting their thermohaline flow",
       "massive volcanic ash burying European farmland",
       "a sudden decrease in the sun's internal nuclear fusion",
-      "global ocean currents halting their thermohaline flow"
+      "stratospheric sulfur aerosols reflecting incoming sunlight"
     ],
     "correctAnswer": "stratospheric sulfur aerosols reflecting incoming sunlight",
     "babyExplanation": "🍼 Nalar Bayi: Letusan Tambora menyemburkan 100 juta ton sulfur ke stratosfer yang memantulkan sinar matahari kembali ke luar angkasa sehingga bumi dingin!",
@@ -11812,9 +11812,9 @@ const toeflIbtBuildingSkills = [
     "passageSnippet": "Enhanced Geothermal Systems (EGS) inject pressurized cold water deep into hot, impermeable basement rocks to create artificial micro-fractures. Once heated by contact with deep subterranean rock, the water is pumped back to the surface to generate turbine steam.",
     "questionPrompt": "According to the passage, why is pressurized water pumped into EGS reservoirs?",
     "options": [
-      "To fracture impermeable hot rock so heat can be harvested.",
-      "To cool subterranean magma chambers permanently.",
       "To dissolve valuable mineral deposits for mining.",
+      "To cool subterranean magma chambers permanently.",
+      "To fracture impermeable hot rock so heat can be harvested.",
       "To measure underground seismic fault lines."
     ],
     "correctAnswer": "To fracture impermeable hot rock so heat can be harvested.",
@@ -11834,8 +11834,8 @@ const toeflIbtBuildingSkills = [
     "passageSnippet": "Pidgin languages emerge as rudimentary vehicular tongues between speech communities lacking a common language. When children born into these bilingual environments acquire the pidgin as their primary mother tongue, they spontaneously systematize grammatical rules, transforming the pidgin into a fully fledged creole.",
     "questionPrompt": "According to the passage, how does a creole differ fundamentally from a pidgin?",
     "options": [
-      "A creole has acquired native speakers and a standardized grammar.",
       "A creole lacks formal syntax and grammatical agreements.",
+      "A creole has acquired native speakers and a standardized grammar.",
       "A creole is spoken exclusively in trade transactions.",
       "A pidgin is spoken natively by multiple generations."
     ],
@@ -11878,10 +11878,10 @@ const toeflIbtBuildingSkills = [
     "passageSnippet": "Fiber-optic cables transmit data through total internal reflection. When light traveling through a dense silica core strikes the cladding boundary at an angle greater than the critical angle, zero light refracts outward; instead, one hundred percent of the light reflects back through the core.",
     "questionPrompt": "According to the passage, total internal reflection occurs inside optical fibers when:",
     "options": [
-      "light strikes the cladding boundary at an angle exceeding the critical angle",
+      "the cladding is constructed from reflective silver foil",
       "the cable is submerged in liquid nitrogen",
       "light intensity drops below the operational threshold",
-      "the cladding is constructed from reflective silver foil"
+      "light strikes the cladding boundary at an angle exceeding the critical angle"
     ],
     "correctAnswer": "light strikes the cladding boundary at an angle exceeding the critical angle",
     "babyExplanation": "🍼 Nalar Bayi: Pemantulan internal total terjadi saat sudut cahaya yang menabrak dinding kabel lebih besar dari sudut kritis (critical angle)!",
@@ -11900,9 +11900,9 @@ const toeflIbtBuildingSkills = [
     "passageSnippet": "While modern cetaceans spend their entire lives in ocean waters, their embryos briefly develop limb buds and nostrils positioned near the snout tip before migrating to the apex of the cranium during gestation.",
     "questionPrompt": "What can be inferred from the embryonic development of modern whales?",
     "options": [
-      "Ancestors of modern cetaceans were land mammals with nostrils on their snouts.",
-      "Whale embryos cannot survive without access to atmospheric air.",
       "Marine mammals developed flippers before fish developed fins.",
+      "Whale embryos cannot survive without access to atmospheric air.",
+      "Ancestors of modern cetaceans were land mammals with nostrils on their snouts.",
       "Snout nostrils allow adult whales to swim faster than ancestors."
     ],
     "correctAnswer": "Ancestors of modern cetaceans were land mammals with nostrils on their snouts.",
@@ -11922,8 +11922,8 @@ const toeflIbtBuildingSkills = [
     "passageSnippet": "Excavations at the ancient trade hub revealed Roman amphorae alongside Chinese Han Dynasty silk remnants, yet zero evidence of direct diplomatic correspondence between Rome and Chang'an was ever recorded.",
     "questionPrompt": "Why does the author mention 'zero evidence of direct diplomatic correspondence'?",
     "options": [
-      "To emphasize that transcontinental trade operated through intermediary merchant networks.",
       "To suggest that Roman goods were counterfeited by regional artisans.",
+      "To emphasize that transcontinental trade operated through intermediary merchant networks.",
       "To argue that Rome and Han China were engaged in continuous naval warfare.",
       "To demonstrate that ancient trade routes were completely abandoned."
     ],
@@ -11966,10 +11966,10 @@ const toeflIbtBuildingSkills = [
     "passageSnippet": "Europa's icy crust exhibits chaotic surface fracture patterns and minimal impact cratering, suggesting that subterranean heat plumes persistently resurface the moon's exterior.",
     "questionPrompt": "What can be inferred about the age of Europa's visible surface?",
     "options": [
-      "It is geologically young compared to heavily cratered bodies like Callisto.",
+      "It was formed by a recent catastrophic asteroid collision.",
       "It has remained completely frozen and inert since the formation of the solar system.",
       "It is older than the surfaces of all other moons in the Jovian system.",
-      "It was formed by a recent catastrophic asteroid collision."
+      "It is geologically young compared to heavily cratered bodies like Callisto."
     ],
     "correctAnswer": "It is geologically young compared to heavily cratered bodies like Callisto.",
     "babyExplanation": "🍼 Nalar Bayi: Sedikitnya kawah tabrakan meteor menandakan permukaannya selalu diperbarui (masih muda secara geologis) oleh panas dari dalam!",
@@ -11988,9 +11988,9 @@ const toeflIbtBuildingSkills = [
     "passageSnippet": "Early network routing protocols used static routing tables manually compiled by system administrators. However, as the number of interconnected autonomous systems skyrocketed into the thousands, manual table updates became mathematically intractable.",
     "questionPrompt": "Why does the author mention that manual updates became 'mathematically intractable'?",
     "options": [
-      "To explain why dynamic routing protocols like BGP were urgently developed.",
-      "To argue that human administrators are prone to arithmetic errors.",
       "To demonstrate that large networks require fewer connections.",
+      "To argue that human administrators are prone to arithmetic errors.",
+      "To explain why dynamic routing protocols like BGP were urgently developed.",
       "To suggest that the internet should have been partitioned into isolated subnets."
     ],
     "correctAnswer": "To explain why dynamic routing protocols like BGP were urgently developed.",
@@ -12010,8 +12010,8 @@ const toeflIbtBuildingSkills = [
     "passageSnippet": "Neanderthal fossil remains consistently exhibit high levels of healed traumatic fractures comparable to the injury profiles of modern professional rodeo performers.",
     "questionPrompt": "Why does the author compare Neanderthal injuries to those of 'modern professional rodeo performers'?",
     "options": [
-      "To illustrate that Neanderthals engaged in hazardous, close-contact hunting of large game.",
       "To suggest that Neanderthals domesticated horses and wild cattle for sport.",
+      "To illustrate that Neanderthals engaged in hazardous, close-contact hunting of large game.",
       "To demonstrate that Neanderthals lived in modern rodeo arenas.",
       "To argue that Neanderthals suffered from fragile bone diseases."
     ],
@@ -12054,10 +12054,10 @@ const toeflIbtBuildingSkills = [
     "passageSnippet": "When the central bank slashed lending rates near zero, corporate bond borrowing skyrocketed, yet business capital expenditure in physical factories remained stagnant.",
     "questionPrompt": "What does the passage imply about corporate response to low interest rates?",
     "options": [
-      "Corporations used cheap debt for financial maneuvers rather than expanding productive output.",
+      "Central banks forced corporations to build unwanted manufacturing plants.",
       "Zero interest rates prevented companies from acquiring commercial credit.",
       "Factories were already operating at one hundred percent capacity.",
-      "Central banks forced corporations to build unwanted manufacturing plants."
+      "Corporations used cheap debt for financial maneuvers rather than expanding productive output."
     ],
     "correctAnswer": "Corporations used cheap debt for financial maneuvers rather than expanding productive output.",
     "babyExplanation": "🍼 Nalar Bayi: Pinjaman membludak tapi pabrik fisik gak nambah, artinya perusahaan memakai pinjaman murah buat beli kembali saham/keuangan, bukan bangun pabrik riil!",
@@ -12076,9 +12076,9 @@ const toeflIbtBuildingSkills = [
     "passageSnippet": "Deep-sea benthic organisms exhibit gigantism, characterized by body sizes significantly exceeding shallow-water counterparts. Scientists suspect that low temperatures and high hydrostatic pressure slow metabolic rates, extending longevity and permitting prolonged physical growth.",
     "questionPrompt": "What can be inferred about the lifespan of deep-sea giant isopods?",
     "options": [
-      "They generally live longer than related shallow-water species.",
-      "They reproduce at much younger ages than coastal crustaceans.",
       "They experience high predation rates in the abyssal zone.",
+      "They reproduce at much younger ages than coastal crustaceans.",
+      "They generally live longer than related shallow-water species.",
       "Their metabolism is identical to tropical reef organisms."
     ],
     "correctAnswer": "They generally live longer than related shallow-water species.",
@@ -12098,8 +12098,8 @@ const toeflIbtBuildingSkills = [
     "passageSnippet": "In blind taste experiments, subjects consistently rated wine labeled at ninety dollars as significantly superior in flavor to the identical vintage presented with a ten-dollar price tag, activating neural pleasure centers in the orbitofrontal cortex.",
     "questionPrompt": "What does the experiment demonstrate regarding human sensory perception?",
     "options": [
-      "Perceived sensory enjoyment is heavily modulated by psychological expectations and contextual cues.",
       "The orbitofrontal cortex can detect chemical differences undetectable by taste buds.",
+      "Perceived sensory enjoyment is heavily modulated by psychological expectations and contextual cues.",
       "Expensive wines always possess superior chemical balance than cheap wines.",
       "Human taste receptors are entirely independent of commercial marketing."
     ],
@@ -12142,10 +12142,10 @@ const toeflIbtBuildingSkills = [
     "passageSnippet": "Graphene sheets boast extraordinary electrical conductivity and atomic thinness. However, the absence of an intrinsic electronic bandgap complicates its direct substitution for silicon in digital logic transistors.",
     "questionPrompt": "What can be inferred about the engineering hurdle in using graphene for computer processors?",
     "options": [
-      "Graphene cannot easily be switched off to represent digital zero states.",
+      "Graphene is too thick to integrate onto silicon wafers.",
       "Graphene melts at standard room temperatures.",
       "Silicon conducts electricity more efficiently than graphene.",
-      "Graphene is too thick to integrate onto silicon wafers."
+      "Graphene cannot easily be switched off to represent digital zero states."
     ],
     "correctAnswer": "Graphene cannot easily be switched off to represent digital zero states.",
     "babyExplanation": "🍼 Nalar Bayi: Tanpa bandgap, listrik di grafena terus mengalir dan sulit dimatikan (susah jadi angka 0 biner), sehingga belum bisa ganti silikon!",
@@ -12164,9 +12164,9 @@ const toeflIbtBuildingSkills = [
     "passageSnippet": "When wolves were reintroduced to Yellowstone National Park in 1995, elk avoided river valleys to escape ambushes. Consequently, overbrowsed willow stands regenerated, stabilizing riverbanks and attracting beavers whose dams created wetland habitats for waterfowl and fish.",
     "questionPrompt": "The author describes the reintroduction of wolves primarily to demonstrate:",
     "options": [
-      "how top-level carnivores trigger widespread ecological restoration across multiple trophic tiers",
-      "that elk populations should be culled through municipal hunting programs",
       "why beavers require human intervention to build functional wetland dams",
+      "that elk populations should be culled through municipal hunting programs",
+      "how top-level carnivores trigger widespread ecological restoration across multiple trophic tiers",
       "that riverbanks erode faster when large predators are absent"
     ],
     "correctAnswer": "how top-level carnivores trigger widespread ecological restoration across multiple trophic tiers",
@@ -12186,8 +12186,8 @@ const toeflIbtBuildingSkills = [
     "passageSnippet": "The Gutenberg printing press lowered the labor cost of book reproduction by over ninety-five percent. Prior to 1450, a monastery scribe required up to a year to produce a single manuscript bible; by 1500, printing workshops had distributed millions of volumes across Europe.",
     "questionPrompt": "What can be inferred about literacy rates in Europe after the mid-15th century?",
     "options": [
-      "Widespread book availability fostered a dramatic expansion in reading literacy.",
       "Monasteries retained a strict monopoly over book dissemination.",
+      "Widespread book availability fostered a dramatic expansion in reading literacy.",
       "Only Latin scholars were permitted to purchase printed bibles.",
       "Book costs increased because of scarce paper supplies."
     ],
@@ -12230,10 +12230,10 @@ const toeflIbtBuildingSkills = [
     "passageSnippet": "High-density urban cores with mixed zoning exhibit substantially lower per-capita carbon emissions than sprawling suburban districts reliant on private automobile commutes.",
     "questionPrompt": "Why does the author contrast 'mixed zoning' with 'sprawling suburban districts'?",
     "options": [
-      "To emphasize that walkable urban planning reduces individual transportation energy demands.",
+      "To prove that population density increases air pollution per capita.",
       "To suggest that suburban residents consume less electricity than city apartment dwellers.",
       "To argue that automobiles should be banned in rural agricultural towns.",
-      "To prove that population density increases air pollution per capita."
+      "To emphasize that walkable urban planning reduces individual transportation energy demands."
     ],
     "correctAnswer": "To emphasize that walkable urban planning reduces individual transportation energy demands.",
     "babyExplanation": "🍼 Nalar Bayi: Penulis mengontraskan kota padat serbaguna dengan pinggiran kota untuk menunjukkan bahwa kota yang bisa jalan kaki jauh lebih hemat energi!",
@@ -12252,9 +12252,9 @@ const toeflIbtBuildingSkills = [
     "passageSnippet": "Central processing units rely on high-speed cache memory to bridge the performance gap between the processor and slower dynamic RAM. [■] Level 1 cache resides directly on the processor silicon die and operates at clock speeds matching the execution cores. [■] Level 2 and Level 3 caches provide progressively larger storage capacities at slightly slower response times. [■] Without this multi-tiered caching hierarchy, modern processors would waste dozens of clock cycles waiting for instructions to arrive from system memory. [■]",
     "questionPrompt": "Where would the sentence best fit?",
     "options": [
-      "Square 3 (After L2 and L3 description)",
       "Square 1 (At the beginning)",
       "Square 2 (After L1 cache)",
+      "Square 3 (After L2 and L3 description)",
       "Square 4 (At the very end)"
     ],
     "correctAnswer": "Square 3 (After L2 and L3 description)",
@@ -12275,8 +12275,8 @@ const toeflIbtBuildingSkills = [
     "passageSnippet": "Plants convert radiant solar energy into chemical energy through the light-dependent reactions of photosynthesis. [■] Photons strike chlorophyll pigments embedded within thylakoid membranes, exciting electrons to higher energy states. [■] These energized electrons travel through an electron transport chain, generating ATP and NADPH. [■] These chemical carriers subsequently power the Calvin cycle in the stroma to synthesize glucose molecules. [■]",
     "questionPrompt": "Where would the sentence best fit?",
     "options": [
-      "Square 2 (After electrons are excited)",
       "Square 1 (At the start)",
+      "Square 2 (After electrons are excited)",
       "Square 3 (After transport chain)",
       "Square 4 (At the end)"
     ],
@@ -12298,10 +12298,10 @@ const toeflIbtBuildingSkills = [
     "passageSnippet": "Alpine glaciers around the world are retreating at accelerating rates due to rising atmospheric temperatures. [■] As ice melts, it exposes dark, rocky ground beneath the glacier. [■] This exposed rock absorbs far more solar radiation than the reflective white ice that formerly shielded it. [■] Consequently, local surface temperatures rise, hastening the melting of adjacent ice masses. [■]",
     "questionPrompt": "Where would the sentence best fit?",
     "options": [
-      "Square 4 (At the very end)",
       "Square 1 (At the beginning)",
       "Square 2 (After rock exposed)",
-      "Square 3 (After absorption)"
+      "Square 3 (After absorption)",
+      "Square 4 (At the very end)"
     ],
     "correctAnswer": "Square 4 (At the very end)",
     "babyExplanation": "🍼 Nalar Bayi: Seluruh paragraf menjelaskan siklus es meleleh -> batu hitam panas -> makin meleleh. Kalimat penutup di Kotak 4 memberi nama resmi fenomena tersebut: 'ice-albedo positive feedback loop'!",
@@ -12321,9 +12321,9 @@ const toeflIbtBuildingSkills = [
     "passageSnippet": "Airplane wings generate lift primarily through their aerodynamically curved cross-section known as an airfoil. [■] Air traveling over the cambered upper surface flows faster than air moving beneath the flat lower surface. [■] According to Bernoulli's principle, higher fluid velocity corresponds to lower static pressure. [■] The resulting pressure differential exerts an upward net force that counteracts the airplane's gravitational weight. [■]",
     "questionPrompt": "Where would the sentence best fit?",
     "options": [
-      "Square 3 (After Bernoulli's principle)",
       "Square 1 (At the start)",
       "Square 2 (After flow speed)",
+      "Square 3 (After Bernoulli's principle)",
       "Square 4 (At the end)"
     ],
     "correctAnswer": "Square 3 (After Bernoulli's principle)",
@@ -12344,8 +12344,8 @@ const toeflIbtBuildingSkills = [
     "passageSnippet": "The invention of agriculture roughly ten thousand years ago initiated the Neolithic Revolution. [■] Nomadic hunter-gatherers began cultivating cereal grasses and domesticating wild ungulates. [■] Sedentary farming produced reliable grain surpluses that could be stored in ceramic vessels. [■] These food reserves freed portions of the population from daily subsistence labor, giving rise to specialized artisan crafts and administrative hierarchies. [■]",
     "questionPrompt": "Where would the sentence best fit?",
     "options": [
-      "Square 2 (After domestication)",
       "Square 1 (At the beginning)",
+      "Square 2 (After domestication)",
       "Square 3 (After grain surpluses)",
       "Square 4 (At the end)"
     ],
@@ -12367,9 +12367,9 @@ const toeflIbtBuildingSkills = [
     "passageSnippet": "Cephalopods exhibit some of the most dynamic camouflage capabilities in the animal kingdom. [■] Their dermis is packed with thousands of pigment-filled saccules called chromatophores. [■] Radial muscle fibers controlled directly by motor neurons expand and contract these sacs in milliseconds. [■] Beneath the chromatophores lie iridophores and leucophores that reflect ambient wavelengths to mimic surrounding coral or sandy substrates. [■]",
     "questionPrompt": "Where would the sentence best fit?",
     "options": [
-      "Square 3 (After muscle fibers explanation)",
       "Square 1 (At the start)",
       "Square 2 (After chromatophores definition)",
+      "Square 3 (After muscle fibers explanation)",
       "Square 4 (At the end)"
     ],
     "correctAnswer": "Square 3 (After muscle fibers explanation)",
@@ -12390,10 +12390,10 @@ const toeflIbtBuildingSkills = [
     "passageSnippet": "Early 20th-century urban zoning separated industrial factories from residential neighborhoods to protect public health from toxic emissions. [■] However, this rigid separation inadvertently gave rise to modern automobile dependency. [■] Single-family suburban residential tracts were constructed miles away from commercial shopping districts and employment centers. [■] Without viable public rail transit, daily automobile commuting became an unavoidable necessity. [■]",
     "questionPrompt": "Where would the sentence best fit?",
     "options": [
-      "Square 4 (At the end after commuting necessity)",
       "Square 1 (At the start)",
       "Square 2 (After auto dependency)",
-      "Square 3 (After suburban tracts)"
+      "Square 3 (After suburban tracts)",
+      "Square 4 (At the end after commuting necessity)"
     ],
     "correctAnswer": "Square 4 (At the end after commuting necessity)",
     "babyExplanation": "🍼 Nalar Bayi: Mobil jadi kebutuhan mutlak -> warga tidak punya alternatif lain untuk urusan belanja sehari-hari tanpa naik mobil, paling pas di Kotak 4 penutup!",
@@ -12413,8 +12413,8 @@ const toeflIbtBuildingSkills = [
     "passageSnippet": "Caldera collapses represent some of the most catastrophic geological events on Earth. [■] During colossal eruptions, vast reservoirs of subterranean magma are rapidly evacuated onto the surface as pumice and ash. [■] The overlying volcanic crust loses its subterranean structural support. [■] Unable to bear its own gravitational weight, the mountain summit collapses into the hollowed-out magma chamber, forming an enormous crater basin. [■]",
     "questionPrompt": "Where would the sentence best fit?",
     "options": [
-      "Square 2 (After magma is evacuated)",
       "Square 1 (At the beginning)",
+      "Square 2 (After magma is evacuated)",
       "Square 3 (After support loss)",
       "Square 4 (At the end)"
     ],
@@ -12436,9 +12436,9 @@ const toeflIbtBuildingSkills = [
     "passageSnippet": "Shape memory alloys possess the remarkable ability to revert to their original undeformed geometry upon heating. [■] At lower temperatures, the alloy exists in a ductile martensite crystalline state that can be easily bent or twisted. [■] When heated past its transformation threshold, the crystal lattice shifts into a rigid, highly ordered austenite phase. [■] This microscopic phase realignment forces the macroscopic metal back into its predetermined manufactured shape. [■]",
     "questionPrompt": "Where would the sentence best fit?",
     "options": [
-      "Square 3 (After phase shift)",
       "Square 1 (At the start)",
       "Square 2 (After martensite)",
+      "Square 3 (After phase shift)",
       "Square 4 (At the end)"
     ],
     "correctAnswer": "Square 3 (After phase shift)",
@@ -12459,10 +12459,10 @@ const toeflIbtBuildingSkills = [
     "passageSnippet": "Invasive zebra mussels were accidentally introduced into the North American Great Lakes via transoceanic ship ballast water in the late 1980s. [■] Lacking native predators, their population exploded exponentially across inland waterways. [■] As voracious filter feeders, millions of mussels strip phytoplankton from the water column. [■] While this intense filtration increases water clarity, it starves native fish fry that rely on plankton for early nutrition. [■]",
     "questionPrompt": "Where would the sentence best fit?",
     "options": [
-      "Square 4 (At the end adding extra economic damage)",
       "Square 1 (At the start)",
       "Square 2 (After explosion)",
-      "Square 3 (After filter feeders)"
+      "Square 3 (After filter feeders)",
+      "Square 4 (At the end adding extra economic damage)"
     ],
     "correctAnswer": "Square 4 (At the end adding extra economic damage)",
     "babyExplanation": "🍼 Nalar Bayi: Setelah dampak ekologis ikan kelaparan dibahas, kata sambung 'Furthermore' menambahkan dampak ekonomi baru: pipa air kantor kota tersumbat!",
@@ -12482,10 +12482,10 @@ const toeflIbtBuildingSkills = [
     "passageSnippet": "Penicillin exerts its antibacterial bactericidal effect by interfering with peptidoglycan synthesis in bacterial cell walls. [■] It irreversibly binds to and inhibits transpeptidase enzymes that cross-link peptide chains in the bacterial envelope. [■] Without structural cross-linking, the cell wall cannot withstand internal osmotic turgor pressure. [■] Water rushes into the hypertonic cytoplasm, causing the bacterium to burst and lyse. [■]",
     "questionPrompt": "Where would the sentence best fit?",
     "options": [
-      "Square 4 (At the end explaining why humans are safe)",
       "Square 1 (At the start)",
       "Square 2 (After transpeptidase)",
-      "Square 3 (After cross-linking)"
+      "Square 3 (After cross-linking)",
+      "Square 4 (At the end explaining why humans are safe)"
     ],
     "correctAnswer": "Square 4 (At the end explaining why humans are safe)",
     "babyExplanation": "🍼 Nalar Bayi: Setelah proses bakteri pecah mati dijelaskan, kalimat penutup di Kotak 4 menegaskan kenapa obat ini aman bagi manusia (sel manusia tidak punya dinding peptidoglycan)!",
@@ -12505,10 +12505,10 @@ const toeflIbtBuildingSkills = [
     "passageSnippet": "Deep convolutional neural networks process digital images through hierarchical feature extraction layers. [■] Early layers detect primitive visual primitives such as edges, gradients, and contrasting corners. [■] Intermediate layers synthesize these edge primitives into geometric textures and object motifs like circles or mesh patterns. [■] Deepest layers combine these parts into recognizable conceptual objects such as vehicle tires or animal faces. [■]",
     "questionPrompt": "Where would the sentence best fit?",
     "options": [
-      "Square 4 (At the end summarizing the biological parallel)",
       "Square 1 (At the start)",
       "Square 2 (After early layers)",
-      "Square 3 (After intermediate)"
+      "Square 3 (After intermediate)",
+      "Square 4 (At the end summarizing the biological parallel)"
     ],
     "correctAnswer": "Square 4 (At the end summarizing the biological parallel)",
     "babyExplanation": "🍼 Nalar Bayi: Seluruh tahapan lapis 1, lapis 2, lapis 3 selesai dijabarkan. Kalimat penutup di Kotak 4 menyimpulkan bahwa desain ini meniru jalur visual otak primata!",
@@ -12528,10 +12528,10 @@ const toeflIbtBuildingSkills = [
     "passageSnippet": "Social capital refers to the networks of trust, reciprocity, and shared norms that enable collective civic action. [■] Sociologist Robert Putnam distinguished between 'bonding' and 'bridging' social capital. [■] Bonding capital connects homogeneous groups of similar backgrounds, reinforcing tight internal loyalties. [■] Bridging capital, by contrast, establishes connections across heterogeneous racial, religious, or socioeconomic divides. [■]",
     "questionPrompt": "Where would the sentence best fit?",
     "options": [
-      "Square 4 (At the end comparing both types)",
       "Square 1 (At the start)",
       "Square 2 (After Putnam)",
-      "Square 3 (After bonding)"
+      "Square 3 (After bonding)",
+      "Square 4 (At the end comparing both types)"
     ],
     "correctAnswer": "Square 4 (At the end comparing both types)",
     "babyExplanation": "🍼 Nalar Bayi: Setelah bonding dijelaskan di Kotak 3 dan bridging di Kotak 4, kalimat penutup di Kotak 4 membandingkan fungsi keduanya dalam demokrasi!",
@@ -12551,10 +12551,10 @@ const toeflIbtBuildingSkills = [
     "passageSnippet": "Ion propulsion engines generate thrust by electrostatically accelerating charged xenon ions out of an exhaust nozzle at hyper-velocities. [■] Although the immediate thrust produced is gentle, comparable to the weight of a sheet of paper on a hand, it operates continuously for years with exceptional fuel economy. [■] Over time, this minute but persistent acceleration propels deep-space probes to staggering planetary transfer speeds. [■] Chemical rockets, by comparison, exhaust their fuel in mere minutes of ferocious combustion. [■]",
     "questionPrompt": "Where would the sentence best fit?",
     "options": [
-      "Square 4 (At the end after comparison)",
       "Square 1 (At the start)",
       "Square 2 (After paper weight)",
-      "Square 3 (After transfer speeds)"
+      "Square 3 (After transfer speeds)",
+      "Square 4 (At the end after comparison)"
     ],
     "correctAnswer": "Square 4 (At the end after comparison)",
     "babyExplanation": "🍼 Nalar Bayi: Roket ion hemat bahan bakar dibanding roket kimia yang boros. KARENA ITU ('They are therefore ideal...'), roket ion ideal untuk misi antarplanet jangka panjang!",
@@ -12574,9 +12574,9 @@ const toeflIbtBuildingSkills = [
     "passageSnippet": "Lightning occurs when convective updrafts in cumulonimbus clouds induce collisions between rising ice crystals and descending hail graupel. [■] Lighter ice crystals shed electrons and carry positive charges toward the cloud anvil summit. [■] Heavier graupel pellets acquire negative charges and settle in the lower cloud base. [■] When the electric potential gradient between the cloud base and the grounded earth exceeds the dielectric breakdown threshold of air, a blinding electrical arc discharges. [■]",
     "questionPrompt": "Where would the sentence best fit?",
     "options": [
-      "Square 3 (After positive and negative charges settle)",
       "Square 1 (At the start)",
       "Square 2 (After ice crystals)",
+      "Square 3 (After positive and negative charges settle)",
       "Square 4 (At the end)"
     ],
     "correctAnswer": "Square 3 (After positive and negative charges settle)",
@@ -12597,10 +12597,10 @@ const toeflIbtBuildingSkills = [
     "passageSnippet": "CRISPR-Cas9 operates as an adaptive molecular defense system derived from bacterial immunity against bacteriophage viruses. [■] The system utilizes a synthetic guide RNA sequence that binds complementarily to a specific genomic target. [■] The Cas9 endonuclease protein subsequently introduces a double-stranded break at that precise DNA location. [■] Cellular repair mechanisms then mend the cut, either disabling the gene or incorporating a donor template. [■]",
     "questionPrompt": "Where would the sentence best fit?",
     "options": [
-      "Square 4 (At the end summarizing geneticist editing utility)",
       "Square 1 (At the start)",
       "Square 2 (After guide RNA)",
-      "Square 3 (After Cas9 cut)"
+      "Square 3 (After Cas9 cut)",
+      "Square 4 (At the end summarizing geneticist editing utility)"
     ],
     "correctAnswer": "Square 4 (At the end summarizing geneticist editing utility)",
     "babyExplanation": "🍼 Nalar Bayi: Setelah mekanisme gunting DNA dan perbaikannya dijelaskan, kalimat penutup di Kotak 4 merangkum manfaat revolusioner teknologi ini bagi para ahli genetika!",
@@ -12620,9 +12620,9 @@ const toeflIbtBuildingSkills = [
     "passageSnippet": "The university administration plans to convert the student parking lot into a solar-powered study lawn to reduce carbon emissions and create social spaces. In the conversation, the male student argues against the plan, claiming that commuter students who live outside public transit zones will face extreme commute delays.",
     "questionPrompt": "The student expresses his opinion regarding the university's plan to replace parking with a lawn. State his opinion and explain the reasons he gives.",
     "options": [
-      "He opposes the conversion because commuter students lacking public transit options will suffer severe commute disruptions.",
-      "He enthusiastically endorses the solar lawn because he studies environmental engineering.",
       "He proposes that parking permits should be increased in price by 100 percent.",
+      "He enthusiastically endorses the solar lawn because he studies environmental engineering.",
+      "He opposes the conversion because commuter students lacking public transit options will suffer severe commute disruptions.",
       "He suggests moving all university courses to online distance learning."
     ],
     "correctAnswer": "He opposes the conversion because commuter students lacking public transit options will suffer severe commute disruptions.",
@@ -12643,8 +12643,8 @@ const toeflIbtBuildingSkills = [
     "passageSnippet": "The biology professor discusses 'Batesian Mimicry,' where a harmless prey species evolves physical color patterns resembling a toxic or venomous species to deceive visual predators. She provides the example of the harmless hoverfly whose yellow-and-black abdominal striping mimics the stinging yellowjacket wasp, deterring birds from attacking.",
     "questionPrompt": "Using points and examples from the lecture, explain how Batesian mimicry functions as an evolutionary survival strategy.",
     "options": [
-      "Harmless species mimic venomous organisms' warning colors to deter predators, as exemplified by the stingless hoverfly copying the yellowjacket wasp.",
       "Predators learn to eat yellowjacket wasps because hoverflies are sweet and nutritious.",
+      "Harmless species mimic venomous organisms' warning colors to deter predators, as exemplified by the stingless hoverfly copying the yellowjacket wasp.",
       "Wasps lose their venom when hoverflies share the same meadow habitat.",
       "Hoverflies develop venomous stingers after interacting with yellowjacket colonies."
     ],
@@ -12689,10 +12689,10 @@ const toeflIbtBuildingSkills = [
     "passageSnippet": "The business professor lectures on the 'Decoy Effect' (asymmetric dominance), where a vendor introduces an inferior third product option to make the expensive premium option appear more economically attractive. He illustrates this with movie theater popcorn: introducing a medium size priced at $6.50 makes the large $7.00 size look like a bargain compared to the $3.00 small.",
     "questionPrompt": "Explain the Decoy Effect using the popcorn pricing example from the lecture.",
     "options": [
-      "A vendor introduces an overpriced intermediate option to steer consumer choice toward the most expensive item, making it seem like a bargain.",
+      "Vendors lose profits when offering three tiered sizes instead of a single uniform portion.",
       "Movie theaters lower popcorn prices to encourage customers to purchase extra beverage cups.",
       "Consumers consistently select the cheapest option regardless of intermediate decoy pricing.",
-      "Vendors lose profits when offering three tiered sizes instead of a single uniform portion."
+      "A vendor introduces an overpriced intermediate option to steer consumer choice toward the most expensive item, making it seem like a bargain."
     ],
     "correctAnswer": "A vendor introduces an overpriced intermediate option to steer consumer choice toward the most expensive item, making it seem like a bargain.",
     "babyExplanation": "🍼 Nalar Bayi: Decoy Effect: penjual sengaja menaruh popcorn ukuran sedang harga $6.50 biar orang mikir 'nambah 50 sen dapet jumbo $7.00!' dan akhirnya beli yang paling mahal!",
@@ -12712,9 +12712,9 @@ const toeflIbtBuildingSkills = [
     "passageSnippet": "The university library announces plans to replace printed journal stacks on the fourth floor with a collaborative multimedia café. The male student supports the initiative, arguing that all academic journals are accessible digitally online and students desperately need group discussion tables.",
     "questionPrompt": "State the student's opinion of the library renovation plan and explain the reasons he gives.",
     "options": [
-      "He endorses the plan because journals are digitized online and students lack collaborative group study spaces.",
-      "He protests the plan because he prefers physical smell of vintage paper manuscripts.",
       "He proposes converting the entire library into a competitive gaming arena.",
+      "He protests the plan because he prefers physical smell of vintage paper manuscripts.",
+      "He endorses the plan because journals are digitized online and students lack collaborative group study spaces.",
       "He demands that coffee be prohibited on all floors of the academic building."
     ],
     "correctAnswer": "He endorses the plan because journals are digitized online and students lack collaborative group study spaces.",
@@ -12735,8 +12735,8 @@ const toeflIbtBuildingSkills = [
     "passageSnippet": "The zoology professor explains 'Altruism via Kin Selection,' where an animal risks its life to warn relatives, ensuring shared genetic survival. She cites ground squirrels: when a hawk approaches, a sentry squirrel emits a high-pitched alarm whistle, drawing predator attention to itself while allowing its siblings and offspring to dive into burrows.",
     "questionPrompt": "Using the ground squirrel example, explain how kin selection accounts for altruistic behavior in nature.",
     "options": [
-      "An individual sounds an alarm whistle that endangers itself to protect genetically related family members, preserving shared lineage.",
       "Squirrels attack hawks in groups to eliminate predatory threats from their prairie territory.",
+      "An individual sounds an alarm whistle that endangers itself to protect genetically related family members, preserving shared lineage.",
       "Sentry squirrels fool hawks by mimicking the sound of barking dogs.",
       "Altruistic animals expect reciprocal favors from unrelated community members."
     ],
@@ -12781,10 +12781,10 @@ const toeflIbtBuildingSkills = [
     "passageSnippet": "The psychology professor explains the 'Confirmation Bias,' where individuals selectively seek, interpret, and remember evidence that corroborates their preexisting beliefs while ignoring contradictory facts. He illustrates this with people researching nutritional diets: advocates of low-carb diets only bookmark articles praising ketones while skipping clinical trials warning of lipid elevations.",
     "questionPrompt": "Explain Confirmation Bias using the dietary research example from the lecture.",
     "options": [
-      "Individuals deliberately seek out articles validating their chosen diet while ignoring studies reporting conflicting medical evidence.",
+      "Confirmation bias causes people to abandon their core convictions immediately.",
       "Nutritionists force patients to adopt low-carb diets regardless of blood test results.",
       "Dieters develop unbiased objective assessments after browsing multiple online forums.",
-      "Confirmation bias causes people to abandon their core convictions immediately."
+      "Individuals deliberately seek out articles validating their chosen diet while ignoring studies reporting conflicting medical evidence."
     ],
     "correctAnswer": "Individuals deliberately seek out articles validating their chosen diet while ignoring studies reporting conflicting medical evidence.",
     "babyExplanation": "🍼 Nalar Bayi: Confirmation Bias: orang diet keto cuma mau baca artikel yang memuji dietnya, sementara artikel peringatan kolesterol di-skip tidak mau dibaca!",
@@ -12804,9 +12804,9 @@ const toeflIbtBuildingSkills = [
     "passageSnippet": "The university intends to close the swimming pool for six months during the winter semester to install high-efficiency water filtration systems. The male student argues that the timing is disastrous because the varsity swim team has regional championships in February and alternative municipal pools are twenty miles away.",
     "questionPrompt": "Explain the student's objection to the recreation center's pool renovation timeline.",
     "options": [
-      "He opposes the winter timing because varsity swim championships occur in February with no nearby alternative practice pools.",
-      "He believes water filtration is a waste of institutional capital.",
       "He prefers that the pool be closed permanently to expand the weightlifting room.",
+      "He believes water filtration is a waste of institutional capital.",
+      "He opposes the winter timing because varsity swim championships occur in February with no nearby alternative practice pools.",
       "He demands that the swim team cancel their athletic season voluntarily."
     ],
     "correctAnswer": "He opposes the winter timing because varsity swim championships occur in February with no nearby alternative practice pools.",
@@ -12827,8 +12827,8 @@ const toeflIbtBuildingSkills = [
     "passageSnippet": "The ecology professor discusses 'Ecological Niches' and the Competitive Exclusion Principle, which dictates that two species competing for the exact same limiting resource cannot stably coexist. He provides the example of two protozoan Paramecium species: when grown together in a single test tube with limited yeast food, Paramecium aurelia outcompetes and drives Paramecium caudatum to local extinction.",
     "questionPrompt": "Explain the Competitive Exclusion Principle using the Paramecium experiment from the lecture.",
     "options": [
-      "Two species competing for the same scarce food cannot coexist, leading the superior competitor to eliminate the other.",
       "Paramecium species cooperate to expand bacterial food populations inside the test tube.",
+      "Two species competing for the same scarce food cannot coexist, leading the superior competitor to eliminate the other.",
       "Yeast microorganisms poison Paramecium aurelia while nourishing Paramecium caudatum.",
       "Competing species share resources equally through mutualistic symbiosis."
     ],
@@ -12873,10 +12873,10 @@ const toeflIbtBuildingSkills = [
     "passageSnippet": "The professor lectures on 'Biomimicry in Architecture,' where engineers adapt structural principles from nature to construct energy-efficient buildings. He presents the Eastgate Centre in Zimbabwe, which mimics the self-cooling ventilation chimneys of termite mounds to maintain comfortable interior temperatures without conventional air conditioning.",
     "questionPrompt": "Explain how the Eastgate Centre applies biomimicry from termite mounds to achieve natural climate control.",
     "options": [
-      "The building mimics passive convective chimneys of termite mounds to regulate interior temperatures without conventional air conditioning.",
+      "The architectural facility operates solar panels that power industrial refrigeration compressors.",
       "Engineers imported live termites to bore cooling ventilation tunnels through concrete columns.",
       "The building is constructed entirely from chewed wood and organic termite saliva.",
-      "The architectural facility operates solar panels that power industrial refrigeration compressors."
+      "The building mimics passive convective chimneys of termite mounds to regulate interior temperatures without conventional air conditioning."
     ],
     "correctAnswer": "The building mimics passive convective chimneys of termite mounds to regulate interior temperatures without conventional air conditioning.",
     "babyExplanation": "🍼 Nalar Bayi: Gedung Eastgate di Zimbabwe meniru arsitektur ventilasi sarang rayap: cerobong hawa dingin alami bikin gedung sejuk tanpa perlu AC boros listrik!",
@@ -12896,9 +12896,9 @@ const toeflIbtBuildingSkills = [
     "passageSnippet": "The university bookstore proposes shifting entirely to digital e-book subscriptions rather than stocking printed physical textbooks. The male student supports the shift, highlighting that e-books cost half the price and allow instant keyword searching during exam preparation.",
     "questionPrompt": "Explain the student's opinion regarding the bookstore's transition to digital textbooks.",
     "options": [
-      "He supports the shift because digital textbooks are significantly cheaper and offer efficient keyword search capabilities.",
-      "He opposes e-books because digital screen glare causes eye fatigue during exams.",
       "He recommends closing the campus bookstore and buying books from airport kiosks.",
+      "He opposes e-books because digital screen glare causes eye fatigue during exams.",
+      "He supports the shift because digital textbooks are significantly cheaper and offer efficient keyword search capabilities.",
       "He insists that all professors dictate lectures without any required readings."
     ],
     "correctAnswer": "He supports the shift because digital textbooks are significantly cheaper and offer efficient keyword search capabilities.",
@@ -12919,8 +12919,8 @@ const toeflIbtBuildingSkills = [
     "passageSnippet": "The professor explains the 'Tragedy of the Commons,' where individuals acting independently in self-interest deplete a shared finite resource, ultimately spoiling it for the entire community. She illustrates this with a shared medieval grazing pasture: each herdsman adds extra cattle to maximize personal profit until the grass is completely destroyed by overgrazing.",
     "questionPrompt": "Explain the Tragedy of the Commons using the grazing pasture example from the lecture.",
     "options": [
-      "Individual herdsmen add extra cattle for personal gain until the unmanaged communal pasture is ruined by overgrazing.",
       "Farmers establish private fences to cultivate wheat across medieval common lands.",
+      "Individual herdsmen add extra cattle for personal gain until the unmanaged communal pasture is ruined by overgrazing.",
       "The community bans cattle grazing to preserve wilderness biodiversity.",
       "Herdsmen share cattle profits equally through a cooperative agricultural bank."
     ],
@@ -12965,10 +12965,10 @@ const toeflIbtBuildingSkills = [
     "passageSnippet": "The linguistics professor explains the 'Critical Period Hypothesis,' which posits that language acquisition is biologically constrained to early childhood, after which neuroplasticity diminishes and native-level fluency becomes exceedingly rare. He supports this with studies of feral children and adult immigrants who retain persistent non-native phonetic accents despite decades of immersion.",
     "questionPrompt": "Explain the Critical Period Hypothesis using the examples provided by the professor.",
     "options": [
-      "Language learning is constrained to early childhood; adults retain foreign accents and struggle with syntax due to decreased brain plasticity.",
+      "Neuroplasticity increases steadily throughout human adulthood, aiding multilingual fluency.",
       "Adults learn foreign languages faster than toddlers because of mature grammatical reasoning.",
       "Feral children develop sophisticated vocabularies spontaneously without social interaction.",
-      "Neuroplasticity increases steadily throughout human adulthood, aiding multilingual fluency."
+      "Language learning is constrained to early childhood; adults retain foreign accents and struggle with syntax due to decreased brain plasticity."
     ],
     "correctAnswer": "Language learning is constrained to early childhood; adults retain foreign accents and struggle with syntax due to decreased brain plasticity.",
     "babyExplanation": "🍼 Nalar Bayi: Critical Period Hypothesis: masa emas belajar bahasa ada di masa kanak-kanak; orang dewasa susah fasih 100% dan aksen terbawa karena elastisitas otak berkurang!",

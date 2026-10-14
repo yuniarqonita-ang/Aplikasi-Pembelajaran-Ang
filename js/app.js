@@ -29,7 +29,7 @@ window.formatMathFractions = function(text) {
 };
 
 // ===================================================================
-// PEMBERSIHAN CACHE TOTAL & PEMBARUAN SISTEM APLIKASI (v24.0)
+// PEMBERSIHAN CACHE TOTAL & PEMBARUAN SISTEM APLIKASI (v24.1)
 // ===================================================================
 window.forceAppUpdate = async function() {
   if (window.sfx && typeof window.sfx.playSuccess === "function") {
@@ -47,10 +47,10 @@ window.forceAppUpdate = async function() {
     <div style="background:linear-gradient(145deg, rgba(3,33,58,0.96), rgba(1,18,34,0.98));border:2px solid #38bdf8;border-radius:24px;padding:36px 32px;box-shadow:0 0 60px rgba(56,189,248,0.45);max-width:500px;width:92%;">
       <div style="font-size:3.8rem;animation:floatBubble 2s ease-in-out infinite;display:inline-block;margin-bottom:12px;">🌊</div>
       <h2 style="font-size:1.45rem;font-weight:900;color:#38bdf8;margin:0 0 10px;letter-spacing:-0.2px;">
-        ✨ Memperbarui ke Versi 24.0 (Oceanic & Sunset Fantasy)
+        ✨ Memperbarui ke Versi 24.1 (Standardisasi ABC & Soal Seimbang)
       </h2>
       <p style="font-size:0.92rem;color:#cbd5e1;line-height:1.55;margin:0 0 20px;">
-        Membersihkan cache lama, mengaktifkan tema gradasi bioluminescent & sunset pastel, laboratorium 5 master workbook Excel mandiri, dan brankas file pintasan terbaru...
+        Membersihkan cache lama, mengaktifkan badge pilihan ganda ABC terstandar di TOEFL, IELTS, SQL & IT Tech, distribusi kunci jawaban seimbang, dan penanda sisipan kotak [■ A-D]...
       </p>
       <div style="background:rgba(255,255,255,0.08);border-radius:999px;height:10px;overflow:hidden;position:relative;margin-bottom:12px;border:1px solid rgba(56,189,248,0.3);">
         <div style="background:linear-gradient(90deg,#0284c7,#38bdf8,#34d399,#a855f7);height:100%;width:100%;border-radius:999px;animation:pulse 1s infinite alternate;"></div>
@@ -69,14 +69,14 @@ window.forceAppUpdate = async function() {
       const regs = await navigator.serviceWorker.getRegistrations();
       await Promise.all(regs.map(r => r.unregister()));
     }
-    localStorage.setItem('kodi_app_cache_version', 'v24.0');
+    localStorage.setItem('kodi_app_cache_version', 'v24.1');
     sessionStorage.clear();
   } catch (err) {
     console.warn("Purge cache warning:", err);
   }
 
   setTimeout(() => {
-    window.location.href = window.location.pathname + '?v=20261014-v24.0&t=' + Date.now();
+    window.location.href = window.location.pathname + '?v=20261014-v24.1&t=' + Date.now();
   }, 900);
 };
 
@@ -586,11 +586,15 @@ function renderQuizStep(step, container) {
   container.innerHTML = `
     <p style="font-weight: 700; margin-bottom: 14px; font-size: 1rem;">${step.question}</p>
     <div style="display: flex; flex-direction: column; gap: 10px;">
-      ${step.options.map((opt, idx) => `
-        <button class="choice-card-btn" onclick="checkQuizAnswer(${idx})">
-          ${opt.text}
-        </button>
-      `).join('')}
+      ${step.options.map((opt, idx) => {
+        const letter = String.fromCharCode(65 + idx);
+        return `
+          <button class="choice-card-btn" style="display: flex; align-items: center; text-align: left; padding: 12px 16px; border-radius: 10px;" onclick="checkQuizAnswer(${idx})">
+            <span class="option-abc-badge">${letter}</span>
+            <span style="flex: 1;">${opt.text}</span>
+          </button>
+        `;
+      }).join('')}
     </div>
   `;
 
@@ -1902,12 +1906,16 @@ function renderOutputDrill() {
             <div style="font-size: 0.78rem; font-weight: 700; color: var(--text-muted); margin-bottom: 8px;">
               Pilih hasil cetak konsol yang tepat:
             </div>
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 10px; margin-bottom: 16px;">
-              ${q.options.map((opt, idx) => `
-                <button class="choice-card-btn" style="justify-content: center; font-weight: 700; font-family: var(--font-code); font-size: 0.9rem;" onclick="checkOutputAnswer(${idx})">
-                  ${opt.text}
-                </button>
-              `).join('')}
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px; margin-bottom: 16px;">
+              ${q.options.map((opt, idx) => {
+                const letter = String.fromCharCode(65 + idx);
+                return `
+                  <button class="choice-card-btn" style="justify-content: flex-start; padding: 12px 14px; font-weight: 700; font-family: var(--font-code); font-size: 0.9rem; display: flex; align-items: center;" onclick="checkOutputAnswer(${idx})">
+                    <span class="option-abc-badge">${letter}</span>
+                    <span style="flex: 1;">${opt.text}</span>
+                  </button>
+                `;
+              }).join('')}
             </div>
 
             <div id="output-feedback-box" style="display: none;"></div>
@@ -3182,19 +3190,39 @@ function renderIeltsAcademicStudio() {
           </div>
 
           <!-- Pilihan Jawaban A, B, C, D -->
-          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px; margin-bottom: 16px;">
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 10px; margin-bottom: 16px;">
             ${(q.options || []).map((opt, idx) => {
-              let btnStyle = "justify-content: center; font-weight: 700; padding: 12px;";
-              if (selectedAnswer === opt) {
-                if (opt === correctAnswer) {
-                  btnStyle += " border-color: var(--accent-green); background: rgba(16, 185, 129, 0.25); color: #34d399;";
-                } else {
-                  btnStyle += " border-color: var(--accent-pink); background: rgba(244, 63, 94, 0.25); color: #fda4af;";
+              const letter = String.fromCharCode(65 + idx);
+              const isSelected = (selectedAnswer === opt);
+              const isCorrectOpt = (opt === correctAnswer);
+              
+              let btnClass = "choice-card-btn";
+              let badgeClass = "option-abc-badge";
+              let badgeText = letter;
+              let btnStyle = "justify-content: flex-start; padding: 12px 16px; border-radius: 10px; display: flex; align-items: center;";
+
+              if (selectedAnswer) {
+                if (isSelected) {
+                  if (isCorrectOpt) {
+                    badgeClass += " correct";
+                    badgeText = `${letter} ✓`;
+                    btnStyle += " border-color: #10b981; background: rgba(16, 185, 129, 0.2); color: #34d399; font-weight: 700;";
+                  } else {
+                    badgeClass += " wrong";
+                    badgeText = `${letter} ✕`;
+                    btnStyle += " border-color: #f43f5e; background: rgba(244, 63, 94, 0.2); color: #fda4af;";
+                  }
+                } else if (isCorrectOpt && selectedAnswer !== correctAnswer) {
+                  badgeClass += " key-hint";
+                  badgeText = `${letter} ✓`;
+                  btnStyle += " border: 1.5px dashed #34d399; background: rgba(16, 185, 129, 0.1);";
                 }
               }
+
               return `
-                <button class="choice-card-btn" style="${btnStyle}" onclick="checkIeltsAnswer(${idx})">
-                  ${opt}
+                <button class="${btnClass}" style="${btnStyle}" onclick="checkIeltsAnswer(${idx})">
+                  <span class="${badgeClass}">${badgeText}</span>
+                  <span style="flex: 1; font-weight: 700;">${opt}</span>
                 </button>
               `;
             }).join('')}
@@ -3209,8 +3237,8 @@ function renderIeltsAcademicStudio() {
               </div>
             ` : `
               <div class="alert-box warning">
-                <strong>⚠️ Belum Tepat!</strong><br>
-                <span>Kata <em>"${selectedAnswer}"</em> belum pas untuk melengkapi kalimat ini. Coba pilih opsi lainnya!</span>
+                <strong>⚠️ Pilihan Belum Tepat!</strong><br>
+                <span>Kata <em>"${selectedAnswer}"</em> belum pas. Kunci yang benar adalah opsi <strong>${String.fromCharCode(65 + q.options.indexOf(correctAnswer))} (${correctAnswer})</strong>. ${q.babyExplanation || ''}</span>
               </div>
             `) : ''}
           </div>
@@ -3376,6 +3404,14 @@ function renderToeflIbtBuildingSkills() {
       `<span class="ibt-highlight-sentence">${currentItem.highlightSentence}</span>`
     );
   }
+  if (passageText.includes("[■]")) {
+    let sqIdx = 0;
+    passageText = passageText.replace(/\[■\]/g, () => {
+      const letter = String.fromCharCode(65 + sqIdx);
+      sqIdx++;
+      return `<span class="ibt-square-target" title="Posisi Kotak [${letter}]">[■ ${letter}]</span>`;
+    });
+  }
 
   let insertNotice = "";
   if (currentItem.insertedSentence) {
@@ -3522,21 +3558,37 @@ function renderToeflIbtBuildingSkills() {
           <!-- Pilihan Opsi A, B, C, D -->
           <div style="display: flex; flex-direction: column; gap: 10px; margin-bottom: 16px;">
             ${(currentItem.options || []).map((opt, idx) => {
-              let btnStyle = "padding: 14px 18px; text-align: left; font-size: 0.92rem; border-radius: 8px; justify-content: flex-start; line-height: 1.45;";
-              let icon = String.fromCharCode(65 + idx);
-              if (selectedAnswer === opt) {
-                if (opt === currentItem.correctAnswer) {
-                  btnStyle += " border-color: var(--accent-green); background: rgba(16, 185, 129, 0.25); color: #fff; font-weight: 700;";
-                  icon = "✓";
-                } else {
-                  btnStyle += " border-color: var(--accent-pink); background: rgba(244, 63, 94, 0.25); color: #fca5a5;";
-                  icon = "✕";
+              const letter = String.fromCharCode(65 + idx);
+              const isSelected = (selectedAnswer === opt);
+              const isCorrectOpt = (opt === currentItem.correctAnswer);
+              
+              let btnClass = "choice-card-btn";
+              let badgeClass = "option-abc-badge";
+              let badgeText = letter;
+              let btnStyle = "padding: 14px 18px; text-align: left; font-size: 0.92rem; border-radius: 10px; justify-content: flex-start; line-height: 1.45; display: flex; align-items: center;";
+
+              if (selectedAnswer) {
+                if (isSelected) {
+                  if (isCorrectOpt) {
+                    badgeClass += " correct";
+                    badgeText = `${letter} ✓`;
+                    btnStyle += " border-color: #10b981; background: rgba(16, 185, 129, 0.2); color: #ffffff; font-weight: 700;";
+                  } else {
+                    badgeClass += " wrong";
+                    badgeText = `${letter} ✕`;
+                    btnStyle += " border-color: #f43f5e; background: rgba(244, 63, 94, 0.2); color: #fca5a5;";
+                  }
+                } else if (isCorrectOpt && selectedAnswer !== currentItem.correctAnswer) {
+                  badgeClass += " key-hint";
+                  badgeText = `${letter} ✓`;
+                  btnStyle += " border: 1.5px dashed #34d399; background: rgba(16, 185, 129, 0.1);";
                 }
               }
+
               return `
-                <button class="choice-card-btn" style="${btnStyle}" onclick="checkToeflIbtAnswer(${idx})">
-                  <span style="font-weight: 800; min-width: 24px; display: inline-block;">${icon}.</span>
-                  <span>${opt}</span>
+                <button class="${btnClass}" style="${btnStyle}" onclick="checkToeflIbtAnswer(${idx})">
+                  <span class="${badgeClass}">${badgeText}</span>
+                  <span style="flex: 1;">${opt}</span>
                 </button>
               `;
             }).join('')}
@@ -3551,8 +3603,8 @@ function renderToeflIbtBuildingSkills() {
               </div>
             ` : `
               <div class="alert-box warning">
-                <strong>⚠️ Belum Tepat!</strong><br>
-                <span>Pilihan kamu belum sesuai dengan bukti eksplisit di bacaan. Coba baca ulang paragraf acuan dan pilih opsi lain!</span>
+                <strong>⚠️ Pilihan Kamu Belum Tepat!</strong><br>
+                <span>Kunci jawaban yang benar adalah opsi <strong>${String.fromCharCode(65 + currentItem.options.indexOf(currentItem.correctAnswer))}</strong>. ${currentItem.babyExplanation || 'Cermati kembali bukti eksplisit pada bacaan di samping.'}</span>
               </div>
             `) : ''}
           </div>
@@ -5202,26 +5254,38 @@ function renderItTechTrainer() {
       <!-- Interactive Options -->
       <div style="display: flex; flex-direction: column; gap: 10px; margin-bottom: 20px;">
         ${chal.options.map((opt, optIdx) => {
-          let btnStyle = "background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(255,255,255,0.15); color: #e2e8f0;";
-          let icon = String.fromCharCode(65 + optIdx);
+          const letter = String.fromCharCode(65 + optIdx);
+          const isSelected = (selectedOption === optIdx);
+          const isCorrectOpt = (optIdx === chal.correctIndex);
           
+          let btnClass = "choice-card-btn";
+          let badgeClass = "option-abc-badge";
+          let badgeText = letter;
+          let btnStyle = "padding: 14px 18px; text-align: left; font-size: 0.92rem; border-radius: 10px; cursor: pointer; transition: all 0.2s; display: flex; align-items: center;";
+
           if (selectedOption !== undefined) {
-            if (selectedOption === optIdx) {
-              if (optIdx === chal.correctIndex) {
-                btnStyle = "background: rgba(34, 197, 94, 0.25); border: 1.5px solid var(--accent-green); color: #fff; font-weight: 700;";
-                icon = "✓";
+            if (isSelected) {
+              if (isCorrectOpt) {
+                badgeClass += " correct";
+                badgeText = `${letter} ✓`;
+                btnStyle += " background: rgba(34, 197, 94, 0.2); border: 1.5px solid var(--accent-green); color: #fff; font-weight: 700;";
               } else {
-                btnStyle = "background: rgba(239, 68, 68, 0.25); border: 1.5px solid var(--accent-pink); color: #fca5a5; font-weight: 700;";
-                icon = "✕";
+                badgeClass += " wrong";
+                badgeText = `${letter} ✕`;
+                btnStyle += " background: rgba(239, 68, 68, 0.2); border: 1.5px solid var(--accent-pink); color: #fca5a5; font-weight: 700;";
               }
+            } else if (isCorrectOpt && selectedOption !== chal.correctIndex) {
+              badgeClass += " key-hint";
+              badgeText = `${letter} ✓`;
+              btnStyle += " border: 1.5px dashed #34d399; background: rgba(16, 185, 129, 0.1);";
             }
           }
 
           return `
-            <button class="choice-card-btn" 
-                    style="padding: 14px 18px; text-align: left; font-size: 0.92rem; border-radius: 8px; cursor: pointer; transition: all 0.2s; ${btnStyle}" 
+            <button class="${btnClass}" 
+                    style="${btnStyle}" 
                     onclick="selectItTechOption(${optIdx})">
-              <span style="font-weight: 800; min-width: 26px; display: inline-block;">${icon}.</span>
+              <span class="${badgeClass}">${badgeText}</span>
               <span style="flex: 1;">${opt}</span>
             </button>
           `;
@@ -5247,7 +5311,7 @@ function renderItTechTrainer() {
               <strong>Pilihan Belum Tepat!</strong>
             </div>
             <div style="font-size: 0.88rem; line-height: 1.5;">
-              Pilihanmu belum tepat nih. Coba cermati lagi skenario kasus di atas dan klik pilihan lainnya. Kamu bebas mencoba opsi lain sampai menemukan jawaban yang tepat!
+              Pilihanmu belum tepat nih. Kunci jawaban yang tepat adalah opsi <strong>${String.fromCharCode(65 + chal.correctIndex)}</strong>. Coba cermati lagi skenario kasus di atas dan klik pilihan lainnya. Kamu bebas mencoba opsi lain sampai menemukan jawaban yang tepat!
             </div>
           </div>
         ` : '')}
@@ -5998,16 +6062,16 @@ window.addEventListener("DOMContentLoaded", () => {
     if (typeof window.renderWordShortcutStudio === "function") window.renderWordShortcutStudio();
   }, 100);
 
-  // Auto-purge old caches if version is not v24.0
+  // Auto-purge old caches if version is not v24.1
   const lastVer = localStorage.getItem('kodi_app_cache_version');
-  if (lastVer !== 'v24.0') {
-    localStorage.setItem('kodi_app_cache_version', 'v24.0');
+  if (lastVer !== 'v24.1') {
+    localStorage.setItem('kodi_app_cache_version', 'v24.1');
     if ('caches' in window) {
       caches.keys().then(keys => {
-        const oldKeys = keys.filter(k => k !== 'kodi-it-academy-v24.0');
+        const oldKeys = keys.filter(k => k !== 'kodi-it-academy-v24.1');
         if (oldKeys.length > 0) {
           Promise.all(oldKeys.map(k => caches.delete(k))).then(() => {
-            console.log('Old caches purged automatically on startup for v24.0!');
+            console.log('Old caches purged automatically on startup for v24.1!');
           });
         }
       });

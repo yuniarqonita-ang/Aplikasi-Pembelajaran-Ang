@@ -49,8 +49,8 @@ const levelsData = [
         interactiveType: "quiz-explain",
         question: "Kodi mau nanya: Kalau kamu lagi buka 25 tab browser Google Chrome terus komputernya tiba-tiba jadi lemot banget kayak keong, organ mana yang mejanya kekecilan?",
         options: [
-          { text: "🪵 RAM (Meja kerjanya kepenuhan barang!)", correct: true, feedback: "BINTANG 5! Tepat sekali! RAM itu meja kerja. Kalau mejanya sempit tapi barangnya banyak, koki jadi susah gerak." },
           { text: "🧊 SSD (Kulkas penyimpanannya kedinginan)", correct: false, feedback: "Kurang tepat. SSD itu kulkas arsip jangka panjang, bukan meja kerja aplikasi yang lagi berjalan." },
+          { text: "🪵 RAM (Meja kerjanya kepenuhan barang!)", correct: true, feedback: "BINTANG 5! Tepat sekali! RAM itu meja kerja. Kalau mejanya sempit tapi barangnya banyak, koki jadi susah gerak." },
           { text: "🖥️ Monitor (Layarnya kecapekan)", correct: false, feedback: "Hehe monitor cuma layar kaca buat nampilin gambar, bukan yang mikir atau nampung kerjaan ya!" }
         ]
       },
@@ -142,11 +142,6 @@ const levelsData = [
         question: "Menurut konsep Richard Fox, mengapa Smartphone HP kamu resmi disebut sebagai Komputer?",
         options: [
           {
-            text: "Karena HP memiliki siklus lengkap: Touchscreen (Input), Chip Prosessor (Processing), Layar (Output), dan Memori internal (Storage)!",
-            correct: true,
-            feedback: "100% TEPAT! HP bukan sekadar alat telepon jadul, tapi komputer mini serba bisa yang menjalankan siklus IPOS!"
-          },
-          {
             text: "Karena HP harganya mahal dan ada kamera selfie-nya.",
             correct: false,
             feedback: "Bukan itu alasannya. Kamera cuma salah satu sensor input, yang menentukan adalah siklus pemrosesan IPOS-nya."
@@ -155,6 +150,11 @@ const levelsData = [
             text: "Bukan komputer, HP cuma radio mini pencari sinyal.",
             correct: false,
             feedback: "Salah besar! Di era sekarang, HP adalah komputer saku yang sangat canggih dan punya prosesor multi-core!"
+          },
+          {
+            text: "Karena HP memiliki siklus lengkap: Touchscreen (Input), Chip Prosessor (Processing), Layar (Output), dan Memori internal (Storage)!",
+            correct: true,
+            feedback: "100% TEPAT! HP bukan sekadar alat telepon jadul, tapi komputer mini serba bisa yang menjalankan siklus IPOS!"
           }
         ]
       }
@@ -280,14 +280,14 @@ const levelsData = [
         question: "Apa fungsi utama dari proses 'Kompilasi' (Compilation) menurut buku Richard Fox?",
         options: [
           {
-            text: "Menerjemahkan kode program yang ditulis manusia ke bahasa mesin (0 dan 1) yang bisa dieksekusi CPU!",
-            correct: true,
-            feedback: "TEPAT SEKALI! Kompiler adalah penerjemah setia antara otak manusia dan sirkuit listrik CPU!"
-          },
-          {
             text: "Menghapus semua file virus di flashdisk secara otomatis.",
             correct: false,
             feedback: "Itu tugas antivirus, bukan proses kompilasi kode."
+          },
+          {
+            text: "Menerjemahkan kode program yang ditulis manusia ke bahasa mesin (0 dan 1) yang bisa dieksekusi CPU!",
+            correct: true,
+            feedback: "TEPAT SEKALI! Kompiler adalah penerjemah setia antara otak manusia dan sirkuit listrik CPU!"
           },
           {
             text: "Mengganti casing komputer menjadi warna baru.",
@@ -454,9 +454,9 @@ const levelsData = [
         interactiveType: "quiz-explain",
         question: "Kodi bertanya: Kalau ping ke angka berhasil, tapi buka nama web gagal, petugas mana yang lagi mogok kerja?",
         options: [
-          { text: "📖 DNS (Buku Kontak Teleponnya rusak/salah nomor!)", correct: true, feedback: "TEPAT SEKALI! Komputer bisa jalan ke nomor IP, tapi dia ga tahu nomor telepon 'detik.com' karena DNS nya belum disetting!" },
           { text: "⚡ Kabel Listrik PLN padam", correct: false, feedback: "Kalo listrik padam kan komputernya mati total dong hehe!" },
-          { text: "🖱️ Mouse komputernya kehabisan baterai", correct: false, feedback: "Mouse ga ada hubungannya sama jaringan internet yaa!" }
+          { text: "🖱️ Mouse komputernya kehabisan baterai", correct: false, feedback: "Mouse ga ada hubungannya sama jaringan internet yaa!" },
+          { text: "📖 DNS (Buku Kontak Teleponnya rusak/salah nomor!)", correct: true, feedback: "TEPAT SEKALI! Komputer bisa jalan ke nomor IP, tapi dia ga tahu nomor telepon 'detik.com' karena DNS nya belum disetting!" }
         ]
       }
     ]
