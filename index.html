@@ -12,7 +12,7 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <link rel="apple-touch-icon" href="assets/icon-192.png">
 
-  <link rel="stylesheet" href="css/style.css?v=20261013-v20.0">
+  <link rel="stylesheet" href="css/style.css?v=20261014-v21.0">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🤖</text></svg>">
 </head>
 <body>
@@ -58,8 +58,8 @@
         <button id="btn-header-admin" class="theme-toggle-btn" onclick="switchTab('admin-panel')" title="Buka Master Admin Panel (Semua 11 Modul, Kunci Jawaban Lengkap, & Rekap Nilai)" style="background: linear-gradient(135deg, rgba(2, 132, 199, 0.35), rgba(37, 99, 235, 0.45)); border: 1.5px solid #38bdf8; color: #ffffff; font-weight: 800; padding: 7px 14px;">
           🛠️ Master Admin
         </button>
-        <button id="btn-force-update" class="theme-toggle-btn" onclick="forceAppUpdate()" title="Bersihkan Cache & Perbarui Aplikasi ke Versi Terbaru (v20.0)" style="background: rgba(16, 185, 129, 0.25); border-color: var(--accent-green); color: #34d399; font-weight: 800;">
-          🔄 Update v20.0
+        <button id="btn-force-update" class="theme-toggle-btn" onclick="forceAppUpdate()" title="Bersihkan Cache & Perbarui Aplikasi ke Versi Terbaru (v21.0)" style="background: rgba(16, 185, 129, 0.25); border-color: var(--accent-green); color: #34d399; font-weight: 800;">
+          🔄 Update v21.0
         </button>
         <div class="stat-badge star-count">
           <span>⭐</span>
@@ -77,7 +77,7 @@
     <div id="app-update-banner" class="app-update-banner" style="display: none;">
       <div style="display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-wrap: wrap;">
         <span class="update-banner-text">
-          🚀 <strong>Versi Baru (v20.0) Tersedia!</strong> Tombol Master Admin tunggal di header atas & form login bersih tanpa bocoran kredensial!
+          🚀 <strong>Versi Baru (v21.0) Tersedia!</strong> Brankas File Asli Excel & Word Lengkap dengan Thumbnail Keren & Tombol Unduh Cepat!
         </span>
         <button class="btn-update-now" onclick="forceAppUpdate()">Perbarui Sekarang ⚡</button>
       </div>
@@ -118,17 +118,17 @@
             <span class="nav-icon">🗄️</span>
             <span class="nav-label">SQL (100)</span>
           </button>
-          <button class="nav-tab" data-tab="excel-trainer" onclick="switchTab('excel-trainer')" title="Studio Rumus Excel Dunia Nyata (155 Simulator + Download Workbook 200 Sheet / 1.000 Persoalan)">
+          <button class="nav-tab" data-tab="excel-trainer" onclick="switchTab('excel-trainer')" title="Studio Rumus Excel Dunia Nyata (155 Simulator + 200 Sheet)">
             <span class="nav-icon">📊</span>
-            <span class="nav-label">Excel (200 Sheet)</span>
+            <span class="nav-label">Rumus Excel (155)</span>
           </button>
-          <button class="nav-tab" data-tab="shortcut-excel" onclick="switchTab('shortcut-excel')" title="Game Pintasan Keyboard Excel Windows (53 Pintasan + Download File .xlsx Latihan)">
-            <span class="nav-icon">⌨️</span>
-            <span class="nav-label">Pintasan Excel (53)</span>
+          <button class="nav-tab" data-tab="shortcut-excel" onclick="switchTab('shortcut-excel')" title="Brankas File Latihan Nyata & Pintasan Excel Windows (12 Template Asli + 53 Pintasan)">
+            <span class="nav-icon">📁</span>
+            <span class="nav-label">File & Pintasan Excel (12)</span>
           </button>
-          <button class="nav-tab" data-tab="shortcut-word" onclick="switchTab('shortcut-word')" title="Game Pintasan Keyboard Word Windows (55 Pintasan + Download File .docx Latihan)">
+          <button class="nav-tab" data-tab="shortcut-word" onclick="switchTab('shortcut-word')" title="Brankas Dokumen Kantor Nyata & Pintasan Word Windows (8 Dokumen Asli + 55 Pintasan)">
             <span class="nav-icon">📝</span>
-            <span class="nav-label">Pintasan Word (55)</span>
+            <span class="nav-label">File & Pintasan Word (8)</span>
           </button>
           <button class="nav-tab" data-tab="it-tech-trainer" onclick="switchTab('it-tech-trainer')" title="Laboratorium IT Tech, Jaringan, Hardware & Security (100 Tantangan)">
             <span class="nav-icon">🛠️</span>
@@ -259,37 +259,13 @@
       <div id="excel-content-area"></div>
     </section>
 
-    <!-- ================= TAB: SHORTCUT EXCEL STUDIO (53 PINTASAN) ================= -->
+    <!-- ================= TAB: SHORTCUT EXCEL STUDIO (BRANKAS FILE & PINTASAN) ================= -->
     <section id="tab-shortcut-excel" class="tab-content">
-      <div class="section-title-wrap">
-        <h2 class="section-title">⌨️ Studio & File Pelatihan Pintasan Keyboard Excel Windows (53 Pintasan)</h2>
-        <div class="visual-mission-flow">
-          <div class="flow-step-item active">📋 1. Misi Bos Proyek Kantor</div>
-          <span class="flow-arrow-sep">➔</span>
-          <div class="flow-step-item">⌨️ 2. Tekan Pintasan Keyboard</div>
-          <span class="flow-arrow-sep">➔</span>
-          <div class="flow-step-item">📈 3. Spreadsheet Berubah Realtime</div>
-          <span class="flow-arrow-sep">➔</span>
-          <div class="flow-step-item">💾 4. Download File Latihan Asli (.xlsx)</div>
-        </div>
-      </div>
       <div id="shortcut-excel-content-area"></div>
     </section>
 
-    <!-- ================= TAB: SHORTCUT WORD STUDIO (55 PINTASAN) ================= -->
+    <!-- ================= TAB: SHORTCUT WORD STUDIO (BRANKAS FILE & PINTASAN) ================= -->
     <section id="tab-shortcut-word" class="tab-content">
-      <div class="section-title-wrap">
-        <h2 class="section-title">📝 Studio & File Pelatihan Pintasan Keyboard Word Windows (55 Pintasan)</h2>
-        <div class="visual-mission-flow">
-          <div class="flow-step-item active">📋 1. Misi Laporan Direksi</div>
-          <span class="flow-arrow-sep">➔</span>
-          <div class="flow-step-item">⌨️ 2. Tekan Pintasan Keyboard</div>
-          <span class="flow-arrow-sep">➔</span>
-          <div class="flow-step-item">📄 3. Lembar A4 Berubah Realtime</div>
-          <span class="flow-arrow-sep">➔</span>
-          <div class="flow-step-item">💾 4. Download Dokumen Asli (.docx)</div>
-        </div>
-      </div>
       <div id="shortcut-word-content-area"></div>
     </section>
 

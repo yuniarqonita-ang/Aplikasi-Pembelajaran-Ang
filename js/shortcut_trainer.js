@@ -1329,2327 +1329,861 @@
 ];
 
   // =========================================================================
-  // DATA PROYEK KANTOR NYATA & PERMINTAAN KLIEN (WORD & EXCEL)
-  // GAME RESMI: Detektor Keyboard Langsung, Combo Counter, Timer Speedrun,
-  // Rapor Hasil Praktik Kerja (Rank S/A/B), dan Papan Rakit Tombol Mekanik
+  // BRANKAS DOKUMEN & WORKBOOK DUNIA NYATA (EXCEL & WORD)
+  // Dilengkapi Pratinjau Thumbnail Keren & Tombol Download Cepat
+  // Bebas Game / Detektor Rumit — Langsung Praktik di Aplikasi Desktop Asli!
   // =========================================================================
 
-  window.WORD_PROJECTS = [
+  window.EXCEL_VAULT_FILES = [
     {
-      id: 'w-proj-1',
-      title: 'Laporan Riset Pasar & Rekomendasi Eksekutif',
-      client: 'Bpk. Hendra Pratama',
-      clientRole: 'Direktur Operasional & Bisnis',
-      clientAvatar: '👔',
-      docFilename: 'Laporan_Eksekutif_Q1_2026.docx',
-      story: 'Halo Kodi! Saya baru mengetik draf laporan riset pasar ini secara cepat. Tampilannya masih polos, judul belum di tengah dan belum tebal, istilah asing belum miring, dan paragrafnya belum rapi. Tolong gunakan pintasan keyboard saktimu untuk merapikannya sesuai instruksi di bawah ya!',
-      initialDoc: {
-        title: 'LAPORAN RISET PASAR & ANALISIS TREN BISNIS 2026',
-        subTitle: 'Divisi Strategi Korporat — Kuartal I',
-        par1: 'Perkembangan adopsi teknologi kecerdasan buatan atau Artificial Intelligence telah mentransformasi produktivitas kantor secara masif. Berdasarkan observasi triwulan pertama, kecepatan pemrosesan data meningkat hingga 45% ketika staf memanfaatkan pintasan keyboard dan automasi digital terarah.',
-        par2: 'REKOMENDASI DIREKSI: Manajemen merekomendasikan alokasi anggaran belanja modal sebesar 15% untuk pelatihan akselerasi digital seluruh staf operasional.'
-      },
-      tasks: [
-        {
-          id: 'w1_step1',
-          name: 'Tebalkan Judul Dokumen Utama',
-          instruction: 'Tebalkan judul agar mencolok dan berwibawa di hadapan dewan Direksi!',
-          shortcut: 'Ctrl+B',
-          keys: ['ctrl', 'b'],
-          actionCode: 'title_bold',
-          targetLabel: 'Judul Dokumen Utama',
-          babyLogic: 'Ctrl + B (Bold) = Mengubah teks biasa jadi berotot dan tebal seketika!'
-        },
-        {
-          id: 'w1_step2',
-          name: 'Posisikan Judul ke Rata Tengah (Center)',
-          instruction: 'Tarik judul ke tengah halaman agar simetris dan rapi dipandang!',
-          shortcut: 'Ctrl+E',
-          keys: ['ctrl', 'e'],
-          actionCode: 'title_center',
-          targetLabel: 'Posisi Judul Dokumen',
-          babyLogic: 'Ctrl + E (Equator / Center) = Menarik teks ke garis khatulistiwa tengah!'
-        },
-        {
-          id: 'w1_step3',
-          name: 'Miringkan Istilah Asing "Artificial Intelligence"',
-          instruction: 'Beri gaya miring (Italic) pada istilah serapan bahasa asing!',
-          shortcut: 'Ctrl+I',
-          keys: ['ctrl', 'i'],
-          actionCode: 'body_italic',
-          targetLabel: 'Kata Asing "Artificial Intelligence"',
-          babyLogic: 'Ctrl + I (Italic) = Merebahkan huruf 15 derajat untuk istilah ilmiah/asing!'
-        },
-        {
-          id: 'w1_step4',
-          name: 'Rapikan Paragraf ke Rata Kiri-Kanan (Justify)',
-          instruction: 'Buat batas tepi kiri dan kanan paragraf lurus sejajar tanpa gerigi!',
-          shortcut: 'Ctrl+J',
-          keys: ['ctrl', 'j'],
-          actionCode: 'body_justify',
-          targetLabel: 'Paragraf Isi Laporan',
-          babyLogic: 'Ctrl + J (Justify) = Menjepit teks rapat rata di kedua dinding kertas!'
-        },
-        {
-          id: 'w1_step5',
-          name: 'Beri Garis Bawah pada Rekomendasi Direksi',
-          instruction: 'Tandai poin rekomendasi penting dengan garis bawah resmi (Underline)!',
-          shortcut: 'Ctrl+U',
-          keys: ['ctrl', 'u'],
-          actionCode: 'recom_underline',
-          targetLabel: 'Kalimat Rekomendasi Direksi',
-          babyLogic: 'Ctrl + U (Underline) = Menggarisbawahi poin emas agar bos langsung melirik!'
-        },
-        {
-          id: 'w1_step6',
-          name: 'Simpan Dokumen Laporan (Save Document)',
-          instruction: 'Kunci seluruh editan ke dalam berkas agar tidak hilang saat mati lampu!',
-          shortcut: 'Ctrl+S',
-          keys: ['ctrl', 's'],
-          actionCode: 'doc_save',
-          targetLabel: 'Status Berkas Dokumen',
-          babyLogic: 'Ctrl + S (Save) = Mengunci gembok berkas ke harddisk, aman selamanya!'
-        }
-      ]
+      id: "ev-1",
+      title: "Simulasi Siklus Akuntansi PT Maju Bersama (8 Sheet Lengkap)",
+      category: "Akuntansi & Pajak",
+      filename: "Simulasi_Kerja_Akuntansi_PT_Maju_Bersama.xlsx",
+      size: "26.6 KB",
+      badge: "🔥 Hot Kasus Nyata",
+      rating: "5.0 ★★★★★",
+      sheetsCount: "8 Sheet Lengkap",
+      desc: "Simulasi siklus akuntansi perusahaan dagang: Faktur Pajak, Bukti Transaksi, Jurnal Umum, Buku Besar 4 Kolom, Neraca Saldo, Jurnal Penyesuaian, Neraca Lajur 10 Kolom, Laba Rugi & Neraca Akhir.",
+      ribbonTitle: "PT Maju Bersama - Siklus Akuntansi.xlsx",
+      formulaSnippet: "=SUM(D11:D35)",
+      headers: ["No Bukti", "Tanggal", "Nama Akun", "Debet (Rp)", "Kredit (Rp)"],
+      rows: [
+        ["FP-001", "02/05/2026", "Kas di Bank", "50.000.000", "—"],
+        ["BKK-01", "05/05/2026", "Beban Sewa", "12.000.000", "—"],
+        ["F-014", "10/05/2026", "Pendapatan Jasa", "—", "35.000.000"],
+        ["BKM-03", "15/05/2026", "Piutang Usaha", "8.500.000", "—"]
+      ],
+      sheetPills: ["Cover", "Faktur Pajak", "Jurnal Umum", "Buku Besar", "Neraca Lajur", "+3"]
     },
     {
-      id: 'w-proj-2',
-      title: 'Naskah Proposal Tender Pengadaan Infrastruktur IT',
-      client: 'Ibu Maya Anggraini',
-      clientRole: 'Manajer Administrasi & Pengadaan',
-      clientAvatar: '👩‍💼',
-      docFilename: 'Proposal_Tender_Server_2026.docx',
-      story: 'Kodi, besok pagi proposal tender pengadaan perangkat server ini harus diserahkan ke kementerian! Dokumen ini butuh pencarian kata kunci anggaran, penambahan hyperlink tautan teknis, dan pratinjau cetak printer. Yuk selesaikan dengan pintasan!',
-      initialDoc: {
-        title: 'PROPOSAL PENGADAAN PERANGKAT SERVER CLOUD',
-        subTitle: 'Nomor Registrasi: 048/TDR-IT/IV/2026',
-        par1: 'Alokasi rincian biaya teknis tertera pada dokumen Anggaran Belanja Pokok. Verifikasi rincian perangkat keras dapat dipantau langsung pada portal pengadaan nasional.',
-        par2: 'Lampiran Spesifikasi: Dokumen arsitektur komputasi awan berkapasitas tinggi ini mengacu pada standar ISO/IEC 27001.'
-      },
-      tasks: [
-        {
-          id: 'w2_step1',
-          name: 'Cari Kata Kunci "Anggaran" dalam Naskah (Find)',
-          instruction: 'Buka jendela pencarian untuk melacak kata kunci anggaran!',
-          shortcut: 'Ctrl+F',
-          keys: ['ctrl', 'f'],
-          actionCode: 'find_anggaran',
-          targetLabel: 'Pencarian Kata Kunci Anggaran',
-          babyLogic: 'Ctrl + F (Find) = Lampu senter ajaib pemburu kata kunci dalam sekejap!'
-        },
-        {
-          id: 'w2_step2',
-          name: 'Sisipkan Tautan Hyperlink ke Portal Spesifikasi',
-          instruction: 'Ubah teks tautan menjadi hyperlink biru bergaris bawah!',
-          shortcut: 'Ctrl+K',
-          keys: ['ctrl', 'k'],
-          actionCode: 'insert_hyperlink',
-          targetLabel: 'Tautan Lampiran Spesifikasi',
-          babyLogic: 'Ctrl + K (LinK) = Jembatan kawat biru menyambungkan kata ke alamat web!'
-        },
-        {
-          id: 'w2_step3',
-          name: 'Salin Paragraf Ringkasan Spesifikasi (Copy)',
-          instruction: 'Gandakan paragraf spesifikasi ke clipboard naskah!',
-          shortcut: 'Ctrl+C',
-          keys: ['ctrl', 'c'],
-          actionCode: 'copy_summary',
-          targetLabel: 'Teks Ringkasan Spesifikasi',
-          babyLogic: 'Ctrl + C (Copy) = Mesin fotokopi digital menangkap teks tanpa merusaknya!'
-        },
-        {
-          id: 'w2_step4',
-          name: 'Tempelkan Hasil Salinan ke Penutup (Paste)',
-          instruction: 'Letakkan salinan paragraf tepat di penutup lembar proposal!',
-          shortcut: 'Ctrl+V',
-          keys: ['ctrl', 'v'],
-          actionCode: 'paste_summary',
-          targetLabel: 'Bagian Penutup Dokumen',
-          babyLogic: 'Ctrl + V (Paste) = Menempelkan stempel teks hasil fotokopi seketika!'
-        },
-        {
-          id: 'w2_step5',
-          name: 'Buka Pratinjau Cetak Dokumen (Print Preview)',
-          instruction: 'Tampilkan dialog cetak untuk memeriksa hasil sebelum cetak kertas!',
-          shortcut: 'Ctrl+P',
-          keys: ['ctrl', 'p'],
-          actionCode: 'doc_print',
-          targetLabel: 'Pratinjau Cetak Kertas',
-          babyLogic: 'Ctrl + P (Print) = Mengirim sinyal perintah ke mesin printer kertas!'
-        }
-      ]
+      id: "ev-2",
+      title: "Soal Tes Interview Akuntansi & Jurnal Umum Dagang",
+      category: "Tes Interview Kerja",
+      filename: "Soal_Tes_Interview_Akuntansi_Perusahaan_Dagang.xlsx",
+      size: "7.9 KB",
+      badge: "💼 Tes Interview Kerja",
+      rating: "4.9 ★★★★★",
+      sheetsCount: "2 Sheet (Soal + Kunci)",
+      desc: "CV Maju Bersama: 10 transaksi bisnis nyata Mei 2024, tabel jurnal umum debet-kredit, rumus balance check, dan lembar kunci jawaban resmi HRD.",
+      ribbonTitle: "Soal_Tes_Interview_Akuntansi_Dagang.xlsx",
+      formulaSnippet: '=IF(D37=F37, "BALANCE (SEIMBANG)", "TIDAK BALANCE")',
+      headers: ["No", "Tanggal", "Akun Debet", "Debet (Rp)", "Akun Kredit", "Kredit (Rp)"],
+      rows: [
+        ["1", "01/05/2024", "Kas Perusahaan", "50.000.000", "Modal Pemilik", "50.000.000"],
+        ["2", "02/05/2024", "Perlengkapan", "3.500.000", "Kas", "3.500.000"],
+        ["3", "03/05/2024", "Persediaan", "15.000.000", "Utang Usaha", "15.000.000"],
+        ["4", "05/05/2024", "Kas", "8.000.000", "Penjualan", "8.000.000"]
+      ],
+      sheetPills: ["Soal Interview", "Kunci Jawaban Resmi"]
     },
     {
-      id: 'w-proj-3',
-      title: 'Perjanjian Kerjasama (MoU) Kemitraan Strategis',
-      client: 'Bpk. Rian Hidayat, S.H.',
-      clientRole: 'Konsultan Hukum & Legal Corporate',
-      clientAvatar: '👨‍⚖️',
-      docFilename: 'Perjanjian_MoU_Kemitraan_2026.docx',
-      story: 'Kodi, draf nota kesepahaman ini masih menggunakan sebutan draft "Pihak Pertama". Kita harus mengganti istilah tersebut secara serentak menjadi nama resmi PT, menjalankan pemeriksaan ejaan, dan menyimpan cadangan dokumen!',
-      initialDoc: {
-        title: 'NOTA KESEPAHAMAN BERSAMA (MEMORANDUM OF UNDERSTANDING)',
-        subTitle: 'Nomor: 102/MOU-LEGAL/III/2026',
-        par1: 'Bahwa Pihak Pertama dan Pihak Kedua sepakat menjalin kemitraan strategis dalam pengembangan fasilitas pembelajaran digital dan laboratorium komputer terpadu.',
-        par2: 'Segala hak serta kewajiban yang ditandatangani oleh Pihak Pertama dan Pihak Kedua berlaku sah dan mengikat kedua belah pihak.'
-      },
-      tasks: [
-        {
-          id: 'w3_step1',
-          name: 'Ganti Kata Otomatis (Replace Dialog)',
-          instruction: 'Buka dialog ganti kata untuk mengganti "Pihak Pertama" jadi "PT Inovasi Maju"!',
-          shortcut: 'Ctrl+H',
-          keys: ['ctrl', 'h'],
-          actionCode: 'replace_dialog',
-          targetLabel: 'Teks "Pihak Pertama"',
-          babyLogic: 'Ctrl + H = Ahli bedah kata yang mengganti ribuan kata salah dalam satu klik!'
-        },
-        {
-          id: 'w3_step2',
-          name: 'Pemeriksaan Ejaan & Tata Bahasa (Spelling & Grammar)',
-          instruction: 'Jalankan pemeriksa ejaan F7 untuk memverifikasi dokumen!',
-          shortcut: 'F7',
-          keys: ['f7'],
-          actionCode: 'spelling_check',
-          targetLabel: 'Pemeriksaan Ejaan Dokumen',
-          babyLogic: 'F7 = Hakim ejaan teliti penanda tinta merah bila ada tipo kata!'
-        },
-        {
-          id: 'w3_step3',
-          name: 'Sorot Seluruh Isi Dokumen (Select All)',
-          instruction: 'Pilih seluruh teks dokumen dari awal hingga akhir!',
-          shortcut: 'Ctrl+A',
-          keys: ['ctrl', 'a'],
-          actionCode: 'select_all',
-          targetLabel: 'Seluruh Isi Dokumen',
-          babyLogic: 'Ctrl + A (All) = Menjala seluruh lautan teks tanpa ada yang terlewat!'
-        },
-        {
-          id: 'w3_step4',
-          name: 'Buka Dialog Simpan Sebagai Cadangan (Save As)',
-          instruction: 'Buka dialog Simpan Sebagai untuk membuat berkas cadangan nama baru!',
-          shortcut: 'F12',
-          keys: ['f12'],
-          actionCode: 'save_as_new',
-          targetLabel: 'Dialog Simpan Sebagai Baru',
-          babyLogic: 'F12 (Save As) = Menduplikasi berkas dengan nama atau format baru!'
-        }
-      ]
+      id: "ev-3",
+      title: "Master Payroll Gaji Karyawan, BPJS & PPh 21 Otomatis",
+      category: "SDM & Payroll",
+      filename: "Master_Payroll_Gaji_Karyawan_PPh21.xlsx",
+      size: "6.9 KB",
+      badge: "⚡ Rumus Otomatis",
+      rating: "4.9 ★★★★★",
+      sheetsCount: "2 Sheet (Payroll + Slip)",
+      desc: "Sistem penggajian 10 staf: Gaji Pokok, Tunjangan Jabatan, Uang Makan & Lembur, Potongan BPJS TK (3%) & BPJS Kes (1%), PPh 21 TER, dan Slip Gaji Otomatis via VLOOKUP.",
+      ribbonTitle: "Master_Payroll_Gaji_PPh21_2026.xlsx",
+      formulaSnippet: "=VLOOKUP(B3, 'Data Karyawan'!A:H, 4, FALSE)",
+      headers: ["NIK", "Nama Staf", "Jabatan", "Gaji Pokok", "BPJS (4%)", "Take Home Pay"],
+      rows: [
+        ["EMP-001", "Budi Santoso", "IT Lead", "12.500.000", "500.000", "13.850.000"],
+        ["EMP-002", "Siti Rahma", "Finance Spv", "9.800.000", "392.000", "10.658.000"],
+        ["EMP-003", "Ahmad Fauzi", "Sales Exec", "7.500.000", "300.000", "9.450.000"],
+        ["EMP-004", "Dewi Lestari", "HR Admin", "6.200.000", "248.000", "6.752.000"]
+      ],
+      sheetPills: ["Rekap Payroll", "Slip Gaji Otomatis"]
+    },
+    {
+      id: "ev-4",
+      title: "Dashboard Rekap Penjualan Retail & KPI Bonus Sales",
+      category: "Dashboard & Penjualan",
+      filename: "Dashboard_Rekap_Penjualan_Sales_Eksekutif.xlsx",
+      size: "6.9 KB",
+      badge: "📊 Dashboard Eksekutif",
+      rating: "4.8 ★★★★★",
+      sheetsCount: "1 Sheet Interaktif",
+      desc: "Catatan transaksi 12 cabang retail: Omset Kotor, Diskon Bertingkat, Omset Bersih, Target KPI, Komisi Bonus 5%-10% via rumus IF bertingkat, dan status capaian target.",
+      ribbonTitle: "Dashboard_Sales_Eksekutif_2026.xlsx",
+      formulaSnippet: "=IF(E5>=F5, D5*10%, IF(E5>=F5*0.8, D5*5%, 0))",
+      headers: ["Cabang", "Sales", "Omset Kotor", "Target KPI", "Bonus (Rp)", "Status"],
+      rows: [
+        ["Pusat Tegal", "Andi", "185.000.000", "150.000.000", "18.500.000", "TARGET TERCAPAI"],
+        ["Brebes Barat", "Rina", "142.000.000", "130.000.000", "14.200.000", "TARGET TERCAPAI"],
+        ["Slawi Selatan", "Dimas", "95.000.000", "110.000.000", "4.750.000", "CAPAI 86%"],
+        ["Pemalang", "Wulan", "62.000.000", "90.000.000", "0", "DI BAWAH TARGET"]
+      ],
+      sheetPills: ["Dashboard Sales & KPI"]
+    },
+    {
+      id: "ev-5",
+      title: "Laporan Keuangan Neraca Saldo & Laba Rugi CV",
+      category: "Akuntansi & Pajak",
+      filename: "Laporan_Keuangan_Neraca_Laba_Rugi_CV.xlsx",
+      size: "5.6 KB",
+      badge: "💵 Laporan Resmi",
+      rating: "4.9 ★★★★★",
+      sheetsCount: "1 Sheet Terstruktur",
+      desc: "Format standar laporan laba rugi perusahaan CV: Kode Akun 4-100 Penjualan, 5-100 HPP, 6-100 Beban Operasional, dan rumus hitung laba bersih tahun berjalan otomatis.",
+      ribbonTitle: "Laporan_Laba_Rugi_Neraca_CV.xlsx",
+      formulaSnippet: "=E13-D13 (Laba Bersih Tahun Berjalan)",
+      headers: ["Kode", "Nama Akun", "Ref", "Debet (Rp)", "Kredit (Rp)"],
+      rows: [
+        ["4-100", "Penjualan Bersih", "", "—", "450.000.000"],
+        ["5-100", "Harga Pokok (HPP)", "", "240.000.000", "—"],
+        ["6-101", "Beban Gaji Staf", "", "85.000.000", "—"],
+        ["6-102", "Beban Sewa Kantor", "", "24.000.000", "—"]
+      ],
+      sheetPills: ["Laba Rugi & Neraca"]
+    },
+    {
+      id: "ev-6",
+      title: "Mega Workbook Master 200 Rumus Excel Dunia Nyata",
+      category: "Paket Rumus Mega",
+      filename: "Master_160_Rumus_Excel_Dunia_Nyata.xlsx",
+      size: "759.9 KB",
+      badge: "🏆 Mega Workbook 200 Sheet",
+      rating: "5.0 ★★★★★",
+      sheetsCount: "200 Sheet Mandiri",
+      desc: "Koleksi terlengkap: 200 rumus Excel dunia nyata (1 rumus = 1 sheet terpisah). Berisi 1 Contoh Soal & Jawaban Benar + 5 Soal Tes Mandiri per sheet + Sheet 99_KUNCI_JAWABAN di akhir.",
+      ribbonTitle: "Master_200_Rumus_Excel_Dunia_Nyata.xlsx",
+      formulaSnippet: "=XLOOKUP(A2, Master!A:A, Master!B:B)",
+      headers: ["Kategori", "Rumus", "Contoh Soal", "5 Tes Mandiri", "Sheet Kunci"],
+      rows: [
+        ["Logika", "IF, AND, OR, IFS", "Evaluasi Bonus", "5 Kasus Kantor", "Sheet 99"],
+        ["Lookup", "VLOOKUP, XLOOKUP", "Katalog Barang", "5 Kasus Kantor", "Sheet 99"],
+        ["Teks", "CONCAT, MID, TEXT", "ID Generator", "5 Kasus Kantor", "Sheet 99"],
+        ["Statistik", "AVERAGE, STDEV", "Analisis Data", "5 Kasus Kampus", "Sheet 99"]
+      ],
+      sheetPills: ["Sheet 1 - SUM", "Sheet 2 - IF", "Sheet 3 - VLOOKUP", "+197 Sheet"]
+    },
+    {
+      id: "ev-7",
+      title: "Paket 1: Rumus Matematika, Akuntansi & Logika Bisnis",
+      category: "Paket Rumus Mega",
+      filename: "Paket_1_Rumus_Matematika_Akuntansi_Logika.xlsx",
+      size: "156.1 KB",
+      badge: "📗 Modul Paket 1",
+      rating: "4.8 ★★★★★",
+      sheetsCount: "35 Sheet + Kunci",
+      desc: "Paket khusus rumus dasar & menengah: SUM, SUMIF, SUMIFS, ROUND, INT, MOD, IF Tunggal, IF Bertingkat, AND, OR, NOT + Kunci Jawaban.",
+      ribbonTitle: "Paket_1_Matematika_Akuntansi_Logika.xlsx",
+      formulaSnippet: '=SUMIFS(D2:D100, B2:B100, ">1000000", C2:C100, "Lunas")',
+      headers: ["No", "Nama Fungsi", "Kegunaan Kantor", "Tingkat", "Status"],
+      rows: [
+        ["1", "SUM / SUMIF / SUMIFS", "Total omset & kasir bersyarat", "Dasar - Menengah", "Siap"],
+        ["2", "IF / IFS / SWITCH", "Logika bonus, lulus/gagal", "Menengah", "Siap"],
+        ["3", "ROUND / ROUNDUP", "Pembulatan kas & pajak rupiah", "Dasar", "Siap"]
+      ],
+      sheetPills: ["SUM", "SUMIF", "IF Tunggal", "IF Bertingkat", "99_Kunci"]
+    },
+    {
+      id: "ev-8",
+      title: "Paket 2: Rumus Lookup, Manipulasi Teks & Tanggal HRD",
+      category: "Paket Rumus Mega",
+      filename: "Paket_2_Rumus_Lookup_Teks_Tanggal_HRD.xlsx",
+      size: "179.8 KB",
+      badge: "📘 Modul Paket 2",
+      rating: "4.9 ★★★★★",
+      sheetsCount: "40 Sheet + Kunci",
+      desc: "Paket esensial HRD & Admin: VLOOKUP, HLOOKUP, XLOOKUP, INDEX MATCH, CONCAT, LEFT, RIGHT, MID, TEXT, DATEDIF (Hitung Usia/Masa Kerja), WORKDAY + Kunci.",
+      ribbonTitle: "Paket_2_Lookup_Teks_Tanggal_HRD.xlsx",
+      formulaSnippet: '=DATEDIF(B2, TODAY(), "Y") & " Tahun "',
+      headers: ["No", "Fungsi HRD", "Kasus Penggunaan", "Level", "Status"],
+      rows: [
+        ["1", "VLOOKUP / XLOOKUP", "Tarik data gaji via NIK karyawan", "Wajib HRD", "Siap"],
+        ["2", "INDEX + MATCH", "Pencarian kolom dua arah fleksibel", "Mahir", "Siap"],
+        ["3", "DATEDIF / NETWORKDAYS", "Hitung masa kerja & hari efektif", "Administrasi", "Siap"]
+      ],
+      sheetPills: ["VLOOKUP", "XLOOKUP", "INDEX MATCH", "DATEDIF", "99_Kunci"]
+    },
+    {
+      id: "ev-9",
+      title: "Paket 3: Rumus Keuangan, Audit & Analisis Data",
+      category: "Paket Rumus Mega",
+      filename: "Paket_3_Rumus_Keuangan_Audit_Statistika_Lengkap.xlsx",
+      size: "441.2 KB",
+      badge: "📙 Modul Paket 3",
+      rating: "4.9 ★★★★★",
+      sheetsCount: "45 Sheet + Kunci",
+      desc: "Paket analisis finansial & kelayakan investasi: PMT (Cicilan), FV, PV, NPV, IRR, Penyusutan Aset SLN & DB, Standar Deviasi, Uji Korelasi + Kunci.",
+      ribbonTitle: "Paket_3_Keuangan_Audit_Statistika.xlsx",
+      formulaSnippet: "=PMT(B2/12, B3*12, -B1)",
+      headers: ["No", "Fungsi Finansial", "Kegunaan Bank & Investasi", "Level", "Status"],
+      rows: [
+        ["1", "PMT / PPMT / IPMT", "Simulasi cicilan KPR & pinjaman bank", "Keuangan", "Siap"],
+        ["2", "NPV / IRR", "Analisis kelayakan modal proyek bisnis", "Investasi", "Siap"],
+        ["3", "SLN / DDB", "Perhitungan depresiasi aset tetap kantor", "Akuntansi", "Siap"]
+      ],
+      sheetPills: ["PMT", "NPV", "IRR", "SLN", "99_Kunci"]
+    },
+    {
+      id: "ev-10",
+      title: "Paket 4: Khusus 95 Rumus Statistika & Probabilitas Dosen",
+      category: "Paket Rumus Mega",
+      filename: "Paket_4_Khusus_95_Rumus_Statistika_Lengkap.xlsx",
+      size: "365.1 KB",
+      badge: "📓 Modul Paket 4",
+      rating: "4.8 ★★★★★",
+      sheetsCount: "95 Sheet + Kunci",
+      desc: "Materi lengkap untuk mahasiswa & dosen: Regresi Linear, Uji Korelasi Pearson, Kuartil & Persentil, Distribusi Normal (NORM.DIST), Uji-T, Uji-F, ANOVA + Kunci.",
+      ribbonTitle: "Paket_4_95_Rumus_Statistika.xlsx",
+      formulaSnippet: "=CORREL(A2:A50, B2:B50)",
+      headers: ["No", "Fungsi Statistik", "Aplikasi Riset & Skripsi", "Level", "Status"],
+      rows: [
+        ["1", "AVERAGE / MEDIAN / MODE", "Ukuran pemusatan data sampel", "Statistik 1", "Siap"],
+        ["2", "VAR.S / STDEV.S", "Ukuran sebaran & variabilitas", "Statistik 1", "Siap"],
+        ["3", "FORECAST.LINEAR / LINEST", "Prediksi tren & regresi berganda", "Statistik 2", "Siap"]
+      ],
+      sheetPills: ["AVERAGE", "STDEV.S", "CORREL", "FORECAST", "+91 Sheet"]
+    },
+    {
+      id: "ev-11",
+      title: "Sistem Monitoring Inventaris & Stok Gudang Retail",
+      category: "Operasional & Logistik",
+      filename: "Monitoring_Stok_Gudang_2026.xlsx",
+      size: "5.8 KB",
+      badge: "📦 Logistik & Stok",
+      rating: "4.7 ★★★★★",
+      sheetsCount: "1 Sheet Otomatis",
+      desc: "Template kontrol stok: Barang Masuk, Barang Keluar, Sisa Stok, Batas Minimum (Safety Stock), dan Status Otomatis (AMAN / ORDER LAGI).",
+      ribbonTitle: "Monitoring_Stok_Gudang_2026.xlsx",
+      formulaSnippet: '=IF(E5<=F5, "⚠️ RESTOCK SEGERA", "✅ AMAN")',
+      headers: ["Kode", "Nama Produk", "Masuk", "Keluar", "Sisa", "Status"],
+      rows: [
+        ["PRD-01", "Kabel UTP Cat6 305m", "50", "42", "8", "⚠️ RESTOCK"],
+        ["PRD-02", "RJ45 Connector Box", "100", "30", "70", "✅ AMAN"],
+        ["PRD-03", "Switch Gigabit 16-Port", "20", "18", "2", "⚠️ RESTOCK"]
+      ],
+      sheetPills: ["Inventaris Gudang"]
+    },
+    {
+      id: "ev-12",
+      title: "Buku Kerja Praktik Mandiri Pintasan Excel Windows",
+      category: "Pintasan Keyboard",
+      filename: "Modul_Praktik_Pintasan_Excel_Lengkap.xlsx",
+      size: "20.1 KB",
+      badge: "⌨️ Panduan Pintasan",
+      rating: "4.9 ★★★★★",
+      sheetsCount: "5 Sheet Pintasan",
+      desc: "Buku kerja latihan terstruktur untuk mempraktikkan 53 tombol pintasan keyboard Excel langsung di desktop tanpa bantuan mouse.",
+      ribbonTitle: "Modul_Praktik_Pintasan_Excel.xlsx",
+      formulaSnippet: "Ctrl+Shift+$ (Rupiah), Alt+= (AutoSum)",
+      headers: ["Kategori", "Tombol", "Aksi Kantor", "Hasil di Sheet"],
+      rows: [
+        ["Paling Sering", "Ctrl+S", "Simpan Cepat", "Tersimpan aman"],
+        ["Format Angka", "Ctrl+Shift+$", "Format Rupiah", "Rp 50.000.000"],
+        ["Kalkulasi", "Alt+=", "AutoSum Cepat", "=SUM(A1:A10)"]
+      ],
+      sheetPills: ["Navigasi", "Format", "Rumus", "Tabel", "Grafik"]
     }
   ];
 
-  window.EXCEL_PROJECTS = [
+  window.WORD_VAULT_FILES = [
     {
-      id: 'e-proj-1',
-      title: 'Rekapitulasi Omset Penjualan & Kas Retail',
-      client: 'Bpk. Budi Santoso',
-      clientRole: 'Pemilik Toko Retail Nusantara',
-      clientAvatar: '🏪',
-      docFilename: 'Rekap_Penjualan_Maret_2026.xlsx',
-      story: 'Halo Kodi! Saya baru merekap catatan penjualan cabang toko kita bulan ini. Angkanya masih angka mentah tanpa simbol Rupiah, persentase margin masih desimal, kolom belum jadi tabel resmi, dan total akhir belum dihitung. Tolong sulap spreadsheet ini jadi profesional ya!',
-      initialGrid: [
-        { colA: 'Cabang A (Pusat)', colB: 'Jakarta', colC: 15500000, colD: 0.18, colE: 'Lunas' },
-        { colA: 'Cabang B (Barat)', colB: 'Bandung', colC: 12250000, colD: 0.12, colE: 'Lunas' },
-        { colA: 'Cabang C (Timur)', colB: 'Surabaya', colC: 18750000, colD: 0.22, colE: 'Lunas' },
-        { colA: 'Cabang D (Utara)', colB: 'Semarang', colC: 9800000, colD: 0.08, colE: 'Pending' }
+      id: "wv-1",
+      title: "Template Surat Lamaran Kerja Resmi & CV Standar ATS",
+      category: "Karir & CV ATS",
+      filename: "Surat_Lamaran_Kerja_dan_CV_ATS_Friendly.docx",
+      size: "37.9 KB",
+      badge: "💼 Lolos Mesin ATS",
+      rating: "5.0 ★★★★★",
+      pagesCount: "2 Halaman A4",
+      desc: "Dokumen CV berstandar ATS (Applicant Tracking System) yang disukai recruiter HRD modern + Surat Lamaran Kerja formal dengan margin standar 1 inci dan tipografi rapi.",
+      windowTitle: "Surat_Lamaran_dan_CV_ATS_Friendly.docx",
+      headerTitle: "ANDI PRATAMA, S.Kom.",
+      headerSubtitle: "IT Systems Specialist & Database Administrator",
+      contact: "Tegal | andi.pratama@email.com | 0812-3456-7890",
+      sections: [
+        { title: "RINGKASAN PROFESIONAL", text: "Tenaga profesional TI berpengalaman dalam pengelolaan infrastruktur jaringan, database SQL, dan administrasi perkantoran digital dengan produktivitas tinggi." },
+        { title: "KEAHLIAN UTAMA", bullets: ["Administrasi Windows Server & Linux", "Pengolahan Data Excel Kompleks & VLOOKUP", "Penyusunan Kontrak & Dokumen Legal Word"] }
       ],
-      tasks: [
-        {
-          id: 'e1_step1',
-          name: 'Format Angka Omset ke Mata Uang Rupiah',
-          instruction: 'Ubah angka di Kolom Omset (C) menjadi format mata uang resmi Rp!',
-          shortcut: 'Ctrl+Shift+$',
-          keys: ['ctrl', 'shift', '4'],
-          altKeys: ['ctrl', 'shift', '$'],
-          actionCode: 'format_currency',
-          targetLabel: 'Kolom Omset (C2:C5)',
-          babyLogic: 'Ctrl + Shift + $ = Menaburkan simbol mata uang Rupiah & pemisah ribuan!'
-        },
-        {
-          id: 'e1_step2',
-          name: 'Format Angka Margin ke Persentase (%)',
-          instruction: 'Ubah angka di Kolom Margin (D) menjadi format persen rapi!',
-          shortcut: 'Ctrl+Shift+%',
-          keys: ['ctrl', 'shift', '5'],
-          altKeys: ['ctrl', 'shift', '%'],
-          actionCode: 'format_percent',
-          targetLabel: 'Kolom Margin (D2:D5)',
-          babyLogic: 'Ctrl + Shift + % = Mengalikan desimal dengan 100 dan menempel tanda %!'
-        },
-        {
-          id: 'e1_step3',
-          name: 'Hitung Total Otomatis dengan AutoSum',
-          instruction: 'Letakkan kursor di bawah kolom omset lalu panggil AutoSum!',
-          shortcut: 'Alt+=',
-          keys: ['alt', '='],
-          actionCode: 'autosum_total',
-          targetLabel: 'Baris Total Akhir (C6)',
-          babyLogic: 'Alt + = (AutoSum) = Robot kalkulator cerdas langsung merangkum rumus SUM!'
-        },
-        {
-          id: 'e1_step4',
-          name: 'Ubah Rentang Data Jadi Tabel Resmi (Create Table)',
-          instruction: 'Sulap kisi-kisi data menjadi tabel bergaris cantik dengan filter otomatis!',
-          shortcut: 'Ctrl+T',
-          keys: ['ctrl', 't'],
-          actionCode: 'create_table',
-          targetLabel: 'Seluruh Rentang Tabel A1:E5',
-          babyLogic: 'Ctrl + T (Table) = Merias data mentah jadi tabel profesional berwarna zebra!'
-        },
-        {
-          id: 'e1_step5',
-          name: 'Tebalkan Baris Total Akhir',
-          instruction: 'Sorot baris total lalu beri gaya huruf tebal!',
-          shortcut: 'Ctrl+B',
-          keys: ['ctrl', 'b'],
-          actionCode: 'bold_total',
-          targetLabel: 'Teks Baris Total',
-          babyLogic: 'Ctrl + B (Bold) = Mengunci baris total agar langsung terbaca pimpinan!'
-        },
-        {
-          id: 'e1_step6',
-          name: 'Simpan Lembar Kerja Buku Kerja (Save)',
-          instruction: 'Simpan spreadsheet ke komputer agar data aman tersimpan!',
-          shortcut: 'Ctrl+S',
-          keys: ['ctrl', 's'],
-          actionCode: 'excel_save',
-          targetLabel: 'Buku Kerja Excel',
-          babyLogic: 'Ctrl + S = Menyimpan berkas workbook excel, pantang kehilangan data!'
-        }
-      ]
+      sealBadge: "VERIFIED ATS"
     },
     {
-      id: 'e-proj-2',
-      title: 'Audit Penggajian Karyawan & Kerahasiaan Rekening',
-      client: 'Ibu Sinta Dewi',
-      clientRole: 'Manajer Keuangan & Payroll',
-      clientAvatar: '👩‍💼',
-      docFilename: 'Audit_Payroll_Staff_2026.xlsx',
-      story: 'Kodi, kita sedang melakukan audit penggajian di depan dewan pengawas. Kita harus menyembunyikan kolom nomor rekening rahasia, menyembunyikan staf yang berstatus cuti, mencatat tanggal audit otomatis, dan mengisi formula insentif ke sel bawah!',
-      initialGrid: [
-        { colA: 'Andi Pratama', colB: '10001099238', colC: 7500000, colD: 500000, colE: 'Aktif' },
-        { colA: 'Bambang Sudiro', colB: '10001099239', colC: 6800000, colD: 500000, colE: 'Aktif' },
-        { colA: 'Citra Kirana', colB: '10001099240', colC: 7200000, colD: 0, colE: 'Cuti Panjang' },
-        { colA: 'Dewi Lestari', colB: '10001099241', colC: 8100000, colD: 500000, colE: 'Aktif' }
+      id: "wv-2",
+      title: "Format Surat Dinas Resmi Pemerintah & Kop Surat Kedinasan",
+      category: "Surat Dinas Pemkot",
+      filename: "Surat_Dinas_Resmi_Pemerintah_dan_Kop_Surat.docx",
+      size: "37.7 KB",
+      badge: "🏛️ Standar Permendagri",
+      rating: "4.9 ★★★★★",
+      pagesCount: "1 Halaman A4",
+      desc: "Format baku naskah dinas resmi pemerintah: Kop Surat berlogo daerah dan garis tebal-tipis, Nomor Surat, Sifat, Lampiran, Dasar Hukum, Isi Undangan, serta Tanda Tangan Kadis & NIP.",
+      windowTitle: "Surat_Dinas_Resmi_Pemerintah.docx",
+      headerTitle: "PEMERINTAH KOTA TEGAL",
+      headerSubtitle: "DINAS PENDIDIKAN DAN KEBUDAYAAN",
+      contact: "Jl. Ki Gede Sebayu No. 12, Tegal | Telp: (0283) 351234",
+      sections: [
+        { title: "NOMOR : 005 / 421.2 / DISDIKBUD / 2026", text: "Perihal: Undangan Pelatihan Implementasi Digital Classroom & Aplikasi Pembelajaran IT 2026." },
+        { title: "PENANDATANGAN RESMI", text: "Drs. H. BAMBANG SURYONO, M.Pd. (Pembina Utama Muda IV/c - NIP. 19680512 199303 1 005)" }
       ],
-      tasks: [
-        {
-          id: 'e2_step1',
-          name: 'Sembunyikan Kolom Nomor Rekening Bank (Hide Column)',
-          instruction: 'Sembunyikan Kolom B agar nomor rekening tidak terbaca orang luar!',
-          shortcut: 'Ctrl+0',
-          keys: ['ctrl', '0'],
-          actionCode: 'hide_column',
-          targetLabel: 'Kolom B (Nomor Rekening)',
-          babyLogic: 'Ctrl + 0 = Jubah tembus pandang untuk melipat kolom rahasia seketika!'
-        },
-        {
-          id: 'e2_step2',
-          name: 'Sembunyikan Baris Karyawan Cuti (Hide Row)',
-          instruction: 'Sembunyikan Baris Citra Kirana selama sesi audit berlangsung!',
-          shortcut: 'Ctrl+9',
-          keys: ['ctrl', '9'],
-          actionCode: 'hide_row',
-          targetLabel: 'Baris 3 (Citra Kirana)',
-          babyLogic: 'Ctrl + 9 = Menutupi baris tertentu agar lembar kerja fokus pada data aktif!'
-        },
-        {
-          id: 'e2_step3',
-          name: 'Masukkan Tanggal Audit Hari Ini Otomatis',
-          instruction: 'Sisipkan cap tanggal hari ini ke sel keterangan audit!',
-          shortcut: 'Ctrl+;',
-          keys: ['ctrl', ';'],
-          actionCode: 'insert_date',
-          targetLabel: 'Sel Keterangan Tanggal Audit',
-          babyLogic: 'Ctrl + ; = Stempel kalender kilat mencetak tanggal hari ini tanpa mengetik!'
-        },
-        {
-          id: 'e2_step4',
-          name: 'Isi Formula Insentif ke Sel Bawahnya (Fill Down)',
-          instruction: 'Salin rumus insentif dari sel atas ke sel bawah secara presisi!',
-          shortcut: 'Ctrl+D',
-          keys: ['ctrl', 'd'],
-          actionCode: 'fill_down',
-          targetLabel: 'Sel Kolom Bonus D3:D4',
-          babyLogic: 'Ctrl + D (Down) = Menggandakan formula dari sel tepat di atasnya!'
-        },
-        {
-          id: 'e2_step5',
-          name: 'Cari Nama Karyawan Khusus (Find)',
-          instruction: 'Buka jendela pencarian data pegawai!',
-          shortcut: 'Ctrl+F',
-          keys: ['ctrl', 'f'],
-          actionCode: 'excel_find',
-          targetLabel: 'Pencarian Nama Karyawan',
-          babyLogic: 'Ctrl + F = Mesin radar pencari data di ribuan baris excel!'
-        }
-      ]
+      sealBadge: "CAP RESMI DISDIK"
     },
     {
-      id: 'e-proj-3',
-      title: 'Inventaris Stok Gudang & Pembuatan Grafik Kilat',
-      client: 'Bpk. Darmawan Kusuma',
-      clientRole: 'Kepala Bagian Logistik Gudang',
-      clientAvatar: '👷‍♂️',
-      docFilename: 'Monitoring_Stok_Gudang_2026.xlsx',
-      story: 'Kodi, direktur logistik ingin melihat grafik visual stok barang inventaris kita untuk rapat pagi ini, lalu kita harus memformat jumlah unit, memeriksa sel rumus, dan menyimpan lembar kerja dengan nama cadangan baru!',
-      initialGrid: [
-        { colA: 'Kabel Fiber Optik (Meter)', colB: 'Elektronik', colC: 12500, colD: 'Gudang Utama', colE: 'Aman' },
-        { colA: 'Switch Hub 24-Port', colB: 'Jaringan', colC: 45, colD: 'Gudang B', colE: 'Perlu Restok' },
-        { colA: 'Server Rack 42U', colB: 'Perangkat', colC: 12, colD: 'Gudang C', colE: 'Aman' },
-        { colA: 'Router Gateway Dual-Band', colB: 'Jaringan', colC: 88, colD: 'Gudang A', colE: 'Aman' }
+      id: "wv-3",
+      title: "Surat Perjanjian Kerja Waktu Tertentu (PKWT) Standar Disnaker",
+      category: "Legal & PKWT HRD",
+      filename: "Perjanjian_Kerja_Waktu_Tertentu_PKWT_HRD.docx",
+      size: "37.8 KB",
+      badge: "⚖️ Standar Legal HRD",
+      rating: "4.9 ★★★★★",
+      pagesCount: "2 Halaman A4",
+      desc: "Draf kontrak kerja PKWT 12 bulan standar Kementerian Ketenagakerjaan: Pasal Masa Berlaku, Tugas & Tanggung Jawab, Waktu Kerja, Gaji & BPJS, Kerahasiaan Data (NDA), serta Tanda Tangan Bermaterai.",
+      windowTitle: "Perjanjian_Kerja_PKWT_HRD.docx",
+      headerTitle: "PT TEKNOLOGI NUSANTARA MANDIRI",
+      headerSubtitle: "PERJANJIAN KERJA WAKTU TERTENTU (PKWT)",
+      contact: "Nomor: 042/HRD-PKWT/TNM/III/2026",
+      sections: [
+        { title: "PASAL 1: JANGKA WAKTU KONTRAK", text: "Berlaku selama 12 bulan terhitung sejak 02 Maret 2026 s.d. 01 Maret 2027." },
+        { title: "PASAL 4: HAK UPAH & TUNJANGAN", text: "Upah pokok Rp 8.500.000/bulan + BPJS Ketenagakerjaan & Kesehatan." }
       ],
-      tasks: [
-        {
-          id: 'e3_step1',
-          name: 'Pilih Seluruh Data Lembar Kerja (Select All)',
-          instruction: 'Sorot seluruh area tabel inventaris barang!',
-          shortcut: 'Ctrl+A',
-          keys: ['ctrl', 'a'],
-          actionCode: 'excel_select_all',
-          targetLabel: 'Seluruh Kisi Inventaris',
-          babyLogic: 'Ctrl + A = Menyeleksi semua sel aktif sekaligus dalam satu jentikan jari!'
-        },
-        {
-          id: 'e3_step2',
-          name: 'Buat Grafik Visual Kilat (Instant Chart Sheet)',
-          instruction: 'Tekan F11 untuk menciptakan grafik kolom visual otomatis!',
-          shortcut: 'F11',
-          keys: ['f11'],
-          actionCode: 'create_chart',
-          targetLabel: 'Pembuatan Grafik Kolom',
-          babyLogic: 'F11 = Tongkat sihir pencipta grafik visual kilat dari data tabel!'
-        },
-        {
-          id: 'e3_step3',
-          name: 'Mode Edit Langsung Sel Aktif (Edit Cell)',
-          instruction: 'Buka mode edit teks di dalam sel tanpa menghapus isi!',
-          shortcut: 'F2',
-          keys: ['f2'],
-          actionCode: 'edit_cell',
-          targetLabel: 'Mode Edit Sel Aktif',
-          babyLogic: 'F2 = Masuk ke dalam isi sel untuk mengoreksi teks tanpa takut tertimpa!'
-        },
-        {
-          id: 'e3_step4',
-          name: 'Simpan Lembar Kerja Cadangan Baru (Save As)',
-          instruction: 'Tekan F12 untuk membuka dialog simpan sebagai nama berkas cadangan!',
-          shortcut: 'F12',
-          keys: ['f12'],
-          actionCode: 'excel_save_as',
-          targetLabel: 'Dialog Simpan Cadangan Baru',
-          babyLogic: 'F12 = Menyimpan berkas salinan baru sebagai arsip cadangan aman!'
-        }
-      ]
+      sealBadge: "LEGAL BINDING"
+    },
+    {
+      id: "wv-4",
+      title: "Dokumen SOP Tata Kelola Arsip & Data Digital Kantor",
+      category: "SOP & Prosedur",
+      filename: "SOP_Standar_Operasional_Prosedur_Kantor.docx",
+      size: "37.2 KB",
+      badge: "📋 Standar ISO Kantor",
+      rating: "4.8 ★★★★★",
+      pagesCount: "2 Halaman A4",
+      desc: "Dokumen baku Standar Operasional Prosedur: Lembar Pengesahan Manajer & Direksi, Riwayat Revisi Dokumen, Tujuan, Ruang Lingkup, dan Alur Prosedur Kerja Teknis.",
+      windowTitle: "SOP_Standar_Operasional_Prosedur.docx",
+      headerTitle: "STANDAR OPERASIONAL PROSEDUR (SOP)",
+      headerSubtitle: "TATA KELOLA ARSIP & KEAMANAN DATA DIGITAL",
+      contact: "No. Dokumen: SOP-IT-004-REV02 | Tanggal: 01 Jan 2026",
+      sections: [
+        { title: "1. TUJUAN OPERASIONAL", text: "Menjamin seluruh data dan dokumen perkantoran tersimpan rapi, terlindungi enkripsi, dan terbackup secara berkala." },
+        { title: "2. INSTRUKSI KERJA", bullets: ["Backup berkas tiap Jumat pukul 16.00 WIB", "Format penamaan: [TGL]_[DIVISI]_[DOKUMEN]"] }
+      ],
+      sealBadge: "ISO 9001 COMPLIANT"
+    },
+    {
+      id: "wv-5",
+      title: "Format Laporan Eksekutif Triwulan Direksi Perusahaan",
+      category: "Laporan Direksi",
+      filename: "Laporan_Eksekutif_Q1_2026.docx",
+      size: "37.3 KB",
+      badge: "📈 Laporan Direksi",
+      rating: "4.8 ★★★★★",
+      pagesCount: "3 Halaman A4",
+      desc: "Format laporan direksi: Cover Page Elegan, Ringkasan Eksekutif, Analisis Kinerja Bisnis, Evaluasi Kendala Operasional, dan Rekomendasi Strategis Q2.",
+      windowTitle: "Laporan_Eksekutif_Q1_2026.docx",
+      headerTitle: "LAPORAN KINERJA EKSEKUTIF TRIWULAN I 2026",
+      headerSubtitle: "Dewan Direksi PT Inovasi Nusantara",
+      contact: "Kuartal 1 (Januari - Maret 2026)",
+      sections: [
+        { title: "RINGKASAN EKSEKUTIF", text: "Pendapatan bertumbuh 24,5% year-on-year didorong oleh adopsi layanan digital dan efisiensi rantai pasok." },
+        { title: "REKOMENDASI STRATEGIS", text: "Perluasan ekspansi cabang wilayah Jawa Tengah dan peningkatan kapasitas server komputasi awan." }
+      ],
+      sealBadge: "CONFIDENTIAL"
+    },
+    {
+      id: "wv-6",
+      title: "Proposal Tender Pengadaan Infrastruktur Server & IT",
+      category: "Proposal Tender",
+      filename: "Proposal_Tender_Server_2026.docx",
+      size: "37.2 KB",
+      badge: "🏢 Proposal Tender",
+      rating: "4.7 ★★★★★",
+      pagesCount: "3 Halaman A4",
+      desc: "Format proposal penawaran proyek lelang: Latar Belakang Kebutuhan, Spesifikasi Teknis Server & Topologi Jaringan, Rincian Anggaran Biaya (RAB), dan Timeline Implementasi.",
+      windowTitle: "Proposal_Tender_Server_2026.docx",
+      headerTitle: "PROPOSAL TENDER PENGADAAN PERANGKAT SERVER",
+      headerSubtitle: "Pengadaan Komputer Server & Jaringan Terpadu",
+      contact: "Tahun Anggaran 2026",
+      sections: [
+        { title: "SPESIFIKASI INFRASTRUKTUR", text: "Dual Intel Xeon Scalable, 128GB ECC DDR5, Redundant Hot-Swap PSU, dan Enterprise SSD NVMe." },
+        { title: "ESTIMASI ANGGARAN (RAB)", text: "Total nilai penawaran Rp 285.000.000 (termasuk PPN 11% dan instalasi onsite)." }
+      ],
+      sealBadge: "DOKUMEN LELANG"
+    },
+    {
+      id: "wv-7",
+      title: "Nota Kesepahaman (MoU) Kemitraan Strategis Bisnis",
+      category: "Legal & MoU",
+      filename: "Perjanjian_MoU_Kemitraan_2026.docx",
+      size: "37.2 KB",
+      badge: "🤝 MoU Kemitraan",
+      rating: "4.8 ★★★★★",
+      pagesCount: "2 Halaman A4",
+      desc: "Format resmi Memorandum of Understanding (MoU) kerjasama bilateral: Hak dan Kewajiban Para Pihak, Skema Bagi Hasil, Penyelesaian Perselisihan, dan Klausul Kerahasiaan.",
+      windowTitle: "Perjanjian_MoU_Kemitraan.docx",
+      headerTitle: "NOTA KESEPAHAMAN (MEMORANDUM OF UNDERSTANDING)",
+      headerSubtitle: "Kerjasama Kemitraan Ekosistem Pembelajaran IT",
+      contact: "Nomor: 018/MoU/DIR-EXT/2026",
+      sections: [
+        { title: "PASAL 2: RUANG LINGKUP KERJASAMA", text: "Penyediaan modul ajar, sertifikasi kompetensi keahlian, dan penyaluran tenaga kerja siap pakai." },
+        { title: "PASAL 5: JANGKA WAKTU KEMITRAAN", text: "Berlaku efektif selama 3 (tiga) tahun kalender sejak ditandatangani." }
+      ],
+      sealBadge: "OFFICIAL PARTNER"
+    },
+    {
+      id: "wv-8",
+      title: "Dokumen Praktik Naskah Pintasan Word Windows Lengkap",
+      category: "Pintasan Keyboard",
+      filename: "Modul_Praktik_Pintasan_Word_Lengkap.docx",
+      size: "46.3 KB",
+      badge: "⌨️ Panduan Pintasan",
+      rating: "4.9 ★★★★★",
+      pagesCount: "5 Halaman A4",
+      desc: "Dokumen A4 terstruktur untuk melatih 55 pintasan keyboard Word: Pemformatan Teks (Tebal, Miring, Garis Bawah), Perataan Paragraf (Kiri, Tengah, Justify), Navigasi Kata & Halaman, dan Cetak Cepat.",
+      windowTitle: "Modul_Praktik_Pintasan_Word_Lengkap.docx",
+      headerTitle: "MODUL PRAKTIK RESMI PINTASAN KEYBOARD WORD",
+      headerSubtitle: "Panduan Latihan Langsung di Aplikasi Microsoft Word Desktop",
+      contact: "Akademi IT & Koding Kodi",
+      sections: [
+        { title: "MISI 1: PEMFORMATAN HURUF", text: "Praktikkan Ctrl+B (Tebal), Ctrl+I (Miring), Ctrl+U (Garis Bawah), Ctrl+D (Font Dialog)." },
+        { title: "MISI 2: PERATAAN PARAGRAF", text: "Praktikkan Ctrl+L (Kiri), Ctrl+E (Tengah), Ctrl+R (Kanan), Ctrl+J (Rata Kanan-Kiri)." }
+      ],
+      sealBadge: "PRAKTIK RESMI"
     }
   ];
 
-  // State Manajemen Game Pintasan (Self-contained & Aman dari Urutan Script)
-  const appState = window.SHORTCUT_STATE = window.SHORTCUT_STATE || {
-    shortcutCompleted: { excel: [], word: [] },
-    currentShortcutIdx: { excel: 0, word: 0 },
-    shortcutFilter: { excel: 'all', word: 'all' },
-    shortcutSearch: { excel: '', word: '' },
-    stars: 0,
-    // Project Mode State
-    activeStudioMode: { excel: 'project', word: 'project' },
-    currentProjectIdx: { excel: 0, word: 0 },
-    projectCompletedSteps: { excel: {}, word: {} },
-    // Game System State
-    projectGameState: {
-      excel: {
-        startTime: null,
-        timerInterval: null,
-        elapsedSeconds: 0,
-        score: 0,
-        combo: 0,
-        maxCombo: 0,
-        mistakes: 0,
-        correctCount: 0,
-        lastDetectedKeyString: 'Belum ada tombol ditekan',
-        lastMessage: 'Siap bermain! Tekan kombinasi tombol langsung di keyboard fisikmu atau rakit di Papan Pad Game bawah!',
-        lastMessageType: 'info',
-        isCompletedReportOpen: false,
-        virtualModifiers: new Set()
-      },
-      word: {
-        startTime: null,
-        timerInterval: null,
-        elapsedSeconds: 0,
-        score: 0,
-        combo: 0,
-        maxCombo: 0,
-        mistakes: 0,
-        correctCount: 0,
-        lastDetectedKeyString: 'Belum ada tombol ditekan',
-        lastMessage: 'Siap bermain! Tekan kombinasi tombol langsung di keyboard fisikmu atau rakit di Papan Pad Game bawah!',
-        lastMessageType: 'info',
-        isCompletedReportOpen: false,
-        virtualModifiers: new Set()
-      }
-    },
-    projectDocState: {
-      word: {
-        titleBold: false,
-        titleAlign: 'left',
-        bodyItalic: false,
-        bodyJustify: false,
-        recomUnderline: false,
-        saved: false,
-        findActive: false,
-        linkAdded: false,
-        copiedSummary: false,
-        pastedSummary: false,
-        printed: false,
-        replaced: false,
-        spellingChecked: false,
-        selectAll: false,
-        saveAsNew: false
-      },
-      excel: {
-        currencyFormatted: false,
-        percentFormatted: false,
-        autoSumDone: false,
-        tableCreated: false,
-        totalBold: false,
-        saved: false,
-        colHidden: false,
-        rowHidden: false,
-        dateInserted: false,
-        fillDown: false,
-        findActive: false,
-        selectAll: false,
-        chartCreated: false,
-        editCell: false,
-        saveAsNew: false
-      }
-    }
+  // Helper State
+  window.appState = window.appState || {};
+  appState.vaultFilter = appState.vaultFilter || { excel: "all", word: "all" };
+  appState.vaultSearch = appState.vaultSearch || { excel: "", word: "" };
+  appState.cheatFilter = appState.cheatFilter || { excel: "all", word: "all" };
+  appState.cheatSearch = appState.cheatSearch || { excel: "", word: "" };
+
+  window.getVaultCategories = function(mode) {
+    const list = mode === "excel" ? window.EXCEL_VAULT_FILES : window.WORD_VAULT_FILES;
+    const cats = new Set();
+    list.forEach(item => cats.add(item.category));
+    return ["all", ...Array.from(cats)];
   };
-  window.virtualPressedKeys = new Set();
 
-  // Helper Normalisasi Tombol
-  function normalizeKey(k) {
-    if (!k) return '';
-    k = k.toLowerCase();
-    if (k === 'control' || k === 'ctrl') return 'ctrl';
-    if (k === 'alt') return 'alt';
-    if (k === 'shift') return 'shift';
-    if (k === 'enter' || k === 'return') return 'enter';
-    if (k === 'arrowup' || k === 'up') return 'arrowup';
-    if (k === 'arrowdown' || k === 'down') return 'arrowdown';
-    if (k === 'arrowleft' || k === 'left') return 'arrowleft';
-    if (k === 'arrowright' || k === 'right') return 'arrowright';
-    if (k === 'space' || k === ' ') return 'space';
-    return k;
-  }
+  window.getFilteredVaultFiles = function(mode) {
+    const list = mode === "excel" ? window.EXCEL_VAULT_FILES : window.WORD_VAULT_FILES;
+    const cat = appState.vaultFilter[mode] || "all";
+    const q = (appState.vaultSearch[mode] || "").toLowerCase().trim();
 
-  // Timer Management
-  function ensureGameTimer(mode) {
-    const gs = appState.projectGameState[mode];
-    if (!gs.startTime) {
-      gs.startTime = Date.now();
-      if (!gs.timerInterval) {
-        gs.timerInterval = setInterval(() => {
-          gs.elapsedSeconds = Math.floor((Date.now() - gs.startTime) / 100) / 10;
-          const timerEl = document.getElementById(`hud-timer-${mode}`);
-          if (timerEl) {
-            const mins = Math.floor(gs.elapsedSeconds / 60);
-            const secs = (gs.elapsedSeconds % 60).toFixed(1);
-            timerEl.textContent = `${String(mins).padStart(2, '0')}:${String(secs).padStart(4, '0')}`;
-          }
-        }, 100);
-      }
-    }
-  }
+    return list.filter(item => {
+      const matchCat = (cat === "all") || (item.category === cat);
+      const matchQ = !q ||
+        item.title.toLowerCase().includes(q) ||
+        item.desc.toLowerCase().includes(q) ||
+        item.filename.toLowerCase().includes(q) ||
+        item.category.toLowerCase().includes(q);
+      return matchCat && matchQ;
+    });
+  };
 
-  function stopGameTimer(mode) {
-    const gs = appState.projectGameState[mode];
-    if (gs.timerInterval) {
-      clearInterval(gs.timerInterval);
-      gs.timerInterval = null;
-    }
-  }
-
-  // Submode Switcher
-  window.switchStudioSubmode = function(mode, submode) {
+  window.filterVaultCategory = function(mode, cat) {
     if (window.sfx) sfx.playClick();
-    appState.activeStudioMode[mode] = submode;
+    appState.vaultFilter[mode] = cat;
     window.renderShortcutStudio(mode);
   };
 
-  // Switch Proyek Aktif
-  window.switchProject = function(mode, idx) {
-    if (window.sfx) sfx.playClick();
-    appState.currentProjectIdx[mode] = idx;
-    resetGameSessionState(mode);
+  window.searchVaultFiles = function(mode, val) {
+    appState.vaultSearch[mode] = val;
     window.renderShortcutStudio(mode);
   };
 
-  // Reset Sesi Game
-  function resetGameSessionState(mode) {
-    stopGameTimer(mode);
-    const gs = appState.projectGameState[mode];
-    gs.startTime = null;
-    gs.elapsedSeconds = 0;
-    gs.score = 0;
-    gs.combo = 0;
-    gs.maxCombo = 0;
-    gs.mistakes = 0;
-    gs.correctCount = 0;
-    gs.lastDetectedKeyString = 'Belum ada tombol ditekan';
-    gs.lastMessage = 'Siap bermain! Tekan tombol di keyboard fisikmu atau rakit di Papan Pad Game bawah!';
-    gs.lastMessageType = 'info';
-    gs.isCompletedReportOpen = false;
-    gs.virtualModifiers.clear();
-  }
+  window.getShortcutCategories = function(mode) {
+    const list = mode === "excel" ? window.EXCEL_SHORTCUTS : window.WORD_SHORTCUTS;
+    const cats = new Set();
+    list.forEach(item => cats.add(item.category));
+    return ["all", ...Array.from(cats)];
+  };
 
-  // Reset Proyek
-  window.resetCurrentProject = function(mode) {
+  window.getFilteredShortcuts = function(mode) {
+    const list = mode === "excel" ? window.EXCEL_SHORTCUTS : window.WORD_SHORTCUTS;
+    const cat = appState.cheatFilter[mode] || "all";
+    const q = (appState.cheatSearch[mode] || "").toLowerCase().trim();
+
+    return list.filter(item => {
+      const matchCat = (cat === "all") || (item.category === cat);
+      const matchQ = !q ||
+        item.key.toLowerCase().includes(q) ||
+        item.action.toLowerCase().includes(q) ||
+        item.scenario.toLowerCase().includes(q) ||
+        item.nalarBayiKodi.toLowerCase().includes(q);
+      return matchCat && matchQ;
+    });
+  };
+
+  window.filterShortcutCheatCategory = function(mode, cat) {
     if (window.sfx) sfx.playClick();
-    const projList = mode === 'word' ? window.WORD_PROJECTS : window.EXCEL_PROJECTS;
-    const project = projList[appState.currentProjectIdx[mode]];
-    if (project) {
-      if (appState.projectCompletedSteps[mode]) {
-        appState.projectCompletedSteps[mode][project.id] = [];
-      }
-      if (mode === 'word') {
-        appState.projectDocState.word = {
-          titleBold: false, titleAlign: 'left', bodyItalic: false, bodyJustify: false,
-          recomUnderline: false, saved: false, findActive: false, linkAdded: false,
-          copiedSummary: false, pastedSummary: false, printed: false, replaced: false,
-          spellingChecked: false, selectAll: false, saveAsNew: false
-        };
-      } else {
-        appState.projectDocState.excel = {
-          currencyFormatted: false, percentFormatted: false, autoSumDone: false, tableCreated: false,
-          totalBold: false, saved: false, colHidden: false, rowHidden: false, dateInserted: false,
-          fillDown: false, findActive: false, selectAll: false, chartCreated: false, editCell: false,
-          saveAsNew: false
-        };
-      }
-    }
-    resetGameSessionState(mode);
+    appState.cheatFilter[mode] = cat;
     window.renderShortcutStudio(mode);
   };
 
-  // Aksi Perubahan Dokumen Kantor Berdasarkan actionCode
-  window.applyProjectAction = function(mode, actionCode) {
-    const docState = appState.projectDocState[mode];
-    if (mode === 'word') {
-      if (actionCode === 'title_bold') docState.titleBold = true;
-      if (actionCode === 'title_center') docState.titleAlign = 'center';
-      if (actionCode === 'body_italic') docState.bodyItalic = true;
-      if (actionCode === 'body_justify') docState.bodyJustify = true;
-      if (actionCode === 'recom_underline') docState.recomUnderline = true;
-      if (actionCode === 'doc_save') {
-        docState.saved = true;
-        setTimeout(() => { docState.saved = false; const el = document.getElementById('word-save-toast'); if (el) el.style.display = 'none'; }, 3000);
-      }
-      if (actionCode === 'find_anggaran') docState.findActive = true;
-      if (actionCode === 'insert_hyperlink') docState.linkAdded = true;
-      if (actionCode === 'copy_summary') docState.copiedSummary = true;
-      if (actionCode === 'paste_summary') docState.pastedSummary = true;
-      if (actionCode === 'doc_print') docState.printed = true;
-      if (actionCode === 'replace_dialog') docState.replaced = true;
-      if (actionCode === 'spelling_check') docState.spellingChecked = true;
-      if (actionCode === 'select_all') docState.selectAll = true;
-      if (actionCode === 'save_as_new') docState.saveAsNew = true;
-    } else {
-      if (actionCode === 'format_currency') docState.currencyFormatted = true;
-      if (actionCode === 'format_percent') docState.percentFormatted = true;
-      if (actionCode === 'autosum_total') docState.autoSumDone = true;
-      if (actionCode === 'create_table') docState.tableCreated = true;
-      if (actionCode === 'bold_total') docState.totalBold = true;
-      if (actionCode === 'excel_save') {
-        docState.saved = true;
-        setTimeout(() => { docState.saved = false; const el = document.getElementById('excel-save-toast'); if (el) el.style.display = 'none'; }, 3000);
-      }
-      if (actionCode === 'hide_column') docState.colHidden = true;
-      if (actionCode === 'hide_row') docState.rowHidden = true;
-      if (actionCode === 'insert_date') docState.dateInserted = true;
-      if (actionCode === 'fill_down') docState.fillDown = true;
-      if (actionCode === 'excel_find') docState.findActive = true;
-      if (actionCode === 'excel_select_all') docState.selectAll = true;
-      if (actionCode === 'create_chart') docState.chartCreated = true;
-      if (actionCode === 'edit_cell') docState.editCell = true;
-      if (actionCode === 'excel_save_as') docState.saveAsNew = true;
-    }
+  window.searchShortcutCheat = function(mode, val) {
+    appState.cheatSearch[mode] = val;
+    window.renderShortcutStudio(mode);
   };
 
   // =========================================================================
-  // SISTEM PENGUJIAN KOMBINASI TOMBOL & GAMEPLAY NYATA (BUKAN KLIK BIASA!)
+  // RENDERER THUMBNAIL REALISTIS: EXCEL & WORD
   // =========================================================================
-  window.testProjectKeyCombination = function(mode, pressedKeysList, sourceLabel) {
-    ensureGameTimer(mode);
-    const gs = appState.projectGameState[mode];
-    const projList = mode === 'word' ? window.WORD_PROJECTS : window.EXCEL_PROJECTS;
-    const project = projList[appState.currentProjectIdx[mode]];
-    if (!project) return;
 
-    if (!appState.projectCompletedSteps[mode]) appState.projectCompletedSteps[mode] = {};
-    if (!appState.projectCompletedSteps[mode][project.id]) appState.projectCompletedSteps[mode][project.id] = [];
-    const completed = appState.projectCompletedSteps[mode][project.id];
+  function renderExcelMiniThumbnailHtml(file) {
+    const rowsHtml = file.rows.map((r, idx) => `
+      <tr>
+        <td class="mini-row-num">${idx + 1}</td>
+        <td>${r[0]}</td>
+        <td>${r[1]}</td>
+        <td>${r[2]}</td>
+        <td class="num-cell">${r[3]}</td>
+        <td class="num-cell">${r[4]}</td>
+      </tr>
+    `).join("");
 
-    // Tugas target yang harus dikerjakan berikutnya
-    const pendingTasks = project.tasks.filter(t => !completed.includes(t.id));
-    if (pendingTasks.length === 0) return;
-    const targetTask = pendingTasks[0];
-
-    // Format tombol untuk display HUD
-    const displayPressed = pressedKeysList.map(k => k.toUpperCase()).join(' + ');
-    gs.lastDetectedKeyString = displayPressed;
-
-    // Evaluasi kecocokan tombol
-    const normPressed = pressedKeysList.map(k => normalizeKey(k));
-    const isCtrl = normPressed.includes('ctrl');
-    const isShift = normPressed.includes('shift');
-    const isAlt = normPressed.includes('alt');
-
-    let isMatch = false;
-
-    // 1. Currency (Ctrl+Shift+$ atau Ctrl+Shift+4)
-    if (targetTask.actionCode === 'format_currency') {
-      if (isCtrl && isShift && (normPressed.includes('$') || normPressed.includes('4'))) isMatch = true;
-    }
-    // 2. Percent (Ctrl+Shift+% atau Ctrl+Shift+5)
-    else if (targetTask.actionCode === 'format_percent') {
-      if (isCtrl && isShift && (normPressed.includes('%') || normPressed.includes('5'))) isMatch = true;
-    }
-    // 3. AutoSum (Alt+=)
-    else if (targetTask.actionCode === 'autosum_total') {
-      if (isAlt && (normPressed.includes('=') || normPressed.includes('+'))) isMatch = true;
-    }
-    // 4. Hide Col (Ctrl+0)
-    else if (targetTask.actionCode === 'hide_column') {
-      if (isCtrl && normPressed.includes('0')) isMatch = true;
-    }
-    // 5. Hide Row (Ctrl+9)
-    else if (targetTask.actionCode === 'hide_row') {
-      if (isCtrl && normPressed.includes('9')) isMatch = true;
-    }
-    // 6. Insert Date (Ctrl+;)
-    else if (targetTask.actionCode === 'insert_date') {
-      if (isCtrl && (normPressed.includes(';') || normPressed.includes(':'))) isMatch = true;
-    }
-    // 7. Function keys: F11, F12, F7, F2
-    else if (targetTask.actionCode === 'create_chart' && normPressed.includes('f11')) isMatch = true;
-    else if ((targetTask.actionCode === 'save_as_new' || targetTask.actionCode === 'excel_save_as') && normPressed.includes('f12')) isMatch = true;
-    else if (targetTask.actionCode === 'spelling_check' && normPressed.includes('f7')) isMatch = true;
-    else if (targetTask.actionCode === 'edit_cell' && normPressed.includes('f2')) isMatch = true;
-    // 8. Standard Ctrl+Key shortcuts
-    else if (isCtrl && !isShift && !isAlt) {
-      const targetLetter = targetTask.keys.find(k => k !== 'ctrl');
-      if (targetLetter && normPressed.includes(targetLetter)) isMatch = true;
-    }
-
-    if (isMatch) {
-      // ✅ SUKSES! HITUNG POIN & COMBO
-      gs.combo += 1;
-      if (gs.combo > gs.maxCombo) gs.maxCombo = gs.combo;
-      gs.correctCount += 1;
-      const pointsGained = 100 + (gs.combo * 25);
-      gs.score += pointsGained;
-
-      completed.push(targetTask.id);
-      appState.stars = (appState.stars || 0) + 1;
-      if (window.saveProgress) saveProgress();
-
-      window.applyProjectAction(mode, targetTask.actionCode);
-      if (window.sfx) sfx.playSuccess();
-
-      gs.lastMessageType = 'success';
-      gs.lastMessage = `🎉 TEPAT SEKALI! Pintasan [${targetTask.shortcut}] berhasil dieksekusi via ${sourceLabel}! (+${pointsGained} PTS) 🔥 Combo x${gs.combo}!`;
-
-      // Jika seluruh tugas di proyek ini sudah rampung
-      if (completed.length >= project.tasks.length) {
-        stopGameTimer(mode);
-        gs.isCompletedReportOpen = true;
-        setKodiSpeech(
-          "🏆 LUAR BIASA! PROYEK KANTOR SELESAI!",
-          `Kamu menyelesaikan seluruh permintaan bos dengan total skor ${gs.score} Poin dalam waktu ${gs.elapsedSeconds.toFixed(1)} detik!`
-        );
-      } else {
-        setKodiSpeech(
-          `Pintasan [${targetTask.shortcut}] Sukses!`,
-          `Hebat! Dokumen langsung bertransformasi. Lanjut ke tugas berikutnya: ${pendingTasks[1]?.name || 'Terakhir'}!`
-        );
-      }
-
-      gs.virtualModifiers.clear();
-      window.renderShortcutStudio(mode);
-    } else {
-      // ❌ SALAH! BREAK COMBO
-      gs.combo = 0;
-      gs.mistakes += 1;
-      if (window.sfx) sfx.playWrong();
-      gs.lastMessageType = 'error';
-      gs.lastMessage = `❌ Tombol terdeteksi [${displayPressed || 'Kosong'}]. Bos meminta pintasan [${targetTask.shortcut}] untuk: "${targetTask.name}". Ayo coba lagi! 🍼`;
-      
-      setKodiSpeech(
-        "Kombinasi Tombol Belum Tepat!",
-        `Yang ditekan tadi [${displayPressed}]. Ingat Nalar Bayi Kodi: ${targetTask.babyLogic}`
-      );
-      window.renderShortcutStudio(mode);
-    }
-  };
-
-  // Papan Rakit Tombol Virtual (Touchscreen / Mouse Keyboard Simulator Pad)
-  window.toggleProjectVirtualModifier = function(mode, modKey) {
-    if (window.sfx) sfx.playClick();
-    const gs = appState.projectGameState[mode];
-    if (gs.virtualModifiers.has(modKey)) {
-      gs.virtualModifiers.delete(modKey);
-    } else {
-      gs.virtualModifiers.add(modKey);
-    }
-    window.renderShortcutStudio(mode);
-  };
-
-  window.pressProjectVirtualActionKey = function(mode, keyName) {
-    const gs = appState.projectGameState[mode];
-    const keysToSend = Array.from(gs.virtualModifiers);
-    keysToSend.push(keyName.toLowerCase());
-    window.testProjectKeyCombination(mode, keysToSend, 'Papan Pad Interaktif');
-  };
-
-  // Close Modals
-  window.closeOfficeModal = function(mode, modalType) {
-    if (window.sfx) sfx.playClick();
-    if (mode === 'word') {
-      if (modalType === 'print') appState.projectDocState.word.printed = false;
-      if (modalType === 'saveAs') appState.projectDocState.word.saveAsNew = false;
-      if (modalType === 'report') appState.projectGameState.word.isCompletedReportOpen = false;
-    } else {
-      if (modalType === 'chart') appState.projectDocState.excel.chartCreated = false;
-      if (modalType === 'saveAs') appState.projectDocState.excel.saveAsNew = false;
-      if (modalType === 'report') appState.projectGameState.excel.isCompletedReportOpen = false;
-    }
-    window.renderShortcutStudio(mode);
-  };
-
-  // Tangani Tombol Fisik Keyboard pada Mode Proyek
-  function handleProjectPhysicalKey(mode, e) {
-    const projList = mode === 'word' ? window.WORD_PROJECTS : window.EXCEL_PROJECTS;
-    const project = projList[appState.currentProjectIdx[mode]];
-    if (!project) return;
-
-    // Kumpulkan tombol fisik yang ditekan
-    const keys = [];
-    if (e.ctrlKey || e.metaKey) keys.push('ctrl');
-    if (e.altKey) keys.push('alt');
-    if (e.shiftKey) keys.push('shift');
-
-    let cleanKey = e.key.toLowerCase();
-    if (cleanKey === ' ') cleanKey = 'space';
-
-    if (!['control', 'ctrl', 'alt', 'shift', 'meta'].includes(cleanKey)) {
-      keys.push(cleanKey);
-      e.preventDefault();
-      window.testProjectKeyCombination(mode, keys, 'Keyboard Fisik');
-    }
-  }
-
-  // =========================================================================
-  // RENDERER MOCKUP MS WORD NYATA
-  // =========================================================================
-  function renderWordOfficeMockup(project, docState, completed) {
-    const isSaved = docState.saved;
-    const isPrinted = docState.printed;
-    const isReplaced = docState.replaced;
-    const isSpelling = docState.spellingChecked;
-    const isSaveAs = docState.saveAsNew;
-
-    // Cek tugas aktif untuk highlight target dalam dokumen
-    const pendingTasks = project.tasks.filter(t => !completed.includes(t.id));
-    const activeTask = pendingTasks[0];
-    const isTitleTarget = activeTask && (activeTask.actionCode === 'title_bold' || activeTask.actionCode === 'title_center');
-    const isItalicTarget = activeTask && activeTask.actionCode === 'body_italic';
-    const isJustifyTarget = activeTask && activeTask.actionCode === 'body_justify';
-    const isRecomTarget = activeTask && activeTask.actionCode === 'recom_underline';
+    const pillsHtml = file.sheetPills.map((p, idx) => `
+      <span class="mini-tab ${idx === 0 ? 'active' : ''}">${p}</span>
+    `).join("");
 
     return `
-      <div class="office-window-mockup word-window">
-        <!-- TITLE BAR WORD -->
-        <div class="office-title-bar word-title-bar">
-          <div class="office-title-left">
-            <span class="office-app-badge word-badge">W</span>
-            <span class="office-autosave-badge ${isSaved ? 'saved' : ''}">
-              ${isSaved ? '✅ Tersimpan' : '💾 AutoSave: Aktif'}
-            </span>
-            <span class="office-filename">${project.docFilename} — Word</span>
+      <div class="excel-mini-thumbnail" title="Pratinjau Workbook Excel Asli">
+        <div class="mini-excel-ribbon">
+          <div class="mini-ribbon-left">
+            <span class="mini-app-icon">📊</span>
+            <span class="mini-window-title">${file.ribbonTitle}</span>
           </div>
-          <div class="office-window-controls">
-            <span>🗕</span>
-            <span>🗖</span>
-            <span>✕</span>
+          <div class="mini-window-dots">
+            <span></span><span></span><span></span>
           </div>
         </div>
-
-        <!-- RIBBON TABS -->
-        <div class="office-ribbon-tabs word-ribbon-tabs">
-          <span class="ribbon-tab-item active">Beranda (Home)</span>
-          <span class="ribbon-tab-item">Sisipkan (Insert)</span>
-          <span class="ribbon-tab-item">Tata Letak (Layout)</span>
-          <span class="ribbon-tab-item">Referensi</span>
-          <span class="ribbon-tab-item">Tinjau (Review)</span>
-          <span class="ribbon-tab-item">Tampilan (View)</span>
+        <div class="mini-formula-bar">
+          <span class="mini-coord">A1</span>
+          <span class="mini-fx">fx</span>
+          <span class="mini-formula-text">${file.formulaSnippet}</span>
         </div>
+        <div class="mini-grid-container">
+          <table class="mini-grid-table">
+            <thead>
+              <tr>
+                <th class="mini-row-th">#</th>
+                ${file.headers.map(h => `<th>${h}</th>`).join("")}
+              </tr>
+            </thead>
+            <tbody>
+              ${rowsHtml}
+            </tbody>
+          </table>
+        </div>
+        <div class="mini-sheet-tabs">
+          ${pillsHtml}
+        </div>
+      </div>
+    `;
+  }
 
-        <!-- RIBBON TOOLBAR -->
-        <div class="office-ribbon-toolbar">
-          <div class="ribbon-group">
-            <div class="ribbon-tools-row">
-              <span class="office-tool-select">Calibri (Body)</span>
-              <span class="office-tool-select" style="width: 44px;">12 pt</span>
-            </div>
-            <div class="ribbon-tools-row">
-              <button class="office-tool-btn ${docState.titleBold ? 'active' : ''}" title="Tebal (Ctrl+B)"><b>B</b></button>
-              <button class="office-tool-btn ${docState.bodyItalic ? 'active' : ''}" title="Miring (Ctrl+I)"><i>I</i></button>
-              <button class="office-tool-btn ${docState.recomUnderline ? 'active' : ''}" title="Garis Bawah (Ctrl+U)"><u>U</u></button>
-              <span class="tool-sep">|</span>
-              <button class="office-tool-btn ${docState.titleAlign === 'left' ? 'active' : ''}" title="Rata Kiri (Ctrl+L)">≡ Left</button>
-              <button class="office-tool-btn ${docState.titleAlign === 'center' ? 'active' : ''}" title="Rata Tengah (Ctrl+E)">≡ Center</button>
-              <button class="office-tool-btn ${docState.bodyJustify ? 'active' : ''}" title="Rata Kanan-Kiri (Ctrl+J)">≣ Justify</button>
-            </div>
-            <div class="ribbon-group-label">Font & Paragraf</div>
+  function renderWordMiniThumbnailHtml(file) {
+    const sectionsHtml = file.sections.map(s => `
+      <div class="mini-paper-section-title">${s.title}</div>
+      ${s.text ? `<div class="mini-paper-text">${s.text}</div>` : ""}
+      ${s.bullets ? s.bullets.map(b => `<div class="mini-paper-bullet"><span>•</span> ${b}</div>`).join("") : ""}
+    `).join("");
+
+    return `
+      <div class="word-mini-thumbnail" title="Pratinjau Dokumen Naskah Word A4">
+        <div class="mini-word-ribbon">
+          <div class="mini-ribbon-left">
+            <span class="mini-app-icon">📝</span>
+            <span class="mini-window-title">${file.windowTitle}</span>
           </div>
-
-          <div class="ribbon-group">
-            <div class="ribbon-tools-row">
-              <button class="office-tool-btn ${docState.findActive ? 'active' : ''}" title="Cari (Ctrl+F)">🔍 Cari</button>
-              <button class="office-tool-btn ${docState.replaced ? 'active' : ''}" title="Ganti (Ctrl+H)">🔄 Ganti</button>
-              <button class="office-tool-btn ${docState.selectAll ? 'active' : ''}" title="Pilih Semua (Ctrl+A)">📑 Pilih</button>
-            </div>
-            <div class="ribbon-group-label">Pengeditan</div>
+          <div class="mini-window-dots">
+            <span></span><span></span><span></span>
           </div>
         </div>
-
-        <!-- RULER WORD -->
-        <div class="office-ruler-bar">
-          <div class="ruler-marker-left">▼</div>
-          <div class="ruler-ticks">| · · · 1 · · · 2 · · · 3 · · · 4 · · · 5 · · · 6 · · · 7 · · · 8 · · · 9 · · · 10 · · · 11 · · · 12 · · · 13 · · · 14 · · · 15 · · · 16 · · · 17</div>
-          <div class="ruler-marker-right">▲</div>
-        </div>
-
-        <!-- CANVAS DOKUMEN A4 WORD (TRANSFORMASI VISUAL NYATA) -->
-        <div class="office-canvas-viewport">
-          <div class="word-paper-sheet ${docState.selectAll ? 'doc-selected' : ''}">
-            <!-- Save Toast -->
-            <div id="word-save-toast" class="office-save-toast" style="display: ${isSaved ? 'flex' : 'none'};">
-              <span>💾 Berkas berhasil disimpan ke memori! (Ctrl+S Berhasil)</span>
+        <div class="mini-paper-viewport">
+          <div class="mini-paper-sheet">
+            <div class="mini-paper-header">
+              <div class="mini-paper-seal-icon">🏛️</div>
+              <div>
+                <div class="mini-paper-name">${file.headerTitle}</div>
+                <div class="mini-paper-role">${file.headerSubtitle}</div>
+                <div class="mini-paper-contact">${file.contact}</div>
+              </div>
             </div>
-
-            <!-- Find Overlay Banner -->
-            ${docState.findActive ? `
-              <div class="word-search-panel">
-                <span>🔍 <b>Pencarian Berkas:</b> Menemukan 1 kata kunci "Anggaran"</span>
-                <span class="badge-match">1 Hasil</span>
-              </div>
-            ` : ''}
-
-            <!-- Replace Overlay Banner -->
-            ${isReplaced ? `
-              <div class="word-replace-panel">
-                <span>🔄 <b>Operasi Ganti Selesai:</b> Mengganti "Pihak Pertama" ➡️ <b>PT Inovasi Maju</b></span>
-              </div>
-            ` : ''}
-
-            <!-- Spelling Overlay Banner -->
-            ${isSpelling ? `
-              <div class="word-spelling-panel">
-                <span>✅ <b>Pemeriksaan Ejaan F7:</b> Seluruh tata bahasa dan tanda baca telah diverifikasi sempurna!</span>
-              </div>
-            ` : ''}
-
-            <!-- JUDUL DOKUMEN REALTIME DENGAN HIGHLIGHT TARGET -->
-            <div class="word-doc-title-wrapper ${isTitleTarget ? 'doc-element-target-pulse' : ''}">
-              ${isTitleTarget ? `
-                <div class="doc-target-focus-pill">
-                  🎯 TARGET AKTIF SEKARANG: [${activeTask.name}] ➡️ Tekan ${activeTask.shortcut}!
-                </div>
-              ` : ''}
-              <h2 class="word-doc-title ${docState.titleBold ? 'is-bold' : ''}" style="text-align: ${docState.titleAlign};">
-                ${project.initialDoc.title}
-              </h2>
-            </div>
-
-            <!-- SUBTITLE -->
-            <div class="word-doc-subtitle" style="text-align: ${docState.titleAlign};">
-              ${project.initialDoc.subTitle}
-            </div>
-
-            <hr class="word-doc-divider">
-
-            <!-- PARAGRAF 1 REALTIME -->
-            <div class="${isJustifyTarget ? 'doc-element-target-pulse' : ''}">
-              ${isJustifyTarget ? `
-                <div class="doc-target-focus-pill">
-                  🎯 TARGET AKTIF SEKARANG: Rapikan Tepi Paragraf ➡️ Tekan Ctrl+J!
-                </div>
-              ` : ''}
-              <p class="word-doc-par" style="text-align: ${docState.bodyJustify ? 'justify' : 'left'};">
-                ${project.initialDoc.par1
-                  .replace('Artificial Intelligence', `<span class="word-term-italic ${docState.bodyItalic ? 'is-italic' : ''} ${isItalicTarget ? 'doc-term-target-pulse' : ''}">Artificial Intelligence</span>`)
-                  .replace('Anggaran Belanja Pokok', `<mark class="word-find-mark ${docState.findActive ? 'is-highlighted' : ''}">Anggaran Belanja Pokok</mark>`)
-                  .replace('Pihak Pertama', isReplaced ? '<b style="color: #2563eb;">PT Inovasi Maju Nusantara</b>' : 'Pihak Pertama')
-                }
-              </p>
-            </div>
-
-            <!-- TAUTAN HYPERLINK (PROJEK 2) -->
-            ${docState.linkAdded ? `
-              <div class="word-hyperlink-box">
-                🔗 <b>Tautan Resmi:</b> <a href="javascript:void(0)" class="word-blue-link">https://portal-pengadaan.go.id/spesifikasi-server-2026</a>
-              </div>
-            ` : ''}
-
-            <!-- PARAGRAF 2 / REKOMENDASI REALTIME -->
-            <div class="${isRecomTarget ? 'doc-element-target-pulse' : ''}">
-              ${isRecomTarget ? `
-                <div class="doc-target-focus-pill">
-                  🎯 TARGET AKTIF: Garis Bawahi Rekomendasi ➡️ Tekan Ctrl+U!
-                </div>
-              ` : ''}
-              <p class="word-doc-par" style="text-align: ${docState.bodyJustify ? 'justify' : 'left'};">
-                ${project.initialDoc.par2
-                  .replace('REKOMENDASI DIREKSI:', `<span class="word-recom-line ${docState.recomUnderline ? 'is-underlined' : ''}">REKOMENDASI DIREKSI:</span>`)
-                  .replace('Pihak Pertama', isReplaced ? '<b style="color: #2563eb;">PT Inovasi Maju Nusantara</b>' : 'Pihak Pertama')
-                }
-              </p>
-            </div>
-
-            <!-- PARAGRAF PASTE DARI RINGKASAN (PROJEK 2) -->
-            ${docState.pastedSummary ? `
-              <div class="word-pasted-summary-box">
-                <b>📋 Ringkasan Penutup (Hasil Tempel Ctrl+V):</b>
-                <div>Dokumen arsitektur komputasi awan berkapasitas tinggi ini siap disahkan oleh Pejabat Pembuat Komitmen (PPK).</div>
-              </div>
-            ` : ''}
-
-            <div class="word-doc-signature-area">
-              <div class="sig-block">
-                Mengetahui,<br>
-                <b>${project.client}</b><br>
-                <span>${project.clientRole}</span>
-              </div>
+            <div class="mini-paper-divider"></div>
+            ${sectionsHtml}
+            <div class="mini-paper-seal">
+              <span class="seal-icon">🏆</span>
+              <span class="seal-text">${file.sealBadge}</span>
             </div>
           </div>
         </div>
-
-        <!-- MODAL-MODAL -->
-        ${isPrinted ? `
-          <div class="office-modal-overlay">
-            <div class="office-modal-box">
-              <div class="office-modal-header word-theme">
-                <span>🖨️ Kotak Dialog Cetak (Print Preview - Ctrl+P)</span>
-                <button onclick="closeOfficeModal('word', 'print')">✕</button>
-              </div>
-              <div class="office-modal-body">
-                <p><b>Printer:</b> HP LaserJet Enterprise M608 (Siap Cetak)</p>
-                <div class="print-mini-preview">📄 Dokumen "${project.docFilename}" siap dicetak!</div>
-              </div>
-              <div class="office-modal-footer">
-                <button class="btn-primary" style="background: #2563eb;" onclick="closeOfficeModal('word', 'print')">Tutup & Lanjutkan</button>
-              </div>
-            </div>
-          </div>
-        ` : ''}
-
-        ${isSaveAs ? `
-          <div class="office-modal-overlay">
-            <div class="office-modal-box">
-              <div class="office-modal-header word-theme">
-                <span>💾 Simpan Sebagai Cadangan Baru (Save As - F12)</span>
-                <button onclick="closeOfficeModal('word', 'saveAs')">✕</button>
-              </div>
-              <div class="office-modal-body">
-                <p><b>Berkas Baru:</b> [ARSIP-FINAL]_${project.docFilename}</p>
-                <div class="alert-box success">✅ Salinan cadangan resmi tersimpan aman!</div>
-              </div>
-              <div class="office-modal-footer">
-                <button class="btn-primary" style="background: #2563eb;" onclick="closeOfficeModal('word', 'saveAs')">Tutup</button>
-              </div>
-            </div>
-          </div>
-        ` : ''}
-
-        <!-- WORD STATUS BAR -->
-        <div class="office-status-bar word-status-bar">
-          <div class="status-left">
-            <span>Halaman 1 dari 1</span>
-            <span>235 Kata</span>
-            <span>Bahasa Indonesia</span>
-          </div>
-          <div class="status-right">
-            <span>Tata Letak Cetak</span>
-            <span>100% ➖ 🎚️ ➕</span>
-          </div>
+        <div class="mini-word-status">
+          <span>Halaman 1 dari ${file.pagesCount.split(' ')[0] || '1'}</span>
+          <span>Bahasa Indonesia</span>
+          <span>100% 🎚️</span>
         </div>
       </div>
     `;
   }
 
   // =========================================================================
-  // RENDERER MOCKUP MS EXCEL NYATA
+  // RENDER STUDIO FUNGSI UTAMA (BEBAS GAME, LEBAR MENYEBAR KE KANAN-KIRI)
   // =========================================================================
-  function renderExcelOfficeMockup(project, docState, completed) {
-    const isSaved = docState.saved;
-    const isChart = docState.chartCreated;
-    const isSaveAs = docState.saveAsNew;
-    const isCurrency = docState.currencyFormatted;
-    const isPercent = docState.percentFormatted;
-    const isTable = docState.tableCreated;
-    const isTotalSum = docState.autoSumDone;
-    const isTotalBold = docState.totalBold;
-    const isColHidden = docState.colHidden;
-    const isRowHidden = docState.rowHidden;
-    const isDate = docState.dateInserted;
-    const isFillDown = docState.fillDown;
 
-    function formatMoney(num) {
-      if (!isCurrency) return num.toLocaleString('id-ID');
-      return 'Rp ' + num.toLocaleString('id-ID');
-    }
+  window.renderShortcutStudio = function(mode) {
+    const containerId = mode === "excel" ? "shortcut-excel-content-area" : "shortcut-word-content-area";
+    const container = document.getElementById(containerId);
+    if (!container) return;
 
-    function formatMargin(num) {
-      if (!isPercent) return num;
-      return (Math.round(num * 100)) + '%';
-    }
+    const isWord = (mode === "word");
+    const appTitle = isWord ? "Microsoft Word" : "Microsoft Excel";
+    const appExt = isWord ? ".docx" : ".xlsx";
+    const themeColor = isWord ? "#2563eb" : "#107c41";
+    const themeLight = isWord ? "#38bdf8" : "#10b981";
+    const heroTile = isWord ? "tile_3d_02.png" : "tile_3d_08.png";
 
-    const totalC = project.initialGrid.reduce((acc, row) => acc + (typeof row.colC === 'number' ? row.colC : 0), 0);
+    const vaultFiles = window.getFilteredVaultFiles(mode);
+    const vaultCategories = window.getVaultCategories(mode);
+    const currentVaultCat = appState.vaultFilter[mode] || "all";
+    const currentVaultSearch = appState.vaultSearch[mode] || "";
 
-    // Cek target aktif
-    const pendingTasks = project.tasks.filter(t => !completed.includes(t.id));
-    const activeTask = pendingTasks[0];
-    const isCurrencyTarget = activeTask && activeTask.actionCode === 'format_currency';
-    const isPercentTarget = activeTask && activeTask.actionCode === 'format_percent';
-    const isAutoSumTarget = activeTask && activeTask.actionCode === 'autosum_total';
-    const isTableTarget = activeTask && activeTask.actionCode === 'create_table';
+    const shortcuts = window.getFilteredShortcuts(mode);
+    const shortcutCategories = window.getShortcutCategories(mode);
+    const currentCheatCat = appState.cheatFilter[mode] || "all";
+    const currentCheatSearch = appState.cheatSearch[mode] || "";
 
-    return `
-      <div class="office-window-mockup excel-window">
-        <!-- TITLE BAR EXCEL -->
-        <div class="office-title-bar excel-title-bar">
-          <div class="office-title-left">
-            <span class="office-app-badge excel-badge">X</span>
-            <span class="office-autosave-badge ${isSaved ? 'saved' : ''}">
-              ${isSaved ? '✅ Tersimpan' : '💾 AutoSave: Aktif'}
-            </span>
-            <span class="office-filename">${project.docFilename} — Excel</span>
+    // Generate Cards HTML
+    const cardsHtml = vaultFiles.length ? vaultFiles.map(file => {
+      const thumbHtml = isWord ? renderWordMiniThumbnailHtml(file) : renderExcelMiniThumbnailHtml(file);
+      const downloadPath = `assets/downloads/${file.filename}`;
+
+      return `
+        <div class="office-file-card ${isWord ? 'word-theme' : 'excel-theme'}">
+          <!-- Card Header Badges -->
+          <div class="file-card-top-badges">
+            <span class="file-cat-pill">${file.category}</span>
+            <span class="file-accent-pill">${file.badge}</span>
+            <span class="file-ext-pill">${appExt.toUpperCase()}</span>
           </div>
-          <div class="office-window-controls">
-            <span>🗕</span>
-            <span>🗖</span>
-            <span>✕</span>
-          </div>
-        </div>
 
-        <!-- RIBBON TABS -->
-        <div class="office-ribbon-tabs excel-ribbon-tabs">
-          <span class="ribbon-tab-item active">Beranda (Home)</span>
-          <span class="ribbon-tab-item">Sisipkan (Insert)</span>
-          <span class="ribbon-tab-item">Tata Letak Halaman</span>
-          <span class="ribbon-tab-item">Rumus (Formulas)</span>
-          <span class="ribbon-tab-item">Data</span>
-          <span class="ribbon-tab-item">Tinjau</span>
-          <span class="ribbon-tab-item">Tampilan</span>
-        </div>
+          <!-- Realistic Visual Thumbnail -->
+          ${thumbHtml}
 
-        <!-- RIBBON TOOLBAR -->
-        <div class="office-ribbon-toolbar">
-          <div class="ribbon-group">
-            <div class="ribbon-tools-row">
-              <span class="office-tool-select">Aptos Narrow</span>
-              <span class="office-tool-select" style="width: 44px;">11 pt</span>
-              <button class="office-tool-btn ${isTotalBold ? 'active' : ''}"><b>B</b></button>
+          <!-- Body Info -->
+          <div class="file-card-info">
+            <h3 class="file-card-heading">${file.title}</h3>
+            <p class="file-card-summary">${file.desc}</p>
+
+            <div class="file-specs-row">
+              <span class="spec-tag">📄 ${isWord ? file.pagesCount : file.sheetsCount}</span>
+              <span class="spec-tag">⭐ ${file.rating}</span>
+              <span class="spec-tag">⚡ Siap Pakai</span>
             </div>
-            <div class="ribbon-group-label">Huruf</div>
           </div>
 
-          <div class="ribbon-group">
-            <div class="ribbon-tools-row">
-              <button class="office-tool-btn ${isCurrency ? 'active' : ''}" title="Format Rupiah (Ctrl+Shift+$)"><b>$</b> Rupiah</button>
-              <button class="office-tool-btn ${isPercent ? 'active' : ''}" title="Format Persen (Ctrl+Shift+%)"><b>%</b> Persen</button>
-              <button class="office-tool-btn" title="Koma Ribuan"><b>,</b></button>
-            </div>
-            <div class="ribbon-group-label">Angka</div>
-          </div>
-
-          <div class="ribbon-group">
-            <div class="ribbon-tools-row">
-              <button class="office-tool-btn ${isTable ? 'active' : ''}" title="Format Sebagai Tabel (Ctrl+T)">📊 Tabel</button>
-              <button class="office-tool-btn ${isTotalSum ? 'active' : ''}" title="AutoSum (Alt+=)"><b>Σ</b> AutoSum</button>
-              <button class="office-tool-btn ${isChart ? 'active' : ''}" title="Grafik Kilat (F11)">📈 Grafik</button>
-            </div>
-            <div class="ribbon-group-label">Gaya & Analisis</div>
-          </div>
-        </div>
-
-        <!-- FORMULA BAR EXCEL -->
-        <div class="excel-formula-bar">
-          <div class="formula-name-box">${isTotalSum ? 'C6' : 'C2'}</div>
-          <div class="formula-fx-icon"><b>✕</b> <b>✓</b> <i>fx</i></div>
-          <div class="formula-input-line">
-            ${isTotalSum ? '=SUM(C2:C5)' : (isCurrency ? '15500000' : 'Data Aktif')}
-          </div>
-        </div>
-
-        <!-- SPREADSHEET GRID DENGAN INDIKATOR TARGET -->
-        <div class="office-canvas-viewport">
-          <div class="excel-spreadsheet-sheet ${docState.selectAll ? 'grid-selected' : ''} ${isTableTarget ? 'table-target-pulse' : ''}">
-            <!-- Save Toast -->
-            <div id="excel-save-toast" class="office-save-toast" style="display: ${isSaved ? 'flex' : 'none'};">
-              <span>💾 Lembar kerja tersimpan otomatis! (Ctrl+S Berhasil)</span>
-            </div>
-
-            ${isDate ? `
-              <div class="excel-audit-date-badge">
-                📅 <b>Tanggal Audit Terverifikasi (Ctrl+;):</b> 12 Oktober 2026
+          <!-- Prominent Glowing Download Button -->
+          <div class="file-card-action">
+            <a href="${downloadPath}" download="${file.filename}" class="btn-vault-download ${isWord ? 'word-btn' : 'excel-btn'}">
+              <span class="dl-icon-glow">📥</span>
+              <div class="dl-text-wrap">
+                <span class="dl-title">UNDUH FILE ASLI (${appExt.toUpperCase()})</span>
+                <span class="dl-meta">Ukuran: ${file.size} • 1-Klik Langsung Tersimpan</span>
               </div>
-            ` : ''}
+              <span class="dl-arrow-pill">➔</span>
+            </a>
+          </div>
+        </div>
+      `;
+    }).join("") : `
+      <div class="empty-vault-state">
+        <span style="font-size: 3rem;">🔍</span>
+        <h4>Tidak ditemukan berkas yang cocok</h4>
+        <p>Coba gunakan kata kunci lain atau pilih "Semua Kategori" di atas.</p>
+        <button class="btn-secondary" onclick="appState.vaultFilter['${mode}']='all'; appState.vaultSearch['${mode}']=''; renderShortcutStudio('${mode}');">
+          🔄 Reset Pencarian
+        </button>
+      </div>
+    `;
 
-            <!-- GRID TABLE -->
-            <table class="excel-table-grid ${isTable ? 'styled-excel-table' : ''}">
+    // Generate Cheat Sheet Table Rows
+    const tableRowsHtml = shortcuts.length ? shortcuts.map((item, idx) => {
+      const keysHtml = item.key.split("+").map(k => `<kbd class="office-kbd">${k.trim()}</kbd>`).join(" <span class='kbd-plus'>+</span> ");
+      return `
+        <tr class="cheat-row">
+          <td class="cheat-num">${idx + 1}</td>
+          <td class="cheat-key-col">${keysHtml}</td>
+          <td class="cheat-action-col">
+            <strong>${item.action}</strong>
+            <div class="cheat-cat-sub">${item.category}</div>
+          </td>
+          <td class="cheat-scenario-col">${item.scenario}</td>
+          <td class="cheat-kodi-col">
+            <div class="kodi-analogy-box">
+              <span class="kodi-mini-icon">🤖</span>
+              <span>${item.nalarBayiKodi}</span>
+            </div>
+          </td>
+        </tr>
+      `;
+    }).join("") : `
+      <tr>
+        <td colspan="5" style="text-align: center; padding: 24px; color: var(--text-muted);">
+          🔍 Pintasan tidak ditemukan. Coba reset pencarian di atas!
+        </td>
+      </tr>
+    `;
+
+    let html = `
+      <div class="shortcut-vault-container">
+        <!-- 1. HERO BANNER MODERN WIDESCREEN -->
+        <div class="vault-hero-card ${isWord ? 'word-hero' : 'excel-hero'}">
+          <div class="vault-hero-main">
+            <img src="assets/illustrations/3d_tiles/${heroTile}" class="vault-hero-avatar" alt="${appTitle}">
+            <div>
+              <div class="vault-hero-tag">
+                💼 REPOSITORI BERKAS & DOKUMEN PRAKTIK ASLI KANTOR (${appTitle.toUpperCase()})
+              </div>
+              <h2 class="vault-hero-title">
+                Brankas File Latihan Nyata & Pintasan Keyboard ${appTitle}
+              </h2>
+              <p class="vault-hero-desc">
+                Tanpa game yang bikin ribet! Langsung unduh file latihan asli (<code>${appExt}</code>) yang sudah kami format dengan kasus nyata kantor, rumus otomatis, kop surat resmi, dan standar interview. Buka dan praktikkan langsung di aplikasi ${appTitle} laptopmu!
+              </p>
+            </div>
+          </div>
+          <div class="vault-hero-stats">
+            <div class="vault-stat-box">
+              <span class="stat-num">${isWord ? window.WORD_VAULT_FILES.length : window.EXCEL_VAULT_FILES.length}</span>
+              <span class="stat-lbl">File Siap Unduh</span>
+            </div>
+            <div class="vault-stat-box">
+              <span class="stat-num">${isWord ? window.WORD_SHORTCUTS.length : window.EXCEL_SHORTCUTS.length}</span>
+              <span class="stat-lbl">Pintasan Sakti</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2. WORKFLOW STEP FLOW -->
+        <div class="visual-mission-flow" style="margin-bottom: 24px;">
+          <div class="flow-step-item active">📁 1. Pilih Template Kasus Nyata</div>
+          <span class="flow-arrow-sep">➔</span>
+          <div class="flow-step-item">📥 2. Klik Tombol Unduh Hijau/Biru</div>
+          <span class="flow-arrow-sep">➔</span>
+          <div class="flow-step-item">💻 3. Buka di ${appTitle} Desktop</div>
+          <span class="flow-arrow-sep">➔</span>
+          <div class="flow-step-item">⚡ 4. Pakai Pintasan di Bawah Biar 10x Lebih Cepat</div>
+        </div>
+
+        <!-- 3. SECTION HEADER & SEARCH FILTER BAR UNTUK BRANKAS FILE -->
+        <div class="vault-section-header">
+          <div>
+            <h3 class="vault-subheading">
+              📂 Koleksi Berkas & Template Nyata Siap Pakai (${vaultFiles.length} Berkas)
+            </h3>
+            <p class="vault-subtext">Pilih kategori atau cari file sesuai kebutuhan tes kerja atau tugas kantormu:</p>
+          </div>
+
+          <!-- Search Input -->
+          <div class="vault-search-wrap">
+            <span class="search-icon">🔍</span>
+            <input type="text"
+                   class="vault-search-input"
+                   placeholder="Cari nama file, akuntansi, slip gaji, SOP, PKWT..."
+                   value="${currentVaultSearch}"
+                   oninput="searchVaultFiles('${mode}', this.value)" />
+            ${currentVaultSearch ? `
+              <button class="clear-search-btn" onclick="searchVaultFiles('${mode}', '')">✕</button>
+            ` : ""}
+          </div>
+        </div>
+
+        <!-- Category Pills Bar -->
+        <div class="vault-category-pills">
+          ${vaultCategories.map(cat => {
+            const isActive = (cat === currentVaultCat);
+            const label = cat === "all" ? `Semua Kategori (${isWord ? window.WORD_VAULT_FILES.length : window.EXCEL_VAULT_FILES.length})` : cat;
+            return `
+              <button class="vault-cat-btn ${isActive ? 'active' : ''} ${isWord ? 'word-pill' : 'excel-pill'}"
+                      onclick="filterVaultCategory('${mode}', '${cat}')">
+                ${label}
+              </button>
+            `;
+          }).join("")}
+        </div>
+
+        <!-- 4. GRID KARTU FILE DENGAN THUMBNAIL REALISTIS & TOMBOL UNDUH BESAR -->
+        <div class="office-vault-grid">
+          ${cardsHtml}
+        </div>
+
+        <!-- 5. CHEAT SHEET PINTASAN KEYBOARD CEPAT -->
+        <div class="vault-cheatsheet-section">
+          <div class="vault-section-header" style="margin-top: 40px;">
+            <div>
+              <div class="vault-hero-tag" style="background: rgba(56, 189, 248, 0.15); color: #38bdf8; border: 1px solid #38bdf8;">
+                ⚡ KAMUS & PANDUAN PINTASAN KANTOR
+              </div>
+              <h3 class="vault-subheading">
+                ⌨️ Tabel Pintasan Keyboard ${appTitle} Windows Lengkap (${shortcuts.length} Pintasan)
+              </h3>
+              <p class="vault-subtext">Hafalkan dan gunakan saat membuka file di atas. Dilengkapi Nalar Bayi Kodi agar mudah diingat seumur hidup!</p>
+            </div>
+
+            <!-- Search Cheat Sheet -->
+            <div class="vault-search-wrap">
+              <span class="search-icon">🔍</span>
+              <input type="text"
+                     class="vault-search-input"
+                     placeholder="Cari pintasan (misal: Save, Bold, Cari, Baris, Rumus)..."
+                     value="${currentCheatSearch}"
+                     oninput="searchShortcutCheat('${mode}', this.value)" />
+              ${currentCheatSearch ? `
+                <button class="clear-search-btn" onclick="searchShortcutCheat('${mode}', '')">✕</button>
+              ` : ""}
+            </div>
+          </div>
+
+          <!-- Category Filter Pills Cheat Sheet -->
+          <div class="vault-category-pills" style="margin-bottom: 16px;">
+            ${shortcutCategories.map(cat => {
+              const isActive = (cat === currentCheatCat);
+              const label = cat === "all" ? `Semua Pintasan (${isWord ? window.WORD_SHORTCUTS.length : window.EXCEL_SHORTCUTS.length})` : cat;
+              return `
+                <button class="vault-cat-btn ${isActive ? 'active' : ''} ${isWord ? 'word-pill' : 'excel-pill'}"
+                        onclick="filterShortcutCheatCategory('${mode}', '${cat}')">
+                  ${label}
+                </button>
+              `;
+            }).join("")}
+          </div>
+
+          <!-- Clean Modern Table Responsive -->
+          <div class="table-responsive-box">
+            <table class="vault-cheatsheet-table">
               <thead>
-                <tr class="excel-header-row">
-                  <th class="excel-corner-cell">◢</th>
-                  <th class="excel-col-head">A</th>
-                  ${isColHidden ? `
-                    <th class="excel-col-head hidden-col-indicator" title="Kolom B Tersembunyi (Ctrl+0)">||</th>
-                  ` : `
-                    <th class="excel-col-head">B</th>
-                  `}
-                  <th class="excel-col-head ${isCurrencyTarget ? 'col-target-highlight' : ''}">C</th>
-                  <th class="excel-col-head ${isPercentTarget ? 'col-target-highlight' : ''}">D</th>
-                  <th class="excel-col-head">E</th>
+                <tr>
+                  <th style="width: 50px;">No</th>
+                  <th style="width: 170px;">Tombol Keyboard</th>
+                  <th style="width: 250px;">Fungsi / Aksi Kantor</th>
+                  <th>Skenario Kerja Nyata</th>
+                  <th style="width: 320px;">Nalar Bayi Kodi 🍼</th>
                 </tr>
               </thead>
               <tbody>
-                <tr class="excel-data-row ${isTable ? 'table-header-row' : ''}">
-                  <td class="excel-row-num">1</td>
-                  <td class="excel-cell head-cell">Nama / Unit ${isTable ? '▼' : ''}</td>
-                  ${isColHidden ? '' : `<td class="excel-cell head-cell">Kota / Akun ${isTable ? '▼' : ''}</td>`}
-                  <td class="excel-cell head-cell ${isCurrencyTarget ? 'target-col-glow' : ''}">Omset / Gaji ${isTable ? '▼' : ''}</td>
-                  <td class="excel-cell head-cell ${isPercentTarget ? 'target-col-glow' : ''}">Margin / Bonus ${isTable ? '▼' : ''}</td>
-                  <td class="excel-cell head-cell">Status ${isTable ? '▼' : ''}</td>
-                </tr>
-
-                ${project.initialGrid.map((row, idx) => {
-                  const rowNum = idx + 2;
-                  const isThisRowHidden = (isRowHidden && idx === 2);
-                  if (isThisRowHidden) {
-                    return `
-                      <tr class="excel-data-row hidden-row-indicator">
-                        <td class="excel-row-num hidden-row-badge">=</td>
-                        <td colspan="${isColHidden ? 4 : 5}" style="background: rgba(239,68,68,0.15); color: #ef4444; font-size: 0.75rem; text-align: center; padding: 2px;">
-                          🔒 [Baris Karyawan Cuti Disembunyikan Sesuai Permintaan Bos]
-                        </td>
-                      </tr>
-                    `;
-                  }
-
-                  const isBonusFilled = isFillDown && idx > 0;
-                  const displayBonus = isBonusFilled ? 'Rp 500.000 (Fill Down)' : (typeof row.colD === 'number' ? formatMargin(row.colD) : row.colD);
-
-                  return `
-                    <tr class="excel-data-row ${idx % 2 === 1 && isTable ? 'zebra-row' : ''}">
-                      <td class="excel-row-num">${rowNum}</td>
-                      <td class="excel-cell text-left">${row.colA}</td>
-                      ${isColHidden ? '' : `<td class="excel-cell">${row.colB}</td>`}
-                      <td class="excel-cell text-right ${isCurrency ? 'cell-currency' : ''} ${isCurrencyTarget ? 'target-col-glow' : ''}">
-                        ${typeof row.colC === 'number' ? formatMoney(row.colC) : row.colC}
-                      </td>
-                      <td class="excel-cell text-right ${isPercentTarget ? 'target-col-glow' : ''}">
-                        ${displayBonus}
-                      </td>
-                      <td class="excel-cell text-center">
-                        <span class="badge-status ${row.colE === 'Lunas' || row.colE === 'Aktif' || row.colE === 'Aman' ? 'ok' : 'pending'}">${row.colE}</span>
-                      </td>
-                    </tr>
-                  `;
-                }).join('')}
-
-                ${isTotalSum ? `
-                  <tr class="excel-data-row total-row ${isTotalBold ? 'is-bold' : ''}">
-                    <td class="excel-row-num">6</td>
-                    <td class="excel-cell text-left" style="font-weight: 800;">TOTAL AKHIR</td>
-                    ${isColHidden ? '' : `<td class="excel-cell"></td>`}
-                    <td class="excel-cell text-right active-sum-cell" style="font-weight: 800; border-top: 2px solid #107c41; border-bottom: 3px double #107c41;">
-                      ${formatMoney(totalC)}
-                    </td>
-                    <td class="excel-cell text-right" style="font-weight: 700;">—</td>
-                    <td class="excel-cell text-center" style="font-size: 0.75rem; color: #107c41; font-weight: 700;">AutoSum Σ</td>
-                  </tr>
-                ` : (isAutoSumTarget ? `
-                  <tr class="excel-data-row total-row autosum-target-row">
-                    <td class="excel-row-num">6</td>
-                    <td colspan="${isColHidden ? 4 : 5}" style="padding: 6px; text-align: center; color: #107c41; font-weight: 800; font-size: 0.82rem;">
-                      👉 TARGET AUTOSUM: Tekan [Alt + =] di keyboard untuk merangkum total!
-                    </td>
-                  </tr>
-                ` : '')}
+                ${tableRowsHtml}
               </tbody>
             </table>
           </div>
         </div>
-
-        <!-- MODALS -->
-        ${isChart ? `
-          <div class="office-modal-overlay">
-            <div class="office-modal-box" style="max-width: 650px;">
-              <div class="office-modal-header excel-theme">
-                <span>📈 Lembar Grafik Visual Kilat (F11 Instant Chart Sheet)</span>
-                <button onclick="closeOfficeModal('excel', 'chart')">✕</button>
-              </div>
-              <div class="office-modal-body">
-                <h4 style="margin: 0 0 12px 0; text-align: center; color: var(--text-main);">
-                  ANALISIS VISUAL STOK GUDANG & OMSET CABANG
-                </h4>
-                <div class="excel-chart-visual">
-                  <div class="chart-bar-group">
-                    <div class="chart-bar" style="height: 80%; background: #107c41;"><span class="bar-val">15.5M</span></div>
-                    <span class="bar-lbl">Cabang A</span>
-                  </div>
-                  <div class="chart-bar-group">
-                    <div class="chart-bar" style="height: 62%; background: #2563eb;"><span class="bar-val">12.2M</span></div>
-                    <span class="bar-lbl">Cabang B</span>
-                  </div>
-                  <div class="chart-bar-group">
-                    <div class="chart-bar" style="height: 96%; background: #f59e0b;"><span class="bar-val">18.7M</span></div>
-                    <span class="bar-lbl">Cabang C</span>
-                  </div>
-                  <div class="chart-bar-group">
-                    <div class="chart-bar" style="height: 48%; background: #8b5cf6;"><span class="bar-val">9.8M</span></div>
-                    <span class="bar-lbl">Cabang D</span>
-                  </div>
-                </div>
-                <div class="alert-box success" style="margin-top: 14px;">
-                  ✨ Grafik kolom tercipta instan dari data tabel hanya dengan menekan F11!
-                </div>
-              </div>
-              <div class="office-modal-footer">
-                <button class="btn-primary" style="background: #107c41;" onclick="closeOfficeModal('excel', 'chart')">Tutup & Lanjutkan</button>
-              </div>
-            </div>
-          </div>
-        ` : ''}
-
-        ${isSaveAs ? `
-          <div class="office-modal-overlay">
-            <div class="office-modal-box">
-              <div class="office-modal-header excel-theme">
-                <span>💾 Simpan Lembar Kerja Baru (Save As - F12)</span>
-                <button onclick="closeOfficeModal('excel', 'saveAs')">✕</button>
-              </div>
-              <div class="office-modal-body">
-                <p><b>Berkas Baru:</b> [BACKUP-FINAL]_${project.docFilename}</p>
-                <div class="alert-box success">✅ Berkas cadangan berhasil disimpan aman!</div>
-              </div>
-              <div class="office-modal-footer">
-                <button class="btn-primary" style="background: #107c41;" onclick="closeOfficeModal('excel', 'saveAs')">Tutup</button>
-              </div>
-            </div>
-          </div>
-        ` : ''}
-
-        <!-- EXCEL SHEET TABS & STATUS BAR -->
-        <div class="office-status-bar excel-status-bar">
-          <div class="status-left">
-            <span class="excel-sheet-pill active">Sheet1</span>
-            <span class="excel-sheet-pill">+</span>
-            <span style="margin-left: 14px; font-weight: 700;">SIAP</span>
-          </div>
-          <div class="status-right">
-            <span>Rata-rata: Rp 14.075.000</span>
-            <span>Jumlah Data: 4</span>
-            <span>Total: ${formatMoney(totalC)}</span>
-          </div>
-        </div>
       </div>
     `;
-  }
 
-  // =========================================================================
-  // RENDERER DAFTAR PERMINTAAN KLIEN / BOS (CHECKLIST GAME TANPA TOMBOL JALANKAN MALAS!)
-  // =========================================================================
-  function renderProjectTasksChecklist(mode, project, completed) {
-    const isWord = (mode === 'word');
-    const themeColor = isWord ? '#2563eb' : '#107c41';
-    const totalTasks = project.tasks.length;
-    const completedCount = completed.length;
-    const isAllDone = (completedCount >= totalTasks);
-    const progressPct = Math.round((completedCount / totalTasks) * 100);
-    const gs = appState.projectGameState[mode];
-
-    return `
-      <!-- KARTU BRIEF KLIEN / BOS -->
-      <div class="boss-brief-card" style="border-left: 6px solid ${themeColor};">
-        <div class="boss-profile-header">
-          <div class="boss-avatar-box">${project.clientAvatar}</div>
-          <div style="flex: 1;">
-            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px;">
-              <div>
-                <h4 style="margin: 0; font-size: 1.15rem; color: var(--text-main); font-weight: 800;">
-                  ${project.client}
-                </h4>
-                <div style="font-size: 0.82rem; color: var(--text-muted); font-weight: 600;">
-                  ${project.clientRole} — Klien Proyek
-                </div>
-              </div>
-              <div class="boss-progress-pill" style="border-color: ${themeColor}; color: ${themeColor};">
-                🏆 ${completedCount} / ${totalTasks} Permintaan Selesai (${progressPct}%)
-              </div>
-            </div>
-            <!-- Progress Bar -->
-            <div class="boss-progress-bar-wrap">
-              <div class="boss-progress-bar-fill" style="width: ${progressPct}%; background: ${themeColor};"></div>
-            </div>
-          </div>
-        </div>
-
-        <!-- PESAN CERITA DARI BOS -->
-        <div class="boss-speech-bubble">
-          <span class="speech-quote-icon">“</span>
-          <p style="margin: 0; font-size: 0.92rem; color: var(--text-main); line-height: 1.5; font-style: italic;">
-            ${project.story}
-          </p>
-        </div>
-
-        <!-- DAFTAR LANGKAH PERMINTAAN (GAME QUESTS) -->
-        <div class="boss-tasks-list">
-          <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; margin-bottom: 8px;">
-            <span style="font-size: 0.85rem; font-weight: 800; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px;">
-              📋 Daftar Misi Pintasan Keyboard (Praktekkan Sendiri di Keyboard / Pad):
-            </span>
-            <span style="font-size: 0.8rem; color: #10b981; font-weight: 700;">
-              🎮 Tekan langsung tombolnya di keyboard fisik laptopmu!
-            </span>
-          </div>
-
-          ${project.tasks.map((task, idx) => {
-            const isDone = completed.includes(task.id);
-            const isNext = !isDone && (idx === 0 || completed.includes(project.tasks[idx - 1].id));
-            const keyParts = task.shortcut.split('+').map(k => k.trim());
-
-            return `
-              <div class="boss-task-item ${isDone ? 'is-completed' : ''} ${isNext ? 'is-active-target' : ''}">
-                <div class="task-col-left">
-                  <div class="task-status-icon">
-                    ${isDone ? '✅' : (isNext ? '👉' : '⏳')}
-                  </div>
-                  <div style="flex: 1;">
-                    <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
-                      <span class="task-title-text">${task.name}</span>
-                      ${isNext ? '<span class="badge-target-now">MISI AKTIF SEKARANG</span>' : ''}
-                    </div>
-                    <div class="task-desc-text">
-                      ${task.instruction}
-                    </div>
-                    <div class="task-target-meta">
-                      🎯 <b>Objek yang Berubah:</b> <code>${task.targetLabel || 'Dokumen'}</code>
-                    </div>
-                    <div class="task-baby-logic">
-                      🍼 <b>Nalar Bayi Kodi:</b> ${task.babyLogic}
-                    </div>
-                  </div>
-                </div>
-
-                <div class="task-col-right">
-                  <div class="task-shortcut-caps">
-                    ${keyParts.map(kp => `<span class="project-keycap">${kp}</span>`).join(' <span class="cap-plus">+</span> ')}
-                  </div>
-                  <div>
-                    ${isDone ? `
-                      <span class="badge-done-stamp">✓ Selesai Dipraktikkan</span>
-                    ` : (isNext ? `
-                      <span class="badge-waiting-press">⌨️ Tekan di Keyboard!</span>
-                    ` : `
-                      <span class="badge-waiting-queue">Menunggu Giliran</span>
-                    `)}
-                  </div>
-                </div>
-              </div>
-            `;
-          }).join('')}
-        </div>
-      </div>
-    `;
-  }
-
-  // =========================================================================
-  // PAPAN RAKIT PINTASAN INTERAKTIF (GAME PAD BAGI YANG TIDAK MEMILIKI KEYBOARD FISIK)
-  // Murid HARUS merakit kombinasi tombol sendiri, BUKAN klik 1 tombol instan!
-  // =========================================================================
-  function renderProjectVirtualAssemblyPad(mode) {
-    const isWord = (mode === 'word');
-    const themeColor = isWord ? '#2563eb' : '#107c41';
-    const gs = appState.projectGameState[mode];
-    const mods = gs.virtualModifiers;
-
-    // Kumpulan tombol umum yang dibutuhkan di proyek Word / Excel
-    const actionKeys = isWord
-      ? ['B', 'E', 'I', 'J', 'U', 'S', 'P', 'F', 'K', 'C', 'V', 'H', 'A', 'F7', 'F12']
-      : ['B', 'S', 'T', 'D', 'F', 'A', '0', '9', ';', '=', '$', '%', 'F2', 'F11', 'F12'];
-
-    return `
-      <div class="office-assembly-pad">
-        <div class="pad-header">
-          <div style="display: flex; align-items: center; gap: 8px;">
-            <span style="font-size: 1.2rem;">🕹️</span>
-            <div>
-              <strong style="color: var(--text-main); font-size: 0.92rem;">Papan Perakit Pintasan Interaktif (Pad Praktik Mandiri)</strong>
-              <div style="font-size: 0.78rem; color: var(--text-muted);">
-                Bagi yang menggunakan layar sentuh / HP: Rakit kombinasi tombol sendiri! Klik tombol modifier (Ctrl/Shift/Alt) lalu klik hurufnya!
-              </div>
-            </div>
-          </div>
-          <button class="btn-secondary" style="font-size: 0.75rem; padding: 4px 8px;" onclick="appState.projectGameState['${mode}'].virtualModifiers.clear(); window.renderShortcutStudio('${mode}');">
-            Reset Pilihan
-          </button>
-        </div>
-
-        <div class="pad-builder-row">
-          <!-- MODIFIERS -->
-          <div class="pad-section">
-            <span class="pad-sec-label">1. PILIH MODIFIER:</span>
-            <div class="pad-keys-wrap">
-              <button type="button" class="pad-mod-btn ${mods.has('ctrl') ? 'active' : ''}" onclick="toggleProjectVirtualModifier('${mode}', 'ctrl')">
-                [ Ctrl ${mods.has('ctrl') ? '✓' : ''} ]
-              </button>
-              <button type="button" class="pad-mod-btn ${mods.has('shift') ? 'active' : ''}" onclick="toggleProjectVirtualModifier('${mode}', 'shift')">
-                [ Shift ${mods.has('shift') ? '✓' : ''} ]
-              </button>
-              <button type="button" class="pad-mod-btn ${mods.has('alt') ? 'active' : ''}" onclick="toggleProjectVirtualModifier('${mode}', 'alt')">
-                [ Alt ${mods.has('alt') ? '✓' : ''} ]
-              </button>
-            </div>
-          </div>
-
-          <!-- ACTION KEYS -->
-          <div class="pad-section" style="flex: 1;">
-            <span class="pad-sec-label">2. TEKAN TOMBOL AKSI UNTUK EKSEKUSI:</span>
-            <div class="pad-keys-wrap">
-              ${actionKeys.map(k => `
-                <button type="button" class="pad-action-btn" onclick="pressProjectVirtualActionKey('${mode}', '${k}')">
-                  ${k}
-                </button>
-              `).join('')}
-            </div>
-          </div>
-        </div>
-
-        <div class="pad-status-footer">
-          Kombinasi yang siap dieksekusi: 
-          <strong style="color: #38bdf8;">
-            ${mods.size > 0 ? Array.from(mods).map(m => m.toUpperCase()).join(' + ') + ' + [Pilih Tombol Aksi]' : 'Pilih tombol modifier (Ctrl/Alt/Shift) terlebih dahulu atau langsung klik tombol F1-F12'}
-          </strong>
-        </div>
-      </div>
-    `;
-  }
-
-  // =========================================================================
-  // RAPOR HASIL PRAKTIK KERJA GAME (OFFICE PERFORMANCE REPORT MODAL)
-  // Menampilkan statistik lengkap, Rank S/A/B, Waktu Speedrun, dan Bukti Kelulusan
-  // =========================================================================
-  function renderProjectReportModal(mode, project) {
-    const isWord = (mode === 'word');
-    const themeColor = isWord ? '#2563eb' : '#107c41';
-    const gs = appState.projectGameState[mode];
-    const totalTasks = project.tasks.length;
-    const mistakes = gs.mistakes;
-    const timeSec = gs.elapsedSeconds || 18.5;
-
-    // Hitung Rank Kelulusan Game
-    let rank = 'RANK S';
-    let rankTitle = 'DEWA PINTASAN KANTOR (Legenda Kecepatan & Akurasi 100%)';
-    let rankColor = '#f59e0b';
-    let rankBg = 'linear-gradient(135deg, rgba(245, 158, 11, 0.2), rgba(16, 185, 129, 0.2))';
-
-    if (mistakes > 3 || timeSec > 60) {
-      rank = 'RANK B';
-      rankTitle = 'OPERATOR MAHIR (Tugas Selesai dengan Baik)';
-      rankColor = '#3b82f6';
-      rankBg = 'linear-gradient(135deg, rgba(59, 130, 246, 0.15), rgba(16, 185, 129, 0.15))';
-    } else if (mistakes > 0 || timeSec > 35) {
-      rank = 'RANK A';
-      rankTitle = 'PROFESIONAL KANTOR (Kecepatan Tinggi & Rapi)';
-      rankColor = '#10b981';
-      rankBg = 'linear-gradient(135deg, rgba(16, 185, 129, 0.2), rgba(56, 189, 248, 0.2))';
-    }
-
-    const accuracyPct = Math.max(50, Math.round(((totalTasks) / (totalTasks + mistakes)) * 100));
-
-    return `
-      <div class="office-modal-overlay">
-        <div class="office-report-card">
-          <div class="report-header" style="background: ${themeColor};">
-            <div>
-              <div style="font-size: 0.8rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; color: rgba(255,255,255,0.8);">
-                RAPOR EVALUASI RESMI PRAKTIK KANTOR
-              </div>
-              <h3 style="margin: 2px 0 0 0; color: #ffffff; font-size: 1.3rem;">
-                ${project.title}
-              </h3>
-            </div>
-            <button class="report-close-btn" onclick="closeOfficeModal('${mode}', 'report')">✕</button>
-          </div>
-
-          <div class="report-body">
-            <!-- RANK BADGE BESAR -->
-            <div class="report-rank-box" style="background: ${rankBg}; border-color: ${rankColor};">
-              <div class="rank-letter" style="color: ${rankColor};">${rank}</div>
-              <div class="rank-desc" style="color: ${rankColor};">${rankTitle}</div>
-            </div>
-
-            <!-- APRESIASI BOS / KLIEN -->
-            <div class="report-boss-review">
-              <div style="font-size: 2rem;">${project.clientAvatar}</div>
-              <div>
-                <div style="font-weight: 800; color: var(--text-main); font-size: 0.95rem;">
-                  Review Direksi (${project.client} — ${project.clientRole}):
-                </div>
-                <div style="font-style: italic; color: var(--text-muted); font-size: 0.88rem; margin-top: 4px; line-height: 1.45;">
-                  "Kerja yang luar biasa! Dokumen berhasil diselesaikan dengan kecepatan tinggi tanpa perlu mencari-cari menu mouse yang lambat. Format dokumen sekarang rapi sempurna dan siap diserahkan!"
-                </div>
-              </div>
-            </div>
-
-            <!-- STATISTIK HASIL PRAKTIK GAME -->
-            <div class="report-stats-grid">
-              <div class="report-stat-item">
-                <span class="stat-icon">⏱️</span>
-                <span class="stat-val">${timeSec.toFixed(1)} Detik</span>
-                <span class="stat-lbl">Waktu Pengerjaan</span>
-              </div>
-              <div class="report-stat-item">
-                <span class="stat-icon">🎯</span>
-                <span class="stat-val">${accuracyPct}%</span>
-                <span class="stat-lbl">Akurasi Tombol</span>
-              </div>
-              <div class="report-stat-item">
-                <span class="stat-icon">🔥</span>
-                <span class="stat-val">${gs.maxCombo}x</span>
-                <span class="stat-lbl">Max Combo Streak</span>
-              </div>
-              <div class="report-stat-item">
-                <span class="stat-icon">💎</span>
-                <span class="stat-val">${gs.score} PTS</span>
-                <span class="stat-lbl">Skor Prestasi Game</span>
-              </div>
-            </div>
-
-            <!-- CHECKLIST HASIL DOKUMEN -->
-            <div class="report-doc-summary">
-              <strong style="color: var(--text-main); font-size: 0.86rem;">📜 Hasil Transformasi Dokumen (${project.docFilename}):</strong>
-              <ul style="margin: 6px 0 0 18px; padding: 0; font-size: 0.82rem; color: var(--text-muted); line-height: 1.5;">
-                ${project.tasks.map(t => `<li>✅ <b>${t.shortcut}</b>: ${t.name} (Telah diterapkan ke dokumen)</li>`).join('')}
-              </ul>
-            </div>
-          </div>
-
-          <div class="report-footer">
-            <button class="btn-secondary" onclick="closeOfficeModal('${mode}', 'report'); resetCurrentProject('${mode}');">
-              🔄 Mainkan Ulang (Speedrun)
-            </button>
-            <button class="btn-primary" style="background: ${themeColor};" onclick="closeOfficeModal('${mode}', 'report'); switchProject('${mode}', ${(appState.currentProjectIdx[mode] + 1) % (isWord ? window.WORD_PROJECTS.length : window.EXCEL_PROJECTS.length)});">
-              Lanjut Proyek Berikutnya ➡️
-            </button>
-          </div>
-        </div>
-      </div>
-    `;
-  }
-
-  // =========================================================================
-  // RENDERER UTAMA SIMULATOR PROYEK KANTOR
-  // =========================================================================
-  function renderProjectStudioHtml(mode) {
-    const isWord = (mode === 'word');
-    const projList = isWord ? window.WORD_PROJECTS : window.EXCEL_PROJECTS;
-    const currentIdx = appState.currentProjectIdx[mode] || 0;
-    const project = projList[currentIdx] || projList[0];
-
-    if (!appState.projectCompletedSteps[mode]) appState.projectCompletedSteps[mode] = {};
-    if (!appState.projectCompletedSteps[mode][project.id]) appState.projectCompletedSteps[mode][project.id] = [];
-    const completed = appState.projectCompletedSteps[mode][project.id];
-    const docState = appState.projectDocState[mode];
-    const gs = appState.projectGameState[mode];
-
-    // Tugas target yang sedang aktif
-    const pendingTasks = project.tasks.filter(t => !completed.includes(t.id));
-    const activeTask = pendingTasks[0];
-
-    // Hitung waktu tampilan
-    const mins = Math.floor((gs.elapsedSeconds || 0) / 60);
-    const secs = ((gs.elapsedSeconds || 0) % 60).toFixed(1);
-    const timeDisplay = `${String(mins).padStart(2, '0')}:${String(secs).padStart(4, '0')}`;
-
-    return `
-      <div class="project-studio-wrapper">
-        <!-- 1. PROJECT SELECTOR TABS -->
-        <div class="project-selector-tabs">
-          <span style="font-size: 0.85rem; font-weight: 800; color: var(--text-muted); align-self: center; margin-right: 6px;">
-            📁 Pilih Misi Proyek:
-          </span>
-          ${projList.map((p, idx) => {
-            const pCompleted = (appState.projectCompletedSteps[mode][p.id] || []).length;
-            const pTotal = p.tasks.length;
-            const isPActive = (idx === currentIdx);
-            return `
-              <button class="project-tab-btn ${isPActive ? 'active' : ''}" onclick="switchProject('${mode}', ${idx})">
-                <span>${p.clientAvatar} Proyek ${idx + 1}: ${p.title.substring(0, 24)}...</span>
-                <span class="proj-badge-count ${pCompleted >= pTotal ? 'all-done' : ''}">
-                  ${pCompleted}/${pTotal} Selesai ${pCompleted >= pTotal ? '⭐' : ''}
-                </span>
-              </button>
-            `;
-          }).join('')}
-        </div>
-
-        <!-- 2. LIVE GAME HUD BAR (WAKTU, COMBO, SKOR, TARGET & RADAR TOMBOL) -->
-        <div class="office-game-hud">
-          <div class="hud-top-stats">
-            <div class="hud-stat-pill timer-pill">
-              <span class="hud-icon">⏱️</span>
-              <div>
-                <div class="hud-lbl">WAKTU GAME</div>
-                <div class="hud-val" id="hud-timer-${mode}">${timeDisplay}</div>
-              </div>
-            </div>
-
-            <div class="hud-stat-pill combo-pill">
-              <span class="hud-icon">🔥</span>
-              <div>
-                <div class="hud-lbl">COMBO STREAK</div>
-                <div class="hud-val ${gs.combo > 0 ? 'combo-fire' : ''}">
-                  ${gs.combo}x COMBO
-                </div>
-              </div>
-            </div>
-
-            <div class="hud-stat-pill score-pill">
-              <span class="hud-icon">💎</span>
-              <div>
-                <div class="hud-lbl">SKOR PRAKTIK</div>
-                <div class="hud-val">${gs.score} PTS</div>
-              </div>
-            </div>
-
-            <div class="hud-stat-pill target-pill">
-              <span class="hud-icon">🎯</span>
-              <div>
-                <div class="hud-lbl">TARGET PINTASAN SEKARANG</div>
-                <div class="hud-val target-key-val">
-                  ${activeTask ? activeTask.shortcut : 'SEMUA SELESAI 🎉'}
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- RADAR DETEKTOR KEYBOARD LANGSUNG -->
-          <div class="hud-keyboard-radar ${gs.lastMessageType}">
-            <div class="radar-status-line">
-              <div class="radar-left">
-                <span class="radar-pulse-dot"></span>
-                <span class="radar-title">DETEKTOR KEYBOARD FISIK:</span>
-                <span class="radar-detected-keys">[ ${gs.lastDetectedKeyString} ]</span>
-              </div>
-              <div class="radar-hint">
-                ${activeTask ? `👉 Tekan di keyboardmu: <b>${activeTask.shortcut}</b> (${activeTask.name})` : '⭐ Seluruh Permintaan Bos Berhasil Dipraktikkan!'}
-              </div>
-            </div>
-            <div class="radar-feedback-msg">
-              ${gs.lastMessage}
-            </div>
-          </div>
-        </div>
-
-        <!-- WIDESCREEN 2-COLUMN STAGE: DOKUMEN & ASSEMBLY (KIRI) vs BRIEF & CHECKLIST (KANAN) -->
-        <div class="game-widescreen-stage" style="align-items: start; margin-top: 18px;">
-          <!-- PANEL KIRI: MOCKUP DOKUMEN OFFICE & PAPAN RAKIT PINTASAN -->
-          <div class="stage-left-panel">
-            <div style="margin-bottom: 20px;">
-              ${isWord ? renderWordOfficeMockup(project, docState, completed) : renderExcelOfficeMockup(project, docState, completed)}
-            </div>
-            <div>
-              ${renderProjectVirtualAssemblyPad(mode)}
-            </div>
-          </div>
-
-          <!-- PANEL KANAN: BRIEF KLIEN & CHECKLIST MISI BOS + ARROW NAVIGATION -->
-          <div class="stage-right-panel">
-            <div>
-              ${renderProjectTasksChecklist(mode, project, completed)}
-            </div>
-
-            <!-- Glowing Directional Arrow Navigation Bar -->
-            <div class="arrow-nav-bar" style="margin-top: 20px;">
-              <button class="btn-arrow-nav" onclick="switchProject('${mode}', ${Math.max(0, currentIdx - 1)})" ${currentIdx <= 0 ? 'disabled' : ''}>
-                <span>◀</span>
-                <span>Proyek Sebelumnya</span>
-              </button>
-              <span style="font-size: 0.82rem; font-weight: 700; color: var(--accent-cyan);">
-                Proyek #${currentIdx + 1} dari ${projList.length}
-              </span>
-              <button class="btn-arrow-nav primary" onclick="switchProject('${mode}', ${Math.min(projList.length - 1, currentIdx + 1)})" ${currentIdx >= projList.length - 1 ? 'disabled' : ''}>
-                <span>Proyek Berikutnya</span>
-                <span>▶</span>
-              </button>
-            </div>
-          </div>
-        </div>
-
-        <!-- 6. MODAL RAPOR EVALUASI HASIL PRAKTIK KERJA (JIKA SUDAH SELESAI) -->
-        ${gs.isCompletedReportOpen ? renderProjectReportModal(mode, project) : ''}
-      </div>
-    `;
-  }
-
-  // =========================================================================
-  // FILTER & KATEGORI UNTUK MODE BANK PINTASAN LENGKAP
-  // =========================================================================
-  window.getShortcutCategories = function(mode) {
-    const list = mode === 'excel' ? window.EXCEL_SHORTCUTS : window.WORD_SHORTCUTS;
-    const cats = new Set();
-    list.forEach(item => cats.add(item.category));
-    return ['all', ...Array.from(cats)];
-  };
-
-  window.getFilteredShortcuts = function(mode) {
-    const list = mode === 'excel' ? window.EXCEL_SHORTCUTS : window.WORD_SHORTCUTS;
-    const cat = appState.shortcutFilter[mode] || 'all';
-    const q = (appState.shortcutSearch[mode] || '').toLowerCase().trim();
-
-    return list.map((item, idx) => ({ item, originalIndex: idx }))
-      .filter(x => {
-        const matchCat = (cat === 'all') || (x.item.category === cat);
-        const matchSearch = !q ||
-          x.item.key.toLowerCase().includes(q) ||
-          x.item.action.toLowerCase().includes(q) ||
-          x.item.scenario.toLowerCase().includes(q) ||
-          x.item.nalarBayiKodi.toLowerCase().includes(q);
-        return matchCat && matchSearch;
-      });
-  };
-
-  // =========================================================================
-  // RENDER STUDIO FUNGSI UTAMA (ROUTER SUBMODE: PROYEK VS BANK PINTASAN)
-  // =========================================================================
-  window.renderShortcutStudio = function(mode) {
-    const containerId = mode === 'excel' ? 'shortcut-excel-content-area' : 'shortcut-word-content-area';
-    const container = document.getElementById(containerId);
-    if (!container) return;
-
-    const list = mode === 'excel' ? window.EXCEL_SHORTCUTS : window.WORD_SHORTCUTS;
-    const isWord = (mode === 'word');
-    const themeColor = isWord ? '#2563eb' : '#107c41';
-    const themeLight = isWord ? '#3b82f6' : '#10b981';
-    const heroTile = isWord ? 'tile_3d_02.png' : 'tile_3d_08.png';
-    const appTitle = isWord ? 'Microsoft Word' : 'Microsoft Excel';
-    const activeSubmode = appState.activeStudioMode[mode] || 'project';
-
-    const projListForDl = isWord ? window.WORD_PROJECTS : window.EXCEL_PROJECTS;
-    const activeProjForDl = projListForDl[appState.currentProjectIdx[mode] || 0] || projListForDl[0];
-    const masterDlFile = isWord
-      ? 'assets/downloads/Modul_Praktik_Pintasan_Word_Lengkap.docx'
-      : 'assets/downloads/Modul_Praktik_Pintasan_Excel_Lengkap.xlsx';
-    const masterDlLabel = isWord
-      ? '📥 Download Modul Lengkap Pintasan Word (.docx)'
-      : '📥 Download Modul Lengkap Pintasan Excel (.xlsx)';
-
-    let html = `
-      <div class="shortcut-studio-container">
-        <!-- HERO BANNER DOKUMEN REFERENSI -->
-        <div class="shortcut-hero-card ${isWord ? 'word-theme' : ''}">
-          <div style="display: flex; align-items: center; gap: 14px;">
-            <img src="assets/illustrations/3d_tiles/${heroTile}"
-                 style="width: 58px; height: 58px; border-radius: 12px; object-fit: cover; border: 2px solid ${themeLight}; box-shadow: 0 4px 12px rgba(0,0,0,0.3);"
-                 alt="Pahlawan Pintasan ${appTitle}">
-            <div>
-              <div style="font-size: 0.75rem; font-weight: 800; color: ${themeLight}; text-transform: uppercase; letter-spacing: 0.5px;">
-                Sumber Resmi: Referensi/Pintasan_Keyboard_${isWord ? 'Word' : 'Excel'}.docx & .pdf
-              </div>
-              <h3 style="margin: 2px 0 4px 0; font-size: 1.25rem; color: var(--text-main);">
-                Pelatihan & Game Praktik Nyata Pintasan ${appTitle}
-              </h3>
-              <p style="margin: 0; font-size: 0.85rem; color: var(--text-muted);">
-                Unduh file latihan asli (${isWord ? '.docx' : '.xlsx'}) untuk praktik langsung di aplikasi ${appTitle} desktop, atau mainkan simulator interaktif di bawah!
-              </p>
-            </div>
-          </div>
-          <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
-            <span style="background: rgba(0,0,0,0.3); border: 1px solid ${themeLight}; padding: 6px 14px; border-radius: 20px; font-size: 0.85rem; font-weight: 800; color: ${themeLight};">
-              ⭐ ${appState.stars || 0} Bintang Terkumpul
-            </span>
-          </div>
-        </div>
-
-        <!-- 📥 PUSAT DOWNLOAD FILE PELATIHAN ASLI (.DOCX & .XLSX) -->
-        <div style="background: linear-gradient(135deg, rgba(15, 23, 42, 0.96), rgba(30, 41, 59, 0.96)); border: 2px solid ${themeLight}; border-radius: 14px; padding: 16px 20px; margin-bottom: 16px; box-shadow: 0 6px 20px rgba(0,0,0,0.3);">
-          <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; margin-bottom: 12px;">
-            <div>
-              <div style="font-size: 0.78rem; font-weight: 900; color: #facc15; text-transform: uppercase; letter-spacing: 0.6px;">
-                🚀 PRAKTEK BEBAS KAKU LANGSUNG DI APLIKASI ${appTitle.toUpperCase()} ASLI:
-              </div>
-              <h4 style="margin: 3px 0 0; font-size: 1.08rem; color: #ffffff;">
-                📥 Pusat Download File Latihan Pintasan ${appTitle} (${isWord ? '.docx' : '.xlsx'} Siap Pakai)
-              </h4>
-            </div>
-            <div style="display: flex; gap: 10px; flex-wrap: wrap;">
-              <a href="${masterDlFile}" download style="text-decoration: none; background: linear-gradient(135deg, ${themeColor}, ${themeLight}); color: #fff; font-weight: 800; font-size: 0.88rem; padding: 10px 18px; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.3); display: inline-flex; align-items: center; gap: 8px;">
-                ${masterDlLabel}
-              </a>
-              <a href="assets/downloads/${activeProjForDl.docFilename}" download style="text-decoration: none; background: rgba(255,255,255,0.1); border: 1.5px solid #38bdf8; color: #38bdf8; font-weight: 800; font-size: 0.85rem; padding: 10px 16px; border-radius: 10px; display: inline-flex; align-items: center; gap: 6px;">
-                📄 Download Proyek Aktif (${activeProjForDl.docFilename})
-              </a>
-            </div>
-          </div>
-
-          <!-- Daftar Semua File Proyek yang Bisa Didownload Satu per Satu -->
-          <div style="display: flex; gap: 8px; flex-wrap: wrap; padding-top: 10px; border-top: 1px solid rgba(255,255,255,0.1); align-items: center;">
-            <span style="font-size: 0.78rem; font-weight: 700; color: #cbd5e1;">📂 Unduh File Masing-Masing Proyek:</span>
-            ${projListForDl.map((p, idx) => `
-              <a href="assets/downloads/${p.docFilename}" download style="text-decoration: none; font-size: 0.78rem; font-weight: 700; padding: 5px 12px; border-radius: 8px; background: rgba(0,0,0,0.35); border: 1px solid rgba(255,255,255,0.18); color: #e2e8f0;">
-                ⬇️ Proyek ${idx + 1}: ${p.docFilename}
-              </a>
-            `).join('')}
-            ${!isWord ? `
-              <a href="assets/downloads/Master_160_Rumus_Excel_Dunia_Nyata.xlsx" download style="text-decoration: none; font-size: 0.78rem; font-weight: 800; padding: 5px 12px; border-radius: 8px; background: rgba(245, 158, 11, 0.2); border: 1px solid #f59e0b; color: #fde68a;">
-                📊 Download 200 Sheet Rumus Excel Dunia Nyata (.xlsx)
-              </a>
-            ` : `
-              <a href="assets/downloads/Modul_Praktik_Pintasan_Excel_Lengkap.xlsx" download style="text-decoration: none; font-size: 0.78rem; font-weight: 800; padding: 5px 12px; border-radius: 8px; background: rgba(16, 185, 129, 0.2); border: 1px solid #10b981; color: #86efac;">
-                📊 Download Juga Modul Pintasan Excel (.xlsx)
-              </a>
-            `}
-          </div>
-        </div>
-
-        <!-- 🎮 PANDUAN CARA BERMAIN & CARA PRAKTEK -->
-        <div style="background: rgba(15, 23, 42, 0.8); border: 1px solid rgba(56, 189, 248, 0.35); border-radius: 12px; padding: 12px 16px; margin-bottom: 16px; font-size: 0.84rem; color: #e2e8f0; line-height: 1.55;">
-          <strong style="color: #38bdf8;">🎮 Cara Praktek / Cara Bermain (Pilih Sesuai Kenyamananmu!):</strong><br>
-          1️⃣ <b>Praktek di Aplikasi Asli (Paling Nyata & Bebas Kaku):</b> Klik tombol <b>Download (.docx / .xlsx)</b> di atas ➔ Buka filenya di aplikasi Microsoft Word / Excel laptopmu ➔ Ikuti daftar misi yang sudah tertulis di dalam file tersebut!<br>
-          2️⃣ <b>Main Game Cepat di Website Ini:</b> Lihat kotak <b>🎯 TARGET PINTASAN SEKARANG</b> di bawah (contoh: <code>Ctrl+B</code>) ➔ Tekan langsung tombol itu di keyboard fisikmu, <b>ATAU</b> klik tombol <code>[Ctrl]</code> lalu klik hurufnya pada <b>Papan Perakit Pintasan</b> di bawah dokumen!
-        </div>
-
-        <!-- DUAL MODE SWITCHER BAR -->
-        <div class="shortcut-submode-switcher-bar">
-          <button class="submode-tab-btn ${activeSubmode === 'project' ? 'active' : ''}" onclick="switchStudioSubmode('${mode}', 'project')">
-            💼 Game Praktik Proyek Kantor (Detektor Keyboard & Dokumen Nyata)
-          </button>
-          <button class="submode-tab-btn ${activeSubmode === 'catalog' ? 'active' : ''}" onclick="switchStudioSubmode('${mode}', 'catalog')">
-            ⌨️ Bank Pintasan Lengkap (${list.length} Pintasan + Keyboard Virtual)
-          </button>
-        </div>
-    `;
-
-    if (activeSubmode === 'project') {
-      html += renderProjectStudioHtml(mode);
-    } else {
-      const filtered = window.getFilteredShortcuts(mode);
-      const categories = window.getShortcutCategories(mode);
-
-      if (appState.currentShortcutIdx[mode] < 0 || appState.currentShortcutIdx[mode] >= list.length) {
-        appState.currentShortcutIdx[mode] = 0;
-      }
-
-      let currentPos = filtered.findIndex(x => x.originalIndex === appState.currentShortcutIdx[mode]);
-      if (currentPos === -1 && filtered.length > 0) {
-        appState.currentShortcutIdx[mode] = filtered[0].originalIndex;
-        currentPos = 0;
-      }
-
-      const currentItem = list[appState.currentShortcutIdx[mode]] || list[0];
-      const isCompleted = (appState.shortcutCompleted[mode] || []).includes(currentItem.id);
-      const keyParts = currentItem.key.split('+').map(k => k.trim());
-
-      html += `
-        <div class="challenge-nav-bar" style="margin-bottom: 0;">
-          <div class="challenge-nav-controls" style="flex: 1; min-width: 240px;">
-            <label style="font-size: 0.8rem; font-weight: 700; color: ${themeLight};">📂 Kategori:</label>
-            <select class="challenge-page-select" onchange="filterShortcutCategory('${mode}', this.value)">
-              ${categories.map(cat => `
-                <option value="${cat}" ${appState.shortcutFilter[mode] === cat ? 'selected' : ''}>
-                  ${cat === 'all' ? 'Semua Kategori (' + list.length + ' Pintasan)' : cat}
-                </option>
-              `).join('')}
-            </select>
-          </div>
-
-          <div class="challenge-nav-controls" style="flex: 1; min-width: 220px;">
-            <label style="font-size: 0.8rem; font-weight: 700; color: ${themeLight};">🔍 Cari:</label>
-            <input type="text"
-                   class="challenge-page-select"
-                   style="background: var(--bg-secondary); color: var(--text-main); border: 1px solid var(--border-glow); padding: 6px 12px;"
-                   placeholder="Cari pintasan, fungsi, aksi..."
-                   value="${appState.shortcutSearch[mode] || ''}"
-                   oninput="searchShortcut('${mode}', this.value)" />
-          </div>
-
-          <div class="challenge-nav-controls">
-            <button class="btn-secondary" style="padding: 6px 12px; font-size: 0.82rem;" onclick="switchShortcutQuest('${mode}', -1)" ${currentPos <= 0 ? 'disabled' : ''}>
-              ⬅️ Prev
-            </button>
-            <select class="challenge-page-select" onchange="setShortcutQuest('${mode}', Number(this.value))">
-              ${filtered.map(x => `
-                <option value="${x.originalIndex}" ${x.originalIndex === appState.currentShortcutIdx[mode] ? 'selected' : ''}>
-                  #${x.originalIndex + 1}: [${x.item.key}] ${x.item.action.substring(0, 32)}... ${(appState.shortcutCompleted[mode] || []).includes(x.item.id) ? '✅' : ''}
-                </option>
-              `).join('')}
-            </select>
-            <button class="btn-secondary" style="padding: 6px 12px; font-size: 0.82rem;" onclick="switchShortcutQuest('${mode}', 1)" ${currentPos >= filtered.length - 1 ? 'disabled' : ''}>
-              Next ➡️
-            </button>
-          </div>
-        </div>
-
-        <!-- WIDESCREEN 2-COLUMN STAGE: SKENARIO & NALAR (KIRI) vs SIMULATOR KEYBOARD (KANAN) -->
-        <div class="game-widescreen-stage equal" style="margin-top: 14px;">
-          <!-- PANEL KIRI: SKENARIO KANTOR, KEYCAPS & NALAR KODI -->
-          <div class="stage-left-panel">
-            <div class="shortcut-quest-card" style="border-left: 5px solid ${themeColor}; margin-bottom: 0;">
-              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; flex-wrap: wrap; gap: 8px;">
-                <span style="font-size: 0.78rem; font-weight: 800; background: rgba(56, 189, 248, 0.15); color: var(--accent-cyan); padding: 4px 10px; border-radius: 12px; border: 1px solid rgba(56, 189, 248, 0.3);">
-                  🏷️ Kategori: ${currentItem.category}
-                </span>
-                ${isCompleted ? '<span style="font-size: 0.85rem; font-weight: 800; color: #10b981; background: rgba(16, 185, 129, 0.15); padding: 4px 12px; border-radius: 20px;">✅ Sudah Dikuasai</span>' : '<span style="font-size: 0.82rem; font-weight: 700; color: var(--accent-yellow); background: rgba(250, 204, 21, 0.12); padding: 4px 10px; border-radius: 12px;">🎯 Tekan Tombol di Keyboard!</span>'}
-              </div>
-
-              <div style="background: rgba(0,0,0,0.25); border-radius: 10px; padding: 14px; margin-bottom: 14px; border-left: 3px solid ${themeLight};">
-                <div style="font-size: 0.82rem; font-weight: 700; color: ${themeLight}; margin-bottom: 4px;">💼 Skenario Nyata di Kantor:</div>
-                <div style="font-size: 0.95rem; color: var(--text-main); font-weight: 600; line-height: 1.45;">
-                  "${currentItem.scenario}"
-                </div>
-                <div style="margin-top: 8px; font-size: 0.85rem; color: var(--text-muted);">
-                  <strong>🎯 Tugasmu:</strong> ${currentItem.action}
-                </div>
-              </div>
-
-              <div style="text-align: center; margin: 18px 0;">
-                <div style="font-size: 0.82rem; font-weight: 700; color: var(--text-muted); margin-bottom: 8px;">
-                  ⌨️ KOMBINASI TOMBOL TARGET:
-                </div>
-                <div class="shortcut-keys-display" id="shortcut-keys-display-${mode}">
-                  ${keyParts.map((part, i) => `
-                    <div class="shortcut-key-cap" data-key="${part.toLowerCase()}">${part}</div>
-                    ${i < keyParts.length - 1 ? '<span class="shortcut-key-plus">+</span>' : ''}
-                  `).join('')}
-                </div>
-              </div>
-
-              <div style="background: rgba(250, 204, 21, 0.08); border-left: 4px solid #facc15; border-radius: 8px; padding: 12px 14px; margin-bottom: 14px;">
-                <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 4px;">
-                  <span style="font-size: 1.1rem;">🍼</span>
-                  <strong style="font-size: 0.85rem; color: #facc15;">Nalar Bayi Kodi:</strong>
-                </div>
-                <p style="margin: 0; font-size: 0.86rem; color: #fef08a; line-height: 1.45;">
-                  ${currentItem.nalarBayiKodi}
-                </p>
-              </div>
-
-              <!-- Visual Shortcut Mission Flow -->
-              <div class="visual-mission-flow">
-                <div class="flow-step-item">
-                  <span class="flow-step-badge">1</span>
-                  <span>Baca Kasus</span>
-                </div>
-                <span class="flow-arrow-sep">➔</span>
-                <div class="flow-step-item">
-                  <span class="flow-step-badge">2</span>
-                  <span>Rangkai Tombol</span>
-                </div>
-                <span class="flow-arrow-sep">➔</span>
-                <div class="flow-step-item">
-                  <span class="flow-step-badge">3</span>
-                  <span>Eksekusi Pintasan</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- PANEL KANAN: KEYBOARD SIMULATOR & KONTROL UJI -->
-          <div class="stage-right-panel">
-            <div style="background: var(--bg-card); padding: 20px; border-radius: var(--radius-md); border: 1px solid var(--border-glow);">
-              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
-                <span style="font-size: 0.82rem; font-weight: 700; color: var(--text-muted);">
-                  🕹️ Simulator Papan Ketik Interaktif:
-                </span>
-                <button class="btn-secondary" style="font-size: 0.75rem; padding: 3px 8px;" onclick="resetVirtualKeys('${mode}')">
-                  Bersihkan Tombol
-                </button>
-              </div>
-
-              ${renderVirtualKeyboardHtml(mode)}
-
-              <div id="shortcut-feedback-${mode}" style="display: none; margin: 12px 0;"></div>
-
-              <div style="display: flex; gap: 10px; justify-content: flex-end; margin-top: 14px; flex-wrap: wrap;">
-                <button class="btn-secondary" style="font-size: 0.82rem; padding: 8px 14px;" onclick="testShortcutCombinationManually('${mode}')">
-                  ⚡ Uji Kombinasi Tombol Sekarang
-                </button>
-              </div>
-
-              <!-- Glowing Directional Arrow Navigation Bar -->
-              <div class="arrow-nav-bar" style="margin-top: 20px;">
-                <button class="btn-arrow-nav" onclick="switchShortcutQuest('${mode}', -1)" ${currentPos <= 0 ? 'disabled' : ''}>
-                  <span>◀</span>
-                  <span>Pintasan Sebelumnya</span>
-                </button>
-                <span style="font-size: 0.82rem; font-weight: 700; color: ${themeLight};">
-                  Pintasan #${appState.currentShortcutIdx[mode] + 1} dari ${list.length}
-                </span>
-                <button class="btn-arrow-nav primary" onclick="switchShortcutQuest('${mode}', 1)" ${currentPos >= filtered.length - 1 ? 'disabled' : ''}>
-                  <span>Pintasan Berikutnya</span>
-                  <span>▶</span>
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      `;
-    }
-
-    html += `</div>`;
     container.innerHTML = html;
-  };
-
-  // Render Virtual Keyboard Layout HTML
-  function renderVirtualKeyboardHtml(mode) {
-    const r1 = ['Esc', 'F1', 'F2', 'F3', 'F4', 'F5', 'F6', 'F7', 'F8', 'F9', 'F10', 'F11', 'F12'];
-    const r2 = ['`', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '-', '=', 'Backspace'];
-    const r3 = ['Tab', 'Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P', '[', ']', '\\'];
-    const r4 = ['Caps', 'A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L', ';', "'", 'Enter'];
-    const r5 = ['Shift', 'Z', 'X', 'C', 'V', 'B', 'N', 'M', ',', '.', '/', 'Shift'];
-    const r6 = ['Ctrl', 'Win', 'Alt', 'Space', 'Alt', 'Ctrl', 'Left', 'Down', 'Up', 'Right'];
-
-    function makeKey(k, extraClass) {
-      const cleanKey = k.toLowerCase();
-      const isMod = ['ctrl', 'alt', 'shift', 'win'].includes(cleanKey);
-      const isWide = ['backspace', 'enter', 'tab', 'caps'].includes(cleanKey);
-      const isSpace = (cleanKey === 'space');
-      let cls = 'vkey';
-      if (isMod) cls += ' modifier';
-      if (isWide) cls += ' wide';
-      if (isSpace) cls += ' space';
-      if (extraClass) cls += ' ' + extraClass;
-
-      return `<button type="button" class="${cls}" data-vkey="${cleanKey}" onclick="onVirtualKeyClick('${mode}', '${k}')">${k}</button>`;
-    }
-
-    return `
-      <div class="vkeyboard-container">
-        <div class="vkeyboard-row">${r1.map(k => makeKey(k)).join('')}</div>
-        <div class="vkeyboard-row">${r2.map(k => makeKey(k)).join('')}</div>
-        <div class="vkeyboard-row">${r3.map(k => makeKey(k)).join('')}</div>
-        <div class="vkeyboard-row">${r4.map(k => makeKey(k)).join('')}</div>
-        <div class="vkeyboard-row">${r5.map(k => makeKey(k)).join('')}</div>
-        <div class="vkeyboard-row">${r6.map(k => makeKey(k)).join('')}</div>
-      </div>
-    `;
-  }
-
-  // Virtual Key Click Handler
-  window.onVirtualKeyClick = function(mode, keyName) {
-    if (window.sfx) sfx.playClick();
-    const clean = normalizeKey(keyName);
-    const keyEl = document.querySelector(`.vkey[data-vkey="${clean}"]`);
-
-    if (['ctrl', 'alt', 'shift', 'win'].includes(clean)) {
-      if (virtualPressedKeys.has(clean)) {
-        virtualPressedKeys.delete(clean);
-        if (keyEl) keyEl.classList.remove('active-mod');
-      } else {
-        virtualPressedKeys.add(clean);
-        if (keyEl) keyEl.classList.add('active-mod');
-      }
-    } else {
-      if (keyEl) {
-        keyEl.classList.add('pressed');
-        setTimeout(() => keyEl.classList.remove('pressed'), 200);
-      }
-      virtualPressedKeys.add(clean);
-      checkActiveCombination(mode);
-      setTimeout(() => {
-        virtualPressedKeys.delete(clean);
-      }, 300);
-    }
-  };
-
-  window.resetVirtualKeys = function(mode) {
-    virtualPressedKeys.clear();
-    document.querySelectorAll('.vkey.active-mod').forEach(el => el.classList.remove('active-mod'));
-    const fb = document.getElementById(`shortcut-feedback-${mode}`);
-    if (fb) fb.style.display = 'none';
-  };
-
-  // Evaluasi Kombinasi Tombol pada Bank Pintasan
-  function checkActiveCombination(mode) {
-    const list = mode === 'excel' ? window.EXCEL_SHORTCUTS : window.WORD_SHORTCUTS;
-    const currentItem = list[appState.currentShortcutIdx[mode]];
-    if (!currentItem) return;
-
-    const expectedKeys = currentItem.keysArray.map(k => normalizeKey(k));
-    const currentKeysArray = Array.from(virtualPressedKeys).map(k => normalizeKey(k));
-
-    const hasAll = expectedKeys.every(k => currentKeysArray.includes(k));
-    const feedbackBox = document.getElementById(`shortcut-feedback-${mode}`);
-
-    if (hasAll) {
-      if (window.sfx) sfx.playSuccess();
-      if (!appState.shortcutCompleted[mode].includes(currentItem.id)) {
-        appState.shortcutCompleted[mode].push(currentItem.id);
-        appState.stars = (appState.stars || 0) + 1;
-        if (window.saveProgress) saveProgress();
-        const starCountEl = document.getElementById("header-stars");
-        if (starCountEl) starCountEl.textContent = `${appState.stars} Bintang`;
-      }
-
-      if (feedbackBox) {
-        feedbackBox.style.display = 'block';
-        feedbackBox.className = 'alert-box success';
-        feedbackBox.innerHTML = `
-          <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px;">
-            <div>
-              <strong>🎉 LUAR BIASA! PINTASAN BERHASIL DIKUASAI!</strong><br>
-              <span style="font-size: 0.88rem;">
-                Kamu sukses menekan kombinasi <strong style="color: #38bdf8;">${currentItem.key}</strong>: "${currentItem.action}".
-              </span>
-            </div>
-            <button class="btn-primary" style="background: #10b981; border: none; padding: 6px 14px; font-size: 0.82rem;" onclick="switchShortcutQuest('${mode}', 1)">
-              Tantangan Berikutnya ➡️
-            </button>
-          </div>
-        `;
-      }
-
-      setTimeout(() => {
-        window.resetVirtualKeys(mode);
-      }, 600);
-
-    } else {
-      if (feedbackBox) {
-        feedbackBox.style.display = 'block';
-        feedbackBox.className = 'alert-box info';
-        feedbackBox.innerHTML = `
-          <strong>⌨️ Tombol Terdeteksi:</strong> [${currentKeysArray.join(' + ') || 'Belum ada'}].<br>
-          <span style="font-size: 0.85rem;">Yang dibutuhkan untuk tantangan ini adalah: <strong>${currentItem.key}</strong>. Coba lagi yuk! 🍼</span>
-        `;
-      }
-    }
-  }
-
-  window.testShortcutCombinationManually = function(mode) {
-    checkActiveCombination(mode);
-  };
-
-  // Navigasi & Filter Router
-  window.switchShortcutQuest = function(mode, delta) {
-    if (window.sfx) sfx.playClick();
-    const filtered = window.getFilteredShortcuts(mode);
-    let currentPos = filtered.findIndex(x => x.originalIndex === appState.currentShortcutIdx[mode]);
-    let newPos = currentPos + delta;
-    if (newPos >= 0 && newPos < filtered.length) {
-      appState.currentShortcutIdx[mode] = filtered[newPos].originalIndex;
-      window.renderShortcutStudio(mode);
-    }
-  };
-
-  window.setShortcutQuest = function(mode, idx) {
-    if (window.sfx) sfx.playClick();
-    appState.currentShortcutIdx[mode] = idx;
-    window.renderShortcutStudio(mode);
-  };
-
-  window.filterShortcutCategory = function(mode, cat) {
-    if (window.sfx) sfx.playClick();
-    appState.shortcutFilter[mode] = cat;
-    window.renderShortcutStudio(mode);
-  };
-
-  window.searchShortcut = function(mode, q) {
-    appState.shortcutSearch[mode] = q;
-    window.renderShortcutStudio(mode);
-  };
-
-  window.shuffleShortcutQuest = function(mode) {
-    if (window.sfx) sfx.playClick();
-    const filtered = window.getFilteredShortcuts(mode);
-    if (!filtered.length) return;
-    const randomItem = filtered[Math.floor(Math.random() * filtered.length)];
-    appState.currentShortcutIdx[mode] = randomItem.originalIndex;
-    window.renderShortcutStudio(mode);
   };
 
   // Endpoint Khusus Tab
   window.renderExcelShortcutStudio = function() {
-    window.renderShortcutStudio('excel');
+    window.renderShortcutStudio("excel");
   };
 
   window.renderWordShortcutStudio = function() {
-    window.renderShortcutStudio('word');
+    window.renderShortcutStudio("word");
   };
-
-  // =========================================================================
-  // GLOBAL PHYSICAL KEYBOARD EVENT LISTENER
-  // Mendeteksi tombol keyboard fisik PC/Laptop murid tanpa popup browser
-  // =========================================================================
-  window.addEventListener('keydown', function(e) {
-    // CEK APAKAH TAB RUMUS EXCEL SEDANG AKTIF
-    const tabFormulaExcel = document.getElementById('tab-excel');
-    const isFormulaExcelActive = tabFormulaExcel && tabFormulaExcel.classList.contains('active');
-    if (isFormulaExcelActive) {
-      if (window.handleFormulaExcelPhysicalKey) {
-        window.handleFormulaExcelPhysicalKey(e);
-      }
-      return;
-    }
-
-    const tabExcel = document.getElementById('tab-shortcut-excel');
-    const tabWord = document.getElementById('tab-shortcut-word');
-    const isExcelActive = tabExcel && tabExcel.classList.contains('active');
-    const isWordActive = tabWord && tabWord.classList.contains('active');
-
-    if (!isExcelActive && !isWordActive) return;
-    const mode = isExcelActive ? 'excel' : 'word';
-
-    // Cegah aksi default browser untuk tombol latihan (Save, Print, Help, Find, dll)
-    const interceptedKeys = ['s', 'p', 'w', 'f', 'h', 'o', 'n', 'b', 'i', 'u', 'e', 'l', 'r', 'j', 'd', 't', 'k', '1', '2', '3', '4', '5', '9', '0', '='];
-    if (e.ctrlKey && interceptedKeys.includes(e.key.toLowerCase())) {
-      e.preventDefault();
-    }
-    if (e.altKey && (e.key === '=' || interceptedKeys.includes(e.key.toLowerCase()))) {
-      e.preventDefault();
-    }
-    if (['F1', 'F2', 'F3', 'F4', 'F7', 'F9', 'F11', 'F12'].includes(e.key)) {
-      e.preventDefault();
-    }
-
-    // Jika sedang dalam MODE SIMULASI PROYEK KANTOR
-    if (appState.activeStudioMode[mode] === 'project') {
-      handleProjectPhysicalKey(mode, e);
-      return;
-    }
-
-    // Jika dalam MODE BANK PINTASAN LENGKAP
-    virtualPressedKeys.clear();
-    if (e.ctrlKey) virtualPressedKeys.add('ctrl');
-    if (e.altKey) virtualPressedKeys.add('alt');
-    if (e.shiftKey) virtualPressedKeys.add('shift');
-    if (e.metaKey) virtualPressedKeys.add('win');
-
-    let keyName = e.key;
-    if (keyName === ' ') keyName = 'space';
-    virtualPressedKeys.add(normalizeKey(keyName));
-
-    const clean = normalizeKey(keyName);
-    const keyEl = document.querySelector(`.vkey[data-vkey="${clean}"]`);
-    if (keyEl) {
-      keyEl.classList.add('pressed');
-      setTimeout(() => keyEl.classList.remove('pressed'), 250);
-    }
-
-    checkActiveCombination(mode);
-  });
 
 })();

@@ -277,14 +277,14 @@ function switchTab(tabName) {
   } else if (tabName === 'shortcut-excel') {
     if (window.renderExcelShortcutStudio) renderExcelShortcutStudio();
     setKodiSpeech(
-      "Selamat datang di Studio Simulasi Proyek Kantor Excel! 💼 Ada proyek nyata dari bos dan 53 pintasan keyboard resmi!",
-      "Selesaikan checklist permintaan bos di atas! Spreadsheet Excel akan bertransformasi langsung saat kamu menekan pintasannya di keyboard!"
+      "Selamat datang di Brankas File & Pintasan Excel! 📊 Ada 12 berkas nyata (.xlsx) siap unduh dari siklus akuntansi sampai slip gaji!",
+      "Unduh file aslinya untuk praktik langsung di Microsoft Excel desktop, dan cek tabel pintasan di bawah biar kerjamu 10x lebih cepat!"
     );
   } else if (tabName === 'shortcut-word') {
     if (window.renderWordShortcutStudio) renderWordShortcutStudio();
     setKodiSpeech(
-      "Selamat datang di Studio Simulasi Dokumen Word Nyata! 📝 Selesaikan proyek laporan eksekutif dari direksi!",
-      "Tekan tombol keyboard laptopmu atau klik tombol aksi pintasan untuk melihat lembar A4 Word bertransformasi secara real-time!"
+      "Selamat datang di Brankas Dokumen Kantor & Pintasan Word! 📝 Ada 8 dokumen resmi (.docx) dari CV ATS sampai Surat Dinas Pemkot!",
+      "Unduh dokumen aslinya untuk praktik langsung di Word desktop, dan gunakan tabel pintasan di bawah untuk rapikan naskah dalam sekejap!"
     );
   } else if (tabName === 'dictionary') {
     renderDictionary();
@@ -8967,10 +8967,10 @@ function renderAdminPanelPage() {
     {
       key: "shortcut_excel",
       tab: "shortcut-excel",
-      icon: "⌨️",
-      name: "7. Game Pintasan Keyboard Excel",
-      desc: "Simulasi proyek kantor Excel Windows + 53 Pintasan Resmi",
-      totalLabel: `${totalScExcel} Pintasan`,
+      icon: "📁",
+      name: "7. Brankas File & Pintasan Excel",
+      desc: "Koleksi 12 template workbook nyata (.xlsx) + 53 Pintasan Resmi",
+      totalLabel: `${totalScExcel} Pintasan & 12 File`,
       doneCount: totalScExcel,
       totalCount: totalScExcel,
       hasUnlock: false
@@ -8979,9 +8979,9 @@ function renderAdminPanelPage() {
       key: "shortcut_word",
       tab: "shortcut-word",
       icon: "📝",
-      name: "8. Game Pintasan Keyboard Word",
-      desc: "Simulasi dokumen A4 Word Windows + 55 Pintasan Resmi",
-      totalLabel: `${totalScWord} Pintasan`,
+      name: "8. Brankas Dokumen & Pintasan Word",
+      desc: "Koleksi 8 dokumen nyata (.docx) + 55 Pintasan Resmi",
+      totalLabel: `${totalScWord} Pintasan & 8 Dokumen`,
       doneCount: totalScWord,
       totalCount: totalScWord,
       hasUnlock: false
