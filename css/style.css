@@ -9739,3 +9739,127 @@ body:not(.light-theme) .kodi-hero-card {
   box-shadow: 0 14px 45px rgba(0, 15, 30, 0.7), 0 0 30px rgba(56, 189, 248, 0.2) !important;
 }
 
+/* 7. Ocean & Marine Life Section Divider with Glowing Lines (Image 3) */
+.ocean-section-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  width: 100%;
+  margin: 32px 0 20px;
+}
+
+.ocean-section-divider .divider-line {
+  flex: 1;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(56, 189, 248, 0.6), transparent);
+  box-shadow: 0 0 8px rgba(56, 189, 248, 0.4);
+}
+
+.ocean-section-divider .divider-title {
+  font-size: 0.95rem;
+  font-weight: 900;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: #38bdf8;
+  background: rgba(14, 165, 233, 0.12);
+  border: 1px solid rgba(56, 189, 248, 0.35);
+  padding: 6px 18px;
+  border-radius: 999px;
+  box-shadow: 0 0 14px rgba(56, 189, 248, 0.25);
+  white-space: nowrap;
+}
+
+body.light-theme .ocean-section-divider .divider-line {
+  background: linear-gradient(90deg, transparent, rgba(2, 132, 199, 0.4), transparent) !important;
+}
+
+body.light-theme .ocean-section-divider .divider-title {
+  color: #0284c7 !important;
+  background: #e0f2fe !important;
+  border-color: #bae6fd !important;
+}
+
+/* 8. Glowing Horizon Arc & Aqua Highlights (Image 1 & 4) */
+.ocean-horizon-arc {
+  position: absolute;
+  bottom: -40px;
+  left: 5%;
+  right: 5%;
+  height: 80px;
+  border-radius: 50%;
+  background: radial-gradient(ellipse at 50% 100%, rgba(56, 189, 248, 0.45) 0%, rgba(14, 165, 233, 0.15) 50%, transparent 80%);
+  filter: blur(20px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* 9. Celestial Ornate Banner Corners & Peaks (Image 2) */
+.banner-corner-star {
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  color: #facc15;
+  font-size: 1.1rem;
+  line-height: 1;
+  pointer-events: none;
+  filter: drop-shadow(0 0 6px rgba(250, 204, 21, 0.8));
+}
+.banner-corner-star.top-left { top: 6px; left: 8px; }
+.banner-corner-star.top-right { top: 6px; right: 8px; }
+.banner-corner-star.bottom-left { bottom: 6px; left: 8px; }
+.banner-corner-star.bottom-right { bottom: 6px; right: 8px; }
+
+/* 10. WonderLearn + ClassiAds Enhanced Multi-Color Pastel (Light Theme) */
+body.light-theme {
+  background: radial-gradient(circle at 12% 15%, #e0f2fe 0%, #fef3c7 25%, #fce7f3 50%, #f0fdf4 75%, #f5f3ff 100%) fixed !important;
+}
+
+body.light-theme .card,
+body.light-theme .ocean-squircle-card,
+body.light-theme .office-file-card {
+  background: #ffffff !important;
+  border: 2px solid rgba(226, 232, 240, 0.95) !important;
+  border-radius: 24px !important;
+  box-shadow: 0 14px 35px rgba(99, 102, 241, 0.08), inset 0 -3px 0 rgba(0, 0, 0, 0.04), inset 0 2px 0 rgba(255, 255, 255, 0.95) !important;
+}
+
+body.light-theme .card:hover,
+body.light-theme .ocean-squircle-card:hover,
+body.light-theme .office-file-card:hover {
+  transform: translateY(-4px) !important;
+  box-shadow: 0 20px 45px rgba(99, 102, 241, 0.15), inset 0 -3px 0 rgba(0, 0, 0, 0.04), inset 0 2px 0 rgba(255, 255, 255, 0.95) !important;
+  border-color: #38bdf8 !important;
+}
+
+body.light-theme .btn-vault-download.excel-btn {
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%) !important;
+  box-shadow: 0 6px 18px rgba(16, 185, 129, 0.35) !important;
+  color: #ffffff !important;
+}
+
+body.light-theme .btn-vault-download.word-btn {
+  background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%) !important;
+  box-shadow: 0 6px 18px rgba(37, 99, 235, 0.35) !important;
+  color: #ffffff !important;
+}
+
+body.light-theme .file-cat-pill {
+  background: #e0f2fe !important;
+  color: #0369a1 !important;
+  border: 1px solid #bae6fd !important;
+}
+
+body.light-theme .file-accent-pill {
+  background: #fef3c7 !important;
+  color: #92400e !important;
+  border: 1px solid #fde68a !important;
+}
+
+body.light-theme .spec-tag {
+  background: #f8fafc !important;
+  color: #475569 !important;
+  border: 1px solid #e2e8f0 !important;
+}
+
+

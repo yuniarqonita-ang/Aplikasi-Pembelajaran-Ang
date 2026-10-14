@@ -12,7 +12,7 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <link rel="apple-touch-icon" href="assets/icon-192.png">
 
-  <link rel="stylesheet" href="css/style.css?v=20261014-v23.0">
+  <link rel="stylesheet" href="css/style.css?v=20261014-v24.0">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🤖</text></svg>">
 </head>
 <body>
@@ -61,8 +61,8 @@
         <button id="btn-header-admin" class="theme-toggle-btn" onclick="switchTab('admin-panel')" title="Buka Master Admin Panel (Semua 11 Modul, Kunci Jawaban Lengkap, & Rekap Nilai)" style="background: linear-gradient(135deg, rgba(2, 132, 199, 0.35), rgba(37, 99, 235, 0.45)); border: 1.5px solid #38bdf8; color: #ffffff; font-weight: 800; padding: 7px 14px;">
           🛠️ Master Admin
         </button>
-        <button id="btn-force-update" class="theme-toggle-btn" onclick="forceAppUpdate()" title="Bersihkan Cache & Perbarui Aplikasi ke Versi Terbaru (v23.0 Oceanic Fantasy)" style="background: rgba(16, 185, 129, 0.25); border-color: var(--accent-green); color: #34d399; font-weight: 800;">
-          🔄 Update v23.0
+        <button id="btn-force-update" class="theme-toggle-btn" onclick="forceAppUpdate()" title="Bersihkan Cache & Perbarui Aplikasi ke Versi Terbaru (v24.0)" style="background: rgba(16, 185, 129, 0.25); border-color: var(--accent-green); color: #34d399; font-weight: 800;">
+          🔄 Update v24.0
         </button>
         <div class="stat-badge star-count">
           <span>⭐</span>
@@ -80,7 +80,7 @@
     <div id="app-update-banner" class="app-update-banner" style="display: none;">
       <div style="display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-wrap: wrap;">
         <span class="update-banner-text">
-          🌊 <strong>Versi Baru (v23.0) Tersedia!</strong> Tema Bawah Laut Bioluminescent, Gelembung Air Bergerak, & Brankas File Excel/Word Nyata telah hadir!
+          🚀 <strong>Versi Baru (v24.0) Tersedia!</strong> Tema Gelap & Terang Fantasi Penuh Gradasi, Brankas 5 Workbook Excel Mandiri, & Tampilan File Pintasan Otomatis!
         </span>
         <button class="btn-update-now" onclick="forceAppUpdate()">Perbarui Sekarang ⚡</button>
       </div>
@@ -121,9 +121,9 @@
             <span class="nav-icon">🗄️</span>
             <span class="nav-label">SQL (100)</span>
           </button>
-          <button class="nav-tab" data-tab="excel-trainer" onclick="switchTab('excel-trainer')" title="Studio Rumus Excel Dunia Nyata & Brankas Master Workbook (155 Rumus + 200 Sheet)">
+          <button class="nav-tab" data-tab="excel-trainer" onclick="switchTab('excel-trainer')" title="Laboratorium 5 Workbook Praktik Mandiri Excel (.xlsx)">
             <span class="nav-icon">📊</span>
-            <span class="nav-label">Rumus Excel (155)</span>
+            <span class="nav-label">Workbook Excel (5)</span>
           </button>
           <button class="nav-tab" data-tab="shortcut-excel" onclick="switchTab('shortcut-excel')" title="Brankas File Latihan Nyata & Pintasan Excel Windows (12 Template Asli + 53 Pintasan)">
             <span class="nav-icon">📁</span>
@@ -251,12 +251,26 @@
 
     <!-- ================= TAB: SHORTCUT EXCEL STUDIO (BRANKAS FILE & PINTASAN) ================= -->
     <section id="tab-shortcut-excel" class="tab-content">
-      <div id="shortcut-excel-content-area"></div>
+      <div id="shortcut-excel-content-area">
+        <div style="text-align: center; padding: 40px 20px; color: #38bdf8;">
+          <div style="font-size: 2.5rem; margin-bottom: 12px; animation: floatBubble 2s infinite ease-in-out;">📊</div>
+          <h3 style="font-size: 1.2rem; font-weight: 800; margin-bottom: 8px;">Memuat Brankas File & Pintasan Excel...</h3>
+          <p style="font-size: 0.88rem; color: #94a3b8; max-width: 480px; margin: 0 auto 16px;">Menyiapkan 12 berkas template praktik nyata (.xlsx) dan 53 pintasan sakti keyboard Windows.</p>
+          <button type="button" class="btn-primary" onclick="if(window.renderExcelShortcutStudio) renderExcelShortcutStudio();" style="padding: 10px 20px; border-radius: 999px;">Tampilkan Brankas Excel Sekarang ⚡</button>
+        </div>
+      </div>
     </section>
 
     <!-- ================= TAB: SHORTCUT WORD STUDIO (BRANKAS FILE & PINTASAN) ================= -->
     <section id="tab-shortcut-word" class="tab-content">
-      <div id="shortcut-word-content-area"></div>
+      <div id="shortcut-word-content-area">
+        <div style="text-align: center; padding: 40px 20px; color: #38bdf8;">
+          <div style="font-size: 2.5rem; margin-bottom: 12px; animation: floatBubble 2s infinite ease-in-out;">📝</div>
+          <h3 style="font-size: 1.2rem; font-weight: 800; margin-bottom: 8px;">Memuat Brankas Dokumen & Pintasan Word...</h3>
+          <p style="font-size: 0.88rem; color: #94a3b8; max-width: 480px; margin: 0 auto 16px;">Menyiapkan 8 berkas dokumen resmi (.docx) dan 45 pintasan sakti keyboard Word.</p>
+          <button type="button" class="btn-primary" onclick="if(window.renderWordShortcutStudio) renderWordShortcutStudio();" style="padding: 10px 20px; border-radius: 999px; background: linear-gradient(135deg, #2563eb, #38bdf8);">Tampilkan Brankas Word Sekarang ⚡</button>
+        </div>
+      </div>
     </section>
 
     <!-- ================= TAB: IT TECH & NETWORK LAB ================= -->
@@ -358,21 +372,21 @@
     </div>
   </div>
 
-  <!-- Scripts with Cache Buster v23.0 -->
-  <script src="js/sfx.js?v=20261014-v23.0"></script>
-  <script src="js/speech.js?v=20261014-v23.0"></script>
-  <script src="js/dictionary.js?v=20261014-v23.0"></script>
-  <script src="js/levels.js?v=20261014-v23.0"></script>
-  <script src="js/sql_trainer.js?v=20261014-v23.0"></script>
-  <script src="js/code_trainer.js?v=20261014-v23.0"></script>
-  <script src="js/english_trainer.js?v=20261014-v23.0"></script>
-  <script src="js/sentence_builder.js?v=20261014-v23.0"></script>
-  <script src="js/excel_trainer.js?v=20261014-v23.0"></script>
-  <script src="js/shortcut_trainer.js?v=20261014-v23.0"></script>
-  <script src="js/it_tech_trainer.js?v=20261014-v23.0"></script>
-  <script src="js/math_trainer.js?v=20261014-v23.0"></script>
-  <script src="js/ihsaniyah_math.js?v=20261014-v23.0"></script>
-  <script src="js/ai_tutor.js?v=20261014-v23.0"></script>
-  <script src="js/app.js?v=20261014-v23.0"></script>
+  <!-- Scripts with Cache Buster v24.0 -->
+  <script src="js/sfx.js?v=20261014-v24.0"></script>
+  <script src="js/speech.js?v=20261014-v24.0"></script>
+  <script src="js/dictionary.js?v=20261014-v24.0"></script>
+  <script src="js/levels.js?v=20261014-v24.0"></script>
+  <script src="js/sql_trainer.js?v=20261014-v24.0"></script>
+  <script src="js/code_trainer.js?v=20261014-v24.0"></script>
+  <script src="js/english_trainer.js?v=20261014-v24.0"></script>
+  <script src="js/sentence_builder.js?v=20261014-v24.0"></script>
+  <script src="js/excel_trainer.js?v=20261014-v24.0"></script>
+  <script src="js/shortcut_trainer.js?v=20261014-v24.0"></script>
+  <script src="js/it_tech_trainer.js?v=20261014-v24.0"></script>
+  <script src="js/math_trainer.js?v=20261014-v24.0"></script>
+  <script src="js/ihsaniyah_math.js?v=20261014-v24.0"></script>
+  <script src="js/ai_tutor.js?v=20261014-v24.0"></script>
+  <script src="js/app.js?v=20261014-v24.0"></script>
 </body>
 </html>

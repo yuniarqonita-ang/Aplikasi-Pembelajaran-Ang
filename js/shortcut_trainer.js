@@ -1746,8 +1746,8 @@
     }
   ];
 
-  // Helper State
-  window.appState = window.appState || {};
+  // Helper State (Safe for 'use strict')
+  var appState = window.appState = window.appState || {};
   appState.vaultFilter = appState.vaultFilter || { excel: "all", word: "all" };
   appState.vaultSearch = appState.vaultSearch || { excel: "", word: "" };
   appState.cheatFilter = appState.cheatFilter || { excel: "all", word: "all" };
@@ -1762,8 +1762,9 @@
 
   window.getFilteredVaultFiles = function(mode) {
     const list = mode === "excel" ? window.EXCEL_VAULT_FILES : window.WORD_VAULT_FILES;
-    const cat = appState.vaultFilter[mode] || "all";
-    const q = (appState.vaultSearch[mode] || "").toLowerCase().trim();
+    const st = window.appState || appState;
+    const cat = (st.vaultFilter && st.vaultFilter[mode]) || "all";
+    const q = (st.vaultSearch && st.vaultSearch[mode] || "").toLowerCase().trim();
 
     return list.filter(item => {
       const matchCat = (cat === "all") || (item.category === cat);
@@ -1778,12 +1779,16 @@
 
   window.filterVaultCategory = function(mode, cat) {
     if (window.sfx) sfx.playClick();
-    appState.vaultFilter[mode] = cat;
+    const st = window.appState || appState;
+    st.vaultFilter = st.vaultFilter || { excel: "all", word: "all" };
+    st.vaultFilter[mode] = cat;
     window.renderShortcutStudio(mode);
   };
 
   window.searchVaultFiles = function(mode, val) {
-    appState.vaultSearch[mode] = val;
+    const st = window.appState || appState;
+    st.vaultSearch = st.vaultSearch || { excel: "", word: "" };
+    st.vaultSearch[mode] = val;
     window.renderShortcutStudio(mode);
   };
 
@@ -1796,8 +1801,9 @@
 
   window.getFilteredShortcuts = function(mode) {
     const list = mode === "excel" ? window.EXCEL_SHORTCUTS : window.WORD_SHORTCUTS;
-    const cat = appState.cheatFilter[mode] || "all";
-    const q = (appState.cheatSearch[mode] || "").toLowerCase().trim();
+    const st = window.appState || appState;
+    const cat = (st.cheatFilter && st.cheatFilter[mode]) || "all";
+    const q = (st.cheatSearch && st.cheatSearch[mode] || "").toLowerCase().trim();
 
     return list.filter(item => {
       const matchCat = (cat === "all") || (item.category === cat);
@@ -1812,12 +1818,16 @@
 
   window.filterShortcutCheatCategory = function(mode, cat) {
     if (window.sfx) sfx.playClick();
-    appState.cheatFilter[mode] = cat;
+    const st = window.appState || appState;
+    st.cheatFilter = st.cheatFilter || { excel: "all", word: "all" };
+    st.cheatFilter[mode] = cat;
     window.renderShortcutStudio(mode);
   };
 
   window.searchShortcutCheat = function(mode, val) {
-    appState.cheatSearch[mode] = val;
+    const st = window.appState || appState;
+    st.cheatSearch = st.cheatSearch || { excel: "", word: "" };
+    st.cheatSearch[mode] = val;
     window.renderShortcutStudio(mode);
   };
 
@@ -1940,13 +1950,14 @@
 
     const vaultFiles = window.getFilteredVaultFiles(mode);
     const vaultCategories = window.getVaultCategories(mode);
-    const currentVaultCat = appState.vaultFilter[mode] || "all";
-    const currentVaultSearch = appState.vaultSearch[mode] || "";
+    const st = window.appState || appState;
+    const currentVaultCat = (st.vaultFilter && st.vaultFilter[mode]) || "all";
+    const currentVaultSearch = (st.vaultSearch && st.vaultSearch[mode]) || "";
 
     const shortcuts = window.getFilteredShortcuts(mode);
     const shortcutCategories = window.getShortcutCategories(mode);
-    const currentCheatCat = appState.cheatFilter[mode] || "all";
-    const currentCheatSearch = appState.cheatSearch[mode] || "";
+    const currentCheatCat = (st.cheatFilter && st.cheatFilter[mode]) || "all";
+    const currentCheatSearch = (st.cheatSearch && st.cheatSearch[mode]) || "";
 
     // Generate Cards HTML
     const cardsHtml = vaultFiles.length ? vaultFiles.map(file => {

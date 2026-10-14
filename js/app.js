@@ -29,7 +29,7 @@ window.formatMathFractions = function(text) {
 };
 
 // ===================================================================
-// PEMBERSIHAN CACHE TOTAL & PEMBARUAN SISTEM APLIKASI (v23.0)
+// PEMBERSIHAN CACHE TOTAL & PEMBARUAN SISTEM APLIKASI (v24.0)
 // ===================================================================
 window.forceAppUpdate = async function() {
   if (window.sfx && typeof window.sfx.playSuccess === "function") {
@@ -45,12 +45,12 @@ window.forceAppUpdate = async function() {
   modal.style.cssText = "position:fixed;top:0;left:0;width:100vw;height:100vh;background:rgba(2,11,24,0.94);backdrop-filter:blur(14px);z-index:9999999;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#ffffff;text-align:center;font-family:'Segoe UI',sans-serif;padding:24px;";
   modal.innerHTML = `
     <div style="background:linear-gradient(145deg, rgba(3,33,58,0.96), rgba(1,18,34,0.98));border:2px solid #38bdf8;border-radius:24px;padding:36px 32px;box-shadow:0 0 60px rgba(56,189,248,0.45);max-width:500px;width:92%;">
-      <div style="font-size:3.8rem;animation:floatBubble 2s ease-in-out infinite;display:inline-block;margin-bottom:12px;">🫧</div>
+      <div style="font-size:3.8rem;animation:floatBubble 2s ease-in-out infinite;display:inline-block;margin-bottom:12px;">🌊</div>
       <h2 style="font-size:1.45rem;font-weight:900;color:#38bdf8;margin:0 0 10px;letter-spacing:-0.2px;">
-        ✨ Memperbarui ke Versi 23.0 (Oceanic Fantasy)
+        ✨ Memperbarui ke Versi 24.0 (Oceanic & Sunset Fantasy)
       </h2>
       <p style="font-size:0.92rem;color:#cbd5e1;line-height:1.55;margin:0 0 20px;">
-        Membersihkan cache lama, mengaktifkan tema bawah laut bioluminescent, gelembung air bergerak, dan brankas file Excel & Word terbaru...
+        Membersihkan cache lama, mengaktifkan tema gradasi bioluminescent & sunset pastel, laboratorium 5 master workbook Excel mandiri, dan brankas file pintasan terbaru...
       </p>
       <div style="background:rgba(255,255,255,0.08);border-radius:999px;height:10px;overflow:hidden;position:relative;margin-bottom:12px;border:1px solid rgba(56,189,248,0.3);">
         <div style="background:linear-gradient(90deg,#0284c7,#38bdf8,#34d399,#a855f7);height:100%;width:100%;border-radius:999px;animation:pulse 1s infinite alternate;"></div>
@@ -69,14 +69,14 @@ window.forceAppUpdate = async function() {
       const regs = await navigator.serviceWorker.getRegistrations();
       await Promise.all(regs.map(r => r.unregister()));
     }
-    localStorage.setItem('kodi_app_cache_version', 'v23.0');
+    localStorage.setItem('kodi_app_cache_version', 'v24.0');
     sessionStorage.clear();
   } catch (err) {
     console.warn("Purge cache warning:", err);
   }
 
   setTimeout(() => {
-    window.location.href = window.location.pathname + '?v=20261014-v23.0&t=' + Date.now();
+    window.location.href = window.location.pathname + '?v=20261014-v24.0&t=' + Date.now();
   }, 900);
 };
 
@@ -154,6 +154,10 @@ const appState = {
   currentMathIndex: 0,
   mathUnitFilter: "all",
   mathCompleted: [],
+  vaultFilter: { excel: "all", word: "all" },
+  vaultSearch: { excel: "", word: "" },
+  cheatFilter: { excel: "all", word: "all" },
+  cheatSearch: { excel: "", word: "" },
 };
 window.appState = appState;
 
@@ -4169,381 +4173,323 @@ function renderExcelTrainer() {
   const container = document.getElementById("excel-content-area");
   if (!container) return;
 
-  if (typeof excelChallenges === "undefined" || !excelChallenges.length) {
-    container.innerHTML = `<div class="info-box">Data tantangan rumus Excel sedang disiapkan...</div>`;
-    return;
-  }
-
-  appState.excelCategoryFilter = appState.excelCategoryFilter || "all";
-  appState.excelSearchQuery = appState.excelSearchQuery || "";
-
-  const allCategories = [
-    "all",
-    "1. Logika Bisnis & Kondisional",
-    "2. Statistik Dasar & Agregasi",
-    "3. Statistik Bersyarat",
-    "4. Pencarian Data & Lookup",
-    "5. Statistik Deskriptif & Peringkat",
-    "6. Sebaran, Kuartil & Probabilitas",
-    "7. Varians, Deviasi & Korelasi",
-    "8. Prediksi, Regresi & Tren",
-    "9. Manipulasi Teks & Rapikan Data",
-    "10. Waktu, Finansial & Pembulatan",
-    "11. Simulasi Akuntansi & Tes Kerja Kantor (PT Maju Bersama)"
+  // 5 WORKBOOK UTAMA PRAKTIK MANDIRI DI APLIKASI EXCEL ASLI
+  const practiceFiles = [
+    {
+      id: "xl-core-1",
+      title: "Simulasi Siklus Akuntansi Lengkap PT Maju Bersama",
+      category: "AKUNTANSI KANTOR RESMI",
+      badge: "12 SHEET LENGKAP",
+      rating: "⭐ 5.0 (Paling Diminati)",
+      filename: "Accounting_Work_Simulation_PT_Maju_Bersama.xlsx",
+      size: "48 KB",
+      sheetsCount: "12 Sheet",
+      desc: "Simulasi siklus akuntansi perusahaan dagang dari bukti transaksi nyata hingga laporan keuangan akhir. Lengkap dengan Sheet 99_KUNCI_JAWABAN untuk koreksi mandiri!",
+      highlights: [
+        "Jurnal Umum Otomatis dengan PPN 11%",
+        "Buku Besar 4 Kolom & Saldo Berjalan",
+        "Neraca Saldo & AJP Depresiasi SLN & Beban Sewa",
+        "Kertas Kerja / Neraca Lajur 10 Kolom",
+        "Laporan Laba Rugi, Perubahan Modal & Neraca",
+        "Sheet 99_KUNCI_JAWABAN di Halaman Paling Akhir"
+      ],
+      ribbonTitle: "PT_Maju_Bersama_Akuntansi.xlsx",
+      formulaSnippet: "=SUMIF('Jurnal Umum'!C4:C50, A5, 'Jurnal Umum'!E4:E50)",
+      headers: ["No. Akun", "Nama Akun", "Debet (Rp)", "Kredit (Rp)"],
+      rows: [
+        ["101", "Kas & Bank", "245.000.000", "0"],
+        ["102", "Piutang Usaha", "85.500.000", "0"],
+        ["103", "Persediaan Barang", "120.000.000", "0"],
+        ["201", "Utang Usaha", "0", "95.000.000"],
+        ["301", "Modal Pemilik", "0", "355.500.000"]
+      ],
+      sheetPills: ["Cover", "Jurnal Umum", "Buku Besar", "Neraca Saldo", "AJP", "Kertas Kerja", "Laba Rugi", "99_KUNCI"]
+    },
+    {
+      id: "xl-core-2",
+      title: "Master 200 Rumus Excel Dunia Nyata + 1.000 Kasus Mandiri",
+      category: "MASTER RUMUS LENGKAP",
+      badge: "200 SHEET RUMUS",
+      rating: "⭐ 5.0 (Edisi Mahir)",
+      filename: "Master_160_Rumus_Excel_Dunia_Nyata.xlsx",
+      size: "185 KB",
+      sheetsCount: "200 Sheet",
+      desc: "Setiap rumus punya 1 Sheet khusus! Berisi 1 Contoh Soal & Jawaban Benar, diikuti 5 Soal Tes Mandiri di kotak kuning, serta sheet paling akhir 99_KUNCI_JAWABAN untuk evaluasi.",
+      highlights: [
+        "1 Sheet = 1 Rumus Khusus Terpisah",
+        "Pustaka Lengkap: IF, VLOOKUP, XLOOKUP, INDEX MATCH, SUMIFS",
+        "Statistika: QUARTILE, PERCENTILE, STDEV, FORECAST, TREND",
+        "Finansial: PMT, FV, NPV, IRR, SLN, SYD, DDB",
+        "1 Contoh Lengkap + 5 Kasus Mandiri Per Sheet",
+        "Sheet 99_KUNCI_JAWABAN Berisi Kunci Seluruh 1.000 Soal"
+      ],
+      ribbonTitle: "Master_200_Rumus_Dunia_Nyata.xlsx",
+      formulaSnippet: "=XLOOKUP(E2, B2:B100, C2:C100, \"Tidak Ada\", 0)",
+      headers: ["Kode", "Nama Produk", "Kategori", "Harga Satuan"],
+      rows: [
+        ["PRD-01", "Laptop Core i7", "Hardware", "14.500.000"],
+        ["PRD-02", "Monitor 27 Inch", "Display", "3.200.000"],
+        ["PRD-03", "Keyboard Mech", "Aksesoris", "850.000"],
+        ["PRD-04", "Mouse Wireless", "Aksesoris", "350.000"],
+        ["PRD-05", "Printer Laser", "Office", "2.900.000"]
+      ],
+      sheetPills: ["01_IF", "02_VLOOKUP", "03_XLOOKUP", "04_INDEX_MATCH", "05_SUMIFS", "... 200 Sheet", "99_KUNCI"]
+    },
+    {
+      id: "xl-core-3",
+      title: "Soal Tes Interview & Seleksi Kerja Perusahaan Dagang",
+      category: "TES SELEKSI INTERVIEW",
+      badge: "3 SHEET LENGKAP",
+      rating: "⭐ 4.9 (Wajib Pencari Kerja)",
+      filename: "Soal_Tes_Interview_Akuntansi_Perusahaan_Dagang.xlsx",
+      size: "22 KB",
+      sheetsCount: "3 Sheet",
+      desc: "Kumpulan soal ujian tes tertulis dan praktik Excel yang paling sering diujikan oleh HRD & User untuk posisi Staf Akuntansi, Finance, Admin Gudang, dan Data Entry.",
+      highlights: [
+        "Soal Nyata Ujian Masuk Kerja Perusahaan",
+        "Studi Kasus Faktur Pembelian & Penjualan",
+        "Uji Kecepatan Rumus VLOOKUP, HLOOKUP & IF Bercabang",
+        "Tes Rekap Data dengan SUMIFS & COUNTIFS",
+        "Sheet Kunci Jawaban Resmi dari Tim Rekruter"
+      ],
+      ribbonTitle: "Tes_Interview_Akuntansi_Excel.xlsx",
+      formulaSnippet: "=IF(AND(C2>=80, D2=\"LULUS\"), \"DITERIMA\", \"REMIDI\")",
+      headers: ["No. Peserta", "Nama Pelamar", "Skor Excel", "Hasil Interview"],
+      rows: [
+        ["HRD-101", "Anisa Rahma", "88", "Sangat Baik"],
+        ["HRD-102", "Bambang Wijaya", "72", "Cukup"],
+        ["HRD-103", "Citra Kirana", "94", "Istimewa"],
+        ["HRD-104", "Dimas Setiawan", "65", "Kurang"],
+        ["HRD-105", "Erna Agustin", "82", "Baik"]
+      ],
+      sheetPills: ["Instruksi Ujian", "Soal Kasus", "Data Transaksi", "99_KUNCI_JAWABAN"]
+    },
+    {
+      id: "xl-core-4",
+      title: "Master Payroll Gaji Karyawan, Lembur & Pajak PPh 21",
+      category: "HRD & KEUANGAN GAJI",
+      badge: "4 SHEET OTOMATIS",
+      rating: "⭐ 5.0 (Standar HRD)",
+      filename: "Master_Payroll_Gaji_Karyawan_PPh21.xlsx",
+      size: "32 KB",
+      sheetsCount: "4 Sheet",
+      desc: "Template resmi rekapitulasi gaji bulanan staf kantor: hitung gaji pokok, tunjangan jabatan, uang makan, lembur Depnaker, BPJS TK/Kes, dan pemotongan PPh 21.",
+      highlights: [
+        "Kalkulasi Gaji Pokok & Tunjangan Otomatis",
+        "Rumus Lembur Sesuai Aturan Depnaker RI",
+        "Simulasi Potongan BPJS Ketenagakerjaan (JKK, JKM, JHT, JP)",
+        "Potongan BPJS Kesehatan 1% & 4% Perusahaan",
+        "Tarif PTKP & Perhitungan Pajak PPh 21 Otomatis",
+        "Format Slip Gaji Siap Cetak (A4 Portrait)"
+      ],
+      ribbonTitle: "Master_Payroll_Gaji_PPh21.xlsx",
+      formulaSnippet: "=ROUND((F4*1.5) + (G4*2), 0) + Tunjangan_Tetap",
+      headers: ["NIK", "Nama Karyawan", "Jabatan", "Gaji Pokok", "Gaji Bersih (Take Home)"],
+      rows: [
+        ["KOD-001", "Ahmad Fauzi", "Supervisor", "8.500.000", "9.720.000"],
+        ["KOD-002", "Siti Nurhaliza", "Staf Keuangan", "5.800.000", "6.450.000"],
+        ["KOD-003", "Budi Hermawan", "Admin Gudang", "4.900.000", "5.380.000"],
+        ["KOD-004", "Dewi Lestari", "Customer Service", "5.000.000", "5.620.000"],
+        ["KOD-005", "Rian Hidayat", "IT Support", "6.200.000", "7.150.000"]
+      ],
+      sheetPills: ["Data Karyawan", "Rekap Gaji", "Perhitungan PPh 21", "Slip Gaji Cetak"]
+    },
+    {
+      id: "xl-core-5",
+      title: "Dashboard Rekap Penjualan Sales Eksekutif & Pivot Table",
+      category: "SALES & BISNIS ANALISIS",
+      badge: "3 SHEET DASHBOARD",
+      rating: "⭐ 4.9 (Eksklusif)",
+      filename: "Dashboard_Rekap_Penjualan_Sales_Eksekutif.xlsx",
+      size: "28 KB",
+      sheetsCount: "3 Sheet",
+      desc: "Template eksekutif laporan penjualan tahunan: visualisasi grafik tren omset bulanan, performa tim sales lapangan, pencapaian target, dan tabel Pivot siap pakai rapat.",
+      highlights: [
+        "Data Transaksi Penjualan 12 Bulan Penuh",
+        "Tabel Pivot Otomatis Per Wilayah & Kategori Produk",
+        "Visualisasi Grafik Batang & Garis Tren Omset",
+        "Analisis Margin Keuntungan & Produk Terlaris",
+        "Layout Eksekutif Elegan Siap Presentasi Rapat Direksi"
+      ],
+      ribbonTitle: "Dashboard_Sales_Eksekutif_2026.xlsx",
+      formulaSnippet: "=GETPIVOTDATA(\"Total Penjualan\", $A$3, \"Wilayah\", \"Jawa Tengah\")",
+      headers: ["Bulan", "Wilayah", "Kategori", "Target (Rp)", "Realisasi (Rp)"],
+      rows: [
+        ["Januari", "DKI Jakarta", "Elektronik", "150.000.000", "172.500.000"],
+        ["Februari", "Jawa Barat", "Office Supply", "80.000.000", "91.200.000"],
+        ["Maret", "Jawa Tengah", "Komputer", "120.000.000", "138.000.000"],
+        ["April", "Jawa Timur", "Furniture", "95.000.000", "104.500.000"],
+        ["Mei", "Bali & NTB", "Aksesoris", "60.000.000", "68.400.000"]
+      ],
+      sheetPills: ["Database Transaksi", "Pivot Rekap", "Dashboard Grafik", "Panduan"]
+    }
   ];
 
-  const q = (appState.excelSearchQuery || "").toLowerCase().trim();
-  const currentCat = appState.excelCategoryFilter;
+  // Helper Mini Spreadsheet Thumbnail Renderer
+  function renderPracticeThumbnail(file) {
+    const rowsHtml = file.rows.map((r, idx) => `
+      <tr>
+        <td class="mini-row-num">${idx + 1}</td>
+        <td>${r[0]}</td>
+        <td>${r[1]}</td>
+        <td>${r[2]}</td>
+        <td class="num-cell">${r[3] || ""}</td>
+        ${r[4] ? `<td class="num-cell">${r[4]}</td>` : ""}
+      </tr>
+    `).join("");
 
-  // Filter formula list based on category and search query
-  const filteredList = excelChallenges.filter((item) => {
-    let matchCat = true;
-    if (currentCat !== "all") {
-      const catKey = currentCat.split('.')[1]?.trim() || currentCat;
-      matchCat = item.category.includes(catKey) || item.category === currentCat;
-    }
-    let matchQ = true;
-    if (q) {
-      matchQ = (item.title && item.title.toLowerCase().includes(q)) ||
-               (item.scenario && item.scenario.toLowerCase().includes(q)) ||
-               (item.instruction && item.instruction.toLowerCase().includes(q)) ||
-               (item.babyHint && item.babyHint.toLowerCase().includes(q)) ||
-               (item.category && item.category.toLowerCase().includes(q)) ||
-               (item.acceptedFormulas && item.acceptedFormulas.some(f => f.toLowerCase().includes(q)));
-    }
-    return matchCat && matchQ;
-  });
-
-  // Render Formula Cards
-  const cardsHtml = filteredList.length ? filteredList.map((chal) => {
-    const formulaSnippet = (chal.acceptedFormulas && chal.acceptedFormulas[0]) || chal.starterFormula || "=SUM()";
-    const babyExplanation = chal.babyHint || (chal.workedExample ? chal.workedExample.nalarBayi : "Gunakan rumus ini untuk otomatisasi perhitungan.");
-    const cleanFormulaForCopy = formulaSnippet.replace(/"/g, '&quot;');
-    const sampleCase = chal.scenario || (chal.workedExample ? chal.workedExample.kasusSerupa : "");
+    const sheetTabsHtml = file.sheetPills.map((p, idx) => `
+      <span class="mini-tab ${idx === 0 ? 'active' : ''}">${p}</span>
+    `).join("");
 
     return `
-      <div class="excel-formula-card ocean-squircle-card" id="formula-card-${chal.id}">
-        <!-- Top Meta Row -->
-        <div style="display: flex; justify-content: space-between; align-items: center; gap: 8px; margin-bottom: 12px; flex-wrap: wrap;">
-          <div style="display: flex; align-items: center; gap: 8px;">
-            <span class="ocean-circle-badge" style="font-size: 1.15rem; width: 38px; height: 38px;">📊</span>
-            <div>
-              <span style="font-size: 0.73rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; color: #10b981; background: rgba(16, 185, 129, 0.15); padding: 2px 10px; border-radius: 999px; border: 1px solid rgba(16, 185, 129, 0.3);">
-                ${chal.category}
-              </span>
-              <span style="font-size: 0.72rem; color: var(--text-muted); margin-left: 6px; font-weight: 700;">
-                Rumus #${chal.id.replace('xl-', '')}
-              </span>
+      <div class="excel-mini-thumbnail" title="Pratinjau Workbook Excel Asli">
+        <div class="mini-excel-ribbon">
+          <div class="mini-ribbon-left">
+            <span class="mini-app-icon">📊</span>
+            <span class="mini-window-title">${file.ribbonTitle}</span>
+          </div>
+          <div class="mini-window-dots">
+            <span></span><span></span><span></span>
+          </div>
+        </div>
+        <div class="mini-formula-bar">
+          <span class="mini-coord">fx</span>
+          <span class="mini-formula-text">${file.formulaSnippet}</span>
+        </div>
+        <div class="mini-grid-container">
+          <table class="mini-grid-table">
+            <thead>
+              <tr>
+                <th class="mini-row-th">#</th>
+                ${file.headers.map(h => `<th>${h}</th>`).join("")}
+              </tr>
+            </thead>
+            <tbody>
+              ${rowsHtml}
+            </tbody>
+          </table>
+        </div>
+        <div class="mini-sheet-tabs">
+          ${sheetTabsHtml}
+        </div>
+      </div>
+    `;
+  }
+
+  // Render Cards HTML (5 Files Only)
+  const cardsHtml = practiceFiles.map(file => {
+    const downloadPath = `assets/downloads/${file.filename}`;
+    const thumbHtml = renderPracticeThumbnail(file);
+
+    return `
+      <div class="ocean-squircle-card office-file-card excel-theme" style="display: flex; flex-direction: column; justify-content: space-between;">
+        <div>
+          <!-- Top Badges -->
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; gap: 8px; flex-wrap: wrap;">
+            <div style="display: flex; align-items: center; gap: 6px;">
+              <span class="file-cat-pill">${file.category}</span>
+              <span class="file-accent-pill">${file.badge}</span>
             </div>
+            <span style="color: #facc15; font-size: 0.82rem; font-weight: 800;">${file.rating}</span>
           </div>
-          <span style="font-size: 0.75rem; background: rgba(56, 189, 248, 0.12); color: #38bdf8; padding: 3px 10px; border-radius: 8px; font-weight: 700; border: 1px solid rgba(56, 189, 248, 0.25);">
-            ⚡ Siap Pakai di Excel
-          </span>
-        </div>
 
-        <!-- Formula Title -->
-        <h3 style="margin: 0 0 8px 0; font-size: 1.14rem; color: var(--text-main); font-weight: 800;">
-          ${chal.title}
-        </h3>
+          <!-- Realistic Mini Spreadsheet Viewport -->
+          ${thumbHtml}
 
-        <!-- Real Office Scenario -->
-        <div style="background: rgba(15, 23, 42, 0.55); border-left: 3px solid #38bdf8; padding: 8px 12px; border-radius: 6px; margin-bottom: 12px;">
-          <div style="font-size: 0.75rem; font-weight: 800; color: #38bdf8; text-transform: uppercase; margin-bottom: 2px;">
-            💼 Kasus Nyata di Kantor:
-          </div>
-          <p style="margin: 0; font-size: 0.84rem; color: var(--text-main); line-height: 1.45;">
-            ${sampleCase}
+          <!-- Title & Description -->
+          <h3 style="margin: 12px 0 6px 0; font-size: 1.18rem; font-weight: 800; color: var(--text-main); line-height: 1.35;">
+            ${file.title}
+          </h3>
+          <p style="margin: 0 0 12px 0; font-size: 0.84rem; color: var(--text-muted); line-height: 1.5;">
+            ${file.desc}
           </p>
+
+          <!-- Highlights List -->
+          <div style="background: rgba(16, 185, 129, 0.08); border-left: 3px solid #10b981; border-radius: 8px; padding: 10px 14px; margin-bottom: 14px;">
+            <div style="font-size: 0.74rem; font-weight: 800; color: #10b981; text-transform: uppercase; margin-bottom: 4px;">
+              📋 Isi Workbook yang Dipraktikkan:
+            </div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 0.8rem; color: var(--text-main); line-height: 1.45;">
+              ${file.highlights.map(h => `<li>${h}</li>`).join("")}
+            </ul>
+          </div>
+
+          <!-- Specs Row -->
+          <div style="display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 16px;">
+            <span class="spec-tag">📄 ${file.sheetsCount}</span>
+            <span class="spec-tag">💾 Ukuran: ${file.size}</span>
+            <span class="spec-tag">🔑 Ada Kunci Jawaban</span>
+            <span class="spec-tag">⚡ Format .xlsx</span>
+          </div>
         </div>
 
-        <!-- Nalar Bayi Kodi (Indonesian Plain Explanation) -->
-        <div style="background: rgba(245, 158, 11, 0.1); border-left: 3px solid #f59e0b; padding: 8px 12px; border-radius: 6px; margin-bottom: 12px;">
-          <div style="font-size: 0.75rem; font-weight: 800; color: #f59e0b; text-transform: uppercase; margin-bottom: 2px;">
-            🍼 Penjelasan Bahasa Bayi (Nalar Kodi):
-          </div>
-          <p style="margin: 0; font-size: 0.83rem; color: var(--text-main); line-height: 1.45;">
-            ${babyExplanation}
-          </p>
-        </div>
-
-        <!-- Authentic Formula Box -->
-        <div style="background: rgba(2, 6, 23, 0.85); border: 1.5px solid rgba(16, 185, 129, 0.4); border-radius: 10px; padding: 10px 14px; margin-bottom: 12px; display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-wrap: wrap;">
-          <div style="display: flex; align-items: center; gap: 8px; flex: 1; min-width: 200px;">
-            <span style="font-family: monospace; font-size: 0.85rem; font-weight: 800; color: #10b981; background: rgba(16, 185, 129, 0.18); padding: 2px 6px; border-radius: 4px;">fx</span>
-            <code style="font-family: 'Consolas', monospace; font-size: 0.95rem; font-weight: 700; color: #34d399; word-break: break-all;">
-              ${formulaSnippet}
-            </code>
-          </div>
-          <button type="button"
-                  class="btn-copy-formula"
-                  onclick="copyExcelFormula('${cleanFormulaForCopy}', this)"
-                  title="Salin rumus ini langsung ke clipboard komputer"
-                  style="padding: 6px 14px; border-radius: 8px; background: rgba(16, 185, 129, 0.2); border: 1px solid #10b981; color: #34d399; font-weight: 800; font-size: 0.78rem; cursor: pointer; transition: all 0.2s ease; white-space: nowrap;">
-            📋 Salin Rumus
-          </button>
-        </div>
-
-        ${chal.workedExample ? `
-          <div style="background: rgba(255, 255, 255, 0.03); border: 1px dashed rgba(148, 163, 184, 0.25); border-radius: 8px; padding: 8px 12px; margin-bottom: 12px; font-size: 0.8rem; color: var(--text-muted); line-height: 1.4;">
-            <strong style="color: #38bdf8;">💡 Contoh Simulasi:</strong> ${chal.workedExample.kasusSerupa}<br>
-            <strong style="color: #34d399;">Jawaban Benar:</strong> <code style="color: #34d399;">${chal.workedExample.rumusContoh}</code>
-          </div>
-        ` : ''}
-
-        <!-- Download Action Linking to Actual Practice Workbook -->
-        <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 10px; margin-top: auto;">
-          <span style="font-size: 0.74rem; color: var(--text-muted);">
-            Tersedia di: <strong>Master 200 Rumus .xlsx</strong>
-          </span>
-          <a href="assets/downloads/Master_160_Rumus_Excel_Dunia_Nyata.xlsx" download="Master_200_Rumus_Excel_Dunia_Nyata_Lengkap.xlsx"
-             style="font-size: 0.78rem; font-weight: 800; color: #38bdf8; text-decoration: none; display: inline-flex; align-items: center; gap: 4px;">
-            <span>📥 Download Sheet (.xlsx)</span> <span>➔</span>
+        <!-- Download Action Button -->
+        <div style="margin-top: auto; border-top: 1px solid rgba(255, 255, 255, 0.08); padding-top: 14px;">
+          <a href="${downloadPath}" download="${file.filename}" class="btn-vault-download excel-btn" style="text-decoration: none;">
+            <span class="dl-icon-glow">📥</span>
+            <div class="dl-text-wrap">
+              <span class="dl-title">UNDUH WORKBOOK MANDIRI (.XLSX)</span>
+              <span class="dl-meta">1-Klik Langsung Tersimpan • Buka di Excel / WPS Desktop</span>
+            </div>
+            <span class="dl-arrow-pill">➔</span>
           </a>
         </div>
       </div>
     `;
-  }).join("") : `
-    <div style="grid-column: 1 / -1; text-align: center; padding: 40px 20px; background: var(--bg-card); border-radius: 20px; border: 1.5px dashed var(--border-glow);">
-      <div style="font-size: 3rem; margin-bottom: 10px;">🔍</div>
-      <h3 style="margin: 0 0 6px 0; color: var(--text-main);">Tidak ada rumus yang cocok</h3>
-      <p style="margin: 0 0 16px 0; font-size: 0.88rem; color: var(--text-muted);">
-        Coba gunakan kata kunci pencarian lain atau pilih "Semua Kategori" di atas.
-      </p>
-      <button class="btn-secondary" onclick="appState.excelCategoryFilter='all'; appState.excelSearchQuery=''; renderExcelTrainer();">
-        🔄 Reset Filter & Tampilkan Semua (155 Rumus)
-      </button>
-    </div>
-  `;
+  }).join("");
 
-  // Render Full Studio
+  // RENDER COMPLETE EXCEL PRACTICE LABORATORY
   container.innerHTML = `
     <div class="excel-studio-wrapper" style="width: 100%; margin: 0 auto;">
-      <!-- 1. ORNATE CELESTIAL BANNER (INSPIRASI GAMBAR REFERENSI 2) -->
+      <!-- 1. ORNATE CELESTIAL & OCEAN BANNER -->
       <div class="ornate-celestial-banner">
         <div style="display: flex; align-items: center; justify-content: center; gap: 10px; margin-bottom: 8px;">
           <span class="banner-sparkle-left">✨</span>
-          <h2 class="banner-title">STUDIO RUMUS EXCEL & BRANKAS MASTER WORKBOOK (.XLSX)</h2>
+          <h2 class="banner-title">LABORATORIUM WORKBOOK EXCEL MANDIRI (.XLSX)</h2>
           <span class="banner-sparkle-right">✨</span>
         </div>
         <p class="banner-subtext">
-          Bebas game simulator kaku! Langsung unduh <strong>12 File Workbook Nyata (.xlsx)</strong> untuk latihan di Microsoft Excel / WPS / HP, atau pelajari <strong>155 Ensiklopedia Rumus Dunia Kerja</strong> lengkap dengan Nalar Bayi Kodi dan Salin Rumus 1-Klik!
+          Bebas game simulator kaku! Tersedia <strong>5 Workbook Praktik Resmi Terbaik</strong> untuk Anda unduh dan kerjakan secara mandiri langsung di aplikasi <strong>Microsoft Excel Desktop / WPS Office / Google Sheets</strong>!
         </p>
       </div>
 
-      <!-- 2. BRANKAS BESAR FILE EXCEL ASLI SIAP UNDUH (12 BERKAS LENGKAP) -->
-      <div style="margin-bottom: 28px;">
-        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; flex-wrap: wrap; gap: 8px;">
+      <!-- 2. ALUR CARA PRAKTIK MANDIRI -->
+      <div class="visual-mission-flow" style="margin-bottom: 22px;">
+        <div class="flow-step-item active">📥 1. Unduh Berkas .xlsx Pilihanmu</div>
+        <span class="flow-arrow-sep">➔</span>
+        <div class="flow-step-item">💻 2. Buka di Microsoft Excel / WPS Desktop</div>
+        <span class="flow-arrow-sep">➔</span>
+        <div class="flow-step-item">📝 3. Pelajari Contoh & Kerjakan Latihan Mandiri</div>
+        <span class="flow-arrow-sep">➔</span>
+        <div class="flow-step-item">🔑 4. Cek Sheet Kunci Jawaban di Halaman Terakhir</div>
+      </div>
+
+      <!-- 3. GUIDANCE CALLOUT -->
+      <div class="ocean-squircle-card" style="margin-bottom: 26px; border-left: 5px solid #10b981; background: linear-gradient(135deg, rgba(16, 185, 129, 0.12), rgba(15, 23, 42, 0.85));">
+        <div style="display: flex; align-items: flex-start; gap: 14px;">
+          <span class="ocean-circle-badge" style="font-size: 1.4rem;">💡</span>
           <div>
-            <h3 style="margin: 0; font-size: 1.25rem; font-weight: 800; color: var(--text-main); display: flex; align-items: center; gap: 8px;">
-              <span>💼</span> <span>Brankas Berkas Excel Asli (.xlsx) Siap Pakai di Kantor</span>
-            </h3>
-            <p style="margin: 4px 0 0; font-size: 0.84rem; color: var(--text-muted);">
-              File asli dengan format rapi, rumus otomatis, data transaksi nyata, dan sheet kunci jawaban lengkap di akhir.
+            <h4 style="margin: 0 0 6px 0; font-size: 1.05rem; color: #34d399; font-weight: 800;">
+              Mengapa Berlatih di Aplikasi Microsoft Excel Asli Lebih Bermanfaat?
+            </h4>
+            <p style="margin: 0; font-size: 0.86rem; color: var(--text-main); line-height: 1.55;">
+              Di dunia kerja nyata dan tes seleksi kantor, Anda akan menggunakan aplikasi <strong>Microsoft Excel / WPS sungguhan</strong> dengan pintasan keyboard cepat (<code>Ctrl+C</code>, <code>Alt+=</code>, <code>F4</code>), formula bar dinamis, dan fleksibilitas penuh tanpa dibatasi kisi buatan website. Unduh 5 workbook resmi di bawah ini, buka di komputer Anda, dan asah kemampuan olah data & akuntansimu hingga mahir!
             </p>
-          </div>
-          <span style="font-size: 0.76rem; background: rgba(16, 185, 129, 0.15); color: #10b981; padding: 4px 12px; border-radius: 999px; font-weight: 800; border: 1px solid rgba(16, 185, 129, 0.35);">
-            🟢 12 Workbook Nyata Tersedia
-          </span>
-        </div>
-
-        <!-- Grid 8 Workbook Unggulan -->
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 16px;">
-          <!-- Card 1: Siklus Akuntansi PT Maju Bersama -->
-          <div class="ocean-squircle-card" style="border: 2px solid rgba(56, 189, 248, 0.5); background: linear-gradient(135deg, rgba(2, 132, 199, 0.15), rgba(15, 23, 42, 0.95));">
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
-              <span style="background: #0284c7; color: #fff; font-size: 0.72rem; font-weight: 800; padding: 3px 10px; border-radius: 999px;">12 SHEET LENGKAP</span>
-              <span style="color: #facc15; font-size: 0.82rem; font-weight: 800;">⭐ 5.0 (Paling Diminati)</span>
-            </div>
-            <h4 style="margin: 0 0 6px 0; font-size: 1.08rem; color: #ffffff;">💼 Simulasi Siklus Akuntansi PT Maju Bersama</h4>
-            <p style="margin: 0 0 12px 0; font-size: 0.82rem; color: #cbd5e1; line-height: 1.45;">
-              Jurnal Umum PPN 11%, Buku Besar 4 Kolom, Neraca Saldo, AJP Depresiasi SLN & Sewa, Kertas Kerja 10 Kolom, Lap Laba Rugi, Modal, Neraca + Sheet 99_KUNCI_JAWABAN.
-            </p>
-            <a href="assets/downloads/Accounting_Work_Simulation_PT_Maju_Bersama.xlsx" download="Simulasi_Akuntansi_Lengkap_PT_Maju_Bersama.xlsx"
-               style="display: flex; align-items: center; justify-content: space-between; padding: 10px 16px; border-radius: 12px; background: linear-gradient(135deg, #0284c7, #0369a1); color: #ffffff; text-decoration: none; font-weight: 800; font-size: 0.86rem; box-shadow: 0 4px 14px rgba(2, 132, 199, 0.35); border: 1.5px solid #38bdf8;">
-              <span>⬇️ Unduh Berkas Akuntansi (.xlsx)</span>
-              <span>48 KB ➔</span>
-            </a>
-          </div>
-
-          <!-- Card 2: Master 200 Rumus Excel Dunia Nyata -->
-          <div class="ocean-squircle-card" style="border: 2px solid rgba(16, 185, 129, 0.5); background: linear-gradient(135deg, rgba(16, 185, 129, 0.15), rgba(15, 23, 42, 0.95));">
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
-              <span style="background: #107c41; color: #fff; font-size: 0.72rem; font-weight: 800; padding: 3px 10px; border-radius: 999px;">200 SHEET RUMUS</span>
-              <span style="color: #facc15; font-size: 0.82rem; font-weight: 800;">⭐ 5.0 (Edisi Mahir)</span>
-            </div>
-            <h4 style="margin: 0 0 6px 0; font-size: 1.08rem; color: #ffffff;">📗 Master 200 Rumus Excel + 1.000 Kasus</h4>
-            <p style="margin: 0 0 12px 0; font-size: 0.82rem; color: #cbd5e1; line-height: 1.45;">
-              Setiap rumus punya 1 sheet khusus dengan 1 contoh soal & jawaban benar, 5 soal tes mandiri, serta sheet paling akhir 99_KUNCI_JAWABAN untuk evaluasi.
-            </p>
-            <a href="assets/downloads/Master_160_Rumus_Excel_Dunia_Nyata.xlsx" download="Master_200_Rumus_Excel_Dunia_Nyata_Lengkap.xlsx"
-               style="display: flex; align-items: center; justify-content: space-between; padding: 10px 16px; border-radius: 12px; background: linear-gradient(135deg, #10b981, #059669); color: #ffffff; text-decoration: none; font-weight: 800; font-size: 0.86rem; box-shadow: 0 4px 14px rgba(16, 185, 129, 0.35); border: 1.5px solid #34d399;">
-              <span>⬇️ Unduh Master 200 Rumus (.xlsx)</span>
-              <span>185 KB ➔</span>
-            </a>
-          </div>
-
-          <!-- Card 3: Soal Tes Interview Perusahaan Dagang -->
-          <div class="ocean-squircle-card">
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
-              <span style="background: rgba(245, 158, 11, 0.2); color: #f59e0b; font-size: 0.72rem; font-weight: 800; padding: 3px 10px; border-radius: 999px; border: 1px solid rgba(245, 158, 11, 0.4);">TEST INTERVIEW</span>
-              <span style="color: var(--text-muted); font-size: 0.8rem;">3 Sheet Lengkap</span>
-            </div>
-            <h4 style="margin: 0 0 6px 0; font-size: 1.02rem; color: var(--text-main);">📑 Soal Tes Interview Akuntansi & Excel</h4>
-            <p style="margin: 0 0 12px 0; font-size: 0.82rem; color: var(--text-muted); line-height: 1.45;">
-              Soal seleksi masuk kerja posisi staf akuntansi, finance, dan admin gudang dengan data faktur & sheet kunci jawaban.
-            </p>
-            <a href="assets/downloads/Soal_Tes_Interview_Akuntansi_Perusahaan_Dagang.xlsx" download
-               style="display: flex; align-items: center; justify-content: space-between; padding: 8px 14px; border-radius: 10px; background: rgba(245, 158, 11, 0.15); color: #f59e0b; text-decoration: none; font-weight: 800; font-size: 0.82rem; border: 1px solid rgba(245, 158, 11, 0.4);">
-              <span>⬇️ Unduh Soal Interview (.xlsx)</span>
-              <span>22 KB ➔</span>
-            </a>
-          </div>
-
-          <!-- Card 4: Master Payroll Gaji & PPh 21 -->
-          <div class="ocean-squircle-card">
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
-              <span style="background: rgba(168, 85, 247, 0.2); color: #c084fc; font-size: 0.72rem; font-weight: 800; padding: 3px 10px; border-radius: 999px; border: 1px solid rgba(168, 85, 247, 0.4);">HRD & PAYROLL</span>
-              <span style="color: var(--text-muted); font-size: 0.8rem;">4 Sheet Gaji</span>
-            </div>
-            <h4 style="margin: 0 0 6px 0; font-size: 1.02rem; color: var(--text-main);">💰 Master Payroll Gaji Karyawan & PPh 21</h4>
-            <p style="margin: 0 0 12px 0; font-size: 0.82rem; color: var(--text-muted); line-height: 1.45;">
-              Template slip gaji otomatis, perhitungan lembur, BPJS Ketenagakerjaan, BPJS Kesehatan, dan potongan pajak PPh 21.
-            </p>
-            <a href="assets/downloads/Master_Payroll_Gaji_Karyawan_PPh21.xlsx" download
-               style="display: flex; align-items: center; justify-content: space-between; padding: 8px 14px; border-radius: 10px; background: rgba(168, 85, 247, 0.15); color: #c084fc; text-decoration: none; font-weight: 800; font-size: 0.82rem; border: 1px solid rgba(168, 85, 247, 0.4);">
-              <span>⬇️ Unduh Payroll Gaji (.xlsx)</span>
-              <span>32 KB ➔</span>
-            </a>
-          </div>
-
-          <!-- Card 5: Dashboard Rekap Penjualan Eksekutif -->
-          <div class="ocean-squircle-card">
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
-              <span style="background: rgba(59, 130, 246, 0.2); color: #60a5fa; font-size: 0.72rem; font-weight: 800; padding: 3px 10px; border-radius: 999px; border: 1px solid rgba(59, 130, 246, 0.4);">SALES DASHBOARD</span>
-              <span style="color: var(--text-muted); font-size: 0.8rem;">Pivot & Grafik</span>
-            </div>
-            <h4 style="margin: 0 0 6px 0; font-size: 1.02rem; color: var(--text-main);">📈 Dashboard Rekap Penjualan Sales Eksekutif</h4>
-            <p style="margin: 0 0 12px 0; font-size: 0.82rem; color: var(--text-muted); line-height: 1.45;">
-              Rekap omset tahunan, performa tim sales, grafik tren bulanan, dan tabel Pivot siap pakai untuk rapat direksi kantor.
-            </p>
-            <a href="assets/downloads/Dashboard_Rekap_Penjualan_Sales_Eksekutif.xlsx" download
-               style="display: flex; align-items: center; justify-content: space-between; padding: 8px 14px; border-radius: 10px; background: rgba(59, 130, 246, 0.15); color: #60a5fa; text-decoration: none; font-weight: 800; font-size: 0.82rem; border: 1px solid rgba(59, 130, 246, 0.4);">
-              <span>⬇️ Unduh Dashboard Sales (.xlsx)</span>
-              <span>28 KB ➔</span>
-            </a>
-          </div>
-
-          <!-- Card 6: Paket 1 (Matematika & Logika) -->
-          <div class="ocean-squircle-card">
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
-              <span style="background: rgba(16, 185, 129, 0.2); color: #34d399; font-size: 0.72rem; font-weight: 800; padding: 3px 10px; border-radius: 999px; border: 1px solid rgba(16, 185, 129, 0.4);">PAKET 1</span>
-              <span style="color: var(--text-muted); font-size: 0.8rem;">25 Rumus</span>
-            </div>
-            <h4 style="margin: 0 0 6px 0; font-size: 1.02rem; color: var(--text-main);">📗 Paket 1: Matematika, Akuntansi & Logika</h4>
-            <p style="margin: 0 0 12px 0; font-size: 0.82rem; color: var(--text-muted); line-height: 1.45;">
-              Kumpulan rumus dasar wajib kerja: SUM, AVERAGE, IF, AND, OR, SLN, SYD, DDB, ROUND lengkap dengan kunci jawaban.
-            </p>
-            <a href="assets/downloads/Paket_1_Rumus_Matematika_Akuntansi_Logika.xlsx" download
-               style="display: flex; align-items: center; justify-content: space-between; padding: 8px 14px; border-radius: 10px; background: rgba(16, 185, 129, 0.15); color: #34d399; text-decoration: none; font-weight: 800; font-size: 0.82rem; border: 1px solid rgba(16, 185, 129, 0.4);">
-              <span>⬇️ Unduh Paket 1 (.xlsx)</span>
-              <span>24 KB ➔</span>
-            </a>
-          </div>
-
-          <!-- Card 7: Paket 2 (Lookup, Teks & HRD) -->
-          <div class="ocean-squircle-card">
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
-              <span style="background: rgba(14, 165, 233, 0.2); color: #38bdf8; font-size: 0.72rem; font-weight: 800; padding: 3px 10px; border-radius: 999px; border: 1px solid rgba(14, 165, 233, 0.4);">PAKET 2</span>
-              <span style="color: var(--text-muted); font-size: 0.8rem;">30 Rumus</span>
-            </div>
-            <h4 style="margin: 0 0 6px 0; font-size: 1.02rem; color: var(--text-main);">📘 Paket 2: Lookup, Teks & Tanggal HRD</h4>
-            <p style="margin: 0 0 12px 0; font-size: 0.82rem; color: var(--text-muted); line-height: 1.45;">
-              VLOOKUP, XLOOKUP, INDEX MATCH, CONCAT, TEXTJOIN, DATEDIF, NETWORKDAYS lengkap untuk merapikan database karyawan.
-            </p>
-            <a href="assets/downloads/Paket_2_Rumus_Lookup_Teks_Tanggal_HRD.xlsx" download
-               style="display: flex; align-items: center; justify-content: space-between; padding: 8px 14px; border-radius: 10px; background: rgba(14, 165, 233, 0.15); color: #38bdf8; text-decoration: none; font-weight: 800; font-size: 0.82rem; border: 1px solid rgba(14, 165, 233, 0.4);">
-              <span>⬇️ Unduh Paket 2 (.xlsx)</span>
-              <span>28 KB ➔</span>
-            </a>
-          </div>
-
-          <!-- Card 8: Paket 4 (95 Rumus Statistika) -->
-          <div class="ocean-squircle-card">
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
-              <span style="background: rgba(236, 72, 153, 0.2); color: #f472b6; font-size: 0.72rem; font-weight: 800; padding: 3px 10px; border-radius: 999px; border: 1px solid rgba(236, 72, 153, 0.4);">PAKET 4</span>
-              <span style="color: var(--text-muted); font-size: 0.8rem;">95 Rumus</span>
-            </div>
-            <h4 style="margin: 0 0 6px 0; font-size: 1.02rem; color: var(--text-main);">🔬 Paket 4: 95 Rumus Statistika Lengkap</h4>
-            <p style="margin: 0 0 12px 0; font-size: 0.82rem; color: var(--text-muted); line-height: 1.45;">
-              QUARTILE, PERCENTILE, STDEV, VAR, CORREL, FORECAST, TREND, SLOPE, INTERCEPT untuk olah data skripsi & audit bisnis.
-            </p>
-            <a href="assets/downloads/Paket_4_Khusus_95_Rumus_Statistika_Lengkap.xlsx" download
-               style="display: flex; align-items: center; justify-content: space-between; padding: 8px 14px; border-radius: 10px; background: rgba(236, 72, 153, 0.15); color: #f472b6; text-decoration: none; font-weight: 800; font-size: 0.82rem; border: 1px solid rgba(236, 72, 153, 0.4);">
-              <span>⬇️ Unduh Paket 4 (.xlsx)</span>
-              <span>42 KB ➔</span>
-            </a>
           </div>
         </div>
       </div>
 
-      <!-- 3. ENSIKLOPEDIA 155 RUMUS EXCEL DUNIA KERJA (SEARCH & FILTER) -->
-      <div style="margin-top: 32px;">
-        <!-- Header & Search Controls -->
-        <div style="display: flex; justify-content: space-between; align-items: center; gap: 14px; margin-bottom: 16px; flex-wrap: wrap;">
-          <div>
-            <h3 style="margin: 0; font-size: 1.25rem; font-weight: 800; color: var(--text-main); display: flex; align-items: center; gap: 8px;">
-              <span>📖</span> <span>Ensiklopedia 155 Rumus Excel Dunia Kerja</span>
-            </h3>
-            <p style="margin: 4px 0 0; font-size: 0.84rem; color: var(--text-muted);">
-              Cari rumus apa saja, pahami dengan Nalar Bayi Kodi, dan salin rumusnya dengan 1-klik untuk dipakai langsung di kantormu!
-            </p>
-          </div>
+      <!-- 4. SECTION HEADER DIVIDER (OCEAN & MARINE LIFE STYLE) -->
+      <div class="ocean-section-divider" style="margin-bottom: 24px;">
+        <span class="divider-line"></span>
+        <span class="divider-title">✦ 5 WORKBOOK PRAKTIK MANDIRI RESMI ✦</span>
+        <span class="divider-line"></span>
+      </div>
 
-          <!-- Live Search Bar -->
-          <div style="position: relative; min-width: 280px; max-width: 400px; width: 100%;">
-            <span style="position: absolute; left: 12px; top: 50%; transform: translateY(-50%); font-size: 0.95rem; color: #94a3b8; pointer-events: none;">🔍</span>
-            <input type="text"
-                   value="${appState.excelSearchQuery || ''}"
-                   oninput="searchExcelFormulas(this.value)"
-                   placeholder="Cari rumus (VLOOKUP, IF, SUMIFS, pajak)..."
-                   style="width: 100%; padding: 10px 14px 10px 38px; border-radius: 12px; background: var(--bg-card); border: 1.5px solid var(--border-glow); color: var(--text-main); font-size: 0.88rem; outline: none;" />
-            ${appState.excelSearchQuery ? `
-              <button type="button" onclick="searchExcelFormulas('');" style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); background: none; border: none; color: #94a3b8; cursor: pointer; font-size: 0.9rem;">✕</button>
-            ` : ''}
-          </div>
-        </div>
-
-        <!-- Category Filter Pills -->
-        <div style="display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 20px;">
-          ${allCategories.map(cat => {
-            const isAll = (cat === 'all');
-            const isActive = (appState.excelCategoryFilter === cat);
-            const label = isAll ? `Semua Kategori (${excelChallenges.length})` : cat;
-            return `
-              <button type="button"
-                      onclick="filterExcelCategory('${cat.replace(/'/g, "\\'")}')"
-                      style="padding: 7px 14px; border-radius: 999px; font-size: 0.78rem; font-weight: 700; cursor: pointer; border: ${isActive ? '2px solid #10b981' : '1px solid rgba(148,163,184,0.25)'}; background: ${isActive ? 'linear-gradient(135deg, #107c41, #059669)' : 'var(--bg-card)'}; color: ${isActive ? '#ffffff' : 'var(--text-main)'}; transition: all 0.2s ease; box-shadow: ${isActive ? '0 4px 12px rgba(16, 185, 129, 0.3)' : 'none'};">
-                ${label}
-              </button>
-            `;
-          }).join('')}
-        </div>
-
-        <!-- Formula Results Count Bar -->
-        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; font-size: 0.82rem; color: var(--text-muted);">
-          <span>Menampilkan <strong>${filteredList.length}</strong> dari <strong>${excelChallenges.length}</strong> Rumus</span>
-          ${(appState.excelCategoryFilter !== 'all' || appState.excelSearchQuery) ? `
-            <button onclick="appState.excelCategoryFilter='all'; appState.excelSearchQuery=''; renderExcelTrainer();"
-                    style="background: none; border: none; color: #38bdf8; font-weight: 700; cursor: pointer; font-size: 0.8rem;">
-              ✕ Reset Filter
-            </button>
-          ` : ''}
-        </div>
-
-        <!-- Widescreen Responsive Grid of Formula Cards -->
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(360px, 1fr)); gap: 18px;">
-          ${cardsHtml}
-        </div>
+      <!-- 5. GRID 5 KARTU WORKBOOK MANDIRI -->
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 20px;">
+        ${cardsHtml}
       </div>
     </div>
   `;
@@ -6052,16 +5998,16 @@ window.addEventListener("DOMContentLoaded", () => {
     if (typeof window.renderWordShortcutStudio === "function") window.renderWordShortcutStudio();
   }, 100);
 
-  // Auto-purge old caches if version is not v23.0
+  // Auto-purge old caches if version is not v24.0
   const lastVer = localStorage.getItem('kodi_app_cache_version');
-  if (lastVer !== 'v23.0') {
-    localStorage.setItem('kodi_app_cache_version', 'v23.0');
+  if (lastVer !== 'v24.0') {
+    localStorage.setItem('kodi_app_cache_version', 'v24.0');
     if ('caches' in window) {
       caches.keys().then(keys => {
-        const oldKeys = keys.filter(k => k !== 'kodi-it-academy-v23.0');
+        const oldKeys = keys.filter(k => k !== 'kodi-it-academy-v24.0');
         if (oldKeys.length > 0) {
           Promise.all(oldKeys.map(k => caches.delete(k))).then(() => {
-            console.log('Old caches purged automatically on startup for v23.0!');
+            console.log('Old caches purged automatically on startup for v24.0!');
           });
         }
       });
